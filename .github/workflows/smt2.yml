@@ -25,6 +25,9 @@ jobs:
           version: 4.12.1
           distribution: 'glibc-2.35'
 
+      # Viper
+      - uses: sbt/setup-sbt@v1
+
       # Dafny
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
