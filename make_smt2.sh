@@ -3,7 +3,7 @@
 
 VERIFIERS="$@"
 if [ -z "$VERIFIERS" ]; then
-    VERIFIERS="dafny fstar smt-comp verus silicon carbon"
+    VERIFIERS="silicon carbon dafny fstar smt-comp verus"
 fi
 
 echo "Initialising submodules"
