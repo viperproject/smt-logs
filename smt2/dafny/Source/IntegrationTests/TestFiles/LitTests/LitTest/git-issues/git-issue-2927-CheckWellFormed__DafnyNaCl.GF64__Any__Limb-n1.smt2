@@ -37,6 +37,7 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Tag (T@U) T@U)
+(declare-fun DafnyNaCl.__default.M2256 () Int)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
@@ -44,9 +45,8 @@
 (declare-fun DafnyNaCl.__default.MGFLC () Int)
 (declare-fun Mul (Int Int) Int)
 (declare-fun DafnyNaCl.__default.R2256 () Int)
-(declare-fun DafnyNaCl.__default.M2256 () Int)
-(declare-fun Mod (Int Int) Int)
 (declare-fun DafnyNaCl.__default.P () Int)
+(declare-fun Mod (Int Int) Int)
 (declare-fun DafnyNaCl.__default.MGFLP () Int)
 (declare-fun DafnyNaCl.__default.LMM1 () Int)
 (declare-fun $FunctionContextHeight () Int)
@@ -85,6 +85,7 @@
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
+(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -101,7 +102,7 @@
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (= DafnyNaCl.__default.MGFLC (+ (Mul DafnyNaCl.__default.R2256 (LitInt 15)) 1)))
-(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
+(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert (= DafnyNaCl.__default.R2256 (Mod DafnyNaCl.__default.M2256 DafnyNaCl.__default.P)))
 (assert (= DafnyNaCl.__default.MGFLP (Mul DafnyNaCl.__default.LMM1 DafnyNaCl.__default.LMM1)))
 (assert  (=> (< 0 $FunctionContextHeight) ($Is intType (int_2_U DafnyNaCl.__default.M2256) TInt)))
@@ -118,7 +119,6 @@
 )))
 (assert (= DafnyNaCl.__default.LMM1 (LitInt 65535)))
 (assert (= DafnyNaCl.__default.LM (LitInt 65536)))
-(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0

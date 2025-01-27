@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:55
+; Started: 2025-01-27 03:00:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -724,7 +724,7 @@
       (= (inv@4@00 (loc<Ref> a@0@00 i@1@00)) i@1@00)
       (img@5@00 (loc<Ref> a@0@00 i@1@00))))
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@3@00 (loc<Ref> a@0@00 i@1@00)) (loc<Ref> a@0@00 i@1@00)))
-  :qid |quant-u-11630|)))
+  :qid |quant-u-11623|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -762,5 +762,5 @@
     (and (<= 0 (inv@4@00 r)) (< (inv@4@00 r) (len<Int> a@0@00)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@6@00  $FVF<val>) r) r))
   :pattern ((inv@4@00 r))
-  :qid |quant-u-11631|)))
+  :qid |quant-u-11624|)))
 (pop) ; 1

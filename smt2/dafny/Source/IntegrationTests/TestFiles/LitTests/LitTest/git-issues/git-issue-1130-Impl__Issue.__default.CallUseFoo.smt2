@@ -340,7 +340,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) (|Set#IsMember| |l#3| ($Box refType $o@@3))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2081|
+ :skolemid |2079|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Issue.Foo$T@@12 T@U) (this@@2 T@U) ) (!  (=> (or (|Issue.Foo.Repr#canCall| Issue.Foo$T@@12 this@@2) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 (Tclass.Issue.Foo Issue.Foo$T@@12))))) (= (Issue.Foo.Repr Issue.Foo$T@@12 this@@2) (|Set#UnionOne| |Set#Empty| ($Box refType this@@2))))

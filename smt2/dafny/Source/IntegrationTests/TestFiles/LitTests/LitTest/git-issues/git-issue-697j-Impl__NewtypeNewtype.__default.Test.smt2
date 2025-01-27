@@ -197,16 +197,6 @@
  :skolemid |2719|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx))
 )))
-(assert (forall ((|x#0@@7| T@U) ) (! (= ($Is intType |x#0@@7| Tclass.NewtypeNewtype.Type2)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@7|)) (< (U_2_int |x#0@@7|) 2147483648)) (NewtypeNewtype.__default.P (U_2_int |x#0@@7|))))
- :qid |unknown.0:0|
- :skolemid |3075|
- :pattern ( ($Is intType |x#0@@7| Tclass.NewtypeNewtype.Type2))
-)))
-(assert (forall ((|c0#0@@0| T@U) ) (! (= ($Is intType |c0#0@@0| Tclass.NewtypeNewtype.Type3)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |c0#0@@0|)) (< (U_2_int |c0#0@@0|) 2147483648)) (NewtypeNewtype.__default.P (U_2_int |c0#0@@0|))))
- :qid |unknown.0:0|
- :skolemid |3077|
- :pattern ( ($Is intType |c0#0@@0| Tclass.NewtypeNewtype.Type3))
-)))
 (assert (= (Ctor SetType) 4))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v bx@@0) ($IsBox bx@@0 t0@@0))
  :qid |DafnyPreludebpl.240:11|
@@ -222,17 +212,17 @@
  :skolemid |2605|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@8| Int) ) (!  (=> (or (|NewtypeNewtype.__default.P#canCall| (LitInt |x#0@@8|)) (< 0 $FunctionContextHeight)) (= (NewtypeNewtype.__default.P (LitInt |x#0@@8|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@8| 3)) (not true)))))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@7| Int) ) (!  (=> (or (|NewtypeNewtype.__default.P#canCall| (LitInt |x#0@@7|)) (< 0 $FunctionContextHeight)) (= (NewtypeNewtype.__default.P (LitInt |x#0@@7|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@7| 3)) (not true)))))))
  :qid |gitissue697jdfy.193:15|
  :weight 3
  :skolemid |3048|
- :pattern ( (NewtypeNewtype.__default.P (LitInt |x#0@@8|)))
+ :pattern ( (NewtypeNewtype.__default.P (LitInt |x#0@@7|)))
 ))))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@9| Int) ) (!  (=> (or (|NewtypeNewtype.__default.Q#canCall| (LitInt |x#0@@9|)) (< 0 $FunctionContextHeight)) (= (NewtypeNewtype.__default.Q (LitInt |x#0@@9|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@9| 5)) (not true)))))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@8| Int) ) (!  (=> (or (|NewtypeNewtype.__default.Q#canCall| (LitInt |x#0@@8|)) (< 0 $FunctionContextHeight)) (= (NewtypeNewtype.__default.Q (LitInt |x#0@@8|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@8| 5)) (not true)))))))
  :qid |gitissue697jdfy.203:15|
  :weight 3
  :skolemid |3052|
- :pattern ( (NewtypeNewtype.__default.Q (LitInt |x#0@@9|)))
+ :pattern ( (NewtypeNewtype.__default.Q (LitInt |x#0@@8|)))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass.NewtypeNewtype.Type0) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) Tclass.NewtypeNewtype.Type0)))
  :qid |unknown.0:0|
@@ -271,7 +261,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| Int) (|l#2| Int) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (and (<= |l#1| (U_2_int ($Unbox intType |$y#0|))) (< (U_2_int ($Unbox intType |$y#0|)) |l#2|))))
  :qid |gitissue697jdfy.198:11|
- :skolemid |5354|
+ :skolemid |5356|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2|) |$y#0|))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
@@ -303,15 +293,25 @@
  :skolemid |2591|
  :pattern ( ($Box T@@3 x@@5))
 )))
-(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass.NewtypeNewtype.Type0) (NewtypeNewtype.__default.P (U_2_int |x#0@@10|)))
+(assert (forall ((|x#0@@9| T@U) ) (! (= ($Is intType |x#0@@9| Tclass.NewtypeNewtype.Type0) (NewtypeNewtype.__default.P (U_2_int |x#0@@9|)))
  :qid |unknown.0:0|
  :skolemid |3071|
- :pattern ( ($Is intType |x#0@@10| Tclass.NewtypeNewtype.Type0))
+ :pattern ( ($Is intType |x#0@@9| Tclass.NewtypeNewtype.Type0))
 )))
-(assert (forall ((|c0#0@@1| T@U) ) (! (= ($Is intType |c0#0@@1| Tclass.NewtypeNewtype.Type1) (NewtypeNewtype.__default.P (U_2_int |c0#0@@1|)))
+(assert (forall ((|c0#0@@0| T@U) ) (! (= ($Is intType |c0#0@@0| Tclass.NewtypeNewtype.Type1) (NewtypeNewtype.__default.P (U_2_int |c0#0@@0|)))
  :qid |unknown.0:0|
  :skolemid |3073|
- :pattern ( ($Is intType |c0#0@@1| Tclass.NewtypeNewtype.Type1))
+ :pattern ( ($Is intType |c0#0@@0| Tclass.NewtypeNewtype.Type1))
+)))
+(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass.NewtypeNewtype.Type2)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@10|)) (< (U_2_int |x#0@@10|) 2147483648)) (NewtypeNewtype.__default.P (U_2_int |x#0@@10|))))
+ :qid |unknown.0:0|
+ :skolemid |3075|
+ :pattern ( ($Is intType |x#0@@10| Tclass.NewtypeNewtype.Type2))
+)))
+(assert (forall ((|c0#0@@1| T@U) ) (! (= ($Is intType |c0#0@@1| Tclass.NewtypeNewtype.Type3)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |c0#0@@1|)) (< (U_2_int |c0#0@@1|) 2147483648)) (NewtypeNewtype.__default.P (U_2_int |c0#0@@1|))))
+ :qid |unknown.0:0|
+ :skolemid |3077|
+ :pattern ( ($Is intType |c0#0@@1| Tclass.NewtypeNewtype.Type3))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
  :qid |mapAx0:MapType1Select|
@@ -333,12 +333,12 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |5353|
+ :skolemid |5355|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| Int) (|$y#4| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#5| |l#0@@1| |l#1@@1|) |$y#4|))  (and ($IsBox |$y#4| |l#0@@1|) (<= |l#1@@1| (U_2_int ($Unbox intType |$y#4|)))))
  :qid |gitissue697jdfy.206:11|
- :skolemid |5355|
+ :skolemid |5357|
  :pattern ( (MapType0Select BoxType boolType (|lambda#5| |l#0@@1| |l#1@@1|) |$y#4|))
 )))
 (assert (forall ((bx@@9 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@9 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@9)) bx@@9) ($Is SetType ($Unbox SetType bx@@9) (TSet t@@3))))

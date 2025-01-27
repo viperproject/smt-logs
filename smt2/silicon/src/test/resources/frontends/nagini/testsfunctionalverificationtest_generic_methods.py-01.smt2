@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:58:36
+; Started: 2025-01-27 02:51:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -3183,12 +3183,12 @@
 ; Container_res := new()
 (declare-const Container_res@44@01 $Ref)
 (assert (not (= Container_res@44@01 $Ref.null)))
+(assert (not (= Container_res@44@01 t_3@38@01)))
 (assert (not (= Container_res@44@01 _cthread_162@30@01)))
 (assert (not (= Container_res@44@01 m_res@41@01)))
-(assert (not (= Container_res@44@01 t_3@38@01)))
-(assert (not (= Container_res@44@01 cont@37@01)))
 (assert (not (= Container_res@44@01 Container_res@39@01)))
 (assert (not (= Container_res@44@01 list_0@40@01)))
+(assert (not (= Container_res@44@01 cont@37@01)))
 ; [exec]
 ; inhale typeof(Container_res) == Container()
 (declare-const $t@45@01 $Snap)
@@ -4762,11 +4762,11 @@
 (declare-const Container_res_0@116@01 $Ref)
 (assert (not (= Container_res_0@116@01 $Ref.null)))
 (assert (not (= Container_res_0@116@01 _cthread_164@102@01)))
+(assert (not (= Container_res_0@116@01 Container_res_0@111@01)))
 (assert (not (= Container_res_0@116@01 t_5@110@01)))
 (assert (not (= Container_res_0@116@01 m_used_twice_res@113@01)))
-(assert (not (= Container_res_0@116@01 Container_res_0@111@01)))
-(assert (not (= Container_res_0@116@01 cont_0@109@01)))
 (assert (not (= Container_res_0@116@01 list_1@112@01)))
+(assert (not (= Container_res_0@116@01 cont_0@109@01)))
 ; [exec]
 ; inhale typeof(Container_res_0) == Container()
 (declare-const $t@117@01 $Snap)
@@ -6377,12 +6377,12 @@
 ; Container_res_1 := new()
 (declare-const Container_res_1@188@01 $Ref)
 (assert (not (= Container_res_1@188@01 $Ref.null)))
-(assert (not (= Container_res_1@188@01 m_used_twice_2_res@185@01)))
-(assert (not (= Container_res_1@188@01 _cthread_166@174@01)))
 (assert (not (= Container_res_1@188@01 Container_res_1@183@01)))
-(assert (not (= Container_res_1@188@01 list_2@184@01)))
-(assert (not (= Container_res_1@188@01 t_7@182@01)))
 (assert (not (= Container_res_1@188@01 cont_1@181@01)))
+(assert (not (= Container_res_1@188@01 list_2@184@01)))
+(assert (not (= Container_res_1@188@01 _cthread_166@174@01)))
+(assert (not (= Container_res_1@188@01 m_used_twice_2_res@185@01)))
+(assert (not (= Container_res_1@188@01 t_7@182@01)))
 ; [exec]
 ; inhale typeof(Container_res_1) == Container()
 (declare-const $t@189@01 $Snap)
@@ -6882,7 +6882,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 25 | True | live]
 ; [else-branch: 25 | False | dead]
@@ -6993,7 +6993,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 28 | True | live]
 ; [else-branch: 28 | False | dead]
@@ -7179,15 +7179,15 @@
 ; A_res := new()
 (declare-const A_res@226@01 $Ref)
 (assert (not (= A_res@226@01 $Ref.null)))
-(assert (not (= A_res@226@01 method_res@222@01)))
+(assert (not (= A_res@226@01 a1@218@01)))
 (assert (not (= A_res@226@01 a@216@01)))
+(assert (not (= A_res@226@01 Container_res_2@221@01)))
 (assert (not (= A_res@226@01 _cthread_167@209@01)))
 (assert (not (= A_res@226@01 cont_2@217@01)))
-(assert (not (= A_res@226@01 method_2_res@223@01)))
-(assert (not (= A_res@226@01 Container_res_2@221@01)))
-(assert (not (= A_res@226@01 A_res@220@01)))
 (assert (not (= A_res@226@01 a2@219@01)))
-(assert (not (= A_res@226@01 a1@218@01)))
+(assert (not (= A_res@226@01 method_2_res@223@01)))
+(assert (not (= A_res@226@01 A_res@220@01)))
+(assert (not (= A_res@226@01 method_res@222@01)))
 ; [exec]
 ; inhale typeof(A_res) == A(bool())
 (declare-const $t@227@01 $Snap)
@@ -7333,18 +7333,18 @@
 ; Container_res_2 := new()
 (declare-const Container_res_2@232@01 $Ref)
 (assert (not (= Container_res_2@232@01 $Ref.null)))
-(assert (not (= Container_res_2@232@01 method_res@222@01)))
-(assert (not (= Container_res_2@232@01 _cthread_167@209@01)))
+(assert (not (= Container_res_2@232@01 a1@218@01)))
 (assert (not (= Container_res_2@232@01 A_res@226@01)))
-(assert (not (= Container_res_2@232@01 cont_2@217@01)))
-(assert (not (= Container_res_2@232@01 method_2_res@223@01)))
 (assert (not (= Container_res_2@232@01 Container_res_2@221@01)))
+(assert (not (= Container_res_2@232@01 _cthread_167@209@01)))
+(assert (not (= Container_res_2@232@01 cont_2@217@01)))
+(assert (not (= Container_res_2@232@01 a2@219@01)))
 (assert (not
   (=
     Container_res_2@232@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@230@01))))))))
-(assert (not (= Container_res_2@232@01 a2@219@01)))
-(assert (not (= Container_res_2@232@01 a1@218@01)))
+(assert (not (= Container_res_2@232@01 method_2_res@223@01)))
+(assert (not (= Container_res_2@232@01 method_res@222@01)))
 ; [exec]
 ; inhale typeof(Container_res_2) == Container()
 (declare-const $t@233@01 $Snap)
@@ -8125,7 +8125,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 40 | True | live]
 ; [else-branch: 40 | False | dead]

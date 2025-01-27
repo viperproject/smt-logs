@@ -545,7 +545,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7820|
+ :skolemid |7821|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))
 )))
 (assert (forall ((h0@@5 T@U) (h1@@5 T@U) (a@@3 T@U) ) (!  (=> (and (and (and ($IsGoodHeap h0@@5) ($IsGoodHeap h1@@5)) ($HeapSucc h0@@5 h1@@5)) (= (MapType0Select refType (MapType0Type FieldType BoxType) h0@@5 a@@3) (MapType0Select refType (MapType0Type FieldType BoxType) h1@@5 a@@3))) (= (|Seq#FromArray| h0@@5 a@@3) (|Seq#FromArray| h1@@5 a@@3)))

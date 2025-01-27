@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:50
+// Date:         2025-01-27 03:40:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/collision2Ref.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/collision2Ref-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x$0: bool;
   
   // -- Initializing the state
@@ -195,16 +195,16 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := true -- collision2Ref.vpr@16.5--16.14
     x := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true && true && x -- collision2Ref.vpr@17.5--17.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x might not hold. (collision2Ref.vpr@17.12--17.31) [198796]"}
       x;
     assume state(Heap, Mask);
@@ -214,8 +214,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true && true && x$0 -- collision2Ref.vpr@21.5--21.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x$0 might not hold. (collision2Ref.vpr@21.12--21.33) [198799]"}
       x$0;
     assume state(Heap, Mask);

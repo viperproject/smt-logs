@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:10
+// Date:         2025-01-27 03:22:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0049.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0049-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -371,10 +371,10 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var wildcard: real where wildcard > NoPerm;
   var freshVersion: FrameType;
@@ -398,14 +398,14 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(Cellread1$(this), write) -- 0049.vpr@34.3--34.38
     assume Cellread1$#trigger(Heap, Cellread1$(this));
     assume Heap[null, Cellread1$(this)] == ConditionalFrame(globalK$, FrameFragment(Heap[this, Cellx$]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Cellread1$(this) might fail. There might be insufficient permission to access Cellread1$(this) (0049.vpr@34.3--34.38) [81330]"}
@@ -428,8 +428,8 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Cellread2$(this), write) -- 0049.vpr@35.3--35.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@35.3--35.36) [81333]"}
       Mask[this, Cellx$] > NoPerm;
     havoc wildcard;
@@ -451,8 +451,8 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Cellread2$(this), write) -- 0049.vpr@36.3--36.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding Cellread2$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@36.3--36.36) [81336]"}
       Mask[this, Cellx$] > NoPerm;
     havoc wildcard;
@@ -474,8 +474,8 @@ procedure Cellb3$(this: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Cellwrite1$(this), write) -- 0049.vpr@38.3--38.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Cellwrite1$(this) might fail. There might be insufficient permission to access this.Cellx$ (0049.vpr@38.3--38.37) [81340]"}

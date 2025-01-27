@@ -252,7 +252,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@7 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))  (=> (and (or (not (= $o@@7 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@7) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1697|
+ :skolemid |1698|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))
 )))
 (assert (forall (($o@@8 T@U) ) (!  (=> ($Is refType $o@@8 Tclass.ChildIsRefTrait.ChildTrait?) ($Is refType $o@@8 Tclass.ChildIsRefTrait.Trait?))

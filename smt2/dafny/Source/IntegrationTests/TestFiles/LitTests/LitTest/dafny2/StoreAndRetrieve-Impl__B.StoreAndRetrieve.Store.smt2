@@ -175,7 +175,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (|Seq#Contains| |l#1| |$y#0|)))
  :qid |unknown.0:0|
- :skolemid |3684|
+ :skolemid |3686|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#0|))
 )))
 (assert (forall ((a@@4 T@U) (b@@1 T@U) (y@@2 T@U) ) (!  (=> (|Set#IsMember| b@@1 y@@2) (not (|Set#IsMember| (|Set#Difference| a@@4 b@@1) y@@2)))
@@ -585,7 +585,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@11 T@U) ($f@@1 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@11 $f@@1))  (=> (and (or (not (= $o@@11 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@11) |l#2|)))) (|Set#IsMember| |l#3| ($Box refType $o@@11))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3687|
+ :skolemid |3689|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@11 $f@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((B.StoreAndRetrieve$Thing@@18 T@U) ($Heap@@0 T@U) (this@@2 T@U) ) (!  (=> (or (|B.StoreAndRetrieve.Valid#canCall| B.StoreAndRetrieve$Thing@@18 $Heap@@0 this@@2) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@2 null)) (not true)) (and ($Is refType this@@2 (Tclass.B.StoreAndRetrieve B.StoreAndRetrieve$Thing@@18)) ($IsAlloc refType this@@2 (Tclass.B.StoreAndRetrieve B.StoreAndRetrieve$Thing@@18) $Heap@@0)))))) (and (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@2) B.StoreAndRetrieve.Repr)) ($Box refType this@@2)) (=> (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@2) B.StoreAndRetrieve.Repr)) ($Box refType null))) (|B.StoreAndRetrieve.Valid_k#canCall| B.StoreAndRetrieve$Thing@@18 $Heap@@0 this@@2))) (= (B.StoreAndRetrieve.Valid B.StoreAndRetrieve$Thing@@18 $Heap@@0 this@@2)  (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@2) B.StoreAndRetrieve.Repr)) ($Box refType this@@2)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@2) B.StoreAndRetrieve.Repr)) ($Box refType null)))) (B.StoreAndRetrieve.Valid_k B.StoreAndRetrieve$Thing@@18 $Heap@@0 this@@2)))))

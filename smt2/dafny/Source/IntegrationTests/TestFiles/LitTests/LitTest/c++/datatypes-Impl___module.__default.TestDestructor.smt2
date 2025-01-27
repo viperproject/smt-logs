@@ -135,11 +135,6 @@
  :skolemid |569|
  :pattern ( (_module.Example1.Example1_q d@@1))
 )))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |547|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
-)))
 (assert (forall ((|a#14#0#0| Int) (|a#14#1#0| Bool) ) (! (= (_module.Example1.b (|#_module.Example1.Example1| |a#14#0#0| |a#14#1#0|)) |a#14#1#0|)
  :qid |datatypesdfy.9:30|
  :skolemid |575|
@@ -207,6 +202,11 @@
  :qid |unknown.0:0|
  :skolemid |571|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Example1.u d@@4)) Tclass._module.uint32 $h@@2))
+)))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |547|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (forall ((|a#12#0#0| Int) (|a#12#1#0| T@U) ) (! (= (|#_module.Example1.Example1| (LitInt |a#12#0#0|) (U_2_bool (Lit boolType |a#12#1#0|))) (Lit DatatypeTypeType (|#_module.Example1.Example1| |a#12#0#0| (U_2_bool |a#12#1#0|))))
  :qid |datatypesdfy.9:30|

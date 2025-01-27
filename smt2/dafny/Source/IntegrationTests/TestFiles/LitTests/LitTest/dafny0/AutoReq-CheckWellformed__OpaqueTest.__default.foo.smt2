@@ -144,7 +144,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7927|
+ :skolemid |7926|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@2| Int) ) (!  (=> (or (|OpaqueTest.__default.foo#canCall| |x#0@@2|) (and (< 1 $FunctionContextHeight) (> |x#0@@2| 7))) (and (|OpaqueTest.__default.bar#canCall| |x#0@@2|) (= (OpaqueTest.__default.foo true |x#0@@2|) (OpaqueTest.__default.bar |x#0@@2|))))

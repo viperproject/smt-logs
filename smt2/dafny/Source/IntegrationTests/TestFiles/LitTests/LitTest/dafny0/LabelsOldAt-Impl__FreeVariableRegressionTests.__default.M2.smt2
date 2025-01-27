@@ -200,7 +200,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@4 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))  (=> (and (or (not (= $o@@4 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@4) |l#2|)))) (= $o@@4 |l#3|)))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1681|
+ :skolemid |1674|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass.FreeVariableRegressionTests.C)  (and ($Is refType |c#0@@1| Tclass.FreeVariableRegressionTests.C?) (or (not (= |c#0@@1| null)) (not true))))

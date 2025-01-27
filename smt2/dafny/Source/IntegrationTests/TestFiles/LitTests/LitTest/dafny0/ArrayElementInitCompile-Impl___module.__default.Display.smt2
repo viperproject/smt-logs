@@ -256,11 +256,6 @@
  :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@1 v@@2) i))
 )))
-(assert (forall ((|x#0@@2| T@U) ) (! (= ($Is intType |x#0@@2| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@2|)) (< (U_2_int |x#0@@2|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |658|
- :pattern ( ($Is intType |x#0@@2| Tclass._module.int32))
-)))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
  :qid |DafnyPreludebpl.606:15|
  :skolemid |117|
@@ -400,6 +395,11 @@
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert (= (Tag Tclass._module.int32) Tagclass._module.int32))
 (assert (= (TagFamily Tclass._module.int32) tytagFamily$int32))
+(assert (forall ((|x#0@@2| T@U) ) (! (= ($Is intType |x#0@@2| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@2|)) (< (U_2_int |x#0@@2|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |658|
+ :pattern ( ($Is intType |x#0@@2| Tclass._module.int32))
+)))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

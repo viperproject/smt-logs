@@ -43,8 +43,6 @@
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.Extern.uint64 () T@U)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -57,7 +55,9 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun Tag (T@U) T@U)
+(declare-fun Tclass.Extern.uint64 () T@U)
 (declare-fun TagFamily (T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -84,6 +84,12 @@
  :skolemid |1085|
  :pattern ( (Test.__default.Test |x#0|))
 ))))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@0|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@0|)) (LitInt (+ |x#0@@0| 1))))
+ :qid |functionsdfy.28:17|
+ :weight 3
+ :skolemid |1088|
+ :pattern ( (Test.__default.Test (LitInt |x#0@@0|)))
+))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |570|
@@ -98,22 +104,6 @@
  :qid |DafnyPreludebpl.168:18|
  :skolemid |579|
  :pattern ( ($Unbox T@@0 x@@4))
-)))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test |x#0@@0|) (+ |x#0@@0| 1)))
- :qid |functionsdfy.28:17|
- :skolemid |1087|
- :pattern ( (Test.__default.Test |x#0@@0|))
-))))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@1|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@1|)) (LitInt (+ |x#0@@1| 1))))
- :qid |functionsdfy.28:17|
- :weight 3
- :skolemid |1088|
- :pattern ( (Test.__default.Test (LitInt |x#0@@1|)))
-))))
-(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 18446744073709551616)))
- :qid |unknown.0:0|
- :skolemid |1123|
- :pattern ( ($Is intType |i#0| Tclass.Extern.uint64))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
@@ -146,11 +136,16 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1135|
+ :skolemid |1134|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (= (Tag Tclass.Extern.uint64) Tagclass.Extern.uint64))
 (assert (= (TagFamily Tclass.Extern.uint64) tytagFamily$uint64))
+(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 18446744073709551616)))
+ :qid |unknown.0:0|
+ :skolemid |1123|
+ :pattern ( ($Is intType |i#0| Tclass.Extern.uint64))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |571|
@@ -161,6 +156,11 @@
  :skolemid |569|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@1|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test |x#0@@1|) (+ |x#0@@1| 1)))
+ :qid |functionsdfy.28:17|
+ :skolemid |1087|
+ :pattern ( (Test.__default.Test |x#0@@1|))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun |x#0@@2| () Int)

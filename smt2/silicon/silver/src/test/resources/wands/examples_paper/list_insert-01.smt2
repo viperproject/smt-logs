@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:12:26
+; Started: 2025-01-27 03:05:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -428,29 +428,29 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (head%limited s@$ xs@0@00) (head s@$ xs@0@00))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-24965|)))
+  :qid |quant-u-24876|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (head%stateless xs@0@00)
   :pattern ((head%limited s@$ xs@0@00))
-  :qid |quant-u-24966|)))
+  :qid |quant-u-24877|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (=>
     (head%precondition s@$ xs@0@00)
     (= (head s@$ xs@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-24969|)))
+  :qid |quant-u-24880|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   true
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-24970|)))
+  :qid |quant-u-24881|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (= (elems%limited s@$ xs@2@00) (elems s@$ xs@2@00))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-24967|)))
+  :qid |quant-u-24878|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (elems%stateless xs@2@00)
   :pattern ((elems%limited s@$ xs@2@00))
-  :qid |quant-u-24968|)))
+  :qid |quant-u-24879|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -466,7 +466,7 @@
           (elems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((elems s@$ xs@2@00))
   :pattern ((elems%stateless xs@2@00) (List%trigger s@$ xs@2@00))
-  :qid |quant-u-24971|)))
+  :qid |quant-u-24882|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -475,7 +475,7 @@
       true
       (elems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-24972|)))
+  :qid |quant-u-24883|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- insert ----------
@@ -677,7 +677,7 @@
 (assert (forall (($t@12@01 $Snap)) (!
   (= (MWSF_apply mwsf@13@01 $t@12@01) ($Snap.combine $t@12@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@13@01 $t@12@01))
-  :qid |quant-u-24973|)))
+  :qid |quant-u-24884|)))
 ; [eval] old(elems(xs))[0..i]
 ; [eval] old(elems(xs))[..i]
 ; [eval] old(elems(xs))
@@ -690,7 +690,7 @@
 (assert (forall (($t@12@01 $Snap)) (!
   (= (MWSF_apply mwsf@13@01 $t@12@01) ($Snap.combine $t@12@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@13@01 $t@12@01))
-  :qid |quant-u-24974|)))
+  :qid |quant-u-24885|)))
 (assert true)
 (declare-const oi@14@01 Int)
 (declare-const prev@15@01 $Ref)
@@ -1651,7 +1651,7 @@
           $t@24@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@25@01 $t@24@01))
-  :qid |quant-u-24975|)))
+  :qid |quant-u-24886|)))
 ; [eval] old(elems(xs))[0..i]
 ; [eval] old(elems(xs))[..i]
 ; [eval] old(elems(xs))
@@ -1692,7 +1692,7 @@
           $t@24@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@25@01 $t@24@01))
-  :qid |quant-u-24976|)))
+  :qid |quant-u-24887|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] 0 <= i
@@ -2084,7 +2084,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -2146,7 +2146,7 @@
           $t@28@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-24977|)))
+  :qid |quant-u-24888|)))
 ; [eval] old(elems(xs))[0..i]
 ; [eval] old(elems(xs))[..i]
 ; [eval] old(elems(xs))
@@ -2186,7 +2186,7 @@
           $t@28@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-24978|)))
+  :qid |quant-u-24889|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] 0 <= i
@@ -2387,15 +2387,15 @@
 (assert (not (= node@30@01 $Ref.null)))
 (declare-const val@31@01 Int)
 (declare-const next@32@01 $Ref)
+(assert (not (= node@30@01 crt@16@01)))
 (assert (not
   (=
     node@30@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01)))))))))
-(assert (not (= node@30@01 xs@3@01)))
-(assert (not (= node@30@01 crt@16@01)))
-(assert (not (= node@30@01 nxt@17@01)))
-(assert (not (= node@30@01 node@10@01)))
 (assert (not (= node@30@01 prev@15@01)))
+(assert (not (= node@30@01 node@10@01)))
+(assert (not (= node@30@01 xs@3@01)))
+(assert (not (= node@30@01 nxt@17@01)))
 ; [exec]
 ; node.val := x
 (push) ; 9
@@ -2913,15 +2913,15 @@
 (assert (not (= node@33@01 $Ref.null)))
 (declare-const val@34@01 Int)
 (declare-const next@35@01 $Ref)
+(assert (not (= node@33@01 crt@16@01)))
 (assert (not
   (=
     node@33@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01)))))))))
-(assert (not (= node@33@01 xs@3@01)))
-(assert (not (= node@33@01 crt@16@01)))
-(assert (not (= node@33@01 nxt@17@01)))
-(assert (not (= node@33@01 node@10@01)))
 (assert (not (= node@33@01 prev@15@01)))
+(assert (not (= node@33@01 node@10@01)))
+(assert (not (= node@33@01 xs@3@01)))
+(assert (not (= node@33@01 nxt@17@01)))
 ; [exec]
 ; node.val := x
 (push) ; 9
@@ -3280,7 +3280,7 @@
 (assert (forall (($t@37@01 $Snap)) (!
   (= (MWSF_apply mwsf@38@01 $t@37@01) ($Snap.combine $t@37@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@38@01 $t@37@01))
-  :qid |quant-u-24979|)))
+  :qid |quant-u-24890|)))
 ; [eval] old(elems(xs))[0..i]
 ; [eval] old(elems(xs))[..i]
 ; [eval] old(elems(xs))
@@ -3293,7 +3293,7 @@
 (assert (forall (($t@37@01 $Snap)) (!
   (= (MWSF_apply mwsf@38@01 $t@37@01) ($Snap.combine $t@37@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@38@01 $t@37@01))
-  :qid |quant-u-24980|)))
+  :qid |quant-u-24891|)))
 (assert true)
 (declare-const oi@39@01 Int)
 (declare-const prev@40@01 $Ref)
@@ -3867,15 +3867,15 @@
 (assert (not (= node@45@01 $Ref.null)))
 (declare-const val@46@01 Int)
 (declare-const next@47@01 $Ref)
-(assert (not (= node@45@01 prev@40@01)))
-(assert (not (= node@45@01 xs@3@01)))
-(assert (not (= node@45@01 crt@41@01)))
 (assert (not (= node@45@01 nxt@42@01)))
-(assert (not (= node@45@01 node@10@01)))
 (assert (not
   (=
     node@45@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@44@01)))))))))
+(assert (not (= node@45@01 node@10@01)))
+(assert (not (= node@45@01 prev@40@01)))
+(assert (not (= node@45@01 xs@3@01)))
+(assert (not (= node@45@01 crt@41@01)))
 ; [exec]
 ; node.val := x
 (push) ; 9

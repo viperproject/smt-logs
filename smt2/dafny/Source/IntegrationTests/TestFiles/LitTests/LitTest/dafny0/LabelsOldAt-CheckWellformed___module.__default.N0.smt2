@@ -220,7 +220,7 @@
  :skolemid |1409|
 )))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1673|
+ :skolemid |1675|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7|) $o@@1 $f))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))

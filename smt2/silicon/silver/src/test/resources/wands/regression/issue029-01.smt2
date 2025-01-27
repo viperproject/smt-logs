@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:12:54
+; Started: 2025-01-27 03:06:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -199,13 +199,13 @@
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@4@01 $t@2@01))
-  :qid |quant-u-25629|)))
+  :qid |quant-u-25540|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@4@01 $t@2@01))
-  :qid |quant-u-25630|)))
+  :qid |quant-u-25541|)))
 (pop) ; 3
 (pop) ; 2
 (pop) ; 1
@@ -743,14 +743,14 @@
 (assert (forall (($t@8@01 $Snap)) (!
   (= (MWSF_apply mwsf@12@01 $t@8@01) ($Snap.first $t@8@01))
   :pattern ((MWSF_apply mwsf@12@01 $t@8@01))
-  :qid |quant-u-25631|)))
+  :qid |quant-u-25542|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
 (assert (forall (($t@8@01 $Snap)) (!
   (= (MWSF_apply mwsf@12@01 $t@8@01) ($Snap.first $t@8@01))
   :pattern ((MWSF_apply mwsf@12@01 $t@8@01))
-  :qid |quant-u-25632|)))
+  :qid |quant-u-25543|)))
 (assert true)
 ; [exec]
 ; apply acc(LL(x), write) &&
@@ -1141,8 +1141,8 @@
 (assert (not (= x@19@01 $Ref.null)))
 (declare-const val@20@01 Int)
 (declare-const next@21@01 $Ref)
-(assert (not (= x@19@01 x@17@01)))
 (assert (not (= x@19@01 y@18@01)))
+(assert (not (= x@19@01 x@17@01)))
 ; [exec]
 ; y := new(val, next)
 (declare-const y@22@01 $Ref)
@@ -1150,8 +1150,8 @@
 (declare-const val@23@01 Int)
 (declare-const next@24@01 $Ref)
 (assert (not (= y@22@01 x@19@01)))
-(assert (not (= y@22@01 next@21@01)))
 (assert (not (= y@22@01 y@18@01)))
+(assert (not (= y@22@01 next@21@01)))
 ; [exec]
 ; x.next := y
 (push) ; 3
@@ -1740,14 +1740,14 @@
 (assert (forall (($t@25@01 $Snap)) (!
   (= (MWSF_apply mwsf@29@01 $t@25@01) ($Snap.first $t@25@01))
   :pattern ((MWSF_apply mwsf@29@01 $t@25@01))
-  :qid |quant-u-25633|)))
+  :qid |quant-u-25544|)))
 (pop) ; 5
 (set-option :timeout 0)
 (push) ; 5
 (assert (forall (($t@25@01 $Snap)) (!
   (= (MWSF_apply mwsf@29@01 $t@25@01) ($Snap.first $t@25@01))
   :pattern ((MWSF_apply mwsf@29@01 $t@25@01))
-  :qid |quant-u-25634|)))
+  :qid |quant-u-25545|)))
 (assert true)
 ; [exec]
 ; apply acc(LL(x), write) &&
@@ -7947,7 +7947,7 @@
     (MWSF_apply mwsf@56@01 $t@50@01)
     ($Snap.combine ($Snap.first $t@50@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@56@01 $t@50@01))
-  :qid |quant-u-25635|)))
+  :qid |quant-u-25546|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@50@01 $Snap)) (!
@@ -7955,7 +7955,7 @@
     (MWSF_apply mwsf@56@01 $t@50@01)
     ($Snap.combine ($Snap.first $t@50@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@56@01 $t@50@01))
-  :qid |quant-u-25636|)))
+  :qid |quant-u-25547|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -10257,7 +10257,7 @@
 (assert (forall (($t@74@01 $Snap)) (!
   (= (MWSF_apply mwsf@75@01 $t@74@01) $t@73@01)
   :pattern ((MWSF_apply mwsf@75@01 $t@74@01))
-  :qid |quant-u-25637|)))
+  :qid |quant-u-25548|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -10279,7 +10279,7 @@
 (assert (forall (($t@74@01 $Snap)) (!
   (= (MWSF_apply mwsf@76@01 $t@74@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@76@01 $t@74@01))
-  :qid |quant-u-25639|)))
+  :qid |quant-u-25550|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -10288,7 +10288,7 @@
 (assert (forall (($t@74@01 $Snap)) (!
   (= (MWSF_apply mwsf@75@01 $t@74@01) $t@73@01)
   :pattern ((MWSF_apply mwsf@75@01 $t@74@01))
-  :qid |quant-u-25638|)))
+  :qid |quant-u-25549|)))
 (assert true)
 ; [exec]
 ; assert !b ==> acc(P(), write)
@@ -10896,13 +10896,13 @@
 (assert (forall (($t@79@01 $Snap)) (!
   (= (MWSF_apply mwsf@82@01 $t@79@01) ($Snap.combine $t@79@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@82@01 $t@79@01))
-  :qid |quant-u-25641|)))
+  :qid |quant-u-25552|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@79@01 $Snap)) (!
   (= (MWSF_apply mwsf@82@01 $t@79@01) ($Snap.combine $t@79@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@82@01 $t@79@01))
-  :qid |quant-u-25642|)))
+  :qid |quant-u-25553|)))
 (assert true)
 ; [exec]
 ; inhale acc(LLC(x, 0), write)

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:12
+; Started: 2025-01-27 02:59:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -822,19 +822,19 @@
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (= ($%limited s@$ n@0@00) ($ s@$ n@0@00))
   :pattern (($ s@$ n@0@00))
-  :qid |quant-u-10587|)))
+  :qid |quant-u-10581|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   ($%stateless n@0@00)
   :pattern (($%limited s@$ n@0@00))
-  :qid |quant-u-10588|)))
+  :qid |quant-u-10582|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (= (purify_graph%limited s@$ nodes@2@00) (purify_graph s@$ nodes@2@00))
   :pattern ((purify_graph s@$ nodes@2@00))
-  :qid |quant-u-10589|)))
+  :qid |quant-u-10583|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (purify_graph%stateless nodes@2@00)
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-10590|)))
+  :qid |quant-u-10584|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (let ((result@3@00 (purify_graph%limited s@$ nodes@2@00))) (and
     (forall ((n@4@00 $Ref)) (!
@@ -846,7 +846,7 @@
       :pattern ((Set_in n@4@00 nodes@2@00))
       :pattern ((inv@5@00 s@$ nodes@2@00 n@4@00))
       :pattern ((img@6@00 s@$ nodes@2@00 n@4@00))
-      :qid |quant-u-10592|))
+      :qid |quant-u-10586|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -876,7 +876,7 @@
         :pattern ((Set_in ($ ($SortWrappers.IntTo$Snap ($FVF.lookup_m (sm@9@00 s@$ nodes@2@00) n)) n) result@3@00))
         )))))
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-10594|)))
+  :qid |quant-u-10588|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (let ((result@3@00 (purify_graph%limited s@$ nodes@2@00))) (=>
     (purify_graph%precondition s@$ nodes@2@00)
@@ -888,6 +888,6 @@
       :pattern ((Set_in ($ ($SortWrappers.IntTo$Snap ($FVF.lookup_m (sm@9@00 s@$ nodes@2@00) n)) n) result@3@00))
       ))))
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-10595|)))
+  :qid |quant-u-10589|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

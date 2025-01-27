@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:05
+// Date:         2025-01-27 03:31:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testZeroArrayJava.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testZeroArrayJava-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -652,8 +652,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar_1: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -678,8 +678,8 @@ procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testZeroArrayJava.vpr@10.21--10.44) [118366]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testZeroArrayJava.vpr@10.21--10.44) [118367]"}
@@ -755,8 +755,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
   var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -853,8 +853,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testZeroArrayJava.vpr@19.40--19.68) [118379]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testZeroArrayJava.vpr@19.40--19.68) [118380]"}
@@ -990,8 +990,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1111,8 +1111,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testZeroArrayJava.vpr@29.85--29.130) [118402]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testZeroArrayJava.vpr@29.85--29.130) [118403]"}
@@ -1256,8 +1256,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_14: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1377,8 +1377,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testZeroArrayJava.vpr@39.97--39.147) [118429]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testZeroArrayJava.vpr@39.97--39.147) [118430]"}
@@ -1504,8 +1504,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar_1: (Seq int), v_2: int
 procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1530,8 +1530,8 @@ procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) ret
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testZeroArrayJava.vpr@46.36--46.64) [118444]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testZeroArrayJava.vpr@46.36--46.64) [118445]"}
@@ -1607,8 +1607,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1704,8 +1704,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testZeroArrayJava.vpr@55.55--55.84) [118457]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testZeroArrayJava.vpr@55.55--55.84) [118458]"}
@@ -1793,14 +1793,14 @@ procedure ZeroArray__loop_main_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
   var k_25: int;
   var i_19: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_9: int;
   var i_10: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_7_1: int;
   var ExhaleHeap: HeapType;
   
@@ -1888,8 +1888,8 @@ procedure ZeroArray__loop_main_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1969,8 +1969,8 @@ procedure ZeroArray__loop_main_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2037,14 +2037,14 @@ procedure ZeroArray__loop_body_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_2: Ref;
   var __flatten_3: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2079,8 +2079,8 @@ procedure ZeroArray__loop_body_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2138,8 +2138,8 @@ procedure ZeroArray__loop_body_10(diz: Ref, current_thread_id: int, ar_1: (Seq R
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of ZeroArray__loop_body_10 might not hold. Assertion 0 <= i might not hold. (testZeroArrayJava.vpr@74.11--74.33) [118491]"}
       0 <= i;
     assert {:msg "  Postcondition of ZeroArray__loop_body_10 might not hold. Assertion i < |ar| might not hold. (testZeroArrayJava.vpr@74.11--74.33) [118492]"}
@@ -2169,16 +2169,16 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref
   var k_31: int;
   var i_fresh_rw_0: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_fresh_rw_0_2: int;
   var k_21: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_2_2: int;
   var k_6_2: int;
   var ExhaleHeap: HeapType;
@@ -2268,8 +2268,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2348,8 +2348,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method ZeroArray__loop_main_10 might not hold. Assertion diz != null might not hold. (testZeroArrayJava.vpr@93.3--93.54) [118508]"}
         diz != null;
       assert {:msg "  The precondition of method ZeroArray__loop_main_10 might not hold. Assertion current_thread_id >= 0 might not hold. (testZeroArrayJava.vpr@93.3--93.54) [118509]"}
@@ -2454,8 +2454,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2521,14 +2521,14 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref
 procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2543,8 +2543,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2571,8 +2571,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testZeroArrayJava.vpr@103.3--103.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testZeroArrayJava.vpr@103.10--103.29) [118517]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -2583,8 +2583,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of ZeroArray__ZeroArray might not hold. Assertion sys__result != null might not hold. (testZeroArrayJava.vpr@98.11--98.30) [118518]"}
       sys__result != null;
 }

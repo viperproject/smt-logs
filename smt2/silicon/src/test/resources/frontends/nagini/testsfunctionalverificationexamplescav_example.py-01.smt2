@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:59:21
+; Started: 2025-01-27 02:52:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6830,7 +6830,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 46 | iter_err@97@01 == Null | live]
 ; [else-branch: 46 | iter_err@97@01 != Null | live]
@@ -6875,7 +6875,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -6935,7 +6935,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 48 | iter_err@97@01 == Null | live]
 ; [else-branch: 48 | iter_err@97@01 != Null | live]
@@ -7007,7 +7007,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -7138,7 +7138,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 51 | |First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0 | live]
 ; [else-branch: 51 | !(|First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0) | dead]
@@ -7183,7 +7183,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 52 | iter_err@97@01 == Null | live]
 ; [else-branch: 52 | iter_err@97@01 != Null | live]
@@ -7233,7 +7233,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 53 | |First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0 | live]
 ; [else-branch: 53 | !(|First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0) | dead]
@@ -8701,7 +8701,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] iter.list_acc == iterable.list_acc
 (set-option :timeout 0)
@@ -8730,7 +8730,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -8763,7 +8763,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 73 | _err@81@01 == Null | live]
 ; [else-branch: 73 | _err@81@01 != Null | dead]
@@ -8890,7 +8890,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 76 | |First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0 | live]
 ; [else-branch: 76 | !(|First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0) | dead]
@@ -8995,7 +8995,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 78 | |First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0 | live]
 ; [else-branch: 78 | !(|First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0) | dead]
@@ -9483,7 +9483,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -9492,7 +9492,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -11452,23 +11452,22 @@
 ; Ticket_res := new()
 (declare-const Ticket_res@131@01 $Ref)
 (assert (not (= Ticket_res@131@01 $Ref.null)))
-(assert (not (= Ticket_res@131@01 res@71@01)))
-(assert (not (= Ticket_res@131@01 _res@77@01)))
-(assert (not (= Ticket_res@131@01 iterable@75@01)))
-(assert (not (= Ticket_res@131@01 iter_err@97@01)))
-(assert (not (= Ticket_res@131@01 show_id@33@01)))
-(assert (not (= Ticket_res@131@01 (_checkDefined $Snap.unit res@71@01 7562610))))
-(assert (not (= Ticket_res@131@01 ticket@95@01)))
-(assert (not (= Ticket_res@131@01 seat_0@99@01)))
-(assert (not (= Ticket_res@131@01 _err@66@01)))
-(assert (not (= Ticket_res@131@01 _res@65@01)))
+(assert (not (= Ticket_res@131@01 _cthread_160@29@01)))
+(assert (not (= Ticket_res@131@01 Ticket_res@93@01)))
 (assert (not (= Ticket_res@131@01 row_0@98@01)))
 (assert (not (= Ticket_res@131@01 loop_target@96@01)))
-(assert (not (= Ticket_res@131@01 num_1@32@01)))
-(assert (not (= Ticket_res@131@01 Ticket_res@93@01)))
+(assert (not (= Ticket_res@131@01 seat_0@99@01)))
+(assert (not (= Ticket_res@131@01 ticket@95@01)))
+(assert (not (= Ticket_res@131@01 iterable@75@01)))
+(assert (not (= Ticket_res@131@01 _res@65@01)))
 (assert (not (= Ticket_res@131@01 code_0@34@01)))
-(assert (not (= Ticket_res@131@01 _cthread_160@29@01)))
-(assert (not (Seq_contains seqtmp@90@01 Ticket_res@131@01)))
+(assert (not (= Ticket_res@131@01 show_id@33@01)))
+(assert (not (= Ticket_res@131@01 iter_err@97@01)))
+(assert (not (= Ticket_res@131@01 num_1@32@01)))
+(assert (not (= Ticket_res@131@01 (_checkDefined $Snap.unit res@71@01 7562610))))
+(assert (not (= Ticket_res@131@01 res@71@01)))
+(assert (not (= Ticket_res@131@01 _err@66@01)))
+(assert (not (= Ticket_res@131@01 _res@77@01)))
 (assert (not
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
@@ -11485,6 +11484,7 @@
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@101@01)))))
     Ticket_res@131@01)))
+(assert (not (Seq_contains seqtmp@90@01 Ticket_res@131@01)))
 ; [exec]
 ; inhale typeof(Ticket_res) == Ticket()
 (declare-const $t@132@01 $Snap)
@@ -14893,7 +14893,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.07s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -14915,7 +14915,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.04s
+; 0.08s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -14925,7 +14925,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -14949,7 +14949,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.07s
+; 0.12s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -15213,7 +15213,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.06s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -15237,7 +15237,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.03s
+; 0.10s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -15256,7 +15256,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.04s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -15280,7 +15280,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.10s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -15433,7 +15433,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.04s
+; 0.10s
 ; (get-info :all-statistics)
 ; [eval] str()
 (pop) ; 14
@@ -15711,7 +15711,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.09s
 ; (get-info :all-statistics)
 (assert (forall ((lambda46_30$t@174@01 $Ref)) (!
   (=>
@@ -17236,7 +17236,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.04s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -17543,7 +17543,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -17720,7 +17720,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.05s
+; 0.06s
 ; (get-info :all-statistics)
 ; [eval] str()
 (pop) ; 14
@@ -17998,7 +17998,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (forall ((lambda46_30$t@194@01 $Ref)) (!
   (=>
@@ -21112,7 +21112,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.05s
+; 0.07s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -21134,7 +21134,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.08s
+; 0.07s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -21144,7 +21144,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.05s
+; 0.01s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -21168,7 +21168,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.09s
+; 0.08s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -23196,7 +23196,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.03s
+; 0.04s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -23228,7 +23228,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -24980,7 +24980,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 311 | True | live]
 ; [else-branch: 311 | False | dead]
@@ -27583,7 +27583,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 341 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))) | dead]
 ; [else-branch: 341 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))) | live]

@@ -39,12 +39,12 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
-(declare-fun _module.__default.TWO__63 () Int)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun Div (Int Int) Int)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun _module.__default.TWO__63 () Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -89,7 +89,6 @@
  :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
-(assert (= _module.__default.TWO__63 (LitInt 9223372036854775808)))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
@@ -106,6 +105,7 @@
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@6))
 )))
+(assert (= _module.__default.TWO__63 (LitInt 9223372036854775808)))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0

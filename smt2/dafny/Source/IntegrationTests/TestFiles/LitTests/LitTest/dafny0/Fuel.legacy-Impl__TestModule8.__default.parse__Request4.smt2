@@ -675,13 +675,8 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |8332|
+ :skolemid |8335|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
-)))
-(assert (forall ((|i#0@@1| T@U) ) (! (= ($Is intType |i#0@@1| Tclass.TestModule8.uint64)  (and (<= (LitInt 0) (U_2_int |i#0@@1|)) (< (U_2_int |i#0@@1|) 18446744073709551616)))
- :qid |unknown.0:0|
- :skolemid |6050|
- :pattern ( ($Is intType |i#0@@1| Tclass.TestModule8.uint64))
 )))
 (assert (forall ((s@@3 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@3 val@@4)) s@@3) (= (|Seq#Build_inv1| (|Seq#Build| s@@3 val@@4)) val@@4))
  :qid |DafnyPreludebpl.1139:15|
@@ -766,6 +761,11 @@
  :qid |unknown.0:0|
  :skolemid |6138|
  :pattern ( ($IsAllocBox (TestModule8.CRequest.request d@@31) Tclass.TestModule8.CAppMessage $h@@10))
+)))
+(assert (forall ((|i#0@@1| T@U) ) (! (= ($Is intType |i#0@@1| Tclass.TestModule8.uint64)  (and (<= (LitInt 0) (U_2_int |i#0@@1|)) (< (U_2_int |i#0@@1|) 18446744073709551616)))
+ :qid |unknown.0:0|
+ :skolemid |6050|
+ :pattern ( ($Is intType |i#0@@1| Tclass.TestModule8.uint64))
 )))
 (assert (forall ((|a#43#0#0| Int) (|a#43#1#0| T@U) ) (! (= (|#TestModule8.V.VCase| (LitInt |a#43#0#0|) (Lit DatatypeTypeType |a#43#1#0|)) (Lit DatatypeTypeType (|#TestModule8.V.VCase| |a#43#0#0| |a#43#1#0|)))
  :qid |Fuellegacydfy.306:28|

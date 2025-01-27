@@ -84,12 +84,12 @@
 (declare-fun |Seq#Drop| (T@U Int) T@U)
 (declare-fun |Seq#Take| (T@U Int) T@U)
 (declare-fun |Seq#Append| (T@U T@U) T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun Tclass._module.Option (T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun |#_System._tuple#2._#Make2| (T@U T@U) T@U)
 (declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun Tclass._module.StringOption () T@U)
+(declare-fun LitInt (Int) Int)
 (declare-fun TSeq (T@U) T@U)
 (declare-fun _module.__default.MapToInt32 (T@U T@U) T@U)
 (declare-fun $LS (T@U) T@U)
@@ -192,11 +192,6 @@
  :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@0 t) n@@0))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@0 t) n@@0))
-)))
-(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |607|
- :pattern ( ($Is intType |x#0@@0| Tclass._module.int32))
 )))
 (assert (forall ((_module.Option$T T@U) ($h@@0 T@U) ) (!  (=> ($IsGoodHeap $h@@0) ($IsAlloc DatatypeTypeType |#_module.Option.None| (Tclass._module.Option _module.Option$T) $h@@0))
  :qid |unknown.0:0|
@@ -698,6 +693,11 @@
  :qid |DafnyPreludebpl.1159:15|
  :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@0 s1@@0) n@@9))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |607|
+ :pattern ( ($Is intType |x#0@@0| Tclass._module.int32))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0| |a#3#1#0|)))
  :qid |unknown.0:0|

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:07:37
+; Started: 2025-01-27 03:00:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -250,11 +250,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (index@1@00 Int)) (!
   (= (get%limited s@$ this@0@00 index@1@00) (get s@$ this@0@00 index@1@00))
   :pattern ((get s@$ this@0@00 index@1@00))
-  :qid |quant-u-12494|)))
+  :qid |quant-u-12487|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (index@1@00 Int)) (!
   (get%stateless this@0@00 index@1@00)
   :pattern ((get%limited s@$ this@0@00 index@1@00))
-  :qid |quant-u-12495|)))
+  :qid |quant-u-12488|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -311,11 +311,11 @@
     (get%precondition s@$ this@0@00 index@1@00)
     (= (get s@$ this@0@00 index@1@00) 0))
   :pattern ((get s@$ this@0@00 index@1@00))
-  :qid |quant-u-12496|)))
+  :qid |quant-u-12489|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (index@1@00 Int)) (!
   true
   :pattern ((get s@$ this@0@00 index@1@00))
-  :qid |quant-u-12497|)))
+  :qid |quant-u-12490|)))
 ; ---------- valid ----------
 (declare-const this@4@00 $Ref)
 (set-option :timeout 0)

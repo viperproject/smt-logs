@@ -191,7 +191,6 @@
  :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@1 v@@1) i))
 )))
-(assert (= _module.__default.TWO__TO__THE__64 (LitInt 18446744073709551616)))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._module.uint64)  (and (<= (LitInt 0) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) _module.__default.TWO__TO__THE__64)))
  :qid |unknown.0:0|
  :skolemid |484|
@@ -262,6 +261,7 @@
  :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
+(assert (= _module.__default.TWO__TO__THE__64 (LitInt 18446744073709551616)))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|)))
  :qid |unknown.0:0|
  :skolemid |464|

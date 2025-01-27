@@ -48,9 +48,9 @@
 (declare-fun |Seq#Build| (T@U T@U) T@U)
 (declare-fun |Seq#Take| (T@U Int) T@U)
 (declare-fun |Seq#Append| (T@U T@U) T@U)
-(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun SeqType () T@T)
 (declare-fun TSeq (T@U) T@U)
 (declare-fun $IsBox (T@U T@U) Bool)
@@ -119,11 +119,6 @@
  :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@0 t) n@@0))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@0 t) n@@0))
-)))
-(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |607|
- :pattern ( ($Is intType |x#0@@0| Tclass._module.int32))
 )))
 (assert (forall ((s@@1 T@U) (n@@1 Int) ) (!  (=> (= n@@1 0) (= (|Seq#Drop| s@@1 n@@1) s@@1))
  :qid |DafnyPreludebpl.1293:15|
@@ -341,6 +336,11 @@
  :qid |DafnyPreludebpl.1159:15|
  :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@0 s1@@0) n@@9))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |607|
+ :pattern ( ($Is intType |x#0@@0| Tclass._module.int32))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|

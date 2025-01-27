@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:28
+// Date:         2025-01-27 03:37:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/performance.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/performance-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -669,8 +669,8 @@ axiom !IsWandField(f_7);
 procedure init(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_18: int;
@@ -680,8 +680,8 @@ procedure init(xs: (Seq Ref)) returns ()
   var i_4: int;
   var j_12: int;
   var i_14: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4_1: int;
   var j_2_2: int;
   var ExhaleHeap: HeapType;
@@ -694,8 +694,8 @@ procedure init(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -852,8 +852,8 @@ procedure init(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
       if (Seq#Contains(Seq#Range(0, Seq#Length(xs)), i_4_1) && (Seq#Contains(Seq#Range(0, Seq#Length(xs)), j_2_2) && i_4_1 != j_2_2)) {
         assert {:msg "  Postcondition of init might not hold. Assertion xs[i] != xs[j] might not hold. (performance.vpr@7.11--7.97) [175671]"}
@@ -923,8 +923,8 @@ procedure leak(xs: (Seq Ref), p_1: Perm) returns ()
   var j_2: int;
   var i_15: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1010,8 +1010,8 @@ procedure leak(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -1025,14 +1025,14 @@ procedure split(xs: (Seq Ref), p_1: Perm, q_1: Perm) returns ()
   var j_4: int;
   var i_21: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_8: int;
   var i_19: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1121,8 +1121,8 @@ procedure split(xs: (Seq Ref), p_1: Perm, q_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1237,8 +1237,8 @@ procedure split(xs: (Seq Ref), p_1: Perm, q_1: Perm) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1342,8 +1342,8 @@ procedure split(xs: (Seq Ref), p_1: Perm, q_1: Perm) returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var xs1: (Seq Ref);
@@ -1352,8 +1352,8 @@ procedure test01() returns ()
   var xs3: (Seq Ref);
   var arg_p: Perm;
   var arg_q: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_6_2: int;
   var j_3: int;
   var ExhaleHeap: HeapType;
@@ -1406,8 +1406,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: init(xs1) -- performance.vpr@42.22--42.31
     PreCallHeap := Heap;
@@ -1554,8 +1554,8 @@ procedure test01() returns ()
     arg_q := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method split might not hold. Assertion write == 2 * (1 / 2) might not hold. (performance.vpr@46.3--46.25) [175707]"}
         arg_p == real(2) * arg_q;
       assert {:msg "  The precondition of method split might not hold. Assertion write >= none might not hold. (performance.vpr@46.3--46.25) [175708]"}
@@ -1712,8 +1712,8 @@ procedure test01() returns ()
     arg_q_1 := 1 / 4;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 == 2 * (1 / 4) might not hold. (performance.vpr@47.3--47.23) [175717]"}
         arg_p_1 == real(2) * arg_q_1;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@47.3--47.23) [175718]"}
@@ -1870,8 +1870,8 @@ procedure test01() returns ()
     arg_q_2 := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method split might not hold. Assertion write == 2 * (1 / 2) might not hold. (performance.vpr@48.3--48.25) [175727]"}
         arg_p_2 == real(2) * arg_q_2;
       assert {:msg "  The precondition of method split might not hold. Assertion write >= none might not hold. (performance.vpr@48.3--48.25) [175728]"}
@@ -2027,8 +2027,8 @@ procedure test01() returns ()
     arg_p_3 := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@50.3--50.17) [175737]"}
         NoPerm <= arg_p_3;
       if (*) {
@@ -2102,8 +2102,8 @@ procedure test01() returns ()
     arg_p_4 := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@51.3--51.17) [175742]"}
         NoPerm <= arg_p_4;
       if (*) {
@@ -2177,8 +2177,8 @@ procedure test01() returns ()
     arg_p_5 := 1 / 3;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 3 >= none might not hold. (performance.vpr@52.3--52.17) [175747]"}
         NoPerm <= arg_p_5;
       if (*) {
@@ -2253,8 +2253,8 @@ procedure test01() returns ()
     arg_q_3 := 1 / 4;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 == 2 * (1 / 4) might not hold. (performance.vpr@56.3--56.23) [175752]"}
         arg_p_6 == real(2) * arg_q_3;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@56.3--56.23) [175753]"}
@@ -2410,8 +2410,8 @@ procedure test01() returns ()
     arg_p_7 := 1 / 4;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 4 >= none might not hold. (performance.vpr@57.3--57.17) [175762]"}
         NoPerm <= arg_p_7;
       if (*) {
@@ -2485,8 +2485,8 @@ procedure test01() returns ()
     arg_p_8 := 1 / 3;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 3 >= none might not hold. (performance.vpr@58.3--58.17) [175767]"}
         NoPerm <= arg_p_8;
       if (*) {
@@ -2561,8 +2561,8 @@ procedure test01() returns ()
     arg_q_4 := 1 / 4;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 == 2 * (1 / 4) might not hold. (performance.vpr@62.3--62.23) [175772]"}
         arg_p_9 == real(2) * arg_q_4;
       assert {:msg "  The precondition of method split might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@62.3--62.23) [175773]"}
@@ -2718,8 +2718,8 @@ procedure test01() returns ()
     arg_p_10 := 1 / 4;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 4 >= none might not hold. (performance.vpr@63.3--63.17) [175782]"}
         NoPerm <= arg_p_10;
       if (*) {
@@ -2793,8 +2793,8 @@ procedure test01() returns ()
     arg_p_11 := 1 / 3;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 3 >= none might not hold. (performance.vpr@67.3--67.17) [175787]"}
         NoPerm <= arg_p_11;
       if (*) {
@@ -2868,8 +2868,8 @@ procedure test01() returns ()
     arg_p_12 := 1 / 2;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method leak might not hold. Assertion 1 / 2 >= none might not hold. (performance.vpr@68.3--68.17) [175792]"}
         NoPerm <= arg_p_12;
       if (*) {

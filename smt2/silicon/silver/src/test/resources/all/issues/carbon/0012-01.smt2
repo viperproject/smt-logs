@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:07:03
+; Started: 2025-01-27 03:00:15
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -180,9 +180,9 @@
 ; y := new()
 (declare-const y@5@01 $Ref)
 (assert (not (= y@5@01 $Ref.null)))
+(assert (not (= y@5@01 x@1@01)))
 (assert (not (= y@5@01 z@4@01)))
 (assert (not (= y@5@01 y@2@01)))
-(assert (not (= y@5@01 x@1@01)))
 ; [exec]
 ; assert x != y
 ; [eval] x != y

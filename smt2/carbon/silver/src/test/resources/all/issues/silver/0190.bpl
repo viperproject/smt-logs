@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:01
+// Date:         2025-01-27 03:13:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0190.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0190-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -238,10 +238,10 @@ procedure loop() returns ()
   modifies Heap, Mask;
 {
   var hello_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var LabelhelloHeap: HeapType;
+  var oldHeap: HeapType;
   var LabelhelloMask: MaskType;
+  var LabelhelloHeap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   
@@ -254,15 +254,15 @@ procedure loop() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(Some(1),Set(1))
   // label hello -- 0190.vpr@5.3--5.14
     hello:
-    LabelhelloHeap := Heap;
     LabelhelloMask := Mask;
+    LabelhelloHeap := Heap;
     hello_lblGuard := true;
     
     // -- Before loop head1

@@ -66,25 +66,25 @@
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun |lambda#5| (T@U) T@U)
 (declare-fun $IsBox (T@U T@U) Bool)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.DafnyNaCl.GF64__Any__Limb () T@U)
-(declare-fun LitInt (Int) Int)
-(declare-fun DafnyNaCl.__default.LM () Int)
-(declare-fun Mul (Int Int) Int)
-(declare-fun DafnyNaCl.__default.MGFLC () Int)
-(declare-fun DafnyNaCl.__default.MGFLP () Int)
 (declare-fun |Set#Empty| () T@U)
 (declare-fun |Seq#Length| (T@U) Int)
 (declare-fun |Seq#Empty| () T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun HandleTypeType () T@T)
 (declare-fun Tclass._System.___hFunc1 (T@U T@U) T@U)
-(declare-fun Tclass.BoundedInts.int64 () T@U)
 (declare-fun $HeapSucc (T@U T@U) Bool)
 (declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun DafnyNaCl.__default.M2256 () Int)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $OneHeap () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun |Set#Equal| (T@U T@U) Bool)
+(declare-fun Tclass.DafnyNaCl.GF64__Any__Limb () T@U)
+(declare-fun DafnyNaCl.__default.LM () Int)
+(declare-fun Mul (Int Int) Int)
+(declare-fun DafnyNaCl.__default.MGFLC () Int)
+(declare-fun DafnyNaCl.__default.MGFLP () Int)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun SeqType () T@T)
 (declare-fun Tclass.DafnyNaCl.GF64 () T@U)
@@ -99,12 +99,12 @@
 (declare-fun |Seq#Create| (T@U T@U Int T@U) T@U)
 (declare-fun Apply1 (T@U T@U T@U T@U T@U) T@U)
 (declare-fun DafnyNaCl.__default.R2256 () Int)
+(declare-fun DafnyNaCl.__default.P () Int)
 (declare-fun SetRef_to_SetBox (T@U) T@U)
 (declare-fun Tclass._System.object? () T@U)
 (declare-fun Tclass._System.object () T@U)
-(declare-fun DafnyNaCl.__default.M2256 () Int)
+(declare-fun Tclass.BoundedInts.int64 () T@U)
 (declare-fun Mod (Int Int) Int)
-(declare-fun DafnyNaCl.__default.P () Int)
 (declare-fun DafnyNaCl.__default.LMM1 () Int)
 (declare-fun |lambda#6| (Bool) T@U)
 (declare-fun |lambda#8| (T@U) T@U)
@@ -174,11 +174,6 @@
  :skolemid |570|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#5| |l#0|) |$l#0#heap#0| |$l#0#_v0#0|))
 )))
-(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb)  (and (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |i#0|)) (< (U_2_int |i#0|) 9223372036854775808)) (and (<= (- 0 DafnyNaCl.__default.LM) (U_2_int |i#0|)) (<= (U_2_int |i#0|) (Mul DafnyNaCl.__default.MGFLC DafnyNaCl.__default.MGFLP)))))
- :qid |unknown.0:0|
- :skolemid |491|
- :pattern ( ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb))
-)))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
  :qid |DafnyPreludebpl.670:15|
  :skolemid |125|
@@ -201,11 +196,6 @@
  :skolemid |391|
  :pattern ( ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@2 t1@@2)) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@2 u1@@2)))
 )))
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.BoundedInts.int64)  (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 9223372036854775808)))
- :qid |unknown.0:0|
- :skolemid |554|
- :pattern ( ($Is intType |x#0| Tclass.BoundedInts.int64))
-)))
 (assert (forall ((h@@0 T@U) (k T@U) ) (!  (=> ($HeapSucc h@@0 k) (forall ((o@@0 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@0 o@@0) alloc))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) k o@@0) alloc))))
  :qid |DafnyPreludebpl.609:30|
  :skolemid |118|
@@ -215,6 +205,7 @@
  :skolemid |119|
  :pattern ( ($HeapSucc h@@0 k))
 )))
+(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -230,6 +221,11 @@
  :skolemid |385|
  :pattern ( (Reads1 t0@@3 t1@@3 $OneHeap f@@0 bx0@@0) ($IsGoodHeap heap@@0))
  :pattern ( (Reads1 t0@@3 t1@@3 heap@@0 f@@0 bx0@@0))
+)))
+(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb)  (and (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |i#0|)) (< (U_2_int |i#0|) 9223372036854775808)) (and (<= (- 0 DafnyNaCl.__default.LM) (U_2_int |i#0|)) (<= (U_2_int |i#0|) (Mul DafnyNaCl.__default.MGFLC DafnyNaCl.__default.MGFLP)))))
+ :qid |unknown.0:0|
+ :skolemid |491|
+ :pattern ( ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
@@ -312,6 +308,7 @@
  :skolemid |384|
  :pattern ( ($HeapSucc h0@@4 h1@@4) (Apply1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6))
 )))
+(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert (forall ((s T@U) (bx@@3 T@U) ) (! (= (|Set#IsMember| (SetRef_to_SetBox s) bx@@3) (U_2_bool (MapType1Select refType boolType s ($Unbox refType bx@@3))))
  :qid |DafnyPreludebpl.370:15|
  :skolemid |82|
@@ -353,7 +350,6 @@
  :pattern ( ($Is refType |c#0| Tclass._System.object))
  :pattern ( ($Is refType |c#0| Tclass._System.object?))
 )))
-(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
 (assert (= DafnyNaCl.__default.R2256 (Mod DafnyNaCl.__default.M2256 DafnyNaCl.__default.P)))
 (assert (= DafnyNaCl.__default.MGFLP (Mul DafnyNaCl.__default.LMM1 DafnyNaCl.__default.LMM1)))
 (assert (forall ((|l#0@@0| Bool) (|$l#0#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#6| |l#0@@0|) |$l#0#o#0|)) |l#0@@0|)
@@ -456,7 +452,6 @@
 (assert (= DafnyNaCl.__default.NGFD (LitInt 16)))
 (assert (= DafnyNaCl.__default.LMM1 (LitInt 65535)))
 (assert (= DafnyNaCl.__default.LM (LitInt 65536)))
-(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert (forall ((f@@9 T@U) (ly@@0 T@U) (A@@0 T@T) ) (! (= (AtLayer A@@0 f@@9 ($LS ly@@0)) (AtLayer A@@0 f@@9 ly@@0))
  :qid |DafnyPreludebpl.502:18|
  :skolemid |102|
@@ -532,6 +527,11 @@
  :qid |DafnyPreludebpl.780:15|
  :skolemid |149|
  :pattern ( (|Set#Equal| a@@1 b@@1))
+)))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.BoundedInts.int64)  (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 9223372036854775808)))
+ :qid |unknown.0:0|
+ :skolemid |554|
+ :pattern ( ($Is intType |x#0| Tclass.BoundedInts.int64))
 )))
 (assert (forall ((x@@8 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@8))) (Lit BoxType ($Box intType (int_2_U x@@8))))
  :qid |DafnyPreludebpl.109:15|

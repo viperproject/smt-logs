@@ -467,7 +467,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@16 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@16 $f@@0))  (=> (and (or (not (= $o@@16 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@16) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |14268|
+ :skolemid |14272|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@16 $f@@0))
 )))
 (assert (forall ((d@@2 T@U) ($h@@11 T@U) ) (!  (=> (and ($IsGoodHeap $h@@11) (and (WellformednessCheck.R.R_q d@@2) ($IsAlloc DatatypeTypeType d@@2 Tclass.WellformednessCheck.R $h@@11))) ($IsAlloc intType (int_2_U (WellformednessCheck.R.i d@@2)) TInt $h@@11))

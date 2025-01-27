@@ -43,8 +43,8 @@
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun _module.uint32WithMethods.ctor (Int) Int)
 (declare-fun |_module.uint32WithMethods.ctor#canCall| (Int) Bool)
-(declare-fun _module.uint32WithMethods.zero () Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun _module.uint32WithMethods.zero () Int)
 (declare-fun Tclass._module.uint32WithMethods () T@U)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
@@ -100,13 +100,12 @@
  :skolemid |583|
  :pattern ( (_module.uint32WithMethods.ctor |x#0|))
 ))))
-(assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|_module.uint32WithMethods.ctor#canCall| (LitInt |x#0@@0|)) (< 2 $FunctionContextHeight)) (= (_module.uint32WithMethods.ctor (LitInt |x#0@@0|)) (ite  (and (<= (LitInt 0) (LitInt |x#0@@0|)) (< |x#0@@0| 4294967296)) |x#0@@0| _module.uint32WithMethods.zero)))
- :qid |newtypesdfy.26:24|
- :weight 3
- :skolemid |586|
- :pattern ( (_module.uint32WithMethods.ctor (LitInt |x#0@@0|)))
-))))
 (assert  (=> (< 1 $FunctionContextHeight) ($Is intType (int_2_U _module.uint32WithMethods.zero) Tclass._module.uint32WithMethods)))
+(assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|_module.uint32WithMethods.ctor#canCall| |x#0@@0|) (< 2 $FunctionContextHeight)) (= (_module.uint32WithMethods.ctor |x#0@@0|) (ite  (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)) |x#0@@0| _module.uint32WithMethods.zero)))
+ :qid |newtypesdfy.26:24|
+ :skolemid |585|
+ :pattern ( (_module.uint32WithMethods.ctor |x#0@@0|))
+))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
  :skolemid |25|
@@ -142,13 +141,13 @@
  :skolemid |743|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
-(assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|_module.uint32WithMethods.ctor#canCall| |x#0@@1|) (< 2 $FunctionContextHeight)) (= (_module.uint32WithMethods.ctor |x#0@@1|) (ite  (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)) |x#0@@1| _module.uint32WithMethods.zero)))
- :qid |newtypesdfy.26:24|
- :skolemid |585|
- :pattern ( (_module.uint32WithMethods.ctor |x#0@@1|))
-))))
 (assert (= (Tag Tclass._module.uint32WithMethods) Tagclass._module.uint32WithMethods))
 (assert (= (TagFamily Tclass._module.uint32WithMethods) tytagFamily$uint32WithMethods))
+(assert (forall ((|x#0@@1| T@U) ) (! (= ($Is intType |x#0@@1| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0@@1|)) (< (U_2_int |x#0@@1|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |576|
+ :pattern ( ($Is intType |x#0@@1| Tclass._module.uint32WithMethods))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|
@@ -159,11 +158,12 @@
  :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
-(assert (forall ((|x#0@@2| T@U) ) (! (= ($Is intType |x#0@@2| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0@@2|)) (< (U_2_int |x#0@@2|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |576|
- :pattern ( ($Is intType |x#0@@2| Tclass._module.uint32WithMethods))
-)))
+(assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@2| Int) ) (!  (=> (or (|_module.uint32WithMethods.ctor#canCall| (LitInt |x#0@@2|)) (< 2 $FunctionContextHeight)) (= (_module.uint32WithMethods.ctor (LitInt |x#0@@2|)) (ite  (and (<= (LitInt 0) (LitInt |x#0@@2|)) (< |x#0@@2| 4294967296)) |x#0@@2| _module.uint32WithMethods.zero)))
+ :qid |newtypesdfy.26:24|
+ :weight 3
+ :skolemid |586|
+ :pattern ( (_module.uint32WithMethods.ctor (LitInt |x#0@@2|)))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun |x#0@@3| () Int)

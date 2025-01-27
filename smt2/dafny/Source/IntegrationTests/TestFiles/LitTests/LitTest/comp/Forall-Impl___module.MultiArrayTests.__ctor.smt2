@@ -298,7 +298,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@9 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@9 $f@@0))  (=> (and (or (not (= $o@@9 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@9) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1379|
+ :skolemid |1378|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@9 $f@@0))
 )))
 (assert (forall (($h@@6 T@U) ($o@@10 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@10 null)) (not true)) (= (dtype $o@@10) Tclass._module.MultiArrayTests?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@10) _module.MultiArrayTests.a)) (Tclass._System.array2 TInt)))

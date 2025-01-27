@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:08:26
+; Started: 2025-01-27 03:01:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -747,7 +747,7 @@
   :pattern ((Set_in x@5@01 xs@2@01))
   :pattern ((inv@7@01 x@5@01))
   :pattern ((img@8@01 x@5@01))
-  :qid |quant-u-13237|)))
+  :qid |quant-u-13230|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@8@01 r) (Set_in (inv@7@01 r) xs@2@01)) (= (inv@7@01 r) r))
   :pattern ((inv@7@01 r))
@@ -816,7 +816,7 @@
         ($SortWrappers.$PermTo$Snap $Perm.Write))
       ($SortWrappers.$RefTo$Snap y@3@01))
     ($SortWrappers.$PermTo$Snap $Perm.Write))))
-  :qid |quant-u-13239|)))
+  :qid |quant-u-13232|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and (img@14@01 x0 x1 x2 x3) (Set_in (inv@13@01 x0 x1 x2 x3) xs@2@01))
@@ -865,7 +865,7 @@
         ($SortWrappers.$RefTo$Snap x2))
       ($SortWrappers.$PermTo$Snap x3))))
   :pattern ((inv@13@01 x0 x1 x2 x3))
-  :qid |quant-u-13240|)))
+  :qid |quant-u-13233|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -944,7 +944,7 @@
       (pTaken@20@01 x0 x1 x2 x3))
     $Perm.No)
   
-  :qid |quant-u-13242|))))
+  :qid |quant-u-13235|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -956,7 +956,7 @@
 (assert (not (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (= (pTaken@20@01 x0 x1 x2 x3) $Perm.No)
   
-  :qid |quant-u-13243|))))
+  :qid |quant-u-13236|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -971,7 +971,7 @@
     (and (= x0 z@4@01) (= x1 $Perm.Write) (= x2 y@3@01) (= x3 $Perm.Write))
     (= (- $Perm.Write (pTaken@20@01 x0 x1 x2 x3)) $Perm.No))
   
-  :qid |quant-u-13244|))))
+  :qid |quant-u-13237|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1047,7 +1047,7 @@
       (pTaken@21@01 r))
     $Perm.No)
   
-  :qid |quant-u-13246|))))
+  :qid |quant-u-13239|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1059,7 +1059,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@21@01 r) $Perm.No)
   
-  :qid |quant-u-13247|))))
+  :qid |quant-u-13240|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1072,7 +1072,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r z@4@01) (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-13248|))))
+  :qid |quant-u-13241|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1204,7 +1204,7 @@
     (and (= (inv@33@01 x@31@01) x@31@01) (img@34@01 x@31@01)))
   :pattern ((inv@33@01 x@31@01))
   :pattern ((img@34@01 x@31@01))
-  :qid |quant-u-13250|)))
+  :qid |quant-u-13243|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@34@01 r) (= (inv@33@01 r) z@30@01)) (= (inv@33@01 r) r))
   :pattern ((inv@33@01 r))
@@ -1313,7 +1313,7 @@
   :pattern ((inv@40@01 x@35@01 $Perm.Write y@36@01 $Perm.Write))
   :pattern ((img@39@01 x@35@01 $Perm.Write y@36@01 $Perm.Write))
   :pattern ((img@41@01 x@35@01 $Perm.Write y@36@01 $Perm.Write))
-  :qid |quant-u-13252|)))
+  :qid |quant-u-13245|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and
@@ -1373,7 +1373,7 @@
         ($SortWrappers.$RefTo$Snap x2))
       ($SortWrappers.$PermTo$Snap x3))))
   :pattern ((inv@38@01 x0 x1 x2 x3) (inv@40@01 x0 x1 x2 x3))
-  :qid |quant-u-13253|)))
+  :qid |quant-u-13246|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1746,7 +1746,7 @@
     (and (= (inv@58@01 x@56@01) x@56@01) (img@59@01 x@56@01)))
   :pattern ((inv@58@01 x@56@01))
   :pattern ((img@59@01 x@56@01))
-  :qid |quant-u-13255|)))
+  :qid |quant-u-13248|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@59@01 r) (= (inv@58@01 r) z@53@01)) (= (inv@58@01 r) r))
   :pattern ((inv@58@01 r))
@@ -1855,7 +1855,7 @@
   :pattern ((inv@65@01 x@60@01 $Perm.Write y@61@01 $Perm.Write))
   :pattern ((img@64@01 x@60@01 $Perm.Write y@61@01 $Perm.Write))
   :pattern ((img@66@01 x@60@01 $Perm.Write y@61@01 $Perm.Write))
-  :qid |quant-u-13257|)))
+  :qid |quant-u-13250|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and
@@ -1915,7 +1915,7 @@
         ($SortWrappers.$RefTo$Snap x2))
       ($SortWrappers.$PermTo$Snap x3))))
   :pattern ((inv@63@01 x0 x1 x2 x3) (inv@65@01 x0 x1 x2 x3))
-  :qid |quant-u-13258|)))
+  :qid |quant-u-13251|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:07:39
+; Started: 2025-01-27 03:00:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -133,11 +133,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getX%limited s@$ this@0@00) (getX s@$ this@0@00))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-12524|)))
+  :qid |quant-u-12517|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getX%stateless this@0@00)
   :pattern ((getX%limited s@$ this@0@00))
-  :qid |quant-u-12525|)))
+  :qid |quant-u-12518|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -159,11 +159,11 @@
     (getX%precondition s@$ this@0@00)
     (= (getX s@$ this@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-12530|)))
+  :qid |quant-u-12523|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-12531|)))
+  :qid |quant-u-12524|)))
 ; ---------- FUNCTION getZ----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -173,11 +173,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (getZ%limited s@$ this@2@00) (getZ s@$ this@2@00))
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-12526|)))
+  :qid |quant-u-12519|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (getZ%stateless this@2@00)
   :pattern ((getZ%limited s@$ this@2@00))
-  :qid |quant-u-12527|)))
+  :qid |quant-u-12520|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -199,11 +199,11 @@
     (getZ%precondition s@$ this@2@00)
     (= (getZ s@$ this@2@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-12532|)))
+  :qid |quant-u-12525|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-12533|)))
+  :qid |quant-u-12526|)))
 ; ---------- FUNCTION getY----------
 (declare-fun this@4@00 () $Ref)
 (declare-fun result@5@00 () Int)
@@ -213,11 +213,11 @@
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (= (getY%limited s@$ this@4@00) (getY s@$ this@4@00))
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-12528|)))
+  :qid |quant-u-12521|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (getY%stateless this@4@00)
   :pattern ((getY%limited s@$ this@4@00))
-  :qid |quant-u-12529|)))
+  :qid |quant-u-12522|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -239,11 +239,11 @@
     (getY%precondition s@$ this@4@00)
     (= (getY s@$ this@4@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-12534|)))
+  :qid |quant-u-12527|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   true
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-12535|)))
+  :qid |quant-u-12528|)))
 ; ---------- X ----------
 (declare-const this@6@00 $Ref)
 (push) ; 1

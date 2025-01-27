@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:59:56
+; Started: 2025-01-27 02:53:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -8252,7 +8252,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 56 | iter_err@52@01 == Null | live]
 ; [else-branch: 56 | iter_err@52@01 != Null | live]
@@ -10323,7 +10323,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 82 | |First:(Second:(Second:(Second:(Second:($t@55@01)))))| > 0 | live]
 ; [else-branch: 82 | !(|First:(Second:(Second:(Second:(Second:($t@55@01)))))| > 0) | dead]
@@ -11600,7 +11600,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 106 | _err@79@01 != Null | live]
 ; [else-branch: 106 | _err@79@01 == Null | dead]
@@ -12542,7 +12542,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -15821,11 +15821,11 @@
 ; Student_res := new()
 (declare-const Student_res@161@01 $Ref)
 (assert (not (= Student_res@161@01 $Ref.null)))
-(assert (not (= Student_res@161@01 set_0@158@01)))
+(assert (not (= Student_res@161@01 course@156@01)))
 (assert (not (= Student_res@161@01 Student_res@157@01)))
 (assert (not (= Student_res@161@01 s1@155@01)))
 (assert (not (= Student_res@161@01 _cthread_165@148@01)))
-(assert (not (= Student_res@161@01 course@156@01)))
+(assert (not (= Student_res@161@01 set_0@158@01)))
 ; [exec]
 ; inhale typeof(Student_res) == Student()
 (declare-const $t@162@01 $Snap)

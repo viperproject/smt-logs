@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:03
+// Date:         2025-01-27 03:21:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0292.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0292-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -700,8 +700,8 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
@@ -734,8 +734,8 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
         UnfoldingMask := Mask;
         assume SCIONPath_State#trigger(UnfoldingHeap, SCIONPath_State(self));
         assume UnfoldingHeap[null, SCIONPath_State(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, SCIONPath__ofs]), UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access SCIONPath_State(self) (0292.vpr@12.1--16.2) [77486]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, SCIONPath_State(self)];
@@ -757,8 +757,8 @@ procedure SCIONPath_get_iof#definedness(self: Ref) returns (Result: Ref)
           Unfolding1Mask := UnfoldingMask;
           assume OpaqueFieldList_State#trigger(Unfolding1Heap, OpaqueFieldList_State(Unfolding1Heap[self, SCIONPath__ofs]));
           assume Unfolding1Heap[null, OpaqueFieldList_State(Unfolding1Heap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(Unfolding1Heap, Unfolding1Heap[self, SCIONPath__ofs]));
-          ExhaleWellDef0Mask := Unfolding1Mask;
           ExhaleWellDef0Heap := Unfolding1Heap;
+          ExhaleWellDef0Mask := Unfolding1Mask;
           perm := FullPerm;
           assume state(Unfolding1Heap, Unfolding1Mask);
           havoc QPMask;
@@ -1013,8 +1013,8 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of SCIONPath_State
@@ -1042,8 +1042,8 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OpaqueFieldList_State#trigger(UnfoldingHeap, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]));
       assume UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access OpaqueFieldList_State(self.SCIONPath__ofs) (0292.vpr@26.1--30.2) [77489]"}
@@ -1099,8 +1099,8 @@ procedure SCIONPath_State#definedness(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume OpaqueFieldList_State#trigger(UnfoldingHeap, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]));
       assume UnfoldingHeap[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] == FrameFragment(OpaqueFieldList_State#condqp1(UnfoldingHeap, UnfoldingHeap[self, SCIONPath__ofs]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs]):=UnfoldingMask[null, OpaqueFieldList_State(UnfoldingHeap[self, SCIONPath__ofs])] - perm];
       assume state(UnfoldingHeap, UnfoldingMask);

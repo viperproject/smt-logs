@@ -126,11 +126,16 @@
  :skolemid |4130|
  :pattern ( ($Box T@@1 x@@5))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@3| Int) ) (!  (=> (or (|EvolvingNativeTypes.__default.R#canCall| (LitInt |x#0@@3|)) (< 0 $FunctionContextHeight)) (= (EvolvingNativeTypes.__default.R (LitInt |x#0@@3|)) (ite (= (LitInt |x#0@@3|) (LitInt 5)) true (ite (= (LitInt |x#0@@3|) (LitInt 1)) true (ite (= (LitInt |x#0@@3|) (LitInt 3)) true (ite (= (LitInt |x#0@@3|) (LitInt 7)) true (ite (= (LitInt |x#0@@3|) (LitInt 9)) true false)))))))
+(assert (forall ((|x#0@@3| T@U) ) (! (= ($Is intType |x#0@@3| Tclass.EvolvingNativeTypes.byte)  (and (and (and (<= (LitInt 0) (U_2_int |x#0@@3|)) (or (not (= (U_2_int |x#0@@3|) 1)) (not true))) (and (< (U_2_int |x#0@@3|) 4294967296) (or (not (= (U_2_int |x#0@@3|) 3)) (not true)))) (and (< (U_2_int |x#0@@3|) 256) (or (not (= (U_2_int |x#0@@3|) 5)) (not true)))))
+ :qid |unknown.0:0|
+ :skolemid |4601|
+ :pattern ( ($Is intType |x#0@@3| Tclass.EvolvingNativeTypes.byte))
+)))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@4| Int) ) (!  (=> (or (|EvolvingNativeTypes.__default.R#canCall| (LitInt |x#0@@4|)) (< 0 $FunctionContextHeight)) (= (EvolvingNativeTypes.__default.R (LitInt |x#0@@4|)) (ite (= (LitInt |x#0@@4|) (LitInt 5)) true (ite (= (LitInt |x#0@@4|) (LitInt 1)) true (ite (= (LitInt |x#0@@4|) (LitInt 3)) true (ite (= (LitInt |x#0@@4|) (LitInt 7)) true (ite (= (LitInt |x#0@@4|) (LitInt 9)) true false)))))))
  :qid |gitissue697jdfy.291:15|
  :weight 3
  :skolemid |4587|
- :pattern ( (EvolvingNativeTypes.__default.R (LitInt |x#0@@3|)))
+ :pattern ( (EvolvingNativeTypes.__default.R (LitInt |x#0@@4|)))
 ))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
@@ -158,18 +163,13 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |5352|
+ :skolemid |5354|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (= (Tag Tclass.EvolvingNativeTypes.byte) Tagclass.EvolvingNativeTypes.byte))
 (assert (= (TagFamily Tclass.EvolvingNativeTypes.byte) tytagFamily$byte))
 (assert (= (Tag Tclass.EvolvingNativeTypes.Not7Either) Tagclass.EvolvingNativeTypes.Not7Either))
 (assert (= (TagFamily Tclass.EvolvingNativeTypes.Not7Either) tytagFamily$Not7Either))
-(assert (forall ((|x#0@@4| T@U) ) (! (= ($Is intType |x#0@@4| Tclass.EvolvingNativeTypes.byte)  (and (and (and (<= (LitInt 0) (U_2_int |x#0@@4|)) (or (not (= (U_2_int |x#0@@4|) 1)) (not true))) (and (< (U_2_int |x#0@@4|) 4294967296) (or (not (= (U_2_int |x#0@@4|) 3)) (not true)))) (and (< (U_2_int |x#0@@4|) 256) (or (not (= (U_2_int |x#0@@4|) 5)) (not true)))))
- :qid |unknown.0:0|
- :skolemid |4601|
- :pattern ( ($Is intType |x#0@@4| Tclass.EvolvingNativeTypes.byte))
-)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |4123|

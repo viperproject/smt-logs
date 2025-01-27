@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:23
+// Date:         2025-01-27 03:24:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/loops1b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/loops1b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -678,8 +678,8 @@ procedure test02(x: Ref) returns ()
   var ExhaleHeap: HeapType;
   var frameMask4: MaskType;
   var frameHeap4: HeapType;
-  var n2: int;
   var n1: int;
+  var n2: int;
   var Labellh2Heap: HeapType;
   var Labellh2Mask: MaskType;
   var frameMask6: MaskType;
@@ -783,7 +783,7 @@ procedure test02(x: Ref) returns ()
     // -- Code for loop head 4
       
       // -- Havoc loop written variables (except locals)
-        havoc n2, n1;
+        havoc n1, n2;
       
       // -- Check definedness of invariant
         if (*) {

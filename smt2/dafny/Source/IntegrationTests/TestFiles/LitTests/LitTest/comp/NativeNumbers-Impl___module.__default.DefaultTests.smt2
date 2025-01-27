@@ -62,8 +62,6 @@
 (declare-fun Tclass._module.uint16 () T@U)
 (declare-fun Tclass._module.uint32 () T@U)
 (declare-fun Tclass._module.uint64 () T@U)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun LitInt (Int) Int)
 (declare-fun $HeapSucc (T@U T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -74,8 +72,10 @@
 (declare-fun MapType0Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType0TypeInv0 (T@T) T@T)
 (declare-fun MapType0TypeInv1 (T@T) T@T)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun MapType1Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -144,11 +144,6 @@
  :skolemid |617|
  :pattern ( ($IsAlloc intType |x#0@@6| Tclass._module.uint64 $h@@6))
 )))
-(assert (forall ((|x#0@@7| T@U) ) (! (= ($Is intType |x#0@@7| Tclass._module.uint64)  (and (<= (LitInt 0) (U_2_int |x#0@@7|)) (< (U_2_int |x#0@@7|) 18446744073709551616)))
- :qid |unknown.0:0|
- :skolemid |616|
- :pattern ( ($Is intType |x#0@@7| Tclass._module.uint64))
-)))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
@@ -188,10 +183,10 @@
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((|x#0@@8| T@U) ) (! (= ($Is intType |x#0@@8| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |x#0@@8|)) (< (U_2_int |x#0@@8|) 4294967296)))
+(assert (forall ((|x#0@@7| T@U) ) (! (= ($Is intType |x#0@@7| Tclass._module.int64)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@7|)) (< (U_2_int |x#0@@7|) 9223372036854775808)))
  :qid |unknown.0:0|
- :skolemid |614|
- :pattern ( ($Is intType |x#0@@8| Tclass._module.uint32))
+ :skolemid |608|
+ :pattern ( ($Is intType |x#0@@7| Tclass._module.int64))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
  :qid |DafnyPreludebpl.217:18|
@@ -263,11 +258,6 @@
  :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
 )))
-(assert (forall ((|x#0@@9| T@U) ) (! (= ($Is intType |x#0@@9| Tclass._module.int64)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@9|)) (< (U_2_int |x#0@@9|) 9223372036854775808)))
- :qid |unknown.0:0|
- :skolemid |608|
- :pattern ( ($Is intType |x#0@@9| Tclass._module.int64))
-)))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
  :skolemid |25|
@@ -304,30 +294,40 @@
 (assert (= (TagFamily Tclass._module.uint32) tytagFamily$uint32))
 (assert (= (Tag Tclass._module.uint64) Tagclass._module.uint64))
 (assert (= (TagFamily Tclass._module.uint64) tytagFamily$uint64))
-(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass._module.int16)  (and (<= (LitInt (- 0 32768)) (U_2_int |x#0@@10|)) (< (U_2_int |x#0@@10|) 32768)))
+(assert (forall ((|x#0@@8| T@U) ) (! (= ($Is intType |x#0@@8| Tclass._module.int16)  (and (<= (LitInt (- 0 32768)) (U_2_int |x#0@@8|)) (< (U_2_int |x#0@@8|) 32768)))
  :qid |unknown.0:0|
  :skolemid |604|
- :pattern ( ($Is intType |x#0@@10| Tclass._module.int16))
+ :pattern ( ($Is intType |x#0@@8| Tclass._module.int16))
 )))
-(assert (forall ((|x#0@@11| T@U) ) (! (= ($Is intType |x#0@@11| Tclass._module.int8)  (and (<= (LitInt (- 0 128)) (U_2_int |x#0@@11|)) (< (U_2_int |x#0@@11|) 128)))
+(assert (forall ((|x#0@@9| T@U) ) (! (= ($Is intType |x#0@@9| Tclass._module.int8)  (and (<= (LitInt (- 0 128)) (U_2_int |x#0@@9|)) (< (U_2_int |x#0@@9|) 128)))
  :qid |unknown.0:0|
  :skolemid |602|
- :pattern ( ($Is intType |x#0@@11| Tclass._module.int8))
+ :pattern ( ($Is intType |x#0@@9| Tclass._module.int8))
 )))
-(assert (forall ((|x#0@@12| T@U) ) (! (= ($Is intType |x#0@@12| Tclass._module.uint8)  (and (<= (LitInt 0) (U_2_int |x#0@@12|)) (< (U_2_int |x#0@@12|) 256)))
+(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@10|)) (< (U_2_int |x#0@@10|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |606|
+ :pattern ( ($Is intType |x#0@@10| Tclass._module.int32))
+)))
+(assert (forall ((|x#0@@11| T@U) ) (! (= ($Is intType |x#0@@11| Tclass._module.uint8)  (and (<= (LitInt 0) (U_2_int |x#0@@11|)) (< (U_2_int |x#0@@11|) 256)))
  :qid |unknown.0:0|
  :skolemid |610|
- :pattern ( ($Is intType |x#0@@12| Tclass._module.uint8))
+ :pattern ( ($Is intType |x#0@@11| Tclass._module.uint8))
+)))
+(assert (forall ((|x#0@@12| T@U) ) (! (= ($Is intType |x#0@@12| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |x#0@@12|)) (< (U_2_int |x#0@@12|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |614|
+ :pattern ( ($Is intType |x#0@@12| Tclass._module.uint32))
 )))
 (assert (forall ((|x#0@@13| T@U) ) (! (= ($Is intType |x#0@@13| Tclass._module.uint16)  (and (<= (LitInt 0) (U_2_int |x#0@@13|)) (< (U_2_int |x#0@@13|) 65536)))
  :qid |unknown.0:0|
  :skolemid |612|
  :pattern ( ($Is intType |x#0@@13| Tclass._module.uint16))
 )))
-(assert (forall ((|x#0@@14| T@U) ) (! (= ($Is intType |x#0@@14| Tclass._module.int32)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@14|)) (< (U_2_int |x#0@@14|) 2147483648)))
+(assert (forall ((|x#0@@14| T@U) ) (! (= ($Is intType |x#0@@14| Tclass._module.uint64)  (and (<= (LitInt 0) (U_2_int |x#0@@14|)) (< (U_2_int |x#0@@14|) 18446744073709551616)))
  :qid |unknown.0:0|
- :skolemid |606|
- :pattern ( ($Is intType |x#0@@14| Tclass._module.int32))
+ :skolemid |616|
+ :pattern ( ($Is intType |x#0@@14| Tclass._module.uint64))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|

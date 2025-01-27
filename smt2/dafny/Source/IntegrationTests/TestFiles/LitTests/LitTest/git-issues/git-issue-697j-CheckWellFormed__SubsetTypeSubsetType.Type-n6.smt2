@@ -36,8 +36,8 @@
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun SubsetTypeSubsetType.__default.Q (Int) Bool)
-(declare-fun |SubsetTypeSubsetType.__default.Q#canCall| (Int) Bool)
+(declare-fun SubsetTypeSubsetType.__default.P (Int) Bool)
+(declare-fun |SubsetTypeSubsetType.__default.P#canCall| (Int) Bool)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -80,21 +80,21 @@
  :skolemid |1030|
  :pattern ( (Lit T x@@3))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|SubsetTypeSubsetType.__default.Q#canCall| |x#0|) (< 0 $FunctionContextHeight)) (= (SubsetTypeSubsetType.__default.Q |x#0|)  (or (not (= |x#0| 5)) (not true))))
- :qid |gitissue697jdfy.101:15|
- :skolemid |1500|
- :pattern ( (SubsetTypeSubsetType.__default.Q |x#0|))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|SubsetTypeSubsetType.__default.P#canCall| |x#0|) (< 0 $FunctionContextHeight)) (= (SubsetTypeSubsetType.__default.P |x#0|)  (or (not (= |x#0| 3)) (not true))))
+ :qid |gitissue697jdfy.91:15|
+ :skolemid |1496|
+ :pattern ( (SubsetTypeSubsetType.__default.P |x#0|))
 ))))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
  :skolemid |1041|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|SubsetTypeSubsetType.__default.Q#canCall| (LitInt |x#0@@0|)) (< 0 $FunctionContextHeight)) (= (SubsetTypeSubsetType.__default.Q (LitInt |x#0@@0|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@0| 5)) (not true)))))))
- :qid |gitissue697jdfy.101:15|
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|SubsetTypeSubsetType.__default.P#canCall| (LitInt |x#0@@0|)) (< 0 $FunctionContextHeight)) (= (SubsetTypeSubsetType.__default.P (LitInt |x#0@@0|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@0| 3)) (not true)))))))
+ :qid |gitissue697jdfy.91:15|
  :weight 3
- :skolemid |1501|
- :pattern ( (SubsetTypeSubsetType.__default.Q (LitInt |x#0@@0|)))
+ :skolemid |1497|
+ :pattern ( (SubsetTypeSubsetType.__default.P (LitInt |x#0@@0|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
@@ -127,7 +127,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |5339|
+ :skolemid |5346|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
@@ -149,7 +149,7 @@
 (declare-fun alloc () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(set-info :boogie-vc-id CheckWellFormed$$SubsetTypeSubsetType.Type6)
+(set-info :boogie-vc-id CheckWellFormed$$SubsetTypeSubsetType.Type2)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -165,7 +165,7 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 6) (let ((anon6_Then_correct  (=> (= |newtype$check#0@0| (LitInt 0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (and (SubsetTypeSubsetType.__default.Q |newtype$check#0@0|) (< |newtype$check#0@0| 8))) (=> (and (SubsetTypeSubsetType.__default.Q |newtype$check#0@0|) (< |newtype$check#0@0| 8)) (=> (= (ControlFlow 0 3) (- 0 2)) (<= (LitInt 0) (LitInt 0))))))))
+ (=> (= (ControlFlow 0 0) 6) (let ((anon6_Then_correct  (=> (= |newtype$check#0@0| (LitInt 0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (and (and (<= (LitInt (- 0 2147483648)) |newtype$check#0@0|) (< |newtype$check#0@0| 2147483648)) (SubsetTypeSubsetType.__default.P |newtype$check#0@0|))) (=> (and (and (<= (LitInt (- 0 2147483648)) |newtype$check#0@0|) (< |newtype$check#0@0| 2147483648)) (SubsetTypeSubsetType.__default.P |newtype$check#0@0|)) (=> (= (ControlFlow 0 3) (- 0 2)) (U_2_bool (Lit boolType (bool_2_U true)))))))))
 (let ((anon5_Then_correct true))
 (let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 5) 1) anon5_Then_correct) (=> (= (ControlFlow 0 5) 3) anon6_Then_correct)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 6) 5))) anon0_correct)))

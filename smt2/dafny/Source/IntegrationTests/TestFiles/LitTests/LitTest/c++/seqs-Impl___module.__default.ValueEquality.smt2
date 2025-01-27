@@ -298,6 +298,11 @@
  :skolemid |257|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@9 m@@4) n@@5))
 )))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |533|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|
@@ -307,11 +312,6 @@
  :qid |DafnyPreludebpl.103:18|
  :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@7)))
-)))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |533|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (forall ((s@@10 T@U) ) (!  (=> (= (|Seq#Length| s@@10) 0) (= s@@10 |Seq#Empty|))
  :qid |DafnyPreludebpl.1131:15|

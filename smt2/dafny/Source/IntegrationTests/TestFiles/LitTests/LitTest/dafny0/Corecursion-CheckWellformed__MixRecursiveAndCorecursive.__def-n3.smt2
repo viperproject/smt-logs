@@ -42,16 +42,16 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun MixRecursiveAndCorecursive.__default.X (T@U Int) T@U)
+(declare-fun MixRecursiveAndCorecursive.__default.G (T@U Int) T@U)
 (declare-fun $LS (T@U) T@U)
-(declare-fun |MixRecursiveAndCorecursive.__default.X#canCall| (Int) Bool)
+(declare-fun |MixRecursiveAndCorecursive.__default.G#canCall| (Int) Bool)
 (declare-fun LitInt (Int) Int)
-(declare-fun |MixRecursiveAndCorecursive.__default.Y#canCall| (Int) Bool)
+(declare-fun |MixRecursiveAndCorecursive.__default.H#canCall| (Int) Bool)
 (declare-fun |#MixRecursiveAndCorecursive.Stream.Cons| (T@U T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun DatatypeTypeType () T@T)
-(declare-fun MixRecursiveAndCorecursive.__default.Y (T@U Int) T@U)
+(declare-fun MixRecursiveAndCorecursive.__default.H (T@U Int) T@U)
 (declare-fun Tag (T@U) T@U)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun Tclass._System.nat () T@U)
@@ -63,8 +63,8 @@
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
-(declare-fun MixRecursiveAndCorecursive.Stream.head (T@U) T@U)
 (declare-fun MixRecursiveAndCorecursive.Stream.tail (T@U) T@U)
+(declare-fun MixRecursiveAndCorecursive.Stream.head (T@U) T@U)
 (declare-fun Tclass.MixRecursiveAndCorecursive.Stream_0 (T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -100,10 +100,10 @@
 (assert (distinct TInt TagInt alloc Tagclass._System.nat Tagclass.MixRecursiveAndCorecursive.Stream |##MixRecursiveAndCorecursive.Stream.Cons| tytagFamily$nat tytagFamily$Stream)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|n#0| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.X#canCall| |n#0|) (and (< 1 $FunctionContextHeight) (<= (LitInt 0) |n#0|))) (and (and (=> (= |n#0| (LitInt 0)) (|MixRecursiveAndCorecursive.__default.Y#canCall| (LitInt 5))) (=> (or (not (= |n#0| (LitInt 0))) (not true)) (|MixRecursiveAndCorecursive.__default.Y#canCall| |n#0|))) (= (MixRecursiveAndCorecursive.__default.X ($LS $ly) |n#0|) (ite (= |n#0| (LitInt 0)) (|#MixRecursiveAndCorecursive.Stream.Cons| ($Box intType (int_2_U (LitInt 0))) (Lit DatatypeTypeType (MixRecursiveAndCorecursive.__default.Y $ly (LitInt 5)))) (MixRecursiveAndCorecursive.__default.Y $ly |n#0|)))))
- :qid |Corecursiondfy.115:18|
- :skolemid |2313|
- :pattern ( (MixRecursiveAndCorecursive.__default.X ($LS $ly) |n#0|))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|n#0| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.G#canCall| |n#0|) (and (< 1 $FunctionContextHeight) (<= (LitInt 0) |n#0|))) (and (and (=> (= |n#0| (LitInt 0)) (|MixRecursiveAndCorecursive.__default.H#canCall| (LitInt 5))) (=> (or (not (= |n#0| (LitInt 0))) (not true)) (|MixRecursiveAndCorecursive.__default.H#canCall| |n#0|))) (= (MixRecursiveAndCorecursive.__default.G ($LS $ly) |n#0|) (ite (= |n#0| (LitInt 0)) (|#MixRecursiveAndCorecursive.Stream.Cons| ($Box intType (int_2_U (LitInt 0))) (Lit DatatypeTypeType (MixRecursiveAndCorecursive.__default.H $ly (LitInt 5)))) (MixRecursiveAndCorecursive.__default.H $ly |n#0|)))))
+ :qid |Corecursiondfy.100:18|
+ :skolemid |2298|
+ :pattern ( (MixRecursiveAndCorecursive.__default.G ($LS $ly) |n#0|))
 ))))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
@@ -116,10 +116,10 @@
  :skolemid |2333|
  :pattern ( (MixRecursiveAndCorecursive.Stream.Cons_q d) ($Is DatatypeTypeType d (Tclass.MixRecursiveAndCorecursive.Stream MixRecursiveAndCorecursive.Stream$T)))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|n#0@@0| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.Y#canCall| |n#0@@0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |n#0@@0|) (or (not (= |n#0@@0| 0)) (not true))))) ($Is DatatypeTypeType (MixRecursiveAndCorecursive.__default.Y $ly@@0 |n#0@@0|) (Tclass.MixRecursiveAndCorecursive.Stream TInt)))
- :qid |Corecursiondfy.122:18|
- :skolemid |2318|
- :pattern ( (MixRecursiveAndCorecursive.__default.Y $ly@@0 |n#0@@0|))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|n#0@@0| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.H#canCall| |n#0@@0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |n#0@@0|) (or (not (= |n#0@@0| 0)) (not true))))) ($Is DatatypeTypeType (MixRecursiveAndCorecursive.__default.H $ly@@0 |n#0@@0|) (Tclass.MixRecursiveAndCorecursive.Stream TInt)))
+ :qid |Corecursiondfy.107:18|
+ :skolemid |2304|
+ :pattern ( (MixRecursiveAndCorecursive.__default.H $ly@@0 |n#0@@0|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
@@ -174,10 +174,16 @@
  :skolemid |2098|
  :pattern ( ($IsBox bx Tclass._System.nat))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) (|n#0@@1| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.X#canCall| |n#0@@1|) (and (< 1 $FunctionContextHeight) (<= (LitInt 0) |n#0@@1|))) ($Is DatatypeTypeType (MixRecursiveAndCorecursive.__default.X $ly@@1 |n#0@@1|) (Tclass.MixRecursiveAndCorecursive.Stream TInt)))
- :qid |Corecursiondfy.115:18|
- :skolemid |2311|
- :pattern ( (MixRecursiveAndCorecursive.__default.X $ly@@1 |n#0@@1|))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) (|n#0@@1| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.G#canCall| |n#0@@1|) (and (< 1 $FunctionContextHeight) (<= (LitInt 0) |n#0@@1|))) ($Is DatatypeTypeType (MixRecursiveAndCorecursive.__default.G $ly@@1 |n#0@@1|) (Tclass.MixRecursiveAndCorecursive.Stream TInt)))
+ :qid |Corecursiondfy.100:18|
+ :skolemid |2296|
+ :pattern ( (MixRecursiveAndCorecursive.__default.G $ly@@1 |n#0@@1|))
+))))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) (|n#0@@2| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.G#canCall| (LitInt |n#0@@2|)) (and (< 1 $FunctionContextHeight) (<= (LitInt 0) |n#0@@2|))) (and (and (=> (= (LitInt |n#0@@2|) (LitInt 0)) (|MixRecursiveAndCorecursive.__default.H#canCall| (LitInt 5))) (=> (or (not (= (LitInt |n#0@@2|) (LitInt 0))) (not true)) (|MixRecursiveAndCorecursive.__default.H#canCall| (LitInt |n#0@@2|)))) (= (MixRecursiveAndCorecursive.__default.G ($LS $ly@@2) (LitInt |n#0@@2|)) (ite (= (LitInt |n#0@@2|) (LitInt 0)) (|#MixRecursiveAndCorecursive.Stream.Cons| ($Box intType (int_2_U (LitInt 0))) (Lit DatatypeTypeType (MixRecursiveAndCorecursive.__default.H ($LS $ly@@2) (LitInt 5)))) (MixRecursiveAndCorecursive.__default.H ($LS $ly@@2) (LitInt |n#0@@2|))))))
+ :qid |Corecursiondfy.100:18|
+ :weight 3
+ :skolemid |2299|
+ :pattern ( (MixRecursiveAndCorecursive.__default.G ($LS $ly@@2) (LitInt |n#0@@2|)))
 ))))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TInt) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) TInt)))
  :qid |DafnyPreludebpl.176:15|
@@ -189,6 +195,12 @@
  :skolemid |1793|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@3 T@U) (|n#0@@3| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.H#canCall| (LitInt |n#0@@3|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |n#0@@3|) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |n#0@@3| 0)) (not true)))))))) (and (and (|MixRecursiveAndCorecursive.__default.G#canCall| (LitInt (- |n#0@@3| 1))) (MixRecursiveAndCorecursive.Stream.Cons_q (Lit DatatypeTypeType (MixRecursiveAndCorecursive.__default.G ($LS $ly@@3) (LitInt (- |n#0@@3| 1)))))) (= (MixRecursiveAndCorecursive.__default.H ($LS $ly@@3) (LitInt |n#0@@3|)) (Lit DatatypeTypeType (MixRecursiveAndCorecursive.Stream.tail (Lit DatatypeTypeType (MixRecursiveAndCorecursive.__default.G ($LS $ly@@3) (LitInt (- |n#0@@3| 1)))))))))
+ :qid |Corecursiondfy.107:18|
+ :weight 3
+ :skolemid |2307|
+ :pattern ( (MixRecursiveAndCorecursive.__default.H ($LS $ly@@3) (LitInt |n#0@@3|)))
+))))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#MixRecursiveAndCorecursive.Stream.Cons| |a#0#0#0| |a#0#1#0|)) |##MixRecursiveAndCorecursive.Stream.Cons|)
  :qid |Corecursiondfy.88:31|
  :skolemid |2322|
@@ -214,20 +226,15 @@
  :skolemid |1780|
  :pattern ( ($Box T@@3 x@@5))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) (|n#0@@2| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.Y#canCall| |n#0@@2|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |n#0@@2|) (or (not (= |n#0@@2| 0)) (not true))))) (and (|MixRecursiveAndCorecursive.__default.X#canCall| (- |n#0@@2| 1)) (= (MixRecursiveAndCorecursive.__default.Y ($LS $ly@@2) |n#0@@2|) (MixRecursiveAndCorecursive.__default.X $ly@@2 (- |n#0@@2| 1)))))
- :qid |Corecursiondfy.122:18|
- :skolemid |2320|
- :pattern ( (MixRecursiveAndCorecursive.__default.Y ($LS $ly@@2) |n#0@@2|))
-))))
-(assert (forall (($ly@@3 T@U) (|n#0@@3| Int) ) (! (= (MixRecursiveAndCorecursive.__default.X ($LS $ly@@3) |n#0@@3|) (MixRecursiveAndCorecursive.__default.X $ly@@3 |n#0@@3|))
- :qid |Corecursiondfy.115:18|
- :skolemid |2309|
- :pattern ( (MixRecursiveAndCorecursive.__default.X ($LS $ly@@3) |n#0@@3|))
+(assert (forall (($ly@@4 T@U) (|n#0@@4| Int) ) (! (= (MixRecursiveAndCorecursive.__default.G ($LS $ly@@4) |n#0@@4|) (MixRecursiveAndCorecursive.__default.G $ly@@4 |n#0@@4|))
+ :qid |Corecursiondfy.100:18|
+ :skolemid |2294|
+ :pattern ( (MixRecursiveAndCorecursive.__default.G ($LS $ly@@4) |n#0@@4|))
 )))
-(assert (forall (($ly@@4 T@U) (|n#0@@4| Int) ) (! (= (MixRecursiveAndCorecursive.__default.Y ($LS $ly@@4) |n#0@@4|) (MixRecursiveAndCorecursive.__default.Y $ly@@4 |n#0@@4|))
- :qid |Corecursiondfy.122:18|
- :skolemid |2316|
- :pattern ( (MixRecursiveAndCorecursive.__default.Y ($LS $ly@@4) |n#0@@4|))
+(assert (forall (($ly@@5 T@U) (|n#0@@5| Int) ) (! (= (MixRecursiveAndCorecursive.__default.H ($LS $ly@@5) |n#0@@5|) (MixRecursiveAndCorecursive.__default.H $ly@@5 |n#0@@5|))
+ :qid |Corecursiondfy.107:18|
+ :skolemid |2302|
+ :pattern ( (MixRecursiveAndCorecursive.__default.H ($LS $ly@@5) |n#0@@5|))
 )))
 (assert (forall ((d@@2 T@U) (MixRecursiveAndCorecursive.Stream$T@@3 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (MixRecursiveAndCorecursive.Stream.Cons_q d@@2) ($IsAlloc DatatypeTypeType d@@2 (Tclass.MixRecursiveAndCorecursive.Stream MixRecursiveAndCorecursive.Stream$T@@3) $h@@0))) ($IsAllocBox (MixRecursiveAndCorecursive.Stream.head d@@2) MixRecursiveAndCorecursive.Stream$T@@3 $h@@0))
  :qid |unknown.0:0|
@@ -275,6 +282,11 @@
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@6 T@U) (|n#0@@6| Int) ) (!  (=> (or (|MixRecursiveAndCorecursive.__default.H#canCall| |n#0@@6|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |n#0@@6|) (or (not (= |n#0@@6| 0)) (not true))))) (and (and (|MixRecursiveAndCorecursive.__default.G#canCall| (- |n#0@@6| 1)) (MixRecursiveAndCorecursive.Stream.Cons_q (MixRecursiveAndCorecursive.__default.G $ly@@6 (- |n#0@@6| 1)))) (= (MixRecursiveAndCorecursive.__default.H ($LS $ly@@6) |n#0@@6|) (MixRecursiveAndCorecursive.Stream.tail (MixRecursiveAndCorecursive.__default.G $ly@@6 (- |n#0@@6| 1))))))
+ :qid |Corecursiondfy.107:18|
+ :skolemid |2306|
+ :pattern ( (MixRecursiveAndCorecursive.__default.H ($LS $ly@@6) |n#0@@6|))
+))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |1773|
@@ -302,13 +314,13 @@
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
-(declare-fun |n#0@@5| () Int)
-(declare-fun $Heap () T@U)
+(declare-fun |n#0@@7| () Int)
 (declare-fun |##n#0@0| () Int)
+(declare-fun $Heap () T@U)
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(set-info :boogie-vc-id CheckWellformed$$MixRecursiveAndCorecursive.__default.X)
+(set-info :boogie-vc-id CheckWellformed$$MixRecursiveAndCorecursive.__default.H)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -324,12 +336,11 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 11) (let ((anon8_Else_correct  (=> (and (or (not (= |n#0@@5| (LitInt 0))) (not true)) ($IsAlloc intType (int_2_U |n#0@@5|) Tclass._System.nat $Heap)) (and (=> (= (ControlFlow 0 6) (- 0 9)) (or (not (= |n#0@@5| 0)) (not true))) (=> (or (not (= |n#0@@5| 0)) (not true)) (and (=> (= (ControlFlow 0 6) (- 0 8)) (or (<= 0 (LitInt 0)) (= (LitInt 0) (LitInt 0)))) (=> (or (<= 0 (LitInt 0)) (= (LitInt 0) (LitInt 0))) (and (=> (= (ControlFlow 0 6) (- 0 7)) (or (or (<= 0 |n#0@@5|) (<= (LitInt 0) (LitInt 0))) (= |n#0@@5| |n#0@@5|))) (=> (or (or (<= 0 |n#0@@5|) (<= (LitInt 0) (LitInt 0))) (= |n#0@@5| |n#0@@5|)) (=> (= (ControlFlow 0 6) (- 0 5)) (and (<= (LitInt 0) (LitInt 0)) (=> (= (LitInt 0) (LitInt 0)) (<= |n#0@@5| |n#0@@5|)))))))))))))
-(let ((anon8_Then_correct  (=> (= |n#0@@5| (LitInt 0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) ($Is intType (int_2_U (LitInt 5)) Tclass._System.nat)) (=> ($Is intType (int_2_U (LitInt 5)) Tclass._System.nat) (=> (= |##n#0@0| (LitInt 5)) (=> (and ($IsAlloc intType (int_2_U |##n#0@0|) Tclass._System.nat $Heap) (= (ControlFlow 0 3) (- 0 2))) (or (not (= |##n#0@0| 0)) (not true)))))))))
-(let ((anon7_Then_correct true))
-(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 10) 1) anon7_Then_correct) (=> (= (ControlFlow 0 10) 3) anon8_Then_correct)) (=> (= (ControlFlow 0 10) 6) anon8_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (<= (LitInt 0) |n#0@@5|)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 11) 10))) anon0_correct)))
-PreconditionGeneratedEntry_correct))))))
+ (=> (= (ControlFlow 0 0) 7) (let ((anon5_Else_correct  (and (=> (= (ControlFlow 0 3) (- 0 5)) ($Is intType (int_2_U (- |n#0@@7| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |n#0@@7| 1)) Tclass._System.nat) (=> (and (= |##n#0@0| (- |n#0@@7| 1)) ($IsAlloc intType (int_2_U |##n#0@0|) Tclass._System.nat $Heap)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (or (<= 0 |n#0@@7|) (= |##n#0@0| |n#0@@7|))) (=> (or (<= 0 |n#0@@7|) (= |##n#0@0| |n#0@@7|)) (=> (= (ControlFlow 0 3) (- 0 2)) (< |##n#0@0| |n#0@@7|)))))))))
+(let ((anon5_Then_correct true))
+(let ((anon0_correct  (=> (and (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (or (not (= |n#0@@7| 0)) (not true))) (and (=> (= (ControlFlow 0 6) 1) anon5_Then_correct) (=> (= (ControlFlow 0 6) 3) anon5_Else_correct)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (<= (LitInt 0) |n#0@@7|)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 7) 6))) anon0_correct)))
+PreconditionGeneratedEntry_correct)))))
 ))
 (check-sat)
 (get-info :rlimit)

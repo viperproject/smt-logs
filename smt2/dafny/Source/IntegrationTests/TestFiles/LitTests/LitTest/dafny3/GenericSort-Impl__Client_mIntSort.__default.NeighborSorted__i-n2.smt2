@@ -315,7 +315,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |6798|
+ :skolemid |6796|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))
 )))
 (assert (forall ((d@@2 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (IntOrder.T.Int_q d@@2) ($IsAlloc DatatypeTypeType d@@2 Tclass.IntOrder.T $h@@4))) ($IsAlloc intType (int_2_U (IntOrder.T.i d@@2)) TInt $h@@4))

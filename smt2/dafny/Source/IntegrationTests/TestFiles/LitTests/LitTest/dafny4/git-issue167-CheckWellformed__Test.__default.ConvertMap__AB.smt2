@@ -148,7 +148,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#2| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |gitissue167dfy.75:12|
- :skolemid |1197|
+ :skolemid |1187|
  :pattern ( (MapType0Select BoxType boolType (|lambda#2| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a b t)) a)
@@ -330,12 +330,12 @@
  :pattern ( (|Set#IsMember| |l#2| ($Box DatatypeTypeType |a#0|)))
 )))
  :qid |gitissue167dfy.74:12|
- :skolemid |1196|
+ :skolemid |1186|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2|) |$y#1|))
 )))
 (assert (forall ((|l#0@@1| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#3| |l#0@@1|) |$w#0@@0|) (MapType0Select BoxType BoxType |l#0@@1| ($Box DatatypeTypeType (Test.__default.Convert__BA ($Unbox DatatypeTypeType |$w#0@@0|)))))
  :qid |gitissue167dfy.84:28|
- :skolemid |1198|
+ :skolemid |1188|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#3| |l#0@@1|) |$w#0@@0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|f#0@@3| T@U) ) (!  (=> (or (|Test.__default.Convert__AB#canCall| |f#0@@3|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |f#0@@3| Tclass.Test.A))) ($Is DatatypeTypeType (Test.__default.Convert__AB |f#0@@3|) Tclass.Test.B))
@@ -477,7 +477,7 @@
 ))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@1| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#8| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o) |l#2@@0|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1199|
+ :skolemid |1189|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#8| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
@@ -694,3 +694,7 @@ PreconditionGeneratedEntry_correct)))))))))))))))))))
 (get-info :rlimit)
 (pop 1)
 ; Valid
+(reset)
+(set-option :rlimit 0)
+; did a full reset
+(reset)

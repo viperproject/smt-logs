@@ -304,7 +304,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#9| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) (or (= $o@@5 |l#3|) (= $o@@5 |l#4|))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2981|
+ :skolemid |2983|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#9| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
@@ -335,11 +335,10 @@
 (declare-fun $Heap () T@U)
 (declare-fun |x#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(declare-fun AssumeTypeAssumptions._default.Client_CellU$U () T@U)
+(declare-fun AssumeTypeAssumptions._default.Client_U$U () T@U)
 (declare-fun |u#0| () T@U)
-(declare-fun |u1#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id CheckWellFormed$$AssumeTypeAssumptions.__default.Client__CellU)
+(set-info :boogie-vc-id CheckWellFormed$$AssumeTypeAssumptions.__default.Client__U)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -359,7 +358,7 @@
 (let ((anon4_Else_correct  (=> (and (< |j#0| (LitInt 0)) (= (ControlFlow 0 4) 1)) anon3_correct)))
 (let ((anon4_Then_correct  (=> (<= (LitInt 0) |j#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (not (= |a#0| null)) (not true))) (=> (or (not (= |a#0| null)) (not true)) (=> (= (ControlFlow 0 2) 1) anon3_correct))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#9| null $Heap alloc |x#0| |a#0|)) (and (=> (= (ControlFlow 0 5) 2) anon4_Then_correct) (=> (= (ControlFlow 0 5) 4) anon4_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and ($Is refType |x#0| (Tclass.AssumeTypeAssumptions.Cell (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U))) ($IsAlloc refType |x#0| (Tclass.AssumeTypeAssumptions.Cell (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U)) $Heap))) (=> (and (and (and ($Is refType |a#0| (Tclass._System.array (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U))) ($IsAlloc refType |a#0| (Tclass._System.array (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U)) $Heap)) (and ($Is refType |u#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U)) ($IsAlloc refType |u#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_CellU$U) $Heap))) (and (and ($IsBox |u1#0| AssumeTypeAssumptions._default.Client_CellU$U) ($IsAllocBox |u1#0| AssumeTypeAssumptions._default.Client_CellU$U $Heap)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 6) 5)))) anon0_correct))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($Is refType |x#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_U$U)) ($IsAlloc refType |x#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_U$U) $Heap)) (and ($Is refType |a#0| (Tclass._System.array AssumeTypeAssumptions._default.Client_U$U)) ($IsAlloc refType |a#0| (Tclass._System.array AssumeTypeAssumptions._default.Client_U$U) $Heap))) (and (and ($IsBox |u#0| AssumeTypeAssumptions._default.Client_U$U) ($IsAllocBox |u#0| AssumeTypeAssumptions._default.Client_U$U $Heap)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 6) 5)))) anon0_correct))))
 PreconditionGeneratedEntry_correct))))))
 ))
 (check-sat)

@@ -234,7 +234,7 @@
 (assert  (and (= (Ctor LayerTypeType) 9) (= (Ctor HandleTypeType) 10)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$l#5#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#4| |l#0| |l#1|) |$l#5#ly#0|) (Handle1 (|lambda#0| |$l#5#ly#0|) |l#0| |l#1|))
  :qid |nofile.1:7|
- :skolemid |1594|
+ :skolemid |1591|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#4| |l#0| |l#1|) |$l#5#ly#0|))
 )))
 (assert (forall ((|a#53#0#0| T@U) (|a#53#1#0| T@U) (i@@1 Int) ) (!  (=> (and (<= 0 i@@1) (< i@@1 (|Seq#Length| |a#53#0#0|))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| |a#53#0#0| i@@1))) (DtRank (|#AST.Expr_Raw.Assign| |a#53#0#0| |a#53#1#0|))))
@@ -249,7 +249,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|$l#5#heap#0| T@U) (|$l#5#e#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#1| |l#0@@0| |l#1@@0|) |$l#5#heap#0| |$l#5#e#0|))  (and ($IsBox |$l#5#e#0| |l#0@@0|) (|Seq#Contains| |l#1@@0| |$l#5#e#0|)))
  :qid |astdfy.53:12|
- :skolemid |1591|
+ :skolemid |1588|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#1| |l#0@@0| |l#1@@0|) |$l#5#heap#0| |$l#5#e#0|))
 )))
 (assert (= (Ctor SeqType) 11))
@@ -432,7 +432,7 @@
 )))
 (assert (forall ((|l#0@@1| T@U) (|$l#5#heap#0@@0| T@U) (|$l#5#e#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#0| |l#0@@1|) |$l#5#heap#0@@0| |$l#5#e#0@@0|) ($Box intType (int_2_U (AST.Expr__Raw.Depth |l#0@@1| ($Unbox DatatypeTypeType |$l#5#e#0@@0|)))))
  :qid |unknown.0:0|
- :skolemid |1590|
+ :skolemid |1587|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#0| |l#0@@1|) |$l#5#heap#0@@0| |$l#5#e#0@@0|))
 )))
 (assert (forall ((s@@0 T@U) (n@@0 Int) ) (!  (=> (and (<= 0 n@@0) (<= n@@0 (|Seq#Length| s@@0))) (= (|Seq#Length| (|Seq#Drop| s@@0 n@@0)) (- (|Seq#Length| s@@0) n@@0)))
@@ -806,7 +806,7 @@
 )))
 (assert (forall ((|l#0@@2| Bool) (|$l#5#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#2| |l#0@@2|) |$l#5#o#0|)) |l#0@@2|)
  :qid |unknown.0:0|
- :skolemid |1592|
+ :skolemid |1589|
  :pattern ( (MapType1Select refType boolType (|lambda#2| |l#0@@2|) |$l#5#o#0|))
 )))
 (assert (forall ((|a#80#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#AST.Expr_Raw.Seq| |a#80#0#0|) Tclass.AST.Expr__Raw) ($Is SeqType |a#80#0#0| (TSeq Tclass.AST.Expr__Raw)))
@@ -1117,7 +1117,7 @@
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@2 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#70| |l#0@@3| |l#1@@1| |l#2| |l#3|) $o@@2 $f@@0))  (=> (and (or (not (= $o@@2 |l#0@@3|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@1| $o@@2) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1595|
+ :skolemid |1592|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#70| |l#0@@3| |l#1@@1| |l#2| |l#3|) $o@@2 $f@@0))
 )))
 (assert (forall ((|#$T0@@7| T@U) (|#$R@@7| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@7| |#$R@@7|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@7| |#$R@@7|)) |tytagFamily$_#Func1|))
@@ -1373,7 +1373,7 @@
 )))
 (assert (forall ((|l#0@@4| T@U) (|$l#5#heap#0@@1| T@U) (|$l#5#e#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#3| |l#0@@4|) |$l#5#heap#0@@1| |$l#5#e#0@@1|) |l#0@@4|)
  :qid |astdfy.70:34|
- :skolemid |1593|
+ :skolemid |1590|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#3| |l#0@@4|) |$l#5#heap#0@@1| |$l#5#e#0@@1|))
 )))
 (assert (forall ((s@@11 T@U) (i@@10 Int) ) (!  (=> (and (<= 0 i@@10) (< i@@10 (|Seq#Length| s@@11))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@11 i@@10))) (|Seq#Rank| s@@11)))

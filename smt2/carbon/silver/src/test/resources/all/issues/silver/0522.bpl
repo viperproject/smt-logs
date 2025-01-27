@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:19
+// Date:         2025-01-27 03:15:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0522.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0522-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -601,8 +601,8 @@ procedure Q#definedness(x: Ref, p_1: Perm) returns ()
 procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -617,8 +617,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, -1 / 2) -- 0522.vpr@12.3--12.24
     perm := -1 / 2;
@@ -639,8 +639,8 @@ procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -662,8 +662,8 @@ procedure test2_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -678,8 +678,8 @@ procedure test2_1(x: Ref) returns ()
 procedure test3_1(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -694,8 +694,8 @@ procedure test3_1(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, p) -- 0522.vpr@21.3--21.21
     perm := p_1;
@@ -715,8 +715,8 @@ procedure test3_1(x: Ref, p_1: Perm) returns ()
 procedure test3b(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -731,8 +731,8 @@ procedure test3b(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale none <= p ==> acc(x.f, p) -- 0522.vpr@25.3--25.35
     if (NoPerm <= p_1) {
@@ -754,11 +754,11 @@ procedure test3b(x: Ref, p_1: Perm) returns ()
 procedure test4_1(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -773,8 +773,8 @@ procedure test4_1(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), write) -- 0522.vpr@29.3--29.14
     perm := FullPerm;
@@ -788,8 +788,8 @@ procedure test4_1(x: Ref, p_1: Perm) returns ()
       p_1 > NoPerm;
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := p_1;
     assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0522.vpr@33.3--33.22) [55683]"}
       perm >= NoPerm;
@@ -821,13 +821,13 @@ procedure test4_1(x: Ref, p_1: Perm) returns ()
 procedure test5_1(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -841,8 +841,8 @@ procedure test5_1(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(Q(x, p), write) -- 0522.vpr@42.3--42.17
     perm := FullPerm;
@@ -858,8 +858,8 @@ procedure test5_1(x: Ref, p_1: Perm) returns ()
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(x, p_1));
       assume UnfoldingHeap[null, Q(x, p_1)] == ConditionalFrame(p_1, FrameFragment(UnfoldingHeap[x, f_7]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access Q(x, p) (0522.vpr@44.10--44.40) [55687]"}
@@ -883,8 +883,8 @@ procedure test5_1(x: Ref, p_1: Perm) returns ()
       UnfoldingMask := Mask;
       assume Q#trigger(UnfoldingHeap, Q(x, p_1));
       assume UnfoldingHeap[null, Q(x, p_1)] == ConditionalFrame(p_1, FrameFragment(UnfoldingHeap[x, f_7]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Q(x, p_1):=UnfoldingMask[null, Q(x, p_1)] - perm];
       perm := p_1;
@@ -905,8 +905,8 @@ procedure test20(xs: (Set Ref), p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -965,8 +965,8 @@ procedure test20(xs: (Set Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -981,10 +981,10 @@ procedure test20(xs: (Set Ref), p_1: Perm) returns ()
 procedure test21(xs: (Set Ref), p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -999,16 +999,16 @@ procedure test21(xs: (Set Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0522.vpr@53.3--62.5
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1170,8 +1170,8 @@ procedure test21(xs: (Set Ref), p_1: Perm) returns ()
         // Check and assume guard
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1285,8 +1285,8 @@ procedure test21(xs: (Set Ref), p_1: Perm) returns ()
 procedure test22(xs: (Set Ref), p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -1298,8 +1298,8 @@ procedure test22(xs: (Set Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in xs) }
@@ -1360,8 +1360,8 @@ procedure test22(xs: (Set Ref), p_1: Perm) returns ()
 procedure test23(p_1: Perm, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var xs: (Set Ref);
   var QPMask: MaskType;
   
@@ -1377,8 +1377,8 @@ procedure test23(p_1: Perm, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in xs) }
@@ -1460,11 +1460,11 @@ procedure test23(p_1: Perm, y: Ref) returns ()
 procedure test23b(p_1: Perm, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var xs: (Set Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x_3: Ref;
   var QPMask: MaskType;
   
@@ -1480,8 +1480,8 @@ procedure test23b(p_1: Perm, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (y in xs) -- 0522.vpr@86.10--86.17
     assume xs[y];
@@ -1512,8 +1512,8 @@ procedure test23b(p_1: Perm, y: Ref) returns ()
   //     { (x in xs) }
   //     { permfun(x) }
   //     (x in xs) ==> none <= permfun(x)) -- 0522.vpr@91.3--91.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } { permfun(x) } (x in xs) ==> none <= permfun(x))
       if (*) {
@@ -1592,8 +1592,8 @@ procedure test23b(p_1: Perm, y: Ref) returns ()
 procedure test31() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var wildcard: real;
   
@@ -1606,8 +1606,8 @@ procedure test31() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref :: { r.f } acc(r.f, wildcard)) -- 0522.vpr@97.3--97.51
     
@@ -1660,8 +1660,8 @@ procedure test31() returns ()
 procedure test32(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
   
@@ -1677,8 +1677,8 @@ procedure test32(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(r.f, wildcard) -- 0522.vpr@101.3--101.28
     havoc wildcard;
@@ -1697,8 +1697,8 @@ procedure test32(r_1: Ref) returns ()
 procedure test40(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var perm: Perm;
   
@@ -1714,8 +1714,8 @@ procedure test40(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref ::false ==> acc(r.f, none)) -- 0522.vpr@106.3--106.51
     

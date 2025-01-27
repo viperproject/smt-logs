@@ -49,10 +49,10 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun Reachable4.__default.ReachableViaEnsures (T@U T@U T@U T@U T@U T@U T@U) Bool)
+(declare-fun Reachable4.__default.ReachableVia (T@U T@U T@U T@U T@U T@U T@U) Bool)
 (declare-fun $LS (T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
-(declare-fun |Reachable4.__default.ReachableViaEnsures#canCall| (T@U T@U T@U T@U T@U T@U) Bool)
+(declare-fun |Reachable4.__default.ReachableVia#canCall| (T@U T@U T@U T@U T@U T@U) Bool)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun refType () T@T)
 (declare-fun Tclass.Reachable4.Node () T@U)
@@ -92,14 +92,12 @@
 (declare-fun FieldOfDecl (T@U T@U) T@U)
 (declare-fun $IsGhostField (T@U) Bool)
 (declare-fun Reachable4.Path.Extend_q (T@U) Bool)
-(declare-fun |Reachable4.Path#Equal| (T@U T@U) Bool)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $IsBox (T@U T@U) Bool)
-(declare-fun $OlderTag (T@U) Bool)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
+(declare-fun $OlderTag (T@U) Bool)
 (declare-fun |Seq#Index| (T@U Int) T@U)
 (declare-fun TSeq (T@U) T@U)
-(declare-fun |Set#Equal| (T@U T@U) Bool)
 (declare-fun DeclType (T@U) T@U)
 (declare-fun Tclass.Reachable4.Path_0 (T@U) T@U)
 (declare-fun Tclass.Reachable4.Path_1 (T@U) T@U)
@@ -148,14 +146,14 @@
  :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Reachable4._default.ReachableViaEnsures$Extra T@U) ($ly T@U) ($Heap T@U) (|source#0| T@U) (|p#0| T@U) (|sink#0| T@U) (|S#0| T@U) ) (!  (=> (or (|Reachable4.__default.ReachableViaEnsures#canCall| Reachable4._default.ReachableViaEnsures$Extra $Heap |source#0| |p#0| |sink#0| |S#0|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($IsGoodHeap $Heap) ($Is refType |source#0| Tclass.Reachable4.Node)) ($Is DatatypeTypeType |p#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra))) ($Is refType |sink#0| Tclass.Reachable4.Node)) ($Is SetType |S#0| (TSet Tclass.Reachable4.Node))))) (and (=> (not (Reachable4.Path.Empty_q |p#0|)) (let ((|n#1| ($Unbox refType (Reachable4.Path._h11 |p#0|))))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Reachable4._default.ReachableVia$Extra T@U) ($ly T@U) ($Heap T@U) (|source#0| T@U) (|p#0| T@U) (|sink#0| T@U) (|S#0| T@U) ) (!  (=> (or (|Reachable4.__default.ReachableVia#canCall| Reachable4._default.ReachableVia$Extra $Heap |source#0| |p#0| |sink#0| |S#0|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($IsGoodHeap $Heap) ($Is refType |source#0| Tclass.Reachable4.Node)) ($Is DatatypeTypeType |p#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra))) ($Is refType |sink#0| Tclass.Reachable4.Node)) ($Is SetType |S#0| (TSet Tclass.Reachable4.Node))))) (and (=> (not (Reachable4.Path.Empty_q |p#0|)) (let ((|n#1| ($Unbox refType (Reachable4.Path._h11 |p#0|))))
 (let ((|prefix#1| (Reachable4.Path._h10 |p#0|)))
- (=> (|Set#IsMember| |S#0| ($Box refType |n#1|)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#1|) Reachable4.Node.children)) ($Box refType |sink#0|)) (|Reachable4.__default.ReachableViaEnsures#canCall| Reachable4._default.ReachableViaEnsures$Extra $Heap |source#0| |prefix#1| |n#1| |S#0|)))))) (= (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra ($LS $ly) $Heap |source#0| |p#0| |sink#0| |S#0|) (ite (Reachable4.Path.Empty_q |p#0|) false (let ((|n#0| ($Unbox refType (Reachable4.Path._h11 |p#0|))))
+ (=> (|Set#IsMember| |S#0| ($Box refType |n#1|)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#1|) Reachable4.Node.children)) ($Box refType |sink#0|)) (|Reachable4.__default.ReachableVia#canCall| Reachable4._default.ReachableVia$Extra $Heap |source#0| |prefix#1| |n#1| |S#0|)))))) (= (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra ($LS $ly) $Heap |source#0| |p#0| |sink#0| |S#0|) (ite (Reachable4.Path.Empty_q |p#0|) false (let ((|n#0| ($Unbox refType (Reachable4.Path._h11 |p#0|))))
 (let ((|prefix#0| (Reachable4.Path._h10 |p#0|)))
- (and (and (|Set#IsMember| |S#0| ($Box refType |n#0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) Reachable4.Node.children)) ($Box refType |sink#0|))) (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra $ly $Heap |source#0| |prefix#0| |n#0| |S#0|))))))))
+ (and (and (|Set#IsMember| |S#0| ($Box refType |n#0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) Reachable4.Node.children)) ($Box refType |sink#0|))) (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra $ly $Heap |source#0| |prefix#0| |n#0| |S#0|))))))))
  :qid |unknown.0:0|
- :skolemid |3756|
- :pattern ( (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra ($LS $ly) $Heap |source#0| |p#0| |sink#0| |S#0|) ($IsGoodHeap $Heap))
+ :skolemid |3746|
+ :pattern ( (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra ($LS $ly) $Heap |source#0| |p#0| |sink#0| |S#0|) ($IsGoodHeap $Heap))
 ))))
 (assert (= (FDim alloc) 0))
 (assert (= (Tag TBool) TagBool))
@@ -221,11 +219,6 @@
  :skolemid |3776|
  :pattern ( ($IsAlloc DatatypeTypeType (Reachable4.Path._h10 d) (Tclass.Reachable4.Path Reachable4.Path$T@@1 Reachable4.Path$Extra@@1) $h@@2))
 )))
-(assert (forall ((a T@U) (b T@U) ) (! (= (|Reachable4.Path#Equal| a b) (= a b))
- :qid |unknown.0:0|
- :skolemid |3792|
- :pattern ( (|Reachable4.Path#Equal| a b))
-)))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
  :qid |DafnyPreludebpl.102:29|
  :skolemid |3039|
@@ -254,16 +247,10 @@
  :skolemid |3773|
  :pattern ( (Reachable4.Path.Extend_q d@@2))
 )))
-(assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (Reachable4.Path.Extend_q a@@0) (Reachable4.Path.Extend_q b@@0)) (= (|Reachable4.Path#Equal| a@@0 b@@0)  (and (and (|Reachable4.Path#Equal| (Reachable4.Path._h10 a@@0) (Reachable4.Path._h10 b@@0)) (= (Reachable4.Path._h11 a@@0) (Reachable4.Path._h11 b@@0))) (= (Reachable4.Path._h12 a@@0) (Reachable4.Path._h12 b@@0)))))
+(assert (forall ((Reachable4._default.ReachableVia$Extra@@0 T@U) ($ly@@0 T@U) ($Heap@@0 T@U) (|source#0@@0| T@U) (|p#0@@0| T@U) (|sink#0@@0| T@U) (|S#0@@0| T@U) ) (! (= (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@0 ($LS $ly@@0) $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|) (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@0 $ly@@0 $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|))
  :qid |unknown.0:0|
- :skolemid |3791|
- :pattern ( (|Reachable4.Path#Equal| a@@0 b@@0) (Reachable4.Path.Extend_q a@@0))
- :pattern ( (|Reachable4.Path#Equal| a@@0 b@@0) (Reachable4.Path.Extend_q b@@0))
-)))
-(assert (forall ((Reachable4._default.ReachableViaEnsures$Extra@@0 T@U) ($ly@@0 T@U) ($Heap@@0 T@U) (|source#0@@0| T@U) (|p#0@@0| T@U) (|sink#0@@0| T@U) (|S#0@@0| T@U) ) (! (= (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@0 ($LS $ly@@0) $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|) (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@0 $ly@@0 $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|))
- :qid |unknown.0:0|
- :skolemid |3749|
- :pattern ( (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@0 ($LS $ly@@0) $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|))
+ :skolemid |3739|
+ :pattern ( (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@0 ($LS $ly@@0) $Heap@@0 |source#0@@0| |p#0@@0| |sink#0@@0| |S#0@@0|))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (Reachable4.Path.Empty_q d@@3) (= d@@3 |#Reachable4.Path.Empty|))
  :qid |unknown.0:0|
@@ -279,21 +266,21 @@
  :skolemid |3071|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Reachable4._default.ReachableViaEnsures$Extra@@1 T@U) ($ly@@1 T@U) ($Heap@@1 T@U) (|source#0@@1| T@U) (|p#0@@1| T@U) (|sink#0@@1| T@U) (|S#0@@1| T@U) ) (!  (=> (or (|Reachable4.__default.ReachableViaEnsures#canCall| Reachable4._default.ReachableViaEnsures$Extra@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($IsGoodHeap $Heap@@1) (and ($Is refType |source#0@@1| Tclass.Reachable4.Node) ($IsAlloc refType |source#0@@1| Tclass.Reachable4.Node $Heap@@1))) (and ($Is DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@1)) ($IsAlloc DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@1) $Heap@@1))) (and ($Is refType |sink#0@@1| Tclass.Reachable4.Node) ($IsAlloc refType |sink#0@@1| Tclass.Reachable4.Node $Heap@@1))) (and ($Is SetType |S#0@@1| (TSet Tclass.Reachable4.Node)) ($IsAlloc SetType |S#0@@1| (TSet Tclass.Reachable4.Node) $Heap@@1))))) (and (not (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@1 $ly@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|)) (forall (($olderHeap T@U) ) (!  (=> (and (and ($IsGoodHeap $olderHeap) ($OlderTag $olderHeap)) (and (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@1 $ly@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|) (and (and ($IsAlloc refType |source#0@@1| Tclass.Reachable4.Node $olderHeap) ($IsAlloc refType |sink#0@@1| Tclass.Reachable4.Node $olderHeap)) ($IsAlloc SetType |S#0@@1| (TSet Tclass.Reachable4.Node) $olderHeap)))) ($IsAlloc DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@1) $olderHeap))
- :qid |DafnyPreludebpl.593:12|
- :skolemid |3753|
- :pattern ( ($OlderTag $olderHeap))
-))))
- :qid |unknown.0:0|
- :skolemid |3754|
- :pattern ( (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@1 $ly@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|))
-))))
 (assert ($IsGhostField alloc))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
  :qid |DafnyPreludebpl.217:18|
  :skolemid |3063|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Reachable4._default.ReachableVia$Extra@@1 T@U) ($ly@@1 T@U) ($Heap@@1 T@U) (|source#0@@1| T@U) (|p#0@@1| T@U) (|sink#0@@1| T@U) (|S#0@@1| T@U) ) (!  (=> (or (|Reachable4.__default.ReachableVia#canCall| Reachable4._default.ReachableVia$Extra@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($IsGoodHeap $Heap@@1) (and ($Is refType |source#0@@1| Tclass.Reachable4.Node) ($IsAlloc refType |source#0@@1| Tclass.Reachable4.Node $Heap@@1))) (and ($Is DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@1)) ($IsAlloc DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@1) $Heap@@1))) (and ($Is refType |sink#0@@1| Tclass.Reachable4.Node) ($IsAlloc refType |sink#0@@1| Tclass.Reachable4.Node $Heap@@1))) (and ($Is SetType |S#0@@1| (TSet Tclass.Reachable4.Node)) ($IsAlloc SetType |S#0@@1| (TSet Tclass.Reachable4.Node) $Heap@@1))))) (forall (($olderHeap T@U) ) (!  (=> (and (and ($IsGoodHeap $olderHeap) ($OlderTag $olderHeap)) (and (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@1 $ly@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|) (and (and ($IsAlloc refType |source#0@@1| Tclass.Reachable4.Node $olderHeap) ($IsAlloc refType |sink#0@@1| Tclass.Reachable4.Node $olderHeap)) ($IsAlloc SetType |S#0@@1| (TSet Tclass.Reachable4.Node) $olderHeap)))) ($IsAlloc DatatypeTypeType |p#0@@1| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@1) $olderHeap))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3743|
+ :pattern ( ($OlderTag $olderHeap))
+)))
+ :qid |unknown.0:0|
+ :skolemid |3744|
+ :pattern ( (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@1 $ly@@1 $Heap@@1 |source#0@@1| |p#0@@1| |sink#0@@1| |S#0@@1|))
+))))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass.Reachable4.Node) (and (= ($Box refType ($Unbox refType bx@@0)) bx@@0) ($Is refType ($Unbox refType bx@@0) Tclass.Reachable4.Node)))
  :qid |unknown.0:0|
  :skolemid |3724|
@@ -340,11 +327,6 @@
  :pattern ( (Reachable4.Path.Extend_q d@@4) ($Is DatatypeTypeType d@@4 (Tclass.Reachable4.Path Reachable4.Path$T@@3 Reachable4.Path$Extra@@3)))
  :pattern ( (Reachable4.Path.Empty_q d@@4) ($Is DatatypeTypeType d@@4 (Tclass.Reachable4.Path Reachable4.Path$T@@3 Reachable4.Path$Extra@@3)))
 )))
-(assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (|Set#Equal| a@@1 b@@1) (= a@@1 b@@1))
- :qid |DafnyPreludebpl.787:15|
- :skolemid |3174|
- :pattern ( (|Set#Equal| a@@1 b@@1))
-)))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
  :qid |DafnyPreludebpl.534:15|
  :skolemid |3131|
@@ -364,12 +346,6 @@
  :qid |DafnyPreludebpl.1124:15|
  :skolemid |3245|
  :pattern ( (|Seq#Length| s@@0))
-)))
-(assert (forall ((a@@2 T@U) (b@@2 T@U) ) (!  (=> (and (Reachable4.Path.Empty_q a@@2) (Reachable4.Path.Empty_q b@@2)) (|Reachable4.Path#Equal| a@@2 b@@2))
- :qid |unknown.0:0|
- :skolemid |3790|
- :pattern ( (|Reachable4.Path#Equal| a@@2 b@@2) (Reachable4.Path.Empty_q a@@2))
- :pattern ( (|Reachable4.Path#Equal| a@@2 b@@2) (Reachable4.Path.Empty_q b@@2))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@3 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@3) ($IsAllocBox bx@@3 t0@@1 h@@0))
  :qid |DafnyPreludebpl.299:11|
@@ -479,16 +455,6 @@
 (assert (= (Tag Tclass.Reachable4.Node?) Tagclass.Reachable4.Node?))
 (assert (= (TagFamily Tclass.Reachable4.Node?) tytagFamily$Node))
 (assert (= |#Reachable4.Path.Empty| (Lit DatatypeTypeType |#Reachable4.Path.Empty|)))
-(assert (forall ((a@@3 T@U) (b@@3 T@U) ) (! (= (|Set#Equal| a@@3 b@@3) (forall ((o T@U) ) (! (= (|Set#IsMember| a@@3 o) (|Set#IsMember| b@@3 o))
- :qid |DafnyPreludebpl.783:19|
- :skolemid |3172|
- :pattern ( (|Set#IsMember| a@@3 o))
- :pattern ( (|Set#IsMember| b@@3 o))
-)))
- :qid |DafnyPreludebpl.780:15|
- :skolemid |3173|
- :pattern ( (|Set#Equal| a@@3 b@@3))
-)))
 (assert (forall ((d@@6 T@U) (Reachable4.Path$T@@9 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (Reachable4.Path.Extend_q d@@6) (exists ((Reachable4.Path$Extra@@9 T@U) ) (! ($IsAlloc DatatypeTypeType d@@6 (Tclass.Reachable4.Path Reachable4.Path$T@@9 Reachable4.Path$Extra@@9) $h@@6)
  :qid |unknown.0:0|
  :skolemid |3777|
@@ -529,7 +495,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) (|Set#IsMember| |l#3| ($Box refType $o@@3))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |8037|
+ :skolemid |8039|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))
 )))
 (assert (forall ((h@@2 T@U) (v@@4 T@U) ) (! ($IsAlloc boolType v@@4 TBool h@@2)
@@ -558,7 +524,7 @@
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
-(declare-fun Reachable4._default.ReachableViaEnsures$Extra@@2 () T@U)
+(declare-fun Reachable4._default.ReachableVia$Extra@@2 () T@U)
 (declare-fun $LZ () T@U)
 (declare-fun $Heap@@2 () T@U)
 (declare-fun |source#0@@2| () T@U)
@@ -580,7 +546,7 @@
 (declare-fun |let#1#0#0| () T@U)
 (declare-fun |let#2#0#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(set-info :boogie-vc-id CheckWellformed$$Reachable4.__default.ReachableViaEnsures)
+(set-info :boogie-vc-id CheckWellformed$$Reachable4.__default.ReachableVia)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -596,32 +562,36 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 22) (let ((GeneratedUnifiedExit_correct  (and (=> (= (ControlFlow 0 5) (- 0 6)) (not (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS ($LS $LZ)) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|))) (=> (not (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS ($LS $LZ)) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)) (=> (= (ControlFlow 0 5) (- 0 4)) (forall (($olderHeap@@0 T@U) ) (!  (=> (and (and ($IsGoodHeap $olderHeap@@0) ($OlderTag $olderHeap@@0)) (and (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|) (and (and ($IsAlloc refType |source#0@@2| Tclass.Reachable4.Node $olderHeap@@0) ($IsAlloc refType |sink#0@@2| Tclass.Reachable4.Node $olderHeap@@0)) ($IsAlloc SetType |S#0@@2| (TSet Tclass.Reachable4.Node) $olderHeap@@0)))) ($IsAlloc DatatypeTypeType |p#0@@2| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2) $olderHeap@@0))
+ (=> (= (ControlFlow 0 0) 20) (let ((GeneratedUnifiedExit_correct  (=> (= (ControlFlow 0 4) (- 0 3)) (forall (($olderHeap@@0 T@U) ) (!  (=> (and (and ($IsGoodHeap $olderHeap@@0) ($OlderTag $olderHeap@@0)) (and (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|) (and (and ($IsAlloc refType |source#0@@2| Tclass.Reachable4.Node $olderHeap@@0) ($IsAlloc refType |sink#0@@2| Tclass.Reachable4.Node $olderHeap@@0)) ($IsAlloc SetType |S#0@@2| (TSet Tclass.Reachable4.Node) $olderHeap@@0)))) ($IsAlloc DatatypeTypeType |p#0@@2| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@2) $olderHeap@@0))
  :qid |DafnyPreludebpl.593:12|
- :skolemid |3757|
+ :skolemid |3747|
  :pattern ( ($OlderTag $olderHeap@@0))
-)))))))
-(let ((anon9_correct  (=> (= (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)  (and (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|))) (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|))) (=> (and (=> (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|)) (|Reachable4.__default.ReachableViaEnsures#canCall| Reachable4._default.ReachableViaEnsures$Extra@@2 $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|))) ($Is boolType (bool_2_U (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)) TBool)) (and (=> (= (ControlFlow 0 10) (- 0 12)) |b$reqreads#0@1|) (=> |b$reqreads#0@1| (and (=> (= (ControlFlow 0 10) (- 0 11)) |b$reqreads#1@1|) (=> |b$reqreads#1@1| (=> (= (ControlFlow 0 10) 5) GeneratedUnifiedExit_correct)))))))))
-(let ((anon16_Else_correct  (=> (not (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|)))) (=> (and (= |b$reqreads#1@1| true) (= (ControlFlow 0 15) 10)) anon9_correct))))
-(let ((anon16_Then_correct  (=> (and (and (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|))) ($IsAlloc refType |source#0@@2| Tclass.Reachable4.Node $Heap@@2)) (and (and ($IsAlloc DatatypeTypeType |prefix#Z#0@0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2) $Heap@@2) ($IsAlloc refType |n#Z#0@0| Tclass.Reachable4.Node $Heap@@2)) (and ($IsAlloc SetType |S#0@@2| (TSet Tclass.Reachable4.Node) $Heap@@2) (= |b$reqreads#1@0| (forall (($o@@4 T@U) ($f@@0 T@U) ) (!  (=> (and (and (or (not (= $o@@4 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 $o@@4) alloc)))) (|Set#IsMember| |S#0@@2| ($Box refType $o@@4))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@4 $f@@0)))
- :qid |OlderVerificationdfy.184:70|
- :skolemid |3758|
-)))))) (and (=> (= (ControlFlow 0 13) (- 0 14)) (< (DtRank |prefix#Z#0@0|) (DtRank |p#0@@2|))) (=> (< (DtRank |prefix#Z#0@0|) (DtRank |p#0@@2|)) (=> (|Reachable4.__default.ReachableViaEnsures#canCall| Reachable4._default.ReachableViaEnsures$Extra@@2 $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|) (=> (and (= |b$reqreads#1@1| |b$reqreads#1@0|) (= (ControlFlow 0 13) 10)) anon9_correct)))))))
-(let ((anon15_Else_correct  (=> (and (not (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|))) (= |b$reqreads#0@1| true)) (and (=> (= (ControlFlow 0 18) 13) anon16_Then_correct) (=> (= (ControlFlow 0 18) 15) anon16_Else_correct)))))
-(let ((anon15_Then_correct  (=> (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (and (=> (= (ControlFlow 0 16) (- 0 17)) (or (not (= |n#Z#0@0| null)) (not true))) (=> (or (not (= |n#Z#0@0| null)) (not true)) (=> (and (= |b$reqreads#0@0| (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 |n#Z#0@0| Reachable4.Node.children))) (= |b$reqreads#0@1| |b$reqreads#0@0|)) (and (=> (= (ControlFlow 0 16) 13) anon16_Then_correct) (=> (= (ControlFlow 0 16) 15) anon16_Else_correct))))))))
-(let ((anon14_Then_correct  (=> (= |p#0@@2| (|#Reachable4.Path.Extend| |_mcc#0#0| ($Box refType |_mcc#1#0|) |_mcc#2#0|)) (=> (and (and ($Is DatatypeTypeType |_mcc#0#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2)) ($Is refType |_mcc#1#0| Tclass.Reachable4.Node)) (and ($IsBox |_mcc#2#0| Reachable4._default.ReachableViaEnsures$Extra@@2) (= |let#0#0#0| |_mcc#2#0|))) (=> (and (and (and ($IsBox |let#0#0#0| Reachable4._default.ReachableViaEnsures$Extra@@2) (= |extra#Z#0@0| |let#0#0#0|)) (and (= |let#1#0#0| |_mcc#1#0|) ($Is refType |let#1#0#0| Tclass.Reachable4.Node))) (and (and (= |n#Z#0@0| |let#1#0#0|) (= |let#2#0#0| |_mcc#0#0|)) (and ($Is DatatypeTypeType |let#2#0#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2)) (= |prefix#Z#0@0| |let#2#0#0|)))) (and (=> (= (ControlFlow 0 19) 16) anon15_Then_correct) (=> (= (ControlFlow 0 19) 18) anon15_Else_correct)))))))
-(let ((anon13_Then_correct  (=> (= |p#0@@2| |#Reachable4.Path.Empty|) (=> (and (= (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|) (U_2_bool (Lit boolType (bool_2_U false)))) ($Is boolType (bool_2_U (Reachable4.__default.ReachableViaEnsures Reachable4._default.ReachableViaEnsures$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)) TBool)) (and (=> (= (ControlFlow 0 7) (- 0 9)) true) (and (=> (= (ControlFlow 0 7) (- 0 8)) true) (=> (= (ControlFlow 0 7) 5) GeneratedUnifiedExit_correct)))))))
+)))))
+(let ((anon9_correct  (=> (= (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)  (and (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|))) (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|))) (=> (and (=> (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|)) (|Reachable4.__default.ReachableVia#canCall| Reachable4._default.ReachableVia$Extra@@2 $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|))) ($Is boolType (bool_2_U (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)) TBool)) (and (=> (= (ControlFlow 0 8) (- 0 10)) |b$reqreads#0@1|) (=> |b$reqreads#0@1| (and (=> (= (ControlFlow 0 8) (- 0 9)) |b$reqreads#1@1|) (=> |b$reqreads#1@1| (=> (= (ControlFlow 0 8) 4) GeneratedUnifiedExit_correct)))))))))
+(let ((anon16_Else_correct  (=> (not (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|)))) (=> (and (= |b$reqreads#1@1| true) (= (ControlFlow 0 13) 8)) anon9_correct))))
+(let ((anon16_Then_correct  (=> (and (and (and (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#Z#0@0|) Reachable4.Node.children)) ($Box refType |sink#0@@2|))) ($IsAlloc refType |source#0@@2| Tclass.Reachable4.Node $Heap@@2)) (and (and ($IsAlloc DatatypeTypeType |prefix#Z#0@0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@2) $Heap@@2) ($IsAlloc refType |n#Z#0@0| Tclass.Reachable4.Node $Heap@@2)) (and ($IsAlloc SetType |S#0@@2| (TSet Tclass.Reachable4.Node) $Heap@@2) (= |b$reqreads#1@0| (forall (($o@@4 T@U) ($f@@0 T@U) ) (!  (=> (and (and (or (not (= $o@@4 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 $o@@4) alloc)))) (|Set#IsMember| |S#0@@2| ($Box refType $o@@4))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@4 $f@@0)))
+ :qid |OlderVerificationdfy.174:70|
+ :skolemid |3748|
+)))))) (and (=> (= (ControlFlow 0 11) (- 0 12)) (< (DtRank |prefix#Z#0@0|) (DtRank |p#0@@2|))) (=> (< (DtRank |prefix#Z#0@0|) (DtRank |p#0@@2|)) (=> (|Reachable4.__default.ReachableVia#canCall| Reachable4._default.ReachableVia$Extra@@2 $Heap@@2 |source#0@@2| |prefix#Z#0@0| |n#Z#0@0| |S#0@@2|) (=> (and (= |b$reqreads#1@1| |b$reqreads#1@0|) (= (ControlFlow 0 11) 8)) anon9_correct)))))))
+(let ((anon15_Else_correct  (=> (and (not (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|))) (= |b$reqreads#0@1| true)) (and (=> (= (ControlFlow 0 16) 11) anon16_Then_correct) (=> (= (ControlFlow 0 16) 13) anon16_Else_correct)))))
+(let ((anon15_Then_correct  (=> (|Set#IsMember| |S#0@@2| ($Box refType |n#Z#0@0|)) (and (=> (= (ControlFlow 0 14) (- 0 15)) (or (not (= |n#Z#0@0| null)) (not true))) (=> (or (not (= |n#Z#0@0| null)) (not true)) (=> (and (= |b$reqreads#0@0| (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 |n#Z#0@0| Reachable4.Node.children))) (= |b$reqreads#0@1| |b$reqreads#0@0|)) (and (=> (= (ControlFlow 0 14) 11) anon16_Then_correct) (=> (= (ControlFlow 0 14) 13) anon16_Else_correct))))))))
+(let ((anon14_Then_correct  (=> (= |p#0@@2| (|#Reachable4.Path.Extend| |_mcc#0#0| ($Box refType |_mcc#1#0|) |_mcc#2#0|)) (=> (and (and ($Is DatatypeTypeType |_mcc#0#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@2)) ($Is refType |_mcc#1#0| Tclass.Reachable4.Node)) (and ($IsBox |_mcc#2#0| Reachable4._default.ReachableVia$Extra@@2) (= |let#0#0#0| |_mcc#2#0|))) (=> (and (and (and ($IsBox |let#0#0#0| Reachable4._default.ReachableVia$Extra@@2) (= |extra#Z#0@0| |let#0#0#0|)) (and (= |let#1#0#0| |_mcc#1#0|) ($Is refType |let#1#0#0| Tclass.Reachable4.Node))) (and (and (= |n#Z#0@0| |let#1#0#0|) (= |let#2#0#0| |_mcc#0#0|)) (and ($Is DatatypeTypeType |let#2#0#0| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@2)) (= |prefix#Z#0@0| |let#2#0#0|)))) (and (=> (= (ControlFlow 0 17) 14) anon15_Then_correct) (=> (= (ControlFlow 0 17) 16) anon15_Else_correct)))))))
+(let ((anon13_Then_correct  (=> (= |p#0@@2| |#Reachable4.Path.Empty|) (=> (and (= (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|) (U_2_bool (Lit boolType (bool_2_U false)))) ($Is boolType (bool_2_U (Reachable4.__default.ReachableVia Reachable4._default.ReachableVia$Extra@@2 ($LS $LZ) $Heap@@2 |source#0@@2| |p#0@@2| |sink#0@@2| |S#0@@2|)) TBool)) (and (=> (= (ControlFlow 0 5) (- 0 7)) true) (and (=> (= (ControlFlow 0 5) (- 0 6)) true) (=> (= (ControlFlow 0 5) 4) GeneratedUnifiedExit_correct)))))))
 (let ((anon14_Else_correct true))
-(let ((anon13_Else_correct  (=> (or (not (= |p#0@@2| |#Reachable4.Path.Empty|)) (not true)) (and (=> (= (ControlFlow 0 20) 19) anon14_Then_correct) (=> (= (ControlFlow 0 20) 3) anon14_Else_correct)))))
-(let ((anon12_Then_correct  (=> ($IsAlloc refType |source#0@@2| Tclass.Reachable4.Node $Heap@@2) (=> (and (and ($IsAlloc DatatypeTypeType |p#0@@2| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2) $Heap@@2) ($IsAlloc refType |sink#0@@2| Tclass.Reachable4.Node $Heap@@2)) (and ($IsAlloc SetType |S#0@@2| (TSet Tclass.Reachable4.Node) $Heap@@2) (= (ControlFlow 0 2) (- 0 1)))) (or (and (and (and (= |source#0@@2| |source#0@@2|) (|Reachable4.Path#Equal| |p#0@@2| |p#0@@2|)) (= |sink#0@@2| |sink#0@@2|)) (|Set#Equal| |S#0@@2| |S#0@@2|)) (< (DtRank |p#0@@2|) (DtRank |p#0@@2|)))))))
-(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap@@2 alloc |S#0@@2|)) (and (and (=> (= (ControlFlow 0 21) 2) anon12_Then_correct) (=> (= (ControlFlow 0 21) 7) anon13_Then_correct)) (=> (= (ControlFlow 0 21) 20) anon13_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap@@2) ($IsHeapAnchor $Heap@@2)) (and ($Is refType |source#0@@2| Tclass.Reachable4.Node) ($Is DatatypeTypeType |p#0@@2| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableViaEnsures$Extra@@2)))) (and (and ($Is refType |sink#0@@2| Tclass.Reachable4.Node) ($Is SetType |S#0@@2| (TSet Tclass.Reachable4.Node))) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 22) 21)))) anon0_correct)))
+(let ((anon13_Else_correct  (=> (or (not (= |p#0@@2| |#Reachable4.Path.Empty|)) (not true)) (and (=> (= (ControlFlow 0 18) 17) anon14_Then_correct) (=> (= (ControlFlow 0 18) 2) anon14_Else_correct)))))
+(let ((anon12_Then_correct true))
+(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap@@2 alloc |S#0@@2|)) (and (and (=> (= (ControlFlow 0 19) 1) anon12_Then_correct) (=> (= (ControlFlow 0 19) 5) anon13_Then_correct)) (=> (= (ControlFlow 0 19) 18) anon13_Else_correct)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap@@2) ($IsHeapAnchor $Heap@@2)) (and ($Is refType |source#0@@2| Tclass.Reachable4.Node) ($Is DatatypeTypeType |p#0@@2| (Tclass.Reachable4.Path Tclass.Reachable4.Node Reachable4._default.ReachableVia$Extra@@2)))) (and (and ($Is refType |sink#0@@2| Tclass.Reachable4.Node) ($Is SetType |S#0@@2| (TSet Tclass.Reachable4.Node))) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 20) 19)))) anon0_correct)))
 PreconditionGeneratedEntry_correct))))))))))))))
 ))
 (check-sat)
+(get-info :reason-unknown)
+(get-info :rlimit)
+(assert (not (= (ControlFlow 0 4) (- 3))))
+(check-sat)
 (get-info :rlimit)
 (pop 1)
-; Valid
+; Invalid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

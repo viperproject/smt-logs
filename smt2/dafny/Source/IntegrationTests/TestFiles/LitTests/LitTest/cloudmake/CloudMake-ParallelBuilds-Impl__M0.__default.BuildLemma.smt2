@@ -2188,7 +2188,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7203|
+ :skolemid |7201|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@9 T@U) ($ly@@16 T@U) (|expr#0@@6| T@U) (|st#0@@29| T@U) (|env#0@@17| T@U) ) (!  (=> (and (or (|M0.__default.eval#canCall| |expr#0@@6| |st#0@@29| |env#0@@17|) (and (< 4 $FunctionContextHeight) (and (and (and (and ($Is DatatypeTypeType |expr#0@@6| Tclass.M0.Expression) ($IsAlloc DatatypeTypeType |expr#0@@6| Tclass.M0.Expression $Heap@@9)) (and ($IsBox |st#0@@29| Tclass.M0.State) ($IsAllocBox |st#0@@29| Tclass.M0.State $Heap@@9))) (and ($IsBox |env#0@@17| Tclass.M0.Env) ($IsAllocBox |env#0@@17| Tclass.M0.Env $Heap@@9))) (M0.__default.ValidEnv |env#0@@17|)))) ($IsGoodHeap $Heap@@9)) ($IsAlloc DatatypeTypeType (M0.__default.eval $ly@@16 |expr#0@@6| |st#0@@29| |env#0@@17|) (Tclass.M0.Tuple Tclass.M0.Expression Tclass.M0.State) $Heap@@9))

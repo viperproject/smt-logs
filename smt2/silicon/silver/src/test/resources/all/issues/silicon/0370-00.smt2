@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:05:30
+; Started: 2025-01-27 02:58:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -936,11 +936,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   (= (getVCTOption1%limited s@$ x@0@00) (getVCTOption1 s@$ x@0@00))
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9753|)))
+  :qid |quant-u-9747|)))
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   (getVCTOption1%stateless x@0@00)
   :pattern ((getVCTOption1%limited s@$ x@0@00))
-  :qid |quant-u-9754|)))
+  :qid |quant-u-9748|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -957,8 +957,8 @@
     (getVCTOption1%precondition s@$ x@0@00)
     (= (getVCTOption1 s@$ x@0@00) (getVCTOption<Seq<Ref>> x@0@00)))
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9755|)))
+  :qid |quant-u-9749|)))
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   true
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9756|)))
+  :qid |quant-u-9750|)))

@@ -37,6 +37,7 @@
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun |char#FromInt| (Int) T@U)
 (declare-fun |char#ToInt| (T@U) Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -50,7 +51,6 @@
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
-(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -84,6 +84,11 @@
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
+)))
+(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |358|
+ :pattern ( (nat_from_bv32 b))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
@@ -121,7 +126,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2112|
+ :skolemid |2113|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))
@@ -138,11 +143,6 @@
  :qid |DafnyPreludebpl.103:18|
  :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
-)))
-(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |358|
- :pattern ( (nat_from_bv32 b))
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)

@@ -202,7 +202,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#13| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |UnionFinddfy.43:9|
- :skolemid |4525|
+ :skolemid |4522|
  :pattern ( (MapType0Select BoxType boolType (|lambda#13| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a b t)) a)
@@ -398,7 +398,7 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|$w#1| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#18| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#1|) ($Box refType (ite  (or (= ($Unbox refType (MapType0Select BoxType BoxType |l#0@@0| |$w#1|)) |l#1@@0|) (= ($Unbox refType (MapType0Select BoxType BoxType |l#2| |$w#1|)) |l#3|)) |l#4| ($Unbox refType (MapType0Select BoxType BoxType |l#5| |$w#1|)))))
  :qid |UnionFinddfy.34:51|
- :skolemid |4527|
+ :skolemid |4524|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#18| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#1|))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> (M2.Contents.Root_q d@@4) (exists ((|a#1#0#0@@0| Int) ) (! (= d@@4 (|#M2.Contents.Root| |a#1#0#0@@0|))
@@ -603,7 +603,7 @@
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#14| |l#0@@1| |l#1@@1|) |$w#0@@0|) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#0@@1| ($Unbox refType |$w#0@@0|)) |l#1@@1|))
  :qid |UnionFinddfy.63:43|
- :skolemid |4526|
+ :skolemid |4523|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#14| |l#0@@1| |l#1@@1|) |$w#0@@0|))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
@@ -948,7 +948,7 @@
 )))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@2| T@U) (|l#2@@0| T@U) (|l#3@@0| T@U) ($o@@14 T@U) ($f@@2 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#1| |l#0@@2| |l#1@@2| |l#2@@0| |l#3@@0|) $o@@14 $f@@2))  (=> (and (or (not (= $o@@14 |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@2| $o@@14) |l#2@@0|)))) (|Set#IsMember| |l#3@@0| ($Box refType $o@@14))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4524|
+ :skolemid |4521|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#1| |l#0@@2| |l#1@@2| |l#2@@0| |l#3@@0|) $o@@14 $f@@2))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($ly@@2 T@U) (this@@11 T@U) (|d#0@@2| Int) (|e#0@@4| T@U) (|r#0@@2| T@U) (|C#0@@4| T@U) ) (!  (=> (or (|M2.UnionFind.Reaches#canCall| this@@11 (LitInt |d#0@@2|) (Lit refType |e#0@@4|) (Lit refType |r#0@@2|) (Lit MapType |C#0@@4|)) (and (< 4 $FunctionContextHeight) (and (and (and (and (and (and (or (not (= this@@11 null)) (not true)) ($Is refType this@@11 Tclass.M2.UnionFind)) (<= (LitInt 0) |d#0@@2|)) ($Is refType |e#0@@4| Tclass.M2.Element)) ($Is refType |r#0@@2| Tclass.M2.Element)) ($Is MapType |C#0@@4| (TMap Tclass.M2.Element Tclass.M2.Contents))) (and (U_2_bool (Lit boolType (bool_2_U (M2.__default.GoodCMap (Lit MapType |C#0@@4|))))) (|Set#IsMember| (|Map#Domain| |C#0@@4|) ($Box refType |e#0@@4|)))))) (and (=> (not (M2.Contents.Root_q ($Unbox DatatypeTypeType (MapType0Select BoxType BoxType (|Map#Elements| (Lit MapType |C#0@@4|)) ($Box refType (Lit refType |e#0@@4|)))))) (let ((|next#3| (M2.Contents.next ($Unbox DatatypeTypeType (MapType0Select BoxType BoxType (|Map#Elements| (Lit MapType |C#0@@4|)) ($Box refType (Lit refType |e#0@@4|)))))))

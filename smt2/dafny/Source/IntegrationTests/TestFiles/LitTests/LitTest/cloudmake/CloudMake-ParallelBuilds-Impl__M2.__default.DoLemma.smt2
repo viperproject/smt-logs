@@ -624,7 +624,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#19| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |CloudMakeParallelBuildsdfy.153:8|
- :skolemid |7208|
+ :skolemid |7215|
  :pattern ( (MapType0Select BoxType boolType (|lambda#19| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a@@5 T@U) (b@@2 T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a@@5 b@@2 t)) a@@5)
@@ -689,7 +689,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|$w#0@@0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2|) |$w#0@@0|))  (and ($IsBox |$w#0@@0| |l#0@@0|) (and (|Set#IsMember| |l#1@@0| |$w#0@@0|) (|Set#IsMember| |l#2| |$w#0@@0|))))
  :qid |CloudMakeParallelBuildsdfy.153:8|
- :skolemid |7204|
+ :skolemid |7211|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2|) |$w#0@@0|))
 )))
 (assert ($AlwaysAllocated Tclass.M2.Path))
@@ -2182,7 +2182,7 @@
 )))
 (assert (forall ((|l#0@@1| T@U) (|$w#0@@1| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#1| |l#0@@1|) |$w#0@@1|) (M2.__default.GetSt |$w#0@@1| |l#0@@1|))
  :qid |CloudMakeParallelBuildsdfy.473:45|
- :skolemid |7205|
+ :skolemid |7212|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#1| |l#0@@1|) |$w#0@@1|))
 )))
 (assert (forall ((s@@14 T@U) (n@@6 Int) ) (!  (=> (and (<= 0 n@@6) (<= n@@6 (|Seq#Length| s@@14))) (= (|Seq#Length| (|Seq#Take| s@@14 n@@6)) n@@6))
@@ -2983,7 +2983,7 @@
 ))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@1| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o) |l#2@@0|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7206|
+ :skolemid |7213|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))
 )))
 (assert  (=> (<= 7 $FunctionContextHeight) (forall (($Heap@@24 T@U) ($ly@@38 T@U) (|expr#0@@6| T@U) (|st#0@@60| T@U) (|env#0@@18| T@U) ) (!  (=> (and (or (|M2.__default.eval#canCall| |expr#0@@6| |st#0@@60| |env#0@@18|) (and (< 7 $FunctionContextHeight) (and (and (and (and ($Is DatatypeTypeType |expr#0@@6| Tclass.M2.Expression) ($IsAlloc DatatypeTypeType |expr#0@@6| Tclass.M2.Expression $Heap@@24)) (and ($Is DatatypeTypeType |st#0@@60| Tclass.M2.State) ($IsAlloc DatatypeTypeType |st#0@@60| Tclass.M2.State $Heap@@24))) (and ($IsBox |env#0@@18| Tclass.M2.Env) ($IsAllocBox |env#0@@18| Tclass.M2.Env $Heap@@24))) (M2.__default.ValidEnv |env#0@@18|)))) ($IsGoodHeap $Heap@@24)) ($IsAlloc DatatypeTypeType (M2.__default.eval $ly@@38 |expr#0@@6| |st#0@@60| |env#0@@18|) (Tclass.M2.Tuple Tclass.M2.Expression Tclass.M2.State) $Heap@@24))
@@ -3038,7 +3038,7 @@
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@2| T@U) (|l#2@@1| T@U) (|l#3@@0| T@U) (|l#4| T@U) (|$w#0@@2| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#20| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0| |l#4|) |$w#0@@2|) (ite (|Set#IsMember| |l#0@@3| |$w#0@@2|) (M2.__default.GetSt |$w#0@@2| |l#1@@2|) (M2.__default.OracleWF |l#2@@1| |$w#0@@2| (M2.__default.FindCert |$w#0@@2| |l#3@@0|) |l#4|)))
  :qid |CloudMakeParallelBuildsdfy.664:34|
- :skolemid |7209|
+ :skolemid |7216|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#20| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0| |l#4|) |$w#0@@2|))
 )))
 (assert  (=> (<= 7 $FunctionContextHeight) (forall (($ly@@40 T@U) (|expr#0@@7| T@U) (|st#0@@62| T@U) (|env#0@@20| T@U) ) (!  (=> (or (|M2.__default.eval#canCall| (Lit DatatypeTypeType |expr#0@@7|) |st#0@@62| |env#0@@20|) (and (< 7 $FunctionContextHeight) (and (and (and ($Is DatatypeTypeType |expr#0@@7| Tclass.M2.Expression) ($Is DatatypeTypeType |st#0@@62| Tclass.M2.State)) ($IsBox |env#0@@20| Tclass.M2.Env)) (M2.__default.ValidEnv |env#0@@20|)))) (and (and (|M2.__default.Value#canCall| (Lit DatatypeTypeType |expr#0@@7|)) (=> (not (U_2_bool (Lit boolType (bool_2_U (M2.__default.Value (Lit DatatypeTypeType |expr#0@@7|)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U (M2.Expression.exprIdentifier_q (Lit DatatypeTypeType |expr#0@@7|))))) (|M2.__default.GetEnv#canCall| (Lit BoxType (M2.Expression.id (Lit DatatypeTypeType |expr#0@@7|))) |env#0@@20|)) (=> (not (U_2_bool (Lit boolType (bool_2_U (M2.Expression.exprIdentifier_q (Lit DatatypeTypeType |expr#0@@7|)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U (M2.Expression.exprIf_q (Lit DatatypeTypeType |expr#0@@7|))))) (and (|M2.__default.eval#canCall| (Lit DatatypeTypeType (M2.Expression.cond (Lit DatatypeTypeType |expr#0@@7|))) |st#0@@62| |env#0@@20|) (let ((|st'#4| ($Unbox DatatypeTypeType (M2.Tuple.snd (M2.__default.eval ($LS $ly@@40) (Lit DatatypeTypeType (M2.Expression.cond (Lit DatatypeTypeType |expr#0@@7|))) |st#0@@62| |env#0@@20|)))))

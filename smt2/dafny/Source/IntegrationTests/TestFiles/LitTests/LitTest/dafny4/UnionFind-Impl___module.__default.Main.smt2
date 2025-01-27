@@ -189,7 +189,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#3| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$w#3|))  (and ($IsBox |$w#3| |l#0|) (|Set#IsMember| |l#1| |$w#3|)))
  :qid |UnionFinddfy.43:9|
- :skolemid |4529|
+ :skolemid |4512|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$w#3|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a b t)) a)
@@ -408,7 +408,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|$w#3@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#8| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#3@@0|) ($Box refType (ite  (or (= ($Unbox refType (MapType0Select BoxType BoxType |l#0@@0| |$w#3@@0|)) |l#1@@0|) (= ($Unbox refType (MapType0Select BoxType BoxType |l#2| |$w#3@@0|)) |l#3|)) |l#4| ($Unbox refType (MapType0Select BoxType BoxType |l#5| |$w#3@@0|)))))
  :qid |UnionFinddfy.34:51|
- :skolemid |4531|
+ :skolemid |4514|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#8| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#3@@0|))
 )))
 (assert (forall ((|C#0| T@U) ) (!  (=> (or (|M3.__default.GoodCMap#canCall| |C#0|) ($Is MapType |C#0| (TMap Tclass.M3.Element Tclass.M3.Contents))) (= (M3.__default.GoodCMap |C#0|) (forall ((|f#4| T@U) ) (!  (=> ($Is refType |f#4| Tclass.M3.Element?) (=> (and (|Set#IsMember| (|Map#Domain| |C#0|) ($Box refType |f#4|)) (M3.Contents.Link_q ($Unbox DatatypeTypeType (MapType0Select BoxType BoxType (|Map#Elements| |C#0|) ($Box refType |f#4|))))) (|Set#IsMember| (|Map#Domain| |C#0|) ($Box refType (M3.Contents.next ($Unbox DatatypeTypeType (MapType0Select BoxType BoxType (|Map#Elements| |C#0|) ($Box refType |f#4|))))))))
@@ -648,7 +648,7 @@
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|$w#3@@1| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#2| |l#0@@1| |l#1@@1|) |$w#3@@1|) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#0@@1| ($Unbox refType |$w#3@@1|)) |l#1@@1|))
  :qid |UnionFinddfy.63:43|
- :skolemid |4530|
+ :skolemid |4513|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#2| |l#0@@1| |l#1@@1|) |$w#3@@1|))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
@@ -818,7 +818,7 @@
 )))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@2| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o@@14 T@U) ($f@@2 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1@@2| |l#2@@0| |l#3@@0|) $o@@14 $f@@2))  (=> (and (or (not (= $o@@14 |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@2| $o@@14) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4528|
+ :skolemid |4511|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1@@2| |l#2@@0| |l#3@@0|) $o@@14 $f@@2))
 )))
 (assert (forall (($Heap@@5 T@U) (this@@10 T@U) ) (!  (=> (or (|M3.UnionFind.Collect#canCall| $Heap@@5 this@@10) (and (and ($IsGoodHeap $Heap@@5) (and (or (not (= this@@10 null)) (not true)) (and ($Is refType this@@10 Tclass.M3.UnionFind) ($IsAlloc refType this@@10 Tclass.M3.UnionFind $Heap@@5)))) (forall ((|f#0@@0| T@U) ) (!  (=> ($Is refType |f#0@@0| Tclass.M3.Element) (=> (and (|Set#IsMember| (|Map#Domain| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@10) M3.UnionFind.M))) ($Box refType |f#0@@0|)) (M3.Contents.Link_q ($Unbox DatatypeTypeType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 |f#0@@0|) M3.Element.c)))) (|Set#IsMember| (|Map#Domain| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@10) M3.UnionFind.M))) ($Box refType (M3.Contents.next ($Unbox DatatypeTypeType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 |f#0@@0|) M3.Element.c)))))))
@@ -1578,10 +1578,9 @@
 PreconditionGeneratedEntry_correct)))
 ))
 (check-sat)
-(get-info :reason-unknown)
 (get-info :rlimit)
 (pop 1)
-; Timed out
+; Valid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

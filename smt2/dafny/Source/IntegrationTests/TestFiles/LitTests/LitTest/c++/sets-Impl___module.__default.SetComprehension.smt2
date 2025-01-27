@@ -202,11 +202,6 @@
  :skolemid |493|
  :pattern ( ($IsBox bx@@2 Tclass._module.uint32))
 )))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |542|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
-)))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
  :qid |DafnyPreludebpl.787:15|
  :skolemid |150|
@@ -302,6 +297,11 @@
  :qid |DafnyPreludebpl.780:15|
  :skolemid |149|
  :pattern ( (|Set#Equal| a@@1 b@@1))
+)))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |542|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
  :qid |DafnyPreludebpl.109:15|

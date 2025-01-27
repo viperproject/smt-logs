@@ -130,11 +130,6 @@
  :skolemid |4172|
  :pattern ( (|MultiSet#Card| (|MultiSet#UnionOne| a@@0 x@@6)))
 )))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass.Regressions.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |4475|
- :pattern ( ($Is intType |i#0@@0| Tclass.Regressions.uint32))
-)))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
  :qid |DafnyPreludebpl.217:18|
  :skolemid |4015|
@@ -238,7 +233,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |5161|
+ :skolemid |5160|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx@@2 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@2 (TMultiSet t@@3)) (and (= ($Box MultiSetType ($Unbox MultiSetType bx@@2)) bx@@2) ($Is MultiSetType ($Unbox MultiSetType bx@@2) (TMultiSet t@@3))))
@@ -248,6 +243,11 @@
 )))
 (assert (= (Tag Tclass.Regressions.uint32) Tagclass.Regressions.uint32))
 (assert (= (TagFamily Tclass.Regressions.uint32) tytagFamily$uint32))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass.Regressions.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |4475|
+ :pattern ( ($Is intType |i#0@@0| Tclass.Regressions.uint32))
+)))
 (assert (forall ((x@@11 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@11))) (Lit BoxType ($Box intType (int_2_U x@@11))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |3994|

@@ -395,7 +395,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Int) (|$y#4| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) |$y#4|))  (and ($IsBox |$y#4| |l#0|) (and (|Set#IsMember| |l#1| |$y#4|) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType |l#2| |$y#4|))) |l#3|))))
  :qid |unknown.0:0|
- :skolemid |1687|
+ :skolemid |1679|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) |$y#4|))
 )))
 (assert (= (Ctor MapType) 11))
@@ -623,7 +623,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o@@8 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@8 $f@@0))  (=> (and (or (not (= $o@@8 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@8) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1686|
+ :skolemid |1678|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@8 $f@@0))
 )))
 (assert (forall ((s@@4 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@4 val@@4)) s@@4) (= (|Seq#Build_inv1| (|Seq#Build| s@@4 val@@4)) val@@4))
@@ -965,3 +965,7 @@ PreconditionGeneratedEntry_correct)))
 (get-info :rlimit)
 (pop 1)
 ; Valid
+(reset)
+(set-option :rlimit 0)
+; did a full reset
+(reset)

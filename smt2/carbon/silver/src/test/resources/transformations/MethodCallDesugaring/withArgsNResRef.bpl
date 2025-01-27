@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:42
+// Date:         2025-01-27 03:40:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withArgsNResRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/MethodCallDesugaring/withArgsNResRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var res2: int;
   var res1: int;
   
@@ -196,16 +196,16 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := 2 -- withArgsNResRef.vpr@6.5--6.20
     a_2 := 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale a >= 0 && 5 >= 0 -- withArgsNResRef.vpr@9.5--9.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Exhale might fail. Assertion a >= 0 might not hold. (withArgsNResRef.vpr@9.12--9.28) [198270]"}
       a_2 >= 0;
     assume state(Heap, Mask);
@@ -221,15 +221,15 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res2 == a -- withArgsNResRef.vpr@13.5--13.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion res2 == a might not hold. (withArgsNResRef.vpr@13.12--13.21) [198272]"}
       res2 == a_2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res1 == res2 + 5 -- withArgsNResRef.vpr@14.5--14.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion res1 == res2 + 5 might not hold. (withArgsNResRef.vpr@14.12--14.28) [198273]"}
       res1 == res2 + 5;
     assume state(Heap, Mask);
@@ -242,12 +242,12 @@ procedure main() returns ()
 procedure foo_3(x: int, y: int) returns (r1: int, r2: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -262,8 +262,8 @@ procedure foo_3(x: int, y: int) returns (r1: int, r2: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -286,8 +286,8 @@ procedure foo_3(x: int, y: int) returns (r1: int, r2: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of foo might not hold. Assertion r2 == x might not hold. (withArgsNResRef.vpr@19.13--19.20) [198274]"}
       r2 == x;
     assert {:msg "  Postcondition of foo might not hold. Assertion r1 == r2 + y might not hold. (withArgsNResRef.vpr@20.13--20.25) [198275]"}

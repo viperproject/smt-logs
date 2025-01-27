@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:09:01
+; Started: 2025-01-27 03:02:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -741,7 +741,7 @@
         i@4@00)
       (img@6@00 s@$ a@0@00 v@1@00 before@2@00 (loc<Ref> a@0@00 i@4@00))))
   :pattern ((loc<Ref> a@0@00 i@4@00))
-  :qid |quant-u-13932|)))
+  :qid |quant-u-13925|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -766,8 +766,8 @@
     (Contains%limited s@$ a@0@00 v@1@00 before@2@00)
     (Contains s@$ a@0@00 v@1@00 before@2@00))
   :pattern ((Contains s@$ a@0@00 v@1@00 before@2@00))
-  :qid |quant-u-13929|)))
+  :qid |quant-u-13922|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (v@1@00 Int) (before@2@00 Int)) (!
   (Contains%stateless a@0@00 v@1@00 before@2@00)
   :pattern ((Contains%limited s@$ a@0@00 v@1@00 before@2@00))
-  :qid |quant-u-13930|)))
+  :qid |quant-u-13923|)))

@@ -38,12 +38,12 @@
 (declare-fun U_2_real (T@U) Real)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
-(declare-fun $Unbox (T@T T@U) T@U)
-(declare-fun $Box (T@T T@U) T@U)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun _module.uint32WithMethods.div__overflow (Int Int) Int)
 (declare-fun |_module.uint32WithMethods.div__overflow#canCall| (Int Int) Bool)
 (declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
+(declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun $Box (T@T T@U) T@U)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -90,17 +90,22 @@
  :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
-(assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
- :qid |DafnyPreludebpl.168:18|
- :skolemid |26|
- :pattern ( ($Unbox T@@0 x@@4))
-)))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this Int) (|y#0| Int) ) (!  (=> (or (|_module.uint32WithMethods.div__overflow#canCall| (LitInt this) (LitInt |y#0|)) (and (< 1 $FunctionContextHeight) (and (and (and (<= (LitInt 0) this) (< this 4294967296)) (and (<= (LitInt 0) |y#0|) (< |y#0| 4294967296))) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |y#0| 0)) (not true)))))))) (= (_module.uint32WithMethods.div__overflow (LitInt this) (LitInt |y#0|)) (nat_from_bv32 (bvudiv ((_ int2bv 32) (LitInt this)) ((_ int2bv 32) (LitInt |y#0|))))))
  :qid |newtypesdfy.49:12|
  :weight 3
  :skolemid |606|
  :pattern ( (_module.uint32WithMethods.div__overflow (LitInt this) (LitInt |y#0|)))
 ))))
+(assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
+ :pattern ( ($Unbox T@@0 x@@4))
+)))
+(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |354|
+ :pattern ( (nat_from_bv32 b))
+)))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@0 Int) (|y#0@@0| Int) ) (!  (=> (or (|_module.uint32WithMethods.div__overflow#canCall| this@@0 |y#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (and (<= (LitInt 0) this@@0) (< this@@0 4294967296)) (and (<= (LitInt 0) |y#0@@0|) (< |y#0@@0| 4294967296))) (or (not (= |y#0@@0| 0)) (not true))))) (= (_module.uint32WithMethods.div__overflow this@@0 |y#0@@0|) (nat_from_bv32 (bvudiv ((_ int2bv 32) this@@0) ((_ int2bv 32) |y#0@@0|)))))
  :qid |newtypesdfy.49:12|
  :skolemid |605|
@@ -111,6 +116,11 @@
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 Int) (|y#0@@1| Int) ) (!  (=> (or (|_module.uint32WithMethods.div__overflow#canCall| this@@1 |y#0@@1|) (and (< 1 $FunctionContextHeight) (and (and (and (<= (LitInt 0) this@@1) (< this@@1 4294967296)) (and (<= (LitInt 0) |y#0@@1|) (< |y#0@@1| 4294967296))) (or (not (= |y#0@@1| 0)) (not true))))) (and (<= (LitInt 0) (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|)) (< (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|) 4294967296)))
+ :qid |newtypesdfy.49:12|
+ :skolemid |603|
+ :pattern ( (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|))
+))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
@@ -140,18 +150,13 @@
  :skolemid |743|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
-(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |354|
- :pattern ( (nat_from_bv32 b))
-)))
 (assert (= (Tag Tclass._module.uint32WithMethods) Tagclass._module.uint32WithMethods))
 (assert (= (TagFamily Tclass._module.uint32WithMethods) tytagFamily$uint32WithMethods))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 Int) (|y#0@@1| Int) ) (!  (=> (or (|_module.uint32WithMethods.div__overflow#canCall| this@@1 |y#0@@1|) (and (< 1 $FunctionContextHeight) (and (and (and (<= (LitInt 0) this@@1) (< this@@1 4294967296)) (and (<= (LitInt 0) |y#0@@1|) (< |y#0@@1| 4294967296))) (or (not (= |y#0@@1| 0)) (not true))))) (and (<= (LitInt 0) (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|)) (< (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|) 4294967296)))
- :qid |newtypesdfy.49:12|
- :skolemid |603|
- :pattern ( (_module.uint32WithMethods.div__overflow this@@1 |y#0@@1|))
-))))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |576|
+ :pattern ( ($Is intType |x#0| Tclass._module.uint32WithMethods))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|
@@ -161,11 +166,6 @@
  :qid |DafnyPreludebpl.103:18|
  :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
-)))
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |576|
- :pattern ( ($Is intType |x#0| Tclass._module.uint32WithMethods))
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)

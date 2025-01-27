@@ -42,16 +42,17 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Tag (T@U) T@U)
+(declare-fun |Seq#Length| (T@U) Int)
+(declare-fun |Seq#Empty| () T@U)
+(declare-fun DafnyNaCl.__default.M2256 () Int)
+(declare-fun LitInt (Int) Int)
+(declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun Tclass.DafnyNaCl.GF64__Any__Limb () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun DafnyNaCl.__default.LM () Int)
 (declare-fun Mul (Int Int) Int)
 (declare-fun DafnyNaCl.__default.MGFLC () Int)
 (declare-fun DafnyNaCl.__default.MGFLP () Int)
-(declare-fun |Seq#Length| (T@U) Int)
-(declare-fun |Seq#Empty| () T@U)
-(declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun SeqType () T@T)
@@ -59,10 +60,9 @@
 (declare-fun TSeq (T@U) T@U)
 (declare-fun DafnyNaCl.__default.NGFD () Int)
 (declare-fun DafnyNaCl.__default.R2256 () Int)
-(declare-fun $IsBox (T@U T@U) Bool)
-(declare-fun DafnyNaCl.__default.M2256 () Int)
-(declare-fun Mod (Int Int) Int)
 (declare-fun DafnyNaCl.__default.P () Int)
+(declare-fun $IsBox (T@U T@U) Bool)
+(declare-fun Mod (Int Int) Int)
 (declare-fun DafnyNaCl.__default.LMM1 () Int)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun Inv0_TSeq (T@U) T@U)
@@ -101,12 +101,8 @@
 (assert (distinct TInt TagInt TagSeq alloc Tagclass.DafnyNaCl.GF64__Any__Limb Tagclass.DafnyNaCl.GF64 tytagFamily$GF64_Any_Limb tytagFamily$GF64)
 )
 (assert (= (Tag TInt) TagInt))
-(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb)  (and (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |i#0|)) (< (U_2_int |i#0|) 9223372036854775808)) (and (<= (- 0 DafnyNaCl.__default.LM) (U_2_int |i#0|)) (<= (U_2_int |i#0|) (Mul DafnyNaCl.__default.MGFLC DafnyNaCl.__default.MGFLP)))))
- :qid |unknown.0:0|
- :skolemid |491|
- :pattern ( ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb))
-)))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
+(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -116,6 +112,11 @@
  :qid |DafnyPreludebpl.102:29|
  :skolemid |15|
  :pattern ( (Lit T x@@3))
+)))
+(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb)  (and (and (<= (LitInt (- 0 9223372036854775808)) (U_2_int |i#0|)) (< (U_2_int |i#0|) 9223372036854775808)) (and (<= (- 0 DafnyNaCl.__default.LM) (U_2_int |i#0|)) (<= (U_2_int |i#0|) (Mul DafnyNaCl.__default.MGFLC DafnyNaCl.__default.MGFLP)))))
+ :qid |unknown.0:0|
+ :skolemid |491|
+ :pattern ( ($Is intType |i#0| Tclass.DafnyNaCl.GF64__Any__Limb))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
@@ -129,6 +130,7 @@
  :pattern ( ($Is SeqType |a#0| Tclass.DafnyNaCl.GF64))
 )))
 (assert (= DafnyNaCl.__default.MGFLC (+ (Mul DafnyNaCl.__default.R2256 (LitInt 15)) 1)))
+(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass.DafnyNaCl.GF64__Any__Limb) (and (= ($Box intType ($Unbox intType bx)) bx) ($Is intType ($Unbox intType bx) Tclass.DafnyNaCl.GF64__Any__Limb)))
  :qid |unknown.0:0|
  :skolemid |490|
@@ -139,7 +141,6 @@
  :skolemid |498|
  :pattern ( ($IsBox bx@@0 Tclass.DafnyNaCl.GF64))
 )))
-(assert (= DafnyNaCl.__default.M2256 (LitInt 115792089237316195423570985008687907853269984665640564039457584007913129639936)))
 (assert (= DafnyNaCl.__default.R2256 (Mod DafnyNaCl.__default.M2256 DafnyNaCl.__default.P)))
 (assert (= DafnyNaCl.__default.MGFLP (Mul DafnyNaCl.__default.LMM1 DafnyNaCl.__default.LMM1)))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TInt) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) TInt)))
@@ -183,7 +184,6 @@
 (assert (= DafnyNaCl.__default.NGFD (LitInt 16)))
 (assert (= DafnyNaCl.__default.LMM1 (LitInt 65535)))
 (assert (= DafnyNaCl.__default.LM (LitInt 65536)))
-(assert (= DafnyNaCl.__default.P (LitInt (- 57896044618658097711785492504343953926634992332820282019728792003956564819968 19))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0

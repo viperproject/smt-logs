@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:17:08
+// Date:         2025-01-27 03:47:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/loop_sum_ghostvar_old.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/loop_sum_ghostvar_old-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -266,8 +266,8 @@ procedure sum_rec#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -291,8 +291,8 @@ procedure sum_rec#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, v_35]), CombineFrames(FrameFragment(UnfoldingHeap[this, n_85]), FrameFragment((if UnfoldingHeap[this, n_85] != null then UnfoldingHeap[null, List(UnfoldingHeap[this, n_85])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (loop_sum_ghostvar_old.vpr@11.1--13.78) [213894]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -323,8 +323,8 @@ procedure sum_rec#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, n_85);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(this.n) (loop_sum_ghostvar_old.vpr@13.59--13.74) [213898]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(UnfoldingHeap[this, n_85])];
@@ -437,12 +437,12 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var xs: Ref;
   var ExhaleHeap: HeapType;
   var oldsum_xs: int;
@@ -452,8 +452,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -471,8 +471,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   var ResultMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var loopHeap: HeapType;
@@ -486,8 +486,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -510,10 +510,10 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_11: bool;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
-  var Labellhs7Heap: HeapType;
+  var ExhaleWellDef1Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var b_12: bool;
   var Result_5Heap: HeapType;
   var Result_5Mask: MaskType;
@@ -555,8 +555,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -571,8 +571,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     // -- Check definedness of sum == old(sum_rec(ys))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@19.21--19.32) [213901]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -602,8 +602,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     // -- Check definedness of sum_rec(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@26.28--26.39) [213902]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -643,8 +643,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
               // -- Check definedness of sum_rec(xs) == oldsum_xs
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := Ops_1Heap;
                   ExhaleWellDef0Mask := Ops_1Mask;
+                  ExhaleWellDef0Heap := Ops_1Heap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@29.41--29.52) [213903]"}
                     NoPerm < perm ==> NoPerm < Ops_1Mask[null, List(xs)];
@@ -665,8 +665,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     
     // -- Translating statement: label lhs1 -- loop_sum_ghostvar_old.vpr@29.5--31.55
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys))
@@ -744,8 +744,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
         // -- Check definedness of sum_rec(ys) == old(sum_rec(ys))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := ResultHeap;
             ExhaleWellDef0Mask := ResultMask;
+            ExhaleWellDef0Heap := ResultHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@31.23--31.34) [213906]"}
               NoPerm < perm ==> NoPerm < ResultMask[null, List(ys)];
@@ -758,8 +758,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@31.42--31.53) [213907]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -782,8 +782,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (xs != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -820,8 +820,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
         // -- Check definedness of sum == old(sum_rec(ys)) - (xs == null ? 0 : sum_rec(xs))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@35.27--35.38) [213912]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -833,8 +833,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
           } else {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@35.60--35.71) [213913]"}
                 NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -863,8 +863,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
               // -- Check definedness of sum_rec(xs) == oldsum_xs
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := WandDefLHSHeap;
                   ExhaleWellDef0Mask := WandDefLHSMask;
+                  ExhaleWellDef0Heap := WandDefLHSHeap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@37.43--37.54) [213914]"}
                     NoPerm < perm ==> NoPerm < WandDefLHSMask[null, List(xs)];
@@ -881,8 +881,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
             
             // -- Translating statement: label lhs3 -- loop_sum_ghostvar_old.vpr@37.7--39.57
               lhs3:
-              Labellhs3Heap := WandDefLHSHeap;
               Labellhs3Mask := WandDefLHSMask;
+              Labellhs3Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -894,8 +894,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
             // -- Check definedness of sum_rec(ys) == old(sum_rec(ys))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := WandDefRHSHeap;
                 ExhaleWellDef0Mask := WandDefRHSMask;
+                ExhaleWellDef0Heap := WandDefRHSHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@39.25--39.36) [213915]"}
                   NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(ys)];
@@ -908,8 +908,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@39.44--39.55) [213916]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -961,8 +961,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
             // -- Check definedness of oldsum_xs == sum_rec(xs)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@41.25--41.36) [213917]"}
                   NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -984,8 +984,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
           // -- Translating statement: unfold acc(List(xs), write) -- loop_sum_ghostvar_old.vpr@52.5--52.20
             assume List#trigger(Heap, List(xs));
             assume Heap[null, List(xs)] == CombineFrames(FrameFragment(Heap[xs, v_35]), CombineFrames(FrameFragment(Heap[xs, n_85]), FrameFragment((if Heap[xs, n_85] != null then Heap[null, List(Heap[xs, n_85])] else EmptyFrame))));
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@52.5--52.20) [213918]"}
@@ -1045,8 +1045,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                 // -- Check definedness of sum_rec(xs)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@60.20--60.31) [213921]"}
                       NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -1092,8 +1092,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                       // -- Check definedness of sum_rec(xs) == oldsum_xs
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Heap := Ops_3Heap;
                           ExhaleWellDef0Mask := Ops_3Mask;
+                          ExhaleWellDef0Heap := Ops_3Heap;
                           perm := FullPerm;
                           assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (loop_sum_ghostvar_old.vpr@64.43--64.54) [213922]"}
                             NoPerm < perm ==> NoPerm < Ops_3Mask[null, List(xs)];
@@ -1114,15 +1114,15 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
             
             // -- Translating statement: label lhs4 -- loop_sum_ghostvar_old.vpr@64.7--65.63
               lhs4:
-              Labellhs4Heap := Ops_3Heap;
               Labellhs4Mask := Ops_3Mask;
+              Labellhs4Heap := Ops_3Heap;
               b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
             boolCur_1 := true;
             if (b_5) {
               
               // -- Translating statement: fold acc(List(prev_xs), write) -- loop_sum_ghostvar_old.vpr@66.13--66.31
-                ExhaleWellDef0Heap := Ops_3Heap;
                 ExhaleWellDef0Mask := Ops_3Mask;
+                ExhaleWellDef0Heap := Ops_3Heap;
                 havoc Used_3Heap;
                 Used_3Mask := ZeroMask;
                 b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -1365,8 +1365,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   //   acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) -- loop_sum_ghostvar_old.vpr@67.13--67.154
                 
                 // -- check if wand is held and remove an instance
-                  ExhaleWellDef0Heap := Ops_3Heap;
                   ExhaleWellDef0Mask := Ops_3Mask;
+                  ExhaleWellDef0Heap := Ops_3Heap;
                   havoc Used_4Heap;
                   Used_4Mask := ZeroMask;
                   b_11 := b_11 && state(Used_4Heap, Used_4Mask);
@@ -1390,8 +1390,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                                 // -- Check definedness of sum_rec(prev_xs) == oldoldsum_xs
                                   if (*) {
                                     // Exhale precondition of function application
-                                    ExhaleWellDef1Heap := WandDefLHSHeap;
                                     ExhaleWellDef1Mask := WandDefLHSMask;
+                                    ExhaleWellDef1Heap := WandDefLHSHeap;
                                     perm := FullPerm;
                                     assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(prev_xs) (loop_sum_ghostvar_old.vpr@67.65--67.81) [213930]"}
                                       NoPerm < perm ==> NoPerm < WandDefLHSMask[null, List(prev_xs)];
@@ -1408,8 +1408,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                               
                               // -- Translating statement: label lhs7 -- loop_sum_ghostvar_old.vpr@67.19--67.154
                                 lhs7:
-                                Labellhs7Heap := WandDefLHSHeap;
                                 Labellhs7Mask := WandDefLHSMask;
+                                Labellhs7Heap := WandDefLHSHeap;
                                 assume state(WandDefLHSHeap, WandDefLHSMask);
                               havoc WandDefRHSHeap;
                               WandDefRHSMask := ZeroMask;
@@ -1421,8 +1421,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                               // -- Check definedness of sum_rec(ys) == old(sum_rec(ys))
                                 if (*) {
                                   // Exhale precondition of function application
-                                  ExhaleWellDef1Heap := WandDefRHSHeap;
                                   ExhaleWellDef1Mask := WandDefRHSMask;
+                                  ExhaleWellDef1Heap := WandDefRHSHeap;
                                   perm := FullPerm;
                                   assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@67.122--67.133) [213931]"}
                                     NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(ys)];
@@ -1435,8 +1435,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                                 }
                                 if (*) {
                                   // Exhale precondition of function application
-                                  ExhaleWellDef1Heap := oldHeap;
                                   ExhaleWellDef1Mask := oldMask;
+                                  ExhaleWellDef1Heap := oldHeap;
                                   perm := FullPerm;
                                   assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@67.141--67.152) [213932]"}
                                     NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -1507,8 +1507,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                 b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
                 
                 // -- check if LHS holds and remove permissions 
-                  ExhaleWellDef0Heap := Ops_3Heap;
                   ExhaleWellDef0Mask := Ops_3Mask;
+                  ExhaleWellDef0Heap := Ops_3Heap;
                   havoc Used_5Heap;
                   Used_5Mask := ZeroMask;
                   b_13 := b_13 && state(Used_5Heap, Used_5Mask);
@@ -1586,8 +1586,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                         // -- Check definedness of sum_rec(prev_xs) == oldoldsum_xs
                           if (*) {
                             // Exhale precondition of function application
-                            ExhaleWellDef1Heap := Result_6Heap;
                             ExhaleWellDef1Mask := Result_6Mask;
+                            ExhaleWellDef1Heap := Result_6Heap;
                             perm := FullPerm;
                             assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(prev_xs) (loop_sum_ghostvar_old.vpr@67.65--67.81) [213937]"}
                               NoPerm < perm ==> NoPerm < Result_6Mask[null, List(prev_xs)];
@@ -1704,8 +1704,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                 // -- Check definedness of sum_rec(ys) == old(sum_rec(ys))
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Result_8Heap;
                     ExhaleWellDef0Mask := Result_8Mask;
+                    ExhaleWellDef0Heap := Result_8Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@65.31--65.42) [213941]"}
                       NoPerm < perm ==> NoPerm < Result_8Mask[null, List(ys)];
@@ -1718,8 +1718,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := oldHeap;
                     ExhaleWellDef0Mask := oldMask;
+                    ExhaleWellDef0Heap := oldHeap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@65.50--65.61) [213942]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, List(ys)];
@@ -1737,8 +1737,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (xs != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -1781,8 +1781,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
   //   acc(List(ys), write) && sum_rec(ys) == old(sum_rec(ys)) -- loop_sum_ghostvar_old.vpr@71.3--74.55
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (loop_sum_ghostvar_old.vpr@71.3--74.55) [213947]"}
         FullPerm <= Mask[null, wand(xs != null, xs, xs, oldsum_xs, ys, ys, sum_rec(oldHeap, ys))];
@@ -1790,8 +1790,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (xs != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
@@ -1818,8 +1818,8 @@ procedure sum_it(ys: Ref) returns (sum_3: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of sum_it might not hold. There might be insufficient permission to access List(ys) (loop_sum_ghostvar_old.vpr@18.10--18.23) [213952]"}

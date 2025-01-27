@@ -174,7 +174,7 @@
 (assert (= (Ctor LayerTypeType) 8))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$l#2#ly#0| T@U) ) (! (= (MapType0Select LayerTypeType HandleTypeType (|lambda#5| |l#0| |l#1|) |$l#2#ly#0|) (Handle0 (|lambda#1| ($Box intType (int_2_U (LitInt (_module.__default.F1 |$l#2#ly#0|))))) |l#0| |l#1|))
  :qid |nofile.1:7|
- :skolemid |1430|
+ :skolemid |1449|
  :pattern ( (MapType0Select LayerTypeType HandleTypeType (|lambda#5| |l#0| |l#1|) |$l#2#ly#0|))
 )))
 (assert (forall ((t0@@1 T@U) (heap T@U) (h@@0 T@U) (r@@0 T@U) (rd T@U) ) (! (= (Apply0 t0@@1 heap (Handle0 h@@0 r@@0 rd)) (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) BoxType h@@0 heap))
@@ -313,22 +313,22 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|$l#2#heap#0| T@U) ) (! (= (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) BoxType (|lambda#1| |l#0@@0|) |$l#2#heap#0|) |l#0@@0|)
  :qid |parsercombinatorsdfy.39:34|
- :skolemid |1426|
+ :skolemid |1445|
  :pattern ( (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) BoxType (|lambda#1| |l#0@@0|) |$l#2#heap#0|))
 )))
 (assert (forall ((|l#0@@1| Bool) (|$l#2#heap#0@@0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) boolType (|lambda#2| |l#0@@1|) |$l#2#heap#0@@0|)) |l#0@@1|)
  :qid |unknown.0:0|
- :skolemid |1427|
+ :skolemid |1446|
  :pattern ( (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) boolType (|lambda#2| |l#0@@1|) |$l#2#heap#0@@0|))
 )))
 (assert (forall ((|l#0@@2| Bool) (|$l#2#o#0| T@U) ) (! (= (U_2_bool (MapType0Select refType boolType (|lambda#3| |l#0@@2|) |$l#2#o#0|)) |l#0@@2|)
  :qid |unknown.0:0|
- :skolemid |1428|
+ :skolemid |1447|
  :pattern ( (MapType0Select refType boolType (|lambda#3| |l#0@@2|) |$l#2#o#0|))
 )))
 (assert (forall ((|l#0@@3| T@U) (|$l#2#heap#0@@1| T@U) ) (! (= (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) SetType (|lambda#4| |l#0@@3|) |$l#2#heap#0@@1|) |l#0@@3|)
  :qid |parsercombinatorsdfy.39:28|
- :skolemid |1429|
+ :skolemid |1448|
  :pattern ( (MapType0Select (MapType0Type refType (MapType0Type FieldType BoxType)) SetType (|lambda#4| |l#0@@3|) |$l#2#heap#0@@1|))
 )))
 (assert (forall ((t0@@5 T@U) (heap@@2 T@U) (f@@2 T@U) ) (!  (=> (and ($IsGoodHeap heap@@2) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc0 t0@@5))) (= (|Set#Equal| (Reads0 t0@@5 $OneHeap f@@2) |Set#Empty|) (|Set#Equal| (Reads0 t0@@5 heap@@2 f@@2) |Set#Empty|)))
@@ -466,7 +466,7 @@
 )))))
 (assert (forall ((|l#0@@4| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@4| |l#1@@0| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0@@4|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@1) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1425|
+ :skolemid |1444|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@4| |l#1@@0| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (forall ((|#$R@@7| T@U) (|f#0@@3| T@U) ) (! (= ($Is HandleTypeType |f#0@@3| (Tclass._System.___hTotalFunc0 |#$R@@7|))  (and ($Is HandleTypeType |f#0@@3| (Tclass._System.___hPartialFunc0 |#$R@@7|)) (Requires0 |#$R@@7| $OneHeap |f#0@@3|)))
@@ -612,7 +612,3 @@ PreconditionGeneratedEntry_correct))))))))
 (get-info :rlimit)
 (pop 1)
 ; Invalid
-(reset)
-(set-option :rlimit 0)
-; did a full reset
-(reset)

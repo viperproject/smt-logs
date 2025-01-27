@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:55
+// Date:         2025-01-27 03:20:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0042.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0042-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure size#definedness(list_2: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -259,8 +259,8 @@ procedure size#definedness(list_2: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(list_2));
       assume UnfoldingHeap[null, valid(list_2)] == CombineFrames(FrameFragment(UnfoldingHeap[list_2, next]), FrameFragment((if UnfoldingHeap[list_2, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[list_2, next])] else EmptyFrame)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(list) (0042.vpr@11.1--16.2) [72849]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(list_2)];
@@ -287,8 +287,8 @@ procedure size#definedness(list_2: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, list_2, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function size might not hold. There might be insufficient permission to access valid(list.next) (0042.vpr@15.71--15.86) [72852]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(UnfoldingHeap[list_2, next])];
@@ -320,8 +320,8 @@ procedure size#definedness(list_2: Ref) returns (Result: int)
     Result := (if Heap[list_2, next] == null then 1 else 1 + size_2(Heap, Heap[list_2, next]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of size might not hold. Assertion result >= 1 might not hold. (0042.vpr@13.11--13.22) [72853]"}
       Result >= 1;
 }
@@ -401,10 +401,10 @@ procedure valid#definedness(list_2: Ref) returns ()
 procedure testFails1(list_2: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -418,12 +418,12 @@ procedure testFails1(list_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert list != null -- 0042.vpr@20.2--20.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion list != null might not hold. (0042.vpr@20.9--20.21) [72856]"}
       list_2 != null;
     assume state(Heap, Mask);
@@ -438,10 +438,10 @@ procedure testFails2(list_2: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -462,12 +462,12 @@ procedure testFails2(list_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert list != null -- 0042.vpr@27.3--27.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion list != null might not hold. (0042.vpr@27.10--27.22) [72857]"}
       list_2 != null;
     assume state(Heap, Mask);
@@ -482,10 +482,10 @@ procedure testSuccess1(list_2: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,12 +507,12 @@ procedure testSuccess1(list_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert list != null -- 0042.vpr@33.2--33.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion list != null might not hold. (0042.vpr@33.9--33.21) [72858]"}
       list_2 != null;
     assume state(Heap, Mask);
@@ -527,10 +527,10 @@ procedure testSuccess2(list_2: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -552,14 +552,14 @@ procedure testSuccess2(list_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(valid(list), wildcard) -- 0042.vpr@39.2--39.35
     assume valid#trigger(Heap, valid(list_2));
     assume Heap[null, valid(list_2)] == CombineFrames(FrameFragment(Heap[list_2, next]), FrameFragment((if Heap[list_2, next] != null then Heap[null, valid(Heap[list_2, next])] else EmptyFrame)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Unfolding valid(list) might fail. There might be insufficient permission to access valid(list) (0042.vpr@39.2--39.35) [72860]"}
       Mask[null, valid(list_2)] > NoPerm;
     havoc wildcard;
@@ -589,8 +589,8 @@ procedure testSuccess2(list_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert list != null -- 0042.vpr@40.2--40.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion list != null might not hold. (0042.vpr@40.9--40.21) [72861]"}
       list_2 != null;
     assume state(Heap, Mask);

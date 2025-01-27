@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:05
+// Date:         2025-01-27 03:21:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0154-1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0154-1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,8 +230,8 @@ procedure NodegetNext$#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -257,8 +257,8 @@ procedure NodegetNext$#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@9.1--14.2) [78758]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodevalid$(this)];
@@ -535,10 +535,10 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var wildcard: real where wildcard > NoPerm;
   
@@ -562,14 +562,14 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Nodevalid$(this), write) -- 0154-1.vpr@32.3--32.38
     assume Nodevalid$#trigger(Heap, Nodevalid$(this));
     assume Heap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(Heap[this, Nodenext$]), CombineFrames(FrameFragment(Heap[this, Nodevalue$]), FrameFragment((if Heap[this, Nodenext$] != null then Heap[null, Nodevalid$(Heap[this, Nodenext$])] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Nodevalid$(this) might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@32.3--32.38) [78768]"}
@@ -604,8 +604,8 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$ -- 0154-1.vpr@34.3--34.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@34.10--34.32) [78770]"}
@@ -628,8 +628,8 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
             HasDirectPerm(Mask, this, Nodenext$);
         assume Nodevalid$#trigger(Heap, Nodevalid$(Heap[this, Nodenext$]));
         assume Heap[null, Nodevalid$(Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Heap[Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Heap[Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Heap[Heap[this, Nodenext$], Nodenext$] != null then Heap[null, Nodevalid$(Heap[Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding Nodevalid$(this.Nodenext$) might fail. There might be insufficient permission to access Nodevalid$(this.Nodenext$) (0154-1.vpr@36.5--36.50) [78776]"}
@@ -664,8 +664,8 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.Nodenext$ != this.Nodenext$.Nodenext$ -- 0154-1.vpr@37.5--37.54
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this.Nodenext$ != this.Nodenext$.Nodenext$
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@37.12--37.54) [78778]"}
@@ -679,8 +679,8 @@ procedure NodetestNestingUnfold$(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this != this.Nodenext$.Nodenext$ -- 0154-1.vpr@38.5--38.44
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this != this.Nodenext$.Nodenext$
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@38.12--38.44) [78782]"}
@@ -703,10 +703,10 @@ procedure NodetestNestingFold$(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -776,16 +776,16 @@ procedure NodetestNestingFold$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(Nodevalid$(this.Nodenext$), write) -- 0154-1.vpr@46.3--46.46
     
     // -- Check definedness of acc(Nodevalid$(this.Nodenext$), write)
       assert {:msg "  Folding Nodevalid$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@46.3--46.46) [78792]"}
         HasDirectPerm(Mask, this, Nodenext$);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Nodevalid$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$.Nodenext$ (0154-1.vpr@46.3--46.46) [78794]"}
       Mask[Heap[this, Nodenext$], Nodenext$] > NoPerm;
     havoc wildcard;
@@ -832,8 +832,8 @@ procedure NodetestNestingFold$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.Nodenext$ != this.Nodenext$.Nodenext$ -- 0154-1.vpr@48.3--48.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.Nodenext$ != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@48.10--48.52) [78799]"}
@@ -847,8 +847,8 @@ procedure NodetestNestingFold$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Nodevalid$(this), write) -- 0154-1.vpr@49.3--49.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Nodevalid$(this) might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@49.3--49.36) [78804]"}
       Mask[this, Nodenext$] > NoPerm;
     havoc wildcard;
@@ -895,8 +895,8 @@ procedure NodetestNestingFold$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$ -- 0154-1.vpr@50.3--50.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@50.10--50.32) [78809]"}
@@ -906,8 +906,8 @@ procedure NodetestNestingFold$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$.Nodenext$ -- 0154-1.vpr@51.3--51.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@51.10--51.42) [78811]"}
@@ -927,14 +927,14 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
@@ -960,20 +960,20 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert this != (unfolding acc(Nodevalid$(this), write) in this.Nodenext$) -- 0154-1.vpr@59.3--59.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != (unfolding acc(Nodevalid$(this), write) in this.Nodenext$)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@59.10--59.76) [78814]"}
@@ -1051,8 +1051,8 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Conditional statement might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@60.7--60.73) [78817]"}
@@ -1112,16 +1112,16 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
   //   (unfolding acc(Nodevalid$(this), write) in
   //     (unfolding acc(Nodevalid$(this.Nodenext$), write) in
   //       this.Nodenext$.Nodenext$)) -- 0154-1.vpr@61.5--61.196
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (unfolding acc(Nodevalid$(this), write) in this.Nodenext$) != (unfolding acc(Nodevalid$(this), write) in (unfolding acc(Nodevalid$(this.Nodenext$), write) in this.Nodenext$.Nodenext$))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
           assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@61.12--61.196) [78819]"}
@@ -1166,8 +1166,8 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
           assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@61.12--61.196) [78821]"}
@@ -1197,8 +1197,8 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Nodevalid$#trigger(Unfolding1Heap, Nodevalid$(Unfolding1Heap[this, Nodenext$]));
           assume Unfolding1Heap[null, Nodevalid$(Unfolding1Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$] != null then Unfolding1Heap[null, Nodevalid$(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this.Nodenext$) (0154-1.vpr@61.12--61.196) [78822]"}
@@ -1345,16 +1345,16 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
   //   (unfolding acc(Nodevalid$(this), write) in
   //     (unfolding acc(Nodevalid$(this.Nodenext$), write) in
   //       this.Nodenext$.Nodenext$)) -- 0154-1.vpr@62.5--62.142
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this != (unfolding acc(Nodevalid$(this), write) in (unfolding acc(Nodevalid$(this.Nodenext$), write) in this.Nodenext$.Nodenext$))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
           assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@62.12--62.142) [78827]"}
@@ -1384,8 +1384,8 @@ procedure NodetestNestingUnfolding$(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Nodevalid$#trigger(Unfolding1Heap, Nodevalid$(Unfolding1Heap[this, Nodenext$]));
           assume Unfolding1Heap[null, Nodevalid$(Unfolding1Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$] != null then Unfolding1Heap[null, Nodevalid$(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodevalid$(this.Nodenext$) (0154-1.vpr@62.12--62.142) [78828]"}
@@ -1517,10 +1517,10 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var wildcard: real where wildcard > NoPerm;
   
@@ -1544,14 +1544,14 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Nodep$(this), write) -- 0154-1.vpr@70.3--70.34
     assume Nodep$#trigger(Heap, Nodep$(this));
     assume Heap[null, Nodep$(this)] == CombineFrames(FrameFragment(Heap[this, Nodenext$]), CombineFrames(FrameFragment(Heap[this, Nodevalue$]), FrameFragment((if Heap[this, Nodenext$] != null then Heap[null, Nodeq$(Heap[this, Nodenext$])] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Nodep$(this) might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@70.3--70.34) [78835]"}
@@ -1586,8 +1586,8 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$ -- 0154-1.vpr@72.3--72.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@72.10--72.32) [78837]"}
@@ -1610,8 +1610,8 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
             HasDirectPerm(Mask, this, Nodenext$);
         assume Nodeq$#trigger(Heap, Nodeq$(Heap[this, Nodenext$]));
         assume Heap[null, Nodeq$(Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Heap[Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Heap[Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Heap[Heap[this, Nodenext$], Nodenext$] != null then Heap[null, Nodep$(Heap[Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding Nodeq$(this.Nodenext$) might fail. There might be insufficient permission to access Nodeq$(this.Nodenext$) (0154-1.vpr@74.5--74.46) [78843]"}
@@ -1646,8 +1646,8 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.Nodenext$ != this.Nodenext$.Nodenext$ -- 0154-1.vpr@77.5--77.54
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this.Nodenext$ != this.Nodenext$.Nodenext$
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@77.12--77.54) [78845]"}
@@ -1661,8 +1661,8 @@ procedure NodetestNestingUnfoldTwo$(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this != this.Nodenext$.Nodenext$ -- 0154-1.vpr@78.5--78.44
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this != this.Nodenext$.Nodenext$
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@78.12--78.44) [78849]"}
@@ -1685,10 +1685,10 @@ procedure NodetestNestingFoldTwo$(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -1758,16 +1758,16 @@ procedure NodetestNestingFoldTwo$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(Nodeq$(this.Nodenext$), write) -- 0154-1.vpr@86.3--86.42
     
     // -- Check definedness of acc(Nodeq$(this.Nodenext$), write)
       assert {:msg "  Folding Nodeq$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@86.3--86.42) [78859]"}
         HasDirectPerm(Mask, this, Nodenext$);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Nodeq$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$.Nodenext$ (0154-1.vpr@86.3--86.42) [78861]"}
       Mask[Heap[this, Nodenext$], Nodenext$] > NoPerm;
     havoc wildcard;
@@ -1814,8 +1814,8 @@ procedure NodetestNestingFoldTwo$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$ -- 0154-1.vpr@88.3--88.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@88.10--88.32) [78866]"}
@@ -1825,8 +1825,8 @@ procedure NodetestNestingFoldTwo$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.Nodenext$ != this.Nodenext$.Nodenext$ -- 0154-1.vpr@91.3--91.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.Nodenext$ != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@91.10--91.52) [78868]"}
@@ -1840,8 +1840,8 @@ procedure NodetestNestingFoldTwo$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$.Nodenext$ -- 0154-1.vpr@94.3--94.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@94.10--94.42) [78872]"}
@@ -1862,10 +1862,10 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -1935,16 +1935,16 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(Nodeq$(this.Nodenext$), write) -- 0154-1.vpr@101.3--101.42
     
     // -- Check definedness of acc(Nodeq$(this.Nodenext$), write)
       assert {:msg "  Folding Nodeq$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@101.3--101.42) [78882]"}
         HasDirectPerm(Mask, this, Nodenext$);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Nodeq$(this.Nodenext$) might fail. There might be insufficient permission to access this.Nodenext$.Nodenext$ (0154-1.vpr@101.3--101.42) [78884]"}
       Mask[Heap[this, Nodenext$], Nodenext$] > NoPerm;
     havoc wildcard;
@@ -1991,8 +1991,8 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Nodep$(this), write) -- 0154-1.vpr@102.3--102.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Nodep$(this) might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@102.3--102.32) [78890]"}
       Mask[this, Nodenext$] > NoPerm;
     havoc wildcard;
@@ -2039,8 +2039,8 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$ -- 0154-1.vpr@104.3--104.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@104.10--104.32) [78895]"}
@@ -2050,8 +2050,8 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.Nodenext$ != this.Nodenext$.Nodenext$ -- 0154-1.vpr@107.3--107.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.Nodenext$ != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@107.10--107.52) [78897]"}
@@ -2065,8 +2065,8 @@ procedure NodetestNestingFoldThree$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Nodenext$.Nodenext$ -- 0154-1.vpr@108.3--108.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.Nodenext$.Nodenext$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Nodenext$ (0154-1.vpr@108.10--108.42) [78901]"}
@@ -2086,14 +2086,14 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
@@ -2119,20 +2119,20 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert this != (unfolding acc(Nodep$(this), write) in this.Nodenext$) -- 0154-1.vpr@116.3--116.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != (unfolding acc(Nodep$(this), write) in this.Nodenext$)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
       assume UnfoldingHeap[null, Nodep$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodeq$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@116.10--116.72) [78904]"}
@@ -2210,8 +2210,8 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
       assume UnfoldingHeap[null, Nodep$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodeq$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Conditional statement might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@117.7--117.69) [78907]"}
@@ -2271,16 +2271,16 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
   //   (unfolding acc(Nodep$(this), write) in
   //     (unfolding acc(Nodeq$(this.Nodenext$), write) in
   //       this.Nodenext$.Nodenext$)) -- 0154-1.vpr@120.5--120.184
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (unfolding acc(Nodep$(this), write) in this.Nodenext$) != (unfolding acc(Nodep$(this), write) in (unfolding acc(Nodeq$(this.Nodenext$), write) in this.Nodenext$.Nodenext$))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
           assume UnfoldingHeap[null, Nodep$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodeq$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@120.12--120.184) [78909]"}
@@ -2325,8 +2325,8 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
           assume UnfoldingHeap[null, Nodep$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodeq$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@120.12--120.184) [78911]"}
@@ -2356,8 +2356,8 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Nodeq$#trigger(Unfolding1Heap, Nodeq$(Unfolding1Heap[this, Nodenext$]));
           assume Unfolding1Heap[null, Nodeq$(Unfolding1Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$] != null then Unfolding1Heap[null, Nodep$(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodeq$(this.Nodenext$) (0154-1.vpr@120.12--120.184) [78912]"}
@@ -2504,16 +2504,16 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
   //   (unfolding acc(Nodep$(this), write) in
   //     (unfolding acc(Nodeq$(this.Nodenext$), write) in
   //       this.Nodenext$.Nodenext$)) -- 0154-1.vpr@121.5--121.134
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this != (unfolding acc(Nodep$(this), write) in (unfolding acc(Nodeq$(this.Nodenext$), write) in this.Nodenext$.Nodenext$))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
           assume UnfoldingHeap[null, Nodep$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodeq$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodep$(this) (0154-1.vpr@121.12--121.134) [78917]"}
@@ -2543,8 +2543,8 @@ procedure NodetestNestingUnfoldingTwo$(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Nodeq$#trigger(Unfolding1Heap, Nodeq$(Unfolding1Heap[this, Nodenext$]));
           assume Unfolding1Heap[null, Nodeq$(Unfolding1Heap[this, Nodenext$])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodevalue$]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$] != null then Unfolding1Heap[null, Nodep$(Unfolding1Heap[Unfolding1Heap[this, Nodenext$], Nodenext$])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Nodeq$(this.Nodenext$) (0154-1.vpr@121.12--121.134) [78918]"}
@@ -2678,12 +2678,12 @@ procedure NodetestNestingUnfoldingPrecondition$(this: Ref, x: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2707,8 +2707,8 @@ procedure NodetestNestingUnfoldingPrecondition$(this: Ref, x: Ref) returns ()
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@127.12--127.107) [78923]"}
@@ -2755,8 +2755,8 @@ procedure NodetestNestingUnfoldingPrecondition$(this: Ref, x: Ref) returns ()
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Nodevalid$(this):=UnfoldingMask[null, Nodevalid$(this)] - perm];
       havoc wildcard;
@@ -2784,12 +2784,12 @@ procedure NodetestNestingUnfoldingPrecondition$(this: Ref, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert this != x -- 0154-1.vpr@130.3--130.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion this != x might not hold. (0154-1.vpr@130.10--130.19) [78925]"}
       this != x;
     assume state(Heap, Mask);
@@ -2803,19 +2803,19 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2838,8 +2838,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2854,8 +2854,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
       UnfoldingMask := PostMask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@137.11--137.123) [78926]"}
@@ -2900,8 +2900,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
       UnfoldingMask := PostMask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Nodevalid$(this):=UnfoldingMask[null, Nodevalid$(this)] - perm];
       havoc wildcard;
@@ -2928,8 +2928,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
     // -- Check definedness of this != NodegetNext$(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function NodegetNext$ might not hold. Assertion this != null might not hold. (0154-1.vpr@137.104--137.122) [78927]"}
           this != null;
         perm := FullPerm;
@@ -2949,8 +2949,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of NodetestNestingUnfoldingPostcondition$ might not hold. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@137.11--137.123) [78929]"}
@@ -2963,8 +2963,8 @@ procedure NodetestNestingUnfoldingPostcondition$(this: Ref, x: Ref) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodevalue$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of NodetestNestingUnfoldingPostcondition$ might not hold. There might be insufficient permission to access Nodevalid$(this) (0154-1.vpr@137.11--137.123) [78930]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:30
+// Date:         2025-01-27 03:38:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/heap_dependent_triggers.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/heap_dependent_triggers-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1148,14 +1148,14 @@ procedure hm2m#definedness(hm_1: HeapMatrixDomainType) returns (Result: MatrixDo
 procedure test_1(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_3_2: int;
   
   // -- Initializing the state
@@ -1167,8 +1167,8 @@ procedure test_1(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write)) -- heap_dependent_triggers.vpr@10.3--10.47
     
@@ -1220,8 +1220,8 @@ procedure test_1(xs: (Set Ref)) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1267,15 +1267,15 @@ procedure test_1(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { foo(xs, i) } foo(xs, i)) -- heap_dependent_triggers.vpr@12.3--12.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { foo(xs, i) } foo(xs, i))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1332,14 +1332,14 @@ procedure test_1(xs: (Set Ref)) returns ()
 procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var j_3: int;
   
   // -- Initializing the state
@@ -1351,8 +1351,8 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write)) -- heap_dependent_triggers.vpr@26.3--26.15
     
@@ -1452,8 +1452,8 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1491,8 +1491,8 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1541,15 +1541,15 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
   //     { fun01(xs, j) }
   //     { fun02(ys, j) }
   //     fun01(xs, j) == fun02(ys, j)) -- heap_dependent_triggers.vpr@30.3--30.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall j: Int :: { fun01(xs, j) } { fun02(ys, j) } fun01(xs, j) == fun02(ys, j))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1587,8 +1587,8 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1645,14 +1645,14 @@ procedure test10(xs: (Set Ref), ys: (Set Ref)) returns ()
 procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var j_3: int;
   
   // -- Initializing the state
@@ -1664,8 +1664,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write)) -- heap_dependent_triggers.vpr@43.3--43.15
     
@@ -1765,8 +1765,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1804,8 +1804,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1843,8 +1843,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1893,15 +1893,15 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
   //     { bar01(xs, bar02(ys, j)) }
   //     { foo(xs, j) }
   //     bar01(xs, bar02(ys, j)) == foo(xs, j)) -- heap_dependent_triggers.vpr@51.3--53.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall j: Int :: { bar01(xs, bar02(ys, j)) } { foo(xs, j) } bar01(xs, bar02(ys, j)) == foo(xs, j))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1939,8 +1939,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1978,8 +1978,8 @@ procedure test20(xs: (Set Ref), ys: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -2037,13 +2037,13 @@ procedure MatrixMul(C: HeapMatrixDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var z_3: int;
   
   // -- Initializing the state
@@ -2103,8 +2103,8 @@ procedure MatrixMul(C: HeapMatrixDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall z: Int :: { get(hm2m(C), z, z) } get(hm2m(C), z, z) == 0) -- heap_dependent_triggers.vpr@121.12--121.52
     assume state(Heap, Mask);
@@ -2113,8 +2113,8 @@ procedure MatrixMul(C: HeapMatrixDomainType) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -2164,15 +2164,15 @@ procedure MatrixMul(C: HeapMatrixDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall z: Int :: { get(hm2m(C), z, z) } get(hm2m(C), z, z) == 0) -- heap_dependent_triggers.vpr@122.5--122.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall z: Int :: { get(hm2m(C), z, z) } get(hm2m(C), z, z) == 0)
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           havoc QPMask;
           
           // -- check that the permission amount is positive

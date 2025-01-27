@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:13:04
+; Started: 2025-01-27 03:06:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -217,7 +217,7 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@4@01) $t@5@01)
   :pattern ((MWSF_apply mwsf@6@01 $t@4@01))
-  :qid |quant-u-26782|)))
+  :qid |quant-u-26693|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test1 ----------
@@ -324,7 +324,7 @@
 (assert (forall (($t@11@01 $Snap)) (!
   (= (MWSF_apply mwsf@13@01 $t@11@01) $t@12@01)
   :pattern ((MWSF_apply mwsf@13@01 $t@11@01))
-  :qid |quant-u-26784|)))
+  :qid |quant-u-26695|)))
 (pop) ; 3
 (declare-const $t@14@01 $Snap)
 (declare-const $t@15@01 $Snap)
@@ -333,6 +333,6 @@
 (assert (forall (($t@14@01 $Snap)) (!
   (= (MWSF_apply mwsf@16@01 $t@14@01) $t@15@01)
   :pattern ((MWSF_apply mwsf@16@01 $t@14@01))
-  :qid |quant-u-26786|)))
+  :qid |quant-u-26697|)))
 (pop) ; 2
 (pop) ; 1

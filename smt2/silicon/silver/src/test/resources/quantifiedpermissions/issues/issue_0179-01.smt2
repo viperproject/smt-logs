@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:10:43
+; Started: 2025-01-27 03:03:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -667,9 +667,9 @@
 (declare-const sm@6@01 $FVF<val>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_val (as sm@6@01  $FVF<val>) s1@4@01) val@5@01))
-(assert (not (= s1@4@01 s2@1@01)))
 (assert (not (= s1@4@01 s1@0@01)))
 (assert (not (= s1@4@01 s3@2@01)))
+(assert (not (= s1@4@01 s2@1@01)))
 (assert (not (Set_in s1@4@01 S@3@01)))
 ; [exec]
 ; s2 := new(val)
@@ -679,9 +679,9 @@
 (declare-const sm@9@01 $FVF<val>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_val (as sm@9@01  $FVF<val>) s2@7@01) val@8@01))
-(assert (not (= s2@7@01 s2@1@01)))
 (assert (not (= s2@7@01 s3@2@01)))
 (assert (not (= s2@7@01 s1@4@01)))
+(assert (not (= s2@7@01 s2@1@01)))
 (assert (not (Set_in s2@7@01 S@3@01)))
 ; [exec]
 ; s3 := new(val)
@@ -691,9 +691,9 @@
 (declare-const sm@12@01 $FVF<val>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_val (as sm@12@01  $FVF<val>) s3@10@01) val@11@01))
+(assert (not (= s3@10@01 s2@7@01)))
 (assert (not (= s3@10@01 s3@2@01)))
 (assert (not (= s3@10@01 s1@4@01)))
-(assert (not (= s3@10@01 s2@7@01)))
 (assert (not (Set_in s3@10@01 S@3@01)))
 ; [exec]
 ; S := Set(s1, s2, s3)
@@ -786,7 +786,7 @@
     (and (Set_in (inv@15@01 r) S@13@01) (img@16@01 r) (= r (inv@15@01 r)))
     (= (- $Perm.Write (pTaken@17@01 r)) $Perm.No))
   
-  :qid |quant-u-19539|))))
+  :qid |quant-u-19450|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -811,7 +811,7 @@
     (and (Set_in (inv@15@01 r) S@13@01) (img@16@01 r) (= r (inv@15@01 r)))
     (= (- (- $Perm.Write (pTaken@17@01 r)) (pTaken@18@01 r)) $Perm.No))
   
-  :qid |quant-u-19541|))))
+  :qid |quant-u-19452|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -838,7 +838,7 @@
       (- (- (- $Perm.Write (pTaken@17@01 r)) (pTaken@18@01 r)) (pTaken@19@01 r))
       $Perm.No))
   
-  :qid |quant-u-19543|))))
+  :qid |quant-u-19454|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1166,7 +1166,7 @@
   :pattern ((Set_in y@36@01 xs@29@01))
   :pattern ((inv@37@01 y@36@01))
   :pattern ((img@38@01 y@36@01))
-  :qid |quant-u-19545|)))
+  :qid |quant-u-19456|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@38@01 r) (Set_in (inv@37@01 r) xs@29@01)) (= (inv@37@01 r) r))
   :pattern ((inv@37@01 r))
@@ -1306,7 +1306,7 @@
     (and (Set_in (inv@42@01 r) xs@40@01) (img@43@01 r) (= r (inv@42@01 r)))
     (= (- $Perm.Write (pTaken@44@01 r)) $Perm.No))
   
-  :qid |quant-u-19549|))))
+  :qid |quant-u-19460|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1328,7 +1328,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@45@01 r) $Perm.No)
   
-  :qid |quant-u-19551|))))
+  :qid |quant-u-19462|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1343,7 +1343,7 @@
     (and (Set_in (inv@42@01 r) xs@40@01) (img@43@01 r) (= r (inv@42@01 r)))
     (= (- (- $Perm.Write (pTaken@44@01 r)) (pTaken@45@01 r)) $Perm.No))
   
-  :qid |quant-u-19552|))))
+  :qid |quant-u-19463|))))
 (check-sat)
 ; unsat
 (pop) ; 3

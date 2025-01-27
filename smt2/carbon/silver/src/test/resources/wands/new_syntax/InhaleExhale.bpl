@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:17:16
+// Date:         2025-01-27 03:50:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/InhaleExhale.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/InhaleExhale-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -279,16 +279,16 @@ procedure Cell#definedness(x: Ref) returns ()
 procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var perm: Perm;
   var Used_1Heap: HeapType;
@@ -307,8 +307,8 @@ procedure test0(x: Ref) returns ()
   var ResultMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -321,8 +321,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(Cell(x), write) {
   //   inhale acc(Cell(x), write)
@@ -341,8 +341,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- InhaleExhale.vpr@11.13--11.29
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -434,8 +434,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: assert acc(x.f, write) -- InhaleExhale.vpr@15.5--15.20
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (InhaleExhale.vpr@15.12--15.20) [222155]"}
@@ -453,19 +453,19 @@ procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_5: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_6: bool;
@@ -516,8 +516,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(Cell(x), write) {
   //   exhale acc(Cell(x), write)
@@ -538,15 +538,15 @@ procedure test1_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- InhaleExhale.vpr@20.13--20.29
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_5) {
       
       // -- Translating statement: exhale acc(Cell(x), write) -- InhaleExhale.vpr@21.9--21.23
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_3Heap;
         Used_3Mask := ZeroMask;
         b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -637,8 +637,8 @@ procedure test1_1(x: Ref) returns ()
     if (b_5) {
       
       // -- Translating statement: fold acc(Cell(x), write) -- InhaleExhale.vpr@23.9--23.21
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_8 := b_8 && state(Used_4Heap, Used_4Mask);
@@ -795,8 +795,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Translating statement: assert acc(Cell(x), write) -- InhaleExhale.vpr@26.5--26.24
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access Cell(x) (InhaleExhale.vpr@26.12--26.24) [222166]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:00:12
+; Started: 2025-01-27 02:53:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -673,7 +673,7 @@
 (declare-fun _thread_post%trigger ($Snap $Ref) Bool)
 (declare-fun _MaySet%trigger ($Snap $Ref Int) Bool)
 ; ////////// Uniqueness assumptions from domains
-(assert (distinct field_list_acc<Int> ARPLog_type_Cons<Int> field_Clazz_x<Int> ARPLog_type_Nil<Int> field_dict_acc<Int> field__val<Int> field_dict_acc2<Int> field_Measure$acc<Int> field___iter_index<Int> field___container<Int> field_Clazz_seq<Int> field___previous<Int> field_Clazz_y<Int> field_set_acc<Int>))
+(assert (distinct field___iter_index<Int> field_dict_acc2<Int> ARPLog_type_Cons<Int> field_dict_acc<Int> field_list_acc<Int> field___container<Int> field__val<Int> field_Clazz_y<Int> field_Clazz_x<Int> field_Clazz_seq<Int> field___previous<Int> ARPLog_type_Nil<Int> field_set_acc<Int> field_Measure$acc<Int>))
 (assert (distinct append_threading<ThreadingID> __iter___threading<ThreadingID> __add___threading<ThreadingID> __init___threading_2<ThreadingID> remove_threading<ThreadingID> __init___threading_1<ThreadingID> keys_threading<ThreadingID> __init___threading<ThreadingID> __getitem_slice___threading<ThreadingID> extend_threading<ThreadingID> __iter___threading_1<ThreadingID> __setitem___threading<ThreadingID> __init___threading_0<ThreadingID> __iter___threading_0<ThreadingID> clear_threading<ThreadingID> values_threading<ThreadingID> __iter___threading_2<ThreadingID> add_threading<ThreadingID> m2_threading<ThreadingID> __mul___threading<ThreadingID> m2_1_threading<ThreadingID> __del___threading<ThreadingID> m1_1_threading<ThreadingID> __next___threading<ThreadingID> m1_threading<ThreadingID> reverse_threading<ThreadingID> split_threading<ThreadingID> __setitem___threading_0<ThreadingID>))
 (assert (distinct bool<PyType> float<PyType> bytes<PyType> slice<PyType> list_basic<PyType> set_basic<PyType> PMultiset_basic<PyType> PSet_basic<PyType> Iterator_basic<PyType> PSeq_basic<PyType> object<PyType> Clazz<PyType> traceback<PyType> dict_basic<PyType> type<PyType> py_range<PyType> int<PyType> Exception<PyType> __prim__Seq_type<PyType> tuple_basic<PyType> str<PyType> Thread_0<PyType> Place<PyType> LevelType<PyType> NoneType<PyType>))
 ; ////////// Axioms

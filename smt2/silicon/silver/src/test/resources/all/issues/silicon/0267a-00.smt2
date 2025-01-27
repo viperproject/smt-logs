@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:18
+; Started: 2025-01-27 02:59:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -165,11 +165,11 @@
 (assert (forall ((s@$ $Snap) (box@0@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@0@00) (int___unbox__ s@$ box@0@00))
   :pattern ((int___unbox__ s@$ box@0@00))
-  :qid |quant-u-10669|)))
+  :qid |quant-u-10663|)))
 (assert (forall ((s@$ $Snap) (box@0@00 $Ref)) (!
   (int___unbox__%stateless box@0@00)
   :pattern ((int___unbox__%limited s@$ box@0@00))
-  :qid |quant-u-10670|)))
+  :qid |quant-u-10664|)))
 ; ---------- FUNCTION bool___unbox__----------
 (declare-fun box@2@00 () $Ref)
 (declare-fun result@3@00 () Bool)
@@ -179,11 +179,11 @@
 (assert (forall ((s@$ $Snap) (box@2@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@2@00) (bool___unbox__ s@$ box@2@00))
   :pattern ((bool___unbox__ s@$ box@2@00))
-  :qid |quant-u-10671|)))
+  :qid |quant-u-10665|)))
 (assert (forall ((s@$ $Snap) (box@2@00 $Ref)) (!
   (bool___unbox__%stateless box@2@00)
   :pattern ((bool___unbox__%limited s@$ box@2@00))
-  :qid |quant-u-10672|)))
+  :qid |quant-u-10666|)))
 ; ---------- FUNCTION __prim__bool___box__----------
 (declare-fun prim@4@00 () Bool)
 (declare-fun result@5@00 () $Ref)
@@ -259,11 +259,11 @@
     (__prim__bool___box__%limited s@$ prim@4@00)
     (__prim__bool___box__ s@$ prim@4@00))
   :pattern ((__prim__bool___box__ s@$ prim@4@00))
-  :qid |quant-u-10673|)))
+  :qid |quant-u-10667|)))
 (assert (forall ((s@$ $Snap) (prim@4@00 Bool)) (!
   (__prim__bool___box__%stateless prim@4@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@4@00))
-  :qid |quant-u-10674|)))
+  :qid |quant-u-10668|)))
 (assert (forall ((s@$ $Snap) (prim@4@00 Bool)) (!
   (let ((result@5@00 (__prim__bool___box__%limited s@$ prim@4@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@4@00)
@@ -272,23 +272,23 @@
       (= (bool___unbox__ $Snap.unit result@5@00) prim@4@00)
       (= (int___unbox__ $Snap.unit result@5@00) (ite prim@4@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@4@00))
-  :qid |quant-u-10683|)))
+  :qid |quant-u-10677|)))
 (assert (forall ((s@$ $Snap) (prim@4@00 Bool)) (!
   (let ((result@5@00 (__prim__bool___box__%limited s@$ prim@4@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@4@00))
-  :qid |quant-u-10684|)))
+  :qid |quant-u-10678|)))
 (assert (forall ((s@$ $Snap) (prim@4@00 Bool)) (!
   (let ((result@5@00 (__prim__bool___box__%limited s@$ prim@4@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@4@00)
     (bool___unbox__%precondition $Snap.unit result@5@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@4@00))
-  :qid |quant-u-10685|)))
+  :qid |quant-u-10679|)))
 (assert (forall ((s@$ $Snap) (prim@4@00 Bool)) (!
   (let ((result@5@00 (__prim__bool___box__%limited s@$ prim@4@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@4@00)
     (int___unbox__%precondition $Snap.unit result@5@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@4@00))
-  :qid |quant-u-10686|)))
+  :qid |quant-u-10680|)))
 ; ---------- FUNCTION __prim__int___box__----------
 (declare-fun prim@6@00 () Int)
 (declare-fun result@7@00 () $Ref)
@@ -300,11 +300,11 @@
     (__prim__int___box__%limited s@$ prim@6@00)
     (__prim__int___box__ s@$ prim@6@00))
   :pattern ((__prim__int___box__ s@$ prim@6@00))
-  :qid |quant-u-10675|)))
+  :qid |quant-u-10669|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Int)) (!
   (__prim__int___box__%stateless prim@6@00)
   :pattern ((__prim__int___box__%limited s@$ prim@6@00))
-  :qid |quant-u-10676|)))
+  :qid |quant-u-10670|)))
 ; ---------- FUNCTION OTHER_GLOBAL_VAR----------
 (declare-fun result@8@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -313,11 +313,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (OTHER_GLOBAL_VAR%limited s@$) (OTHER_GLOBAL_VAR s@$))
   :pattern ((OTHER_GLOBAL_VAR s@$))
-  :qid |quant-u-10677|)))
+  :qid |quant-u-10671|)))
 (assert (forall ((s@$ $Snap)) (!
   (as OTHER_GLOBAL_VAR%stateless  Bool)
   :pattern ((OTHER_GLOBAL_VAR%limited s@$))
-  :qid |quant-u-10678|)))
+  :qid |quant-u-10672|)))
 ; ---------- FUNCTION ANOTHER_GLOBAL_VAR----------
 (declare-fun result@9@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -342,11 +342,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (ANOTHER_GLOBAL_VAR%limited s@$) (ANOTHER_GLOBAL_VAR s@$))
   :pattern ((ANOTHER_GLOBAL_VAR s@$))
-  :qid |quant-u-10679|)))
+  :qid |quant-u-10673|)))
 (assert (forall ((s@$ $Snap)) (!
   (as ANOTHER_GLOBAL_VAR%stateless  Bool)
   :pattern ((ANOTHER_GLOBAL_VAR%limited s@$))
-  :qid |quant-u-10680|)))
+  :qid |quant-u-10674|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@9@00 (ANOTHER_GLOBAL_VAR%limited s@$))) (=>
     (ANOTHER_GLOBAL_VAR%precondition s@$)
@@ -354,17 +354,17 @@
       (issubtype<Bool> (typeof<PyType> result@9@00) (as bool<PyType>  PyType))
       (= result@9@00 (__prim__bool___box__ $Snap.unit true)))))
   :pattern ((ANOTHER_GLOBAL_VAR%limited s@$))
-  :qid |quant-u-10687|)))
+  :qid |quant-u-10681|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@9@00 (ANOTHER_GLOBAL_VAR%limited s@$))) true)
   :pattern ((ANOTHER_GLOBAL_VAR%limited s@$))
-  :qid |quant-u-10688|)))
+  :qid |quant-u-10682|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@9@00 (ANOTHER_GLOBAL_VAR%limited s@$))) (=>
     (ANOTHER_GLOBAL_VAR%precondition s@$)
     (__prim__bool___box__%precondition $Snap.unit true)))
   :pattern ((ANOTHER_GLOBAL_VAR%limited s@$))
-  :qid |quant-u-10689|)))
+  :qid |quant-u-10683|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -508,11 +508,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (SO_MANY_GLOBAL_VARS%limited s@$) (SO_MANY_GLOBAL_VARS s@$))
   :pattern ((SO_MANY_GLOBAL_VARS s@$))
-  :qid |quant-u-10681|)))
+  :qid |quant-u-10675|)))
 (assert (forall ((s@$ $Snap)) (!
   (as SO_MANY_GLOBAL_VARS%stateless  Bool)
   :pattern ((SO_MANY_GLOBAL_VARS%limited s@$))
-  :qid |quant-u-10682|)))
+  :qid |quant-u-10676|)))
 (declare-const $unresolved@14@00 $Snap)
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@10@00 (SO_MANY_GLOBAL_VARS%limited s@$))) (=>
@@ -526,11 +526,11 @@
           (OTHER_GLOBAL_VAR $Snap.unit)
           (__prim__int___box__ $unresolved@14@00 44))))))
   :pattern ((SO_MANY_GLOBAL_VARS%limited s@$))
-  :qid |quant-u-10690|)))
+  :qid |quant-u-10684|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@10@00 (SO_MANY_GLOBAL_VARS%limited s@$))) true)
   :pattern ((SO_MANY_GLOBAL_VARS%limited s@$))
-  :qid |quant-u-10691|)))
+  :qid |quant-u-10685|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@10@00 (SO_MANY_GLOBAL_VARS%limited s@$))) (=>
     (SO_MANY_GLOBAL_VARS%precondition s@$)
@@ -543,7 +543,7 @@
         (OTHER_GLOBAL_VAR%precondition $Snap.unit)
         (__prim__int___box__%precondition $unresolved@14@00 44)))))
   :pattern ((SO_MANY_GLOBAL_VARS%limited s@$))
-  :qid |quant-u-10692|)))
+  :qid |quant-u-10686|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract

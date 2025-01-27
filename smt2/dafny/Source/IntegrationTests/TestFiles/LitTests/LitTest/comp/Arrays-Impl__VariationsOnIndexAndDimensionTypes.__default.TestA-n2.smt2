@@ -169,7 +169,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|$l#0#heap#0| T@U) (|$l#0#i#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#3| |l#0|) |$l#0#heap#0| |$l#0#i#0|)) ($IsBox |$l#0#i#0| |l#0|))
  :qid |unknown.0:0|
- :skolemid |7807|
+ :skolemid |7814|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#3| |l#0|) |$l#0#heap#0| |$l#0#i#0|))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
@@ -412,12 +412,12 @@
 )))
 (assert (forall ((|l#0@@0| Bool) (|$l#0#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#4| |l#0@@0|) |$l#0#o#0|)) |l#0@@0|)
  :qid |unknown.0:0|
- :skolemid |7808|
+ :skolemid |7815|
  :pattern ( (MapType1Select refType boolType (|lambda#4| |l#0@@0|) |$l#0#o#0|))
 )))
 (assert (forall ((|l#0@@1| T@U) (|$l#0#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#6| |l#0@@1|) |$l#0#ly#0|) |l#0@@1|)
  :qid |Arraysdfy.804:23|
- :skolemid |7810|
+ :skolemid |7817|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#6| |l#0@@1|) |$l#0#ly#0|))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
@@ -530,7 +530,7 @@
 )))
 (assert (forall ((|l#0@@2| Int) (|l#1| Int) (|l#2| Int) (|l#3| Int) (|$l#0#heap#0@@0| T@U) (|$l#0#i#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#2| |l#0@@2| |l#1| |l#2| |l#3|) |$l#0#heap#0@@0| |$l#0#i#0@@0|) ($Box intType (int_2_U (ite  (and (<= |l#0@@2| (U_2_int ($Unbox intType |$l#0#i#0@@0|))) (< (U_2_int ($Unbox intType |$l#0#i#0@@0|)) |l#1|)) (+ |l#2| (U_2_int ($Unbox intType |$l#0#i#0@@0|))) |l#3|))))
  :qid |unknown.0:0|
- :skolemid |7806|
+ :skolemid |7813|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#2| |l#0@@2| |l#1| |l#2| |l#3|) |$l#0#heap#0@@0| |$l#0#i#0@@0|))
 )))
 (assert (forall ((f@@10 T@U) (ly@@0 T@U) (A@@0 T@T) ) (! (= (AtLayer A@@0 f@@10 ($LS ly@@0)) (AtLayer A@@0 f@@10 ly@@0))
@@ -559,7 +559,7 @@
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o@@7 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@3| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@7 $f))  (=> (and (or (not (= $o@@7 |l#0@@3|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@0| $o@@7) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7805|
+ :skolemid |7812|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@3| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@7 $f))
 )))
 (assert (forall ((|#$T0@@2| T@U) (|#$R@@2| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) |tytagFamily$_#Func1|))
@@ -638,7 +638,7 @@
 )))
 (assert (forall ((|l#0@@4| T@U) (|$l#0#heap#0@@1| T@U) (|$l#0#i#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#5| |l#0@@4|) |$l#0#heap#0@@1| |$l#0#i#0@@1|) |l#0@@4|)
  :qid |Arraysdfy.804:23|
- :skolemid |7809|
+ :skolemid |7816|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#5| |l#0@@4|) |$l#0#heap#0@@1| |$l#0#i#0@@1|))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)

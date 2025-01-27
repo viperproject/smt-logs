@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:58
+// Date:         2025-01-27 03:20:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0088.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0088-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ function  fib#triggerStateless(n: int): int;
 procedure fib#definedness(n: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -253,8 +253,8 @@ procedure fib#definedness(n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function fib might not hold. Assertion n - 1 >= 0 might not hold. (0088.vpr@10.16--10.26) [74251]"}
             n - 1 >= 0;
           // Stop execution
@@ -265,8 +265,8 @@ procedure fib#definedness(n: int) returns (Result: int)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function fib might not hold. Assertion n - 2 >= 0 might not hold. (0088.vpr@10.29--10.39) [74252]"}
             n - 2 >= 0;
           // Stop execution
@@ -281,8 +281,8 @@ procedure fib#definedness(n: int) returns (Result: int)
     Result := (if n <= 1 then n else fib(Heap, n - 1) + fib(Heap, n - 2));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of fib might not hold. Assertion (result == 0) == (n == 0) might not hold. (0088.vpr@8.11--8.36) [74253]"}
       (Result == 0) == (n == 0);
     assert {:msg "  Postcondition of fib might not hold. Assertion result >= 0 might not hold. (0088.vpr@9.11--9.22) [74254]"}
@@ -346,13 +346,13 @@ procedure P#definedness(x: Ref) returns ()
 procedure test1_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var n_87: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var n_1: int;
   
   // -- Initializing the state
@@ -364,20 +364,20 @@ procedure test1_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall n: Int :: { fib(n) } n >= 1 ==> fib(n) >= fib(n + 1)) -- 0088.vpr@14.3--14.58
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall n: Int :: { fib(n) } n >= 1 ==> fib(n) >= fib(n + 1))
       if (*) {
         if (n_87 >= 1) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function fib might not hold. Assertion n >= 0 might not hold. (0088.vpr@14.38--14.44) [74255]"}
               n_87 >= 0;
             // Stop execution
@@ -385,8 +385,8 @@ procedure test1_1() returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function fib might not hold. Assertion n + 1 >= 0 might not hold. (0088.vpr@14.48--14.58) [74256]"}
               n_87 + 1 >= 0;
             // Stop execution
@@ -417,15 +417,15 @@ procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var n_86: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var n_1: int;
   
   // -- Initializing the state
@@ -446,13 +446,13 @@ procedure test2_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall n: Int ::n >= 1 ==>
   //     (unfolding acc(P(x), write) in n < n + 1)) -- 0088.vpr@23.3--23.70
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall n: Int ::n >= 1 ==> (unfolding acc(P(x), write) in n < n + 1))
       if (*) {
@@ -461,8 +461,8 @@ procedure test2_1(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == EmptyFrame;
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [74258]"}
@@ -484,8 +484,8 @@ procedure test2_1(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == EmptyFrame;
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0088.vpr@23.10--23.70) [74261]"}

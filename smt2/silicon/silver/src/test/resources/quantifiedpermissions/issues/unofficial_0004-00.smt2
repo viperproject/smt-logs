@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:10:39
+; Started: 2025-01-27 03:03:51
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1600,11 +1600,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (trigger%limited s@$ i@0@00) (trigger s@$ i@0@00))
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-19331|)))
+  :qid |quant-u-19242|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (trigger%stateless i@0@00)
   :pattern ((trigger%limited s@$ i@0@00))
-  :qid |quant-u-19332|)))
+  :qid |quant-u-19243|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1616,11 +1616,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (trigger%precondition s@$ i@0@00) (= (trigger s@$ i@0@00) true))
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-19333|)))
+  :qid |quant-u-19244|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-19334|)))
+  :qid |quant-u-19245|)))
 ; ---------- List ----------
 (declare-const this@2@00 $Ref)
 (set-option :timeout 0)
@@ -2110,7 +2110,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@3@00))
     i@6@00))
-  :qid |quant-u-19336|)))
+  :qid |quant-u-19247|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2249,7 +2249,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@3@00))
     i@9@00))
-  :qid |quant-u-19338|)))
+  :qid |quant-u-19249|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

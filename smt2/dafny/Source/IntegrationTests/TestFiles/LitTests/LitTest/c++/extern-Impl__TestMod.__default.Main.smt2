@@ -223,11 +223,6 @@
  :pattern ( ($Is refType |c#0@@4| Tclass.Extern.ExternClass))
  :pattern ( ($Is refType |c#0@@4| Tclass.Extern.ExternClass?))
 )))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 18446744073709551616)))
- :qid |unknown.0:0|
- :skolemid |1026|
- :pattern ( ($Is intType |i#0@@0| Tclass.Extern.uint64))
-)))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
  :qid |DafnyPreludebpl.606:15|
  :skolemid |621|
@@ -273,6 +268,11 @@
 (assert (= (TagFamily Tclass.TestMod.D?) tytagFamily$D))
 (assert (= (Tag Tclass.Extern.ExternClass?) Tagclass.Extern.ExternClass?))
 (assert (= (TagFamily Tclass.Extern.ExternClass?) tytagFamily$ExternClass))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 18446744073709551616)))
+ :qid |unknown.0:0|
+ :skolemid |1026|
+ :pattern ( ($Is intType |i#0@@0| Tclass.Extern.uint64))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |522|

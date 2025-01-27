@@ -570,7 +570,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@9 T@U) ($f@@1 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@9 $f@@1))  (=> (and (or (not (= $o@@9 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@9) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7820|
+ :skolemid |7821|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@9 $f@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((ArrayAllocationInitialization._default.MatrixToSequence$T@@2 T@U) ($Heap@@4 T@U) (|m#0@@6| T@U) ) (!  (=> (or (|ArrayAllocationInitialization.__default.MatrixToSequence#canCall| ArrayAllocationInitialization._default.MatrixToSequence$T@@2 $Heap@@4 |m#0@@6|) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@4) (and ($Is refType |m#0@@6| (Tclass._System.array2 ArrayAllocationInitialization._default.MatrixToSequence$T@@2)) ($IsAlloc refType |m#0@@6| (Tclass._System.array2 ArrayAllocationInitialization._default.MatrixToSequence$T@@2) $Heap@@4))))) ($Is SeqType (ArrayAllocationInitialization.__default.MatrixToSequence ArrayAllocationInitialization._default.MatrixToSequence$T@@2 $Heap@@4 |m#0@@6|) (TSeq ArrayAllocationInitialization._default.MatrixToSequence$T@@2)))

@@ -35,17 +35,16 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $FunctionContextHeight () Int)
-(declare-fun _module.__default.InBounds (Bool T@U Int Int) Bool)
-(declare-fun |_module.__default.InBounds#canCall| (T@U Int Int) Bool)
-(declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun $FunctionContextHeight () Int)
+(declare-fun _module.__default.InBounds (Bool T@U Int Int) Bool)
+(declare-fun |_module.__default.InBounds#canCall| (T@U Int Int) Bool)
+(declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
-(declare-fun BoxType () T@T)
 (declare-fun _module.__default.sp__op__const (Int) Int)
 (declare-fun |_module.__default.sp__op__const#canCall| (Int) Bool)
 (declare-fun $Is (T@T T@U T@U) Bool)
@@ -54,6 +53,7 @@
 (declare-fun FieldType () T@T)
 (declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
 (declare-fun MapType1Select (T@T T@T T@U T@U) T@U)
+(declare-fun BoxType () T@T)
 (declare-fun MapType1Type (T@T T@T) T@T)
 (declare-fun MapType0Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
@@ -79,11 +79,6 @@
  :pattern ( (U_2_real x@@1))
 ))))
 (assert ($AlwaysAllocated Tclass._module.sp__state))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0| T@U) (|o#0| Int) (|v#0| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| |s#0| |o#0| |v#0|) (and (< 1 $FunctionContextHeight) ($IsBox |s#0| Tclass._module.sp__state))) (= (_module.__default.InBounds true |s#0| |o#0| |v#0|)  (and (<= (LitInt 0) |o#0|) (< |o#0| 4294967296))))
- :qid |gitissue2dfy.9:36|
- :skolemid |538|
- :pattern ( (_module.__default.InBounds true |s#0| |o#0| |v#0|))
-))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -99,18 +94,16 @@
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0| T@U) (|o#0| Int) (|v#0| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| |s#0| |o#0| |v#0|) (and (< 1 $FunctionContextHeight) ($IsBox |s#0| Tclass._module.sp__state))) (= (_module.__default.InBounds true |s#0| |o#0| |v#0|)  (and (<= (LitInt 0) |o#0|) (< |o#0| 4294967296))))
+ :qid |gitissue2dfy.9:36|
+ :skolemid |538|
+ :pattern ( (_module.__default.InBounds true |s#0| |o#0| |v#0|))
+))))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
  :qid |DafnyPreludebpl.217:18|
  :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
-(assert (= (Ctor BoxType) 3))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0@@0| T@U) (|o#0@@0| Int) (|v#0@@0| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|)) (and (< 1 $FunctionContextHeight) ($IsBox |s#0@@0| Tclass._module.sp__state))) (= (_module.__default.InBounds true (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|))  (and (<= (LitInt 0) (LitInt |o#0@@0|)) (< |o#0@@0| 4294967296))))
- :qid |gitissue2dfy.9:36|
- :weight 3
- :skolemid |540|
- :pattern ( (_module.__default.InBounds true (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|)))
-))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|c#0| Int) ) (!  (=> (or (|_module.__default.sp__op__const#canCall| |c#0|) (< 0 $FunctionContextHeight)) (= (_module.__default.sp__op__const |c#0|) |c#0|))
  :qid |gitissue2dfy.7:28|
  :skolemid |534|
@@ -135,7 +128,7 @@
  :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
-(assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+(assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
@@ -144,13 +137,13 @@
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
  :qid |mapAx1:MapType0Select:1|
  :weight 0
-)))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+)))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
  :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
  :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
  :qid |ctor:MapType1Type|
 ))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
  :qid |typeInv:MapType1TypeInv0|
@@ -164,11 +157,11 @@
  :skolemid |547|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0@@1| T@U) (|o#0@@1| Int) (|v#0@@1| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|)) (and (< 1 $FunctionContextHeight) ($IsBox |s#0@@1| Tclass._module.sp__state))) (= (_module.__default.InBounds true |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|))  (and (<= (LitInt 0) (LitInt |o#0@@1|)) (< |o#0@@1| 4294967296))))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0@@0| T@U) (|o#0@@0| Int) (|v#0@@0| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|)) (and (< 1 $FunctionContextHeight) ($IsBox |s#0@@0| Tclass._module.sp__state))) (= (_module.__default.InBounds true (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|))  (and (<= (LitInt 0) (LitInt |o#0@@0|)) (< |o#0@@0| 4294967296))))
  :qid |gitissue2dfy.9:36|
  :weight 3
- :skolemid |539|
- :pattern ( (_module.__default.InBounds true |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|)))
+ :skolemid |540|
+ :pattern ( (_module.__default.InBounds true (Lit BoxType |s#0@@0|) (LitInt |o#0@@0|) (LitInt |v#0@@0|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|c#0@@0| Int) ) (!  (=> (or (|_module.__default.sp__op__const#canCall| (LitInt |c#0@@0|)) (< 0 $FunctionContextHeight)) (= (_module.__default.sp__op__const (LitInt |c#0@@0|)) (LitInt |c#0@@0|)))
  :qid |gitissue2dfy.7:28|
@@ -186,6 +179,12 @@
  :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|s#0@@1| T@U) (|o#0@@1| Int) (|v#0@@1| Int) ) (!  (=> (or (|_module.__default.InBounds#canCall| |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|)) (and (< 1 $FunctionContextHeight) ($IsBox |s#0@@1| Tclass._module.sp__state))) (= (_module.__default.InBounds true |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|))  (and (<= (LitInt 0) (LitInt |o#0@@1|)) (< |o#0@@1| 4294967296))))
+ :qid |gitissue2dfy.9:36|
+ :weight 3
+ :skolemid |539|
+ :pattern ( (_module.__default.InBounds true |s#0@@1| (LitInt |o#0@@1|) (LitInt |v#0@@1|)))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun $_ModifiesFrame@0 () T@U)

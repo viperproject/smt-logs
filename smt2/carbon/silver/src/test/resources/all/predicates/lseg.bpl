@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:13:53
+// Date:         2025-01-27 03:12:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/lseg.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/lseg-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,8 +228,8 @@ procedure get#definedness(this: Ref, i: int, end_1: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -254,8 +254,8 @@ procedure get#definedness(this: Ref, i: int, end_1: Ref) returns (Result: int)
     // -- Check definedness of i < length(this, end)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@14.28--14.45) [46688]"}
           NoPerm < perm ==> NoPerm < Mask[null, lseg(this, end_1)];
@@ -276,8 +276,8 @@ procedure get#definedness(this: Ref, i: int, end_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, end_1));
       assume UnfoldingHeap[null, lseg(this, end_1)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != end_1 then UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, end) (lseg.vpr@12.1--17.2) [46689]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, end_1)];
@@ -307,8 +307,8 @@ procedure get#definedness(this: Ref, i: int, end_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this.next, end) (lseg.vpr@16.69--16.93) [46692]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1)];
@@ -393,8 +393,8 @@ procedure length#definedness(this: Ref, end_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -419,8 +419,8 @@ procedure length#definedness(this: Ref, end_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, end_1));
       assume UnfoldingHeap[null, lseg(this, end_1)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != end_1 then UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, end) (lseg.vpr@19.1--24.2) [46695]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, end_1)];
@@ -450,8 +450,8 @@ procedure length#definedness(this: Ref, end_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this.next, end) (lseg.vpr@23.74--23.96) [46698]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1)];
@@ -484,8 +484,8 @@ procedure length#definedness(this: Ref, end_1: Ref) returns (Result: int)
     Result := (if Heap[this, next] == end_1 then 1 else 1 + length_1(Heap, Heap[this, next], end_1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of length might not hold. Assertion result > 0 might not hold. (lseg.vpr@21.13--21.23) [46699]"}
       Result > 0;
 }
@@ -576,12 +576,12 @@ procedure init(this: Ref, val_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -610,8 +610,8 @@ procedure init(this: Ref, val_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -626,8 +626,8 @@ procedure init(this: Ref, val_2: int) returns ()
     // -- Check definedness of length(this, null) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, null) (lseg.vpr@30.13--30.31) [46703]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, null)];
@@ -645,8 +645,8 @@ procedure init(this: Ref, val_2: int) returns ()
     // -- Check definedness of get(this, 0, null) == val
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this, null) (lseg.vpr@31.13--31.31) [46704]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, null)];
@@ -678,8 +678,8 @@ procedure init(this: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(this, null), write) -- lseg.vpr@35.5--35.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding lseg(this, null) might fail. There might be insufficient permission to access this.value (lseg.vpr@35.5--35.38) [46710]"}
@@ -730,8 +730,8 @@ procedure init(this: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access lseg(this, null) (lseg.vpr@29.13--29.41) [46717]"}
@@ -756,19 +756,19 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var newPMask: PMaskType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -794,8 +794,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -810,8 +810,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
     // -- Check definedness of length(this, this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, this) (lseg.vpr@42.13--42.31) [46720]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, this)];
@@ -829,8 +829,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
     // -- Check definedness of get(this, 0, this) == val
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this, this) (lseg.vpr@43.13--43.31) [46721]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, this)];
@@ -851,8 +851,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
       UnfoldingMask := PostMask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, this));
       assume UnfoldingHeap[null, lseg(this, this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != this then UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], this)] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access lseg(this, this) (lseg.vpr@44.13--44.72) [46723]"}
@@ -898,8 +898,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
       UnfoldingMask := PostMask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, this));
       assume UnfoldingHeap[null, lseg(this, this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != this then UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], this)] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, lseg(this, this):=UnfoldingMask[null, lseg(this, this)] - perm];
       perm := FullPerm;
@@ -939,8 +939,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(this, this), write) -- lseg.vpr@48.5--48.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding lseg(this, this) might fail. There might be insufficient permission to access this.value (lseg.vpr@48.5--48.38) [46729]"}
@@ -991,8 +991,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of initUnitCycle might not hold. There might be insufficient permission to access lseg(this, this) (lseg.vpr@41.13--41.41) [46736]"}
@@ -1009,8 +1009,8 @@ procedure initUnitCycle(this: Ref, val_2: int) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, this));
       assume UnfoldingHeap[null, lseg(this, this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != this then UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], this)] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of initUnitCycle might not hold. There might be insufficient permission to access lseg(this, this) (lseg.vpr@44.13--44.72) [46739]"}
@@ -1064,12 +1064,12 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i_17: int;
   var n: Ref;
@@ -1101,8 +1101,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1117,8 +1117,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
     // -- Check definedness of length(this, end) == old(length(this, end)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@54.13--54.30) [46741]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, end_1)];
@@ -1131,8 +1131,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@54.39--54.56) [46742]"}
           NoPerm < perm ==> NoPerm < oldMask[null, lseg(this, end_1)];
@@ -1149,8 +1149,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
         if (0 <= i_17) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@55.50--55.67) [46743]"}
               NoPerm < perm ==> NoPerm < oldMask[null, lseg(this, end_1)];
@@ -1162,8 +1162,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
         if (0 <= i_17 && i_17 < length_1(oldHeap, this, end_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@55.75--55.92) [46744]"}
               NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, end_1)];
@@ -1180,8 +1180,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@55.100--55.117) [46747]"}
               NoPerm < perm ==> NoPerm < oldMask[null, lseg(this, end_1)];
@@ -1206,8 +1206,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
     // -- Check definedness of get(this, length(this, end) - 1, end) == val
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@56.23--56.40) [46750]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, end_1)];
@@ -1220,8 +1220,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@56.13--56.50) [46751]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, end_1)];
@@ -1248,8 +1248,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
   // -- Translating statement: unfold acc(lseg(this, end), write) -- lseg.vpr@60.5--60.39
     assume lseg#trigger(Heap, lseg(this, end_1));
     assume Heap[null, lseg(this, end_1)] == CombineFrames(FrameFragment(Heap[this, value_1]), CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != end_1 then Heap[null, lseg(Heap[this, next], end_1)] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding lseg(this, end) might fail. There might be insufficient permission to access lseg(this, end) (lseg.vpr@60.5--60.39) [46756]"}
@@ -1317,8 +1317,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(lseg(n, end), write) -- lseg.vpr@67.9--67.38
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding lseg(n, end) might fail. There might be insufficient permission to access n.value (lseg.vpr@67.9--67.38) [46766]"}
@@ -1379,8 +1379,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
         arg_this := Heap[this, next];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method addAtEnd might not hold. There might be insufficient permission to access lseg(this.next, end) (lseg.vpr@69.9--69.38) [46774]"}
@@ -1411,8 +1411,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(this, end), write) -- lseg.vpr@72.5--72.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding lseg(this, end) might fail. There might be insufficient permission to access this.value (lseg.vpr@72.5--72.37) [46777]"}
@@ -1463,8 +1463,8 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of addAtEnd might not hold. There might be insufficient permission to access lseg(this, end) (lseg.vpr@53.13--53.40) [46784]"}
@@ -1499,18 +1499,18 @@ procedure addAtEnd(this: Ref, end_1: Ref, val_2: int) returns ()
 procedure t1_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var n: Ref;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1521,8 +1521,8 @@ procedure t1_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[n, $allocated];
@@ -1541,8 +1541,8 @@ procedure t1_2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method init might not hold. There might be insufficient permission to access n.next (lseg.vpr@79.5--79.15) [46788]"}
@@ -1572,14 +1572,14 @@ procedure t1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 0, null) == 0 -- lseg.vpr@80.5--80.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 0, null) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, null) (lseg.vpr@80.12--80.27) [46790]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, null)];
@@ -1601,8 +1601,8 @@ procedure t1_2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method addAtEnd might not hold. There might be insufficient permission to access lseg(n, null) (lseg.vpr@81.5--81.25) [46793]"}
@@ -1631,14 +1631,14 @@ procedure t1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 0, null) == 0 -- lseg.vpr@82.5--82.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 0, null) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, null) (lseg.vpr@82.12--82.27) [46794]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, null)];
@@ -1656,14 +1656,14 @@ procedure t1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 1, null) == 1 -- lseg.vpr@83.5--83.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 1, null) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, null) (lseg.vpr@83.12--83.27) [46797]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, null)];
@@ -1688,21 +1688,21 @@ procedure t1_2() returns ()
 procedure t2_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var n: Ref;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1713,8 +1713,8 @@ procedure t2_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[n, $allocated];
@@ -1733,8 +1733,8 @@ procedure t2_2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method initUnitCycle might not hold. There might be insufficient permission to access n.next (lseg.vpr@90.5--90.24) [46800]"}
@@ -1766,8 +1766,8 @@ procedure t2_2() returns ()
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(n, n));
         assume UnfoldingHeap[null, lseg(n, n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[n, next]), FrameFragment((if UnfoldingHeap[n, next] != n then UnfoldingHeap[null, lseg(UnfoldingHeap[n, next], n)] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, lseg(n, n):=UnfoldingMask[null, lseg(n, n)] - perm];
         perm := FullPerm;
@@ -1809,8 +1809,8 @@ procedure t2_2() returns ()
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(n, n));
         assume UnfoldingHeap[null, lseg(n, n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, value_1]), CombineFrames(FrameFragment(UnfoldingHeap[n, next]), FrameFragment((if UnfoldingHeap[n, next] != n then UnfoldingHeap[null, lseg(UnfoldingHeap[n, next], n)] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  An internal error occurred. There might be insufficient permission to access lseg(n, n) (lseg.vpr@44.13--44.72) [46802]"}
@@ -1851,14 +1851,14 @@ procedure t2_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 0, n) == 0 -- lseg.vpr@91.5--91.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 0, n) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, n) (lseg.vpr@91.12--91.24) [46803]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, n)];
@@ -1880,8 +1880,8 @@ procedure t2_2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method addAtEnd might not hold. There might be insufficient permission to access lseg(n, n) (lseg.vpr@92.5--92.22) [46806]"}
@@ -1910,14 +1910,14 @@ procedure t2_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 0, n) == 0 -- lseg.vpr@93.5--93.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 0, n) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, n) (lseg.vpr@93.12--93.24) [46807]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, n)];
@@ -1935,14 +1935,14 @@ procedure t2_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(n, 1, n) == 1 -- lseg.vpr@94.5--94.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(n, 1, n) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access lseg(n, n) (lseg.vpr@94.12--94.24) [46810]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(n, n)];

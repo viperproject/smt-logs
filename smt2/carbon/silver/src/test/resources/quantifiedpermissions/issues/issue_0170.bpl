@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:22
+// Date:         2025-01-27 03:37:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0170.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0170-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -848,11 +848,11 @@ procedure repro(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var n: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshObj: Ref;
@@ -879,8 +879,8 @@ procedure repro(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[n, $allocated];
@@ -888,8 +888,8 @@ procedure repro(this: Ref) returns ()
   // -- Translating statement: unfold acc(List(this), write) -- issue_0170.vpr@21.2--21.24
     assume List#trigger(Heap, List(this));
     assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes_1]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (issue_0170.vpr@21.2--21.24) [168851]"}
@@ -994,8 +994,8 @@ procedure repro(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(this), write) -- issue_0170.vpr@24.2--24.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (issue_0170.vpr@24.2--24.22) [168857]"}

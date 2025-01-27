@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:04:48
+; Started: 2025-01-27 02:58:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -168,21 +168,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (lemmaLEqualR67%limited s@$) (lemmaLEqualR67 s@$))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-9194|)))
+  :qid |quant-u-9188|)))
 (assert (forall ((s@$ $Snap)) (!
   (as lemmaLEqualR67%stateless  Bool)
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-9195|)))
+  :qid |quant-u-9189|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (lemmaLEqualR67%limited s@$))) (=>
     (lemmaLEqualR67%precondition s@$)
     (= (as L67<Int>  Int) (as R67<Int>  Int))))
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-9198|)))
+  :qid |quant-u-9192|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (lemmaLEqualR67%limited s@$))) true)
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-9199|)))
+  :qid |quant-u-9193|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (lemmaLEqualR67%precondition s@$)
@@ -190,20 +190,20 @@
       (lemmaLEqualR67 s@$)
       (let ((x (F67<Int> (as L67<Int>  Int) (as R67<Int>  Int)))) (as unit<Unit>  Unit))))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-9200|)))
+  :qid |quant-u-9194|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (lemmaLEqualR67%precondition s@$)
     (let ((x (F67<Int> (as L67<Int>  Int) (as R67<Int>  Int)))) true))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-9201|)))
+  :qid |quant-u-9195|)))
 (assert (forall ((s@$ $Snap) (x@1@00 Int)) (!
   (= (functionUnit%limited s@$ x@1@00) (functionUnit s@$ x@1@00))
   :pattern ((functionUnit s@$ x@1@00))
-  :qid |quant-u-9196|)))
+  :qid |quant-u-9190|)))
 (assert (forall ((s@$ $Snap) (x@1@00 Int)) (!
   (functionUnit%stateless x@1@00)
   :pattern ((functionUnit%limited s@$ x@1@00))
-  :qid |quant-u-9197|)))
+  :qid |quant-u-9191|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

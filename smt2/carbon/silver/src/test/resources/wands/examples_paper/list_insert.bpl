@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:17:00
+// Date:         2025-01-27 03:42:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_insert.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_paper/list_insert-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -631,8 +631,8 @@ procedure elems#definedness(xs: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -656,8 +656,8 @@ procedure elems#definedness(xs: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(xs));
       assume UnfoldingHeap[null, List(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, List(UnfoldingHeap[xs, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(xs) (list_insert.vpr@36.1--38.89) [206577]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(xs)];
@@ -688,8 +688,8 @@ procedure elems#definedness(xs: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs.next) (list_insert.vpr@38.72--38.86) [206581]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(UnfoldingHeap[xs, next])];
@@ -764,8 +764,8 @@ procedure head#definedness(xs: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -788,8 +788,8 @@ procedure head#definedness(xs: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(xs));
       assume UnfoldingHeap[null, List(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, List(UnfoldingHeap[xs, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(xs) (list_insert.vpr@41.1--43.33) [206582]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(xs)];
@@ -910,11 +910,11 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var crt: Ref;
@@ -927,8 +927,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -946,15 +946,15 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var ResultMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var prev: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var oi: int;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -962,8 +962,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -986,8 +986,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_11: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var b_12: bool;
   var Result_5Heap: HeapType;
   var Result_5Mask: MaskType;
@@ -1028,8 +1028,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     // -- Check definedness of head(xs) < x
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@50.12--50.20) [206586]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -1046,8 +1046,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1062,8 +1062,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     // -- Check definedness of elems(xs) == old(elems(xs))[0..i + 1] ++ Seq(x) ++ old(elems(xs))[i + 1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@52.11--52.20) [206587]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(xs)];
@@ -1076,8 +1076,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@52.28--52.37) [206588]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1087,8 +1087,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@52.64--52.73) [206589]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1114,8 +1114,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   // -- Translating statement: unfold acc(List(xs), write) -- list_insert.vpr@61.3--61.18
     assume List#trigger(Heap, List(xs));
     assume Heap[null, List(xs)] == CombineFrames(FrameFragment(Heap[xs, val]), CombineFrames(FrameFragment(Heap[xs, next]), FrameFragment((if Heap[xs, next] != null then Heap[null, List(Heap[xs, next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (list_insert.vpr@61.3--61.18) [206592]"}
@@ -1180,8 +1180,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     
     // -- Translating statement: label lhs1 -- list_insert.vpr@65.11--65.18
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(List(xs), write) && elems(xs) == old(elems(xs))[0..i] ++ old[lhs](elems(crt))
@@ -1259,8 +1259,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         // -- Check definedness of elems(xs) == old(elems(xs))[0..i] ++ old[lhs](elems(crt))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := ResultHeap;
             ExhaleWellDef0Mask := ResultMask;
+            ExhaleWellDef0Heap := ResultHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@65.17--65.18) [206599]"}
               NoPerm < perm ==> NoPerm < ResultMask[null, List(xs)];
@@ -1273,8 +1273,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@65.17--65.18) [206600]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1284,8 +1284,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Labellhs1Heap;
             ExhaleWellDef0Mask := Labellhs1Mask;
+            ExhaleWellDef0Heap := Labellhs1Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(crt) (list_insert.vpr@65.17--65.18) [206601]"}
               NoPerm < perm ==> NoPerm < Labellhs1Mask[null, List(crt)];
@@ -1311,8 +1311,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && i < |old(elems(xs))| might not hold on entry. Assertion 0 <= i might not hold. (list_insert.vpr@72.15--72.45) [206603]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i < |old(elems(xs))| might not hold on entry. Assertion i < |old(elems(xs))| might not hold. (list_insert.vpr@72.15--72.45) [206604]"}
@@ -1369,8 +1369,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
         // -- Check definedness of i < |old(elems(xs))|
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@72.34--72.43) [206613]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1386,8 +1386,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           // -- Check definedness of i == |old(elems(xs))| - 1
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               perm := FullPerm;
               assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@73.41--73.50) [206614]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1420,8 +1420,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             HasDirectPerm(Mask, crt, val);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@76.30--76.39) [206617]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1444,8 +1444,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           // -- Check definedness of elems(nxt) == old(elems(xs))[i + 1..]
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(nxt) (list_insert.vpr@77.50--77.60) [206620]"}
                 NoPerm < perm ==> NoPerm < Mask[null, List(nxt)];
@@ -1458,8 +1458,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               perm := FullPerm;
               assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@77.68--77.77) [206621]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1483,8 +1483,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             
             // -- Translating statement: label lhs3 -- list_insert.vpr@78.15--78.22
               lhs3:
-              Labellhs3Heap := WandDefLHSHeap;
               Labellhs3Mask := WandDefLHSMask;
+              Labellhs3Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1496,8 +1496,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             // -- Check definedness of elems(xs) == old(elems(xs))[0..i] ++ old[lhs](elems(crt))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := WandDefRHSHeap;
                 ExhaleWellDef0Mask := WandDefRHSMask;
+                ExhaleWellDef0Heap := WandDefRHSHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@78.21--78.22) [206622]"}
                   NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(xs)];
@@ -1510,8 +1510,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@78.21--78.22) [206623]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1521,8 +1521,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Labellhs3Heap;
                 ExhaleWellDef0Mask := Labellhs3Mask;
+                ExhaleWellDef0Heap := Labellhs3Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(crt) (list_insert.vpr@78.21--78.22) [206624]"}
                   NoPerm < perm ==> NoPerm < Labellhs3Mask[null, List(crt)];
@@ -1586,8 +1586,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           if (nxt != null) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function head might not hold. There might be insufficient permission to access List(nxt) (list_insert.vpr@71.25--71.34) [206625]"}
                 NoPerm < perm ==> NoPerm < Mask[null, List(nxt)];
@@ -1608,14 +1608,14 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             assume Heap[prev, $allocated];
           
           // -- Translating statement: assert old(elems(xs))[i + 1] == elems(nxt)[0] -- list_insert.vpr@80.5--80.48
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of old(elems(xs))[i + 1] == elems(nxt)[0]
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := oldHeap;
                 ExhaleWellDef1Mask := oldMask;
+                ExhaleWellDef1Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@80.16--80.25) [206626]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -1629,8 +1629,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 i + 1 < Seq#Length(elems(oldHeap, xs));
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(nxt) (list_insert.vpr@80.35--80.45) [206629]"}
                   NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(nxt)];
@@ -1658,8 +1658,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
           // -- Translating statement: unfold acc(List(nxt), write) -- list_insert.vpr@85.5--85.21
             assume List#trigger(Heap, List(nxt));
             assume Heap[null, List(nxt)] == CombineFrames(FrameFragment(Heap[nxt, val]), CombineFrames(FrameFragment(Heap[nxt, next]), FrameFragment((if Heap[nxt, next] != null then Heap[null, List(Heap[nxt, next])] else EmptyFrame))));
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding List(nxt) might fail. There might be insufficient permission to access List(nxt) (list_insert.vpr@85.5--85.21) [206632]"}
@@ -1732,15 +1732,15 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             
             // -- Translating statement: label lhs4 -- list_insert.vpr@90.12--90.21
               lhs4:
-              Labellhs4Heap := Ops_3Heap;
               Labellhs4Mask := Ops_3Mask;
+              Labellhs4Heap := Ops_3Heap;
               b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
             boolCur_1 := true;
             if (b_5) {
               
               // -- Translating statement: fold acc(List(prev), write) -- list_insert.vpr@91.8--91.23
-                ExhaleWellDef0Heap := Ops_3Heap;
                 ExhaleWellDef0Mask := Ops_3Mask;
+                ExhaleWellDef0Heap := Ops_3Heap;
                 havoc Used_3Heap;
                 Used_3Mask := ZeroMask;
                 b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -1983,8 +1983,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   //   elems(xs) == old(elems(xs))[0..oi] ++ old[lhs](elems(prev)) -- list_insert.vpr@92.8--92.110
                 
                 // -- check if wand is held and remove an instance
-                  ExhaleWellDef0Heap := Ops_3Heap;
                   ExhaleWellDef0Mask := Ops_3Mask;
+                  ExhaleWellDef0Heap := Ops_3Heap;
                   havoc Used_4Heap;
                   Used_4Mask := ZeroMask;
                   b_11 := b_11 && state(Used_4Heap, Used_4Mask);
@@ -2006,8 +2006,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                               
                               // -- Translating statement: label lhs7 -- list_insert.vpr@92.14--92.110
                                 lhs7:
-                                Labellhs7Heap := WandDefLHSHeap;
                                 Labellhs7Mask := WandDefLHSMask;
+                                Labellhs7Heap := WandDefLHSHeap;
                                 assume state(WandDefLHSHeap, WandDefLHSMask);
                               havoc WandDefRHSHeap;
                               WandDefRHSMask := ZeroMask;
@@ -2019,8 +2019,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                               // -- Check definedness of elems(xs) == old(elems(xs))[0..oi] ++ old[lhs](elems(prev))
                                 if (*) {
                                   // Exhale precondition of function application
-                                  ExhaleWellDef1Heap := WandDefRHSHeap;
                                   ExhaleWellDef1Mask := WandDefRHSMask;
+                                  ExhaleWellDef1Heap := WandDefRHSHeap;
                                   perm := FullPerm;
                                   assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@92.51--92.60) [206641]"}
                                     NoPerm < perm ==> NoPerm < WandDefRHSMask[null, List(xs)];
@@ -2033,8 +2033,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                                 }
                                 if (*) {
                                   // Exhale precondition of function application
-                                  ExhaleWellDef1Heap := oldHeap;
                                   ExhaleWellDef1Mask := oldMask;
+                                  ExhaleWellDef1Heap := oldHeap;
                                   perm := FullPerm;
                                   assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@92.68--92.77) [206642]"}
                                     NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -2044,8 +2044,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                                 }
                                 if (*) {
                                   // Exhale precondition of function application
-                                  ExhaleWellDef1Heap := Labellhs7Heap;
                                   ExhaleWellDef1Mask := Labellhs7Mask;
+                                  ExhaleWellDef1Heap := Labellhs7Heap;
                                   perm := FullPerm;
                                   assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(prev) (list_insert.vpr@92.98--92.109) [206643]"}
                                     NoPerm < perm ==> NoPerm < Labellhs7Mask[null, List(prev)];
@@ -2119,8 +2119,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
                 
                 // -- check if LHS holds and remove permissions 
-                  ExhaleWellDef0Heap := Ops_3Heap;
                   ExhaleWellDef0Mask := Ops_3Mask;
+                  ExhaleWellDef0Heap := Ops_3Heap;
                   havoc Used_5Heap;
                   Used_5Mask := ZeroMask;
                   b_13 := b_13 && state(Used_5Heap, Used_5Mask);
@@ -2282,8 +2282,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                 // -- Check definedness of elems(xs) == old(elems(xs))[0..i] ++ old[lhs](elems(crt))
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Result_7Heap;
                     ExhaleWellDef0Mask := Result_7Mask;
+                    ExhaleWellDef0Heap := Result_7Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@90.20--90.21) [206650]"}
                       NoPerm < perm ==> NoPerm < Result_7Mask[null, List(xs)];
@@ -2296,8 +2296,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := oldHeap;
                     ExhaleWellDef0Mask := oldMask;
+                    ExhaleWellDef0Heap := oldHeap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@90.20--90.21) [206651]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -2307,8 +2307,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Labellhs4Heap;
                     ExhaleWellDef0Mask := Labellhs4Mask;
+                    ExhaleWellDef0Heap := Labellhs4Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(crt) (list_insert.vpr@90.20--90.21) [206652]"}
                       NoPerm < perm ==> NoPerm < Labellhs4Mask[null, List(crt)];
@@ -2329,8 +2329,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && i < |old(elems(xs))| might not be preserved. Assertion 0 <= i might not hold. (list_insert.vpr@72.15--72.45) [206654]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i < |old(elems(xs))| might not be preserved. Assertion i < |old(elems(xs))| might not hold. (list_insert.vpr@72.15--72.45) [206655]"}
@@ -2433,8 +2433,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(node), write) -- list_insert.vpr@102.3--102.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(node) might fail. There might be insufficient permission to access node.val (list_insert.vpr@102.3--102.18) [206668]"}
@@ -2483,14 +2483,14 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert elems(node) == Seq(x) ++ old(elems(xs))[i + 1..] -- list_insert.vpr@104.3--104.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of elems(node) == Seq(x) ++ old(elems(xs))[i + 1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(node) (list_insert.vpr@104.10--104.21) [206674]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(node)];
@@ -2503,8 +2503,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := oldHeap;
         ExhaleWellDef1Mask := oldMask;
+        ExhaleWellDef1Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function elems might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@104.39--104.48) [206675]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(xs)];
@@ -2523,8 +2523,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(crt), write) -- list_insert.vpr@108.3--108.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(crt) might fail. There might be insufficient permission to access crt.val (list_insert.vpr@108.3--108.17) [206680]"}
@@ -2577,8 +2577,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
   //   elems(xs) == old(elems(xs))[0..i] ++ old[lhs](elems(crt)) -- list_insert.vpr@113.3--113.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (list_insert.vpr@113.3--113.16) [206686]"}
         FullPerm <= Mask[null, wand(crt, xs, xs, Seq#Drop(Seq#Take(elems(oldHeap, xs), i), 0), crt)];
@@ -2586,8 +2586,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(crt) (list_insert.vpr@113.3--113.16) [206688]"}
@@ -2610,8 +2610,8 @@ procedure insert(xs: Ref, x: int) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access List(xs) (list_insert.vpr@51.11--51.24) [206690]"}

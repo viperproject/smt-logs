@@ -229,7 +229,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#15| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1678|
+ :skolemid |1680|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#15| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))
 )))
 (assert (forall (($prevHeap@@2 T@U) ($h0 T@U) ($h1 T@U) (this@@2 T@U) (|c#0@@4| T@U) (|c'#0@@2| T@U) ) (!  (=> (and (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 Tclass._module.C))) (or (|_module.C.FOld#canCall| $prevHeap@@2 $h0 this@@2 |c#0@@4| |c'#0@@2|) (and ($Is refType |c#0@@4| Tclass._module.C) ($Is refType |c'#0@@2| Tclass._module.C)))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@4 T@U) ($f@@0 T@U) ) (! true

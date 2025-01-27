@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:13:18
+// Date:         2025-01-27 03:07:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/unfolding_trivial_wand.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/wands/unfolding_trivial_wand-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -279,8 +279,8 @@ procedure P#definedness(x: Ref) returns ()
 procedure t_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -288,16 +288,16 @@ procedure t_1(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   
@@ -312,8 +312,8 @@ procedure t_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(P(x), 2 / 1) --*
   // (unfolding acc(P(x), write) in (unfolding acc(P(x), write) in false)) {
@@ -337,8 +337,8 @@ procedure t_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- unfolding_trivial_wand.vpr@8.11--8.74
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operation(unfolding acc(P(x), write) in (unfolding acc(P(x), write) in false))
@@ -353,8 +353,8 @@ procedure t_1(x: Ref) returns ()
           UnfoldingMask := Ops_1Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Packaging wand might fail. There might be insufficient permission to access P(x) (unfolding_trivial_wand.vpr@8.3--8.74) [822]"}
@@ -370,8 +370,8 @@ procedure t_1(x: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume P#trigger(Unfolding1Heap, P(x));
           assume Unfolding1Heap[null, P(x)] == FrameFragment(Unfolding1Heap[x, f_7]);
-          ExhaleWellDef0Heap := Unfolding1Heap;
           ExhaleWellDef0Mask := Unfolding1Mask;
+          ExhaleWellDef0Heap := Unfolding1Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Packaging wand might fail. There might be insufficient permission to access P(x) (unfolding_trivial_wand.vpr@8.3--8.74) [823]"}
@@ -403,8 +403,8 @@ procedure t_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- unfolding_trivial_wand.vpr@12.3--12.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (unfolding_trivial_wand.vpr@12.10--12.15) [825]"}
       false;
     assume state(Heap, Mask);

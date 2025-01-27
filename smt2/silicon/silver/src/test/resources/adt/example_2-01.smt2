@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:08:49
+; Started: 2025-01-27 03:01:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -449,11 +449,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (= (children%limited s@$ t@0@00) (children s@$ t@0@00))
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-13600|)))
+  :qid |quant-u-13593|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (children%stateless t@0@00)
   :pattern ((children%limited s@$ t@0@00))
-  :qid |quant-u-13601|)))
+  :qid |quant-u-13594|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (=>
     (children%precondition s@$ t@0@00)
@@ -480,19 +480,19 @@
             (Seq_singleton (get_Tree_left<Tree> t@0@00))
             (Seq_singleton (get_Tree_right<Tree> t@0@00)))))))
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-13608|)))
+  :qid |quant-u-13601|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   true
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-13609|)))
+  :qid |quant-u-13602|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (= (children_seq%limited s@$ ts@2@00) (children_seq s@$ ts@2@00))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-13602|)))
+  :qid |quant-u-13595|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (children_seq%stateless ts@2@00)
   :pattern ((children_seq%limited s@$ ts@2@00))
-  :qid |quant-u-13603|)))
+  :qid |quant-u-13596|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (=>
     (children_seq%precondition s@$ ts@2@00)
@@ -508,7 +508,7 @@
             (children_seq%limited $Snap.unit (Seq_drop ts@2@00 1))
             (children $Snap.unit (Seq_index ts@2@00 0)))))))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-13610|)))
+  :qid |quant-u-13603|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (=>
     (children_seq%precondition s@$ ts@2@00)
@@ -522,15 +522,15 @@
           (children_seq%precondition $Snap.unit (Seq_drop ts@2@00 1))
           (children%precondition $Snap.unit (Seq_index ts@2@00 0))))))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-13611|)))
+  :qid |quant-u-13604|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (= (height_recursive%limited s@$ ts@4@00) (height_recursive s@$ ts@4@00))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-13604|)))
+  :qid |quant-u-13597|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (height_recursive%stateless ts@4@00)
   :pattern ((height_recursive%limited s@$ ts@4@00))
-  :qid |quant-u-13605|)))
+  :qid |quant-u-13598|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (=>
     (height_recursive%precondition s@$ ts@4@00)
@@ -543,7 +543,7 @@
           1
           (height_recursive%limited $Snap.unit (children_seq $Snap.unit ts@4@00))))))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-13612|)))
+  :qid |quant-u-13605|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (=>
     (height_recursive%precondition s@$ ts@4@00)
@@ -554,15 +554,15 @@
         (children_seq%precondition $Snap.unit ts@4@00)
         (height_recursive%precondition $Snap.unit (children_seq $Snap.unit ts@4@00)))))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-13613|)))
+  :qid |quant-u-13606|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (= (height%limited s@$ t@6@00) (height s@$ t@6@00))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-13606|)))
+  :qid |quant-u-13599|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (height%stateless t@6@00)
   :pattern ((height%limited s@$ t@6@00))
-  :qid |quant-u-13607|)))
+  :qid |quant-u-13600|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (height%precondition s@$ t@6@00)
@@ -573,7 +573,7 @@
         0
         (height_recursive $Snap.unit (Seq_singleton t@6@00)))))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-13614|)))
+  :qid |quant-u-13607|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (height%precondition s@$ t@6@00)
@@ -582,7 +582,7 @@
       true
       (height_recursive%precondition $Snap.unit (Seq_singleton t@6@00))))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-13615|)))
+  :qid |quant-u-13608|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- computeTreeHeight ----------
@@ -1816,7 +1816,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (forall ((i@34@01 Int)) (!
   (=>

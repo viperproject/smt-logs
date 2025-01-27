@@ -194,7 +194,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@4 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))  (=> (and (or (not (= $o@@4 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@4) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1987|
+ :skolemid |1989|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -260,7 +260,3 @@ PreconditionGeneratedEntry_correct))))))
 (get-info :rlimit)
 (pop 1)
 ; Invalid
-(reset)
-(set-option :rlimit 0)
-; did a full reset
-(reset)

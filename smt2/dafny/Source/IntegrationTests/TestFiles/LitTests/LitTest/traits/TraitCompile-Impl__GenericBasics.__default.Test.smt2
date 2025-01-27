@@ -745,7 +745,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@7 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))  (=> (and (or (not (= $o@@7 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@7) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |8391|
+ :skolemid |8388|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))
 )))
 (assert (forall ((GenericBasics.Mega$P@@20 T@U) (GenericBasics.Mega$Q@@20 T@U) (GenericBasics.Mega$L@@20 T@U) ($o@@8 T@U) ) (! (= ($Is refType $o@@8 (Tclass.GenericBasics.Mega? GenericBasics.Mega$P@@20 GenericBasics.Mega$Q@@20 GenericBasics.Mega$L@@20))  (or (= $o@@8 null) (= (dtype $o@@8) (Tclass.GenericBasics.Mega? GenericBasics.Mega$P@@20 GenericBasics.Mega$Q@@20 GenericBasics.Mega$L@@20))))

@@ -59,7 +59,7 @@
 (declare-fun Tclass.Types.XY () T@U)
 (declare-fun charType () T@T)
 (declare-fun |#Types.XY.D1| (Real Bool) T@U)
-(declare-fun LitReal (Real) Real)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun Types.XY.D0_q (T@U) Bool)
 (declare-fun Types.XY.G0_q (T@U) Bool)
@@ -141,10 +141,10 @@
  :skolemid |1079|
  :pattern ( ($Is DatatypeTypeType (|#Types.XY.D1| |a#19#0#0| |a#19#1#0|) Tclass.Types.XY))
 )))
-(assert (forall ((x@@2 Real) ) (! (= (LitReal x@@2) x@@2)
- :qid |DafnyPreludebpl.111:30|
- :skolemid |565|
- :pattern ( (LitReal x@@2))
+(assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |563|
+ :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
  :qid |DafnyPreludebpl.102:29|
@@ -228,11 +228,6 @@
  :skolemid |1083|
  :pattern ( (|#Types.XY.D1| |a#21#0#0| |a#21#1#0|))
 )))
-(assert (forall ((|a#13#0#0| T@U) (|a#13#1#0| Real) (|a#13#2#0| T@U) ) (! (= (|#Types.XY.G1| (U_2_bool (Lit boolType |a#13#0#0|)) (LitReal |a#13#1#0|) (Lit charType |a#13#2#0|)) (Lit DatatypeTypeType (|#Types.XY.G1| (U_2_bool |a#13#0#0|) |a#13#1#0| |a#13#2#0|)))
- :qid |GhostDatatypeConstructorsVerificationdfy.8:16|
- :skolemid |1071|
- :pattern ( (|#Types.XY.G1| (U_2_bool (Lit boolType |a#13#0#0|)) (LitReal |a#13#1#0|) (Lit charType |a#13#2#0|)))
-)))
 (assert (forall ((|a#0#0#0| Int) ) (! (= (DatatypeCtorId (|#Types.XY.D0| |a#0#0#0|)) |##Types.XY.D0|)
  :qid |GhostDatatypeConstructorsVerificationdfy.6:10|
  :skolemid |1047|
@@ -289,7 +284,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2776|
+ :skolemid |2777|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@7 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (Types.XY.D0_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass.Types.XY $h))) ($IsAlloc intType (int_2_U (Types.XY.x d@@7)) TInt $h))
@@ -339,15 +334,15 @@
  :skolemid |1086|
  :pattern ( (|$IsA#Types.XY| d@@15))
 )))
-(assert (forall ((|a#20#0#0| Real) (|a#20#1#0| T@U) ) (! (= (|#Types.XY.D1| (LitReal |a#20#0#0|) (U_2_bool (Lit boolType |a#20#1#0|))) (Lit DatatypeTypeType (|#Types.XY.D1| |a#20#0#0| (U_2_bool |a#20#1#0|))))
- :qid |GhostDatatypeConstructorsVerificationdfy.9:10|
- :skolemid |1082|
- :pattern ( (|#Types.XY.D1| (LitReal |a#20#0#0|) (U_2_bool (Lit boolType |a#20#1#0|))))
+(assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |564|
+ :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
-(assert (forall ((x@@6 Real) ) (! (= ($Box realType (real_2_U (LitReal x@@6))) (Lit BoxType ($Box realType (real_2_U x@@6))))
- :qid |DafnyPreludebpl.112:15|
- :skolemid |566|
- :pattern ( ($Box realType (real_2_U (LitReal x@@6))))
+(assert (forall ((|a#3#0#0| Int) ) (! (= (|#Types.XY.D0| (LitInt |a#3#0#0|)) (Lit DatatypeTypeType (|#Types.XY.D0| |a#3#0#0|)))
+ :qid |GhostDatatypeConstructorsVerificationdfy.6:10|
+ :skolemid |1053|
+ :pattern ( (|#Types.XY.D0| (LitInt |a#3#0#0|)))
 )))
 (assert (forall ((|a#8#0#0| T@U) ) (! (= (|#Types.XY.G0| (U_2_bool (Lit boolType |a#8#0#0|))) (Lit DatatypeTypeType (|#Types.XY.G0| (U_2_bool |a#8#0#0|))))
  :qid |GhostDatatypeConstructorsVerificationdfy.7:16|
@@ -409,18 +404,16 @@
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
-(declare-fun |xy#0| () T@U)
-(declare-fun |let#1_0#0#0| () T@U)
-(declare-fun |dt_update_tmp#1#Z#1_0@0| () T@U)
-(declare-fun |let#1_1#0#0| () Real)
-(declare-fun |dt_update#z#0#Z#1_0@0| () Real)
+(declare-fun |xy1#0| () T@U)
+(declare-fun |s#0@0| () Int)
+(declare-fun |xy0#0| () T@U)
+(declare-fun |r#0@0| () Int)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(declare-fun |r#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id Impl$$Ghost.__default.Update1)
+(set-info :boogie-vc-id Impl$$Ghost.__default.M0)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -436,21 +429,22 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 11) (let ((anon5_Else_correct  (=> (and (and (not (U_2_bool (Lit boolType (bool_2_U true)))) (not (U_2_bool (Lit boolType (bool_2_U true))))) (= (ControlFlow 0 9) (- 0 8))) false)))
-(let ((anon5_Then_correct  (and (=> (= (ControlFlow 0 6) (- 0 7)) (or (Types.XY.D1_q |xy#0|) (Types.XY.G1_q |xy#0|))) (=> (or (Types.XY.D1_q |xy#0|) (Types.XY.G1_q |xy#0|)) (=> (= (ControlFlow 0 6) (- 0 5)) (not (Types.XY.G1_q |xy#0|)))))))
-(let ((anon4_Then_correct  (and (=> (= (ControlFlow 0 2) (- 0 4)) (or (Types.XY.D1_q |xy#0|) (Types.XY.G1_q |xy#0|))) (=> (or (Types.XY.D1_q |xy#0|) (Types.XY.G1_q |xy#0|)) (and (=> (= (ControlFlow 0 2) (- 0 3)) (not (Types.XY.G1_q |xy#0|))) (=> (not (Types.XY.G1_q |xy#0|)) (=> (= |let#1_0#0#0| |xy#0|) (=> (and ($Is DatatypeTypeType |let#1_0#0#0| Tclass.Types.XY) (= |dt_update_tmp#1#Z#1_0@0| |let#1_0#0#0|)) (=> (and (and (= |let#1_1#0#0| (LitReal 2.2)) ($Is realType (real_2_U |let#1_1#0#0|) TReal)) (and (= |dt_update#z#0#Z#1_0@0| |let#1_1#0#0|) (= (ControlFlow 0 2) (- 0 1)))) (or (or (Types.XY.G0_q |dt_update_tmp#1#Z#1_0@0|) (Types.XY.G1_q |dt_update_tmp#1#Z#1_0@0|)) (Types.XY.D1_q |dt_update_tmp#1#Z#1_0@0|)))))))))))
-(let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 10) 2) anon4_Then_correct) (=> (= (ControlFlow 0 10) 6) anon5_Then_correct)) (=> (= (ControlFlow 0 10) 9) anon5_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is DatatypeTypeType |xy#0| Tclass.Types.XY) ($IsAlloc DatatypeTypeType |xy#0| Tclass.Types.XY $Heap)) (|$IsA#Types.XY| |xy#0|)) (=> (and (and (and ($Is DatatypeTypeType |r#0| Tclass.Types.XY) ($IsAlloc DatatypeTypeType |r#0| Tclass.Types.XY $Heap)) (= 0 $FunctionContextHeight)) (and (Types.XY.G1_q |xy#0|) (= (ControlFlow 0 11) 10))) anon0_correct)))))
-PreconditionGeneratedEntry_correct))))))
+ (=> (= (ControlFlow 0 0) 12) (let ((anon11_Else_correct true))
+(let ((anon11_Then_correct true))
+(let ((anon6_correct  (and (=> (= (ControlFlow 0 3) (- 0 4)) (and (not (Types.XY.G0_q |xy1#0|)) (not (Types.XY.G1_q |xy1#0|)))) (=> (and (not (Types.XY.G0_q |xy1#0|)) (not (Types.XY.G1_q |xy1#0|))) (and (=> (= (ControlFlow 0 3) 1) anon11_Then_correct) (=> (= (ControlFlow 0 3) 2) anon11_Else_correct))))))
+(let ((anon10_Else_correct  (=> (and (not (Types.XY.D1_q |xy1#0|)) (= (ControlFlow 0 6) 3)) anon6_correct)))
+(let ((anon10_Then_correct  (=> (Types.XY.D1_q |xy1#0|) (=> (and (= |s#0@0| (LitInt 3)) (= (ControlFlow 0 5) 3)) anon6_correct))))
+(let ((anon3_correct  (and (=> (= (ControlFlow 0 7) 5) anon10_Then_correct) (=> (= (ControlFlow 0 7) 6) anon10_Else_correct))))
+(let ((anon9_Else_correct  (=> (and (not (Types.XY.D1_q |xy0#0|)) (= (ControlFlow 0 9) 7)) anon3_correct)))
+(let ((anon9_Then_correct  (=> (Types.XY.D1_q |xy0#0|) (=> (and (= |r#0@0| (LitInt 3)) (= (ControlFlow 0 8) 7)) anon3_correct))))
+(let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 10) (- 0 11)) (and (not (Types.XY.G0_q |xy0#0|)) (not (Types.XY.G1_q |xy0#0|)))) (=> (and (not (Types.XY.G0_q |xy0#0|)) (not (Types.XY.G1_q |xy0#0|))) (and (=> (= (ControlFlow 0 10) 8) anon9_Then_correct) (=> (= (ControlFlow 0 10) 9) anon9_Else_correct)))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is DatatypeTypeType |xy0#0| Tclass.Types.XY) ($IsAlloc DatatypeTypeType |xy0#0| Tclass.Types.XY $Heap)) (|$IsA#Types.XY| |xy0#0|)) (=> (and (and (and (and ($Is DatatypeTypeType |xy1#0| Tclass.Types.XY) ($IsAlloc DatatypeTypeType |xy1#0| Tclass.Types.XY $Heap)) (|$IsA#Types.XY| |xy1#0|)) (= 0 $FunctionContextHeight)) (and (or (Types.XY.D0_q |xy0#0|) (Types.XY.D1_q |xy0#0|)) (= (ControlFlow 0 12) 10))) anon0_correct)))))
+PreconditionGeneratedEntry_correct)))))))))))
 ))
 (check-sat)
 (get-info :reason-unknown)
 (get-info :rlimit)
-(assert (not (= (ControlFlow 0 2) (- 3))))
-(check-sat)
-(get-info :reason-unknown)
-(get-info :rlimit)
-(assert (not (= (ControlFlow 0 6) (- 5))))
+(assert (not (= (ControlFlow 0 3) (- 4))))
 (check-sat)
 (get-info :rlimit)
 (pop 1)

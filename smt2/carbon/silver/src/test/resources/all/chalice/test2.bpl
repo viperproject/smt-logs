@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:25
+// Date:         2025-01-27 03:25:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/test2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/test2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -237,8 +237,8 @@ procedure getX#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -260,8 +260,8 @@ procedure getX#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume X#trigger(UnfoldingHeap, X_1(this));
       assume UnfoldingHeap[null, X_1(this)] == FrameFragment(UnfoldingHeap[this, x_42]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access X(this) (test2.vpr@11.3--13.48) [87792]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, X_1(this)];
@@ -323,8 +323,8 @@ procedure getY#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -346,8 +346,8 @@ procedure getY#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Y#trigger(UnfoldingHeap, Y(this));
       assume UnfoldingHeap[null, Y(this)] == FrameFragment(UnfoldingHeap[this, y_22]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Y(this) (test2.vpr@14.3--16.48) [87794]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Y(this)];
@@ -409,8 +409,8 @@ procedure getZ#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,8 +432,8 @@ procedure getZ#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Z#trigger(UnfoldingHeap, Z_2(this));
       assume UnfoldingHeap[null, Z_2(this)] == FrameFragment(UnfoldingHeap[this, z_24]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Z(this) (test2.vpr@17.3--19.48) [87796]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Z_2(this)];
@@ -626,12 +626,12 @@ procedure setX(this: Ref, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -654,8 +654,8 @@ procedure setX(this: Ref, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -669,8 +669,8 @@ procedure setX(this: Ref, v_2: int) returns ()
     // -- Check definedness of getX(this) == v
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getX might not hold. There might be insufficient permission to access X(this) (test2.vpr@22.38--22.48) [87798]"}
           NoPerm < perm ==> NoPerm < PostMask[null, X_1(this)];
@@ -690,8 +690,8 @@ procedure setX(this: Ref, v_2: int) returns ()
   // -- Translating statement: unfold acc(X(this), write) -- test2.vpr@24.5--24.31
     assume X#trigger(Heap, X_1(this));
     assume Heap[null, X_1(this)] == FrameFragment(Heap[this, x_42]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding X(this) might fail. There might be insufficient permission to access X(this) (test2.vpr@24.5--24.31) [87801]"}
@@ -718,8 +718,8 @@ procedure setX(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(X(this), write) -- test2.vpr@26.5--26.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding X(this) might fail. There might be insufficient permission to access this.x (test2.vpr@26.5--26.29) [87806]"}
@@ -742,8 +742,8 @@ procedure setX(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of setX might not hold. There might be insufficient permission to access X(this) (test2.vpr@22.13--22.57) [87808]"}
@@ -766,12 +766,12 @@ procedure check(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -809,8 +809,8 @@ procedure check(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -833,8 +833,8 @@ procedure check(this: Ref) returns ()
     // -- Check definedness of getX(this) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getX might not hold. There might be insufficient permission to access X(this) (test2.vpr@30.81--30.91) [87811]"}
           NoPerm < perm ==> NoPerm < PostMask[null, X_1(this)];
@@ -854,8 +854,8 @@ procedure check(this: Ref) returns ()
     // -- Check definedness of getZ(this) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getZ might not hold. There might be insufficient permission to access Z(this) (test2.vpr@30.129--30.139) [87812]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Z_2(this)];
@@ -906,8 +906,8 @@ procedure check(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(X(this), write) -- test2.vpr@36.5--36.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding X(this) might fail. There might be insufficient permission to access this.x (test2.vpr@36.5--36.29) [87820]"}
@@ -930,8 +930,8 @@ procedure check(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Y(this), write) -- test2.vpr@37.5--37.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Y(this) might fail. There might be insufficient permission to access this.y (test2.vpr@37.5--37.29) [87824]"}
@@ -954,8 +954,8 @@ procedure check(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Z(this), write) -- test2.vpr@38.5--38.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Z(this) might fail. There might be insufficient permission to access this.z (test2.vpr@38.5--38.29) [87828]"}
@@ -982,8 +982,8 @@ procedure check(this: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method setX might not hold. There might be insufficient permission to access X(this) (test2.vpr@39.5--39.18) [87830]"}
@@ -1007,8 +1007,8 @@ procedure check(this: Ref) returns ()
   // -- Translating statement: unfold acc(Y(this), write) -- test2.vpr@40.5--40.31
     assume Y#trigger(Heap, Y(this));
     assume Heap[null, Y(this)] == FrameFragment(Heap[this, y_22]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Y(this) might fail. There might be insufficient permission to access Y(this) (test2.vpr@40.5--40.31) [87833]"}
@@ -1029,8 +1029,8 @@ procedure check(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of check might not hold. There might be insufficient permission to access this.y (test2.vpr@30.13--30.192) [87835]"}
@@ -1077,12 +1077,12 @@ procedure check1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -1116,8 +1116,8 @@ procedure check1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1140,8 +1140,8 @@ procedure check1(this: Ref) returns ()
     // -- Check definedness of getX(this) == 200
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getX might not hold. There might be insufficient permission to access X(this) (test2.vpr@44.81--44.91) [87845]"}
           NoPerm < perm ==> NoPerm < PostMask[null, X_1(this)];
@@ -1163,8 +1163,8 @@ procedure check1(this: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method setX might not hold. There might be insufficient permission to access X(this) (test2.vpr@46.5--46.19) [87846]"}
@@ -1186,8 +1186,8 @@ procedure check1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Y(this), write) -- test2.vpr@47.5--47.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Y(this) might fail. There might be insufficient permission to access this.y (test2.vpr@47.5--47.29) [87849]"}
@@ -1214,8 +1214,8 @@ procedure check1(this: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method setX might not hold. There might be insufficient permission to access X(this) (test2.vpr@48.5--48.20) [87851]"}
@@ -1239,8 +1239,8 @@ procedure check1(this: Ref) returns ()
   // -- Translating statement: unfold acc(Y(this), write) -- test2.vpr@49.5--49.31
     assume Y#trigger(Heap, Y(this));
     assume Heap[null, Y(this)] == FrameFragment(Heap[this, y_22]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Y(this) might fail. There might be insufficient permission to access Y(this) (test2.vpr@49.5--49.31) [87854]"}
@@ -1261,8 +1261,8 @@ procedure check1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Y(this), write) -- test2.vpr@50.5--50.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Y(this) might fail. There might be insufficient permission to access this.y (test2.vpr@50.5--50.29) [87858]"}
@@ -1287,8 +1287,8 @@ procedure check1(this: Ref) returns ()
   // -- Translating statement: unfold acc(Y(this), write) -- test2.vpr@51.5--51.31
     assume Y#trigger(Heap, Y(this));
     assume Heap[null, Y(this)] == FrameFragment(Heap[this, y_22]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Y(this) might fail. There might be insufficient permission to access Y(this) (test2.vpr@51.5--51.31) [87862]"}
@@ -1313,8 +1313,8 @@ procedure check1(this: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method setX might not hold. There might be insufficient permission to access X(this) (test2.vpr@52.5--52.20) [87864]"}
@@ -1336,8 +1336,8 @@ procedure check1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of check1 might not hold. There might be insufficient permission to access this.y (test2.vpr@44.13--44.102) [87865]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:13:21
+// Date:         2025-01-27 03:07:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/no_condition.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/no_condition-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -673,12 +673,12 @@ procedure m1(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -731,8 +731,8 @@ procedure m1(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -783,8 +783,8 @@ procedure m1(xs: (Seq Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -840,12 +840,12 @@ procedure m2(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -900,8 +900,8 @@ procedure m2(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -954,8 +954,8 @@ procedure m2(xs: (Seq Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1015,12 +1015,12 @@ procedure m3(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1117,8 +1117,8 @@ procedure m3(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1229,8 +1229,8 @@ procedure m3(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1335,19 +1335,19 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1444,8 +1444,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1539,8 +1539,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
         UnfoldingMask := PostMask;
         assume p#trigger(UnfoldingHeap, p_2(r_1));
         assume UnfoldingHeap[null, p_2(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access p(r) (no_condition.vpr@31.9--31.49) [1856]"}
@@ -1564,8 +1564,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
         UnfoldingMask := PostMask;
         assume p#trigger(UnfoldingHeap, p_2(r_1));
         assume UnfoldingHeap[null, p_2(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, p_2(r_1):=UnfoldingMask[null, p_2(r_1)] - perm];
         perm := FullPerm;
@@ -1586,8 +1586,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
       // -- Translating statement: unfold acc(p(r), write) -- no_condition.vpr@34.9--34.25
         assume p#trigger(Heap, p_2(r_1));
         assume Heap[null, p_2(r_1)] == FrameFragment(Heap[r_1, f_7]);
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding p(r) might fail. There might be insufficient permission to access p(r) (no_condition.vpr@34.9--34.25) [1860]"}
@@ -1614,8 +1614,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(p(r), write) -- no_condition.vpr@36.9--36.23
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding p(r) might fail. There might be insufficient permission to access r.f (no_condition.vpr@36.9--36.23) [1865]"}
@@ -1640,8 +1640,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1735,8 +1735,8 @@ procedure m4(r_1: Ref, xs: (Seq Ref), ys: (Seq Ref)) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume p#trigger(UnfoldingHeap, p_2(r_1));
         assume UnfoldingHeap[null, p_2(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Postcondition of m4 might not hold. There might be insufficient permission to access p(r) (no_condition.vpr@31.9--31.49) [1871]"}

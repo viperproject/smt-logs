@@ -59,8 +59,8 @@
 (declare-fun Tclass._System.nat () T@U)
 (declare-fun nat_from_bv7 ((_ BitVec 7)) Int)
 (declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
-(declare-fun q@Real (Int) Real)
 (declare-fun nat_from_bv67 ((_ BitVec 67)) Int)
+(declare-fun q@Real (Int) Real)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -161,6 +161,11 @@
  :skolemid |350|
  :pattern ( (nat_from_bv32 b@@0))
 )))
+(assert (forall ((b@@1 (_ BitVec 67)) ) (!  (and (and (<= 0 (nat_from_bv67 b@@1)) (< (nat_from_bv67 b@@1) 147573952589676412928)) (= (nat_from_bv67 b@@1) (bv2int b@@1)))
+ :qid |unknown.0:0|
+ :skolemid |346|
+ :pattern ( (nat_from_bv67 b@@1))
+)))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) (|n#0@@0| Int) (|r#0@@0| Real) (|even#0@@0| Int) (|small#0@@0| Real) (|b67#0@@0| (_ BitVec 67)) (|w#0@@0| (_ BitVec 32)) (|seven#0@@0| (_ BitVec 7)) (|noll#0@@0| Int) ) (!  (=> (or (|_module.__default.UseTheVars#canCall| |x#0@@1| |n#0@@0| |r#0@@0| |even#0@@0| |small#0@@0| |b67#0@@0| |w#0@@0| |seven#0@@0| |noll#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (and (<= (LitInt 0) |n#0@@0|) (= (Mod |even#0@@0| (LitInt 2)) (LitInt 0))) (and (<= (LitReal (- 0.0 4.0)) |small#0@@0|) (< |small#0@@0| 300.0))) (= 0 |noll#0@@0|)))) (= (_module.__default.UseTheVars |x#0@@1| |n#0@@0| |r#0@@0| |even#0@@0| |small#0@@0| |b67#0@@0| |w#0@@0| |seven#0@@0| |noll#0@@0|) (U_2_bool (Lit boolType (bool_2_U true)))))
  :qid |TypeConversionsdfy.8:28|
  :skolemid |570|
@@ -180,11 +185,6 @@
  :qid |DafnyPreludebpl.167:18|
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@11))
-)))
-(assert (forall ((b@@1 (_ BitVec 67)) ) (!  (and (and (<= 0 (nat_from_bv67 b@@1)) (< (nat_from_bv67 b@@1) 147573952589676412928)) (= (nat_from_bv67 b@@1) (bv2int b@@1)))
- :qid |unknown.0:0|
- :skolemid |346|
- :pattern ( (nat_from_bv67 b@@1))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|

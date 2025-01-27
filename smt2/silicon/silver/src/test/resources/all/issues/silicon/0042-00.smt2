@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:23
+; Started: 2025-01-27 02:59:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -130,21 +130,21 @@
 (assert (forall ((s@$ $Snap) (list@0@00 $Ref)) (!
   (= (size%limited s@$ list@0@00) (size s@$ list@0@00))
   :pattern ((size s@$ list@0@00))
-  :qid |quant-u-10827|)))
+  :qid |quant-u-10821|)))
 (assert (forall ((s@$ $Snap) (list@0@00 $Ref)) (!
   (size%stateless list@0@00)
   :pattern ((size%limited s@$ list@0@00))
-  :qid |quant-u-10828|)))
+  :qid |quant-u-10822|)))
 (assert (forall ((s@$ $Snap) (list@0@00 $Ref)) (!
   (let ((result@1@00 (size%limited s@$ list@0@00))) (and
     ($Perm.isReadVar $k@2@00)
     (=> (size%precondition s@$ list@0@00) (>= result@1@00 1))))
   :pattern ((size%limited s@$ list@0@00))
-  :qid |quant-u-10829|)))
+  :qid |quant-u-10823|)))
 (assert (forall ((s@$ $Snap) (list@0@00 $Ref)) (!
   (let ((result@1@00 (size%limited s@$ list@0@00))) true)
   :pattern ((size%limited s@$ list@0@00))
-  :qid |quant-u-10830|)))
+  :qid |quant-u-10824|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@2@00))
@@ -398,7 +398,7 @@
             (size%limited ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$))))))))
   :pattern ((size s@$ list@0@00))
   :pattern ((size%stateless list@0@00) (valid%trigger s@$ list@0@00))
-  :qid |quant-u-10831|)))
+  :qid |quant-u-10825|)))
 (assert (forall ((s@$ $Snap) (list@0@00 $Ref)) (!
   (=>
     (size%precondition s@$ list@0@00)
@@ -407,7 +407,7 @@
       true
       (size%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((size s@$ list@0@00))
-  :qid |quant-u-10832|)))
+  :qid |quant-u-10826|)))
 ; ---------- valid ----------
 (declare-const list@8@00 $Ref)
 (push) ; 1

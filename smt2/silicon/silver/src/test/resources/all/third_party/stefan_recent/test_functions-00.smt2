@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:03:21
+; Started: 2025-01-27 02:56:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -127,11 +127,11 @@
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (= (counter__get%limited s@$ diz@0@00) (counter__get s@$ diz@0@00))
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-8611|)))
+  :qid |quant-u-8605|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (counter__get%stateless diz@0@00)
   :pattern ((counter__get%limited s@$ diz@0@00))
-  :qid |quant-u-8612|)))
+  :qid |quant-u-8606|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -155,11 +155,11 @@
     (counter__get%precondition s@$ diz@0@00)
     (= (counter__get s@$ diz@0@00) ($SortWrappers.$SnapToInt ($Snap.second s@$))))
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-8613|)))
+  :qid |quant-u-8607|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-8614|)))
+  :qid |quant-u-8608|)))
 ; ---------- counter__state ----------
 (declare-const diz@2@00 $Ref)
 (push) ; 1

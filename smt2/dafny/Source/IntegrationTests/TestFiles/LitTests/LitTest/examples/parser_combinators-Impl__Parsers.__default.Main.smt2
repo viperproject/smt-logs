@@ -265,7 +265,7 @@
 ))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (= (Ctor BoxType) 8)))
 (assert (forall ((|$l#2#heap#0| T@U) (|$l#2#r#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#204| |$l#2#heap#0| |$l#2#r#0|) ($Box intType ($Unbox intType (_System.Tuple2._0 ($Unbox DatatypeTypeType |$l#2#r#0|)))))
  :qid |DafnyPreludebpl.593:12|
- :skolemid |1466|
+ :skolemid |1443|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#204| |$l#2#heap#0| |$l#2#r#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Parsers.ParseResult$T@@0 T@U) (Parsers.ParseResult.PropagateFailure$U T@U) (this@@0 T@U) ) (!  (=> (or (|Parsers.ParseResult.PropagateFailure#canCall| Parsers.ParseResult$T@@0 Parsers.ParseResult.PropagateFailure$U this@@0) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@0 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@0)) (Parsers.ParseResult.Failure_q this@@0)))) (= (Parsers.ParseResult.PropagateFailure Parsers.ParseResult$T@@0 Parsers.ParseResult.PropagateFailure$U this@@0) (Lit DatatypeTypeType |#Parsers.ParseResult.Failure|)))
@@ -286,7 +286,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|$l#4#heap#0| T@U) (|$l#4#r#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#37| |l#0|) |$l#4#heap#0| |$l#4#r#0|)) ($IsBox |$l#4#r#0| |l#0|))
  :qid |unknown.0:0|
- :skolemid |1455|
+ :skolemid |1432|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#37| |l#0|) |$l#4#heap#0| |$l#4#r#0|))
 )))
 (assert (= Parsers.Engine.Epsilon (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#6| (Handle1 (|lambda#126| ($Box DatatypeTypeType (Lit DatatypeTypeType |#_System._tuple#0._#Make0|))) (|lambda#37| Tclass._System.nat) (|lambda#5| (SetRef_to_SetBox (|lambda#4| false))))) ($LS $LZ)))))
@@ -512,7 +512,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|l#6| T@U) (|l#7| T@U) (|l#8| T@U) (|l#9| T@U) (|$l#0#heap#0| T@U) (|$l#0#pos#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#47| |l#0@@0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9|) |$l#0#heap#0| |$l#0#pos#0|))  (and ($IsBox |$l#0#pos#0| |l#0@@0|) (and (Requires1 |l#1| |l#2| |$l#0#heap#0| |l#3| |$l#0#pos#0|) (=> (Parsers.ParseResult.Failure_q ($Unbox DatatypeTypeType (Apply1 |l#4| |l#5| |$l#0#heap#0| |l#6| ($Box intType ($Unbox intType |$l#0#pos#0|))))) (Requires1 |l#7| |l#8| |$l#0#heap#0| |l#9| |$l#0#pos#0|)))))
  :qid |unknown.0:0|
- :skolemid |1457|
+ :skolemid |1434|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#47| |l#0@@0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9|) |$l#0#heap#0| |$l#0#pos#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@5 T@U) (Parsers.ParseResult$T@@8 T@U) (Parsers.ParseResult.PropagateFailure$U@@1 T@U) (this@@10 T@U) ) (!  (=> (and (or (|Parsers.ParseResult.PropagateFailure#canCall| Parsers.ParseResult$T@@8 Parsers.ParseResult.PropagateFailure$U@@1 this@@10) (and (< 1 $FunctionContextHeight) (and ($IsAlloc DatatypeTypeType this@@10 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@8) $Heap@@5) (Parsers.ParseResult.Failure_q this@@10)))) ($IsGoodHeap $Heap@@5)) ($IsAlloc DatatypeTypeType (Parsers.ParseResult.PropagateFailure Parsers.ParseResult$T@@8 Parsers.ParseResult.PropagateFailure$U@@1 this@@10) (Tclass.Parsers.ParseResult Parsers.ParseResult.PropagateFailure$U@@1) $Heap@@5))
@@ -570,7 +570,7 @@
 (assert (forall ((|l#0@@1| Int) (|l#1@@0| Int) (|$l#5#heap#0| T@U) (|$l#5#r#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#136| |l#0@@1| |l#1@@0|) |$l#5#heap#0| |$l#5#r#0|) ($Box intType (int_2_U (ite (Parsers.Either.Left_q ($Unbox DatatypeTypeType |$l#5#r#0|)) (let ((|n#3| (U_2_int ($Unbox intType (_System.Tuple2._0 ($Unbox DatatypeTypeType (_System.Tuple2._1 ($Unbox DatatypeTypeType (Parsers.Either.l ($Unbox DatatypeTypeType |$l#5#r#0|))))))))))
 (+ |n#3| |l#0@@1|)) |l#1@@0|))))
  :qid |unknown.0:0|
- :skolemid |1465|
+ :skolemid |1442|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#136| |l#0@@1| |l#1@@0|) |$l#5#heap#0| |$l#5#r#0|))
 )))
 (assert (forall ((d@@9 T@U) ) (!  (=> (Parsers.ParseResult.Failure_q d@@9) (= d@@9 |#Parsers.ParseResult.Failure|))
@@ -720,7 +720,7 @@
 ))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@1| Int) (|l#2@@0| Int) (|$l#6#heap#0| T@U) (|$l#6#pos'#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#132| |l#0@@2| |l#1@@1| |l#2@@0|) |$l#6#heap#0| |$l#6#pos'#0|))  (and ($IsBox |$l#6#pos'#0| |l#0@@2|) (and (< |l#1@@1| (U_2_int ($Unbox intType |$l#6#pos'#0|))) (<= (U_2_int ($Unbox intType |$l#6#pos'#0|)) |l#2@@0|))))
  :qid |DafnyPreludebpl.27:1|
- :skolemid |1463|
+ :skolemid |1440|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#132| |l#0@@2| |l#1@@1| |l#2@@0|) |$l#6#heap#0| |$l#6#pos'#0|))
 )))
 (assert (forall ((s T@U) (bx@@4 T@U) ) (! (= (|Set#IsMember| (SetRef_to_SetBox s) bx@@4) (U_2_bool (MapType1Select refType boolType s ($Unbox refType bx@@4))))
@@ -807,7 +807,7 @@
 ))))
 (assert (forall ((|l#0@@3| Bool) (|l#1@@2| T@U) (|l#2@@1| T@U) (|l#3@@0| T@U) (|$l#6#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#135| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0|) |$l#6#ly#0|) (Handle1 (|lambda#131| |$l#6#ly#0| |l#0@@3| |l#1@@2|) |l#2@@1| |l#3@@0|))
  :qid |parsercombinatorsdfy.216:24|
- :skolemid |1464|
+ :skolemid |1441|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#135| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0|) |$l#6#ly#0|))
 )))
 (assert (forall ((f@@8 T@U) (t0@@12 T@U) (t1@@11 T@U) (h@@5 T@U) ) (!  (=> (and ($IsGoodHeap h@@5) ($IsAlloc HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@12 t1@@11) h@@5)) (forall ((bx0@@8 T@U) ) (!  (=> (and ($IsAllocBox bx0@@8 t0@@12 h@@5) (Requires1 t0@@12 t1@@11 h@@5 f@@8 bx0@@8)) ($IsAllocBox (Apply1 t0@@12 t1@@11 h@@5 f@@8 bx0@@8) t1@@11 h@@5))
@@ -821,22 +821,22 @@
 )))
 (assert (forall ((|l#0@@4| Int) (|l#1@@3| T@U) (|l#2@@2| T@U) (|$l#0#heap#0@@0| T@U) (|$l#0#pos#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#121| |l#0@@4| |l#1@@3| |l#2@@2|) |$l#0#heap#0@@0| |$l#0#pos#0@@0|) ($Box DatatypeTypeType (ite (>= (U_2_int ($Unbox intType |$l#0#pos#0@@0|)) |l#0@@4|) (|#Parsers.ParseResult.Success| (U_2_int ($Unbox intType |$l#0#pos#0@@0|)) |l#1@@3|) |l#2@@2|)))
  :qid |parsercombinatorsdfy.204:31|
- :skolemid |1460|
+ :skolemid |1437|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#121| |l#0@@4| |l#1@@3| |l#2@@2|) |$l#0#heap#0@@0| |$l#0#pos#0@@0|))
 )))
 (assert (forall ((|l#0@@5| Bool) (|$l#0#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#4| |l#0@@5|) |$l#0#o#0|)) |l#0@@5|)
  :qid |unknown.0:0|
- :skolemid |1451|
+ :skolemid |1428|
  :pattern ( (MapType1Select refType boolType (|lambda#4| |l#0@@5|) |$l#0#o#0|))
 )))
 (assert (forall ((|l#0@@6| T@U) (|$l#0#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#6| |l#0@@6|) |$l#0#ly#0|) |l#0@@6|)
  :qid |parsercombinatorsdfy.119:7|
- :skolemid |1453|
+ :skolemid |1430|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#6| |l#0@@6|) |$l#0#ly#0|))
 )))
 (assert (forall ((|l#0@@7| T@U) (|l#1@@4| T@U) (|l#2@@3| T@U) (|l#3@@1| T@U) (|l#4@@0| T@U) (|l#5@@0| T@U) (|l#6@@0| T@U) (|l#7@@0| T@U) (|l#8@@0| T@U) (|l#9@@0| T@U) (|l#10| T@U) (|l#11| T@U) (|l#12| T@U) (|l#13| T@U) (|l#14| T@U) (|l#15| T@U) (|l#16| T@U) (|$l#0#ly#0@@0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#50| |l#0@@7| |l#1@@4| |l#2@@3| |l#3@@1| |l#4@@0| |l#5@@0| |l#6@@0| |l#7@@0| |l#8@@0| |l#9@@0| |l#10| |l#11| |l#12| |l#13| |l#14| |l#15| |l#16|) |$l#0#ly#0@@0|) (Handle1 (|lambda#46| |l#0@@7| |l#1@@4| |l#2@@3| |l#3@@1| |l#4@@0| |l#5@@0| |l#6@@0| |l#7@@0| (Lit HandleTypeType (AtLayer HandleTypeType |l#8@@0| |$l#0#ly#0@@0|)) |l#9@@0| |l#10| |l#11| |l#12| |l#13| |l#14|) |l#15| |l#16|))
  :qid |unknown.0:0|
- :skolemid |1458|
+ :skolemid |1435|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#50| |l#0@@7| |l#1@@4| |l#2@@3| |l#3@@1| |l#4@@0| |l#5@@0| |l#6@@0| |l#7@@0| |l#8@@0| |l#9@@0| |l#10| |l#11| |l#12| |l#13| |l#14| |l#15| |l#16|) |$l#0#ly#0@@0|))
 )))
 (assert (forall ((Parsers.Either$L T@U) (Parsers.Either$R T@U) (d@@13 T@U) ) (!  (=> ($Is DatatypeTypeType d@@13 (Tclass.Parsers.Either Parsers.Either$L Parsers.Either$R)) (or (Parsers.Either.Left_q d@@13) (Parsers.Either.Right_q d@@13)))
@@ -918,7 +918,7 @@
 (let ((|pos#1@@0| (U_2_int ($Unbox intType (_System.Tuple2._0 (Parsers.ParseResult.Extract |l#14@@0| |valueOrError1#0|))))))
 (|#Parsers.ParseResult.Success| |pos#1@@0| ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| |l#0@@9| |r#0|)))))))))))))
  :qid |unknown.0:0|
- :skolemid |1449|
+ :skolemid |1426|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#2| |l#0@@8| |l#1@@5| |l#2@@4| |l#3@@2| |l#4@@1| |l#5@@1| |l#6@@1| |l#7@@1| |l#8@@1| |l#9@@1| |l#10@@0| |l#11@@0| |l#12@@0| |l#13@@0| |l#14@@0| |l#15@@0|) |$l#0#heap#0@@1| |$l#0#pos#0@@1|))
 )))
 (assert (forall ((v@@3 T@U) (t0@@15 T@U) (h@@8 T@U) ) (! (= ($IsAlloc SetType v@@3 (TSet t0@@15) h@@8) (forall ((bx@@12 T@U) ) (!  (=> (|Set#IsMember| v@@3 bx@@12) ($IsAllocBox bx@@12 t0@@15 h@@8))
@@ -1033,7 +1033,7 @@
 (let ((|pos#1@@1| (Parsers.ParseResult.pos ($Unbox DatatypeTypeType (Apply1 |l#12@@1| |l#13@@1| |$l#0#heap#0@@2| |l#14@@1| ($Box intType ($Unbox intType |$l#0#pos#0@@2|)))))))
 (|#Parsers.ParseResult.Success| |pos#1@@1| ($Box DatatypeTypeType (|#Parsers.Either.Left| |l#0@@11|))))))))
  :qid |unknown.0:0|
- :skolemid |1456|
+ :skolemid |1433|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#46| |l#0@@10| |l#1@@6| |l#2@@5| |l#3@@3| |l#4@@2| |l#5@@2| |l#6@@2| |l#7@@2| |l#8@@2| |l#9@@2| |l#10@@1| |l#11@@1| |l#12@@1| |l#13@@1| |l#14@@1|) |$l#0#heap#0@@2| |$l#0#pos#0@@2|))
 )))
 (assert (forall ((Parsers.Either$L@@2 T@U) (Parsers.Either$R@@2 T@U) (|a#2#0#0@@1| T@U) ) (! (= ($Is DatatypeTypeType (|#Parsers.Either.Left| |a#2#0#0@@1|) (Tclass.Parsers.Either Parsers.Either$L@@2 Parsers.Either$R@@2)) ($IsBox |a#2#0#0@@1| Parsers.Either$L@@2))
@@ -1185,7 +1185,7 @@
 )))
 (assert (forall ((|l#0@@12| T@U) (|l#1@@7| Bool) (|l#2@@6| T@U) (|$l#6#heap#0@@0| T@U) (|$l#6#pos'#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#131| |l#0@@12| |l#1@@7| |l#2@@6|) |$l#6#heap#0@@0| |$l#6#pos'#0@@0|) ($Box DatatypeTypeType (Parsers.Engine.Parentheses_k |l#0@@12| |l#1@@7| |l#2@@6| (U_2_int ($Unbox intType |$l#6#pos'#0@@0|)))))
  :qid |unknown.0:0|
- :skolemid |1462|
+ :skolemid |1439|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#131| |l#0@@12| |l#1@@7| |l#2@@6|) |$l#6#heap#0@@0| |$l#6#pos'#0@@0|))
 )))
 (assert (forall ((|#$T0@@9| T@U) (|#$R@@9| T@U) (bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@13)) bx@@13) ($Is HandleTypeType ($Unbox HandleTypeType bx@@13) (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|))))
@@ -1235,7 +1235,7 @@
 )))
 (assert (forall ((|l#0@@13| T@U) (|l#1@@8| T@U) (|l#2@@7| T@U) (|l#3@@4| Bool) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@13| |l#1@@8| |l#2@@7| |l#3@@4|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0@@13|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@8| $o@@3) |l#2@@7|)))) |l#3@@4|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1448|
+ :skolemid |1425|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@13| |l#1@@8| |l#2@@7| |l#3@@4|) $o@@3 $f))
 )))
 (assert (forall (($ly@@5 T@U) ($reveal@@8 Bool) ($self@@1 T@U) ($heap@@1 T@U) (|$fh$0x#0@@1| T@U) ) (! (= (Requires1 Tclass._System.nat (Tclass.Parsers.ParseResult Tclass._System.nat) $heap@@1 (|Parsers.Engine.Parentheses_k#Handle| $ly@@5 $reveal@@8 $self@@1) |$fh$0x#0@@1|) (|Parsers.Engine.Parentheses_k#requires| $ly@@5 $self@@1 (U_2_int ($Unbox intType |$fh$0x#0@@1|))))
@@ -1245,7 +1245,7 @@
 )))
 (assert (forall ((|$l#4#heap#0@@0| T@U) (|$l#4#r#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#36| |$l#4#heap#0@@0| |$l#4#r#0@@1|) ($Box DatatypeTypeType (|#Parsers.Either.Right| |$l#4#r#0@@1|)))
  :qid |DafnyPreludebpl.593:12|
- :skolemid |1454|
+ :skolemid |1431|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#36| |$l#4#heap#0@@0| |$l#4#r#0@@1|))
 )))
 (assert (forall ((|#$T0@@12| T@U) (|#$R@@12| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) |tytagFamily$_#Func1|))
@@ -1275,7 +1275,7 @@
 )))
 (assert (forall ((|l#0@@14| T@U) (|$l#0#heap#0@@3| T@U) (|$l#0#pos#0@@3| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#126| |l#0@@14|) |$l#0#heap#0@@3| |$l#0#pos#0@@3|) ($Box DatatypeTypeType (|#Parsers.ParseResult.Success| (U_2_int ($Unbox intType |$l#0#pos#0@@3|)) |l#0@@14|)))
  :qid |parsercombinatorsdfy.209:21|
- :skolemid |1461|
+ :skolemid |1438|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#126| |l#0@@14|) |$l#0#heap#0@@3| |$l#0#pos#0@@3|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Parsers.ParseResult$T@@17 T@U) (|Parsers.ParseResult.MapResult$T'@@1| T@U) ($Heap@@13 T@U) (this@@20 T@U) (|f#0@@5| T@U) ) (!  (=> (or (|Parsers.ParseResult.MapResult#canCall| Parsers.ParseResult$T@@17 |Parsers.ParseResult.MapResult$T'@@1| (Lit DatatypeTypeType this@@20) |f#0@@5|) (and (< 1 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@13) (and ($Is DatatypeTypeType this@@20 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@17)) ($IsAlloc DatatypeTypeType this@@20 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@17) $Heap@@13))) ($Is HandleTypeType |f#0@@5| (Tclass._System.___hTotalFunc1 Parsers.ParseResult$T@@17 |Parsers.ParseResult.MapResult$T'@@1|))))) (= (Parsers.ParseResult.MapResult Parsers.ParseResult$T@@17 |Parsers.ParseResult.MapResult$T'@@1| (Lit DatatypeTypeType this@@20) |f#0@@5|) (ite (Parsers.ParseResult.Failure_q (Lit DatatypeTypeType this@@20)) |#Parsers.ParseResult.Failure| (let ((|t#2| (Lit BoxType (Parsers.ParseResult.t (Lit DatatypeTypeType this@@20)))))
@@ -1378,7 +1378,7 @@
 )))
 (assert (forall ((|l#0@@15| T@U) (|l#1@@9| T@U) (|l#2@@8| T@U) (|l#3@@5| T@U) (|l#4@@3| T@U) (|l#5@@3| T@U) (|l#6@@3| T@U) (|l#7@@3| T@U) (|l#8@@3| T@U) (|l#9@@3| T@U) (|l#10@@2| T@U) (|l#11@@2| T@U) (|l#12@@2| T@U) (|$l#0#heap#0@@4| T@U) (|$l#0#pos#0@@4| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#3| |l#0@@15| |l#1@@9| |l#2@@8| |l#3@@5| |l#4@@3| |l#5@@3| |l#6@@3| |l#7@@3| |l#8@@3| |l#9@@3| |l#10@@2| |l#11@@2| |l#12@@2|) |$l#0#heap#0@@4| |$l#0#pos#0@@4|))  (and ($IsBox |$l#0#pos#0@@4| |l#0@@15|) (and (Requires1 |l#1@@9| |l#2@@8| |$l#0#heap#0@@4| |l#3@@5| |$l#0#pos#0@@4|) (=> (Parsers.ParseResult.Success_q ($Unbox DatatypeTypeType (Apply1 |l#4@@3| |l#5@@3| |$l#0#heap#0@@4| |l#6@@3| ($Box intType ($Unbox intType |$l#0#pos#0@@4|))))) (Requires1 |l#7@@3| |l#8@@3| |$l#0#heap#0@@4| |l#9@@3| ($Box intType (int_2_U (Parsers.ParseResult.pos ($Unbox DatatypeTypeType (Apply1 |l#10@@2| |l#11@@2| |$l#0#heap#0@@4| |l#12@@2| ($Box intType ($Unbox intType |$l#0#pos#0@@4|))))))))))))
  :qid |unknown.0:0|
- :skolemid |1450|
+ :skolemid |1427|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#3| |l#0@@15| |l#1@@9| |l#2@@8| |l#3@@5| |l#4@@3| |l#5@@3| |l#6@@3| |l#7@@3| |l#8@@3| |l#9@@3| |l#10@@2| |l#11@@2| |l#12@@2|) |$l#0#heap#0@@4| |$l#0#pos#0@@4|))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Parsers.ParseResult$T@@20 T@U) (this@@23 T@U) ) (!  (=> (or (|Parsers.ParseResult.IsFailure#canCall| Parsers.ParseResult$T@@20 this@@23) (and (< 0 $FunctionContextHeight) ($Is DatatypeTypeType this@@23 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@20)))) (= (Parsers.ParseResult.IsFailure Parsers.ParseResult$T@@20 this@@23) (Parsers.ParseResult.Failure_q this@@23)))
@@ -1499,7 +1499,7 @@
 )))
 (assert (forall ((|l#0@@16| Int) (|l#1@@10| T@U) (|l#2@@9| T@U) (|l#3@@6| Int) (|l#4@@4| T@U) (|l#5@@4| T@U) (|$l#0#heap#0@@5| T@U) (|$l#0#pos#0@@5| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#104| |l#0@@16| |l#1@@10| |l#2@@9| |l#3@@6| |l#4@@4| |l#5@@4|) |$l#0#heap#0@@5| |$l#0#pos#0@@5|) ($Box DatatypeTypeType (ite  (and (< (U_2_int ($Unbox intType |$l#0#pos#0@@5|)) |l#0@@16|) (= ($Unbox charType (|Seq#Index| |l#1@@10| (U_2_int ($Unbox intType |$l#0#pos#0@@5|)))) |l#2@@9|)) (|#Parsers.ParseResult.Success| (+ (U_2_int ($Unbox intType |$l#0#pos#0@@5|)) |l#3@@6|) |l#4@@4|) |l#5@@4|)))
  :qid |parsercombinatorsdfy.197:18|
- :skolemid |1459|
+ :skolemid |1436|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#104| |l#0@@16| |l#1@@10| |l#2@@9| |l#3@@6| |l#4@@4| |l#5@@4|) |$l#0#heap#0@@5| |$l#0#pos#0@@5|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Parsers.ParseResult$T@@22 T@U) (|Parsers.ParseResult.MapResult$T'@@3| T@U) ($Heap@@16 T@U) (this@@26 T@U) (|f#0@@7| T@U) ) (!  (=> (or (|Parsers.ParseResult.MapResult#canCall| Parsers.ParseResult$T@@22 |Parsers.ParseResult.MapResult$T'@@3| this@@26 |f#0@@7|) (and (< 1 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@16) (and ($Is DatatypeTypeType this@@26 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@22)) ($IsAlloc DatatypeTypeType this@@26 (Tclass.Parsers.ParseResult Parsers.ParseResult$T@@22) $Heap@@16))) ($Is HandleTypeType |f#0@@7| (Tclass._System.___hTotalFunc1 Parsers.ParseResult$T@@22 |Parsers.ParseResult.MapResult$T'@@3|))))) (= (Parsers.ParseResult.MapResult Parsers.ParseResult$T@@22 |Parsers.ParseResult.MapResult$T'@@3| this@@26 |f#0@@7|) (ite (Parsers.ParseResult.Failure_q this@@26) |#Parsers.ParseResult.Failure| (let ((|t#0| (Parsers.ParseResult.t this@@26)))
@@ -1555,7 +1555,7 @@
 ))))
 (assert (forall ((|l#0@@17| T@U) (|$l#0#heap#0@@6| T@U) (|$l#0#pos#0@@6| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#5| |l#0@@17|) |$l#0#heap#0@@6| |$l#0#pos#0@@6|) |l#0@@17|)
  :qid |parsercombinatorsdfy.119:7|
- :skolemid |1452|
+ :skolemid |1429|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#5| |l#0@@17|) |$l#0#heap#0@@6| |$l#0#pos#0@@6|))
 )))
 (assert (forall ((s@@3 T@U) (i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| s@@3))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@3 i@@2))) (|Seq#Rank| s@@3)))

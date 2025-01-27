@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:17:19
+// Date:         2025-01-27 03:51:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsNestedMagicWands.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsNestedMagicWands-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -507,8 +507,8 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -517,8 +517,8 @@ procedure test0(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var boolCur: bool;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -526,8 +526,8 @@ procedure test0(x: Ref) returns ()
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var boolCur_1: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
@@ -549,15 +549,15 @@ procedure test0(x: Ref) returns ()
   var Result_1Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_8: bool;
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -582,8 +582,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -634,8 +634,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs2 -- SnapshotsNestedMagicWands.vpr@15.13--15.53
       lhs2:
-      Labellhs2Mask := Ops_1Mask;
       Labellhs2Heap := Ops_1Heap;
+      Labellhs2Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -656,8 +656,8 @@ procedure test0(x: Ref) returns ()
         
         // -- Translating statement: label lhs4 -- SnapshotsNestedMagicWands.vpr@16.18--16.35
           lhs4:
-          Labellhs4Mask := Ops_3Mask;
           Labellhs4Heap := Ops_3Heap;
+          Labellhs4Mask := Ops_3Mask;
           b_3 := b_3 && state(Ops_3Heap, Ops_3Mask);
         boolCur_1 := true;
         // Translating exec of non-ghost operationacc(x.g, write)
@@ -825,8 +825,8 @@ procedure test0(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs6 -- SnapshotsNestedMagicWands.vpr@15.35--15.52
                   lhs6:
-                  Labellhs6Mask := WandDefLHSMask;
                   Labellhs6Heap := WandDefLHSHeap;
+                  Labellhs6Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -899,8 +899,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) && (true --* acc(x.g, write)) -- SnapshotsNestedMagicWands.vpr@18.5--18.51
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@18.5--18.51) [224142]"}
         FullPerm <= Mask[null, wand(true, x, FullPerm, true, x, FullPerm)];
@@ -908,8 +908,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -929,8 +929,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.g, write) -- SnapshotsNestedMagicWands.vpr@19.5--19.28
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@19.5--19.28) [224145]"}
         FullPerm <= Mask[null, wand_1(true, x, FullPerm)];
@@ -938,8 +938,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -955,8 +955,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test0 might not hold. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@14.9--14.67) [224148]"}
@@ -987,8 +987,8 @@ procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_5Heap: HeapType;
@@ -997,8 +997,8 @@ procedure test1_1(x: Ref) returns ()
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_9: bool;
-  var Labellhs10Mask: MaskType;
   var Labellhs10Heap: HeapType;
+  var Labellhs10Mask: MaskType;
   var boolCur_2: bool;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -1006,8 +1006,8 @@ procedure test1_1(x: Ref) returns ()
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_11: bool;
-  var Labellhs12Mask: MaskType;
   var Labellhs12Heap: HeapType;
+  var Labellhs12Mask: MaskType;
   var boolCur_3: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -1026,15 +1026,15 @@ procedure test1_1(x: Ref) returns ()
   var b_15: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs14Mask: MaskType;
   var Labellhs14Heap: HeapType;
+  var Labellhs14Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_16: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1055,8 +1055,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1096,8 +1096,8 @@ procedure test1_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs10 -- SnapshotsNestedMagicWands.vpr@25.13--25.41
       lhs10:
-      Labellhs10Mask := Ops_5Mask;
       Labellhs10Heap := Ops_5Heap;
+      Labellhs10Mask := Ops_5Mask;
       b_10 := b_10 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_10) {
@@ -1118,8 +1118,8 @@ procedure test1_1(x: Ref) returns ()
         
         // -- Translating statement: label lhs12 -- SnapshotsNestedMagicWands.vpr@26.17--26.34
           lhs12:
-          Labellhs12Mask := Ops_7Mask;
           Labellhs12Heap := Ops_7Heap;
+          Labellhs12Mask := Ops_7Mask;
           b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
         boolCur_3 := true;
         // Translating exec of non-ghost operationacc(x.f, write)
@@ -1229,8 +1229,8 @@ procedure test1_1(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs14 -- SnapshotsNestedMagicWands.vpr@25.23--25.40
                   lhs14:
-                  Labellhs14Mask := WandDefLHSMask;
                   Labellhs14Heap := WandDefLHSHeap;
+                  Labellhs14Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -1303,8 +1303,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Translating statement: apply true --* true --* acc(x.f, write) -- SnapshotsNestedMagicWands.vpr@28.5--28.39
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@28.5--28.39) [224158]"}
         FullPerm <= Mask[null, wand_2(true, true, x, FullPerm)];
@@ -1312,8 +1312,8 @@ procedure test1_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -1329,8 +1329,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- SnapshotsNestedMagicWands.vpr@29.5--29.28
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@29.5--29.28) [224160]"}
         FullPerm <= Mask[null, wand_3(true, x, FullPerm)];
@@ -1338,8 +1338,8 @@ procedure test1_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -1355,8 +1355,8 @@ procedure test1_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test1 might not hold. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@24.9--24.36) [224163]"}
@@ -1379,8 +1379,8 @@ procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_9Heap: HeapType;
@@ -1389,8 +1389,8 @@ procedure test2_1(x: Ref) returns ()
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_17: bool;
-  var Labellhs18Mask: MaskType;
   var Labellhs18Heap: HeapType;
+  var Labellhs18Mask: MaskType;
   var boolCur_4: bool;
   var Ops_11Heap: HeapType;
   var Ops_11Mask: MaskType;
@@ -1398,8 +1398,8 @@ procedure test2_1(x: Ref) returns ()
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_19: bool;
-  var Labellhs20Mask: MaskType;
   var Labellhs20Heap: HeapType;
+  var Labellhs20Mask: MaskType;
   var boolCur_5: bool;
   var Used_10Heap: HeapType;
   var Used_10Mask: MaskType;
@@ -1424,15 +1424,15 @@ procedure test2_1(x: Ref) returns ()
   var Result_7Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs22Mask: MaskType;
   var Labellhs22Heap: HeapType;
+  var Labellhs22Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_26_1: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1457,8 +1457,8 @@ procedure test2_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1522,8 +1522,8 @@ procedure test2_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs18 -- SnapshotsNestedMagicWands.vpr@35.13--35.85
       lhs18:
-      Labellhs18Mask := Ops_9Mask;
       Labellhs18Heap := Ops_9Heap;
+      Labellhs18Mask := Ops_9Mask;
       b_18 := b_18 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     if (b_18) {
@@ -1547,8 +1547,8 @@ procedure test2_1(x: Ref) returns ()
         
         // -- Translating statement: label lhs20 -- SnapshotsNestedMagicWands.vpr@36.18--36.39
           lhs20:
-          Labellhs20Mask := Ops_11Mask;
           Labellhs20Heap := Ops_11Heap;
+          Labellhs20Mask := Ops_11Mask;
           b_20 := b_20 && state(Ops_11Heap, Ops_11Mask);
         boolCur_5 := true;
         // Translating exec of non-ghost operationacc(x.g, write)
@@ -1778,8 +1778,8 @@ procedure test2_1(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs22 -- SnapshotsNestedMagicWands.vpr@35.63--35.84
                   lhs22:
-                  Labellhs22Mask := WandDefLHSMask;
                   Labellhs22Heap := WandDefLHSHeap;
+                  Labellhs22Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -1854,8 +1854,8 @@ procedure test2_1(x: Ref) returns ()
   //   (acc(x.g, write) && (acc(x.g, write) --* acc(x.g, write))) -- SnapshotsNestedMagicWands.vpr@38.5--38.83
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@38.5--38.83) [224177]"}
         FullPerm <= Mask[null, wand_4(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -1863,8 +1863,8 @@ procedure test2_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@38.5--38.83) [224179]"}
@@ -1900,8 +1900,8 @@ procedure test2_1(x: Ref) returns ()
   // -- Translating statement: apply acc(x.g, write) --* acc(x.g, write) -- SnapshotsNestedMagicWands.vpr@39.5--39.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@39.5--39.32) [224184]"}
         FullPerm <= Mask[null, wand_5(x, FullPerm, x, FullPerm)];
@@ -1909,8 +1909,8 @@ procedure test2_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.g (SnapshotsNestedMagicWands.vpr@39.5--39.32) [224186]"}
@@ -1932,8 +1932,8 @@ procedure test2_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@34.9--34.67) [224188]"}
@@ -1964,8 +1964,8 @@ procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_13Heap: HeapType;
@@ -1974,8 +1974,8 @@ procedure test3_1(x: Ref) returns ()
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
   var b_27_1: bool;
-  var Labellhs25Mask: MaskType;
   var Labellhs25Heap: HeapType;
+  var Labellhs25Mask: MaskType;
   var boolCur_6: bool;
   var Ops_15Heap: HeapType;
   var Ops_15Mask: MaskType;
@@ -1983,8 +1983,8 @@ procedure test3_1(x: Ref) returns ()
   var Used_13Heap: HeapType;
   var Used_13Mask: MaskType;
   var b_29_1: bool;
-  var Labellhs27Mask: MaskType;
   var Labellhs27Heap: HeapType;
+  var Labellhs27Mask: MaskType;
   var boolCur_7: bool;
   var Used_14Heap: HeapType;
   var Used_14Mask: MaskType;
@@ -2001,8 +2001,8 @@ procedure test3_1(x: Ref) returns ()
   var b_33_1: bool;
   var Result_9Heap: HeapType;
   var Result_9Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2023,8 +2023,8 @@ procedure test3_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2067,8 +2067,8 @@ procedure test3_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs25 -- SnapshotsNestedMagicWands.vpr@45.13--45.34
       lhs25:
-      Labellhs25Mask := Ops_13Mask;
       Labellhs25Heap := Ops_13Heap;
+      Labellhs25Mask := Ops_13Mask;
       b_28_1 := b_28_1 && state(Ops_13Heap, Ops_13Mask);
     boolCur_6 := true;
     if (b_28_1) {
@@ -2089,8 +2089,8 @@ procedure test3_1(x: Ref) returns ()
         
         // -- Translating statement: label lhs27 -- SnapshotsNestedMagicWands.vpr@46.17--46.30
           lhs27:
-          Labellhs27Mask := Ops_15Mask;
           Labellhs27Heap := Ops_15Heap;
+          Labellhs27Mask := Ops_15Mask;
           b_30_1 := b_30_1 && state(Ops_15Heap, Ops_15Mask);
         boolCur_7 := true;
         // Translating exec of non-ghost operationtrue
@@ -2172,8 +2172,8 @@ procedure test3_1(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) -- SnapshotsNestedMagicWands.vpr@48.5--48.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@48.5--48.32) [224197]"}
         FullPerm <= Mask[null, wand_6(x, FullPerm, x, FullPerm)];
@@ -2181,8 +2181,8 @@ procedure test3_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@48.5--48.32) [224199]"}
@@ -2204,8 +2204,8 @@ procedure test3_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test3 might not hold. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@44.9--44.36) [224201]"}
@@ -2228,8 +2228,8 @@ procedure test4_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_17Heap: HeapType;
@@ -2238,8 +2238,8 @@ procedure test4_1(x: Ref) returns ()
   var Used_16Heap: HeapType;
   var Used_16Mask: MaskType;
   var b_34_1: bool;
-  var Labellhs30Mask: MaskType;
   var Labellhs30Heap: HeapType;
+  var Labellhs30Mask: MaskType;
   var boolCur_8: bool;
   var Used_17Heap: HeapType;
   var Used_17Mask: MaskType;
@@ -2259,18 +2259,18 @@ procedure test4_1(x: Ref) returns ()
   var Used_18Heap: HeapType;
   var Used_18Mask: MaskType;
   var b_38: bool;
-  var Labellhs32Mask: MaskType;
   var Labellhs32Heap: HeapType;
+  var Labellhs32Mask: MaskType;
   var boolCur_9: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_19Heap: HeapType;
   var Used_19Mask: MaskType;
   var b_40: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs35Mask: MaskType;
   var Labellhs35Heap: HeapType;
+  var Labellhs35Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_41: bool;
@@ -2305,8 +2305,8 @@ procedure test4_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2344,8 +2344,8 @@ procedure test4_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs30 -- SnapshotsNestedMagicWands.vpr@54.13--54.30
       lhs30:
-      Labellhs30Mask := Ops_17Mask;
       Labellhs30Heap := Ops_17Heap;
+      Labellhs30Mask := Ops_17Mask;
       b_35_1 := b_35_1 && state(Ops_17Heap, Ops_17Mask);
     boolCur_8 := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -2432,8 +2432,8 @@ procedure test4_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs32 -- SnapshotsNestedMagicWands.vpr@55.13--55.30
       lhs32:
-      Labellhs32Mask := Ops_19Mask;
       Labellhs32Heap := Ops_19Heap;
+      Labellhs32Mask := Ops_19Mask;
       b_39 := b_39 && state(Ops_19Heap, Ops_19Mask);
     boolCur_9 := true;
     if (b_39) {
@@ -2441,8 +2441,8 @@ procedure test4_1(x: Ref) returns ()
       // -- Translating statement: apply true --* acc(x.f, write) -- SnapshotsNestedMagicWands.vpr@56.9--56.32
         
         // -- check if wand is held and remove an instance
-          ExhaleWellDef0Mask := Ops_19Mask;
           ExhaleWellDef0Heap := Ops_19Heap;
+          ExhaleWellDef0Mask := Ops_19Mask;
           havoc Used_19Heap;
           Used_19Mask := ZeroMask;
           b_40 := b_40 && state(Used_19Heap, Used_19Mask);
@@ -2461,8 +2461,8 @@ procedure test4_1(x: Ref) returns ()
                       
                       // -- Translating statement: label lhs35 -- SnapshotsNestedMagicWands.vpr@56.15--56.32
                         lhs35:
-                        Labellhs35Mask := WandDefLHSMask;
                         Labellhs35Heap := WandDefLHSHeap;
+                        Labellhs35Mask := WandDefLHSMask;
                         assume state(WandDefLHSHeap, WandDefLHSMask);
                       havoc WandDefRHSHeap;
                       WandDefRHSMask := ZeroMask;
@@ -2532,8 +2532,8 @@ procedure test4_1(x: Ref) returns ()
         b_39 := b_39 && state(Ops_19Heap, Ops_19Mask);
         
         // -- check if LHS holds and remove permissions 
-          ExhaleWellDef0Mask := Ops_19Mask;
           ExhaleWellDef0Heap := Ops_19Heap;
+          ExhaleWellDef0Mask := Ops_19Mask;
           havoc Used_20Heap;
           Used_20Mask := ZeroMask;
           b_42 := b_42 && state(Used_20Heap, Used_20Mask);
@@ -2623,8 +2623,8 @@ procedure test4_1(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- SnapshotsNestedMagicWands.vpr@58.5--58.28
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsNestedMagicWands.vpr@58.5--58.28) [224213]"}
         FullPerm <= Mask[null, wand_3(true, x, FullPerm)];
@@ -2632,8 +2632,8 @@ procedure test4_1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -2649,8 +2649,8 @@ procedure test4_1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test4 might not hold. There might be insufficient permission to access x.f (SnapshotsNestedMagicWands.vpr@53.9--53.36) [224216]"}

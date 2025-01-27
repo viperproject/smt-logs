@@ -388,7 +388,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#19| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |CloudMakeParallelBuildsdfy.153:8|
- :skolemid |7208|
+ :skolemid |7215|
  :pattern ( (MapType0Select BoxType boolType (|lambda#19| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a@@4 T@U) (b@@1 T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a@@4 b@@1 t)) a@@4)
@@ -418,7 +418,7 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|$w#0@@0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2|) |$w#0@@0|))  (and ($IsBox |$w#0@@0| |l#0@@0|) (and (|Set#IsMember| |l#1@@0| |$w#0@@0|) (|Set#IsMember| |l#2| |$w#0@@0|))))
  :qid |CloudMakeParallelBuildsdfy.153:8|
- :skolemid |7204|
+ :skolemid |7211|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2|) |$w#0@@0|))
 )))
 (assert ($AlwaysAllocated Tclass.M2.Path))
@@ -1066,7 +1066,7 @@
 ))))
 (assert (forall ((|l#0@@1| T@U) (|$w#0@@1| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#1| |l#0@@1|) |$w#0@@1|) (M2.__default.GetSt |$w#0@@1| |l#0@@1|))
  :qid |CloudMakeParallelBuildsdfy.473:45|
- :skolemid |7205|
+ :skolemid |7212|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#1| |l#0@@1|) |$w#0@@1|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|cmd#0@@14| T@U) (|deps#0@@19| T@U) (|exps#0@@9| T@U) (|st#0@@37| T@U) ) (!  (=> (or (|M2.__default.exec#canCall| |cmd#0@@14| |deps#0@@19| |exps#0@@9| |st#0@@37|) (and (< 4 $FunctionContextHeight) (and (and (and ($Is SeqType |cmd#0@@14| (TSeq TChar)) ($Is SetType |deps#0@@19| (TSet Tclass.M2.Path))) ($Is SetType |exps#0@@9| (TSet (TSeq TChar)))) ($Is DatatypeTypeType |st#0@@37| Tclass.M2.State)))) (and (and (|M2.__default.Restrict#canCall| |deps#0@@19| |st#0@@37|) (|M2.__default.execOne#canCall| |cmd#0@@14| |deps#0@@19| (M2.__default.Restrict |deps#0@@19| |st#0@@37|) |exps#0@@9| |st#0@@37|)) (= (M2.__default.exec |cmd#0@@14| |deps#0@@19| |exps#0@@9| |st#0@@37|) (M2.__default.execOne ($LS $LZ) |cmd#0@@14| |deps#0@@19| (M2.__default.Restrict |deps#0@@19| |st#0@@37|) |exps#0@@9| |st#0@@37|))))
@@ -1502,7 +1502,7 @@
 ))))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@1| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o) |l#2@@0|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7206|
+ :skolemid |7213|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#4| |l#0@@2| |l#1@@1| |l#2@@0| |l#3|) $o $f))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
@@ -1517,7 +1517,7 @@
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@2| T@U) (|l#2@@1| T@U) (|l#3@@0| T@U) (|l#4| T@U) (|$w#0@@2| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#20| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0| |l#4|) |$w#0@@2|) (ite (|Set#IsMember| |l#0@@3| |$w#0@@2|) (M2.__default.GetSt |$w#0@@2| |l#1@@2|) (M2.__default.OracleWF |l#2@@1| |$w#0@@2| (M2.__default.FindCert |$w#0@@2| |l#3@@0|) |l#4|)))
  :qid |CloudMakeParallelBuildsdfy.664:34|
- :skolemid |7209|
+ :skolemid |7216|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#20| |l#0@@3| |l#1@@2| |l#2@@1| |l#3@@0| |l#4|) |$w#0@@2|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@17 T@U) (|p#0@@46| T@U) (|st#0@@46| T@U) ) (!  (=> (and (or (|M2.__default.Oracle#canCall| |p#0@@46| |st#0@@46|) (and (< 4 $FunctionContextHeight) (and (and ($IsBox |p#0@@46| Tclass.M2.Path) ($IsAllocBox |p#0@@46| Tclass.M2.Path $Heap@@17)) (and ($Is DatatypeTypeType |st#0@@46| Tclass.M2.State) ($IsAlloc DatatypeTypeType |st#0@@46| Tclass.M2.State $Heap@@17))))) ($IsGoodHeap $Heap@@17)) ($IsAllocBox (M2.__default.Oracle |p#0@@46| |st#0@@46|) Tclass.M2.Artifact $Heap@@17))

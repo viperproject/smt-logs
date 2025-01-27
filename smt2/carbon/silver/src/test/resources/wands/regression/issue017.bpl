@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:17:12
+// Date:         2025-01-27 03:49:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue017.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue017-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -360,20 +360,20 @@ procedure P#definedness(x: Ref) returns ()
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labellhs2Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -388,8 +388,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -407,8 +407,8 @@ procedure test01(x: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- issue017.vpr@11.10--11.28
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -425,8 +425,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(y), write) --* true -- issue017.vpr@13.3--13.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(P(y), write) --* true
       if (*) {
@@ -439,8 +439,8 @@ procedure test01(x: Ref) returns ()
         
         // -- Translating statement: label lhs2 -- issue017.vpr@13.10--13.28
           lhs2:
-          Labellhs2Heap := WandDefLHSHeap;
           Labellhs2Mask := WandDefLHSMask;
+          Labellhs2Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -466,23 +466,23 @@ procedure test02(x: Ref, y: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var zx: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var zy: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
-  var Labellhs4Heap: HeapType;
+  var ExhaleWellDef1Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -502,8 +502,8 @@ procedure test02(x: Ref, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[zx, $allocated];
@@ -523,8 +523,8 @@ procedure test02(x: Ref, y: int) returns ()
         // -- Check definedness of fun(x, y) == -y
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := WandDefLHSHeap;
             ExhaleWellDef0Mask := WandDefLHSMask;
+            ExhaleWellDef0Heap := WandDefLHSHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (issue017.vpr@19.23--19.32) [216768]"}
               NoPerm < perm ==> NoPerm < WandDefLHSMask[null, P(x)];
@@ -540,8 +540,8 @@ procedure test02(x: Ref, y: int) returns ()
         
         // -- Translating statement: label lhs3 -- issue017.vpr@19.10--19.47
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -562,8 +562,8 @@ procedure test02(x: Ref, y: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(zx), write) && fun(zx, zy) == -y --* true -- issue017.vpr@22.3--22.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(P(zx), write) && fun(zx, zy) == -y --* true
       if (*) {
@@ -577,8 +577,8 @@ procedure test02(x: Ref, y: int) returns ()
         // -- Check definedness of fun(zx, zy) == -y
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := WandDefLHSHeap;
             ExhaleWellDef1Mask := WandDefLHSMask;
+            ExhaleWellDef1Heap := WandDefLHSHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(zx) (issue017.vpr@22.24--22.35) [216769]"}
               NoPerm < perm ==> NoPerm < WandDefLHSMask[null, P(zx)];
@@ -594,8 +594,8 @@ procedure test02(x: Ref, y: int) returns ()
         
         // -- Translating statement: label lhs4 -- issue017.vpr@22.10--22.50
           lhs4:
-          Labellhs4Heap := WandDefLHSHeap;
           Labellhs4Mask := WandDefLHSMask;
+          Labellhs4Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

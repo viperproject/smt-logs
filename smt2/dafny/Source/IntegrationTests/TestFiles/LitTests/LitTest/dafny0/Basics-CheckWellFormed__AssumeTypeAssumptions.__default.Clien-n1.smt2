@@ -65,9 +65,7 @@
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
-(declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
-(declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun Tclass._System.array?_0 (T@U) T@U)
 (declare-fun Tclass._System.array_0 (T@U) T@U)
 (declare-fun Tclass.AssumeTypeAssumptions.Cell_0 (T@U) T@U)
@@ -177,20 +175,10 @@
  :pattern ( ($Is refType |c#0@@2| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions.Cell$T@@1)))
  :pattern ( ($Is refType |c#0@@2| (Tclass.AssumeTypeAssumptions.Cell? AssumeTypeAssumptions.Cell$T@@1)))
 )))
-(assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
- :qid |DafnyPreludebpl.217:18|
- :skolemid |625|
- :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
-)))
-(assert (forall ((h@@1 T@U) (k@@0 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx t@@0 h@@1) ($IsAllocBox bx t@@0 k@@0)))
- :qid |DafnyPreludebpl.557:15|
- :skolemid |697|
- :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx t@@0 h@@1))
-)))
-(assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+(assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
  :qid |DafnyPreludebpl.554:18|
  :skolemid |696|
- :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
+ :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
 (assert (forall ((_System.array$arg@@3 T@U) ) (!  (and (= (Tag (Tclass._System.array? _System.array$arg@@3)) Tagclass._System.array?) (= (TagFamily (Tclass._System.array? _System.array$arg@@3)) tytagFamily$array))
  :qid |unknown.0:0|
@@ -227,16 +215,6 @@
  :skolemid |703|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
-(assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TInt) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) TInt)))
- :qid |DafnyPreludebpl.176:15|
- :skolemid |613|
- :pattern ( ($IsBox bx@@0 TInt))
-)))
-(assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@1) t@@2) ($Is T@@3 v@@1 t@@2))
- :qid |DafnyPreludebpl.214:18|
- :skolemid |624|
- :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
-)))
 (assert (forall ((o@@0 T@U) ) (! (<= 0 (_System.array.Length o@@0))
  :qid |DafnyPreludebpl.571:15|
  :skolemid |698|
@@ -262,35 +240,15 @@
  :skolemid |1179|
  :pattern ( (Tclass.AssumeTypeAssumptions.Cell? AssumeTypeAssumptions.Cell$T@@6))
 )))
-(assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+(assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
  :skolemid |611|
- :pattern ( ($Box T@@4 x@@5))
+ :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall ((_System.array$arg@@8 T@U) ($h@@3 T@U) ($o@@4 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) (Tclass._System.array? _System.array$arg@@8)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@4) alloc)))) ($IsAlloc intType (int_2_U (_System.array.Length $o@@4)) TInt $h@@3))
  :qid |unknown.0:0|
  :skolemid |946|
  :pattern ( (_System.array.Length $o@@4) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@4) alloc)) (Tclass._System.array? _System.array$arg@@8))
-)))
-(assert (forall ((_System.array$arg@@9 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass._System.array? _System.array$arg@@9)) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) (Tclass._System.array? _System.array$arg@@9))))
- :qid |unknown.0:0|
- :skolemid |940|
- :pattern ( ($IsBox bx@@1 (Tclass._System.array? _System.array$arg@@9)))
-)))
-(assert (forall ((_System.array$arg@@10 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._System.array _System.array$arg@@10)) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) (Tclass._System.array _System.array$arg@@10))))
- :qid |unknown.0:0|
- :skolemid |949|
- :pattern ( ($IsBox bx@@2 (Tclass._System.array _System.array$arg@@10)))
-)))
-(assert (forall ((AssumeTypeAssumptions.Cell$T@@7 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions.Cell$T@@7)) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions.Cell$T@@7))))
- :qid |unknown.0:0|
- :skolemid |1158|
- :pattern ( ($IsBox bx@@3 (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions.Cell$T@@7)))
-)))
-(assert (forall ((AssumeTypeAssumptions.Cell$T@@8 T@U) (bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (Tclass.AssumeTypeAssumptions.Cell? AssumeTypeAssumptions.Cell$T@@8)) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) (Tclass.AssumeTypeAssumptions.Cell? AssumeTypeAssumptions.Cell$T@@8))))
- :qid |unknown.0:0|
- :skolemid |1180|
- :pattern ( ($IsBox bx@@4 (Tclass.AssumeTypeAssumptions.Cell? AssumeTypeAssumptions.Cell$T@@8)))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
  :qid |mapAx0:MapType1Select|
@@ -304,7 +262,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#9| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) (or (= $o@@5 |l#3|) (= $o@@5 |l#4|))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2981|
+ :skolemid |2983|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#9| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
@@ -312,20 +270,20 @@
  :skolemid |604|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
-(assert (forall ((x@@7 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@7)) (Lit BoxType ($Box T@@5 x@@7)))
+(assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
  :qid |DafnyPreludebpl.103:18|
  :skolemid |602|
- :pattern ( ($Box T@@5 (Lit T@@5 x@@7)))
+ :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
-(assert (forall ((h@@3 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@3)
+(assert (forall ((h@@1 T@U) (v@@0 T@U) ) (! ($IsAlloc intType v@@0 TInt h@@1)
  :qid |DafnyPreludebpl.289:14|
  :skolemid |647|
- :pattern ( ($IsAlloc intType v@@2 TInt h@@3))
+ :pattern ( ($IsAlloc intType v@@0 TInt h@@1))
 )))
-(assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+(assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
  :qid |DafnyPreludebpl.228:14|
  :skolemid |626|
- :pattern ( ($Is intType v@@3 TInt))
+ :pattern ( ($Is intType v@@1 TInt))
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
@@ -335,10 +293,8 @@
 (declare-fun $Heap () T@U)
 (declare-fun |x#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(declare-fun AssumeTypeAssumptions._default.Client_U$U () T@U)
-(declare-fun |u#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id CheckWellFormed$$AssumeTypeAssumptions.__default.Client__U)
+(set-info :boogie-vc-id CheckWellFormed$$AssumeTypeAssumptions.__default.Client__Int)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -358,7 +314,7 @@
 (let ((anon4_Else_correct  (=> (and (< |j#0| (LitInt 0)) (= (ControlFlow 0 4) 1)) anon3_correct)))
 (let ((anon4_Then_correct  (=> (<= (LitInt 0) |j#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (not (= |a#0| null)) (not true))) (=> (or (not (= |a#0| null)) (not true)) (=> (= (ControlFlow 0 2) 1) anon3_correct))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#9| null $Heap alloc |x#0| |a#0|)) (and (=> (= (ControlFlow 0 5) 2) anon4_Then_correct) (=> (= (ControlFlow 0 5) 4) anon4_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($Is refType |x#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_U$U)) ($IsAlloc refType |x#0| (Tclass.AssumeTypeAssumptions.Cell AssumeTypeAssumptions._default.Client_U$U) $Heap)) (and ($Is refType |a#0| (Tclass._System.array AssumeTypeAssumptions._default.Client_U$U)) ($IsAlloc refType |a#0| (Tclass._System.array AssumeTypeAssumptions._default.Client_U$U) $Heap))) (and (and ($IsBox |u#0| AssumeTypeAssumptions._default.Client_U$U) ($IsAllocBox |u#0| AssumeTypeAssumptions._default.Client_U$U $Heap)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 6) 5)))) anon0_correct))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and ($Is refType |x#0| (Tclass.AssumeTypeAssumptions.Cell TInt)) ($IsAlloc refType |x#0| (Tclass.AssumeTypeAssumptions.Cell TInt) $Heap))) (and (and ($Is refType |a#0| (Tclass._System.array TInt)) ($IsAlloc refType |a#0| (Tclass._System.array TInt) $Heap)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 6) 5)))) anon0_correct)))
 PreconditionGeneratedEntry_correct))))))
 ))
 (check-sat)

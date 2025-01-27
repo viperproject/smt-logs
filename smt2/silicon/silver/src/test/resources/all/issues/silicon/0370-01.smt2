@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:05:30
+; Started: 2025-01-27 02:58:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -928,21 +928,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   (= (getVCTOption1%limited s@$ x@0@00) (getVCTOption1 s@$ x@0@00))
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9753|)))
+  :qid |quant-u-9747|)))
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   (getVCTOption1%stateless x@0@00)
   :pattern ((getVCTOption1%limited s@$ x@0@00))
-  :qid |quant-u-9754|)))
+  :qid |quant-u-9748|)))
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   (=>
     (getVCTOption1%precondition s@$ x@0@00)
     (= (getVCTOption1 s@$ x@0@00) (getVCTOption<Seq<Ref>> x@0@00)))
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9755|)))
+  :qid |quant-u-9749|)))
 (assert (forall ((s@$ $Snap) (x@0@00 VCTOption<Seq<Ref>>)) (!
   true
   :pattern ((getVCTOption1 s@$ x@0@00))
-  :qid |quant-u-9756|)))
+  :qid |quant-u-9750|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- barrier_check_2 ----------
@@ -1458,7 +1458,7 @@
             tid@9@01)
           (getVCTOption1%precondition $Snap.unit output@5@01)))))
   :pattern ((Seq_index (getVCTOption1 $Snap.unit output@5@01) tid@9@01))
-  :qid |quant-u-9758|)))
+  :qid |quant-u-9752|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -1484,7 +1484,7 @@
         tid@9@01)
       (img@11@01 (Seq_index (getVCTOption1 $Snap.unit output@5@01) tid@9@01))))
   :pattern ((Seq_index (getVCTOption1 $Snap.unit output@5@01) tid@9@01))
-  :qid |quant-u-9758|)))
+  :qid |quant-u-9752|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1533,7 +1533,7 @@
       (< (inv@10@01 r) (Seq_length (getVCTOption1 $Snap.unit output@5@01))))
     ($FVF.loc_Integer__item ($FVF.lookup_Integer__item (as sm@12@01  $FVF<Integer__item>) r) r))
   :pattern ((inv@10@01 r))
-  :qid |quant-u-9759|)))
+  :qid |quant-u-9753|)))
 (assert (= ($Snap.second ($Snap.second ($Snap.second $t@6@01))) $Snap.unit))
 ; [eval] (forall tid: Int :: { getVCTOption1(output)[tid] } 0 <= tid && tid < |getVCTOption1(output)| ==> getVCTOption1(output)[tid].Integer__item == tid)
 (declare-const tid@13@01 Int)
@@ -1908,7 +1908,7 @@
         (< k@15@01 (Seq_length (getVCTOption1 $Snap.unit output@5@01)))))
     (or (= $k@16@01 $Perm.No) (< $Perm.No $k@16@01)))
   
-  :qid |quant-u-9760|))))
+  :qid |quant-u-9754|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1980,7 +1980,7 @@
   :pattern (($FVF.loc_Integer__item ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first ($Snap.second $t@14@01))) (Seq_index
     (getVCTOption1 $Snap.unit output@5@01)
     k@15@01)) (Seq_index (getVCTOption1 $Snap.unit output@5@01) k@15@01)))
-  :qid |quant-u-9761|)))
+  :qid |quant-u-9755|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -2012,7 +2012,7 @@
   :pattern (($FVF.loc_Integer__item ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first ($Snap.second $t@14@01))) (Seq_index
     (getVCTOption1 $Snap.unit output@5@01)
     k@15@01)) (Seq_index (getVCTOption1 $Snap.unit output@5@01) k@15@01)))
-  :qid |quant-u-9761|)))
+  :qid |quant-u-9755|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2082,7 +2082,7 @@
       (< (inv@18@01 r) (Seq_length (getVCTOption1 $Snap.unit output@5@01))))
     ($FVF.loc_Integer__item ($FVF.lookup_Integer__item (as sm@20@01  $FVF<Integer__item>) r) r))
   :pattern ((inv@18@01 r))
-  :qid |quant-u-9762|)))
+  :qid |quant-u-9756|)))
 (assert (= ($Snap.second ($Snap.second $t@14@01)) $Snap.unit))
 ; [eval] (forall tid: Int, j: Int ::0 <= tid && (tid < |getVCTOption1(output)| && (0 <= j && j < |getVCTOption1(output)|)) ==> getVCTOption1(output)[j].Integer__item == tid)
 (declare-const tid@21@01 Int)
@@ -2886,7 +2886,7 @@
         (< k@33@01 (Seq_length (getVCTOption1 $Snap.unit output@28@01)))))
     (or (= $k@34@01 $Perm.No) (< $Perm.No $k@34@01)))
   
-  :qid |quant-u-9763|))))
+  :qid |quant-u-9757|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2960,7 +2960,7 @@
   :pattern (($FVF.loc_Integer__item ($FVF.lookup_Integer__item $t@36@01 (Seq_index
     (getVCTOption1 $Snap.unit output@28@01)
     k@33@01)) (Seq_index (getVCTOption1 $Snap.unit output@28@01) k@33@01)))
-  :qid |quant-u-9764|)))
+  :qid |quant-u-9758|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -2994,7 +2994,7 @@
   :pattern (($FVF.loc_Integer__item ($FVF.lookup_Integer__item $t@36@01 (Seq_index
     (getVCTOption1 $Snap.unit output@28@01)
     k@33@01)) (Seq_index (getVCTOption1 $Snap.unit output@28@01) k@33@01)))
-  :qid |quant-u-9764|)))
+  :qid |quant-u-9758|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3064,7 +3064,7 @@
       (< (inv@37@01 r) (Seq_length (getVCTOption1 $Snap.unit output@28@01))))
     ($FVF.loc_Integer__item ($FVF.lookup_Integer__item (as sm@39@01  $FVF<Integer__item>) r) r))
   :pattern ((inv@37@01 r))
-  :qid |quant-u-9765|)))
+  :qid |quant-u-9759|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

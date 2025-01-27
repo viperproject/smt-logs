@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:08:01
+; Started: 2025-01-27 03:01:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1609,7 +1609,7 @@
       (= (inv@21@01 (Seq_index s@14@01 i@19@01)) i@19@01)
       (img@22@01 (Seq_index s@14@01 i@19@01))))
   :pattern ((Seq_index s@14@01 i@19@01))
-  :qid |quant-u-12896|)))
+  :qid |quant-u-12889|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1712,7 +1712,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r r@15@01) (= (- $Perm.Write (pTaken@26@01 r i@25@01)) $Perm.No))
   
-  :qid |quant-u-12899|))))
+  :qid |quant-u-12892|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -1792,7 +1792,7 @@
       (pTaken@30@01 r i@25@01))
     $Perm.No)
   
-  :qid |quant-u-12901|))))
+  :qid |quant-u-12894|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -1804,7 +1804,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@30@01 r i@25@01) $Perm.No)
   
-  :qid |quant-u-12902|))))
+  :qid |quant-u-12895|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -1819,7 +1819,7 @@
     (= r (Seq_index s@14@01 i@25@01))
     (= (- $Perm.Write (pTaken@30@01 r i@25@01)) $Perm.No))
   
-  :qid |quant-u-12903|))))
+  :qid |quant-u-12896|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2146,7 +2146,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r r@15@01) (= (- $Perm.Write (pTaken@34@01 r i@33@01)) $Perm.No))
   
-  :qid |quant-u-12906|))))
+  :qid |quant-u-12899|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2231,7 +2231,7 @@
       (pTaken@38@01 r i@33@01))
     $Perm.No)
   
-  :qid |quant-u-12908|))))
+  :qid |quant-u-12901|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -2243,7 +2243,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@38@01 r i@33@01) $Perm.No)
   
-  :qid |quant-u-12909|))))
+  :qid |quant-u-12902|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -2258,7 +2258,7 @@
     (= r (Seq_index s@14@01 i@33@01))
     (= (- $Perm.Write (pTaken@38@01 r i@33@01)) $Perm.No))
   
-  :qid |quant-u-12910|))))
+  :qid |quant-u-12903|))))
 (check-sat)
 ; unsat
 (pop) ; 8

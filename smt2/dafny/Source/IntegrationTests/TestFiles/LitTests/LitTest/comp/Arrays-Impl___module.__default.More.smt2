@@ -420,6 +420,11 @@
  :skolemid |6977|
  :pattern ( (|Seq#Build| s@@0 v@@0))
 )))
+(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass._module.nLong)  (and (<= (LitInt (- 0 10)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 72057594037927936)))
+ :qid |unknown.0:0|
+ :skolemid |7629|
+ :pattern ( ($Is intType |x#0@@5| Tclass._module.nLong))
+)))
 (assert (forall ((_System.array$arg@@3 T@U) (|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| (Tclass._System.array _System.array$arg@@3))  (and ($Is refType |c#0@@1| (Tclass._System.array? _System.array$arg@@3)) (or (not (= |c#0@@1| null)) (not true))))
  :qid |unknown.0:0|
  :skolemid |7133|
@@ -955,11 +960,6 @@
  :qid |DafnyPreludebpl.372:15|
  :skolemid |6836|
  :pattern ( (SetRef_to_SetBox s@@5))
-)))
-(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass._module.nLong)  (and (<= (LitInt (- 0 10)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 72057594037927936)))
- :qid |unknown.0:0|
- :skolemid |7629|
- :pattern ( ($Is intType |x#0@@5| Tclass._module.nLong))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (! (= (|Set#Equal| a@@1 b@@1) (forall ((o@@8 T@U) ) (! (= (|Set#IsMember| a@@1 o@@8) (|Set#IsMember| b@@1 o@@8))
  :qid |DafnyPreludebpl.783:19|

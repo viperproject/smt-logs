@@ -203,7 +203,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|$l#0#heap#0| T@U) (|$l#0#i#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#2| |l#0|) |$l#0#heap#0| |$l#0#i#0|)) ($IsBox |$l#0#i#0| |l#0|))
  :qid |unknown.0:0|
- :skolemid |7815|
+ :skolemid |7807|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#2| |l#0|) |$l#0#heap#0| |$l#0#i#0|))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
@@ -601,12 +601,12 @@
 )))
 (assert (forall ((|l#0@@0| Bool) (|$l#0#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#3| |l#0@@0|) |$l#0#o#0|)) |l#0@@0|)
  :qid |unknown.0:0|
- :skolemid |7816|
+ :skolemid |7808|
  :pattern ( (MapType1Select refType boolType (|lambda#3| |l#0@@0|) |$l#0#o#0|))
 )))
 (assert (forall ((|l#0@@1| T@U) (|$l#0#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#5| |l#0@@1|) |$l#0#ly#0|) |l#0@@1|)
  :qid |Arraysdfy.536:30|
- :skolemid |7818|
+ :skolemid |7810|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#5| |l#0@@1|) |$l#0#ly#0|))
 )))
 (assert (forall ((a@@1 T@U) (b T@U) ) (!  (=> (|Set#Equal| a@@1 b) (= a@@1 b))
@@ -798,7 +798,7 @@
 )))
 (assert (forall ((|l#0@@2| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@11 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1| |l#2| |l#3|) $o@@11 $f))  (=> (and (or (not (= $o@@11 |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o@@11) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7813|
+ :skolemid |7805|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1| |l#2| |l#3|) $o@@11 $f))
 )))
 (assert (forall ((h0@@5 T@U) (h1@@5 T@U) (a@@5 T@U) ) (!  (=> (and (and (and ($IsGoodHeap h0@@5) ($IsGoodHeap h1@@5)) ($HeapSucc h0@@5 h1@@5)) (= (MapType1Select refType (MapType1Type FieldType BoxType) h0@@5 a@@5) (MapType1Select refType (MapType1Type FieldType BoxType) h1@@5 a@@5))) (= (|Seq#FromArray| h0@@5 a@@5) (|Seq#FromArray| h1@@5 a@@5)))
@@ -828,7 +828,7 @@
 )))
 (assert (forall ((|$l#0#heap#0@@0| T@U) (|$l#0#i#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#1| |$l#0#heap#0@@0| |$l#0#i#0@@0|) ($Box intType ($Unbox intType |$l#0#i#0@@0|)))
  :qid |DafnyPreludebpl.593:12|
- :skolemid |7814|
+ :skolemid |7806|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType |lambda#1| |$l#0#heap#0@@0| |$l#0#i#0@@0|))
 )))
 (assert (forall ((t0@@18 T@U) (t1@@15 T@U) (heap@@3 T@U) (f@@12 T@U) (bx0@@12 T@U) ) (!  (=> (and (and ($IsGoodHeap heap@@3) (and ($IsBox bx0@@12 t0@@18) ($Is HandleTypeType f@@12 (Tclass._System.___hFunc1 t0@@18 t1@@15)))) (|Set#Equal| (Reads1 t0@@18 t1@@15 $OneHeap f@@12 bx0@@12) |Set#Empty|)) (= (Requires1 t0@@18 t1@@15 $OneHeap f@@12 bx0@@12) (Requires1 t0@@18 t1@@15 heap@@3 f@@12 bx0@@12)))
@@ -985,12 +985,12 @@
 )))
 (assert (forall ((|l#0@@3| T@U) (|$l#0#heap#0@@1| T@U) (|$l#0#i#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#4| |l#0@@3|) |$l#0#heap#0@@1| |$l#0#i#0@@1|) |l#0@@3|)
  :qid |Arraysdfy.536:30|
- :skolemid |7817|
+ :skolemid |7809|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#4| |l#0@@3|) |$l#0#heap#0@@1| |$l#0#i#0@@1|))
 )))
 (assert (forall ((|l#0@@4| T@U) (|$l#1#heap#0| T@U) (|$l#1#_v10#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#6| |l#0@@4|) |$l#1#heap#0| |$l#1#_v10#0|) |l#0@@4|)
  :qid |unknown.0:0|
- :skolemid |7819|
+ :skolemid |7811|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#6| |l#0@@4|) |$l#1#heap#0| |$l#1#_v10#0|))
 )))
 (assert (forall ((v@@18 T@U) ) (! ($Is intType v@@18 TInt)

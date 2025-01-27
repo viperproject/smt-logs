@@ -64,6 +64,7 @@
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun Inv0_TBitvector (T@U) Int)
+(declare-fun _module.__default.Half () (_ BitVec 128))
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -76,7 +77,6 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun _module.__default.Half () (_ BitVec 128))
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -222,6 +222,7 @@
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@13))
 )))
+(assert (= _module.__default.Half (U_2_bv128 (Lit bv128Type (bv128_2_U #x0000000000000000ffffffffffffffff)))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
@@ -262,7 +263,6 @@
  :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@15)))
 )))
-(assert (= _module.__default.Half (U_2_bv128 (Lit bv128Type (bv128_2_U #x0000000000000000ffffffffffffffff)))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun $_ModifiesFrame@0 () T@U)

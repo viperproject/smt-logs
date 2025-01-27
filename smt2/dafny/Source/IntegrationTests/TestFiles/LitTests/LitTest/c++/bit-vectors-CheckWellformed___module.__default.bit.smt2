@@ -138,6 +138,12 @@
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@7))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@0| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@0|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@0|) (< |i#0@@0| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@0| 64))))))) (= (_module.__default.bit (LitInt |i#0@@0|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@0|))))))
+ :qid |bitvectorsdfy.5:14|
+ :weight 3
+ :skolemid |490|
+ :pattern ( (_module.__default.bit (LitInt |i#0@@0|)))
+))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
@@ -167,12 +173,6 @@
  :skolemid |506|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@0| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@0|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@0|) (< |i#0@@0| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@0| 64))))))) (= (_module.__default.bit (LitInt |i#0@@0|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@0|))))))
- :qid |bitvectorsdfy.5:14|
- :weight 3
- :skolemid |490|
- :pattern ( (_module.__default.bit (LitInt |i#0@@0|)))
-))))
 (assert (forall ((x@@8 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@8))) (Lit BoxType ($Box intType (int_2_U x@@8))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

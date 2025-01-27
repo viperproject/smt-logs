@@ -376,7 +376,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3066|
+ :skolemid |3067|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@8| T@U) ) (!  (=> (or (|Alt.__default.S#canCall| (Lit DatatypeTypeType |x#0@@8|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |x#0@@8| Tclass.Alt.natinf))) (= (Alt.__default.S (Lit DatatypeTypeType |x#0@@8|)) (ite (Alt.natinf.N_q (Lit DatatypeTypeType |x#0@@8|)) (let ((|n#2| (LitInt (Alt.natinf.n (Lit DatatypeTypeType |x#0@@8|)))))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:12:18
+; Started: 2025-01-27 03:05:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -966,11 +966,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (fun2%limited s@$ r@0@00) (fun2 s@$ r@0@00))
   :pattern ((fun2 s@$ r@0@00))
-  :qid |quant-u-24207|)))
+  :qid |quant-u-24118|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (fun2%stateless r@0@00)
   :pattern ((fun2%limited s@$ r@0@00))
-  :qid |quant-u-24208|)))
+  :qid |quant-u-24119|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -982,11 +982,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=> (fun2%precondition s@$ r@0@00) (= (fun2 s@$ r@0@00) r@0@00))
   :pattern ((fun2 s@$ r@0@00))
-  :qid |quant-u-24211|)))
+  :qid |quant-u-24122|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   true
   :pattern ((fun2 s@$ r@0@00))
-  :qid |quant-u-24212|)))
+  :qid |quant-u-24123|)))
 ; ---------- FUNCTION fun----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun i@3@00 () Int)
@@ -998,11 +998,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (i@3@00 Int)) (!
   (= (fun%limited s@$ r@2@00 i@3@00) (fun s@$ r@2@00 i@3@00))
   :pattern ((fun s@$ r@2@00 i@3@00))
-  :qid |quant-u-24209|)))
+  :qid |quant-u-24120|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (i@3@00 Int)) (!
   (fun%stateless r@2@00 i@3@00)
   :pattern ((fun%limited s@$ r@2@00 i@3@00))
-  :qid |quant-u-24210|)))
+  :qid |quant-u-24121|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1014,11 +1014,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (i@3@00 Int)) (!
   (=> (fun%precondition s@$ r@2@00 i@3@00) (= (fun s@$ r@2@00 i@3@00) r@2@00))
   :pattern ((fun s@$ r@2@00 i@3@00))
-  :qid |quant-u-24213|)))
+  :qid |quant-u-24124|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (i@3@00 Int)) (!
   true
   :pattern ((fun s@$ r@2@00 i@3@00))
-  :qid |quant-u-24214|)))
+  :qid |quant-u-24125|)))
 ; ---------- pred ----------
 (declare-const r@5@00 $Ref)
 (set-option :timeout 0)

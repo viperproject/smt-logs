@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:59:52
+; Started: 2025-01-27 02:53:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -3032,7 +3032,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 11 | p2@17@01 | live]
 ; [else-branch: 11 | !(p2@17@01) | dead]
@@ -15205,7 +15205,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -15236,7 +15236,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 211 | p1@16@01 && !(bypass1@89@01) && int___lt__(_, int___unbox__(_, _checkDefined(_, i@97@01, 105)), min((_, _), __prim__int___box__(_, list___len__((_, First:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01)))))))), password@24@01)), __prim__int___box__(_, list___len__((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01)))))))))), inpt@26@01)))) || p2@17@01 && !(bypass2@90@01) && int___lt__(_, int___unbox__(_, i_1@101@01), min_0((_, _), __prim__int___box__(_, list___len___0((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01))))))))), password_3@25@01)), __prim__int___box__(_, list___len___0((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01))))))))))), inpt_3@27@01)))) | live]
 ; [else-branch: 211 | !(p1@16@01 && !(bypass1@89@01) && int___lt__(_, int___unbox__(_, _checkDefined(_, i@97@01, 105)), min((_, _), __prim__int___box__(_, list___len__((_, First:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01)))))))), password@24@01)), __prim__int___box__(_, list___len__((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01)))))))))), inpt@26@01)))) || p2@17@01 && !(bypass2@90@01) && int___lt__(_, int___unbox__(_, i_1@101@01), min_0((_, _), __prim__int___box__(_, list___len___0((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01))))))))), password_3@25@01)), __prim__int___box__(_, list___len___0((_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@103@01))))))))))), inpt_3@27@01))))) | live]

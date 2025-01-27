@@ -133,7 +133,7 @@
 ))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)))
 (assert (forall ((|l#0| T@U) (|$l#0#heap#0| T@U) (|$l#0#a#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#23| |l#0|) |$l#0#heap#0| |$l#0#a#0|)) ($IsBox |$l#0#a#0| |l#0|))
  :qid |DafnyPreludebpl.27:1|
- :skolemid |1190|
+ :skolemid |1194|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#23| |l#0|) |$l#0#heap#0| |$l#0#a#0|))
 )))
 (assert (= (Ctor HandleTypeType) 7))
@@ -229,12 +229,12 @@
 )))
 (assert (forall ((|l#0@@0| Bool) (|$l#0#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#24| |l#0@@0|) |$l#0#o#0|)) |l#0@@0|)
  :qid |unknown.0:0|
- :skolemid |1191|
+ :skolemid |1195|
  :pattern ( (MapType1Select refType boolType (|lambda#24| |l#0@@0|) |$l#0#o#0|))
 )))
 (assert (forall ((|l#0@@1| T@U) (|$l#0#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#26| |l#0@@1|) |$l#0#ly#0|) |l#0@@1|)
  :qid |gitissue167dfy.62:12|
- :skolemid |1193|
+ :skolemid |1197|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#26| |l#0@@1|) |$l#0#ly#0|))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|a#0@@1| Int) (|b#0@@2| Int) ) (!  (=> (or (|_module.__default.sum#canCall| |a#0@@1| |b#0@@2|) (< 0 $FunctionContextHeight)) (= (_module.__default.sum |a#0@@1| |b#0@@2|) (+ |a#0@@1| |b#0@@2|)))
@@ -279,12 +279,12 @@
 )))
 (assert (forall ((|l#0@@2| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@0 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1| |l#2| |l#3|) $o@@0 $f))  (=> (and (or (not (= $o@@0 |l#0@@2|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o@@0) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1186|
+ :skolemid |1190|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@2| |l#1| |l#2| |l#3|) $o@@0 $f))
 )))
 (assert (forall ((|l#0@@3| Int) (|$l#0#heap#0@@0| T@U) (|$l#0#a#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#22| |l#0@@3|) |$l#0#heap#0@@0| |$l#0#a#0@@0|) ($Box intType (int_2_U (_module.__default.sum (U_2_int ($Unbox intType |$l#0#a#0@@0|)) |l#0@@3|))))
  :qid |gitissue167dfy.61:28|
- :skolemid |1189|
+ :skolemid |1193|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#22| |l#0@@3|) |$l#0#heap#0@@0| |$l#0#a#0@@0|))
 )))
 (assert (forall ((bx@@4 T@U) (t@@2 T@U) ) (!  (=> ($IsBox bx@@4 (TSet t@@2)) (and (= ($Box SetType ($Unbox SetType bx@@4)) bx@@4) ($Is SetType ($Unbox SetType bx@@4) (TSet t@@2))))
@@ -313,7 +313,7 @@
 )))
 (assert (forall ((|l#0@@4| T@U) (|$l#0#heap#0@@1| T@U) (|$l#0#a#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#25| |l#0@@4|) |$l#0#heap#0@@1| |$l#0#a#0@@1|) |l#0@@4|)
  :qid |gitissue167dfy.62:12|
- :skolemid |1192|
+ :skolemid |1196|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#25| |l#0@@4|) |$l#0#heap#0@@1| |$l#0#a#0@@1|))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
@@ -357,7 +357,3 @@ PreconditionGeneratedEntry_correct)))
 (get-info :rlimit)
 (pop 1)
 ; Valid
-(reset)
-(set-option :rlimit 0)
-; did a full reset
-(reset)

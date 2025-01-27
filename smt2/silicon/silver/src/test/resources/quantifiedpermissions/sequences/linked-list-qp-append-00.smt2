@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:11:20
+; Started: 2025-01-27 03:04:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1604,11 +1604,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-22443|)))
+  :qid |quant-u-22354|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-22444|)))
+  :qid |quant-u-22355|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2669,7 +2669,7 @@
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
         i@7@00))))
   :pattern ((Seq_index ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$)) i@7@00))
-  :qid |quant-u-22448|)))
+  :qid |quant-u-22359|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2795,7 +2795,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
     i@10@00))
-  :qid |quant-u-22450|)))
+  :qid |quant-u-22361|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2857,7 +2857,7 @@
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$)))))
     ($FVF.loc_next ($FVF.lookup_next (sm@13@00 s@$ this@0@00) r) r))
   :pattern ((inv@11@00 s@$ this@0@00 r))
-  :qid |quant-u-22451|)))
+  :qid |quant-u-22362|)))
 (assert (= ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) $Snap.unit))
 ; [eval] (forall i: Int :: { this.nodes[i].next } 0 <= i && i < |this.nodes| ==> (this.nodes[i] in this.nodes) && (i < |this.nodes| - 1 ? this.nodes[i].next == this.nodes[i + 1] : this.nodes[i].next == null))
 (declare-const i@14@00 Int)
@@ -4356,7 +4356,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
       i@7@00))
-    :qid |quant-u-22448|))
+    :qid |quant-u-22359|))
   (forall ((i@7@00 Int)) (!
     (=>
       (and
@@ -4409,7 +4409,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
       i@10@00))
-    :qid |quant-u-22450|))
+    :qid |quant-u-22361|))
   (forall ((i@10@00 Int)) (!
     (=>
       (and
@@ -4434,7 +4434,7 @@
           (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$)))))
       ($FVF.loc_next ($FVF.lookup_next (sm@13@00 s@$ this@0@00) r) r))
     :pattern ((inv@11@00 s@$ this@0@00 r))
-    :qid |quant-u-22451|))
+    :qid |quant-u-22362|))
   (= ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) $Snap.unit)
   (forall ((i@14@00 Int)) (!
     (and
@@ -4602,7 +4602,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
         i@7@00))
-      :qid |quant-u-22448|))
+      :qid |quant-u-22359|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -4638,7 +4638,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
         i@10@00))
-      :qid |quant-u-22450|))
+      :qid |quant-u-22361|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -4680,11 +4680,11 @@
         (length s@$ this@0@00)
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))))))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-22452|)))
+  :qid |quant-u-22363|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-22453|)))
+  :qid |quant-u-22364|)))
 ; ---------- FUNCTION itemAt----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun index@3@00 () Int)
@@ -4713,11 +4713,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (index@3@00 Int)) (!
   (= (itemAt%limited s@$ this@2@00 index@3@00) (itemAt s@$ this@2@00 index@3@00))
   :pattern ((itemAt s@$ this@2@00 index@3@00))
-  :qid |quant-u-22445|)))
+  :qid |quant-u-22356|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (index@3@00 Int)) (!
   (itemAt%stateless this@2@00 index@3@00)
   :pattern ((itemAt%limited s@$ this@2@00 index@3@00))
-  :qid |quant-u-22446|)))
+  :qid |quant-u-22357|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -6041,7 +6041,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
     i@17@00))
-  :qid |quant-u-22455|)))
+  :qid |quant-u-22366|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6189,7 +6189,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
     i@20@00))
-  :qid |quant-u-22457|)))
+  :qid |quant-u-22368|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6259,7 +6259,7 @@
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$))))))
     ($FVF.loc_next ($FVF.lookup_next (sm@23@00 s@$ this@2@00 index@3@00) r) r))
   :pattern ((inv@21@00 s@$ this@2@00 index@3@00 r))
-  :qid |quant-u-22458|)))
+  :qid |quant-u-22369|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$)))))
   $Snap.unit))
@@ -8045,7 +8045,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
       i@17@00))
-    :qid |quant-u-22455|))
+    :qid |quant-u-22366|))
   (forall ((i@17@00 Int)) (!
     (=>
       (and
@@ -8103,7 +8103,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
       i@20@00))
-    :qid |quant-u-22457|))
+    :qid |quant-u-22368|))
   (forall ((i@20@00 Int)) (!
     (=>
       (and
@@ -8132,7 +8132,7 @@
             ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$))))))
       ($FVF.loc_next ($FVF.lookup_next (sm@23@00 s@$ this@2@00 index@3@00) r) r))
     :pattern ((inv@21@00 s@$ this@2@00 index@3@00 r))
-    :qid |quant-u-22458|))
+    :qid |quant-u-22369|))
   (=
     ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first s@$)))))
     $Snap.unit)
@@ -8317,7 +8317,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
         i@17@00))
-      :qid |quant-u-22455|))
+      :qid |quant-u-22366|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -8355,7 +8355,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
         i@20@00))
-      :qid |quant-u-22457|))
+      :qid |quant-u-22368|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -8401,11 +8401,11 @@
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
           index@3@00)))))
   :pattern ((itemAt s@$ this@2@00 index@3@00))
-  :qid |quant-u-22459|)))
+  :qid |quant-u-22370|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (index@3@00 Int)) (!
   true
   :pattern ((itemAt s@$ this@2@00 index@3@00))
-  :qid |quant-u-22460|)))
+  :qid |quant-u-22371|)))
 ; ---------- List ----------
 (declare-const this@25@00 $Ref)
 (push) ; 1
@@ -9600,7 +9600,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@26@00))
     i@29@00))
-  :qid |quant-u-22462|)))
+  :qid |quant-u-22373|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -9743,7 +9743,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@26@00))
     i@32@00))
-  :qid |quant-u-22464|)))
+  :qid |quant-u-22375|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -9810,7 +9810,7 @@
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@26@00)))))
     ($FVF.loc_next ($FVF.lookup_next (as sm@35@00  $FVF<next>) r) r))
   :pattern ((inv@33@00 r))
-  :qid |quant-u-22465|)))
+  :qid |quant-u-22376|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@26@00))))
   $Snap.unit))

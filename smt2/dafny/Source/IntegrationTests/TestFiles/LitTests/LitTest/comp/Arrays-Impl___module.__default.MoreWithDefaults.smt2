@@ -274,6 +274,11 @@
  :skolemid |7434|
  :pattern ( (_System.Tuple7.___hMake7_q d@@1) ($Is DatatypeTypeType d@@1 (Tclass._System.Tuple7 |_System._tuple#7$T0| |_System._tuple#7$T1| |_System._tuple#7$T2| |_System._tuple#7$T3| |_System._tuple#7$T4| |_System._tuple#7$T5| |_System._tuple#7$T6|)))
 )))
+(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass._module.xnLong)  (and (<= (LitInt (- 0 10)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 72057594037927936)))
+ :qid |unknown.0:0|
+ :skolemid |7646|
+ :pattern ( ($Is intType |x#0@@5| Tclass._module.xnLong))
+)))
 (assert (forall ((_System.array$arg@@3 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3))  (and ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)) (or (not (= |c#0@@0| null)) (not true))))
  :qid |unknown.0:0|
  :skolemid |7133|
@@ -592,11 +597,6 @@
 (assert (= (TagFamily Tclass._module.xnInt) tytagFamily$xnInt))
 (assert (= (Tag Tclass._module.xnLong) Tagclass._module.xnLong))
 (assert (= (TagFamily Tclass._module.xnLong) tytagFamily$xnLong))
-(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass._module.xnLong)  (and (<= (LitInt (- 0 10)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 72057594037927936)))
- :qid |unknown.0:0|
- :skolemid |7646|
- :pattern ( ($Is intType |x#0@@5| Tclass._module.xnLong))
-)))
 (assert (forall ((|x#0@@6| T@U) ) (! (= ($Is intType |x#0@@6| Tclass._module.xnByte)  (and (<= (LitInt (- 0 10)) (U_2_int |x#0@@6|)) (< (U_2_int |x#0@@6|) 100)))
  :qid |unknown.0:0|
  :skolemid |7640|

@@ -183,6 +183,11 @@
  :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
+(assert (forall ((_module.buffer$T@@0 T@U) (|a#0@@0| T@U) ) (! (= ($Is refType |a#0@@0| (Tclass._module.buffer _module.buffer$T@@0))  (and ($Is refType |a#0@@0| (Tclass._System.array? _module.buffer$T@@0)) (or (= |a#0@@0| null) (< (_System.array.Length |a#0@@0|) 4294967296))))
+ :qid |unknown.0:0|
+ :skolemid |545|
+ :pattern ( ($Is refType |a#0@@0| (Tclass._module.buffer _module.buffer$T@@0)))
+)))
 (assert (forall ((_System.array$arg@@4 T@U) ) (!  (and (= (Tag (Tclass._System.array? _System.array$arg@@4)) Tagclass._System.array?) (= (TagFamily (Tclass._System.array? _System.array$arg@@4)) tytagFamily$array))
  :qid |unknown.0:0|
  :skolemid |352|
@@ -193,15 +198,10 @@
  :skolemid |361|
  :pattern ( (Tclass._System.array _System.array$arg@@5))
 )))
-(assert (forall ((_module.buffer$T@@0 T@U) ) (!  (and (= (Tag (Tclass._module.buffer _module.buffer$T@@0)) Tagclass._module.buffer) (= (TagFamily (Tclass._module.buffer _module.buffer$T@@0)) tytagFamily$buffer))
+(assert (forall ((_module.buffer$T@@1 T@U) ) (!  (and (= (Tag (Tclass._module.buffer _module.buffer$T@@1)) Tagclass._module.buffer) (= (TagFamily (Tclass._module.buffer _module.buffer$T@@1)) tytagFamily$buffer))
  :qid |unknown.0:0|
  :skolemid |487|
- :pattern ( (Tclass._module.buffer _module.buffer$T@@0))
-)))
-(assert (forall ((_module.buffer$T@@1 T@U) (|a#0@@0| T@U) ) (! (= ($Is refType |a#0@@0| (Tclass._module.buffer _module.buffer$T@@1))  (and ($Is refType |a#0@@0| (Tclass._System.array? _module.buffer$T@@1)) (or (= |a#0@@0| null) (< (_System.array.Length |a#0@@0|) 4294967296))))
- :qid |unknown.0:0|
- :skolemid |545|
- :pattern ( ($Is refType |a#0@@0| (Tclass._module.buffer _module.buffer$T@@1)))
+ :pattern ( (Tclass._module.buffer _module.buffer$T@@1))
 )))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._module.uint8) (and (= ($Box intType ($Unbox intType bx)) bx) ($Is intType ($Unbox intType bx) Tclass._module.uint8)))
  :qid |unknown.0:0|

@@ -131,6 +131,11 @@
 )))
 (assert (= (Tag Tclass._module.uint32WithMethods) Tagclass._module.uint32WithMethods))
 (assert (= (TagFamily Tclass._module.uint32WithMethods) tytagFamily$uint32WithMethods))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |576|
+ :pattern ( ($Is intType |x#0| Tclass._module.uint32WithMethods))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|
@@ -140,11 +145,6 @@
  :qid |DafnyPreludebpl.103:18|
  :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
-)))
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.uint32WithMethods)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |576|
- :pattern ( ($Is intType |x#0| Tclass._module.uint32WithMethods))
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)

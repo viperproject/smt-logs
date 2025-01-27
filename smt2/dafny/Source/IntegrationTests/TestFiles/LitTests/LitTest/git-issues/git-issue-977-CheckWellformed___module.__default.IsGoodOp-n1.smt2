@@ -44,22 +44,22 @@
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Tag (T@U) T@U)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun _module.__default.IsGoodOpt__IfThenElse (T@U) Bool)
-(declare-fun Lit (T@T T@U) T@U)
-(declare-fun DatatypeTypeType () T@T)
-(declare-fun |_module.__default.IsGoodOpt__IfThenElse#canCall| (T@U) Bool)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass._module.Option (T@U) T@U)
-(declare-fun _module.Option.Some_q (T@U) Bool)
-(declare-fun LitInt (Int) Int)
-(declare-fun $Unbox (T@T T@U) T@U)
-(declare-fun _module.Option.value (T@U) T@U)
-(declare-fun |_module.__default.IsGoodInt#canCall| (Int) Bool)
 (declare-fun _module.__default.IsGoodInt (Int) Bool)
+(declare-fun LitInt (Int) Int)
+(declare-fun |_module.__default.IsGoodInt#canCall| (Int) Bool)
 (declare-fun DatatypeCtorId (T@U) T@U)
 (declare-fun |#_module.Option.None| () T@U)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun DatatypeTypeType () T@T)
+(declare-fun Tclass._module.Option (T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun Lit (T@T T@U) T@U)
+(declare-fun _module.__default.IsGoodOpt__Impl (T@U) Bool)
+(declare-fun |_module.__default.IsGoodOpt__Impl#canCall| (T@U) Bool)
+(declare-fun _module.Option.Some_q (T@U) Bool)
+(declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun _module.Option.value (T@U) T@U)
 (declare-fun _module.Option.None_q (T@U) Bool)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun |#_module.Option.Some| (T@U) T@U)
@@ -103,15 +103,6 @@
 )
 (assert (= (Tag TBool) TagBool))
 (assert (= (Tag TInt) TagInt))
-(assert (= (Ctor DatatypeTypeType) 3))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|opt#0| T@U) ) (!  (=> (or (|_module.__default.IsGoodOpt__IfThenElse#canCall| (Lit DatatypeTypeType |opt#0|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |opt#0| (Tclass._module.Option TInt)))) (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.Option.Some_q (Lit DatatypeTypeType |opt#0|))))) (let ((|x#1| (LitInt (U_2_int ($Unbox intType (_module.Option.value (Lit DatatypeTypeType |opt#0|)))))))
-(|_module.__default.IsGoodInt#canCall| |x#1|))) (= (_module.__default.IsGoodOpt__IfThenElse (Lit DatatypeTypeType |opt#0|)) (ite (_module.Option.Some_q (Lit DatatypeTypeType |opt#0|)) (U_2_bool (let ((|x#1@@0| (LitInt (U_2_int ($Unbox intType (_module.Option.value (Lit DatatypeTypeType |opt#0|)))))))
-(Lit boolType (bool_2_U (_module.__default.IsGoodInt |x#1@@0|))))) true))))
- :qid |gitissue977dfy.18:38|
- :weight 3
- :skolemid |1162|
- :pattern ( (_module.__default.IsGoodOpt__IfThenElse (Lit DatatypeTypeType |opt#0|)))
-))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|_module.__default.IsGoodInt#canCall| (LitInt |x#0|)) (< 0 $FunctionContextHeight)) (= (_module.__default.IsGoodInt (LitInt |x#0|))  (and (<= (LitInt 0) (LitInt |x#0|)) (or (not (= |x#0| 5)) (not true)))))
  :qid |gitissue977dfy.6:27|
  :weight 3
@@ -119,6 +110,7 @@
  :pattern ( (_module.__default.IsGoodInt (LitInt |x#0|)))
 ))))
 (assert (= (DatatypeCtorId |#_module.Option.None|) |##_module.Option.None|))
+(assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((_module.Option$V T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) ($IsAlloc DatatypeTypeType |#_module.Option.None| (Tclass._module.Option _module.Option$V) $h))
  :qid |unknown.0:0|
  :skolemid |1305|
@@ -139,6 +131,11 @@
  :skolemid |634|
  :pattern ( (Lit T x@@3))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|opt#0| T@U) ) (!  (=> (or (|_module.__default.IsGoodOpt__Impl#canCall| |opt#0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |opt#0| (Tclass._module.Option TInt)))) (and (=> (_module.Option.Some_q |opt#0|) (|_module.__default.IsGoodInt#canCall| (U_2_int ($Unbox intType (_module.Option.value |opt#0|))))) (= (_module.__default.IsGoodOpt__Impl |opt#0|)  (and (=> (_module.Option.Some_q |opt#0|) (_module.__default.IsGoodInt (U_2_int ($Unbox intType (_module.Option.value |opt#0|))))) (=> (_module.Option.None_q |opt#0|) true)))))
+ :qid |gitissue977dfy.12:32|
+ :skolemid |1156|
+ :pattern ( (_module.__default.IsGoodOpt__Impl |opt#0|))
+))))
 (assert (forall ((d T@U) ) (! (= (_module.Option.Some_q d) (= (DatatypeCtorId d) |##_module.Option.Some|))
  :qid |unknown.0:0|
  :skolemid |1293|
@@ -177,13 +174,6 @@
  :skolemid |1151|
  :pattern ( (Tclass._module.Option _module.Option$V@@1))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|opt#0@@0| T@U) ) (!  (=> (or (|_module.__default.IsGoodOpt__IfThenElse#canCall| |opt#0@@0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |opt#0@@0| (Tclass._module.Option TInt)))) (and (=> (_module.Option.Some_q |opt#0@@0|) (let ((|x#0@@0| (U_2_int ($Unbox intType (_module.Option.value |opt#0@@0|)))))
-(|_module.__default.IsGoodInt#canCall| |x#0@@0|))) (= (_module.__default.IsGoodOpt__IfThenElse |opt#0@@0|) (ite (_module.Option.Some_q |opt#0@@0|) (let ((|x#0@@1| (U_2_int ($Unbox intType (_module.Option.value |opt#0@@0|)))))
-(_module.__default.IsGoodInt |x#0@@1|)) true))))
- :qid |gitissue977dfy.18:38|
- :skolemid |1161|
- :pattern ( (_module.__default.IsGoodOpt__IfThenElse |opt#0@@0|))
-))))
 (assert (forall ((_module.Option$V@@2 T@U) (|a#2#0#0| T@U) ($h@@0 T@U) ) (!  (=> ($IsGoodHeap $h@@0) (= ($IsAlloc DatatypeTypeType (|#_module.Option.Some| |a#2#0#0|) (Tclass._module.Option _module.Option$V@@2) $h@@0) ($IsAllocBox |a#2#0#0| _module.Option$V@@2 $h@@0)))
  :qid |unknown.0:0|
  :skolemid |1297|
@@ -271,7 +261,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1405|
+ :skolemid |1406|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@5)) (DtRank d@@5))
@@ -285,10 +275,10 @@
  :pattern ( ($IsBox bx@@1 (Tclass._module.Option _module.Option$V@@7)))
 )))
 (assert (= |#_module.Option.None| (Lit DatatypeTypeType |#_module.Option.None|)))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@2| Int) ) (!  (=> (or (|_module.__default.IsGoodInt#canCall| |x#0@@2|) (< 0 $FunctionContextHeight)) (= (_module.__default.IsGoodInt |x#0@@2|)  (and (<= (LitInt 0) |x#0@@2|) (or (not (= |x#0@@2| 5)) (not true)))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|_module.__default.IsGoodInt#canCall| |x#0@@0|) (< 0 $FunctionContextHeight)) (= (_module.__default.IsGoodInt |x#0@@0|)  (and (<= (LitInt 0) |x#0@@0|) (or (not (= |x#0@@0| 5)) (not true)))))
  :qid |gitissue977dfy.6:27|
  :skolemid |1149|
- :pattern ( (_module.__default.IsGoodInt |x#0@@2|))
+ :pattern ( (_module.__default.IsGoodInt |x#0@@0|))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
@@ -305,6 +295,12 @@
  :skolemid |635|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|opt#0@@0| T@U) ) (!  (=> (or (|_module.__default.IsGoodOpt__Impl#canCall| (Lit DatatypeTypeType |opt#0@@0|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |opt#0@@0| (Tclass._module.Option TInt)))) (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.Option.Some_q (Lit DatatypeTypeType |opt#0@@0|))))) (|_module.__default.IsGoodInt#canCall| (LitInt (U_2_int ($Unbox intType (_module.Option.value (Lit DatatypeTypeType |opt#0@@0|))))))) (= (_module.__default.IsGoodOpt__Impl (Lit DatatypeTypeType |opt#0@@0|)) (U_2_bool (Lit boolType (bool_2_U  (and (=> (_module.Option.Some_q (Lit DatatypeTypeType |opt#0@@0|)) (_module.__default.IsGoodInt (LitInt (U_2_int ($Unbox intType (_module.Option.value (Lit DatatypeTypeType |opt#0@@0|))))))) (=> (_module.Option.None_q (Lit DatatypeTypeType |opt#0@@0|)) true))))))))
+ :qid |gitissue977dfy.12:32|
+ :weight 3
+ :skolemid |1157|
+ :pattern ( (_module.__default.IsGoodOpt__Impl (Lit DatatypeTypeType |opt#0@@0|)))
+))))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc intType v@@1 TInt h@@0)
  :qid |DafnyPreludebpl.289:14|
  :skolemid |680|
@@ -328,11 +324,12 @@
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun |opt#0@@1| () T@U)
+(declare-fun |##x#0@0| () Int)
+(declare-fun $Heap () T@U)
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
-(declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(set-info :boogie-vc-id CheckWellformed$$_module.__default.IsGoodOpt__IfThenElse)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.IsGoodOpt__Impl)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -348,12 +345,17 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 6) (let ((anon8_Else_correct true))
-(let ((anon8_Then_correct  (=> (and (_module.Option.Some_q |opt#0@@1|) (= (ControlFlow 0 3) (- 0 2))) (_module.Option.Some_q |opt#0@@1|))))
-(let ((anon7_Then_correct true))
-(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 5) 1) anon7_Then_correct) (=> (= (ControlFlow 0 5) 3) anon8_Then_correct)) (=> (= (ControlFlow 0 5) 4) anon8_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) ($Is DatatypeTypeType |opt#0@@1| (Tclass._module.Option TInt))) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 6) 5))) anon0_correct)))
-PreconditionGeneratedEntry_correct))))))
+ (=> (= (ControlFlow 0 0) 11) (let ((anon8_correct true))
+(let ((anon13_Else_correct  (=> (and (not (_module.Option.None_q |opt#0@@1|)) (= (ControlFlow 0 5) 2)) anon8_correct)))
+(let ((anon13_Then_correct  (=> (and (_module.Option.None_q |opt#0@@1|) (= (ControlFlow 0 4) 2)) anon8_correct)))
+(let ((anon12_Then_correct  (=> (=> (_module.Option.Some_q |opt#0@@1|) (_module.__default.IsGoodInt (U_2_int ($Unbox intType (_module.Option.value |opt#0@@1|))))) (and (=> (= (ControlFlow 0 6) 4) anon13_Then_correct) (=> (= (ControlFlow 0 6) 5) anon13_Else_correct)))))
+(let ((anon12_Else_correct  (=> (and (not (=> (_module.Option.Some_q |opt#0@@1|) (_module.__default.IsGoodInt (U_2_int ($Unbox intType (_module.Option.value |opt#0@@1|)))))) (= (ControlFlow 0 3) 2)) anon8_correct)))
+(let ((anon11_Else_correct  (=> (not (_module.Option.Some_q |opt#0@@1|)) (and (=> (= (ControlFlow 0 9) 6) anon12_Then_correct) (=> (= (ControlFlow 0 9) 3) anon12_Else_correct)))))
+(let ((anon11_Then_correct  (=> (_module.Option.Some_q |opt#0@@1|) (and (=> (= (ControlFlow 0 7) (- 0 8)) (_module.Option.Some_q |opt#0@@1|)) (=> (_module.Option.Some_q |opt#0@@1|) (=> (= |##x#0@0| (U_2_int ($Unbox intType (_module.Option.value |opt#0@@1|)))) (=> (and ($IsAlloc intType (int_2_U |##x#0@0|) TInt $Heap) (|_module.__default.IsGoodInt#canCall| (U_2_int ($Unbox intType (_module.Option.value |opt#0@@1|))))) (and (=> (= (ControlFlow 0 7) 6) anon12_Then_correct) (=> (= (ControlFlow 0 7) 3) anon12_Else_correct)))))))))
+(let ((anon10_Then_correct true))
+(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 10) 1) anon10_Then_correct) (=> (= (ControlFlow 0 10) 7) anon11_Then_correct)) (=> (= (ControlFlow 0 10) 9) anon11_Else_correct)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) ($Is DatatypeTypeType |opt#0@@1| (Tclass._module.Option TInt))) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 11) 10))) anon0_correct)))
+PreconditionGeneratedEntry_correct)))))))))))
 ))
 (check-sat)
 (get-info :rlimit)

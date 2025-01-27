@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:57:04
+; Started: 2025-01-27 02:50:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -14027,7 +14027,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 13
@@ -17745,7 +17745,7 @@
 (check-sat)
 ; unknown
 (pop) ; 27
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 136 | True | live]
 ; [else-branch: 136 | False | dead]
@@ -17796,7 +17796,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 26
@@ -17805,7 +17805,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 138 | !(l$send_fail$1@345@01) | live]
 ; [else-branch: 138 | l$send_fail$1@345@01 | live]
@@ -19886,7 +19886,7 @@
             ($SortWrappers.IntTo$Snap $arg1@638@01))
           ($SortWrappers.IntTo$Snap $arg2@639@01))))))
   
-  :qid |quant-u-1541|))))
+  :qid |quant-u-1558|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20047,7 +20047,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@643@01 $arg0 $arg1 $arg2) (inv@645@01 $arg0 $arg1 $arg2) (inv@647@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1542|)))
+  :qid |quant-u-1559|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20083,7 +20083,7 @@
         ($SortWrappers.IntTo$Snap (inv@647@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1543|))))
+  :qid |quant-u-1560|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20249,7 +20249,7 @@
             ($SortWrappers.IntTo$Snap $arg1@650@01))
           ($SortWrappers.IntTo$Snap $arg2@651@01))))))
   
-  :qid |quant-u-1544|))))
+  :qid |quant-u-1561|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20410,7 +20410,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@655@01 $arg0 $arg1 $arg2) (inv@657@01 $arg0 $arg1 $arg2) (inv@659@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1545|)))
+  :qid |quant-u-1562|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20446,7 +20446,7 @@
         ($SortWrappers.IntTo$Snap (inv@659@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1546|))))
+  :qid |quant-u-1563|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20612,7 +20612,7 @@
             ($SortWrappers.IntTo$Snap $arg1@662@01))
           ($SortWrappers.IntTo$Snap $arg2@663@01))))))
   
-  :qid |quant-u-1547|))))
+  :qid |quant-u-1564|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20773,7 +20773,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@667@01 $arg0 $arg1 $arg2) (inv@669@01 $arg0 $arg1 $arg2) (inv@671@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1548|)))
+  :qid |quant-u-1565|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20809,7 +20809,7 @@
         ($SortWrappers.IntTo$Snap (inv@671@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1549|))))
+  :qid |quant-u-1566|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20975,7 +20975,7 @@
             ($SortWrappers.IntTo$Snap $arg1@674@01))
           ($SortWrappers.IntTo$Snap $arg2@675@01))))))
   
-  :qid |quant-u-1550|))))
+  :qid |quant-u-1567|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21136,7 +21136,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@679@01 $arg0 $arg1 $arg2) (inv@681@01 $arg0 $arg1 $arg2) (inv@683@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1551|)))
+  :qid |quant-u-1568|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21172,7 +21172,7 @@
         ($SortWrappers.IntTo$Snap (inv@683@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1552|))))
+  :qid |quant-u-1569|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21337,7 +21337,7 @@
             ($SortWrappers.IntTo$Snap $arg1@686@01))
           ($SortWrappers.IntTo$Snap $arg2@687@01))))))
   
-  :qid |quant-u-1553|))))
+  :qid |quant-u-1570|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21498,7 +21498,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@691@01 $arg0 $arg1 $arg2) (inv@693@01 $arg0 $arg1 $arg2) (inv@695@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1554|)))
+  :qid |quant-u-1571|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21534,7 +21534,7 @@
         ($SortWrappers.IntTo$Snap (inv@695@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1555|))))
+  :qid |quant-u-1572|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21699,7 +21699,7 @@
             ($SortWrappers.IntTo$Snap $arg1@698@01))
           ($SortWrappers.IntTo$Snap $arg2@699@01))))))
   
-  :qid |quant-u-1556|))))
+  :qid |quant-u-1573|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21860,7 +21860,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@703@01 $arg0 $arg1 $arg2) (inv@705@01 $arg0 $arg1 $arg2) (inv@707@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1557|)))
+  :qid |quant-u-1574|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21896,7 +21896,7 @@
         ($SortWrappers.IntTo$Snap (inv@707@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1558|))))
+  :qid |quant-u-1575|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -22361,7 +22361,7 @@
             ($SortWrappers.IntTo$Snap $arg1@719@01))
           ($SortWrappers.IntTo$Snap $arg2@720@01))))))
   
-  :qid |quant-u-1559|))))
+  :qid |quant-u-1576|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22522,7 +22522,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@722@01 $arg0 $arg1 $arg2) (inv@724@01 $arg0 $arg1 $arg2) (inv@726@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1560|)))
+  :qid |quant-u-1577|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -22558,7 +22558,7 @@
         ($SortWrappers.IntTo$Snap (inv@726@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1561|))))
+  :qid |quant-u-1578|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22722,7 +22722,7 @@
             ($SortWrappers.IntTo$Snap $arg1@729@01))
           ($SortWrappers.IntTo$Snap $arg2@730@01))))))
   
-  :qid |quant-u-1562|))))
+  :qid |quant-u-1579|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22883,7 +22883,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@732@01 $arg0 $arg1 $arg2) (inv@734@01 $arg0 $arg1 $arg2) (inv@736@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1563|)))
+  :qid |quant-u-1580|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -22919,7 +22919,7 @@
         ($SortWrappers.IntTo$Snap (inv@736@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1564|))))
+  :qid |quant-u-1581|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23083,7 +23083,7 @@
             ($SortWrappers.IntTo$Snap $arg1@739@01))
           ($SortWrappers.IntTo$Snap $arg2@740@01))))))
   
-  :qid |quant-u-1565|))))
+  :qid |quant-u-1582|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23244,7 +23244,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@742@01 $arg0 $arg1 $arg2) (inv@744@01 $arg0 $arg1 $arg2) (inv@746@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1566|)))
+  :qid |quant-u-1583|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -23280,7 +23280,7 @@
         ($SortWrappers.IntTo$Snap (inv@746@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1567|))))
+  :qid |quant-u-1584|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23444,7 +23444,7 @@
             ($SortWrappers.IntTo$Snap $arg1@749@01))
           ($SortWrappers.IntTo$Snap $arg2@750@01))))))
   
-  :qid |quant-u-1568|))))
+  :qid |quant-u-1585|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23605,7 +23605,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@752@01 $arg0 $arg1 $arg2) (inv@754@01 $arg0 $arg1 $arg2) (inv@756@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1569|)))
+  :qid |quant-u-1586|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -23641,7 +23641,7 @@
         ($SortWrappers.IntTo$Snap (inv@756@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1570|))))
+  :qid |quant-u-1587|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23804,7 +23804,7 @@
             ($SortWrappers.IntTo$Snap $arg1@759@01))
           ($SortWrappers.IntTo$Snap $arg2@760@01))))))
   
-  :qid |quant-u-1571|))))
+  :qid |quant-u-1588|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23965,7 +23965,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@762@01 $arg0 $arg1 $arg2) (inv@764@01 $arg0 $arg1 $arg2) (inv@766@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1572|)))
+  :qid |quant-u-1589|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -24001,7 +24001,7 @@
         ($SortWrappers.IntTo$Snap (inv@766@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1573|))))
+  :qid |quant-u-1590|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -24164,7 +24164,7 @@
             ($SortWrappers.IntTo$Snap $arg1@769@01))
           ($SortWrappers.IntTo$Snap $arg2@770@01))))))
   
-  :qid |quant-u-1574|))))
+  :qid |quant-u-1591|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -24325,7 +24325,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@772@01 $arg0 $arg1 $arg2) (inv@774@01 $arg0 $arg1 $arg2) (inv@776@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1575|)))
+  :qid |quant-u-1592|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -24361,7 +24361,7 @@
         ($SortWrappers.IntTo$Snap (inv@776@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1576|))))
+  :qid |quant-u-1593|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -30397,7 +30397,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -30486,7 +30486,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -30563,7 +30563,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 11
@@ -30592,7 +30592,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
@@ -30603,7 +30603,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 253 | $unwrap[Int]($w_mul[$Int](l$amount@838@01, l$token_reserve@1015@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
 ; [else-branch: 253 | !($unwrap[Int]($w_mul[$Int](l$amount@838@01, l$token_reserve@1015@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
@@ -30638,7 +30638,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 254 | True | live]
 ; [else-branch: 254 | False | dead]
@@ -30736,7 +30736,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 258 | $unwrap[Int](l$total_liquidity@936@01) != 0 | live]
 ; [else-branch: 258 | $unwrap[Int](l$total_liquidity@936@01) == 0 | dead]
@@ -31010,7 +31010,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 270 | True | live]
 ; [else-branch: 270 | False | dead]
@@ -31088,7 +31088,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -31099,7 +31099,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 273 | $unwrap[Int](l$eth_amount@1018@01) >= $unwrap[Int](l$min_eth@839@01) && $unwrap[Int](l$token_amount@1021@01) >= $unwrap[Int](l$min_tokens@840@01) | live]
 ; [else-branch: 273 | !($unwrap[Int](l$eth_amount@1018@01) >= $unwrap[Int](l$min_eth@839@01) && $unwrap[Int](l$token_amount@1021@01) >= $unwrap[Int](l$min_tokens@840@01)) | live]
@@ -31130,7 +31130,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -31143,7 +31143,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 274 | $unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0 | live]
 ; [else-branch: 274 | !($unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0) | live]
@@ -31178,7 +31178,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 275 | True | live]
 ; [else-branch: 275 | False | dead]
@@ -31248,7 +31248,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -31331,7 +31331,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -31406,7 +31406,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 280 | $unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0 | live]
 ; [else-branch: 280 | !($unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0) | live]
@@ -31437,7 +31437,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 281 | True | live]
 ; [else-branch: 281 | False | dead]
@@ -31556,7 +31556,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 20
@@ -31607,7 +31607,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -47297,7 +47297,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 14
@@ -47523,7 +47523,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 412 | $div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0 | dead]
 ; [else-branch: 412 | !($div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0) | live]
@@ -47553,7 +47553,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -47565,12 +47565,12 @@
       l$i2$denominator@1541@01))
     0))))
 (check-sat)
-; unsat
+; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 413 | !($div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0) | live]
-; [else-branch: 413 | $div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0 | dead]
+; [else-branch: 413 | $div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0 | live]
 (set-option :timeout 0)
 (push) ; 17
 ; [then-branch: 413 | !($div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0)]
@@ -47626,7 +47626,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -49753,7 +49753,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1597@01))
           ($SortWrappers.IntTo$Snap $arg2@1598@01))))))
   
-  :qid |quant-u-1699|))))
+  :qid |quant-u-1705|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49914,7 +49914,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1600@01 $arg0 $arg1 $arg2) (inv@1602@01 $arg0 $arg1 $arg2) (inv@1604@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1700|)))
+  :qid |quant-u-1706|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -49950,7 +49950,7 @@
         ($SortWrappers.IntTo$Snap (inv@1604@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1701|))))
+  :qid |quant-u-1707|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -50927,7 +50927,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -50936,7 +50936,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 432 | l$i0$raw_ret$1@1390@01 | live]
 ; [else-branch: 432 | !(l$i0$raw_ret$1@1390@01) | live]
@@ -50995,7 +50995,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -51004,7 +51004,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 433 | $out_of_gas@1399@01 | live]
 ; [else-branch: 433 | !($out_of_gas@1399@01) | live]
@@ -51033,7 +51033,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 434 | True | live]
 ; [else-branch: 434 | False | dead]
@@ -51084,7 +51084,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -51093,7 +51093,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 436 | !($out_of_gas@1399@01) | live]
 ; [else-branch: 436 | $out_of_gas@1399@01 | live]
@@ -51115,7 +51115,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 438 | True | live]
 ; [else-branch: 438 | False | dead]
@@ -51171,7 +51171,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -51180,7 +51180,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 439 | !(l$i0$no_reentrant_call@1396@01) | live]
 ; [else-branch: 439 | l$i0$no_reentrant_call@1396@01 | live]
@@ -51211,7 +51211,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -51220,7 +51220,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 440 | !(l$i0$raw_ret$1@1390@01) | live]
 ; [else-branch: 440 | l$i0$raw_ret$1@1390@01 | live]
@@ -51249,7 +51249,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 441 | True | live]
 ; [else-branch: 441 | False | dead]
@@ -51301,7 +51301,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -51310,7 +51310,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 443 | l$i0$raw_ret$1@1390@01 | live]
 ; [else-branch: 443 | !(l$i0$raw_ret$1@1390@01) | live]
@@ -51369,7 +51369,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -51378,7 +51378,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 444 | $out_of_gas@1399@01 | live]
 ; [else-branch: 444 | !($out_of_gas@1399@01) | live]
@@ -51407,7 +51407,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 445 | True | live]
 ; [else-branch: 445 | False | dead]
@@ -51467,7 +51467,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 447 | !($out_of_gas@1399@01) | live]
 ; [else-branch: 447 | $out_of_gas@1399@01 | live]
@@ -51549,6 +51549,14 @@
 (assert (not (>= ($unwrap<Int> l$i0$tokens_bought@1543@01) 1)))
 (pop) ; 19
 (pop) ; 18
+(pop) ; 17
+(push) ; 17
+; [else-branch: 413 | $div[Int]($unwrap[Int](l$i2$numerator@1536@01), l$i2$denominator@1541@01, $unwrap[Int](l$i2$numerator@1536@01) / l$i2$denominator@1541@01) < 0]
+(assert (<
+  ($div<Int> ($unwrap<Int> l$i2$numerator@1536@01) l$i2$denominator@1541@01 (div
+    ($unwrap<Int> l$i2$numerator@1536@01)
+    l$i2$denominator@1541@01))
+  0))
 (pop) ; 17
 (pop) ; 16
 (pop) ; 15
@@ -56547,7 +56555,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 502 | $div[Int]($unwrap[Int](l$i2$numerator@1846@01), l$i2$denominator@1851@01, $unwrap[Int](l$i2$numerator@1846@01) / l$i2$denominator@1851@01) < 0 | dead]
 ; [else-branch: 502 | !($div[Int]($unwrap[Int](l$i2$numerator@1846@01), l$i2$denominator@1851@01, $unwrap[Int](l$i2$numerator@1846@01) / l$i2$denominator@1851@01) < 0) | live]
@@ -56577,7 +56585,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -56650,7 +56658,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -56723,7 +56731,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 506 | !($unwrap[Int](l$i0$tokens_bought@1853@01) >= $unwrap[Int](l$min_tokens@1660@01)) | live]
 ; [else-branch: 506 | $unwrap[Int](l$i0$tokens_bought@1853@01) >= $unwrap[Int](l$min_tokens@1660@01) | live]
@@ -59021,7 +59029,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 510 | l$i0$send_fail$1@1697@01 | live]
 ; [else-branch: 510 | !(l$i0$send_fail$1@1697@01) | live]
@@ -59122,7 +59130,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 513 | !(l$i0$send_fail$1@1697@01) | live]
 ; [else-branch: 513 | l$i0$send_fail$1@1697@01 | live]
@@ -59840,7 +59848,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -59849,7 +59857,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 518 | l$i0$no_reentrant_call@1704@01 | live]
 ; [else-branch: 518 | !(l$i0$no_reentrant_call@1704@01) | live]
@@ -59884,7 +59892,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -59893,7 +59901,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 519 | !(l$i0$raw_ret$1@1698@01) | live]
 ; [else-branch: 519 | l$i0$raw_ret$1@1698@01 | live]
@@ -59924,7 +59932,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 520 | True | live]
 ; [else-branch: 520 | False | dead]
@@ -59976,7 +59984,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -59985,7 +59993,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 522 | l$i0$raw_ret$1@1698@01 | live]
 ; [else-branch: 522 | !(l$i0$raw_ret$1@1698@01) | live]
@@ -60055,7 +60063,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 523 | $out_of_gas@1707@01 | live]
 ; [else-branch: 523 | !($out_of_gas@1707@01) | live]
@@ -60086,7 +60094,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 524 | True | live]
 ; [else-branch: 524 | False | dead]
@@ -60426,7 +60434,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -60435,7 +60443,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 534 | $out_of_gas@1707@01 | live]
 ; [else-branch: 534 | !($out_of_gas@1707@01) | live]
@@ -60466,7 +60474,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 535 | True | live]
 ; [else-branch: 535 | False | dead]
@@ -60517,7 +60525,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -60526,7 +60534,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 537 | !($out_of_gas@1707@01) | live]
 ; [else-branch: 537 | $out_of_gas@1707@01 | live]
@@ -60548,7 +60556,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 539 | True | live]
 ; [else-branch: 539 | False | dead]
@@ -65793,7 +65801,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 598 | $div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0 | dead]
 ; [else-branch: 598 | !($div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0) | live]
@@ -65837,7 +65845,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 599 | !($div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0) | live]
 ; [else-branch: 599 | $div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0 | dead]
@@ -65896,7 +65904,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -69139,7 +69147,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 615 | !(l$i0$raw_ret$1@2010@01) | live]
 ; [else-branch: 615 | l$i0$raw_ret$1@2010@01 | live]
@@ -69292,7 +69300,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -69392,7 +69400,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 622 | !($out_of_gas@2019@01) | live]
 ; [else-branch: 622 | $out_of_gas@2019@01 | live]
@@ -69672,7 +69680,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -69681,7 +69689,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 630 | $out_of_gas@2019@01 | live]
 ; [else-branch: 630 | !($out_of_gas@2019@01) | live]
@@ -69712,7 +69720,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 631 | True | live]
 ; [else-branch: 631 | False | dead]
@@ -69763,7 +69771,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -69772,7 +69780,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 633 | !($out_of_gas@2019@01) | live]
 ; [else-branch: 633 | $out_of_gas@2019@01 | live]
@@ -69794,7 +69802,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 635 | True | live]
 ; [else-branch: 635 | False | dead]
@@ -71540,7 +71548,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2396@01))
           ($SortWrappers.IntTo$Snap $arg2@2397@01))))))
   
-  :qid |quant-u-1792|))))
+  :qid |quant-u-1786|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -71701,7 +71709,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2401@01 $arg0 $arg1 $arg2) (inv@2403@01 $arg0 $arg1 $arg2) (inv@2405@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1793|)))
+  :qid |quant-u-1787|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -71737,7 +71745,7 @@
         ($SortWrappers.IntTo$Snap (inv@2405@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1794|))))
+  :qid |quant-u-1788|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -71903,7 +71911,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2408@01))
           ($SortWrappers.IntTo$Snap $arg2@2409@01))))))
   
-  :qid |quant-u-1795|))))
+  :qid |quant-u-1789|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72064,7 +72072,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2413@01 $arg0 $arg1 $arg2) (inv@2415@01 $arg0 $arg1 $arg2) (inv@2417@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1796|)))
+  :qid |quant-u-1790|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72100,7 +72108,7 @@
         ($SortWrappers.IntTo$Snap (inv@2417@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1797|))))
+  :qid |quant-u-1791|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72266,7 +72274,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2420@01))
           ($SortWrappers.IntTo$Snap $arg2@2421@01))))))
   
-  :qid |quant-u-1798|))))
+  :qid |quant-u-1792|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72427,7 +72435,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2425@01 $arg0 $arg1 $arg2) (inv@2427@01 $arg0 $arg1 $arg2) (inv@2429@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1799|)))
+  :qid |quant-u-1793|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72463,7 +72471,7 @@
         ($SortWrappers.IntTo$Snap (inv@2429@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1800|))))
+  :qid |quant-u-1794|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72629,7 +72637,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2432@01))
           ($SortWrappers.IntTo$Snap $arg2@2433@01))))))
   
-  :qid |quant-u-1801|))))
+  :qid |quant-u-1795|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72790,7 +72798,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2437@01 $arg0 $arg1 $arg2) (inv@2439@01 $arg0 $arg1 $arg2) (inv@2441@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1802|)))
+  :qid |quant-u-1796|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72826,7 +72834,7 @@
         ($SortWrappers.IntTo$Snap (inv@2441@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1803|))))
+  :qid |quant-u-1797|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72991,7 +72999,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2444@01))
           ($SortWrappers.IntTo$Snap $arg2@2445@01))))))
   
-  :qid |quant-u-1804|))))
+  :qid |quant-u-1798|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73152,7 +73160,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2449@01 $arg0 $arg1 $arg2) (inv@2451@01 $arg0 $arg1 $arg2) (inv@2453@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1805|)))
+  :qid |quant-u-1799|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -73188,7 +73196,7 @@
         ($SortWrappers.IntTo$Snap (inv@2453@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1806|))))
+  :qid |quant-u-1800|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73353,7 +73361,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2456@01))
           ($SortWrappers.IntTo$Snap $arg2@2457@01))))))
   
-  :qid |quant-u-1807|))))
+  :qid |quant-u-1801|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73514,7 +73522,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2461@01 $arg0 $arg1 $arg2) (inv@2463@01 $arg0 $arg1 $arg2) (inv@2465@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1808|)))
+  :qid |quant-u-1802|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -73550,7 +73558,7 @@
         ($SortWrappers.IntTo$Snap (inv@2465@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1809|))))
+  :qid |quant-u-1803|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -75175,7 +75183,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -75708,7 +75716,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -75763,7 +75771,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -75804,7 +75812,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 25
@@ -82539,4 +82547,167 @@
 (push) ; 32
 (set-option :timeout 10)
 (assert (not false))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 758 | True | live]
+; [else-branch: 758 | False | dead]
+(set-option :timeout 0)
+(push) ; 32
+; [then-branch: 758 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@2688@01 $Snap)
+(assert (= $t@2688@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@2343@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 8)): Int)
+; [eval] $struct_loc(self, 8)
+(declare-const self@2689@01 $Struct)
+(assert (=
+  self@2689@01
+  ($struct_set<$Struct> self@2292@01 8 (+
+    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
+    l$havoc$1@2343@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 32
+; [then-branch: 759 | False | dead]
+; [else-branch: 759 | True | live]
+(set-option :timeout 0)
+(push) ; 32
+; [else-branch: 759 | True]
+(pop) ; 32
+(pop) ; 31
+(push) ; 31
+; [else-branch: 757 | l$i0$raw_ret$1@2332@01]
+(assert l$i0$raw_ret$1@2332@01)
+(pop) ; 31
+; [eval] !!l$i0$raw_ret$1
+; [eval] !l$i0$raw_ret$1
+(push) ; 31
+(set-option :timeout 10)
+(assert (not (not l$i0$raw_ret$1@2332@01)))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 31
+(set-option :timeout 10)
+(assert (not l$i0$raw_ret$1@2332@01))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 760 | l$i0$raw_ret$1@2332@01 | live]
+; [else-branch: 760 | !(l$i0$raw_ret$1@2332@01) | live]
+(set-option :timeout 0)
+(push) ; 31
+; [then-branch: 760 | l$i0$raw_ret$1@2332@01]
+(assert l$i0$raw_ret$1@2332@01)
+; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
+; [eval] $unwrap(l$i0$eth_sold) * 1
+; [eval] $unwrap(l$i0$eth_sold)
+; [then-branch: 761 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
+; [else-branch: 761 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
+(push) ; 32
+; [else-branch: 761 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
+(pop) ; 32
+; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
+; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
+; [eval] $unwrap(l$i0$eth_sold) * 1
+; [eval] $unwrap(l$i0$eth_sold)
+(push) ; 32
+(set-option :timeout 10)
+(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 762 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
+; [else-branch: 762 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 32
+; [then-branch: 762 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
+; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] $unwrap(l$i0$eth_sold) * 1
+; [eval] $unwrap(l$i0$eth_sold)
+; [then-branch: 763 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
+; [else-branch: 763 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
+(push) ; 33
+; [else-branch: 763 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
+(pop) ; 33
+; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] $unwrap(l$i0$eth_sold) * 1
+; [eval] $unwrap(l$i0$eth_sold)
+(push) ; 33
+(set-option :timeout 10)
+(assert (not (>
+  ($unwrap<Int> l$i0$eth_sold@2488@01)
+  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
+(check-sat)
+; unknown
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 764 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
+; [else-branch: 764 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
+(set-option :timeout 0)
+(push) ; 33
+; [then-branch: 764 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
+; [exec]
+; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
+; [eval] $unwrap(l$i0$eth_sold) * 1
+; [eval] $unwrap(l$i0$eth_sold)
+; [eval] $unwrap(l$i0$tokens_bought)
+(declare-const $t@2690@01 $Snap)
+(declare-const sm@2691@01 $PSF<e$TokenPurchase>)
+; Definitional axioms for singleton-SM's value
+(assert (=
+  ($PSF.lookup_e$TokenPurchase (as sm@2691@01  $PSF<e$TokenPurchase>) ($Snap.combine
+    ($Snap.combine
+      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
+      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
+    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
+  $t@2690@01))
+(assert (<=
+  $Perm.No
+  (ite
+    (and
+      (=
+        ($unwrap<Int> l$i0$eth_sold@2488@01)
+        ($unwrap<Int> l$i0$eth_sold@2488@01))
+      (=
+        ($unwrap<Int> l$tokens_bought@2284@01)
+        ($unwrap<Int> l$tokens_bought@2284@01)))
+    $Perm.Write
+    $Perm.No)))
+; Definitional axioms for snapshot map values
+(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
+  ($Snap.combine
+    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
+    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
+  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
+  ($Snap.combine
+    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
+    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
+  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
+; State saturation: after inhale
+(set-option :timeout 20)
 (check-sat)

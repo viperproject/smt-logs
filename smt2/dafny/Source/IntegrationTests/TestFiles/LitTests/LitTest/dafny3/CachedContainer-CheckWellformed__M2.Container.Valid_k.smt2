@@ -139,7 +139,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$y#1| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#1|))  (and ($IsBox |$y#1| |l#0|) (|Seq#Contains| |l#1| |$y#1|)))
  :qid |unknown.0:0|
- :skolemid |3867|
+ :skolemid |3871|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#1|))
 )))
 (assert (= (Ctor refType) 4))
@@ -245,7 +245,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#2| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@1) |l#2|)))) (or (= $o@@1 |l#3|) (|Set#IsMember| |l#4| ($Box refType $o@@1)))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3868|
+ :skolemid |3872|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#2| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4|) $o@@1 $f))
 )))
 (assert ($IsGhostField alloc))

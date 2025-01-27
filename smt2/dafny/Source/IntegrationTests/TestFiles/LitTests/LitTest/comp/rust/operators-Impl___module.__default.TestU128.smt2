@@ -41,9 +41,9 @@
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
-(declare-fun _module.__default.TWO__TO__THE__128 () Int)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun _module.__default.TWO__TO__THE__128 () Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -93,7 +93,6 @@
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (= _module.__default.TWO__TO__THE__128 (LitInt 340282366920938463463374607431768211456)))
 (assert  (=> (< 0 $FunctionContextHeight) ($Is intType (int_2_U _module.__default.TWO__TO__THE__128) TInt)))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
@@ -129,6 +128,7 @@
  :skolemid |595|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
+(assert (= _module.__default.TWO__TO__THE__128 (LitInt 340282366920938463463374607431768211456)))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
  :qid |DafnyPreludebpl.1647:14|
  :skolemid |338|

@@ -678,12 +678,12 @@
 ;; MODULE 'root module'
 
 ;; Fuel
-(declare-const fuel%impl&%3.arrow_0. FuelId)
 (declare-const fuel%impl&%3.arrow_a. FuelId)
+(declare-const fuel%impl&%3.arrow_0. FuelId)
 (declare-const fuel%impl&%3.arrow_One_a. FuelId)
 (declare-const fuel%impl&%3.arrow_Two_0. FuelId)
 (assert
- (distinct fuel%impl&%3.arrow_0. fuel%impl&%3.arrow_a. fuel%impl&%3.arrow_One_a. fuel%impl&%3.arrow_Two_0.)
+ (distinct fuel%impl&%3.arrow_a. fuel%impl&%3.arrow_0. fuel%impl&%3.arrow_One_a. fuel%impl&%3.arrow_Two_0.)
 )
 
 ;; Datatypes
@@ -763,31 +763,17 @@
    :skolemid skolem_internal_crate__tuple__0_has_type_always_definition
 )))
 
-;; Function-Decl crate::Thing::arrow_0
-(declare-fun impl&%3.arrow_0.? (Poly) Int)
-
 ;; Function-Decl crate::Thing::arrow_a
 (declare-fun impl&%3.arrow_a.? (Poly) Int)
+
+;; Function-Decl crate::Thing::arrow_0
+(declare-fun impl&%3.arrow_0.? (Poly) Int)
 
 ;; Function-Decl crate::Thing::arrow_One_a
 (declare-fun impl&%3.arrow_One_a.? (Poly) Int)
 
 ;; Function-Decl crate::Thing::arrow_Two_0
 (declare-fun impl&%3.arrow_Two_0.? (Poly) Int)
-
-;; Function-Axioms crate::Thing::arrow_0
-(assert
- (fuel_bool_default fuel%impl&%3.arrow_0.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%3.arrow_0.)
-  (forall ((self! Poly)) (!
-    (= (impl&%3.arrow_0.? self!) (Thing./Two/0 (%Poly%Thing. self!)))
-    :pattern ((impl&%3.arrow_0.? self!))
-    :qid internal_impl&__3.arrow_0.?_definition
-    :skolemid skolem_internal_impl&__3.arrow_0.?_definition
-))))
 
 ;; Function-Axioms crate::Thing::arrow_a
 (assert
@@ -801,6 +787,20 @@
     :pattern ((impl&%3.arrow_a.? self!))
     :qid internal_impl&__3.arrow_a.?_definition
     :skolemid skolem_internal_impl&__3.arrow_a.?_definition
+))))
+
+;; Function-Axioms crate::Thing::arrow_0
+(assert
+ (fuel_bool_default fuel%impl&%3.arrow_0.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%3.arrow_0.)
+  (forall ((self! Poly)) (!
+    (= (impl&%3.arrow_0.? self!) (Thing./Two/0 (%Poly%Thing. self!)))
+    :pattern ((impl&%3.arrow_0.? self!))
+    :qid internal_impl&__3.arrow_0.?_definition
+    :skolemid skolem_internal_impl&__3.arrow_0.?_definition
 ))))
 
 ;; Function-Axioms crate::Thing::arrow_One_a

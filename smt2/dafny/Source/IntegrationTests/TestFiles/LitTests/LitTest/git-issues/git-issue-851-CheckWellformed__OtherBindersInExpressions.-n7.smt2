@@ -97,7 +97,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| Bool) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#5| |l#0| |l#1|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) |l#1|))
  :qid |gitissue851dfy.204:8|
- :skolemid |4110|
+ :skolemid |4111|
  :pattern ( (MapType0Select BoxType boolType (|lambda#5| |l#0| |l#1|) |$y#0|))
 )))
 (assert ($AlwaysAllocated Tclass.OtherBindersInExpressions.C))
@@ -201,7 +201,7 @@
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4109|
+ :skolemid |4110|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx@@2 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@2 (TISet t@@3)) (and (= ($Box (MapType0Type BoxType boolType) ($Unbox (MapType0Type BoxType boolType) bx@@2)) bx@@2) ($Is (MapType0Type BoxType boolType) ($Unbox (MapType0Type BoxType boolType) bx@@2) (TISet t@@3))))

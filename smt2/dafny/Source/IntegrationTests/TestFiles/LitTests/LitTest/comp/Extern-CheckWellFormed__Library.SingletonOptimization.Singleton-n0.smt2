@@ -42,10 +42,8 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.Library.MyInt () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.Library.MyInt () T@U)
 (declare-fun |$IsA#_System.Tuple2GO| (T@U) Bool)
 (declare-fun _System.Tuple2GO.___hMake2_q (T@U) Bool)
 (declare-fun |#_System._tuple#3OGG._#Make3| (T@U T@U T@U) T@U)
@@ -57,6 +55,7 @@
 (declare-fun _System.Tuple3OGG._0 (T@U) T@U)
 (declare-fun _System.Tuple3OGG._1 (T@U) T@U)
 (declare-fun _System.Tuple3OGG._2 (T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun DatatypeTypeType () T@T)
 (declare-fun Tclass._System.Tuple2GO (T@U T@U) T@U)
 (declare-fun Tag (T@U) T@U)
@@ -74,6 +73,7 @@
 (declare-fun MapType0Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType0TypeInv0 (T@T) T@T)
 (declare-fun MapType0TypeInv1 (T@T) T@T)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
@@ -108,15 +108,10 @@
 ))))
 (assert (distinct alloc |##_System._tuple#2GO._#Make2| Tagclass._System.Tuple2GO |##_System._tuple#3OGG._#Make3| Tagclass._System.Tuple3OGG Tagclass.Library.MyInt |tytagFamily$_tuple#2GO| |tytagFamily$_tuple#3OGG| tytagFamily$MyInt)
 )
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |1106|
- :pattern ( ($Is intType |x#0| Tclass.Library.MyInt))
-)))
-(assert (forall ((|x#0@@0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h)
+(assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.Library.MyInt $h)
  :qid |unknown.0:0|
  :skolemid |1107|
- :pattern ( ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h))
+ :pattern ( ($IsAlloc intType |x#0| Tclass.Library.MyInt $h))
 )))
 (assert (forall ((d T@U) ) (!  (=> (|$IsA#_System.Tuple2GO| d) (_System.Tuple2GO.___hMake2_q d))
  :qid |unknown.0:0|
@@ -248,6 +243,11 @@
  :qid |unknown.0:0|
  :skolemid |1057|
  :pattern ( (_System.Tuple2GO.___hMake2_q d@@4))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |1106|
+ :pattern ( ($Is intType |x#0@@0| Tclass.Library.MyInt))
 )))
 (assert (forall ((|_System._tuple#3OGG$T0@@4| T@U) (|_System._tuple#3OGG$T1@@4| T@U) (|_System._tuple#3OGG$T2@@4| T@U) (|a#22#0#0| T@U) (|a#22#1#0| T@U) (|a#22#2#0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#3OGG._#Make3| |a#22#0#0| |a#22#1#0| |a#22#2#0|) (Tclass._System.Tuple3OGG |_System._tuple#3OGG$T0@@4| |_System._tuple#3OGG$T1@@4| |_System._tuple#3OGG$T2@@4|) $h@@1)  (and (and ($IsAllocBox |a#22#0#0| |_System._tuple#3OGG$T0@@4| $h@@1) ($IsAllocBox |a#22#1#0| |_System._tuple#3OGG$T1@@4| $h@@1)) ($IsAllocBox |a#22#2#0| |_System._tuple#3OGG$T2@@4| $h@@1))))
  :qid |unknown.0:0|

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:07:29
+; Started: 2025-01-27 03:00:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -153,11 +153,11 @@
     (PhilosophergetLeft$%limited s@$ this$_3@0@00)
     (PhilosophergetLeft$ s@$ this$_3@0@00))
   :pattern ((PhilosophergetLeft$ s@$ this$_3@0@00))
-  :qid |quant-u-12347|)))
+  :qid |quant-u-12340|)))
 (assert (forall ((s@$ $Snap) (this$_3@0@00 $Ref)) (!
   (PhilosophergetLeft$%stateless this$_3@0@00)
   :pattern ((PhilosophergetLeft$%limited s@$ this$_3@0@00))
-  :qid |quant-u-12348|)))
+  :qid |quant-u-12341|)))
 (assert (forall ((s@$ $Snap) (this$_3@0@00 $Ref)) (!
   (let ((result@1@00 (PhilosophergetLeft$%limited s@$ this$_3@0@00))) (and
     ($Perm.isReadVar $k@4@00)
@@ -165,11 +165,11 @@
       (PhilosophergetLeft$%precondition s@$ this$_3@0@00)
       (not (= result@1@00 $Ref.null)))))
   :pattern ((PhilosophergetLeft$%limited s@$ this$_3@0@00))
-  :qid |quant-u-12351|)))
+  :qid |quant-u-12344|)))
 (assert (forall ((s@$ $Snap) (this$_3@0@00 $Ref)) (!
   (let ((result@1@00 (PhilosophergetLeft$%limited s@$ this$_3@0@00))) true)
   :pattern ((PhilosophergetLeft$%limited s@$ this$_3@0@00))
-  :qid |quant-u-12352|)))
+  :qid |quant-u-12345|)))
 (assert (forall ((s@$ $Snap) (this$_3@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -181,21 +181,21 @@
         (PhilosophergetLeft$ s@$ this$_3@0@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((PhilosophergetLeft$ s@$ this$_3@0@00))
-  :qid |quant-u-12353|)))
+  :qid |quant-u-12346|)))
 (assert (forall ((s@$ $Snap) (this$_3@0@00 $Ref)) (!
   true
   :pattern ((PhilosophergetLeft$ s@$ this$_3@0@00))
-  :qid |quant-u-12354|)))
+  :qid |quant-u-12347|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   (=
     (PhilosophergetRight$%limited s@$ this$_4@2@00)
     (PhilosophergetRight$ s@$ this$_4@2@00))
   :pattern ((PhilosophergetRight$ s@$ this$_4@2@00))
-  :qid |quant-u-12349|)))
+  :qid |quant-u-12342|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   (PhilosophergetRight$%stateless this$_4@2@00)
   :pattern ((PhilosophergetRight$%limited s@$ this$_4@2@00))
-  :qid |quant-u-12350|)))
+  :qid |quant-u-12343|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   (let ((result@3@00 (PhilosophergetRight$%limited s@$ this$_4@2@00))) (and
     ($Perm.isReadVar $k@8@00)
@@ -203,11 +203,11 @@
       (PhilosophergetRight$%precondition s@$ this$_4@2@00)
       (not (= result@3@00 $Ref.null)))))
   :pattern ((PhilosophergetRight$%limited s@$ this$_4@2@00))
-  :qid |quant-u-12355|)))
+  :qid |quant-u-12348|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   (let ((result@3@00 (PhilosophergetRight$%limited s@$ this$_4@2@00))) true)
   :pattern ((PhilosophergetRight$%limited s@$ this$_4@2@00))
-  :qid |quant-u-12356|)))
+  :qid |quant-u-12349|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@8@00)
@@ -219,11 +219,11 @@
         (PhilosophergetRight$ s@$ this$_4@2@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((PhilosophergetRight$ s@$ this$_4@2@00))
-  :qid |quant-u-12357|)))
+  :qid |quant-u-12350|)))
 (assert (forall ((s@$ $Snap) (this$_4@2@00 $Ref)) (!
   true
   :pattern ((PhilosophergetRight$ s@$ this$_4@2@00))
-  :qid |quant-u-12358|)))
+  :qid |quant-u-12351|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Philosopherinit$ ----------

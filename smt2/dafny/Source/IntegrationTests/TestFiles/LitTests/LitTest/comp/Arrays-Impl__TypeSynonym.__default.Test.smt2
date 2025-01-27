@@ -50,11 +50,11 @@
 (declare-fun null () T@U)
 (declare-fun dtype (T@U) T@U)
 (declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun refType () T@T)
-(declare-fun Tclass.TypeSynonym.buffer (T@U) T@U)
-(declare-fun Tclass._System.array (T@U) T@U)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun Tclass.TypeSynonym.uint8 () T@U)
+(declare-fun refType () T@T)
+(declare-fun Tclass._System.array (T@U) T@U)
+(declare-fun Tclass.TypeSynonym.buffer (T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -107,27 +107,22 @@
  :skolemid |375|
  :pattern ( (_System.array.Length $o) (Tclass._System.array? _System.array$arg))
 )))
-(assert (= (Ctor refType) 3))
-(assert (forall ((TypeSynonym.buffer$T T@U) (|a#0| T@U) ) (! (= ($Is refType |a#0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T))  (and ($Is refType |a#0| (Tclass._System.array TypeSynonym.buffer$T)) (< (_System.array.Length |a#0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |725|
- :pattern ( ($Is refType |a#0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T)))
-)))
 (assert (forall ((|i#0| T@U) ($h T@U) ) (! ($IsAlloc intType |i#0| Tclass.TypeSynonym.uint8 $h)
  :qid |unknown.0:0|
  :skolemid |724|
  :pattern ( ($IsAlloc intType |i#0| Tclass.TypeSynonym.uint8 $h))
 )))
+(assert (= (Ctor refType) 3))
 (assert (forall ((_System.array$arg@@0 T@U) (|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h@@0) ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h@@0))
  :qid |unknown.0:0|
  :skolemid |381|
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h@@0))
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h@@0))
 )))
-(assert (forall ((TypeSynonym.buffer$T@@0 T@U) (|a#0@@0| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |a#0@@0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T@@0) $h@@1) ($IsAlloc refType |a#0@@0| (Tclass._System.array TypeSynonym.buffer$T@@0) $h@@1))
+(assert (forall ((TypeSynonym.buffer$T T@U) (|a#0| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |a#0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T) $h@@1) ($IsAlloc refType |a#0| (Tclass._System.array TypeSynonym.buffer$T) $h@@1))
  :qid |unknown.0:0|
  :skolemid |726|
- :pattern ( ($IsAlloc refType |a#0@@0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T@@0) $h@@1))
+ :pattern ( ($IsAlloc refType |a#0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T) $h@@1))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
@@ -177,6 +172,11 @@
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
+)))
+(assert (forall ((TypeSynonym.buffer$T@@0 T@U) (|a#0@@0| T@U) ) (! (= ($Is refType |a#0@@0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T@@0))  (and ($Is refType |a#0@@0| (Tclass._System.array TypeSynonym.buffer$T@@0)) (< (_System.array.Length |a#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |725|
+ :pattern ( ($Is refType |a#0@@0| (Tclass.TypeSynonym.buffer TypeSynonym.buffer$T@@0)))
 )))
 (assert (forall ((_System.array$arg@@3 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3))  (and ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)) (or (not (= |c#0@@0| null)) (not true))))
  :qid |unknown.0:0|
@@ -296,7 +296,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |7803|
+ :skolemid |7797|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))
 )))
 (assert (forall ((_System.array$arg@@11 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._System.array? _System.array$arg@@11)) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) (Tclass._System.array? _System.array$arg@@11))))

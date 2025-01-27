@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:53
+// Date:         2025-01-27 03:41:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -241,26 +241,26 @@ procedure main() returns ()
   var skiploop2_lblGuard: bool;
   var loop2_lblGuard: bool;
   var loop1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   var j: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labelloop1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labelloop1Heap: HeapType;
+  var Labelloop1Mask: MaskType;
   var frameMask6: MaskType;
   var frameHeap6: HeapType;
-  var Labelloop2Mask: MaskType;
   var Labelloop2Heap: HeapType;
+  var Labelloop2Mask: MaskType;
   var frameMask10: MaskType;
   var frameHeap10: HeapType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var Labelskiploop2Mask: MaskType;
   var Labelskiploop2Heap: HeapType;
-  var Labelskiploop1Mask: MaskType;
+  var Labelskiploop2Mask: MaskType;
   var Labelskiploop1Heap: HeapType;
+  var Labelskiploop1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -274,8 +274,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // i := 1 -- nestedRef.vpr@6.5--6.19
@@ -289,8 +289,8 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 3
   // assert i <= 5 -- nestedRef.vpr@9.5--9.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@9.12--9.18) [198973]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -317,15 +317,15 @@ procedure main() returns ()
   // label loop1
   //   invariant true -- nestedRef.vpr@14.5--14.31
     loop1:
-    Labelloop1Mask := Mask;
     Labelloop1Heap := Heap;
+    Labelloop1Mask := Mask;
     loop1_lblGuard := true;
     
     // -- Before loop head6
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask6 := Mask;
@@ -352,8 +352,8 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 7
   // assert i <= 5 -- nestedRef.vpr@16.9--16.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@16.16--16.22) [198974]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -380,15 +380,15 @@ procedure main() returns ()
   // label loop2
   //   invariant true -- nestedRef.vpr@21.9--21.35
     loop2:
-    Labelloop2Mask := Mask;
     Labelloop2Heap := Heap;
+    Labelloop2Mask := Mask;
     loop2_lblGuard := true;
     
     // -- Before loop head10
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask10 := Mask;
@@ -421,8 +421,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 12
   // // LoopInfo(None,Set(6, 10))
   // assert i <= 5 -- nestedRef.vpr@24.13--24.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@24.20--24.26) [198975]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -441,8 +441,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);
@@ -469,8 +469,8 @@ procedure main() returns ()
   // label skiploop2
   //   invariant true -- nestedRef.vpr@29.9--29.39
     skiploop2:
-    Labelskiploop2Mask := Mask;
     Labelskiploop2Heap := Heap;
+    Labelskiploop2Mask := Mask;
     skiploop2_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -482,8 +482,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 17
   // // LoopInfo(None,Set(6))
   // assert i <= 5 -- nestedRef.vpr@32.9--32.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (nestedRef.vpr@32.16--32.22) [198976]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -502,8 +502,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);
@@ -530,15 +530,15 @@ procedure main() returns ()
   // label skiploop1
   //   invariant true -- nestedRef.vpr@36.5--36.35
     skiploop1:
-    Labelskiploop1Mask := Mask;
     Labelskiploop1Heap := Heap;
+    Labelskiploop1Mask := Mask;
     skiploop1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 21
   // assert i == 5 -- nestedRef.vpr@38.5--38.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nestedRef.vpr@38.12--38.18) [198977]"}
       i == 5;
     assume state(Heap, Mask);

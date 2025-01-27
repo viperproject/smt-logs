@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:25
+// Date:         2025-01-27 03:25:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/RingBufferRd.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/RingBufferRd-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -599,8 +599,8 @@ procedure Contents#definedness(this: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -623,8 +623,8 @@ procedure Contents#definedness(this: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume Valid#trigger(UnfoldingHeap, Valid(this));
       assume UnfoldingHeap[null, Valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, first_3]), CombineFrames(FrameFragment(UnfoldingHeap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@15.1--22.4) [88464]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Valid(this)];
@@ -742,8 +742,8 @@ procedure Capacity#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -766,8 +766,8 @@ procedure Capacity#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Valid#trigger(UnfoldingHeap, Valid(this));
       assume UnfoldingHeap[null, Valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, first_3]), CombineFrames(FrameFragment(UnfoldingHeap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@24.1--28.4) [88479]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Valid(this)];
@@ -857,13 +857,13 @@ procedure HeadF#definedness(this: Ref) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -883,8 +883,8 @@ procedure HeadF#definedness(this: Ref) returns (Result: int)
     // -- Check definedness of Contents(this) != Seq[Int]()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@75.14--75.28) [88481]"}
           NoPerm < perm ==> NoPerm < Mask[null, Valid(this)];
@@ -905,8 +905,8 @@ procedure HeadF#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Valid#trigger(UnfoldingHeap, Valid(this));
       assume UnfoldingHeap[null, Valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, first_3]), CombineFrames(FrameFragment(UnfoldingHeap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(UnfoldingHeap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@73.3--79.4) [88482]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Valid(this)];
@@ -955,14 +955,14 @@ procedure HeadF#definedness(this: Ref) returns (Result: int)
     Result := Seq#Index(Heap[this, data], Heap[this, first_3]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of result == Contents(this)[0]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@76.23--76.37) [88487]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Valid(this)];
@@ -1096,12 +1096,12 @@ procedure Create(this: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i: int;
   var loopHeap: HeapType;
@@ -1137,8 +1137,8 @@ procedure Create(this: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1153,8 +1153,8 @@ procedure Create(this: Ref, n: int) returns ()
     // -- Check definedness of Contents(this) == Seq[Int]()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@34.13--34.27) [88500]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1171,8 +1171,8 @@ procedure Create(this: Ref, n: int) returns ()
     // -- Check definedness of Capacity(this) == n
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@34.45--34.59) [88501]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1204,8 +1204,8 @@ procedure Create(this: Ref, n: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(this.data, write) && (0 <= i && |this.data| == n - i) might not hold on entry. There might be insufficient permission to access this.data (RingBufferRd.vpr@41.17--41.72) [88503]"}
@@ -1275,8 +1275,8 @@ procedure Create(this: Ref, n: int) returns ()
             i := i - 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(this.data, write) && (0 <= i && |this.data| == n - i) might not be preserved. There might be insufficient permission to access this.data (RingBufferRd.vpr@41.17--41.72) [88509]"}
@@ -1320,8 +1320,8 @@ procedure Create(this: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Valid(this), write) -- RingBufferRd.vpr@48.5--48.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Valid(this) might fail. There might be insufficient permission to access this.data (RingBufferRd.vpr@48.5--48.33) [88516]"}
@@ -1374,8 +1374,8 @@ procedure Create(this: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Create might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@33.13--33.36) [88528]"}
@@ -1400,12 +1400,12 @@ procedure Clear(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -1428,8 +1428,8 @@ procedure Clear(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1444,8 +1444,8 @@ procedure Clear(this: Ref) returns ()
     // -- Check definedness of Contents(this) == Seq[Int]()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@54.13--54.27) [88531]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1462,8 +1462,8 @@ procedure Clear(this: Ref) returns ()
     // -- Check definedness of Capacity(this) == old(Capacity(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@54.45--54.59) [88532]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1476,8 +1476,8 @@ procedure Clear(this: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@54.67--54.81) [88533]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -1494,8 +1494,8 @@ procedure Clear(this: Ref) returns ()
   // -- Translating statement: unfold acc(Valid(this), write) -- RingBufferRd.vpr@56.5--56.35
     assume Valid#trigger(Heap, Valid(this));
     assume Heap[null, Valid(this)] == CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, first_3]), CombineFrames(FrameFragment(Heap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(Heap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(Heap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Valid(this) might fail. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@56.5--56.35) [88536]"}
@@ -1540,8 +1540,8 @@ procedure Clear(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Valid(this), write) -- RingBufferRd.vpr@58.5--58.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Valid(this) might fail. There might be insufficient permission to access this.data (RingBufferRd.vpr@58.5--58.33) [88543]"}
@@ -1594,8 +1594,8 @@ procedure Clear(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Clear might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@53.13--53.36) [88555]"}
@@ -1621,11 +1621,11 @@ procedure Head(this: Ref) returns (x: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -1651,8 +1651,8 @@ procedure Head(this: Ref) returns (x: int)
     // -- Check definedness of Contents(this) != Seq[Int]()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@63.14--63.28) [88558]"}
           NoPerm < perm ==> NoPerm < Mask[null, Valid(this)];
@@ -1669,8 +1669,8 @@ procedure Head(this: Ref) returns (x: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1686,8 +1686,8 @@ procedure Head(this: Ref) returns (x: int)
     // -- Check definedness of Contents(this) == old(Contents(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@65.13--65.27) [88559]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1700,8 +1700,8 @@ procedure Head(this: Ref) returns (x: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@65.35--65.49) [88560]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -1715,8 +1715,8 @@ procedure Head(this: Ref) returns (x: int)
     // -- Check definedness of x == Contents(this)[0]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@65.59--65.73) [88561]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1736,8 +1736,8 @@ procedure Head(this: Ref) returns (x: int)
     // -- Check definedness of Capacity(this) == old(Capacity(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@66.13--66.27) [88563]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1750,8 +1750,8 @@ procedure Head(this: Ref) returns (x: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@66.35--66.49) [88564]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -1768,8 +1768,8 @@ procedure Head(this: Ref) returns (x: int)
   // -- Translating statement: unfold acc(Valid(this), wildcard) -- RingBufferRd.vpr@68.5--68.38
     assume Valid#trigger(Heap, Valid(this));
     assume Heap[null, Valid(this)] == CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, first_3]), CombineFrames(FrameFragment(Heap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(Heap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(Heap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding Valid(this) might fail. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@68.5--68.38) [88566]"}
       Mask[null, Valid(this)] > NoPerm;
     havoc wildcard;
@@ -1824,8 +1824,8 @@ procedure Head(this: Ref) returns (x: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Valid(this), wildcard) -- RingBufferRd.vpr@70.5--70.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding Valid(this) might fail. There might be insufficient permission to access this.data (RingBufferRd.vpr@70.5--70.36) [88572]"}
       Mask[this, data] > NoPerm;
     havoc wildcard;
@@ -1876,8 +1876,8 @@ procedure Head(this: Ref) returns (x: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Head might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@64.13--64.39) [88581]"}
       Mask[null, Valid(this)] > NoPerm;
     havoc wildcard;
@@ -1903,11 +1903,11 @@ procedure Push(this: Ref, x: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -1933,8 +1933,8 @@ procedure Push(this: Ref, x: int) returns ()
     // -- Check definedness of |Contents(this)| != Capacity(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@83.15--83.29) [88585]"}
           NoPerm < perm ==> NoPerm < Mask[null, Valid(this)];
@@ -1947,8 +1947,8 @@ procedure Push(this: Ref, x: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@83.34--83.48) [88586]"}
           NoPerm < perm ==> NoPerm < Mask[null, Valid(this)];
@@ -1965,8 +1965,8 @@ procedure Push(this: Ref, x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1981,8 +1981,8 @@ procedure Push(this: Ref, x: int) returns ()
     // -- Check definedness of Contents(this) == old(Contents(this)) ++ Seq(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@85.13--85.27) [88587]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -1995,8 +1995,8 @@ procedure Push(this: Ref, x: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@85.35--85.49) [88588]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -2011,8 +2011,8 @@ procedure Push(this: Ref, x: int) returns ()
     // -- Check definedness of Capacity(this) == old(Capacity(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@86.13--86.27) [88589]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -2025,8 +2025,8 @@ procedure Push(this: Ref, x: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@86.35--86.49) [88590]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -2043,8 +2043,8 @@ procedure Push(this: Ref, x: int) returns ()
   // -- Translating statement: unfold acc(Valid(this), write) -- RingBufferRd.vpr@88.5--88.35
     assume Valid#trigger(Heap, Valid(this));
     assume Heap[null, Valid(this)] == CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, first_3]), CombineFrames(FrameFragment(Heap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(Heap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(Heap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Valid(this) might fail. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@88.5--88.35) [88593]"}
@@ -2141,8 +2141,8 @@ procedure Push(this: Ref, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Valid(this), write) -- RingBufferRd.vpr@100.5--100.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Valid(this) might fail. There might be insufficient permission to access this.data (RingBufferRd.vpr@100.5--100.33) [88612]"}
@@ -2195,8 +2195,8 @@ procedure Push(this: Ref, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Push might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@84.13--84.36) [88624]"}
@@ -2221,11 +2221,11 @@ procedure Pop(this: Ref) returns (x: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2250,8 +2250,8 @@ procedure Pop(this: Ref) returns (x: int)
     // -- Check definedness of Contents(this) != Seq(1)[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@105.14--105.28) [88627]"}
           NoPerm < perm ==> NoPerm < Mask[null, Valid(this)];
@@ -2268,8 +2268,8 @@ procedure Pop(this: Ref) returns (x: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2284,8 +2284,8 @@ procedure Pop(this: Ref) returns (x: int)
     // -- Check definedness of x == old(Contents(this))[0]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@107.22--107.36) [88628]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -2301,8 +2301,8 @@ procedure Pop(this: Ref) returns (x: int)
     // -- Check definedness of Contents(this) == old(Contents(this))[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@107.44--107.58) [88630]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -2315,8 +2315,8 @@ procedure Pop(this: Ref) returns (x: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Contents might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@107.66--107.80) [88631]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -2330,8 +2330,8 @@ procedure Pop(this: Ref) returns (x: int)
     // -- Check definedness of Capacity(this) == old(Capacity(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@107.90--107.104) [88632]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Valid(this)];
@@ -2344,8 +2344,8 @@ procedure Pop(this: Ref) returns (x: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@107.112--107.126) [88633]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Valid(this)];
@@ -2362,8 +2362,8 @@ procedure Pop(this: Ref) returns (x: int)
   // -- Translating statement: unfold acc(Valid(this), write) -- RingBufferRd.vpr@109.5--109.35
     assume Valid#trigger(Heap, Valid(this));
     assume Heap[null, Valid(this)] == CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, first_3]), CombineFrames(FrameFragment(Heap[this, len_2]), CombineFrames(FrameFragment((if Seq#Length(Heap[this, data]) == 0 then EmptyFrame else EmptyFrame)), FrameFragment((if Seq#Length(Heap[this, data]) > 0 then EmptyFrame else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Valid(this) might fail. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@109.5--109.35) [88636]"}
@@ -2454,8 +2454,8 @@ procedure Pop(this: Ref) returns (x: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Valid(this), write) -- RingBufferRd.vpr@120.5--120.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Valid(this) might fail. There might be insufficient permission to access this.data (RingBufferRd.vpr@120.5--120.33) [88653]"}
@@ -2508,8 +2508,8 @@ procedure Pop(this: Ref) returns (x: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Pop might not hold. There might be insufficient permission to access Valid(this) (RingBufferRd.vpr@106.13--106.36) [88665]"}
@@ -2535,19 +2535,19 @@ procedure Pop(this: Ref) returns (x: int)
 procedure TestHarness(x: int, y: int, z: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: Ref;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var h_1: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2558,8 +2558,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[b_24, $allocated];
@@ -2579,8 +2579,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Create might not hold. There might be insufficient permission to access b.data (RingBufferRd.vpr@127.5--127.17) [88669]"}
@@ -2620,8 +2620,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Push might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@128.5--128.15) [88672]"}
@@ -2651,8 +2651,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Push might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@129.5--129.15) [88674]"}
@@ -2682,8 +2682,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Pop might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@131.5--131.16) [88676]"}
@@ -2714,8 +2714,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert h == x -- RingBufferRd.vpr@131.19--131.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion h == x might not hold. (RingBufferRd.vpr@131.26--131.32) [88678]"}
       h_1 == x;
     assume state(Heap, Mask);
@@ -2725,8 +2725,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Push might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@132.5--132.15) [88679]"}
@@ -2756,8 +2756,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Pop might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@133.5--133.16) [88681]"}
@@ -2788,8 +2788,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert h == y -- RingBufferRd.vpr@133.19--133.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion h == y might not hold. (RingBufferRd.vpr@133.26--133.32) [88683]"}
       h_1 == y;
     assume state(Heap, Mask);
@@ -2799,8 +2799,8 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Pop might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@134.5--134.16) [88684]"}
@@ -2831,21 +2831,21 @@ procedure TestHarness(x: int, y: int, z: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert h == z -- RingBufferRd.vpr@134.19--134.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion h == z might not hold. (RingBufferRd.vpr@134.26--134.32) [88686]"}
       h_1 == z;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Capacity(b) == 2 -- RingBufferRd.vpr@135.5--135.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of Capacity(b) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function Capacity might not hold. There might be insufficient permission to access Valid(b) (RingBufferRd.vpr@135.12--135.23) [88687]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Valid(b_24)];

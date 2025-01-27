@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:13:50
+// Date:         2025-01-27 03:12:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/vercors/vercors_magic_wand_demo.encoded.chalice.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/vercors/vercors_magic_wand_demo.encoded.chalice-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -311,8 +311,8 @@ procedure Wand_readonly_for_writeonlyget_in_1$#definedness(this$_1: Ref) returns
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -337,8 +337,8 @@ procedure Wand_readonly_for_writeonlyget_in_1$#definedness(this$_1: Ref) returns
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonlyvalid_wand$#trigger(UnfoldingHeap, Wand_readonly_for_writeonlyvalid_wand$(this$_1));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_1)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_1, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if UnfoldingHeap[this$_1, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[this$_1, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_1) (vercors_magic_wand_demo.encoded.chalice.vpr@61.1--67.2) [43230]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_1)];
@@ -435,8 +435,8 @@ procedure Wand_readonly_for_writeonlyget_out_1$#definedness(this$_2: Ref) return
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -461,8 +461,8 @@ procedure Wand_readonly_for_writeonlyget_out_1$#definedness(this$_2: Ref) return
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonlyvalid_wand$#trigger(UnfoldingHeap, Wand_readonly_for_writeonlyvalid_wand$(this$_2));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if UnfoldingHeap[this$_2, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[this$_2, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_2) (vercors_magic_wand_demo.encoded.chalice.vpr@69.1--75.2) [43232]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonlyvalid_wand$(this$_2)];
@@ -559,8 +559,8 @@ procedure WandDemoget$#definedness(this$_9: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -585,8 +585,8 @@ procedure WandDemoget$#definedness(this$_9: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume WandDemoreadonly$#trigger(UnfoldingHeap, WandDemoreadonly$(this$_9));
       assume UnfoldingHeap[null, WandDemoreadonly$(this$_9)] == FrameFragment(UnfoldingHeap[this$_9, WandDemox$]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemoreadonly$(this$_9) (vercors_magic_wand_demo.encoded.chalice.vpr@77.1--82.2) [43234]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, WandDemoreadonly$(this$_9)];
@@ -946,11 +946,11 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$: Ref;
@@ -983,8 +983,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of Wand_readonly_for_writeonlyget_in_1$(this$_3) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@109.12--109.57) [43248]"}
           this$_3 != null;
         perm := FullPerm;
@@ -1004,8 +1004,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of acc(WandDemoreadonly$(Wand_readonly_for_writeonlyget_in_1$(this$_3)), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_in_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@110.34--110.79) [43250]"}
           this$_3 != null;
         perm := FullPerm;
@@ -1027,8 +1027,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of Wand_readonly_for_writeonlyget_out_1$(this$_3) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@111.12--111.58) [43252]"}
           this$_3 != null;
         perm := FullPerm;
@@ -1047,8 +1047,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1059,8 +1059,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     // -- Check definedness of acc(WandDemowriteonly$(old(Wand_readonly_for_writeonlyget_out_1$(this$_3))), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonlyget_out_1$ might not hold. Assertion this$_3 != null might not hold. (vercors_magic_wand_demo.encoded.chalice.vpr@112.38--112.84) [43254]"}
           this$_3 != null;
         perm := FullPerm;
@@ -1084,8 +1084,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
   // -- Translating statement: unfold acc(Wand_readonly_for_writeonlyvalid_wand$(this$_3), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69
     assume Wand_readonly_for_writeonlyvalid_wand$#trigger(Heap, Wand_readonly_for_writeonlyvalid_wand$(this$_3));
     assume Heap[null, Wand_readonly_for_writeonlyvalid_wand$(this$_3)] == CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlylemma$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlyin_1$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlyout_1$]), CombineFrames(FrameFragment(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]), FrameFragment((if Heap[this$_3, Wand_readonly_for_writeonlylemma$] == 1 then FrameFragment(Heap[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$]) else EmptyFrame))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Wand_readonly_for_writeonlyvalid_wand$(this$_3) might fail. There might be insufficient permission to access Wand_readonly_for_writeonlyvalid_wand$(this$_3) (vercors_magic_wand_demo.encoded.chalice.vpr@115.3--115.69) [43258]"}
@@ -1148,8 +1148,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
             HasDirectPerm(Mask, this$_3, Wand_readonly_for_writeonlythis_1$);
         assume WandDemoreadonly$#trigger(Heap, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$]));
         assume Heap[null, WandDemoreadonly$(Heap[this$_3, Wand_readonly_for_writeonlythis_1$])] == FrameFragment(Heap[Heap[this$_3, Wand_readonly_for_writeonlythis_1$], WandDemox$]);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access WandDemoreadonly$(this$_3.Wand_readonly_for_writeonlythis_1$) (vercors_magic_wand_demo.encoded.chalice.vpr@117.5--117.85) [43264]"}
@@ -1176,8 +1176,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
         // -- Check definedness of acc(WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$), write)
           assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. There might be insufficient permission to access this$_3.Wand_readonly_for_writeonlythis_1$ (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [43266]"}
             HasDirectPerm(Mask, this$_3, Wand_readonly_for_writeonlythis_1$);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 100 / 100;
         assert {:msg "  Folding WandDemowriteonly$(this$_3.Wand_readonly_for_writeonlythis_1$) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@118.5--118.84) [43268]"}
           perm >= NoPerm;
@@ -1204,8 +1204,8 @@ procedure Wand_readonly_for_writeonlyapply$(this$_3: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Wand_readonly_for_writeonlyapply$ might not hold. There might be insufficient permission to access WandDemowriteonly$(old(Wand_readonly_for_writeonlyget_out_1$(this$_3))) (vercors_magic_wand_demo.encoded.chalice.vpr@112.11--112.94) [43271]"}
@@ -1226,13 +1226,13 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_1: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1283,8 +1283,8 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1370,8 +1370,8 @@ procedure Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$(this$_5: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 100 / 100;
     assert {:msg "  Postcondition of Wand_readonly_for_writeonlyWand_readonly_for_writeonly_init$ might not hold. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@130.11--130.120) [43288]"}
       perm >= NoPerm;
@@ -1426,13 +1426,13 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$_2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -1463,8 +1463,8 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1482,8 +1482,8 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
     assume Heap[n$_2, $allocated];
   
   // -- Translating statement: fold acc(WandDemowriteonly$(this$_10), write) -- vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 100 / 100;
     assert {:msg "  Folding WandDemowriteonly$(this$_10) might fail. Fraction 100 / 100 might be negative. (vercors_magic_wand_demo.encoded.chalice.vpr@151.3--151.48) [43302]"}
       perm >= NoPerm;
@@ -1508,8 +1508,8 @@ procedure WandDemoWandDemo_init$(this$_10: Ref, k$_2: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of WandDemoWandDemo_init$ might not hold. There might be insufficient permission to access WandDemowriteonly$(this$_10) (vercors_magic_wand_demo.encoded.chalice.vpr@148.11--148.51) [43305]"}

@@ -62,11 +62,9 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.Library.MyInt () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun Tag (T@U) T@U)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.Library.MyInt () T@U)
 (declare-fun |#_System._tuple#3OGG._#Make3| (T@U T@U T@U) T@U)
 (declare-fun DatatypeCtorId (T@U) T@U)
 (declare-fun Tclass._System.Tuple3OGG (T@U T@U T@U) T@U)
@@ -77,6 +75,7 @@
 (declare-fun _System.Tuple3OGG._1 (T@U) T@U)
 (declare-fun _System.Tuple3OGG._2 (T@U) T@U)
 (declare-fun _System.Tuple2GO.___hMake2_q (T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun DatatypeTypeType () T@T)
 (declare-fun Tclass._System.Tuple2GO (T@U T@U) T@U)
 (declare-fun Wrappers.Pair.Pair_q (T@U) Bool)
@@ -94,6 +93,7 @@
 (declare-fun Tclass._System.object? () T@U)
 (declare-fun Tclass.Library.Mixed () T@U)
 (declare-fun Library.AllDafny.Seven () Int)
+(declare-fun LitInt (Int) Int)
 (declare-fun Library.Mixed.Seven () Int)
 (declare-fun Library.AllExtern.Seven () Int)
 (declare-fun Library.ErasableWrapper.ErasableWrapper_q (T@U) Bool)
@@ -158,16 +158,11 @@
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._System.object? Tagclass._System.object |##_System._tuple#2GO._#Make2| Tagclass._System.Tuple2GO |##_System._tuple#3OGG._#Make3| Tagclass._System.Tuple3OGG Tagclass.Library.Mixed Tagclass.Library.Mixed? Tagclass.Wrappers.Option Tagclass.Wrappers.Pair Tagclass.Library.MyInt Tagclass.Library.ErasableWrapper Tagclass.Library.Ghost |##Wrappers.Pair.Pair| |##Library.ErasableWrapper.ErasableWrapper| |##Library.Ghost.Uninitialized| |##Library.Ghost.Something| tytagFamily$object |tytagFamily$_tuple#2GO| |tytagFamily$_tuple#3OGG| tytagFamily$Mixed tytagFamily$Option tytagFamily$Pair tytagFamily$MyInt tytagFamily$ErasableWrapper tytagFamily$Ghost)
 )
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |1855|
- :pattern ( ($Is intType |x#0| Tclass.Library.MyInt))
-)))
 (assert (= (Tag TInt) TagInt))
-(assert (forall ((|x#0@@0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h)
+(assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.Library.MyInt $h)
  :qid |unknown.0:0|
  :skolemid |1856|
- :pattern ( ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h))
+ :pattern ( ($IsAlloc intType |x#0| Tclass.Library.MyInt $h))
 )))
 (assert (forall ((|a#20#0#0| T@U) (|a#20#1#0| T@U) (|a#20#2#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#3OGG._#Make3| |a#20#0#0| |a#20#1#0| |a#20#2#0|)) |##_System._tuple#3OGG._#Make3|)
  :qid |unknown.0:0|
@@ -408,6 +403,11 @@
  :qid |unknown.0:0|
  :skolemid |1913|
  :pattern ( (Library.Ghost.Something_q d@@13))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |1855|
+ :pattern ( ($Is intType |x#0@@0| Tclass.Library.MyInt))
 )))
 (assert (forall ((|_System._tuple#3OGG$T0@@4| T@U) (|_System._tuple#3OGG$T1@@4| T@U) (|_System._tuple#3OGG$T2@@4| T@U) (|a#22#0#0| T@U) (|a#22#1#0| T@U) (|a#22#2#0| T@U) ($h@@7 T@U) ) (!  (=> ($IsGoodHeap $h@@7) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#3OGG._#Make3| |a#22#0#0| |a#22#1#0| |a#22#2#0|) (Tclass._System.Tuple3OGG |_System._tuple#3OGG$T0@@4| |_System._tuple#3OGG$T1@@4| |_System._tuple#3OGG$T2@@4|) $h@@7)  (and (and ($IsAllocBox |a#22#0#0| |_System._tuple#3OGG$T0@@4| $h@@7) ($IsAllocBox |a#22#1#0| |_System._tuple#3OGG$T1@@4| $h@@7)) ($IsAllocBox |a#22#2#0| |_System._tuple#3OGG$T2@@4| $h@@7))))
  :qid |unknown.0:0|

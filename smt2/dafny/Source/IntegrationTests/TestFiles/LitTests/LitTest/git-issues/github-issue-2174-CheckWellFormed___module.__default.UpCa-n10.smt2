@@ -63,7 +63,6 @@
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
-(declare-fun _module.__default.Ones () (_ BitVec 128))
 (declare-fun Inv0_TBitvector (T@U) Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
@@ -76,6 +75,7 @@
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
+(declare-fun _module.__default.Ones () (_ BitVec 128))
 (declare-fun $FunctionContextHeight () Int)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
@@ -212,7 +212,6 @@
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@12))
 )))
-(assert (= _module.__default.Ones (U_2_bv128 (Lit bv128Type (bv128_2_U #xffffffffffffffffffffffffffffffff)))))
 (assert (forall ((w Int) ) (! (= (Inv0_TBitvector (TBitvector w)) w)
  :qid |DafnyPreludebpl.38:15|
  :skolemid |0|
@@ -252,6 +251,7 @@
  :skolemid |516|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
+(assert (= _module.__default.Ones (U_2_bv128 (Lit bv128Type (bv128_2_U #xffffffffffffffffffffffffffffffff)))))
 (assert  (=> (< 0 $FunctionContextHeight) ($Is bv128Type (bv128_2_U _module.__default.Ones) (TBitvector 128))))
 (assert (forall ((x@@14 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@14))) (Lit BoxType ($Box intType (int_2_U x@@14))))
  :qid |DafnyPreludebpl.109:15|

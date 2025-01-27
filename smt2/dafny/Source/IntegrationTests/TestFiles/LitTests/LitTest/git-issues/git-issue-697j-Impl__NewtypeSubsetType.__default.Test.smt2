@@ -197,16 +197,6 @@
  :skolemid |2205|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx))
 )))
-(assert (forall ((|x#0@@11| T@U) ) (! (= ($Is intType |x#0@@11| Tclass.NewtypeSubsetType.NonCompilableTestInt32)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@11|)) (< (U_2_int |x#0@@11|) 2147483648)) (NewtypeSubsetType.__default.P (U_2_int |x#0@@11|))))
- :qid |unknown.0:0|
- :skolemid |2553|
- :pattern ( ($Is intType |x#0@@11| Tclass.NewtypeSubsetType.NonCompilableTestInt32))
-)))
-(assert (forall ((|x#0@@12| T@U) ) (! (= ($Is intType |x#0@@12| Tclass.NewtypeSubsetType.Type2)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@12|)) (< (U_2_int |x#0@@12|) 2147483648)) (NewtypeSubsetType.__default.P (U_2_int |x#0@@12|))))
- :qid |unknown.0:0|
- :skolemid |2557|
- :pattern ( ($Is intType |x#0@@12| Tclass.NewtypeSubsetType.Type2))
-)))
 (assert (= (Ctor SetType) 4))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v bx@@0) ($IsBox bx@@0 t0@@0))
  :qid |DafnyPreludebpl.240:11|
@@ -222,17 +212,17 @@
  :skolemid |2091|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@13| Int) ) (!  (=> (or (|NewtypeSubsetType.__default.P#canCall| (LitInt |x#0@@13|)) (< 0 $FunctionContextHeight)) (= (NewtypeSubsetType.__default.P (LitInt |x#0@@13|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@13| 3)) (not true)))))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@11| Int) ) (!  (=> (or (|NewtypeSubsetType.__default.P#canCall| (LitInt |x#0@@11|)) (< 0 $FunctionContextHeight)) (= (NewtypeSubsetType.__default.P (LitInt |x#0@@11|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@11| 3)) (not true)))))))
  :qid |gitissue697jdfy.159:15|
  :weight 3
  :skolemid |2534|
- :pattern ( (NewtypeSubsetType.__default.P (LitInt |x#0@@13|)))
+ :pattern ( (NewtypeSubsetType.__default.P (LitInt |x#0@@11|)))
 ))))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@14| Int) ) (!  (=> (or (|NewtypeSubsetType.__default.Q#canCall| (LitInt |x#0@@14|)) (< 0 $FunctionContextHeight)) (= (NewtypeSubsetType.__default.Q (LitInt |x#0@@14|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@14| 5)) (not true)))))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@12| Int) ) (!  (=> (or (|NewtypeSubsetType.__default.Q#canCall| (LitInt |x#0@@12|)) (< 0 $FunctionContextHeight)) (= (NewtypeSubsetType.__default.Q (LitInt |x#0@@12|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@12| 5)) (not true)))))))
  :qid |gitissue697jdfy.169:15|
  :weight 3
  :skolemid |2538|
- :pattern ( (NewtypeSubsetType.__default.Q (LitInt |x#0@@14|)))
+ :pattern ( (NewtypeSubsetType.__default.Q (LitInt |x#0@@12|)))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass.NewtypeSubsetType.Type0) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) Tclass.NewtypeSubsetType.Type0)))
  :qid |unknown.0:0|
@@ -303,15 +293,25 @@
  :skolemid |2077|
  :pattern ( ($Box T@@3 x@@5))
 )))
-(assert (forall ((|x#0@@15| T@U) ) (! (= ($Is intType |x#0@@15| Tclass.NewtypeSubsetType.NonCompilableTest) (NewtypeSubsetType.__default.P (U_2_int |x#0@@15|)))
+(assert (forall ((|x#0@@13| T@U) ) (! (= ($Is intType |x#0@@13| Tclass.NewtypeSubsetType.NonCompilableTest) (NewtypeSubsetType.__default.P (U_2_int |x#0@@13|)))
  :qid |unknown.0:0|
  :skolemid |2550|
- :pattern ( ($Is intType |x#0@@15| Tclass.NewtypeSubsetType.NonCompilableTest))
+ :pattern ( ($Is intType |x#0@@13| Tclass.NewtypeSubsetType.NonCompilableTest))
 )))
-(assert (forall ((|x#0@@16| T@U) ) (! (= ($Is intType |x#0@@16| Tclass.NewtypeSubsetType.Type0) (NewtypeSubsetType.__default.P (U_2_int |x#0@@16|)))
+(assert (forall ((|x#0@@14| T@U) ) (! (= ($Is intType |x#0@@14| Tclass.NewtypeSubsetType.Type0) (NewtypeSubsetType.__default.P (U_2_int |x#0@@14|)))
  :qid |unknown.0:0|
  :skolemid |2555|
- :pattern ( ($Is intType |x#0@@16| Tclass.NewtypeSubsetType.Type0))
+ :pattern ( ($Is intType |x#0@@14| Tclass.NewtypeSubsetType.Type0))
+)))
+(assert (forall ((|x#0@@15| T@U) ) (! (= ($Is intType |x#0@@15| Tclass.NewtypeSubsetType.NonCompilableTestInt32)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@15|)) (< (U_2_int |x#0@@15|) 2147483648)) (NewtypeSubsetType.__default.P (U_2_int |x#0@@15|))))
+ :qid |unknown.0:0|
+ :skolemid |2553|
+ :pattern ( ($Is intType |x#0@@15| Tclass.NewtypeSubsetType.NonCompilableTestInt32))
+)))
+(assert (forall ((|x#0@@16| T@U) ) (! (= ($Is intType |x#0@@16| Tclass.NewtypeSubsetType.Type2)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@16|)) (< (U_2_int |x#0@@16|) 2147483648)) (NewtypeSubsetType.__default.P (U_2_int |x#0@@16|))))
+ :qid |unknown.0:0|
+ :skolemid |2557|
+ :pattern ( ($Is intType |x#0@@16| Tclass.NewtypeSubsetType.Type2))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
  :qid |mapAx0:MapType1Select|

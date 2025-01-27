@@ -43,7 +43,6 @@
 (declare-fun |Seq#Empty| () T@U)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
-(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun |Seq#Equal| (T@U T@U) Bool)
 (declare-fun |Seq#Index| (T@U Int) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
@@ -51,6 +50,7 @@
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun _module.__default.f (T@U T@U) T@U)
 (declare-fun |_module.__default.f#canCall| (T@U T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun SeqType () T@T)
 (declare-fun TSeq (T@U) T@U)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
@@ -108,11 +108,6 @@
  :qid |DafnyPreludebpl.102:29|
  :skolemid |15|
  :pattern ( (Lit T x@@3))
-)))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |507|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j Int) ) (!  (=> (and (<= 0 j) (< j (|Seq#Length| s0))) (= (|Seq#Index| s0 j) (|Seq#Index| s1 j)))
  :qid |DafnyPreludebpl.1221:19|
@@ -235,6 +230,11 @@
 )))
 (assert (= (Tag Tclass._module.uint32) Tagclass._module.uint32))
 (assert (= (TagFamily Tclass._module.uint32) tytagFamily$uint32))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |507|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

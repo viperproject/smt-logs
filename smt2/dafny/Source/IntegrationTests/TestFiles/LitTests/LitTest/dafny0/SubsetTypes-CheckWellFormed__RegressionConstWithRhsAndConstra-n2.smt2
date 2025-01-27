@@ -23,7 +23,9 @@
 (declare-fun UOrdering3 (|T@T| |T@U| |T@U|) Bool)
 (declare-fun tickleBool (Bool) Bool)
 (assert (and (tickleBool true) (tickleBool false)))
-(declare-fun LitInt (Int) Int)
+(declare-fun alloc () T@U)
+(declare-fun Tagclass._System.nat () T@U)
+(declare-fun tytagFamily$nat () T@U)
 (declare-fun Ctor (T@T) Int)
 (declare-fun boolType () T@T)
 (declare-fun intType () T@T)
@@ -34,9 +36,12 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun Tclass._System.nat () T@U)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -48,6 +53,8 @@
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
+(declare-fun Tag (T@U) T@U)
+(declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -67,24 +74,31 @@
  :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
+(assert (distinct alloc Tagclass._System.nat tytagFamily$nat)
+)
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
- :skolemid |5075|
+ :skolemid |4107|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
  :qid |DafnyPreludebpl.102:29|
- :skolemid |5073|
+ :skolemid |4105|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
- :skolemid |5084|
+ :skolemid |4116|
  :pattern ( ($Unbox T@@0 x@@4))
+)))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0|)))
+ :qid |unknown.0:0|
+ :skolemid |4434|
+ :pattern ( ($Is intType |x#0| Tclass._System.nat))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
- :skolemid |5083|
+ :skolemid |4115|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
@@ -116,14 +130,16 @@
  :skolemid |9995|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
+(assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
+(assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
- :skolemid |5076|
+ :skolemid |4108|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
  :qid |DafnyPreludebpl.103:18|
- :skolemid |5074|
+ :skolemid |4106|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (push 1)
@@ -131,11 +147,10 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $Heap () T@U)
-(declare-fun alloc () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id CheckWellFormed$$RegressionConstWithRhsAndConstraints2.Nat)
+(set-info :boogie-vc-id CheckWellFormed$$RegressionConstWithRhsAndConstraints0.__default.x)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -151,16 +166,18 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 5) (let ((anon6_Then_correct  (=> (= (ControlFlow 0 3) (- 0 2)) (<= (LitInt 0) (LitInt 0)))))
-(let ((anon5_Then_correct true))
-(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 4) 1) anon5_Then_correct) (=> (= (ControlFlow 0 4) 3) anon6_Then_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 5) 4))) anon0_correct)))
-PreconditionGeneratedEntry_correct)))))
+ (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (and (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (= (ControlFlow 0 2) (- 0 1))) ($Is intType (int_2_U (LitInt (- 0 1))) Tclass._System.nat))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 3) 2))) anon0_correct)))
+PreconditionGeneratedEntry_correct)))
 ))
+(check-sat)
+(get-info :reason-unknown)
+(get-info :rlimit)
+(assert (not (= (ControlFlow 0 2) (- 1))))
 (check-sat)
 (get-info :rlimit)
 (pop 1)
-; Valid
+; Invalid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

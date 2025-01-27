@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:35
+; Started: 2025-01-27 02:59:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -164,21 +164,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (silver_length%limited s@$ this@0@00) (silver_length s@$ this@0@00))
   :pattern ((silver_length s@$ this@0@00))
-  :qid |quant-u-11124|)))
+  :qid |quant-u-11117|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (silver_length%stateless this@0@00)
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-11125|)))
+  :qid |quant-u-11118|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (silver_length%limited s@$ this@0@00))) (and
     ($Perm.isReadVar $k@2@00)
     (=> (silver_length%precondition s@$ this@0@00) (>= result@1@00 0))))
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-11126|)))
+  :qid |quant-u-11119|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (silver_length%limited s@$ this@0@00))) true)
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-11127|)))
+  :qid |quant-u-11120|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@2@00))
@@ -682,7 +682,7 @@
             (silver_length%limited ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))))))))))
   :pattern ((silver_length s@$ this@0@00))
   :pattern ((silver_length%stateless this@0@00) (valid__List%trigger s@$ this@0@00))
-  :qid |quant-u-11128|)))
+  :qid |quant-u-11121|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (silver_length%precondition s@$ this@0@00)
@@ -693,7 +693,7 @@
       true
       (silver_length%precondition ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((silver_length s@$ this@0@00))
-  :qid |quant-u-11129|)))
+  :qid |quant-u-11122|)))
 ; ---------- valid__List ----------
 (declare-const this@8@00 $Ref)
 (push) ; 1

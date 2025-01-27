@@ -190,6 +190,11 @@
 )))
 (assert (= (Tag Tclass._module.uint32) Tagclass._module.uint32))
 (assert (= (TagFamily Tclass._module.uint32) tytagFamily$uint32))
+(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |533|
+ :pattern ( ($Is intType |i#0| Tclass._module.uint32))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|
@@ -199,11 +204,6 @@
  :qid |DafnyPreludebpl.103:18|
  :skolemid |16|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
-)))
-(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |533|
- :pattern ( ($Is intType |i#0| Tclass._module.uint32))
 )))
 (assert (forall ((s@@4 T@U) ) (!  (=> (= (|Seq#Length| s@@4) 0) (= s@@4 |Seq#Empty|))
  :qid |DafnyPreludebpl.1131:15|

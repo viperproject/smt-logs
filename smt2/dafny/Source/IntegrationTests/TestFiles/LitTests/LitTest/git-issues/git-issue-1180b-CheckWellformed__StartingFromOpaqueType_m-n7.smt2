@@ -39,18 +39,18 @@
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun Tclass._System.nat () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(declare-fun StartingFromOpaqueType_mA.Ty.c (T@U) Int)
+(declare-fun StartingFromOpaqueType_mOpaqueType.Ty.c (T@U) Int)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
-(declare-fun Tclass.StartingFromOpaqueType_mA.Ty () T@U)
+(declare-fun Tclass.StartingFromOpaqueType_mOpaqueType.Ty () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun StartingFromOpaqueType_mOpaqueType.Ty.F (T@U Int) Int)
+(declare-fun |StartingFromOpaqueType_mOpaqueType.Ty.F#canCall| (T@U Int) Bool)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
-(declare-fun StartingFromOpaqueType_mA.Ty.F (T@U Int) Int)
-(declare-fun |StartingFromOpaqueType_mA.Ty.F#canCall| (T@U Int) Bool)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -87,62 +87,73 @@
 )
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
  :qid |unknown.0:0|
- :skolemid |345|
+ :skolemid |834|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
-(assert  (=> (< 0 $FunctionContextHeight) (forall (($h@@0 T@U) ($o T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@0) ($IsBox $o Tclass.StartingFromOpaqueType_mA.Ty)) ($IsAllocBox $o Tclass.StartingFromOpaqueType_mA.Ty $h@@0)) ($IsAlloc intType (int_2_U (StartingFromOpaqueType_mA.Ty.c $o)) Tclass._System.nat $h@@0))
+(assert  (=> (< 0 $FunctionContextHeight) (forall (($h@@0 T@U) ($o T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@0) ($IsBox $o Tclass.StartingFromOpaqueType_mOpaqueType.Ty)) ($IsAllocBox $o Tclass.StartingFromOpaqueType_mOpaqueType.Ty $h@@0)) ($IsAlloc intType (int_2_U (StartingFromOpaqueType_mOpaqueType.Ty.c $o)) Tclass._System.nat $h@@0))
  :qid |DafnyPreludebpl.593:12|
- :skolemid |484|
- :pattern ( (StartingFromOpaqueType_mA.Ty.c $o) ($IsAllocBox $o Tclass.StartingFromOpaqueType_mA.Ty $h@@0))
+ :skolemid |981|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.c $o) ($IsAllocBox $o Tclass.StartingFromOpaqueType_mOpaqueType.Ty $h@@0))
 ))))
-(assert  (=> (< 0 $FunctionContextHeight) (forall (($o@@0 T@U) ) (!  (=> ($IsBox $o@@0 Tclass.StartingFromOpaqueType_mA.Ty) ($Is intType (int_2_U (StartingFromOpaqueType_mA.Ty.c $o@@0)) Tclass._System.nat))
+(assert  (=> (< 0 $FunctionContextHeight) (forall (($o@@0 T@U) ) (!  (=> ($IsBox $o@@0 Tclass.StartingFromOpaqueType_mOpaqueType.Ty) ($Is intType (int_2_U (StartingFromOpaqueType_mOpaqueType.Ty.c $o@@0)) Tclass._System.nat))
  :qid |unknown.0:0|
- :skolemid |483|
- :pattern ( (StartingFromOpaqueType_mA.Ty.c $o@@0))
+ :skolemid |980|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.c $o@@0))
+))))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this T@U) (|x#0@@0| Int) ) (!  (=> (or (|StartingFromOpaqueType_mOpaqueType.Ty.F#canCall| this |x#0@@0|) (and (< 1 $FunctionContextHeight) (and (and ($IsBox this Tclass.StartingFromOpaqueType_mOpaqueType.Ty) (<= (LitInt 0) |x#0@@0|)) (or (not (= |x#0@@0| 7)) (not true))))) (= (StartingFromOpaqueType_mOpaqueType.Ty.F this |x#0@@0|) |x#0@@0|))
+ :qid |gitissue1180bdfy.28:16|
+ :skolemid |974|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.F this |x#0@@0|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
- :skolemid |17|
+ :skolemid |506|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
  :qid |DafnyPreludebpl.102:29|
- :skolemid |15|
+ :skolemid |504|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
- :skolemid |26|
+ :skolemid |515|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+(assert (forall ((|x#0@@1| T@U) ) (! (= ($Is intType |x#0@@1| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@1|)))
  :qid |unknown.0:0|
- :skolemid |344|
- :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
+ :skolemid |833|
+ :pattern ( ($Is intType |x#0@@1| Tclass._System.nat))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
  :qid |DafnyPreludebpl.217:18|
- :skolemid |39|
+ :skolemid |528|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this T@U) (|x#0@@1| Int) ) (!  (=> (or (|StartingFromOpaqueType_mA.Ty.F#canCall| this |x#0@@1|) (and (< 1 $FunctionContextHeight) (and (and ($IsBox this Tclass.StartingFromOpaqueType_mA.Ty) (<= (LitInt 0) |x#0@@1|)) (or (not (= |x#0@@1| 7)) (not true))))) (and (= (StartingFromOpaqueType_mA.Ty.F this |x#0@@1|) (StartingFromOpaqueType_mA.Ty.c this)) (<= (LitInt 0) (StartingFromOpaqueType_mA.Ty.F this |x#0@@1|))))
- :qid |gitissue1180bdfy.10:16|
- :skolemid |485|
- :pattern ( (StartingFromOpaqueType_mA.Ty.F this |x#0@@1|))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@0 T@U) (|x#0@@2| Int) ) (!  (=> (or (|StartingFromOpaqueType_mOpaqueType.Ty.F#canCall| this@@0 |x#0@@2|) (and (< 1 $FunctionContextHeight) (and (and ($IsBox this@@0 Tclass.StartingFromOpaqueType_mOpaqueType.Ty) (<= (LitInt 0) |x#0@@2|)) (or (not (= |x#0@@2| 7)) (not true))))) (and (= (StartingFromOpaqueType_mOpaqueType.Ty.F this@@0 |x#0@@2|) (StartingFromOpaqueType_mOpaqueType.Ty.c this@@0)) (<= (LitInt 0) (StartingFromOpaqueType_mOpaqueType.Ty.F this@@0 |x#0@@2|))))
+ :qid |gitissue1180bdfy.28:16|
+ :skolemid |972|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.F this@@0 |x#0@@2|))
 ))))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._System.nat) (and (= ($Box intType ($Unbox intType bx)) bx) ($Is intType ($Unbox intType bx) Tclass._System.nat)))
  :qid |unknown.0:0|
- :skolemid |343|
+ :skolemid |832|
  :pattern ( ($IsBox bx Tclass._System.nat))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 T@U) (|x#0@@3| Int) ) (!  (=> (or (|StartingFromOpaqueType_mOpaqueType.Ty.F#canCall| this@@1 (LitInt |x#0@@3|)) (and (< 1 $FunctionContextHeight) (and (and ($IsBox this@@1 Tclass.StartingFromOpaqueType_mOpaqueType.Ty) (<= (LitInt 0) |x#0@@3|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@3| 7)) (not true)))))))) (= (StartingFromOpaqueType_mOpaqueType.Ty.F this@@1 (LitInt |x#0@@3|)) (LitInt |x#0@@3|)))
+ :qid |gitissue1180bdfy.28:16|
+ :weight 3
+ :skolemid |975|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.F this@@1 (LitInt |x#0@@3|)))
+))))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
  :qid |DafnyPreludebpl.214:18|
- :skolemid |38|
+ :skolemid |527|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
- :skolemid |25|
+ :skolemid |514|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
@@ -178,23 +189,29 @@
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
- :skolemid |18|
+ :skolemid |507|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
  :qid |DafnyPreludebpl.103:18|
- :skolemid |16|
+ :skolemid |505|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@2 T@U) (|x#0@@4| Int) ) (!  (=> (or (|StartingFromOpaqueType_mOpaqueType.Ty.F#canCall| (Lit BoxType this@@2) (LitInt |x#0@@4|)) (and (< 1 $FunctionContextHeight) (and (and ($IsBox this@@2 Tclass.StartingFromOpaqueType_mOpaqueType.Ty) (<= (LitInt 0) |x#0@@4|)) (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@4| 7)) (not true)))))))) (= (StartingFromOpaqueType_mOpaqueType.Ty.F (Lit BoxType this@@2) (LitInt |x#0@@4|)) (LitInt |x#0@@4|)))
+ :qid |gitissue1180bdfy.28:16|
+ :weight 3
+ :skolemid |976|
+ :pattern ( (StartingFromOpaqueType_mOpaqueType.Ty.F (Lit BoxType this@@2) (LitInt |x#0@@4|)))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
-(declare-fun this@@0 () T@U)
-(declare-fun |x#0@@2| () Int)
+(declare-fun this@@3 () T@U)
+(declare-fun |x#0@@5| () Int)
 (declare-fun $Heap () T@U)
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(set-info :boogie-vc-id CheckWellformed$$StartingFromOpaqueType_mA.Ty.F)
+(set-info :boogie-vc-id CheckWellformed$$StartingFromOpaqueType_mOpaqueType.Ty.F)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -210,16 +227,21 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 7) (let ((anon4_Else_correct true))
-(let ((anon4_Then_correct  (=> (<= (LitInt 0) (StartingFromOpaqueType_mA.Ty.F this@@0 |x#0@@2|)) (=> (and ($IsAllocBox this@@0 Tclass.StartingFromOpaqueType_mA.Ty $Heap) ($IsAlloc intType (int_2_U |x#0@@2|) Tclass._System.nat $Heap)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (or (not (= |x#0@@2| 7)) (not true))) (=> (or (not (= |x#0@@2| 7)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (<= 0 |x#0@@2|) (= |x#0@@2| |x#0@@2|))) (=> (or (<= 0 |x#0@@2|) (= |x#0@@2| |x#0@@2|)) (=> (= (ControlFlow 0 2) (- 0 1)) (or (and (= this@@0 this@@0) (= |x#0@@2| |x#0@@2|)) (< |x#0@@2| |x#0@@2|)))))))))))
-(let ((anon0_correct  (=> (and (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (or (not (= |x#0@@2| 7)) (not true))) (and (=> (= (ControlFlow 0 6) 2) anon4_Then_correct) (=> (= (ControlFlow 0 6) 5) anon4_Else_correct)))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($IsBox this@@0 Tclass.StartingFromOpaqueType_mA.Ty) ($IsAllocBox this@@0 Tclass.StartingFromOpaqueType_mA.Ty $Heap)) (<= (LitInt 0) |x#0@@2|)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 7) 6))) anon0_correct))))
-PreconditionGeneratedEntry_correct)))))
+ (=> (= (ControlFlow 0 0) 9) (let ((GeneratedUnifiedExit_correct  (=> (= (ControlFlow 0 6) (- 0 5)) (= (StartingFromOpaqueType_mOpaqueType.Ty.F this@@3 |x#0@@5|) (StartingFromOpaqueType_mOpaqueType.Ty.c this@@3)))))
+(let ((anon5_Else_correct  (=> (= (StartingFromOpaqueType_mOpaqueType.Ty.F this@@3 |x#0@@5|) |x#0@@5|) (=> (and ($Is intType (int_2_U (StartingFromOpaqueType_mOpaqueType.Ty.F this@@3 |x#0@@5|)) Tclass._System.nat) (= (ControlFlow 0 7) 6)) GeneratedUnifiedExit_correct))))
+(let ((anon5_Then_correct  (=> (<= (LitInt 0) (StartingFromOpaqueType_mOpaqueType.Ty.F this@@3 |x#0@@5|)) (=> (and ($IsAllocBox this@@3 Tclass.StartingFromOpaqueType_mOpaqueType.Ty $Heap) ($IsAlloc intType (int_2_U |x#0@@5|) Tclass._System.nat $Heap)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (or (not (= |x#0@@5| 7)) (not true))) (=> (or (not (= |x#0@@5| 7)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (<= 0 |x#0@@5|) (= |x#0@@5| |x#0@@5|))) (=> (or (<= 0 |x#0@@5|) (= |x#0@@5| |x#0@@5|)) (=> (= (ControlFlow 0 2) (- 0 1)) (or (and (= this@@3 this@@3) (= |x#0@@5| |x#0@@5|)) (< |x#0@@5| |x#0@@5|)))))))))))
+(let ((anon0_correct  (=> (and (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (or (not (= |x#0@@5| 7)) (not true))) (and (=> (= (ControlFlow 0 8) 2) anon5_Then_correct) (=> (= (ControlFlow 0 8) 7) anon5_Else_correct)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($IsBox this@@3 Tclass.StartingFromOpaqueType_mOpaqueType.Ty) ($IsAllocBox this@@3 Tclass.StartingFromOpaqueType_mOpaqueType.Ty $Heap)) (<= (LitInt 0) |x#0@@5|)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 9) 8))) anon0_correct))))
+PreconditionGeneratedEntry_correct))))))
 ))
+(check-sat)
+(get-info :reason-unknown)
+(get-info :rlimit)
+(assert (not (= (ControlFlow 0 6) (- 5))))
 (check-sat)
 (get-info :rlimit)
 (pop 1)
-; Valid
+; Invalid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

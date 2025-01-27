@@ -235,7 +235,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@2 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f@@0))  (=> (and (or (not (= $o@@2 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@2) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2578|
+ :skolemid |2571|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f@@0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@3 T@U) ($prevHeap@@3 T@U) ($Heap@@2 T@U) (this@@3 T@U) (|n#0@@3| Int) (|x#0@@5| T@U) (|y#0@@3| T@U) ) (!  (=> (or (|Basic.U.Sw0#canCall| $prevHeap@@3 $Heap@@2 this@@3 |n#0@@3| |x#0@@5| |y#0@@3|) (and (< 1 $FunctionContextHeight) (and (and (and (and (and (and ($IsGoodHeap $prevHeap@@3) ($IsGoodHeap $Heap@@2)) ($HeapSucc $prevHeap@@3 $Heap@@2)) (and (or (not (= this@@3 null)) (not true)) (and ($Is refType this@@3 Tclass.Basic.U) ($IsAlloc refType this@@3 Tclass.Basic.U $prevHeap@@3)))) (<= (LitInt 0) |n#0@@3|)) ($Is refType |x#0@@5| Tclass.Basic.U)) ($Is refType |y#0@@3| Tclass.Basic.U)))) (and (=> (or (not (= |n#0@@3| (LitInt 0))) (not true)) (|Basic.U.Sw0#canCall| $prevHeap@@3 $Heap@@2 this@@3 (- |n#0@@3| 1) |y#0@@3| |x#0@@5|)) (= (Basic.U.Sw0 ($LS $ly@@3) $prevHeap@@3 $Heap@@2 this@@3 |n#0@@3| |x#0@@5| |y#0@@3|) (ite (= |n#0@@3| (LitInt 0)) 8.29 (Basic.U.Sw0 $ly@@3 $prevHeap@@3 $Heap@@2 this@@3 (- |n#0@@3| 1) |y#0@@3| |x#0@@5|)))))

@@ -1011,11 +1011,6 @@
  :skolemid |9047|
  :pattern ( ($Is SeqType (|Seq#Build| s bx@@7) (TSeq t)))
 )))
-(assert (forall ((|n#0@@0| T@U) ) (! (= ($Is intType |n#0@@0| Tclass.NativeTypes.nativeint)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |n#0@@0|)) (< (U_2_int |n#0@@0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |9701|
- :pattern ( ($Is intType |n#0@@0| Tclass.NativeTypes.nativeint))
-)))
 (assert (forall ((|#$T0@@15| T@U) (|#$T1@@15| T@U) (|#$R@@15| T@U) (|f#0@@0| T@U) ) (! (= ($Is HandleTypeType |f#0@@0| (Tclass._System.___hPartialFunc2 |#$T0@@15| |#$T1@@15| |#$R@@15|))  (and ($Is HandleTypeType |f#0@@0| (Tclass._System.___hFunc2 |#$T0@@15| |#$T1@@15| |#$R@@15|)) (forall ((|x0#0@@0| T@U) (|x1#0@@0| T@U) ) (!  (=> (and ($IsBox |x0#0@@0| |#$T0@@15|) ($IsBox |x1#0@@0| |#$T1@@15|)) (|Set#Equal| (Reads2 |#$T0@@15| |#$T1@@15| |#$R@@15| $OneHeap |f#0@@0| |x0#0@@0| |x1#0@@0|) |Set#Empty|))
  :qid |unknown.0:0|
  :skolemid |9306|
@@ -2929,6 +2924,11 @@
  :qid |unknown.0:0|
  :skolemid |9287|
  :pattern ( ($HeapSucc h0@@4 h1@@4) (Apply2 t0@@20 t1@@17 t2@@14 h1@@4 f@@12 bx0@@11 bx1@@11))
+)))
+(assert (forall ((|n#0@@0| T@U) ) (! (= ($Is intType |n#0@@0| Tclass.NativeTypes.nativeint)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |n#0@@0|)) (< (U_2_int |n#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |9701|
+ :pattern ( ($Is intType |n#0@@0| Tclass.NativeTypes.nativeint))
 )))
 (assert (forall (($ly@@16 T@U) (|s#0@@5| T@U) (|ctx#0@@6| T@U) ) (!  (=> (or (|DafnyAST.__default.interpStmt_k#canCall| |s#0@@5| |ctx#0@@6|) (and ($Is DatatypeTypeType |s#0@@5| Tclass.DafnyAST.Stmt) ($Is MapType |ctx#0@@6| (TMap (TSeq TChar) TInt)))) ($Is DatatypeTypeType (DafnyAST.__default.interpStmt_k $ly@@16 |s#0@@5| |ctx#0@@6|) Tclass.DafnyAST.InterpResult))
  :qid |Compilerdfy.57:12|

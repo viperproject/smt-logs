@@ -313,7 +313,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@1) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4656|
+ :skolemid |4657|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@1 $f))
 )))
 (assert (forall ((ArrayTypeMagic.ArrayCubeTree$T@@5 T@U) (|a#2#0#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#ArrayTypeMagic.ArrayCubeTree.Leaf| |a#2#0#0@@0|) (Tclass.ArrayTypeMagic.ArrayCubeTree ArrayTypeMagic.ArrayCubeTree$T@@5)) ($Is refType |a#2#0#0@@0| (Tclass._System.array3 ArrayTypeMagic.ArrayCubeTree$T@@5)))

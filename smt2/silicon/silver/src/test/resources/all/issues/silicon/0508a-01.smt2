@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:09
+; Started: 2025-01-27 02:59:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1008,7 +1008,7 @@
     (Set_in r@3@01 trees@1@01)
     (and (= (inv@4@01 r@3@01) r@3@01) (img@5@01 r@3@01)))
   :pattern ((Set_in r@3@01 trees@1@01))
-  :qid |quant-u-10470|)))
+  :qid |quant-u-10464|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@5@01 r) (Set_in (inv@4@01 r) trees@1@01)) (= (inv@4@01 r) r))
   :pattern ((inv@4@01 r))
@@ -1204,7 +1204,7 @@
         r@8@01)
       (img@10@01 ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@2@01)) r@8@01))))
   :pattern ((Set_in r@8@01 trees@1@01))
-  :qid |quant-u-10472|)))
+  :qid |quant-u-10466|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@10@01 r) (Set_in (inv@9@01 r) trees@1@01))
@@ -1262,7 +1262,7 @@
     (Set_in s@11@01 trees@1@01)
     (or (= $k@12@01 $Perm.No) (< $Perm.No $k@12@01)))
   
-  :qid |quant-u-10473|))))
+  :qid |quant-u-10467|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1382,7 +1382,7 @@
         ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@2@01)) (inv@13@01 r))))
     (= (- $k@12@01 (pTaken@15@01 r)) $Perm.No))
   
-  :qid |quant-u-10476|))))
+  :qid |quant-u-10470|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1431,7 +1431,7 @@
     (Set_in r@19@01 trees@17@01)
     (and (= (inv@20@01 (id<Ref> r@19@01)) r@19@01) (img@21@01 (id<Ref> r@19@01))))
   :pattern ((id<Ref> r@19@01))
-  :qid |quant-u-10478|)))
+  :qid |quant-u-10472|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@21@01 r) (Set_in (inv@20@01 r) trees@17@01))
@@ -1509,7 +1509,7 @@
     (Set_in s@25@01 trees@17@01)
     (or (= $k@26@01 $Perm.No) (< $Perm.No $k@26@01)))
   
-  :qid |quant-u-10481|))))
+  :qid |quant-u-10475|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1605,7 +1605,7 @@
     (Set_in s@33@01 trees@17@01)
     (or (= $k@34@01 $Perm.No) (< $Perm.No $k@34@01)))
   
-  :qid |quant-u-10482|))))
+  :qid |quant-u-10476|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1669,7 +1669,7 @@
     (Set_in r@40@01 trees@38@01)
     (and (= (inv@41@01 (id<Ref> r@40@01)) r@40@01) (img@42@01 (id<Ref> r@40@01))))
   :pattern ((id<Ref> r@40@01))
-  :qid |quant-u-10484|)))
+  :qid |quant-u-10478|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@42@01 r) (Set_in (inv@41@01 r) trees@38@01))
@@ -2028,7 +2028,7 @@
         r@45@01)
       (img@47@01 ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@39@01)) (id<Ref> r@45@01)))))
   :pattern ((id<Ref> r@45@01))
-  :qid |quant-u-10486|)))
+  :qid |quant-u-10480|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@47@01 r) (Set_in (inv@46@01 r) trees@38@01))
@@ -2089,7 +2089,7 @@
     (Set_in s@48@01 trees@38@01)
     (or (= $k@49@01 $Perm.No) (< $Perm.No $k@49@01)))
   
-  :qid |quant-u-10487|))))
+  :qid |quant-u-10481|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2209,7 +2209,7 @@
         ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@39@01)) (id<Ref> (inv@50@01 r)))))
     (= (- $k@49@01 (pTaken@52@01 r)) $Perm.No))
   
-  :qid |quant-u-10490|))))
+  :qid |quant-u-10484|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2258,7 +2258,7 @@
     (Set_in r@56@01 trees@54@01)
     (and (= (inv@57@01 (id<Ref> r@56@01)) r@56@01) (img@58@01 (id<Ref> r@56@01))))
   :pattern ((Set_in r@56@01 trees@54@01))
-  :qid |quant-u-10492|)))
+  :qid |quant-u-10486|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@58@01 r) (Set_in (inv@57@01 r) trees@54@01))
@@ -2617,7 +2617,7 @@
         r@61@01)
       (img@63@01 ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@55@01)) (id<Ref> r@61@01)))))
   :pattern ((Set_in r@61@01 trees@54@01))
-  :qid |quant-u-10494|)))
+  :qid |quant-u-10488|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@63@01 r) (Set_in (inv@62@01 r) trees@54@01))
@@ -2678,7 +2678,7 @@
     (Set_in s@64@01 trees@54@01)
     (or (= $k@65@01 $Perm.No) (< $Perm.No $k@65@01)))
   
-  :qid |quant-u-10495|))))
+  :qid |quant-u-10489|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2798,7 +2798,7 @@
         ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first $t@55@01)) (id<Ref> (inv@66@01 r)))))
     (= (- $k@65@01 (pTaken@68@01 r)) $Perm.No))
   
-  :qid |quant-u-10498|))))
+  :qid |quant-u-10492|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3133,7 +3133,7 @@
       (= (inv@77@01 (Seq_index trees@71@01 i@76@01)) i@76@01)
       (img@78@01 (Seq_index trees@71@01 i@76@01))))
   :pattern ((Seq_index trees@71@01 i@76@01))
-  :qid |quant-u-10500|)))
+  :qid |quant-u-10494|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@78@01 r) (and (<= 0 (inv@77@01 r)) (< (inv@77@01 r) g@72@01)))
@@ -3502,7 +3502,7 @@
         trees@71@01
         i@81@01)))))
   :pattern ((Seq_index trees@71@01 i@81@01))
-  :qid |quant-u-10502|)))
+  :qid |quant-u-10496|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@83@01 r) (and (<= 0 (inv@82@01 r)) (< (inv@82@01 r) g@72@01)))
@@ -3606,7 +3606,7 @@
     (and (<= 0 j@84@01) (< j@84@01 g@72@01))
     (or (= $k@85@01 $Perm.No) (< $Perm.No $k@85@01)))
   
-  :qid |quant-u-10503|))))
+  :qid |quant-u-10497|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3749,7 +3749,7 @@
           (inv@86@01 r)))))
     (= (- $k@85@01 (pTaken@88@01 r)) $Perm.No))
   
-  :qid |quant-u-10506|))))
+  :qid |quant-u-10500|))))
 (check-sat)
 ; unsat
 (pop) ; 3

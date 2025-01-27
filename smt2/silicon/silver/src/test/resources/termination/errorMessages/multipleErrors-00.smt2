@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:03:04
+; Started: 2025-01-27 02:56:18
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -163,11 +163,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (= (factorialPure%limited s@$ n@0@00) (factorialPure s@$ n@0@00))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-8512|)))
+  :qid |quant-u-8506|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (factorialPure%stateless n@0@00)
   :pattern ((factorialPure%limited s@$ n@0@00))
-  :qid |quant-u-8513|)))
+  :qid |quant-u-8507|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -244,13 +244,13 @@
       (factorialPure s@$ n@0@00)
       (ite (= n@0@00 0) 1 (factorialPure%limited $Snap.unit (- n@0@00 1)))))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-8514|)))
+  :qid |quant-u-8508|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (factorialPure%precondition s@$ n@0@00)
     (ite (= n@0@00 0) true (factorialPure%precondition $Snap.unit (- n@0@00 1))))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-8515|)))
+  :qid |quant-u-8509|)))
 ; ---------- list ----------
 (declare-const self@2@00 $Ref)
 (push) ; 1

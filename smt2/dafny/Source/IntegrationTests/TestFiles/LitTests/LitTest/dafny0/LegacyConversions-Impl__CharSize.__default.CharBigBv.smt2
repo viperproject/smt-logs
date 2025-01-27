@@ -38,7 +38,6 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun nat_from_bv1024 ((_ BitVec 1024)) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
@@ -46,6 +45,7 @@
 (declare-fun charType () T@T)
 (declare-fun Tclass.CharSize.NotSpace () T@U)
 (declare-fun |char#FromInt| (Int) T@U)
+(declare-fun nat_from_bv1024 ((_ BitVec 1024)) Int)
 (declare-fun Tclass.CharSize.AnyChar () T@U)
 (declare-fun |char#ToInt| (T@U) Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -82,11 +82,6 @@
 ))))
 (assert (distinct alloc Tagclass.CharSize.NotSpace Tagclass.CharSize.AnyChar tytagFamily$NotSpace tytagFamily$AnyChar)
 )
-(assert (forall ((b (_ BitVec 1024)) ) (!  (and (and (<= 0 (nat_from_bv1024 b)) (< (nat_from_bv1024 b) 179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216)) (= (nat_from_bv1024 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |884|
- :pattern ( (nat_from_bv1024 b))
-)))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
  :qid |DafnyPreludebpl.102:29|
  :skolemid |545|
@@ -102,6 +97,11 @@
  :qid |unknown.0:0|
  :skolemid |1029|
  :pattern ( ($Is charType |ch#0| Tclass.CharSize.NotSpace))
+)))
+(assert (forall ((b (_ BitVec 1024)) ) (!  (and (and (<= 0 (nat_from_bv1024 b)) (< (nat_from_bv1024 b) 179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216)) (= (nat_from_bv1024 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |884|
+ :pattern ( (nat_from_bv1024 b))
 )))
 (assert (forall ((x@@4 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@4)) x@@4)
  :qid |DafnyPreludebpl.167:18|
@@ -144,7 +144,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1033|
+ :skolemid |1034|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))

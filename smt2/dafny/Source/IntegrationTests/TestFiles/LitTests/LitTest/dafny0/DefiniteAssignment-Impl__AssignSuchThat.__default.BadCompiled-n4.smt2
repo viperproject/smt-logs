@@ -23,7 +23,8 @@
 (declare-fun UOrdering3 (|T@T| |T@U| |T@U|) Bool)
 (declare-fun tickleBool (Bool) Bool)
 (assert (and (tickleBool true) (tickleBool false)))
-(declare-fun Lit (T@T T@U) T@U)
+(declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun $Box (T@T T@U) T@U)
 (declare-fun Ctor (T@T) Int)
 (declare-fun boolType () T@T)
 (declare-fun intType () T@T)
@@ -34,8 +35,6 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $Unbox (T@T T@U) T@U)
-(declare-fun $Box (T@T T@U) T@U)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun $IsBox (T@U T@U) Bool)
@@ -70,30 +69,25 @@
  :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
-(assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
- :qid |DafnyPreludebpl.102:29|
- :skolemid |15|
- :pattern ( (Lit T x@@2))
-)))
-(assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+(assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
- :pattern ( ($Unbox T@@0 x@@3))
+ :pattern ( ($Unbox T x@@2))
 )))
-(assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+(assert (forall ((v T@U) (t T@U) (h T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v) t h) ($IsAlloc T@@0 v t h))
  :qid |DafnyPreludebpl.217:18|
  :skolemid |39|
- :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
+ :pattern ( ($IsAllocBox ($Box T@@0 v) t h))
 )))
-(assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+(assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@1 T@T) ) (! (= ($IsBox ($Box T@@1 v@@0) t@@0) ($Is T@@1 v@@0 t@@0))
  :qid |DafnyPreludebpl.214:18|
  :skolemid |38|
- :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
+ :pattern ( ($IsBox ($Box T@@1 v@@0) t@@0))
 )))
-(assert (forall ((x@@4 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@4)) x@@4)
+(assert (forall ((x@@3 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@3)) x@@3)
  :qid |DafnyPreludebpl.167:18|
  :skolemid |25|
- :pattern ( ($Box T@@3 x@@4))
+ :pattern ( ($Box T@@2 x@@3))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
@@ -124,11 +118,6 @@
  :skolemid |3850|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
-(assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@5)) (Lit BoxType ($Box T@@4 x@@5)))
- :qid |DafnyPreludebpl.103:18|
- :skolemid |16|
- :pattern ( ($Box T@@4 (Lit T@@4 x@@5)))
-)))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Tclass.AssignSuchThat.D () T@U)
@@ -143,7 +132,7 @@
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun |d#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id Impl$$AssignSuchThat.__default.BadCompiled2)
+(set-info :boogie-vc-id Impl$$AssignSuchThat.__default.BadCompiled3)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -159,9 +148,9 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 6) (let ((anon2_correct  (=> (= (ControlFlow 0 2) (- 0 1)) (exists ((|$as#d0#0| T@U) ) (!  (and (and ($IsBox |$as#d0#0| Tclass.AssignSuchThat.D) ($IsAllocBox |$as#d0#0| Tclass.AssignSuchThat.D $Heap)) (U_2_bool (Lit boolType (bool_2_U true))))
- :qid |DefiniteAssignmentdfy.315:5|
- :skolemid |490|
+ (=> (= (ControlFlow 0 0) 6) (let ((anon2_correct  (=> (= (ControlFlow 0 2) (- 0 1)) (exists ((|$as#d0#0| T@U) ) (!  (and (and ($IsBox |$as#d0#0| Tclass.AssignSuchThat.D) ($IsAllocBox |$as#d0#0| Tclass.AssignSuchThat.D $Heap)) (= |$as#d0#0| |$as#d0#0|))
+ :qid |DefiniteAssignmentdfy.321:5|
+ :skolemid |494|
 )))))
 (let ((anon3_Else_correct  (=> (and (not (and ($IsBox |d#1@0| Tclass.AssignSuchThat.D) ($IsAllocBox |d#1@0| Tclass.AssignSuchThat.D $Heap))) (= (ControlFlow 0 4) 2)) anon2_correct)))
 (let ((anon3_Then_correct  (=> (and (and ($IsBox |d#1@0| Tclass.AssignSuchThat.D) ($IsAllocBox |d#1@0| Tclass.AssignSuchThat.D $Heap)) (= (ControlFlow 0 3) 2)) anon2_correct)))

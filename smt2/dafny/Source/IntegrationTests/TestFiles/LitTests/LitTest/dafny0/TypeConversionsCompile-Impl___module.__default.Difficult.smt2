@@ -23,18 +23,6 @@
 (declare-fun UOrdering3 (|T@T| |T@U| |T@U|) Bool)
 (declare-fun tickleBool (Bool) Bool)
 (assert (and (tickleBool true) (tickleBool false)))
-(declare-fun nat_from_bv67 ((_ BitVec 67)) Int)
-(declare-fun Ctor (T@T) Int)
-(declare-fun boolType () T@T)
-(declare-fun intType () T@T)
-(declare-fun realType () T@T)
-(declare-fun bool_2_U (Bool) T@U)
-(declare-fun U_2_bool (T@U) Bool)
-(declare-fun int_2_U (Int) T@U)
-(declare-fun U_2_int (T@U) Int)
-(declare-fun real_2_U (Real) T@U)
-(declare-fun U_2_real (T@U) Real)
-(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun $HeapSucc (T@U T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -42,7 +30,17 @@
 (declare-fun refType () T@T)
 (declare-fun MapType0Type (T@T T@T) T@T)
 (declare-fun alloc () T@U)
+(declare-fun U_2_bool (T@U) Bool)
 (declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun boolType () T@T)
+(declare-fun Ctor (T@T) Int)
+(declare-fun intType () T@T)
+(declare-fun realType () T@T)
+(declare-fun bool_2_U (Bool) T@U)
+(declare-fun int_2_U (Int) T@U)
+(declare-fun U_2_int (T@U) Int)
+(declare-fun real_2_U (Real) T@U)
+(declare-fun U_2_real (T@U) Real)
 (declare-fun MapType0Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType0TypeInv0 (T@T) T@T)
 (declare-fun MapType0TypeInv1 (T@T) T@T)
@@ -51,12 +49,14 @@
 (declare-fun LitReal (Real) Real)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
+(declare-fun nat_from_bv67 ((_ BitVec 67)) Int)
 (declare-fun q@Real (Int) Real)
 (declare-fun MapType1Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun Mod (Int Int) Int)
-(assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+(assert  (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
@@ -74,21 +74,10 @@
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
  :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
-))))
-(assert (forall ((b (_ BitVec 67)) ) (!  (and (and (<= 0 (nat_from_bv67 b)) (< (nat_from_bv67 b) 147573952589676412928)) (= (nat_from_bv67 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |346|
- :pattern ( (nat_from_bv67 b))
-)))
-(assert (forall ((b@@0 (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b@@0)) (< (nat_from_bv32 b@@0) 4294967296)) (= (nat_from_bv32 b@@0) (bv2int b@@0)))
- :qid |unknown.0:0|
- :skolemid |350|
- :pattern ( (nat_from_bv32 b@@0))
-)))
-(assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+))) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
  :weight 0
-)) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
  :qid |mapAx1:MapType0Select:0|
  :weight 0
 ))) (= (Ctor FieldType) 3)) (= (Ctor BoxType) 4)) (= (Ctor refType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
@@ -133,6 +122,16 @@
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@6))
+)))
+(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |350|
+ :pattern ( (nat_from_bv32 b))
+)))
+(assert (forall ((b@@0 (_ BitVec 67)) ) (!  (and (and (<= 0 (nat_from_bv67 b@@0)) (< (nat_from_bv67 b@@0) 147573952589676412928)) (= (nat_from_bv67 b@@0) (bv2int b@@0)))
+ :qid |unknown.0:0|
+ :skolemid |346|
+ :pattern ( (nat_from_bv67 b@@0))
 )))
 (assert (forall ((x@@7 Int) ) (! (= (q@Real x@@7) (to_real x@@7))
  :qid |DafnyPreludebpl.579:15|

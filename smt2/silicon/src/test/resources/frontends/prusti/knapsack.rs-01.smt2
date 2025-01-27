@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:54:07
+; Started: 2025-01-27 02:47:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -57135,7 +57135,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57144,7 +57144,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57155,7 +57155,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (not (= ret@491@01 $Ref.null)))
 ; State saturation: after inhale
@@ -57200,7 +57200,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57209,7 +57209,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57220,7 +57220,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] 0 <= self.val_int
 (set-option :timeout 0)
@@ -70690,7 +70690,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.06s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (forall ((wi@546@01 Int)) (!
   (=>
@@ -71221,7 +71221,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.00s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (forall ((ii@547@01 Int)) (!
   (=>
@@ -73700,4 +73700,184 @@
 (push) ; 13
 (set-option :timeout 10)
 (assert (not (not (= val_int@530@01 ($SortWrappers.$SnapToInt ($Snap.first $t@454@01))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= val_int@530@01 val_int@493@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@506@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@208@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@223@01 $t@526@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@506@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@208@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= $t@526@01 $t@223@01))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@252@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@381@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@475@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not (= false val_bool@540@01))))
 (check-sat)

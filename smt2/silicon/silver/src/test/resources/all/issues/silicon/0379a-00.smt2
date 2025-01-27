@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:46
+; Started: 2025-01-27 02:59:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,21 +131,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-11448|)))
+  :qid |quant-u-11441|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-11449|)))
+  :qid |quant-u-11442|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (< $Perm.No result@0@00)))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-11452|)))
+  :qid |quant-u-11445|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-11453|)))
+  :qid |quant-u-11446|)))
 ; ---------- FUNCTION f----------
 (declare-fun _pure_1@1@00 () $Ref)
 (declare-fun result@2@00 () Bool)
@@ -169,11 +169,11 @@
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (= (f%limited s@$ _pure_1@1@00) (f s@$ _pure_1@1@00))
   :pattern ((f s@$ _pure_1@1@00))
-  :qid |quant-u-11450|)))
+  :qid |quant-u-11443|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (f%stateless _pure_1@1@00)
   :pattern ((f%limited s@$ _pure_1@1@00))
-  :qid |quant-u-11451|)))
+  :qid |quant-u-11444|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -857,11 +857,11 @@
             0)
           0))))
   :pattern ((f s@$ _pure_1@1@00))
-  :qid |quant-u-11454|)))
+  :qid |quant-u-11447|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   true
   :pattern ((f s@$ _pure_1@1@00))
-  :qid |quant-u-11455|)))
+  :qid |quant-u-11448|)))
 ; ---------- P ----------
 (declare-const self@5@00 $Ref)
 (set-option :timeout 0)

@@ -148,7 +148,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$y#1| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#1|))  (and ($IsBox |$y#1| |l#0|) (|Seq#Contains| |l#1| |$y#1|)))
  :qid |unknown.0:0|
- :skolemid |3867|
+ :skolemid |3871|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0| |l#1|) |$y#1|))
 )))
 (assert  (and (and (and (and (and (= (Ctor refType) 4) (= (Ctor SetType) 5)) (= (Ctor FieldType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
@@ -465,7 +465,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@10 T@U) ($f@@2 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#8| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@10 $f@@2))  (=> (and (or (not (= $o@@10 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@10) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3869|
+ :skolemid |3873|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#8| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@10 $f@@2))
 )))
 (assert (forall ((M2.Container$T@@16 T@U) ($h@@8 T@U) ($o@@11 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@11 null)) (not true)) (= (dtype $o@@11) (Tclass.M2.Container? M2.Container$T@@16)))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@11) M2.Container.elems)) (TSeq M2.Container$T@@16)))

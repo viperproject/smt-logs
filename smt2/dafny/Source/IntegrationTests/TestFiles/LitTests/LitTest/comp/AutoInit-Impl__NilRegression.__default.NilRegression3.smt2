@@ -865,7 +865,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@37 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@37 $f))  (=> (and (or (not (= $o@@37 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@37) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |6053|
+ :skolemid |6052|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@37 $f))
 )))
 (assert (forall ((NilRegression.GClass$U@@29 T@U) (NilRegression.GClass$V@@29 T@U) (NilRegression.GClass$W@@29 T@U) ($o@@38 T@U) ) (! (= ($Is refType $o@@38 (Tclass.NilRegression.GClass? NilRegression.GClass$U@@29 NilRegression.GClass$V@@29 NilRegression.GClass$W@@29))  (or (= $o@@38 null) (= (dtype $o@@38) (Tclass.NilRegression.GClass? NilRegression.GClass$U@@29 NilRegression.GClass$V@@29 NilRegression.GClass$W@@29))))

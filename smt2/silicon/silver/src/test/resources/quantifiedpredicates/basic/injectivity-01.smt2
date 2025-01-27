@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:12:17
+; Started: 2025-01-27 03:05:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1117,7 +1117,7 @@
       (and (= a (inv@25@01 a i)) (= i 1)))
     false)
   
-  :qid |quant-u-24204|))))
+  :qid |quant-u-24115|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1188,7 +1188,7 @@
       (and (= a (inv@28@01 a i)) (= i 1)))
     false)
   
-  :qid |quant-u-24206|))))
+  :qid |quant-u-24117|))))
 (check-sat)
 ; unknown
 (pop) ; 3

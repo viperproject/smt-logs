@@ -199,7 +199,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#13| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |UnionFinddfy.43:9|
- :skolemid |4525|
+ :skolemid |4522|
  :pattern ( (MapType0Select BoxType boolType (|lambda#13| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a b t)) a)
@@ -563,7 +563,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#14| |l#0@@0| |l#1@@0|) |$w#0@@0|) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#0@@0| ($Unbox refType |$w#0@@0|)) |l#1@@0|))
  :qid |UnionFinddfy.63:43|
- :skolemid |4526|
+ :skolemid |4523|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#14| |l#0@@0| |l#1@@0|) |$w#0@@0|))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
@@ -712,7 +712,7 @@
 )))))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@11 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@1| |l#2| |l#3|) $o@@11 $f))  (=> (and (or (not (= $o@@11 |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o@@11) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4523|
+ :skolemid |4520|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@1| |l#2| |l#3|) $o@@11 $f))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))

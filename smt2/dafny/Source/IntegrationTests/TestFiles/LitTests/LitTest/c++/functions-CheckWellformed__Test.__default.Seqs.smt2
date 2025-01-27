@@ -39,19 +39,19 @@
 (declare-fun |Seq#Empty| () T@U)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
+(declare-fun $FunctionContextHeight () Int)
+(declare-fun Test.__default.Seqs (T@U T@U Int T@U) T@U)
+(declare-fun SeqType () T@T)
+(declare-fun |Test.__default.Seqs#canCall| (T@U T@U Int T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun TSeq (T@U) T@U)
+(declare-fun $IsBox (T@U T@U) Bool)
+(declare-fun |Seq#Index| (T@U Int) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
-(declare-fun $FunctionContextHeight () Int)
-(declare-fun Test.__default.Seqs (T@U T@U Int T@U) T@U)
-(declare-fun |Test.__default.Seqs#canCall| (T@U T@U Int T@U) Bool)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun SeqType () T@T)
-(declare-fun TSeq (T@U) T@U)
-(declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun $IsGoodHeap (T@U) Bool)
-(declare-fun |Seq#Index| (T@U Int) T@U)
 (declare-fun BoxType () T@T)
 (declare-fun Inv0_TSeq (T@U) T@U)
 (declare-fun Tag (T@U) T@U)
@@ -97,27 +97,22 @@
  :skolemid |568|
  :pattern ( (Lit T x@@3))
 )))
+(assert (= (Ctor SeqType) 3))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Test._default.Seqs$T T@U) (|s#0| T@U) (|x#0| Int) (|default_val#0| T@U) ) (!  (=> (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T (Lit SeqType |s#0|) (LitInt |x#0|) |default_val#0|) (and (< 1 $FunctionContextHeight) (and (and (and ($Is SeqType |s#0| (TSeq Test._default.Seqs$T)) (and (<= (LitInt 0) |x#0|) (< |x#0| 4294967296))) ($IsBox |default_val#0| Test._default.Seqs$T)) (< (|Seq#Length| (Lit SeqType |s#0|)) 1000)))) (= (Test.__default.Seqs Test._default.Seqs$T (Lit SeqType |s#0|) (LitInt |x#0|) |default_val#0|) (ite (> (|Seq#Length| (Lit SeqType |s#0|)) |x#0|) (|Seq#Index| (Lit SeqType |s#0|) (LitInt |x#0|)) |default_val#0|)))
+ :qid |unknown.0:0|
+ :weight 3
+ :skolemid |1094|
+ :pattern ( (Test.__default.Seqs Test._default.Seqs$T (Lit SeqType |s#0|) (LitInt |x#0|) |default_val#0|))
+))))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
  :skolemid |579|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
- :qid |DafnyPreludebpl.217:18|
- :skolemid |592|
- :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
-)))
-(assert (= (Ctor SeqType) 3))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap T@U) (Test._default.Seqs$T T@U) (|s#0| T@U) (|x#0| Int) (|default_val#0| T@U) ) (!  (=> (and (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T |s#0| |x#0| |default_val#0|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($Is SeqType |s#0| (TSeq Test._default.Seqs$T)) ($IsAlloc SeqType |s#0| (TSeq Test._default.Seqs$T) $Heap)) (and (<= (LitInt 0) |x#0|) (< |x#0| 4294967296))) (and ($IsBox |default_val#0| Test._default.Seqs$T) ($IsAllocBox |default_val#0| Test._default.Seqs$T $Heap))) (< (|Seq#Length| |s#0|) 1000)))) ($IsGoodHeap $Heap)) ($IsAllocBox (Test.__default.Seqs Test._default.Seqs$T |s#0| |x#0| |default_val#0|) Test._default.Seqs$T $Heap))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap T@U) (Test._default.Seqs$T@@0 T@U) (|s#0@@0| T@U) (|x#0@@0| Int) (|default_val#0@@0| T@U) ) (!  (=> (and (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T@@0 |s#0@@0| |x#0@@0| |default_val#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($Is SeqType |s#0@@0| (TSeq Test._default.Seqs$T@@0)) ($IsAlloc SeqType |s#0@@0| (TSeq Test._default.Seqs$T@@0) $Heap)) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296))) (and ($IsBox |default_val#0@@0| Test._default.Seqs$T@@0) ($IsAllocBox |default_val#0@@0| Test._default.Seqs$T@@0 $Heap))) (< (|Seq#Length| |s#0@@0|) 1000)))) ($IsGoodHeap $Heap)) ($IsAllocBox (Test.__default.Seqs Test._default.Seqs$T@@0 |s#0@@0| |x#0@@0| |default_val#0@@0|) Test._default.Seqs$T@@0 $Heap))
  :qid |functionsdfy.32:12|
  :skolemid |1091|
- :pattern ( ($IsAllocBox (Test.__default.Seqs Test._default.Seqs$T |s#0| |x#0| |default_val#0|) Test._default.Seqs$T $Heap))
-))))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Test._default.Seqs$T@@0 T@U) (|s#0@@0| T@U) (|x#0@@0| Int) (|default_val#0@@0| T@U) ) (!  (=> (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T@@0 (Lit SeqType |s#0@@0|) (LitInt |x#0@@0|) |default_val#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (and ($Is SeqType |s#0@@0| (TSeq Test._default.Seqs$T@@0)) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296))) ($IsBox |default_val#0@@0| Test._default.Seqs$T@@0)) (< (|Seq#Length| (Lit SeqType |s#0@@0|)) 1000)))) (= (Test.__default.Seqs Test._default.Seqs$T@@0 (Lit SeqType |s#0@@0|) (LitInt |x#0@@0|) |default_val#0@@0|) (ite (> (|Seq#Length| (Lit SeqType |s#0@@0|)) |x#0@@0|) (|Seq#Index| (Lit SeqType |s#0@@0|) (LitInt |x#0@@0|)) |default_val#0@@0|)))
- :qid |unknown.0:0|
- :weight 3
- :skolemid |1094|
- :pattern ( (Test.__default.Seqs Test._default.Seqs$T@@0 (Lit SeqType |s#0@@0|) (LitInt |x#0@@0|) |default_val#0@@0|))
+ :pattern ( ($IsAllocBox (Test.__default.Seqs Test._default.Seqs$T@@0 |s#0@@0| |x#0@@0| |default_val#0@@0|) Test._default.Seqs$T@@0 $Heap))
 ))))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Test._default.Seqs$T@@1 T@U) (|s#0@@1| T@U) (|x#0@@1| Int) (|default_val#0@@1| T@U) ) (!  (=> (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T@@1 (Lit SeqType |s#0@@1|) (LitInt |x#0@@1|) (Lit BoxType |default_val#0@@1|)) (and (< 1 $FunctionContextHeight) (and (and (and ($Is SeqType |s#0@@1| (TSeq Test._default.Seqs$T@@1)) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296))) ($IsBox |default_val#0@@1| Test._default.Seqs$T@@1)) (< (|Seq#Length| (Lit SeqType |s#0@@1|)) 1000)))) (= (Test.__default.Seqs Test._default.Seqs$T@@1 (Lit SeqType |s#0@@1|) (LitInt |x#0@@1|) (Lit BoxType |default_val#0@@1|)) (ite (> (|Seq#Length| (Lit SeqType |s#0@@1|)) |x#0@@1|) (|Seq#Index| (Lit SeqType |s#0@@1|) (LitInt |x#0@@1|)) |default_val#0@@1|)))
@@ -131,6 +126,16 @@
  :skolemid |1093|
  :pattern ( (Test.__default.Seqs Test._default.Seqs$T@@2 |s#0@@2| |x#0@@2| |default_val#0@@2|))
 ))))
+(assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |592|
+ :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
+)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Test._default.Seqs$T@@3 T@U) (|s#0@@3| T@U) (|x#0@@3| Int) (|default_val#0@@3| T@U) ) (!  (=> (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|) (and (< 1 $FunctionContextHeight) (and (and (and ($Is SeqType |s#0@@3| (TSeq Test._default.Seqs$T@@3)) (and (<= (LitInt 0) |x#0@@3|) (< |x#0@@3| 4294967296))) ($IsBox |default_val#0@@3| Test._default.Seqs$T@@3)) (< (|Seq#Length| |s#0@@3|) 1000)))) ($IsBox (Test.__default.Seqs Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|) Test._default.Seqs$T@@3))
+ :qid |unknown.0:0|
+ :skolemid |1090|
+ :pattern ( (Test.__default.Seqs Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|))
+))))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
  :qid |DafnyPreludebpl.214:18|
  :skolemid |591|
@@ -141,11 +146,6 @@
  :skolemid |774|
  :pattern ( (|Seq#Length| s))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((Test._default.Seqs$T@@3 T@U) (|s#0@@3| T@U) (|x#0@@3| Int) (|default_val#0@@3| T@U) ) (!  (=> (or (|Test.__default.Seqs#canCall| Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|) (and (< 1 $FunctionContextHeight) (and (and (and ($Is SeqType |s#0@@3| (TSeq Test._default.Seqs$T@@3)) (and (<= (LitInt 0) |x#0@@3|) (< |x#0@@3| 4294967296))) ($IsBox |default_val#0@@3| Test._default.Seqs$T@@3)) (< (|Seq#Length| |s#0@@3|) 1000)))) ($IsBox (Test.__default.Seqs Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|) Test._default.Seqs$T@@3))
- :qid |unknown.0:0|
- :skolemid |1090|
- :pattern ( (Test.__default.Seqs Test._default.Seqs$T@@3 |s#0@@3| |x#0@@3| |default_val#0@@3|))
-))))
 (assert (forall ((v@@1 T@U) (t0 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SeqType v@@1 (TSeq t0) h@@0) (forall ((i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| v@@1))) ($IsAllocBox (|Seq#Index| v@@1 i) t0 h@@0))
  :qid |DafnyPreludebpl.311:11|
  :skolemid |626|
@@ -196,7 +196,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1135|
+ :skolemid |1134|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx (TSeq t@@3)) (and (= ($Box SeqType ($Unbox SeqType bx)) bx) ($Is SeqType ($Unbox SeqType bx) (TSeq t@@3))))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:05:17
+; Started: 2025-01-27 02:58:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -675,7 +675,7 @@
       (= (inv@5@00 s@$ set@0@00 a@2@00) a@2@00)
       (img@6@00 s@$ set@0@00 a@2@00)))
   :pattern (($PSF.loc_p ($PSF.lookup_p ($SortWrappers.$SnapTo$PSF<p> s@$) ($SortWrappers.$RefTo$Snap a@2@00)) ($SortWrappers.$RefTo$Snap a@2@00)))
-  :qid |quant-u-9431|)))
+  :qid |quant-u-9425|)))
 (assert (forall ((a $Ref)) (!
   (=>
     (and (img@6@00 s@$ set@0@00 a) (Set_in (inv@5@00 s@$ set@0@00 a) set@0@00))
@@ -708,16 +708,16 @@
     (Set_in (inv@5@00 s@$ set@0@00 a) set@0@00)
     ($PSF.loc_p ($PSF.lookup_p (sm@7@00 s@$ set@0@00) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
   :pattern ((inv@5@00 s@$ set@0@00 a))
-  :qid |quant-u-9432|)))
+  :qid |quant-u-9426|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (set@0@00 Set<$Ref>)) (!
   (= (foo%limited s@$ set@0@00) (foo s@$ set@0@00))
   :pattern ((foo s@$ set@0@00))
-  :qid |quant-u-9428|)))
+  :qid |quant-u-9422|)))
 (assert (forall ((s@$ $Snap) (set@0@00 Set<$Ref>)) (!
   (foo%stateless set@0@00)
   :pattern ((foo%limited s@$ set@0@00))
-  :qid |quant-u-9429|)))
+  :qid |quant-u-9423|)))
 ; ---------- p ----------
 (declare-const a@9@00 $Ref)
 (push) ; 1

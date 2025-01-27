@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:15
+// Date:         2025-01-27 03:23:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0064.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0064-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -223,8 +223,8 @@ procedure Nodesize#definedness(this: Ref) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -246,8 +246,8 @@ procedure Nodesize#definedness(this: Ref) returns (Result: int)
     Result := 1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Nodesize might not hold. Assertion result > 0 might not hold. (0064.vpr@7.11--7.21) [83030]"}
       Result > 0;
 }
@@ -309,13 +309,13 @@ procedure Nodevalid#definedness(this: Ref) returns ()
 procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
   
@@ -335,8 +335,8 @@ procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -353,8 +353,8 @@ procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
         // -- Check definedness of Nodesize(this) == 1
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Nodesize might not hold. Assertion this != null might not hold. (0064.vpr@18.45--18.59) [83031]"}
               this != null;
             perm := FullPerm;
@@ -379,8 +379,8 @@ procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
   }
   
   // -- Translating statement: fold acc(Nodevalid(this), write) -- 0064.vpr@21.3--21.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     Mask := Mask[null, Nodevalid(this):=Mask[null, Nodevalid(this)] + perm];
     assume state(Heap, Mask);
@@ -396,8 +396,8 @@ procedure Nodeinit(this: Ref, v_2: int) returns (k: Perm)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     // Finish exhale
     havoc ExhaleHeap;
     assume IdenticalOnKnownLocations(Heap, ExhaleHeap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:57
+// Date:         2025-01-27 03:42:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/partial_permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/partial_permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -692,12 +692,12 @@ procedure t1_2(r_1: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -756,16 +756,16 @@ procedure t1_2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t1(r) -- partial_permissions.vpr@14.5--14.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       havoc QPMask;
       // wildcard assumptions
       havoc wildcard;
@@ -840,8 +840,8 @@ procedure t1_2(r_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       havoc QPMask;
       // wildcard assumptions
       havoc wildcard;
@@ -921,12 +921,12 @@ procedure t2_2(r_1: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -982,16 +982,16 @@ procedure t2_2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t2(r) -- partial_permissions.vpr@21.5--21.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       havoc QPMask;
       // wild card assumptions
       havoc wildcard;
@@ -1062,8 +1062,8 @@ procedure t2_2(r_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       havoc QPMask;
       // wild card assumptions
       havoc wildcard;
@@ -1139,12 +1139,12 @@ procedure t3(r_1: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1203,8 +1203,8 @@ procedure t3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1301,8 +1301,8 @@ procedure t3(r_1: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wildcard assumptions
     havoc wildcard;
@@ -1438,12 +1438,12 @@ procedure t4(r_1: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1499,8 +1499,8 @@ procedure t4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1591,8 +1591,8 @@ procedure t4(r_1: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -1719,10 +1719,10 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var x_5: Ref;
   var AssertHeap: HeapType;
@@ -1783,12 +1783,12 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, 1 / 3)) -- partial_permissions.vpr@42.5--42.59
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, 1 / 3))
       if (*) {
@@ -1846,8 +1846,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) == 2 / 3) -- partial_permissions.vpr@43.5--43.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) == 2 / 3)
       if (*) {
@@ -1869,8 +1869,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- partial_permissions.vpr@44.5--44.64
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -1937,8 +1937,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- partial_permissions.vpr@45.5--45.64
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -2003,8 +2003,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, perm(x.f))) -- partial_permissions.vpr@46.5--46.65
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, perm(x.f)))
       if (*) {
@@ -2062,8 +2062,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) == none) -- partial_permissions.vpr@47.5--47.65
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) == none)
       if (*) {
@@ -2085,8 +2085,8 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- partial_permissions.vpr@50.5--50.64
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -2158,10 +2158,10 @@ procedure t5(r_1: Ref, xs: (Seq Ref)) returns ()
 procedure t6_1(r_1: Ref, xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -2181,8 +2181,8 @@ procedure t6_1(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> x != null) -- partial_permissions.vpr@56.5--56.59
     
@@ -2198,8 +2198,8 @@ procedure t6_1(r_1: Ref, xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard)) -- partial_permissions.vpr@59.5--59.68
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -2275,10 +2275,10 @@ procedure t6_1(r_1: Ref, xs: (Seq Ref)) returns ()
 procedure t7(r_1: Ref, xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -2298,12 +2298,12 @@ procedure t7(r_1: Ref, xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall x: Ref :: { pred(x) } (x in xs) ==> acc(pred(x), wildcard)) -- partial_permissions.vpr@66.5--66.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { pred(x) } (x in xs) ==> acc(pred(x), wildcard))
       if (*) {

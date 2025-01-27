@@ -46,7 +46,6 @@
 (declare-fun Apply1 (T@U T@U T@U T@U T@U) T@U)
 (declare-fun Tclass.Extern.uint64 () T@U)
 (declare-fun |Test.__default.AddOne#Handle| () T@U)
-(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -61,6 +60,7 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun Tag (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -108,16 +108,6 @@
  :skolemid |1103|
  :pattern ( (Apply1 Tclass.Extern.uint64 Tclass.Extern.uint64 $heap |Test.__default.AddOne#Handle| |$fh$0x#0|))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.AddOne#canCall| |x#0@@0|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 18446744073709551616)) (< |x#0@@0| 100)))) (and (<= (LitInt 0) (Test.__default.AddOne |x#0@@0|)) (< (Test.__default.AddOne |x#0@@0|) 18446744073709551616)))
- :qid |functionsdfy.39:19|
- :skolemid |1096|
- :pattern ( (Test.__default.AddOne |x#0@@0|))
-))))
-(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 18446744073709551616)))
- :qid |unknown.0:0|
- :skolemid |1123|
- :pattern ( ($Is intType |i#0| Tclass.Extern.uint64))
-)))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
  :skolemid |578|
@@ -149,7 +139,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1135|
+ :skolemid |1134|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall (($heap@@0 T@U) (|$fh$0x#0@@0| Int) ) (! (= (Test.__default.AddOne |$fh$0x#0@@0|) (U_2_int ($Unbox intType (Apply1 Tclass.Extern.uint64 Tclass.Extern.uint64 $heap@@0 |Test.__default.AddOne#Handle| ($Box intType (int_2_U |$fh$0x#0@@0|))))))
@@ -157,13 +147,13 @@
  :skolemid |1106|
  :pattern ( (Test.__default.AddOne |$fh$0x#0@@0|) ($IsGoodHeap $heap@@0))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.AddOne#canCall| |x#0@@1|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 18446744073709551616)) (< |x#0@@1| 100)))) (= (Test.__default.AddOne |x#0@@1|) (+ |x#0@@1| 1)))
- :qid |functionsdfy.39:19|
- :skolemid |1098|
- :pattern ( (Test.__default.AddOne |x#0@@1|))
-))))
 (assert (= (Tag Tclass.Extern.uint64) Tagclass.Extern.uint64))
 (assert (= (TagFamily Tclass.Extern.uint64) tytagFamily$uint64))
+(assert (forall ((|i#0| T@U) ) (! (= ($Is intType |i#0| Tclass.Extern.uint64)  (and (<= (LitInt 0) (U_2_int |i#0|)) (< (U_2_int |i#0|) 18446744073709551616)))
+ :qid |unknown.0:0|
+ :skolemid |1123|
+ :pattern ( ($Is intType |i#0| Tclass.Extern.uint64))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |571|
@@ -174,6 +164,16 @@
  :skolemid |569|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.AddOne#canCall| |x#0@@0|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 18446744073709551616)) (< |x#0@@0| 100)))) (= (Test.__default.AddOne |x#0@@0|) (+ |x#0@@0| 1)))
+ :qid |functionsdfy.39:19|
+ :skolemid |1098|
+ :pattern ( (Test.__default.AddOne |x#0@@0|))
+))))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.AddOne#canCall| |x#0@@1|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 18446744073709551616)) (< |x#0@@1| 100)))) (and (<= (LitInt 0) (Test.__default.AddOne |x#0@@1|)) (< (Test.__default.AddOne |x#0@@1|) 18446744073709551616)))
+ :qid |functionsdfy.39:19|
+ :skolemid |1096|
+ :pattern ( (Test.__default.AddOne |x#0@@1|))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun |newtype$check#1@0| () Int)

@@ -206,7 +206,7 @@
  :skolemid |1378|
 ))))
  :qid |CovariantCollectionsdfy.18:7|
- :skolemid |1530|
+ :skolemid |1529|
  :pattern ( (MapType0Select BoxType boolType (|lambda#14| |l#0| |l#1| |l#2| |l#3| |l#4|) |$w#0|))
 )))
 (assert  (and (and (and (= (Ctor FieldType) 6) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
@@ -379,7 +379,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#15| |l#0@@0|) |$w#0@@0|) |l#0@@0|)
  :qid |CovariantCollectionsdfy.268:47|
- :skolemid |1531|
+ :skolemid |1530|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#15| |l#0@@0|) |$w#0@@0|))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) (c T@U) ) (!  (=> (or (not (= a@@2 c)) (not true)) (=> (and ($HeapSucc a@@2 b@@2) ($HeapSucc b@@2 c)) ($HeapSucc a@@2 c)))
@@ -518,7 +518,7 @@
 )))))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o@@6 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@6 $f))  (=> (and (or (not (= $o@@6 |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@6) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1528|
+ :skolemid |1527|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@6 $f))
 )))
 (assert (forall ((s@@2 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@2 val@@4)) s@@2) (= (|Seq#Build_inv1| (|Seq#Build| s@@2 val@@4)) val@@4))

@@ -152,7 +152,7 @@
 ))) (= (Ctor BoxType) 4)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (|Set#IsMember| |l#1| |$y#0|)))
  :qid |DafnyPreludebpl.24:1|
- :skolemid |2062|
+ :skolemid |2061|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$y#0|))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
@@ -279,7 +279,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| Int) (|l#2| Int) (|l#3| Int) (|l#4| Int) (|$y#2| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#3| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4|) |$y#2|))  (and ($IsBox |$y#2| |l#0@@0|) (and (and (<= |l#1@@0| (U_2_int ($Unbox intType |$y#2|))) (< (U_2_int ($Unbox intType |$y#2|)) |l#2|)) (= (Mod (U_2_int ($Unbox intType |$y#2|)) |l#3|) |l#4|))))
  :qid |Numbersdfy.702:11|
- :skolemid |2063|
+ :skolemid |2062|
  :pattern ( (MapType0Select BoxType boolType (|lambda#3| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4|) |$y#2|))
 )))
 (assert (forall ((v@@3 T@U) (t0@@2 T@U) (h@@1 T@U) ) (! (= ($IsAlloc SeqType v@@3 (TSeq t0@@2) h@@1) (forall ((i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| v@@3))) ($IsAllocBox (|Seq#Index| v@@3 i) t0@@2 h@@1))
@@ -341,7 +341,7 @@
 ))))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@1| |l#2@@0| |l#3@@0|) $o $f))  (=> (and (or (not (= $o |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2061|
+ :skolemid |2060|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@1| |l#2@@0| |l#3@@0|) $o $f))
 )))
 (assert (forall ((x@@10 Int) (y@@0 Int) ) (! (= (Mod x@@10 y@@0) (mod x@@10 y@@0))

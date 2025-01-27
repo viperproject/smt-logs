@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:46
+// Date:         2025-01-27 03:18:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0285.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0285-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -446,8 +446,8 @@ axiom !IsWandField(val);
 procedure havocArray() returns (a_2: ArrayDomainType)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -457,8 +457,8 @@ procedure havocArray() returns (a_2: ArrayDomainType)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -473,8 +473,8 @@ procedure havocArray() returns (a_2: ArrayDomainType)
 procedure havocInt() returns (i: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -484,8 +484,8 @@ procedure havocInt() returns (i: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -500,8 +500,8 @@ procedure havocInt() returns (i: int)
 procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
@@ -511,8 +511,8 @@ procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
   var PreCallMask: MaskType;
   var s_1: (Set int);
   var j: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_10_1: int;
   var ExhaleHeap: HeapType;
   var element: int;
@@ -532,8 +532,8 @@ procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -683,8 +683,8 @@ procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -920,8 +920,8 @@ procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
             j := j + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1042,8 +1042,8 @@ procedure setToArray(vals_2: (Set int)) returns (a_2: ArrayDomainType)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of setToArray might not hold. Assertion len(a) == |vals| might not hold. (0285.vpr@26.11--26.27) [68179]"}
       (len(a_2): int) == Set#Card(vals_2);
     havoc QPMask;

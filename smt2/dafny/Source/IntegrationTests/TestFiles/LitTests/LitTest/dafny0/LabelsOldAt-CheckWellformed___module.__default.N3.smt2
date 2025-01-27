@@ -337,7 +337,7 @@
  :skolemid |1514|
 ))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1676|
+ :skolemid |1678|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#5| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5|) $o@@3 $f@@1))
 )))
 (assert (forall ((h@@5 T@U) (v@@5 T@U) ) (! ($IsAlloc boolType v@@5 TBool h@@5)

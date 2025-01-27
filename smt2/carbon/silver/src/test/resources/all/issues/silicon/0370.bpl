@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:35
+// Date:         2025-01-27 03:17:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0370.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0370-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -647,14 +647,14 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
   modifies Heap, Mask;
 {
   var i_18: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_14: int;
   var tid_2: int;
   var QPMask: MaskType;
   var tid_3: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_7: int;
@@ -684,8 +684,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (i_18 >= 0) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.50--20.71) [59519]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -695,8 +695,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             if (j_14 >= 0) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.91--20.112) [59520]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
@@ -708,8 +708,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (i_18 >= 0 && (i_18 < Seq#Length(getVCTOption1(Heap, output)) && (j_14 >= 0 && (j_14 < Seq#Length(getVCTOption1(Heap, output)) && i_18 != j_14)))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.128--20.149) [59521]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -721,8 +721,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             i_18 < Seq#Length(getVCTOption1(Heap, output));
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@20.156--20.177) [59524]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -747,8 +747,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_2) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.51--21.72) [59527]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -758,8 +758,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_2 && tid_2 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@21.82--21.103) [59528]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -814,8 +814,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_3) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.51--22.72) [59532]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -825,8 +825,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_3 && tid_3 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@22.78--22.99) [59533]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -850,8 +850,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -866,8 +866,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= k_7) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.85--24.106) [59537]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -877,8 +877,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= k_7 && k_7 < Seq#Length(getVCTOption1(PostHeap, output))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@24.116--24.137) [59538]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -933,8 +933,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_4) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.58--25.79) [59542]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -944,8 +944,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
             if (0 <= j_2) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := PostMask;
                 ExhaleWellDef0Heap := PostHeap;
+                ExhaleWellDef0Mask := PostMask;
                 assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.100--25.121) [59543]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
@@ -957,8 +957,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
         if (0 <= tid_4 && (tid_4 < Seq#Length(getVCTOption1(PostHeap, output)) && (0 <= j_2 && j_2 < Seq#Length(getVCTOption1(PostHeap, output))))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@25.128--25.149) [59544]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -988,8 +988,8 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of barrier_check_2 might not hold. Assertion (VCTNone(): VCTOption[Seq[Ref]]) != output might not hold. (0370.vpr@23.11--23.30) [59548]"}
       (VCTNone(): VCTOptionDomainType (Seq Ref)) != output;
     havoc QPMask;
@@ -1072,18 +1072,18 @@ procedure barrier_check_2(diz: Ref, current_thread_id: int, output: (VCTOptionDo
 procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCTOptionDomainType (Seq Ref))) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i_15: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_16: int;
   var k_9: int;
   var QPMask: MaskType;
   var wildcard: real;
   var tid_7: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var j_17: int;
   var tid_1: int;
   var j_3: int;
@@ -1100,8 +1100,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (VCTNone(): VCTOption[Seq[Ref]]) != output -- 0370.vpr@32.3--32.29
     assume (VCTNone(): VCTOptionDomainType (Seq Ref)) != output;
@@ -1121,8 +1121,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
         if (i_15 >= 0) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.48--34.69) [59554]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1132,8 +1132,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
             if (j_16 >= 0) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.89--34.110) [59555]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
@@ -1145,8 +1145,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
         if (i_15 >= 0 && (i_15 < Seq#Length(getVCTOption1(Heap, output)) && (j_16 >= 0 && (j_16 < Seq#Length(getVCTOption1(Heap, output)) && i_15 != j_16)))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.126--34.147) [59556]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1158,8 +1158,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
             i_15 < Seq#Length(getVCTOption1(Heap, output));
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@34.154--34.175) [59559]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1190,8 +1190,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
         if (0 <= k_9) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@38.22--38.43) [59562]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1201,8 +1201,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
         if (0 <= k_9 && k_9 < Seq#Length(getVCTOption1(Heap, output))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@39.13--39.34) [59563]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1256,16 +1256,16 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
   //     (tid < |getVCTOption1(output)| &&
   //     (0 <= j && j < |getVCTOption1(output)|)) ==>
   //     getVCTOption1(output)[j].Integer__item == tid) -- 0370.vpr@41.3--46.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall tid: Int, j: Int ::0 <= tid && (tid < |getVCTOption1(output)| && (0 <= j && j < |getVCTOption1(output)|)) ==> getVCTOption1(output)[j].Integer__item == tid)
       if (*) {
         if (0 <= tid_7) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@44.27--44.48) [59567]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution
@@ -1275,8 +1275,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
             if (0 <= j_17) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@45.27--45.48) [59568]"}
                   output != (VCTNone(): VCTOptionDomainType (Seq Ref));
                 // Stop execution
@@ -1288,8 +1288,8 @@ procedure barrier_check_2_essence(diz: Ref, current_thread_id: int, output: (VCT
         if (0 <= tid_7 && (tid_7 < Seq#Length(getVCTOption1(Heap, output)) && (0 <= j_17 && j_17 < Seq#Length(getVCTOption1(Heap, output))))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function getVCTOption1 might not hold. Assertion output != (VCTNone(): VCTOption[Seq[Ref]]) might not hold. (0370.vpr@46.9--46.30) [59569]"}
               output != (VCTNone(): VCTOptionDomainType (Seq Ref));
             // Stop execution

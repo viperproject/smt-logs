@@ -680,13 +680,13 @@
 ;; Fuel
 (declare-const fuel%impl&%0.arrow_A1_v. FuelId)
 (declare-const fuel%impl&%0.arrow_A2_v. FuelId)
-(declare-const fuel%impl&%1.arrow_a. FuelId)
 (declare-const fuel%impl&%1.arrow_0. FuelId)
+(declare-const fuel%impl&%1.arrow_a. FuelId)
 (declare-const fuel%impl&%1.arrow_B1_0. FuelId)
 (declare-const fuel%impl&%1.arrow_B2_a. FuelId)
 (assert
- (distinct fuel%impl&%0.arrow_A1_v. fuel%impl&%0.arrow_A2_v. fuel%impl&%1.arrow_a.
-  fuel%impl&%1.arrow_0. fuel%impl&%1.arrow_B1_0. fuel%impl&%1.arrow_B2_a.
+ (distinct fuel%impl&%0.arrow_A1_v. fuel%impl&%0.arrow_A2_v. fuel%impl&%1.arrow_0.
+  fuel%impl&%1.arrow_a. fuel%impl&%1.arrow_B1_0. fuel%impl&%1.arrow_B2_a.
 ))
 
 ;; Datatypes
@@ -881,11 +881,11 @@
 ;; Function-Decl crate::A::arrow_A2_v
 (declare-fun impl&%0.arrow_A2_v.? (Poly) Int)
 
-;; Function-Decl crate::B::arrow_a
-(declare-fun impl&%1.arrow_a.? (Poly) A.)
-
 ;; Function-Decl crate::B::arrow_0
 (declare-fun impl&%1.arrow_0.? (Poly) A.)
+
+;; Function-Decl crate::B::arrow_a
+(declare-fun impl&%1.arrow_a.? (Poly) A.)
 
 ;; Function-Decl crate::B::arrow_B1_0
 (declare-fun impl&%1.arrow_B1_0.? (Poly) A.)
@@ -941,30 +941,6 @@
    :skolemid skolem_internal_impl&__0.arrow_A2_v.?_pre_post_definition
 )))
 
-;; Function-Axioms crate::B::arrow_a
-(assert
- (fuel_bool_default fuel%impl&%1.arrow_a.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%1.arrow_a.)
-  (forall ((self! Poly)) (!
-    (= (impl&%1.arrow_a.? self!) (B./B2/a (%Poly%B. self!)))
-    :pattern ((impl&%1.arrow_a.? self!))
-    :qid internal_impl&__1.arrow_a.?_definition
-    :skolemid skolem_internal_impl&__1.arrow_a.?_definition
-))))
-(assert
- (forall ((self! Poly)) (!
-   (=>
-    (has_type self! TYPE%B.)
-    (has_type (Poly%A. (impl&%1.arrow_a.? self!)) TYPE%A.)
-   )
-   :pattern ((impl&%1.arrow_a.? self!))
-   :qid internal_impl&__1.arrow_a.?_pre_post_definition
-   :skolemid skolem_internal_impl&__1.arrow_a.?_pre_post_definition
-)))
-
 ;; Function-Axioms crate::B::arrow_0
 (assert
  (fuel_bool_default fuel%impl&%1.arrow_0.)
@@ -987,6 +963,30 @@
    :pattern ((impl&%1.arrow_0.? self!))
    :qid internal_impl&__1.arrow_0.?_pre_post_definition
    :skolemid skolem_internal_impl&__1.arrow_0.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::B::arrow_a
+(assert
+ (fuel_bool_default fuel%impl&%1.arrow_a.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%1.arrow_a.)
+  (forall ((self! Poly)) (!
+    (= (impl&%1.arrow_a.? self!) (B./B2/a (%Poly%B. self!)))
+    :pattern ((impl&%1.arrow_a.? self!))
+    :qid internal_impl&__1.arrow_a.?_definition
+    :skolemid skolem_internal_impl&__1.arrow_a.?_definition
+))))
+(assert
+ (forall ((self! Poly)) (!
+   (=>
+    (has_type self! TYPE%B.)
+    (has_type (Poly%A. (impl&%1.arrow_a.? self!)) TYPE%A.)
+   )
+   :pattern ((impl&%1.arrow_a.? self!))
+   :qid internal_impl&__1.arrow_a.?_pre_post_definition
+   :skolemid skolem_internal_impl&__1.arrow_a.?_pre_post_definition
 )))
 
 ;; Function-Axioms crate::B::arrow_B1_0

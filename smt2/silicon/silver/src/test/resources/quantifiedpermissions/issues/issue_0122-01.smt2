@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:10:33
+; Started: 2025-01-27 03:03:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -643,11 +643,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (= (fun01%limited s@$ xs@0@00 y@1@00) (fun01 s@$ xs@0@00 y@1@00))
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19066|)))
+  :qid |quant-u-18977|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (fun01%stateless xs@0@00 y@1@00)
   :pattern ((fun01%limited s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19067|)))
+  :qid |quant-u-18978|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (and
     (forall ((x@3@00 $Ref)) (!
@@ -659,7 +659,7 @@
       :pattern ((Set_in x@3@00 xs@0@00))
       :pattern ((inv@4@00 s@$ xs@0@00 y@1@00 x@3@00))
       :pattern ((img@5@00 s@$ xs@0@00 y@1@00 x@3@00))
-      :qid |quant-u-19069|))
+      :qid |quant-u-18980|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -674,11 +674,11 @@
         (fun01 s@$ xs@0@00 y@1@00)
         ($FVF.lookup_f ($SortWrappers.$SnapTo$FVF<f> ($Snap.first s@$)) y@1@00))))
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19070|)))
+  :qid |quant-u-18981|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   true
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19071|)))
+  :qid |quant-u-18982|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -729,7 +729,7 @@
   :pattern ((Set_in x@4@01 xs@2@01))
   :pattern ((inv@6@01 x@4@01))
   :pattern ((img@7@01 x@4@01))
-  :qid |quant-u-19073|)))
+  :qid |quant-u-18984|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (Set_in (inv@6@01 r) xs@2@01)) (= (inv@6@01 r) r))
   :pattern ((inv@6@01 r))
@@ -810,7 +810,7 @@
       (ite (and (img@7@01 r) (Set_in (inv@6@01 r) xs@2@01)) $Perm.Write $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-19075|))))
+  :qid |quant-u-18986|))))
 (check-sat)
 ; unsat
 (pop) ; 4

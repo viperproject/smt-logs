@@ -47,8 +47,6 @@
 (declare-fun |char#Plus| (T@U T@U) T@U)
 (declare-fun |char#FromInt| (Int) T@U)
 (declare-fun |char#ToInt| (T@U) Int)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun charType () T@T)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -60,6 +58,8 @@
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
+(declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun charType () T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
  :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
@@ -107,23 +107,17 @@
  :skolemid |1758|
  :pattern ( (|char#Plus| a b))
 )))
-(assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
- :qid |DafnyPreludebpl.167:18|
- :skolemid |1760|
- :pattern ( ($Box T@@1 x@@5))
-)))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|EnumerationRegression.__default.Digit#canCall| (LitInt |x#0@@0|)) (and (< 0 $FunctionContextHeight) (and (<= (LitInt 137438953472) (LitInt |x#0@@0|)) (< |x#0@@0| 137438953482)))) (= (EnumerationRegression.__default.Digit (LitInt |x#0@@0|)) (|char#Plus| (|char#FromInt| 97) (|char#FromInt| (LitInt (- |x#0@@0| 137438953472))))))
  :qid |Comprehensionsdfy.564:18|
  :weight 3
  :skolemid |2309|
  :pattern ( (EnumerationRegression.__default.Digit (LitInt |x#0@@0|)))
 ))))
-(assert (= (Ctor charType) 3))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|EnumerationRegression.__default.Digit#canCall| |x#0@@1|) (and (< 0 $FunctionContextHeight) (and (<= (LitInt 137438953472) |x#0@@1|) (< |x#0@@1| 137438953482)))) ($Is charType (EnumerationRegression.__default.Digit |x#0@@1|) TChar))
- :qid |Comprehensionsdfy.564:18|
- :skolemid |2306|
- :pattern ( (EnumerationRegression.__default.Digit |x#0@@1|))
-))))
+(assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1760|
+ :pattern ( ($Box T@@1 x@@5))
+)))
 (assert (forall ((n Int) ) (!  (=> (or (and (<= 0 n) (< n 55296)) (and (<= 57344 n) (< n 1114112))) (= (|char#ToInt| (|char#FromInt| n)) n))
  :qid |DafnyPreludebpl.131:15|
  :skolemid |1756|
@@ -138,13 +132,13 @@
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
  :qid |mapAx1:MapType0Select:1|
  :weight 0
-)))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+)))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
  :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
  :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
  :qid |ctor:MapType1Type|
 ))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
  :qid |typeInv:MapType1TypeInv0|
@@ -155,7 +149,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3324|
+ :skolemid |3322|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))
@@ -163,6 +157,12 @@
  :skolemid |1757|
  :pattern ( (|char#ToInt| ch))
 )))
+(assert (= (Ctor charType) 7))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|EnumerationRegression.__default.Digit#canCall| |x#0@@1|) (and (< 0 $FunctionContextHeight) (and (<= (LitInt 137438953472) |x#0@@1|) (< |x#0@@1| 137438953482)))) ($Is charType (EnumerationRegression.__default.Digit |x#0@@1|) TChar))
+ :qid |Comprehensionsdfy.564:18|
+ :skolemid |2306|
+ :pattern ( (EnumerationRegression.__default.Digit |x#0@@1|))
+))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |1753|

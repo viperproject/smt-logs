@@ -74,7 +74,6 @@
 (declare-fun null () T@U)
 (declare-fun dtype (T@U) T@U)
 (declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun Tclass._System.nat () T@U)
 (declare-fun Tclass._module.Handful () T@U)
 (declare-fun Tclass._module.EvenInt () T@U)
@@ -102,6 +101,7 @@
 (declare-fun $IsBox (T@U T@U) Bool)
 (declare-fun $IsAllocBox (T@U T@U T@U) Bool)
 (declare-fun nat_from_bv7 ((_ BitVec 7)) Int)
+(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun TagFamily (T@U) T@U)
 (declare-fun Mod (Int Int) Int)
 (declare-fun q@Real (Int) Real)
@@ -200,11 +200,6 @@
  :qid |unknown.0:0|
  :skolemid |375|
  :pattern ( (_System.array.Length $o) (Tclass._System.array? _System.array$arg))
-)))
-(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |350|
- :pattern ( (nat_from_bv32 b))
 )))
 (assert (forall ((a@@0 T@U) (x@@7 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@7) y))
  :qid |DafnyPreludebpl.690:15|
@@ -372,10 +367,15 @@
  :skolemid |110|
  :pattern ( ($HeapSucc h@@3 k@@1) ($IsAlloc T@@2 v@@11 t@@1 h@@3))
 )))
-(assert (forall ((b@@0 (_ BitVec 7)) ) (!  (and (and (<= 0 (nat_from_bv7 b@@0)) (< (nat_from_bv7 b@@0) 128)) (= (nat_from_bv7 b@@0) (bv2int b@@0)))
+(assert (forall ((b (_ BitVec 7)) ) (!  (and (and (<= 0 (nat_from_bv7 b)) (< (nat_from_bv7 b) 128)) (= (nat_from_bv7 b) (bv2int b)))
  :qid |unknown.0:0|
  :skolemid |354|
- :pattern ( (nat_from_bv7 b@@0))
+ :pattern ( (nat_from_bv7 b))
+)))
+(assert (forall ((b@@0 (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b@@0)) (< (nat_from_bv32 b@@0) 4294967296)) (= (nat_from_bv32 b@@0) (bv2int b@@0)))
+ :qid |unknown.0:0|
+ :skolemid |350|
+ :pattern ( (nat_from_bv32 b@@0))
 )))
 (assert (forall ((_System.array$arg@@3 T@U) ) (!  (and (= (Tag (Tclass._System.array? _System.array$arg@@3)) Tagclass._System.array?) (= (TagFamily (Tclass._System.array? _System.array$arg@@3)) tytagFamily$array))
  :qid |unknown.0:0|

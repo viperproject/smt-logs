@@ -129,7 +129,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| Bool) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#5| |l#0| |l#1|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) |l#1|))
  :qid |gitissue851dfy.204:8|
- :skolemid |4110|
+ :skolemid |4111|
  :pattern ( (MapType0Select BoxType boolType (|lambda#5| |l#0| |l#1|) |$y#0|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|IMap#Domain| (|IMap#Glue| a b t)) a)
@@ -235,7 +235,7 @@
 (assert  (=> (<= 1 $FunctionContextHeight) (=> (or |OtherBindersInExpressions.__default.MapComprehension1#canCall| (< 1 $FunctionContextHeight)) (= OtherBindersInExpressions.__default.MapComprehension1 (LitInt (Div 40 (LitInt 0)))))))
 (assert (forall ((|l#0@@0| T@U) (|$w#0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#14| |l#0@@0|) |$w#0|) |l#0@@0|)
  :qid |gitissue851dfy.253:14|
- :skolemid |4112|
+ :skolemid |4113|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#14| |l#0@@0|) |$w#0|))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc (MapType0Type BoxType boolType) v@@2 (TISet t0@@1) h@@0) (forall ((bx@@0 T@U) ) (!  (=> (U_2_bool (MapType0Select BoxType boolType v@@2 bx@@0)) ($IsAllocBox bx@@0 t0@@1 h@@0))
@@ -427,7 +427,7 @@
 )))) (= (Ctor refType) 7)) (= (Ctor FieldType) 8)))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@0| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4109|
+ :skolemid |4110|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@1| |l#1@@0| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) (t0@@5 T@U) (t1@@3 T@U) ) (!  (=> (forall ((bx@@7 T@U) ) (!  (=> (U_2_bool (MapType0Select BoxType boolType a@@1 bx@@7)) (and ($IsBox bx@@7 t0@@5) ($IsBox (MapType0Select BoxType BoxType b@@1 bx@@7) t1@@3)))

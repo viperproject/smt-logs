@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:08:25
+; Started: 2025-01-27 03:01:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1056,7 +1056,7 @@
     (Seq_contains as@10@01 (inv@12@01 r))
     ($FVF.loc_f ($FVF.lookup_f (as sm@9@01  $FVF<f>) r) r))
   :pattern ((inv@12@01 r))
-  :qid |quant-u-13214|)))
+  :qid |quant-u-13207|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@14@01 ((r $Ref)) $Perm
   (ite
@@ -1094,7 +1094,7 @@
     (and (Seq_contains as@10@01 (inv@12@01 r)) (img@13@01 r) (= r (inv@12@01 r)))
     (= (- $Perm.Write (pTaken@14@01 r)) $Perm.No))
   
-  :qid |quant-u-13217|))))
+  :qid |quant-u-13210|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1116,7 +1116,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@15@01 r) $Perm.No)
   
-  :qid |quant-u-13219|))))
+  :qid |quant-u-13212|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1131,7 +1131,7 @@
     (and (Seq_contains as@10@01 (inv@12@01 r)) (img@13@01 r) (= r (inv@12@01 r)))
     (= (- (- $Perm.Write (pTaken@14@01 r)) (pTaken@15@01 r)) $Perm.No))
   
-  :qid |quant-u-13220|))))
+  :qid |quant-u-13213|))))
 (check-sat)
 ; unsat
 (pop) ; 3

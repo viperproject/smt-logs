@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:33
+// Date:         2025-01-27 03:16:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157-1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0157-1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -270,12 +270,12 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -303,8 +303,8 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -321,8 +321,8 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
   // -- Translating statement: unfold acc(TestV$(this), write) -- 0157-1.vpr@36.3--36.34
     assume TestV$#trigger(Heap, TestV$(this));
     assume Heap[null, TestV$(this)] == FrameFragment(Heap[this, Testx$]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding TestV$(this) might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@36.3--36.34) [58214]"}
@@ -353,8 +353,8 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(TestV$(this), write) -- 0157-1.vpr@38.3--38.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding TestV$(this) might fail. There might be insufficient permission to access this.Testx$ (0157-1.vpr@38.3--38.32) [58220]"}
@@ -377,8 +377,8 @@ procedure Testfoo$(this: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Testfoo$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@34.11--34.35) [58222]"}
@@ -399,10 +399,10 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -442,12 +442,12 @@ procedure TestBug(this: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157-1.vpr@45.3--45.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@45.10--45.15) [58227]"}
       false;
     assume state(Heap, Mask);
@@ -461,10 +461,10 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -505,12 +505,12 @@ procedure TestBug1(this: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert false -- 0157-1.vpr@53.3--53.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0157-1.vpr@53.10--53.15) [58232]"}
       false;
     assume state(Heap, Mask);
@@ -524,12 +524,12 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -578,8 +578,8 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -594,8 +594,8 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
   }
   
   // -- Translating statement: assert this.Testtk$.joinable$ -- 0157-1.vpr@63.3--63.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.Testtk$.joinable$
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Testtk$ (0157-1.vpr@63.10--63.32) [58237]"}
@@ -632,8 +632,8 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
   // -- Translating statement: assert acc(TestV$(this), write) -- 0157-1.vpr@67.3--67.34
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access TestV$(this) (0157-1.vpr@67.10--67.34) [58246]"}
@@ -643,8 +643,8 @@ procedure TestjoinTk$(this: Ref, k$_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of TestjoinTk$ might not hold. There might be insufficient permission to access TestV$(this) (0157-1.vpr@61.11--61.35) [58247]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:22
+// Date:         2025-01-27 03:24:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0179.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0179-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -250,12 +250,12 @@ axiom (forall Heap: HeapType, r$: Ref ::
 procedure test2_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -266,8 +266,8 @@ procedure test2_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[b_24, $allocated];
@@ -289,8 +289,8 @@ procedure test2_1() returns ()
   // -- Translating statement: exhale (perm(P3(b)) >= write ?
   //     acc(P3(b), write) :
   //     (perm(P1(b)) > none ? acc(P1(b), write - perm(P3(b))) : true)) -- 0179.vpr@16.5--16.109
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (FullPerm <= Mask[null, P3(b_24)]) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -317,8 +317,8 @@ procedure test2_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P1(b)) == write -- 0179.vpr@18.5--18.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P1(b)) == write might not hold. (0179.vpr@18.12--18.32) [85629]"}
       Mask[null, P1(b_24)] == FullPerm;
     assume state(Heap, Mask);

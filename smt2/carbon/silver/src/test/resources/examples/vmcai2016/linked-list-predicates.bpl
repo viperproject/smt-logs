@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:02
+// Date:         2025-01-27 03:30:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/linked-list-predicates.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/linked-list-predicates-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -623,14 +623,14 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_12: int;
   var j_23: int;
   var i_2: int;
@@ -659,8 +659,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(this, end_1));
         assume UnfoldingHeap[null, lseg(this, end_1)] == FrameFragment((if this != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)])) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@20.1--31.2) [111905]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, end_1)];
@@ -685,8 +685,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
             Unfolding1Mask := UnfoldingMask;
             assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[this, next], end_1));
             assume Unfolding1Heap[null, lseg(Unfolding1Heap[this, next], end_1)] == FrameFragment((if Unfolding1Heap[this, next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := Unfolding1Heap;
             ExhaleWellDef0Mask := Unfolding1Mask;
+            ExhaleWellDef0Heap := Unfolding1Heap;
             perm := FullPerm;
             if (Unfolding1Heap[this, next] != end_1) {
               perm := FullPerm;
@@ -741,8 +741,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.next, end) (linked-list-predicates.vpr@29.39--29.67) [111908]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1)];
@@ -775,8 +775,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
     Result := (if this == end_1 then (Seq#Empty(): Seq int) else Seq#Append(Seq#Singleton(Heap[this, data]), contentNodes(Heap, Heap[this, next], end_1)));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (this == end_1) {
       assert {:msg "  Postcondition of contentNodes might not hold. Assertion result == Seq[Int]() might not hold. (linked-list-predicates.vpr@22.12--22.48) [111909]"}
         Seq#Equal(Result, (Seq#Empty(): Seq int));
@@ -792,8 +792,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
         UnfoldingMask := ExhaleWellDef0Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(this, end_1));
         assume UnfoldingHeap[null, lseg(this, end_1)] == FrameFragment((if this != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)])) else EmptyFrame));
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@23.12--24.87) [111912]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, end_1)];
@@ -818,8 +818,8 @@ procedure contentNodes#definedness(this: Ref, end_1: Ref) returns (Result: (Seq 
             Unfolding1Mask := UnfoldingMask;
             assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[this, next], end_1));
             assume Unfolding1Heap[null, lseg(Unfolding1Heap[this, next], end_1)] == FrameFragment((if Unfolding1Heap[this, next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)])) else EmptyFrame));
-            ExhaleWellDef1Heap := Unfolding1Heap;
             ExhaleWellDef1Mask := Unfolding1Mask;
+            ExhaleWellDef1Heap := Unfolding1Heap;
             perm := FullPerm;
             if (Unfolding1Heap[this, next] != end_1) {
               perm := FullPerm;
@@ -988,14 +988,14 @@ procedure lengthNodes#definedness(this: Ref, end_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1018,8 +1018,8 @@ procedure lengthNodes#definedness(this: Ref, end_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume lseg#trigger(UnfoldingHeap, lseg(this, end_1));
       assume UnfoldingHeap[null, lseg(this, end_1)] == FrameFragment((if this != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)])) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@34.1--41.2) [111920]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, end_1)];
@@ -1044,8 +1044,8 @@ procedure lengthNodes#definedness(this: Ref, end_1: Ref) returns (Result: int)
           Unfolding1Mask := UnfoldingMask;
           assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[this, next], end_1));
           assume Unfolding1Heap[null, lseg(Unfolding1Heap[this, next], end_1)] == FrameFragment((if Unfolding1Heap[this, next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)])) else EmptyFrame));
-          ExhaleWellDef0Heap := Unfolding1Heap;
           ExhaleWellDef0Mask := Unfolding1Mask;
+          ExhaleWellDef0Heap := Unfolding1Heap;
           perm := FullPerm;
           if (Unfolding1Heap[this, next] != end_1) {
             perm := FullPerm;
@@ -1100,8 +1100,8 @@ procedure lengthNodes#definedness(this: Ref, end_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lengthNodes might not hold. There might be insufficient permission to access lseg(this.next, end) (linked-list-predicates.vpr@40.21--40.48) [111922]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1)];
@@ -1134,14 +1134,14 @@ procedure lengthNodes#definedness(this: Ref, end_1: Ref) returns (Result: int)
     Result := (if this == end_1 then 0 else 1 + lengthNodes(Heap, Heap[this, next], end_1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of result == |contentNodes(this, end)|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@36.23--36.46) [111923]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, lseg(this, end_1)];
@@ -1207,8 +1207,8 @@ procedure content#definedness(this: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   var i_55: int;
@@ -1236,8 +1236,8 @@ procedure content#definedness(this: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, head_3]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, head_3], null)]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@55.1--60.2) [111925]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -1256,8 +1256,8 @@ procedure content#definedness(this: Ref) returns (Result: (Seq int))
         HasDirectPerm(UnfoldingMask, this, head_3);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.head, null) (linked-list-predicates.vpr@59.32--59.61) [111927]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, head_3], null)];
@@ -1283,8 +1283,8 @@ procedure content#definedness(this: Ref) returns (Result: (Seq int))
     Result := contentNodes(Heap, Heap[this, head_3], null);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, j: Int :: { result[i], result[j] } 0 <= i && (i < j && j < |result|) ==> result[i] <= result[j])
       if (*) {
@@ -1361,12 +1361,12 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1388,8 +1388,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, head_3]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, head_3], null)]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@62.1--67.2) [111933]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -1408,8 +1408,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
         HasDirectPerm(UnfoldingMask, this, head_3);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lengthNodes might not hold. There might be insufficient permission to access lseg(this.head, null) (linked-list-predicates.vpr@66.32--66.60) [111935]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(UnfoldingHeap[this, head_3], null)];
@@ -1435,14 +1435,14 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := lengthNodes(Heap, Heap[this, head_3], null);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of result == |content(this)|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@64.22--64.35) [111936]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(this)];
@@ -1503,8 +1503,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -1513,8 +1513,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
   var Unfolding2Heap: HeapType;
   var Unfolding2Mask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1533,8 +1533,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
     // -- Check definedness of 0 < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@71.16--71.28) [111938]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -1555,8 +1555,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, head_3]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, head_3], null)]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@69.1--75.2) [111939]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -1575,8 +1575,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
       Unfolding1Mask := UnfoldingMask;
       assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[this, head_3], null));
       assume Unfolding1Heap[null, lseg(Unfolding1Heap[this, head_3], null)] == FrameFragment((if Unfolding1Heap[this, head_3] != null then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, head_3], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, head_3], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[this, head_3], next], null)])) else EmptyFrame));
-      ExhaleWellDef0Heap := Unfolding1Heap;
       ExhaleWellDef0Mask := Unfolding1Mask;
+      ExhaleWellDef0Heap := Unfolding1Heap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this.head, null) (linked-list-predicates.vpr@69.1--75.2) [111940]"}
         NoPerm < perm ==> NoPerm < Unfolding1Mask[null, lseg(Unfolding1Heap[this, head_3], null)];
@@ -1601,8 +1601,8 @@ procedure peek#definedness(this: Ref) returns (Result: int)
           Unfolding2Mask := Unfolding1Mask;
           assume lseg#trigger(Unfolding2Heap, lseg(Unfolding2Heap[Unfolding2Heap[this, head_3], next], null));
           assume Unfolding2Heap[null, lseg(Unfolding2Heap[Unfolding2Heap[this, head_3], next], null)] == FrameFragment((if Unfolding2Heap[Unfolding2Heap[this, head_3], next] != null then CombineFrames(FrameFragment(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[this, head_3], next], data]), CombineFrames(FrameFragment(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[this, head_3], next], next]), Unfolding2Heap[null, lseg(Unfolding2Heap[Unfolding2Heap[Unfolding2Heap[this, head_3], next], next], null)])) else EmptyFrame));
-          ExhaleWellDef0Heap := Unfolding2Heap;
           ExhaleWellDef0Mask := Unfolding2Mask;
+          ExhaleWellDef0Heap := Unfolding2Heap;
           perm := FullPerm;
           if (Unfolding2Heap[Unfolding2Heap[this, head_3], next] != null) {
             perm := FullPerm;
@@ -1696,14 +1696,14 @@ procedure peek#definedness(this: Ref) returns (Result: int)
     Result := Heap[Heap[this, head_3], data];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of result == content(this)[0]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@72.21--72.34) [111944]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(this)];
@@ -1761,8 +1761,8 @@ procedure lseg#definedness(this: Ref, end_1: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1798,8 +1798,8 @@ procedure lseg#definedness(this: Ref, end_1: Ref) returns ()
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[this, next], end_1));
         assume UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)] == FrameFragment((if UnfoldingHeap[this, next] != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)])) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access lseg(this.next, end) (linked-list-predicates.vpr@13.1--18.2) [111948]"}
@@ -1827,8 +1827,8 @@ procedure lseg#definedness(this: Ref, end_1: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1));
             assume Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] == FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1 then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end_1)])) else EmptyFrame));
-            ExhaleWellDef0Heap := Unfolding1Heap;
             ExhaleWellDef0Mask := Unfolding1Mask;
+            ExhaleWellDef0Heap := Unfolding1Heap;
             perm := FullPerm;
             Unfolding1Mask := Unfolding1Mask[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1):=Unfolding1Mask[null, lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end_1)] - perm];
             if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end_1) {
@@ -1909,8 +1909,8 @@ procedure lseg#definedness(this: Ref, end_1: Ref) returns ()
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[this, next], end_1));
         assume UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)] == FrameFragment((if UnfoldingHeap[this, next] != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)])) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1):=UnfoldingMask[null, lseg(UnfoldingHeap[this, next], end_1)] - perm];
         if (UnfoldingHeap[this, next] != end_1) {
@@ -2018,19 +2018,19 @@ procedure List#definedness(this: Ref) returns ()
 procedure create() returns (this: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshObj: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var newPMask: PMaskType;
   var freshVersion: FrameType;
   
@@ -2043,8 +2043,8 @@ procedure create() returns (this: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2059,8 +2059,8 @@ procedure create() returns (this: Ref)
     // -- Check definedness of content(this) == Seq[Int]()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@79.11--79.24) [111955]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -2100,8 +2100,8 @@ procedure create() returns (this: Ref)
     // -- Check definedness of acc(lseg(this.head, null), write)
       assert {:msg "  Folding lseg(this.head, null) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@83.3--83.34) [111957]"}
         HasDirectPerm(Mask, this, head_3);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (Heap[this, head_3] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -2130,8 +2130,8 @@ procedure create() returns (this: Ref)
         UnfoldingMask := ExhaleWellDef0Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null));
         assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next], null)])) else EmptyFrame));
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding lseg(this.head, null) might fail. There might be insufficient permission to access lseg(this.head.next, null) (linked-list-predicates.vpr@83.3--83.34) [111967]"}
@@ -2212,8 +2212,8 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(this), write) -- linked-list-predicates.vpr@84.3--84.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@84.3--84.23) [111975]"}
@@ -2251,8 +2251,8 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of create might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@78.11--78.26) [111979]"}
@@ -2275,11 +2275,11 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2289,8 +2289,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_this: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -2326,8 +2326,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
     // -- Check definedness of 0 < |contentNodes(this, ptr)| && 0 < |contentNodes(ptr, end)|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, ptr) (linked-list-predicates.vpr@91.17--91.40) [111982]"}
           NoPerm < perm ==> NoPerm < Mask[null, lseg(this, ptr_2)];
@@ -2341,8 +2341,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
       if (0 < Seq#Length(contentNodes(Heap, this, ptr_2))) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr, end) (linked-list-predicates.vpr@91.50--91.72) [111983]"}
             NoPerm < perm ==> NoPerm < Mask[null, lseg(ptr_2, end_1)];
@@ -2360,8 +2360,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
       // -- Check definedness of contentNodes(this, ptr)[|contentNodes(this, ptr)| - 1] <= contentNodes(ptr, end)[0]
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, ptr) (linked-list-predicates.vpr@92.14--92.37) [111984]"}
             NoPerm < perm ==> NoPerm < Mask[null, lseg(this, ptr_2)];
@@ -2374,8 +2374,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, ptr) (linked-list-predicates.vpr@92.39--92.62) [111985]"}
             NoPerm < perm ==> NoPerm < Mask[null, lseg(this, ptr_2)];
@@ -2392,8 +2392,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
           Seq#Length(contentNodes(Heap, this, ptr_2)) - 1 < Seq#Length(contentNodes(Heap, this, ptr_2));
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr, end) (linked-list-predicates.vpr@92.70--92.92) [111988]"}
             NoPerm < perm ==> NoPerm < Mask[null, lseg(ptr_2, end_1)];
@@ -2413,8 +2413,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2429,8 +2429,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
     // -- Check definedness of contentNodes(this, end) == old(contentNodes(this, ptr) ++ contentNodes(ptr, end))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@94.11--94.34) [111990]"}
           NoPerm < perm ==> NoPerm < PostMask[null, lseg(this, end_1)];
@@ -2443,8 +2443,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this, ptr) (linked-list-predicates.vpr@94.42--94.65) [111991]"}
           NoPerm < perm ==> NoPerm < oldMask[null, lseg(this, ptr_2)];
@@ -2454,8 +2454,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr, end) (linked-list-predicates.vpr@94.69--94.91) [111992]"}
           NoPerm < perm ==> NoPerm < oldMask[null, lseg(ptr_2, end_1)];
@@ -2484,8 +2484,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
       // -- Translating statement: unfold acc(lseg(this, ptr), write) -- linked-list-predicates.vpr@99.5--99.32
         assume lseg#trigger(Heap, lseg(this, ptr_2));
         assume Heap[null, lseg(this, ptr_2)] == FrameFragment((if this != ptr_2 then CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, next]), Heap[null, lseg(Heap[this, next], ptr_2)])) else EmptyFrame));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding lseg(this, ptr) might fail. There might be insufficient permission to access lseg(this, ptr) (linked-list-predicates.vpr@99.5--99.32) [111996]"}
@@ -2519,8 +2519,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
             UnfoldingMask := Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[this, next], ptr_2));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], ptr_2)] == FrameFragment((if UnfoldingHeap[this, next] != ptr_2 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], ptr_2)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[this, next], ptr_2):=UnfoldingMask[null, lseg(UnfoldingHeap[this, next], ptr_2)] - perm];
             if (UnfoldingHeap[this, next] != ptr_2) {
@@ -2582,8 +2582,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
         arg_this := Heap[this, next];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access lseg(this.next, ptr) (linked-list-predicates.vpr@100.5--100.32) [112001]"}
@@ -2633,8 +2633,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(lseg(this, end), write) -- linked-list-predicates.vpr@101.5--101.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (this != end_1) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -2663,8 +2663,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[this, next], end_1));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[this, next], end_1)] == FrameFragment((if UnfoldingHeap[this, next] != end_1 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end_1)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(this, end) might fail. There might be insufficient permission to access lseg(this.next, end) (linked-list-predicates.vpr@101.5--101.30) [112016]"}
@@ -2747,8 +2747,8 @@ procedure vconcat(this: Ref, ptr_2: Ref, end_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of concat might not hold. There might be insufficient permission to access lseg(this, end) (linked-list-predicates.vpr@93.12--93.32) [112022]"}
@@ -2781,12 +2781,12 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: Ref;
   var newVersion: FrameType;
@@ -2794,8 +2794,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
   var UnfoldingMask: MaskType;
   var newPMask: PMaskType;
   var freshObj: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var freshVersion: FrameType;
   var ptr_2: Ref;
   var i: int;
@@ -2832,8 +2832,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2849,8 +2849,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
     // -- Check definedness of index <= |old(content(this))|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@108.39--108.52) [112026]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -2865,8 +2865,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
     // -- Check definedness of content(this) == old(content(this))[0..index] ++ Seq(elem) ++ old(content(this))[index..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@109.11--109.24) [112027]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -2879,8 +2879,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@109.32--109.45) [112028]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -2890,8 +2890,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@109.77--109.90) [112029]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -2915,8 +2915,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
   // -- Translating statement: unfold acc(List(this), write) -- linked-list-predicates.vpr@114.3--114.25
     assume List#trigger(Heap, List(this));
     assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, head_3]), Heap[null, lseg(Heap[this, head_3], null)]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@114.3--114.25) [112032]"}
@@ -2956,8 +2956,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             HasDirectPerm(Mask, this, head_3);
         assume lseg#trigger(Heap, lseg(Heap[this, head_3], null));
         assume Heap[null, lseg(Heap[this, head_3], null)] == FrameFragment((if Heap[this, head_3] != null then CombineFrames(FrameFragment(Heap[Heap[this, head_3], data]), CombineFrames(FrameFragment(Heap[Heap[this, head_3], next]), Heap[null, lseg(Heap[Heap[this, head_3], next], null)])) else EmptyFrame));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding lseg(this.head, null) might fail. There might be insufficient permission to access lseg(this.head, null) (linked-list-predicates.vpr@117.5--117.38) [112039]"}
@@ -2991,8 +2991,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next], null)])) else EmptyFrame));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null):=UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] - perm];
             if (UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null) {
@@ -3092,8 +3092,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         // -- Check definedness of acc(lseg(this.head, null), write)
           assert {:msg "  Folding lseg(this.head, null) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@124.5--124.36) [112049]"}
             HasDirectPerm(Mask, this, head_3);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (Heap[this, head_3] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -3122,8 +3122,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next], null)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(this.head, null) might fail. There might be insufficient permission to access lseg(this.head.next, null) (linked-list-predicates.vpr@124.5--124.36) [112059]"}
@@ -3204,8 +3204,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(lseg(tmp, null), write) -- linked-list-predicates.vpr@125.5--125.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (tmp != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -3234,8 +3234,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[tmp, next], null));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[tmp, next], null)] == FrameFragment((if UnfoldingHeap[tmp, next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[tmp, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[tmp, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[tmp, next], next], null)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(tmp, null) might fail. There might be insufficient permission to access lseg(tmp.next, null) (linked-list-predicates.vpr@125.5--125.30) [112074]"}
@@ -3338,8 +3338,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         // -- Check definedness of acc(lseg(this.head, ptr), write)
           assert {:msg "  Folding lseg(this.head, ptr) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@129.5--129.35) [112082]"}
             HasDirectPerm(Mask, this, head_3);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (Heap[this, head_3] != ptr_2) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -3368,8 +3368,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], ptr_2));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], ptr_2)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, head_3], next] != ptr_2 then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next], ptr_2)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(this.head, ptr) might fail. There might be insufficient permission to access lseg(this.head.next, ptr) (linked-list-predicates.vpr@129.5--129.35) [112092]"}
@@ -3458,8 +3458,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.head, write) might not hold on entry. There might be insufficient permission to access this.head (linked-list-predicates.vpr@133.17--133.31) [112098]"}
@@ -3573,8 +3573,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     HasDirectPerm(Mask, this, head_3);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@137.49--137.77) [112112]"}
                       NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[this, head_3], ptr_2)];
@@ -3591,8 +3591,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     HasDirectPerm(Mask, this, head_3);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@138.19--138.47) [112114]"}
                       NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[this, head_3], ptr_2)];
@@ -3626,8 +3626,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     HasDirectPerm(Mask, ptr_2, next);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@139.49--139.77) [112119]"}
                       NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[ptr_2, next], null)];
@@ -3646,8 +3646,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     HasDirectPerm(Mask, ptr_2, next);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@140.31--140.59) [112122]"}
                       NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[ptr_2, next], null)];
@@ -3677,8 +3677,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 HasDirectPerm(Mask, this, head_3);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@141.29--141.57) [112126]"}
                   NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[this, head_3], ptr_2)];
@@ -3696,8 +3696,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             // -- Check definedness of old(content(this)) == contentNodes(this.head, ptr) ++ Seq(ptr.data) ++ contentNodes(ptr.next, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@143.13--143.26) [112127]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -3709,8 +3709,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 HasDirectPerm(Mask, this, head_3);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@143.31--143.59) [112129]"}
                   NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[this, head_3], ptr_2)];
@@ -3727,8 +3727,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 HasDirectPerm(Mask, ptr_2, next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@143.80--143.108) [112132]"}
                   NoPerm < perm ==> NoPerm < Mask[null, lseg(Heap[ptr_2, next], null)];
@@ -3796,8 +3796,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 UnfoldingMask := Mask;
                 assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[ptr_2, next], null));
                 assume UnfoldingHeap[null, lseg(UnfoldingHeap[ptr_2, next], null)] == FrameFragment((if UnfoldingHeap[ptr_2, next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null)])) else EmptyFrame));
-                ExhaleWellDef0Heap := UnfoldingHeap;
                 ExhaleWellDef0Mask := UnfoldingMask;
+                ExhaleWellDef0Heap := UnfoldingHeap;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  While statement might fail. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@132.11--132.90) [112134]"}
@@ -3825,8 +3825,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     Unfolding1Mask := UnfoldingMask;
                     assume lseg#trigger(Unfolding1Heap, lseg(Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], null));
                     assume Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], null)] == FrameFragment((if Unfolding1Heap[Unfolding1Heap[ptr_2, next], next] != null then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], next]), Unfolding1Heap[null, lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], next], null)])) else EmptyFrame));
-                    ExhaleWellDef0Heap := Unfolding1Heap;
                     ExhaleWellDef0Mask := Unfolding1Mask;
+                    ExhaleWellDef0Heap := Unfolding1Heap;
                     perm := FullPerm;
                     Unfolding1Mask := Unfolding1Mask[null, lseg(Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], null):=Unfolding1Mask[null, lseg(Unfolding1Heap[Unfolding1Heap[ptr_2, next], next], null)] - perm];
                     if (Unfolding1Heap[Unfolding1Heap[ptr_2, next], next] != null) {
@@ -3911,8 +3911,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     HasDirectPerm(Mask, ptr_2, next);
                 assume lseg#trigger(Heap, lseg(Heap[ptr_2, next], null));
                 assume Heap[null, lseg(Heap[ptr_2, next], null)] == FrameFragment((if Heap[ptr_2, next] != null then CombineFrames(FrameFragment(Heap[Heap[ptr_2, next], data]), CombineFrames(FrameFragment(Heap[Heap[ptr_2, next], next]), Heap[null, lseg(Heap[Heap[ptr_2, next], next], null)])) else EmptyFrame));
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding lseg(ptr.next, null) might fail. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@145.7--145.39) [112139]"}
@@ -3946,8 +3946,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     UnfoldingMask := Mask;
                     assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null));
                     assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[ptr_2, next], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], next], null)])) else EmptyFrame));
-                    ExhaleWellDef0Heap := UnfoldingHeap;
                     ExhaleWellDef0Mask := UnfoldingMask;
+                    ExhaleWellDef0Heap := UnfoldingHeap;
                     perm := FullPerm;
                     UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null):=UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null)] - perm];
                     if (UnfoldingHeap[UnfoldingHeap[ptr_2, next], next] != null) {
@@ -4012,8 +4012,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(lseg(ptrn, ptrn), write) -- linked-list-predicates.vpr@148.7--148.33
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 if (ptrn != ptrn) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -4042,8 +4042,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     UnfoldingMask := ExhaleWellDef0Mask;
                     assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[ptrn, next], ptrn));
                     assume UnfoldingHeap[null, lseg(UnfoldingHeap[ptrn, next], ptrn)] == FrameFragment((if UnfoldingHeap[ptrn, next] != ptrn then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptrn, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptrn, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptrn, next], next], ptrn)])) else EmptyFrame));
-                    ExhaleWellDef1Heap := UnfoldingHeap;
                     ExhaleWellDef1Mask := UnfoldingMask;
+                    ExhaleWellDef1Heap := UnfoldingHeap;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding lseg(ptrn, ptrn) might fail. There might be insufficient permission to access lseg(ptrn.next, ptrn) (linked-list-predicates.vpr@148.7--148.33) [112144]"}
@@ -4124,8 +4124,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(lseg(ptr, ptrn), write) -- linked-list-predicates.vpr@149.7--149.32
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 if (ptr_2 != ptrn) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -4154,8 +4154,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                     UnfoldingMask := ExhaleWellDef0Mask;
                     assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[ptr_2, next], ptrn));
                     assume UnfoldingHeap[null, lseg(UnfoldingHeap[ptr_2, next], ptrn)] == FrameFragment((if UnfoldingHeap[ptr_2, next] != ptrn then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], ptrn)])) else EmptyFrame));
-                    ExhaleWellDef1Heap := UnfoldingHeap;
                     ExhaleWellDef1Mask := UnfoldingMask;
+                    ExhaleWellDef1Heap := UnfoldingHeap;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding lseg(ptr, ptrn) might fail. There might be insufficient permission to access lseg(ptr.next, ptrn) (linked-list-predicates.vpr@149.7--149.32) [112149]"}
@@ -4245,8 +4245,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 arg_this := Heap[this, head_3];
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@150.7--150.35) [112152]"}
@@ -4299,8 +4299,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
                 ptr_2 := ptrn;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.head, write) might not be preserved. There might be insufficient permission to access this.head (linked-list-predicates.vpr@133.17--133.31) [112158]"}
@@ -4445,8 +4445,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         // -- Check definedness of acc(lseg(ptr.next, null), write)
           assert {:msg "  Folding lseg(ptr.next, null) might fail. There might be insufficient permission to access ptr.next (linked-list-predicates.vpr@158.5--158.35) [112172]"}
             HasDirectPerm(Mask, ptr_2, next);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (Heap[ptr_2, next] != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -4475,8 +4475,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[ptr_2, next], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], next], null)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(ptr.next, null) might fail. There might be insufficient permission to access lseg(ptr.next.next, null) (linked-list-predicates.vpr@158.5--158.35) [112182]"}
@@ -4557,8 +4557,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(lseg(ptr, null), write) -- linked-list-predicates.vpr@161.5--161.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (ptr_2 != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -4587,8 +4587,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
             UnfoldingMask := ExhaleWellDef0Mask;
             assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[ptr_2, next], null));
             assume UnfoldingHeap[null, lseg(UnfoldingHeap[ptr_2, next], null)] == FrameFragment((if UnfoldingHeap[ptr_2, next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[ptr_2, next], next], null)])) else EmptyFrame));
-            ExhaleWellDef1Heap := UnfoldingHeap;
             ExhaleWellDef1Mask := UnfoldingMask;
+            ExhaleWellDef1Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding lseg(ptr, null) might fail. There might be insufficient permission to access lseg(ptr.next, null) (linked-list-predicates.vpr@161.5--161.30) [112197]"}
@@ -4678,8 +4678,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
         arg_this_1 := Heap[this, head_3];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access lseg(this.head, ptr) (linked-list-predicates.vpr@162.5--162.33) [112204]"}
@@ -4731,8 +4731,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(this), write) -- linked-list-predicates.vpr@165.3--165.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@165.3--165.23) [112212]"}
@@ -4770,8 +4770,8 @@ procedure insert(this: Ref, elem_1: int) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@107.11--107.26) [112216]"}
@@ -4798,11 +4798,11 @@ procedure dequeue(this: Ref) returns (res: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -4830,8 +4830,8 @@ procedure dequeue(this: Ref) returns (res: int)
     // -- Check definedness of 0 < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@170.16--170.28) [112220]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -4848,8 +4848,8 @@ procedure dequeue(this: Ref) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4864,8 +4864,8 @@ procedure dequeue(this: Ref) returns (res: int)
     // -- Check definedness of res == old(content(this)[0])
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@172.22--172.35) [112221]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -4882,8 +4882,8 @@ procedure dequeue(this: Ref) returns (res: int)
     // -- Check definedness of content(this) == old(content(this)[1..])
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@173.11--173.24) [112223]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -4896,8 +4896,8 @@ procedure dequeue(this: Ref) returns (res: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@173.32--173.45) [112224]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -4914,8 +4914,8 @@ procedure dequeue(this: Ref) returns (res: int)
   // -- Translating statement: unfold acc(List(this), write) -- linked-list-predicates.vpr@175.3--175.25
     assume List#trigger(Heap, List(this));
     assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, head_3]), Heap[null, lseg(Heap[this, head_3], null)]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@175.3--175.25) [112227]"}
@@ -4948,8 +4948,8 @@ procedure dequeue(this: Ref) returns (res: int)
         HasDirectPerm(Mask, this, head_3);
     assume lseg#trigger(Heap, lseg(Heap[this, head_3], null));
     assume Heap[null, lseg(Heap[this, head_3], null)] == FrameFragment((if Heap[this, head_3] != null then CombineFrames(FrameFragment(Heap[Heap[this, head_3], data]), CombineFrames(FrameFragment(Heap[Heap[this, head_3], next]), Heap[null, lseg(Heap[Heap[this, head_3], next], null)])) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding lseg(this.head, null) might fail. There might be insufficient permission to access lseg(this.head, null) (linked-list-predicates.vpr@176.3--176.36) [112233]"}
@@ -4983,8 +4983,8 @@ procedure dequeue(this: Ref) returns (res: int)
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null));
         assume UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] == FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next]), UnfoldingHeap[null, lseg(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, head_3], next], next], null)])) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null):=UnfoldingMask[null, lseg(UnfoldingHeap[UnfoldingHeap[this, head_3], next], null)] - perm];
         if (UnfoldingHeap[UnfoldingHeap[this, head_3], next] != null) {
@@ -5059,8 +5059,8 @@ procedure dequeue(this: Ref) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(this), write) -- linked-list-predicates.vpr@179.3--179.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.head (linked-list-predicates.vpr@179.3--179.23) [112244]"}
@@ -5098,8 +5098,8 @@ procedure dequeue(this: Ref) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of dequeue might not hold. There might be insufficient permission to access List(this) (linked-list-predicates.vpr@171.11--171.26) [112248]"}
@@ -5124,22 +5124,22 @@ procedure test_1(lock: Ref) returns ()
   modifies Heap, Mask;
 {
   var acq_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var r_54: Ref;
   var perm: Perm;
-  var LabelacqHeap: HeapType;
   var LabelacqMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelacqHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var r1: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -5154,8 +5154,8 @@ procedure test_1(lock: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5205,8 +5205,8 @@ procedure test_1(lock: Ref) returns ()
   
   // -- Translating statement: label acq -- linked-list-predicates.vpr@201.1--201.10
     acq_1:
-    LabelacqHeap := Heap;
     LabelacqMask := Mask;
+    LabelacqHeap := Heap;
     acq_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -5215,8 +5215,8 @@ procedure test_1(lock: Ref) returns ()
     // -- Check definedness of 2 <= length(lock)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@203.11--203.23) [112255]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(lock)];
@@ -5234,8 +5234,8 @@ procedure test_1(lock: Ref) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method dequeue might not hold. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@205.5--205.24) [112256]"}
@@ -5264,14 +5264,14 @@ procedure test_1(lock: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert r1 <= peek(lock) -- linked-list-predicates.vpr@207.5--207.28
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of r1 <= peek(lock)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function peek might not hold. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@207.18--207.28) [112258]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(lock)];
@@ -5300,8 +5300,8 @@ procedure test_1(lock: Ref) returns ()
   //   (acc(lock.held, write) &&
   //   (acc(lock.changed, write) &&
   //   (old[acq](content(lock)) == content(lock) || lock.changed))) -- linked-list-predicates.vpr@213.3--214.71
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@213.13--214.71) [112263]"}
@@ -5326,8 +5326,8 @@ procedure test_1(lock: Ref) returns ()
         acq_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := LabelacqHeap;
         ExhaleWellDef1Mask := LabelacqMask;
+        ExhaleWellDef1Heap := LabelacqHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@214.23--214.36) [112269]"}
           NoPerm < perm ==> NoPerm < LabelacqMask[null, List(lock)];
@@ -5340,8 +5340,8 @@ procedure test_1(lock: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function content might not hold. There might be insufficient permission to access List(lock) (linked-list-predicates.vpr@214.41--214.54) [112270]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List(lock)];
@@ -5365,8 +5365,8 @@ procedure test_1(lock: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test might not hold. Assertion (forperm r: Ref [r.held] :: false) might not hold. (linked-list-predicates.vpr@197.11--197.51) [112273]"}
       (forall r_2: Ref ::
       { Mask[r_2, held] } { Heap[r_2, held] }

@@ -37,13 +37,13 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Tag (T@U) T@U)
-(declare-fun _module.__default.TWO__127 () Int)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun _module.__default.TWO__127 () Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -77,7 +77,6 @@
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
-(assert (= _module.__default.TWO__127 (LitInt 170141183460469231731687303715884105728)))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -128,6 +127,7 @@
  :skolemid |524|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
+(assert (= _module.__default.TWO__127 (LitInt 170141183460469231731687303715884105728)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

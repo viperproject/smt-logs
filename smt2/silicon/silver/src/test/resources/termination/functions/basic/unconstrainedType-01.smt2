@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:02:56
+; Started: 2025-01-27 02:56:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -147,11 +147,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (h@1@00 Huh)) (!
   (= (fac%limited s@$ i@0@00 h@1@00) (fac s@$ i@0@00 h@1@00))
   :pattern ((fac s@$ i@0@00 h@1@00))
-  :qid |quant-u-8276|)))
+  :qid |quant-u-8270|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (h@1@00 Huh)) (!
   (fac%stateless i@0@00 h@1@00)
   :pattern ((fac%limited s@$ i@0@00 h@1@00))
-  :qid |quant-u-8277|)))
+  :qid |quant-u-8271|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (h@1@00 Huh)) (!
   (=>
     (fac%precondition s@$ i@0@00 h@1@00)
@@ -162,13 +162,13 @@
         1
         (* i@0@00 (fac%limited $Snap.unit (- i@0@00 1) h@1@00)))))
   :pattern ((fac s@$ i@0@00 h@1@00))
-  :qid |quant-u-8278|)))
+  :qid |quant-u-8272|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (h@1@00 Huh)) (!
   (=>
     (fac%precondition s@$ i@0@00 h@1@00)
     (ite (= i@0@00 0) true (fac%precondition $Snap.unit (- i@0@00 1) h@1@00)))
   :pattern ((fac s@$ i@0@00 h@1@00))
-  :qid |quant-u-8279|)))
+  :qid |quant-u-8273|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- fac_termination_proof ----------

@@ -347,7 +347,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#4| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3450|
+ :skolemid |3451|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#4| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((ReadsRequiresReads._default.MyRequiresBad$A@@0 T@U) (ReadsRequiresReads._default.MyRequiresBad$B@@0 T@U) ($Heap@@0 T@U) (|f#0@@0| T@U) (|a#0@@0| T@U) ) (!  (=> (or (|ReadsRequiresReads.__default.MyRequiresBad#canCall| ReadsRequiresReads._default.MyRequiresBad$A@@0 ReadsRequiresReads._default.MyRequiresBad$B@@0 |f#0@@0| |a#0@@0|) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@0) ($Is HandleTypeType |f#0@@0| (Tclass._System.___hFunc1 ReadsRequiresReads._default.MyRequiresBad$A@@0 ReadsRequiresReads._default.MyRequiresBad$B@@0))) ($IsBox |a#0@@0| ReadsRequiresReads._default.MyRequiresBad$A@@0)))) (and true (= (ReadsRequiresReads.__default.MyRequiresBad ReadsRequiresReads._default.MyRequiresBad$A@@0 ReadsRequiresReads._default.MyRequiresBad$B@@0 |f#0@@0| |a#0@@0|) (Requires1 ReadsRequiresReads._default.MyRequiresBad$A@@0 ReadsRequiresReads._default.MyRequiresBad$B@@0 $Heap@@0 |f#0@@0| |a#0@@0|))))

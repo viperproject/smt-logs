@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:08
+// Date:         2025-01-27 03:22:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0236.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0236-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -349,14 +349,14 @@ procedure test_1(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var i_3: int;
   var newPMask: PMaskType;
@@ -366,8 +366,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
   var loopMask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var i_6_2: int;
   
   // -- Initializing the state
@@ -384,8 +384,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -401,8 +401,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
       UnfoldingMask := PostMask;
       assume array#trigger(UnfoldingHeap, array_1(a_2));
       assume UnfoldingHeap[null, array_1(a_2)] == FrameFragment(array#condqp1(UnfoldingHeap, a_2));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access array(a) (0236.vpr@33.13--33.111) [80660]"}
@@ -471,8 +471,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
       UnfoldingMask := PostMask;
       assume array#trigger(UnfoldingHeap, array_1(a_2));
       assume UnfoldingHeap[null, array_1(a_2)] == FrameFragment(array#condqp1(UnfoldingHeap, a_2));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, array_1(a_2):=UnfoldingMask[null, array_1(a_2)] - perm];
       havoc QPMask;
@@ -523,8 +523,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(array(a), write) might not hold on entry. There might be insufficient permission to access array(a) (0236.vpr@38.19--38.27) [80663]"}
@@ -566,8 +566,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
           // -- Translating statement: unfold acc(array(a), write) -- 0236.vpr@40.9--40.24
             assume array#trigger(Heap, array_1(a_2));
             assume Heap[null, array_1(a_2)] == FrameFragment(array#condqp1(Heap, a_2));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding array(a) might fail. There might be insufficient permission to access array(a) (0236.vpr@40.9--40.24) [80664]"}
@@ -624,8 +624,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(array(a), write) -- 0236.vpr@42.9--42.22
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -692,8 +692,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(array(a), write) might not be preserved. There might be insufficient permission to access array(a) (0236.vpr@38.19--38.27) [80669]"}
@@ -718,8 +718,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access array(a) (0236.vpr@32.13--32.21) [80670]"}
@@ -732,8 +732,8 @@ procedure test_1(a_2: ArrayDomainType) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume array#trigger(UnfoldingHeap, array_1(a_2));
       assume UnfoldingHeap[null, array_1(a_2)] == FrameFragment(array#condqp1(UnfoldingHeap, a_2));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access array(a) (0236.vpr@33.13--33.111) [80671]"}

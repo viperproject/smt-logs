@@ -39,6 +39,7 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
+(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun |char#FromInt| (Int) T@U)
 (declare-fun |char#ToInt| (T@U) Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
@@ -52,7 +53,6 @@
 (declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
-(declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun charType () T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
@@ -81,6 +81,11 @@
  :qid |DafnyPreludebpl.168:18|
  :skolemid |26|
  :pattern ( ($Unbox T x@@2))
+)))
+(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |346|
+ :pattern ( (nat_from_bv32 b))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Unbox T@@0 ($Box T@@0 x@@3)) x@@3)
  :qid |DafnyPreludebpl.167:18|
@@ -125,11 +130,6 @@
  :qid |DafnyPreludebpl.136:15|
  :skolemid |22|
  :pattern ( (|char#ToInt| ch))
-)))
-(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |346|
- :pattern ( (nat_from_bv32 b))
 )))
 (assert (= (Ctor charType) 7))
 (assert (forall ((v T@U) ) (! ($Is charType v TChar)

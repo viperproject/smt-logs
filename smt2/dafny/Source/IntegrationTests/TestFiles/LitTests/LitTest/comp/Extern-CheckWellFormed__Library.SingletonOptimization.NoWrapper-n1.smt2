@@ -39,12 +39,11 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.Library.MyInt () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.Library.MyInt () T@U)
 (declare-fun |$IsA#Library.ErasableWrapper| (T@U) Bool)
 (declare-fun Library.ErasableWrapper.ErasableWrapper_q (T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun DatatypeTypeType () T@T)
 (declare-fun Tclass.Library.ErasableWrapper () T@U)
 (declare-fun $HeapSucc (T@U T@U) Bool)
@@ -57,6 +56,7 @@
 (declare-fun MapType0Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType0TypeInv0 (T@T) T@T)
 (declare-fun MapType0TypeInv1 (T@T) T@T)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun DatatypeCtorId (T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
@@ -89,15 +89,10 @@
 ))))
 (assert (distinct alloc Tagclass.Library.MyInt |##Library.ErasableWrapper.ErasableWrapper| Tagclass.Library.ErasableWrapper tytagFamily$MyInt tytagFamily$ErasableWrapper)
 )
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |1106|
- :pattern ( ($Is intType |x#0| Tclass.Library.MyInt))
-)))
-(assert (forall ((|x#0@@0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h)
+(assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.Library.MyInt $h)
  :qid |unknown.0:0|
  :skolemid |1107|
- :pattern ( ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h))
+ :pattern ( ($IsAlloc intType |x#0| Tclass.Library.MyInt $h))
 )))
 (assert (forall ((d T@U) ) (!  (=> (|$IsA#Library.ErasableWrapper| d) (Library.ErasableWrapper.ErasableWrapper_q d))
  :qid |unknown.0:0|
@@ -161,6 +156,11 @@
  :qid |unknown.0:0|
  :skolemid |1176|
  :pattern ( (Library.ErasableWrapper.ErasableWrapper_q d@@2))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |1106|
+ :pattern ( ($Is intType |x#0@@0| Tclass.Library.MyInt))
 )))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
  :qid |DafnyPreludebpl.554:18|

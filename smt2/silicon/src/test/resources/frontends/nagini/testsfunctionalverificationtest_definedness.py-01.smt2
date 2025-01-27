@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:58:39
+; Started: 2025-01-27 02:51:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2496,8 +2496,8 @@
 ; C_res := new()
 (declare-const C_res@40@01 $Ref)
 (assert (not (= C_res@40@01 $Ref.null)))
-(assert (not (= C_res@40@01 _cthread_158@29@01)))
 (assert (not (= C_res@40@01 C_res@37@01)))
+(assert (not (= C_res@40@01 _cthread_158@29@01)))
 (assert (not (= C_res@40@01 a_0@36@01)))
 ; [exec]
 ; inhale typeof(C_res) == C()
@@ -2897,11 +2897,11 @@
 ; object_res := new()
 (declare-const object_res@70@01 $Ref)
 (assert (not (= object_res@70@01 $Ref.null)))
-(assert (not (= object_res@70@01 C_urgh@69@01)))
-(assert (not (= object_res@70@01 _cthread_156@53@01)))
-(assert (not (= object_res@70@01 object_res@64@01)))
 (assert (not (= object_res@70@01 self@56@01)))
+(assert (not (= object_res@70@01 object_res@64@01)))
+(assert (not (= object_res@70@01 C_urgh@69@01)))
 (assert (not (= object_res@70@01 b@57@01)))
+(assert (not (= object_res@70@01 _cthread_156@53@01)))
 ; [exec]
 ; inhale typeof(object_res) == object()
 (declare-const $t@71@01 $Snap)

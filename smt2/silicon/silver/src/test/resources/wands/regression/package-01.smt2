@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:12:48
+; Started: 2025-01-27 03:06:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -164,14 +164,14 @@
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@3@01 $t@2@01) $t@2@01)
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-25491|)))
+  :qid |quant-u-25402|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@3@01 $t@2@01) $t@2@01)
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-25492|)))
+  :qid |quant-u-25403|)))
 (assert true)
 ; [exec]
 ; package acc(x.f, write) --* acc(x.f, 1 / 2) {
@@ -205,14 +205,14 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@4@01) $t@4@01)
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-25493|)))
+  :qid |quant-u-25404|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@4@01) $t@4@01)
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-25494|)))
+  :qid |quant-u-25405|)))
 (assert true)
 (pop) ; 4
 (pop) ; 3
@@ -405,7 +405,7 @@
 (assert (forall (($t@9@01 $Snap)) (!
   (= (MWSF_apply mwsf@11@01 $t@9@01) $t@10@01)
   :pattern ((MWSF_apply mwsf@11@01 $t@9@01))
-  :qid |quant-u-25495|)))
+  :qid |quant-u-25406|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test01 ----------
@@ -501,7 +501,7 @@
 (assert (forall (($t@16@01 $Snap)) (!
   (= (MWSF_apply mwsf@18@01 $t@16@01) $t@17@01)
   :pattern ((MWSF_apply mwsf@18@01 $t@16@01))
-  :qid |quant-u-25497|)))
+  :qid |quant-u-25408|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test09 ----------
@@ -566,7 +566,7 @@
     (MWSF_apply mwsf@23@01 $t@22@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit))
   :pattern ((MWSF_apply mwsf@23@01 $t@22@01))
-  :qid |quant-u-25499|)))
+  :qid |quant-u-25410|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -577,7 +577,7 @@
       (MWSF_apply mwsf@23@01 $t@22@01)
       ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit)))
   :pattern ((MWSF_apply mwsf@23@01 $t@22@01))
-  :qid |quant-u-25500|)))
+  :qid |quant-u-25411|)))
 ; [exec]
 ; assert acc(x.f, 1 / 2)
 ; [exec]
@@ -692,7 +692,7 @@
     (MWSF_apply mwsf@28@01 $t@27@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit))
   :pattern ((MWSF_apply mwsf@28@01 $t@27@01))
-  :qid |quant-u-25501|)))
+  :qid |quant-u-25412|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -701,7 +701,7 @@
     (MWSF_apply mwsf@28@01 $t@27@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit))
   :pattern ((MWSF_apply mwsf@28@01 $t@27@01))
-  :qid |quant-u-25502|)))
+  :qid |quant-u-25413|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -819,7 +819,7 @@
 (assert (forall (($t@33@01 $Snap)) (!
   (= (MWSF_apply mwsf@35@01 $t@33@01) $t@34@01)
   :pattern ((MWSF_apply mwsf@35@01 $t@33@01))
-  :qid |quant-u-25503|)))
+  :qid |quant-u-25414|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test04 ----------
@@ -867,7 +867,7 @@
     (MWSF_apply mwsf@40@01 $t@39@01)
     ($Snap.combine ($Snap.first $t@39@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@40@01 $t@39@01))
-  :qid |quant-u-25505|)))
+  :qid |quant-u-25416|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -876,7 +876,7 @@
     (MWSF_apply mwsf@40@01 $t@39@01)
     ($Snap.combine ($Snap.first $t@39@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@40@01 $t@39@01))
-  :qid |quant-u-25506|)))
+  :qid |quant-u-25417|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -962,7 +962,7 @@
 (assert (forall (($t@45@01 $Snap)) (!
   (= (MWSF_apply mwsf@47@01 $t@45@01) $t@46@01)
   :pattern ((MWSF_apply mwsf@47@01 $t@45@01))
-  :qid |quant-u-25507|)))
+  :qid |quant-u-25418|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test10 ----------
@@ -1009,7 +1009,7 @@
     (MWSF_apply mwsf@52@01 $t@51@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 1) $Snap.unit))
   :pattern ((MWSF_apply mwsf@52@01 $t@51@01))
-  :qid |quant-u-25509|)))
+  :qid |quant-u-25420|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -1018,7 +1018,7 @@
     (MWSF_apply mwsf@52@01 $t@51@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 1) $Snap.unit))
   :pattern ((MWSF_apply mwsf@52@01 $t@51@01))
-  :qid |quant-u-25510|)))
+  :qid |quant-u-25421|)))
 (assert true)
 ; [exec]
 ; package acc(x.g, write) && x.g == 1 --* acc(x.g, write) && x.g == 1 {
@@ -1049,7 +1049,7 @@
     (MWSF_apply mwsf@54@01 $t@53@01)
     ($Snap.combine ($Snap.first $t@53@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@54@01 $t@53@01))
-  :qid |quant-u-25511|)))
+  :qid |quant-u-25422|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -1058,7 +1058,7 @@
     (MWSF_apply mwsf@54@01 $t@53@01)
     ($Snap.combine ($Snap.first $t@53@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@54@01 $t@53@01))
-  :qid |quant-u-25512|)))
+  :qid |quant-u-25423|)))
 (assert true)
 (pop) ; 4
 (pop) ; 3
@@ -1131,7 +1131,7 @@
         $Snap.unit
         ($Snap.combine ($SortWrappers.IntTo$Snap 1) $Snap.unit))))
   :pattern ((MWSF_apply mwsf@59@01 $t@58@01))
-  :qid |quant-u-25513|)))
+  :qid |quant-u-25424|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -1144,7 +1144,7 @@
         $Snap.unit
         ($Snap.combine ($SortWrappers.IntTo$Snap 1) $Snap.unit))))
   :pattern ((MWSF_apply mwsf@59@01 $t@58@01))
-  :qid |quant-u-25514|)))
+  :qid |quant-u-25425|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -1175,13 +1175,13 @@
 (assert (forall (($t@63@01 $Snap)) (!
   (= (MWSF_apply mwsf@64@01 $t@63@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@64@01 $t@63@01))
-  :qid |quant-u-25515|)))
+  :qid |quant-u-25426|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@63@01 $Snap)) (!
   (= (MWSF_apply mwsf@64@01 $t@63@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@64@01 $t@63@01))
-  :qid |quant-u-25516|)))
+  :qid |quant-u-25427|)))
 ; [exec]
 ; assert false
 (check-sat)
@@ -1261,7 +1261,7 @@
     (MWSF_apply mwsf@70@01 $t@69@01)
     ($Snap.combine $t@69@01 ($Snap.combine $t@68@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@70@01 $t@69@01))
-  :qid |quant-u-25517|)))
+  :qid |quant-u-25428|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -1270,7 +1270,7 @@
     (MWSF_apply mwsf@70@01 $t@69@01)
     ($Snap.combine $t@69@01 ($Snap.combine $t@68@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@70@01 $t@69@01))
-  :qid |quant-u-25518|)))
+  :qid |quant-u-25429|)))
 (assert true)
 (push) ; 5
 (assert (not false))
@@ -1327,7 +1327,7 @@
 (assert (forall (($t@71@01 $Snap)) (!
   (= (MWSF_apply mwsf@73@01 $t@71@01) $t@72@01)
   :pattern ((MWSF_apply mwsf@73@01 $t@71@01))
-  :qid |quant-u-25519|)))
+  :qid |quant-u-25430|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test14 ----------
@@ -1358,13 +1358,13 @@
 (assert (forall (($t@76@01 $Snap)) (!
   (= (MWSF_apply mwsf@77@01 $t@76@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@77@01 $t@76@01))
-  :qid |quant-u-25521|)))
+  :qid |quant-u-25432|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@76@01 $Snap)) (!
   (= (MWSF_apply mwsf@77@01 $t@76@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@77@01 $t@76@01))
-  :qid |quant-u-25522|)))
+  :qid |quant-u-25433|)))
 ; [exec]
 ; assert false
 (check-sat)
@@ -1444,7 +1444,7 @@
     (MWSF_apply mwsf@83@01 $t@82@01)
     ($Snap.combine $t@82@01 ($Snap.combine $t@81@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@83@01 $t@82@01))
-  :qid |quant-u-25523|)))
+  :qid |quant-u-25434|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -1453,14 +1453,14 @@
     (MWSF_apply mwsf@83@01 $t@82@01)
     ($Snap.combine $t@82@01 ($Snap.combine $t@81@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@83@01 $t@82@01))
-  :qid |quant-u-25524|)))
+  :qid |quant-u-25435|)))
 (assert true)
 ; Create MagicWandSnapFunction for wand acc(x.f, write) --* true
 (declare-const mwsf@84@01 $MWSF)
 (assert (forall (($t@81@01 $Snap)) (!
   (= (MWSF_apply mwsf@84@01 $t@81@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@84@01 $t@81@01))
-  :qid |quant-u-25525|)))
+  :qid |quant-u-25436|)))
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
@@ -1471,10 +1471,10 @@
         (MWSF_apply mwsf@83@01 $t@82@01)
         ($Snap.combine $t@82@01 ($Snap.combine $t@81@01 $Snap.unit)))
       :pattern ((MWSF_apply mwsf@83@01 $t@82@01))
-      :qid |quant-u-25523|))
+      :qid |quant-u-25434|))
     (= (MWSF_apply mwsf@84@01 $t@81@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@84@01 $t@81@01))
-  :qid |quant-u-25526|)))
+  :qid |quant-u-25437|)))
 (assert true)
 ; [exec]
 ; assert acc(x.f, write) --* true
@@ -1558,7 +1558,7 @@
     (MWSF_apply mwsf@90@01 $t@89@01)
     ($Snap.combine $t@89@01 ($Snap.combine $t@88@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@90@01 $t@89@01))
-  :qid |quant-u-25527|)))
+  :qid |quant-u-25438|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -1567,7 +1567,7 @@
     (MWSF_apply mwsf@90@01 $t@89@01)
     ($Snap.combine $t@89@01 ($Snap.combine $t@88@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@90@01 $t@89@01))
-  :qid |quant-u-25528|)))
+  :qid |quant-u-25439|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --* acc(x.f, write) && (acc(x.f, write) && false)
@@ -1622,7 +1622,7 @@
 (assert (forall (($t@88@01 $Snap)) (!
   (= (MWSF_apply mwsf@91@01 $t@88@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@91@01 $t@88@01))
-  :qid |quant-u-25529|)))
+  :qid |quant-u-25440|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -1634,10 +1634,10 @@
         (MWSF_apply mwsf@90@01 $t@89@01)
         ($Snap.combine $t@89@01 ($Snap.combine $t@88@01 $Snap.unit)))
       :pattern ((MWSF_apply mwsf@90@01 $t@89@01))
-      :qid |quant-u-25527|))
+      :qid |quant-u-25438|))
     (= (MWSF_apply mwsf@91@01 $t@88@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@91@01 $t@88@01))
-  :qid |quant-u-25530|)))
+  :qid |quant-u-25441|)))
 (assert true)
 ; [exec]
 ; assert false
@@ -1719,7 +1719,7 @@
     (MWSF_apply mwsf@97@01 $t@96@01)
     ($Snap.combine $t@96@01 ($Snap.combine $t@95@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@97@01 $t@96@01))
-  :qid |quant-u-25531|)))
+  :qid |quant-u-25442|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -1728,7 +1728,7 @@
     (MWSF_apply mwsf@97@01 $t@96@01)
     ($Snap.combine $t@96@01 ($Snap.combine $t@95@01 $Snap.unit)))
   :pattern ((MWSF_apply mwsf@97@01 $t@96@01))
-  :qid |quant-u-25532|)))
+  :qid |quant-u-25443|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --* acc(x.f, write) && (acc(x.f, write) && false)
@@ -1783,7 +1783,7 @@
 (assert (forall (($t@95@01 $Snap)) (!
   (= (MWSF_apply mwsf@98@01 $t@95@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@98@01 $t@95@01))
-  :qid |quant-u-25533|)))
+  :qid |quant-u-25444|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -1795,10 +1795,10 @@
         (MWSF_apply mwsf@97@01 $t@96@01)
         ($Snap.combine $t@96@01 ($Snap.combine $t@95@01 $Snap.unit)))
       :pattern ((MWSF_apply mwsf@97@01 $t@96@01))
-      :qid |quant-u-25531|))
+      :qid |quant-u-25442|))
     (= (MWSF_apply mwsf@98@01 $t@95@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@98@01 $t@95@01))
-  :qid |quant-u-25534|)))
+  :qid |quant-u-25445|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --* false

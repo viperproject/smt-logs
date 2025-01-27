@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:13:23
+// Date:         2025-01-27 03:07:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/multiple_quantifiers.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/multiple_quantifiers-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1142,8 +1142,8 @@ procedure getP#definedness(x: Ref, y: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1166,8 +1166,8 @@ procedure getP#definedness(x: Ref, y: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x, y));
       assume UnfoldingHeap[null, P(x, y)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[y, f_7]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x, y) (multiple_quantifiers.vpr@105.1--107.35) [3079]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x, y)];
@@ -1269,15 +1269,15 @@ procedure P#definedness(x: Ref, y: Ref) returns ()
 procedure test01(xs: (Seq Ref), n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ix_5: int;
   var jx_5: int;
   var i_5: int;
   var j_2: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i1: int;
   var i2_2: int;
   var i1_1: int;
@@ -1295,8 +1295,8 @@ procedure test01(xs: (Seq Ref), n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale 0 <= n && n <= |xs| -- multiple_quantifiers.vpr@14.3--14.29
     assume 0 <= n;
@@ -1397,8 +1397,8 @@ procedure test01(xs: (Seq Ref), n: int) returns ()
   //     { rcvr(i1, i1), rcvr(i2, i2) }
   //     0 <= i1 && (i1 < n && (0 <= i2 && (i2 < n && i1 != i2))) ==>
   //     rcvr(i1, i1) != rcvr(i2, i2)) -- multiple_quantifiers.vpr@20.3--22.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i1: Int, i2: Int :: { rcvr(i1, i1), rcvr(i2, i2) } 0 <= i1 && (i1 < n && (0 <= i2 && (i2 < n && i1 != i2))) ==> rcvr(i1, i1) != rcvr(i2, i2))
       if (*) {
@@ -1430,8 +1430,8 @@ procedure test01(xs: (Seq Ref), n: int) returns ()
   // -- Translating statement: exhale (forall i: Int, j: Int ::
   //     { rcvr(i, j) }
   //     0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i))) -- multiple_quantifiers.vpr@24.3--25.60
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, j: Int :: { rcvr(i, j) } 0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i)))
       if (*) {
@@ -1506,15 +1506,15 @@ procedure test01(xs: (Seq Ref), n: int) returns ()
 procedure test01_fail(xs: (Seq Ref), n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ix_6: int;
   var jx_6: int;
   var i_8: int;
   var j_6: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i1_2: int;
   var i2_3: int;
   var i1_1: int;
@@ -1534,8 +1534,8 @@ procedure test01_fail(xs: (Seq Ref), n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale 0 <= n && n <= |xs| -- multiple_quantifiers.vpr@29.3--29.29
     assume 0 <= n;
@@ -1636,8 +1636,8 @@ procedure test01_fail(xs: (Seq Ref), n: int) returns ()
   //     { rcvr(i1, i1), rcvr(i2, i2) }
   //     0 <= i1 && (i1 < n && (0 <= i2 && (i2 < n && i1 != i2))) ==>
   //     rcvr(i1, i1) != rcvr(i2, i2)) -- multiple_quantifiers.vpr@35.3--37.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i1: Int, i2: Int :: { rcvr(i1, i1), rcvr(i2, i2) } 0 <= i1 && (i1 < n && (0 <= i2 && (i2 < n && i1 != i2))) ==> rcvr(i1, i1) != rcvr(i2, i2))
       if (*) {
@@ -1669,8 +1669,8 @@ procedure test01_fail(xs: (Seq Ref), n: int) returns ()
   // -- Translating statement: exhale (forall i: Int, j: Int ::
   //     { rcvr(i, j) }
   //     0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i))) -- multiple_quantifiers.vpr@39.3--40.60
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, j: Int :: { rcvr(i, j) } 0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i)))
       if (*) {
@@ -1740,8 +1740,8 @@ procedure test01_fail(xs: (Seq Ref), n: int) returns ()
   // -- Translating statement: exhale (forall i: Int, j: Int ::
   //     { rcvr(i, j) }
   //     0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i))) -- multiple_quantifiers.vpr@43.3--44.62
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, j: Int :: { rcvr(i, j) } 0 <= i && (i < n && i == j) ==> acc(rcvr(i, j).f, prm(i)))
       if (*) {
@@ -1816,16 +1816,16 @@ procedure test01_fail(xs: (Seq Ref), n: int) returns ()
 procedure test02(xs: (Seq Ref), n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ix_7: int;
   var jx_7: int;
   var i_11: int;
   var j_9: int;
   var QPMask: MaskType;
   var a_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_12: int;
   var i_13: int;
   var i_5_1: int;
@@ -1840,8 +1840,8 @@ procedure test02(xs: (Seq Ref), n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale 0 <= n && n <= |xs| -- multiple_quantifiers.vpr@48.3--48.29
     assume 0 <= n;
@@ -1964,8 +1964,8 @@ procedure test02(xs: (Seq Ref), n: int) returns ()
   //   (forall i: Int, fresh__198: Int ::
   //     { rcvr(i, fresh__198) }
   //     0 <= i && i < n ==> i != a || rcvr(i, i + 1).f > 1) -- multiple_quantifiers.vpr@58.3--61.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { prm(i) } 0 <= i && i < n ==> acc(rcvr(i, i + 1).f, prm(i)))
       if (*) {
@@ -2071,16 +2071,16 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
   var r_5: int;
   var c_4: int;
   var r_10: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var olddet: int;
   var oldcolsum3: int;
   var oldrowsum2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2167,13 +2167,13 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert loc(mat, 1, 0).val == 1 && loc(mat, 0, 1).val == 3 ==>
   //   loc(mat, 1, 1).val == 4 -- multiple_quantifiers.vpr@88.3--89.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of loc(mat, 1, 0).val == 1 && loc(mat, 0, 1).val == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(mat, 1, 0).val (multiple_quantifiers.vpr@88.14--89.37) [3112]"}
@@ -2197,8 +2197,8 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     // -- Check definedness of det(mat)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2242,8 +2242,8 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     // -- Check definedness of colsum(mat, 3)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function colsum might not hold. Assertion 3 < cols(mat) might not hold. (multiple_quantifiers.vpr@92.26--92.40) [3118]"}
           3 < (cols(mat_1): int);
         havoc QPMask;
@@ -2289,8 +2289,8 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     // -- Check definedness of rowsum(mat, 2)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function rowsum might not hold. Assertion 2 < rows(mat) might not hold. (multiple_quantifiers.vpr@93.26--93.40) [3121]"}
           2 < (rows(mat_1): int);
         havoc QPMask;
@@ -2332,14 +2332,14 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert det(mat) == olddet -- multiple_quantifiers.vpr@95.3--95.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of det(mat) == olddet
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2380,14 +2380,14 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert colsum(mat, 3) == oldcolsum3 -- multiple_quantifiers.vpr@96.3--96.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of colsum(mat, 3) == oldcolsum3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function colsum might not hold. Assertion 3 < cols(mat) might not hold. (multiple_quantifiers.vpr@96.10--96.24) [3127]"}
           3 < (cols(mat_1): int);
         havoc QPMask;
@@ -2430,14 +2430,14 @@ procedure test03(mat_1: IMatrixDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert rowsum(mat, 2) == oldrowsum2 -- multiple_quantifiers.vpr@97.3--97.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of rowsum(mat, 2) == oldrowsum2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function rowsum might not hold. Assertion 2 < rows(mat) might not hold. (multiple_quantifiers.vpr@97.10--97.24) [3131]"}
           2 < (rows(mat_1): int);
         havoc QPMask;
@@ -2488,20 +2488,20 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
   modifies Heap, Mask;
 {
   var l1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
   var k1: int;
   var k2: int;
-  var Labell1Mask: MaskType;
   var Labell1Heap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labell1Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i1_3: int;
   var i2_5: int;
@@ -2518,8 +2518,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i1: Int, i2: Int ::
   //     { (aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref) }
@@ -2583,16 +2583,16 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
   
   // -- Translating statement: label l1 -- multiple_quantifiers.vpr@120.3--120.11
     l1:
-    Labell1Mask := Mask;
     Labell1Heap := Heap;
+    Labell1Mask := Mask;
     l1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)), write) -- multiple_quantifiers.vpr@122.3--122.41
     assume P#trigger(Heap, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)));
     assume Heap[null, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref))] == CombineFrames(FrameFragment(Heap[(aloc(rs1, k1): Ref), f_7]), FrameFragment(Heap[(aloc(rs2, k2): Ref), f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) might fail. There might be insufficient permission to access P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) (multiple_quantifiers.vpr@122.3--122.41) [3138]"}
@@ -2638,8 +2638,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)), write) -- multiple_quantifiers.vpr@125.3--125.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) might fail. There might be insufficient permission to access (aloc(rs1, k1): Ref).f (multiple_quantifiers.vpr@125.3--125.39) [3147]"}
@@ -2672,14 +2672,14 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
   
   // -- Translating statement: assert getP((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) >
   //   old[l1](getP((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref))) -- multiple_quantifiers.vpr@127.3--127.90
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of getP((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) > old[l1](getP((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getP might not hold. There might be insufficient permission to access P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) (multiple_quantifiers.vpr@127.10--127.44) [3152]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref))];
@@ -2694,8 +2694,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
         l1_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := Labell1Mask;
         ExhaleWellDef1Heap := Labell1Heap;
+        ExhaleWellDef1Mask := Labell1Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getP might not hold. There might be insufficient permission to access P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) (multiple_quantifiers.vpr@127.55--127.89) [3154]"}
           NoPerm < perm ==> NoPerm < Labell1Mask[null, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref))];
@@ -2720,8 +2720,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
   //     i1 != k1 && i2 != k2 ==>
   //     getP((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)) ==
   //     old[l1](getP((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)))) -- multiple_quantifiers.vpr@129.3--132.118
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i1: Int, i2: Int :: { (aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref) } 0 <= i1 && (i1 < (len(rs1): Int) && (0 <= i2 && i2 < (len(rs2): Int))) ==> acc(P((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)), write))
       if (*) {
@@ -2779,8 +2779,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
           if (i1_3 != k1 && i2_5 != k2) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function getP might not hold. There might be insufficient permission to access P((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)) (multiple_quantifiers.vpr@132.36--132.70) [3159]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P((aloc(rs1, i1_3): Ref), (aloc(rs2, i2_5): Ref))];
@@ -2795,8 +2795,8 @@ procedure test04(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) retur
               l1_lblGuard;
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := Labell1Mask;
               ExhaleWellDef1Heap := Labell1Heap;
+              ExhaleWellDef1Mask := Labell1Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function getP might not hold. There might be insufficient permission to access P((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)) (multiple_quantifiers.vpr@132.82--132.116) [3161]"}
                 NoPerm < perm ==> NoPerm < Labell1Mask[null, P((aloc(rs1, i1_3): Ref), (aloc(rs2, i2_5): Ref))];
@@ -2839,16 +2839,16 @@ procedure test04_fail(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) 
   modifies Heap, Mask;
 {
   var l1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var k1: int;
   var k2: int;
-  var Labell1Mask: MaskType;
   var Labell1Heap: HeapType;
+  var Labell1Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -2862,8 +2862,8 @@ procedure test04_fail(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i1: Int, i2: Int ::
   //     { (aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref) }
@@ -2917,8 +2917,8 @@ procedure test04_fail(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) 
   //     { (aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref) }
   //     0 <= i1 && (i1 < (len(rs1): Int) && (0 <= i2 && i2 < (len(rs2): Int))) ==>
   //     acc(P((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)), write)) -- multiple_quantifiers.vpr@139.3--140.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i1: Int, i2: Int :: { (aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref) } 0 <= i1 && (i1 < (len(rs1): Int) && (0 <= i2 && i2 < (len(rs2): Int))) ==> acc(P((aloc(rs1, i1): Ref), (aloc(rs2, i2): Ref)), write))
       if (*) {
@@ -2989,16 +2989,16 @@ procedure test04_fail(rs1: (IArrayDomainType Ref), rs2: (IArrayDomainType Ref)) 
   
   // -- Translating statement: label l1 -- multiple_quantifiers.vpr@149.3--149.11
     l1:
-    Labell1Mask := Mask;
     Labell1Heap := Heap;
+    Labell1Mask := Mask;
     l1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: unfold acc(P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)), write) -- multiple_quantifiers.vpr@152.3--152.41
     assume P#trigger(Heap, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)));
     assume Heap[null, P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref))] == CombineFrames(FrameFragment(Heap[(aloc(rs1, k1): Ref), f_7]), FrameFragment(Heap[(aloc(rs2, k2): Ref), f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) might fail. There might be insufficient permission to access P((aloc(rs1, k1): Ref), (aloc(rs2, k2): Ref)) (multiple_quantifiers.vpr@152.3--152.41) [3169]"}

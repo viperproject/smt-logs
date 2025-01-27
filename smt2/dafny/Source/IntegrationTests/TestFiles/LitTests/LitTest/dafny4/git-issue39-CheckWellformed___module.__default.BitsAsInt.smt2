@@ -50,8 +50,8 @@
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun _module.__default.BitsAsInt ((_ BitVec 32)) Int)
 (declare-fun |_module.__default.BitsAsInt#canCall| ((_ BitVec 32)) Bool)
-(declare-fun Inv0_TBitvector (T@U) Int)
 (declare-fun nat_from_bv32 ((_ BitVec 32)) Int)
+(declare-fun Inv0_TBitvector (T@U) Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -132,6 +132,11 @@
  :skolemid |483|
  :pattern ( (_module.__default.BitsAsInt |b#0|))
 ))))
+(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
+ :qid |unknown.0:0|
+ :skolemid |346|
+ :pattern ( (nat_from_bv32 b))
+)))
 (assert (forall ((w Int) ) (! (= (Inv0_TBitvector (TBitvector w)) w)
  :qid |DafnyPreludebpl.38:15|
  :skolemid |0|
@@ -175,11 +180,6 @@
  :qid |DafnyPreludebpl.156:1|
  :skolemid |487|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
-)))
-(assert (forall ((b (_ BitVec 32)) ) (!  (and (and (<= 0 (nat_from_bv32 b)) (< (nat_from_bv32 b) 4294967296)) (= (nat_from_bv32 b) (bv2int b)))
- :qid |unknown.0:0|
- :skolemid |346|
- :pattern ( (nat_from_bv32 b))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
  :qid |DafnyPreludebpl.109:15|

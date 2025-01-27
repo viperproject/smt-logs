@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:58:36
+; Started: 2025-01-27 02:51:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -3503,7 +3503,7 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 19 | True | live]
 ; [else-branch: 19 | False | dead]
@@ -3587,7 +3587,7 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 22 | True | live]
 ; [else-branch: 22 | False | dead]

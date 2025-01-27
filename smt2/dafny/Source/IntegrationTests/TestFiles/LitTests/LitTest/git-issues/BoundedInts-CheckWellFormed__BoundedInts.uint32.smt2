@@ -37,13 +37,13 @@
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
 (declare-fun Tag (T@U) T@U)
-(declare-fun BoundedInts.__default.TWO__TO__THE__32 () Int)
 (declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun $Box (T@T T@U) T@U)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun BoundedInts.__default.TWO__TO__THE__32 () Int)
 (declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
 (declare-fun refType () T@T)
 (declare-fun FieldType () T@T)
@@ -77,7 +77,6 @@
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
-(assert (= BoundedInts.__default.TWO__TO__THE__32 (LitInt 4294967296)))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
  :skolemid |17|
@@ -99,6 +98,7 @@
  :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
+(assert (= BoundedInts.__default.TWO__TO__THE__32 (LitInt 4294967296)))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
  :qid |mapAx0:MapType0Select|
  :weight 0

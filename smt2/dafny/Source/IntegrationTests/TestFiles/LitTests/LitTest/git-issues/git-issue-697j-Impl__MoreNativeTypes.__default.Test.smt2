@@ -146,15 +146,25 @@
  :skolemid |3115|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass.MoreNativeTypes.Int32a)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 2147483648)))
+(assert (forall ((|x#0@@5| T@U) ) (! (= ($Is intType |x#0@@5| Tclass.MoreNativeTypes.Int32c)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@5|)) (< (U_2_int |x#0@@5|) 2147483648)) (or (not (= (U_2_int |x#0@@5|) 3)) (not true))))
  :qid |unknown.0:0|
- :skolemid |3583|
- :pattern ( ($Is intType |x#0@@5| Tclass.MoreNativeTypes.Int32a))
+ :skolemid |3587|
+ :pattern ( ($Is intType |x#0@@5| Tclass.MoreNativeTypes.Int32c))
 )))
-(assert (forall ((|x#0@@6| T@U) ) (! (= ($Is intType |x#0@@6| Tclass.MoreNativeTypes.Int32b)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@6|)) (< (U_2_int |x#0@@6|) 2147483648)))
+(assert (forall ((|x#0@@6| T@U) ) (! (= ($Is intType |x#0@@6| Tclass.MoreNativeTypes.Int32d)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@6|)) (< (U_2_int |x#0@@6|) 2147483648)) (or (not (= (U_2_int |x#0@@6|) 3)) (not true))))
  :qid |unknown.0:0|
- :skolemid |3585|
- :pattern ( ($Is intType |x#0@@6| Tclass.MoreNativeTypes.Int32b))
+ :skolemid |3589|
+ :pattern ( ($Is intType |x#0@@6| Tclass.MoreNativeTypes.Int32d))
+)))
+(assert (forall ((|x#0@@7| T@U) ) (! (= ($Is intType |x#0@@7| Tclass.MoreNativeTypes.Int32e)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@7|)) (< (U_2_int |x#0@@7|) 2147483648)) (or (not (= (U_2_int |x#0@@7|) 3)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3591|
+ :pattern ( ($Is intType |x#0@@7| Tclass.MoreNativeTypes.Int32e))
+)))
+(assert (forall ((|x#0@@8| T@U) ) (! (= ($Is intType |x#0@@8| Tclass.MoreNativeTypes.Int32f)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@8|)) (< (U_2_int |x#0@@8|) 2147483648)) (or (not (= (U_2_int |x#0@@8|) 3)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3593|
+ :pattern ( ($Is intType |x#0@@8| Tclass.MoreNativeTypes.Int32f))
 )))
 (assert  (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
@@ -287,25 +297,15 @@
 (assert (= (TagFamily Tclass.MoreNativeTypes.Int32e) tytagFamily$Int32e))
 (assert (= (Tag Tclass.MoreNativeTypes.Int32f) Tagclass.MoreNativeTypes.Int32f))
 (assert (= (TagFamily Tclass.MoreNativeTypes.Int32f) tytagFamily$Int32f))
-(assert (forall ((|x#0@@7| T@U) ) (! (= ($Is intType |x#0@@7| Tclass.MoreNativeTypes.Int32c)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@7|)) (< (U_2_int |x#0@@7|) 2147483648)) (or (not (= (U_2_int |x#0@@7|) 3)) (not true))))
+(assert (forall ((|x#0@@9| T@U) ) (! (= ($Is intType |x#0@@9| Tclass.MoreNativeTypes.Int32a)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@9|)) (< (U_2_int |x#0@@9|) 2147483648)))
  :qid |unknown.0:0|
- :skolemid |3587|
- :pattern ( ($Is intType |x#0@@7| Tclass.MoreNativeTypes.Int32c))
+ :skolemid |3583|
+ :pattern ( ($Is intType |x#0@@9| Tclass.MoreNativeTypes.Int32a))
 )))
-(assert (forall ((|x#0@@8| T@U) ) (! (= ($Is intType |x#0@@8| Tclass.MoreNativeTypes.Int32d)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@8|)) (< (U_2_int |x#0@@8|) 2147483648)) (or (not (= (U_2_int |x#0@@8|) 3)) (not true))))
+(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass.MoreNativeTypes.Int32b)  (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@10|)) (< (U_2_int |x#0@@10|) 2147483648)))
  :qid |unknown.0:0|
- :skolemid |3589|
- :pattern ( ($Is intType |x#0@@8| Tclass.MoreNativeTypes.Int32d))
-)))
-(assert (forall ((|x#0@@9| T@U) ) (! (= ($Is intType |x#0@@9| Tclass.MoreNativeTypes.Int32e)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@9|)) (< (U_2_int |x#0@@9|) 2147483648)) (or (not (= (U_2_int |x#0@@9|) 3)) (not true))))
- :qid |unknown.0:0|
- :skolemid |3591|
- :pattern ( ($Is intType |x#0@@9| Tclass.MoreNativeTypes.Int32e))
-)))
-(assert (forall ((|x#0@@10| T@U) ) (! (= ($Is intType |x#0@@10| Tclass.MoreNativeTypes.Int32f)  (and (and (<= (LitInt (- 0 2147483648)) (U_2_int |x#0@@10|)) (< (U_2_int |x#0@@10|) 2147483648)) (or (not (= (U_2_int |x#0@@10|) 3)) (not true))))
- :qid |unknown.0:0|
- :skolemid |3593|
- :pattern ( ($Is intType |x#0@@10| Tclass.MoreNativeTypes.Int32f))
+ :skolemid |3585|
+ :pattern ( ($Is intType |x#0@@10| Tclass.MoreNativeTypes.Int32b))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|

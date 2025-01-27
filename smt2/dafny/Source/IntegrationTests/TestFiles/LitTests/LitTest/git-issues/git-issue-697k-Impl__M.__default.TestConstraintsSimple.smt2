@@ -156,7 +156,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| Int) (|l#2| Int) (|l#3| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#8| |l#0| |l#1| |l#2| |l#3|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (and (and (<= |l#1| (U_2_int ($Unbox intType |$y#0|))) (< (U_2_int ($Unbox intType |$y#0|)) |l#2|)) (M.__default.P |l#3| |$y#0|))))
  :qid |gitissue697kdfy.43:8|
- :skolemid |1587|
+ :skolemid |1588|
  :pattern ( (MapType0Select BoxType boolType (|lambda#8| |l#0| |l#1| |l#2| |l#3|) |$y#0|))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass.M.Not30) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) Tclass.M.Not30)))
@@ -218,7 +218,7 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3@@0|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1585|
+ :skolemid |1586|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o $f))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((M._default.P$X T@U) (|x#0@@3| T@U) ) (!  (=> (or (|M.__default.P#canCall| M._default.P$X |x#0@@3|) (and (< 0 $FunctionContextHeight) ($IsBox |x#0@@3| M._default.P$X))) (= (M.__default.P M._default.P$X |x#0@@3|) (U_2_bool (Lit boolType (bool_2_U true)))))

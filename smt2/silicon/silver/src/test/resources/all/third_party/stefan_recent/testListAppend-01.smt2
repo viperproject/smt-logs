@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:03:57
+; Started: 2025-01-27 02:57:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -512,11 +512,11 @@
     (Wand_list_for_list__get_out_1_0%limited s@$ diz@0@00)
     (Wand_list_for_list__get_out_1_0 s@$ diz@0@00))
   :pattern ((Wand_list_for_list__get_out_1_0 s@$ diz@0@00))
-  :qid |quant-u-8761|)))
+  :qid |quant-u-8755|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (Wand_list_for_list__get_out_1_0%stateless diz@0@00)
   :pattern ((Wand_list_for_list__get_out_1_0%limited s@$ diz@0@00))
-  :qid |quant-u-8762|)))
+  :qid |quant-u-8756|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@12@00)
@@ -544,31 +544,31 @@
         (Wand_list_for_list__get_out_1_0 s@$ diz@0@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
   :pattern ((Wand_list_for_list__get_out_1_0 s@$ diz@0@00))
-  :qid |quant-u-8773|)))
+  :qid |quant-u-8767|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((Wand_list_for_list__get_out_1_0 s@$ diz@0@00))
-  :qid |quant-u-8774|)))
+  :qid |quant-u-8768|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (=
     (Wand_list_for_list__get_out_1%limited s@$ diz@2@00)
     (Wand_list_for_list__get_out_1 s@$ diz@2@00))
   :pattern ((Wand_list_for_list__get_out_1 s@$ diz@2@00))
-  :qid |quant-u-8763|)))
+  :qid |quant-u-8757|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (Wand_list_for_list__get_out_1%stateless diz@2@00)
   :pattern ((Wand_list_for_list__get_out_1%limited s@$ diz@2@00))
-  :qid |quant-u-8764|)))
+  :qid |quant-u-8758|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (let ((result@3@00 (Wand_list_for_list__get_out_1%limited s@$ diz@2@00))) (=>
     (Wand_list_for_list__get_out_1%precondition s@$ diz@2@00)
     (not (= result@3@00 $Ref.null))))
   :pattern ((Wand_list_for_list__get_out_1%limited s@$ diz@2@00))
-  :qid |quant-u-8775|)))
+  :qid |quant-u-8769|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (let ((result@3@00 (Wand_list_for_list__get_out_1%limited s@$ diz@2@00))) true)
   :pattern ((Wand_list_for_list__get_out_1%limited s@$ diz@2@00))
-  :qid |quant-u-8776|)))
+  :qid |quant-u-8770|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@33@00)
@@ -596,19 +596,19 @@
         (Wand_list_for_list__get_out_1 s@$ diz@2@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))
   :pattern ((Wand_list_for_list__get_out_1 s@$ diz@2@00))
-  :qid |quant-u-8777|)))
+  :qid |quant-u-8771|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   true
   :pattern ((Wand_list_for_list__get_out_1 s@$ diz@2@00))
-  :qid |quant-u-8778|)))
+  :qid |quant-u-8772|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (= (List__contents%limited s@$ diz@4@00) (List__contents s@$ diz@4@00))
   :pattern ((List__contents s@$ diz@4@00))
-  :qid |quant-u-8765|)))
+  :qid |quant-u-8759|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (List__contents%stateless diz@4@00)
   :pattern ((List__contents%limited s@$ diz@4@00))
-  :qid |quant-u-8766|)))
+  :qid |quant-u-8760|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (=>
     (List__contents%precondition s@$ diz@4@00)
@@ -626,7 +626,7 @@
             ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((List__contents s@$ diz@4@00))
   :pattern ((List__contents%stateless diz@4@00) (List__state%trigger ($Snap.second s@$) diz@4@00))
-  :qid |quant-u-8779|)))
+  :qid |quant-u-8773|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (=>
     (List__contents%precondition s@$ diz@4@00)
@@ -639,27 +639,27 @@
         $Snap.unit
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((List__contents s@$ diz@4@00))
-  :qid |quant-u-8780|)))
+  :qid |quant-u-8774|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (=
     (Wand_list_for_list__get_in_1%limited s@$ diz@6@00)
     (Wand_list_for_list__get_in_1 s@$ diz@6@00))
   :pattern ((Wand_list_for_list__get_in_1 s@$ diz@6@00))
-  :qid |quant-u-8767|)))
+  :qid |quant-u-8761|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (Wand_list_for_list__get_in_1%stateless diz@6@00)
   :pattern ((Wand_list_for_list__get_in_1%limited s@$ diz@6@00))
-  :qid |quant-u-8768|)))
+  :qid |quant-u-8762|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (let ((result@7@00 (Wand_list_for_list__get_in_1%limited s@$ diz@6@00))) (=>
     (Wand_list_for_list__get_in_1%precondition s@$ diz@6@00)
     (not (= result@7@00 $Ref.null))))
   :pattern ((Wand_list_for_list__get_in_1%limited s@$ diz@6@00))
-  :qid |quant-u-8781|)))
+  :qid |quant-u-8775|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (let ((result@7@00 (Wand_list_for_list__get_in_1%limited s@$ diz@6@00))) true)
   :pattern ((Wand_list_for_list__get_in_1%limited s@$ diz@6@00))
-  :qid |quant-u-8782|)))
+  :qid |quant-u-8776|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@55@00)
@@ -687,19 +687,19 @@
         (Wand_list_for_list__get_in_1 s@$ diz@6@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Wand_list_for_list__get_in_1 s@$ diz@6@00))
-  :qid |quant-u-8783|)))
+  :qid |quant-u-8777|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   true
   :pattern ((Wand_list_for_list__get_in_1 s@$ diz@6@00))
-  :qid |quant-u-8784|)))
+  :qid |quant-u-8778|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (= (List__get_next%limited s@$ diz@8@00) (List__get_next s@$ diz@8@00))
   :pattern ((List__get_next s@$ diz@8@00))
-  :qid |quant-u-8769|)))
+  :qid |quant-u-8763|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (List__get_next%stateless diz@8@00)
   :pattern ((List__get_next%limited s@$ diz@8@00))
-  :qid |quant-u-8770|)))
+  :qid |quant-u-8764|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (=>
     (List__get_next%precondition s@$ diz@8@00)
@@ -707,21 +707,21 @@
       (List__get_next s@$ diz@8@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))
   :pattern ((List__get_next s@$ diz@8@00))
-  :qid |quant-u-8785|)))
+  :qid |quant-u-8779|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   true
   :pattern ((List__get_next s@$ diz@8@00))
-  :qid |quant-u-8786|)))
+  :qid |quant-u-8780|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (=
     (Wand_list_for_list__get_in_1_0%limited s@$ diz@10@00)
     (Wand_list_for_list__get_in_1_0 s@$ diz@10@00))
   :pattern ((Wand_list_for_list__get_in_1_0 s@$ diz@10@00))
-  :qid |quant-u-8771|)))
+  :qid |quant-u-8765|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (Wand_list_for_list__get_in_1_0%stateless diz@10@00)
   :pattern ((Wand_list_for_list__get_in_1_0%limited s@$ diz@10@00))
-  :qid |quant-u-8772|)))
+  :qid |quant-u-8766|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@76@00)
@@ -749,11 +749,11 @@
         (Wand_list_for_list__get_in_1_0 s@$ diz@10@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((Wand_list_for_list__get_in_1_0 s@$ diz@10@00))
-  :qid |quant-u-8787|)))
+  :qid |quant-u-8781|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   true
   :pattern ((Wand_list_for_list__get_in_1_0 s@$ diz@10@00))
-  :qid |quant-u-8788|)))
+  :qid |quant-u-8782|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Wand_list_for_list___apply ----------
@@ -3557,8 +3557,8 @@
 (assert (not (= diz@79@01 $Ref.null)))
 (declare-const List__val@80@01 Int)
 (declare-const List__next@81@01 $Ref)
-(assert (not (= diz@79@01 diz@76@01)))
 (assert (not (= diz@79@01 sys__result@73@01)))
+(assert (not (= diz@79@01 diz@76@01)))
 ; [exec]
 ; __flatten_11 := v
 ; [exec]

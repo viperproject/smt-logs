@@ -40,15 +40,14 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $Is (T@T T@U T@U) Bool)
-(declare-fun Tclass.Library.MyInt () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.Library.MyInt () T@U)
 (declare-fun DatatypeCtorId (T@U) T@U)
 (declare-fun |#Library.Ghost.Uninitialized| () T@U)
 (declare-fun DatatypeTypeType () T@T)
 (declare-fun Tclass.Library.Ghost (T@U) T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
+(declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun $HeapSucc (T@U T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -59,6 +58,7 @@
 (declare-fun MapType0Store (T@T T@T T@U T@U T@U) T@U)
 (declare-fun MapType0TypeInv0 (T@T) T@T)
 (declare-fun MapType0TypeInv1 (T@T) T@T)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun Library.Ghost.Uninitialized_q (T@U) Bool)
 (declare-fun Library.Ghost.Something_q (T@U) Bool)
@@ -97,15 +97,10 @@
 ))))
 (assert (distinct alloc Tagclass.Library.MyInt |##Library.Ghost.Uninitialized| Tagclass.Library.Ghost |##Library.Ghost.Something| tytagFamily$MyInt tytagFamily$Ghost)
 )
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0|)) (< (U_2_int |x#0|) 2147483648)))
- :qid |unknown.0:0|
- :skolemid |1106|
- :pattern ( ($Is intType |x#0| Tclass.Library.MyInt))
-)))
-(assert (forall ((|x#0@@0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h)
+(assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.Library.MyInt $h)
  :qid |unknown.0:0|
  :skolemid |1107|
- :pattern ( ($IsAlloc intType |x#0@@0| Tclass.Library.MyInt $h))
+ :pattern ( ($IsAlloc intType |x#0| Tclass.Library.MyInt $h))
 )))
 (assert (= (DatatypeCtorId |#Library.Ghost.Uninitialized|) |##Library.Ghost.Uninitialized|))
 (assert (= (Ctor DatatypeTypeType) 3))
@@ -180,6 +175,11 @@
  :qid |unknown.0:0|
  :skolemid |1197|
  :pattern ( (Library.Ghost.Something_q d@@2))
+)))
+(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.Library.MyInt)  (and (<= (LitInt (- 0 100)) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 2147483648)))
+ :qid |unknown.0:0|
+ :skolemid |1106|
+ :pattern ( ($Is intType |x#0@@0| Tclass.Library.MyInt))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
  :qid |DafnyPreludebpl.217:18|

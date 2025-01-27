@@ -214,7 +214,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |2490|
+ :skolemid |2491|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx@@2 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@2 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@2)) bx@@2) ($Is SetType ($Unbox SetType bx@@2) (TSet t@@3))))
@@ -240,11 +240,10 @@
 (declare-fun |a#0| () T@U)
 (declare-fun |b#0| () T@U)
 (declare-fun |c#0| () T@U)
-(declare-fun |d#0| () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id Impl$$TestDisjointSets.__default.testing3)
+(set-info :boogie-vc-id Impl$$TestDisjointSets.__default.testing2)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -260,8 +259,8 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 8) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 2) (- 0 7)) (|Set#Disjoint| |a#0| |b#0|)) (=> (|Set#Disjoint| |a#0| |b#0|) (and (=> (= (ControlFlow 0 2) (- 0 6)) (|Set#Disjoint| |a#0| |c#0|)) (=> (|Set#Disjoint| |a#0| |c#0|) (and (=> (= (ControlFlow 0 2) (- 0 5)) (|Set#Disjoint| |b#0| |c#0|)) (=> (|Set#Disjoint| |b#0| |c#0|) (and (=> (= (ControlFlow 0 2) (- 0 4)) (|Set#Disjoint| |a#0| |d#0|)) (=> (|Set#Disjoint| |a#0| |d#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Disjoint| |b#0| |d#0|)) (=> (|Set#Disjoint| |b#0| |d#0|) (=> (= (ControlFlow 0 2) (- 0 1)) (|Set#Disjoint| |c#0| |d#0|)))))))))))))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and ($Is SetType |a#0| (TSet TInt)) ($IsAlloc SetType |a#0| (TSet TInt) $Heap))) (and (and ($Is SetType |b#0| (TSet TInt)) ($IsAlloc SetType |b#0| (TSet TInt) $Heap)) (and ($Is SetType |c#0| (TSet TInt)) ($IsAlloc SetType |c#0| (TSet TInt) $Heap)))) (and (and (and ($Is SetType |d#0| (TSet TInt)) ($IsAlloc SetType |d#0| (TSet TInt) $Heap)) (and (= 0 $FunctionContextHeight) (|Set#Disjoint| |a#0| |b#0|))) (and (and (|Set#Disjoint| |a#0| |b#0|) (|Set#Disjoint| (|Set#Union| |a#0| |b#0|) |c#0|)) (and (|Set#Disjoint| (|Set#Union| (|Set#Union| |a#0| |b#0|) |c#0|) |d#0|) (= (ControlFlow 0 8) 2))))) anon0_correct)))
+ (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (|Set#Disjoint| |a#0| |b#0|)) (=> (|Set#Disjoint| |a#0| |b#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Disjoint| |a#0| |c#0|)) (=> (|Set#Disjoint| |a#0| |c#0|) (=> (= (ControlFlow 0 2) (- 0 1)) (|Set#Disjoint| |b#0| |c#0|)))))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is SetType |a#0| (TSet TInt)) ($IsAlloc SetType |a#0| (TSet TInt) $Heap)) (and ($Is SetType |b#0| (TSet TInt)) ($IsAlloc SetType |b#0| (TSet TInt) $Heap))) (=> (and (and (and ($Is SetType |c#0| (TSet TInt)) ($IsAlloc SetType |c#0| (TSet TInt) $Heap)) (= 0 $FunctionContextHeight)) (and (and (|Set#Disjoint| |a#0| |b#0|) (|Set#Disjoint| |a#0| |b#0|)) (and (|Set#Disjoint| (|Set#Union| |a#0| |b#0|) |c#0|) (= (ControlFlow 0 5) 2)))) anon0_correct)))))
 PreconditionGeneratedEntry_correct)))
 ))
 (check-sat)

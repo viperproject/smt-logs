@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:02:53
+; Started: 2025-01-27 02:56:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -135,11 +135,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (nonTerminating%limited s@$ x@0@00) (nonTerminating s@$ x@0@00))
   :pattern ((nonTerminating s@$ x@0@00))
-  :qid |quant-u-8182|)))
+  :qid |quant-u-8176|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (nonTerminating%stateless x@0@00)
   :pattern ((nonTerminating%limited s@$ x@0@00))
-  :qid |quant-u-8183|)))
+  :qid |quant-u-8177|)))
 ; ---------- FUNCTION partiallyTerminating----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Bool)
@@ -153,11 +153,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (partiallyTerminating%limited s@$ x@2@00) (partiallyTerminating s@$ x@2@00))
   :pattern ((partiallyTerminating s@$ x@2@00))
-  :qid |quant-u-8184|)))
+  :qid |quant-u-8178|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (partiallyTerminating%stateless x@2@00)
   :pattern ((partiallyTerminating%limited s@$ x@2@00))
-  :qid |quant-u-8185|)))
+  :qid |quant-u-8179|)))
 ; ---------- FUNCTION test----------
 (declare-fun x@4@00 () $Ref)
 (declare-fun result@5@00 () Bool)
@@ -167,11 +167,11 @@
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test%limited s@$ x@4@00) (test s@$ x@4@00))
   :pattern ((test s@$ x@4@00))
-  :qid |quant-u-8186|)))
+  :qid |quant-u-8180|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test%stateless x@4@00)
   :pattern ((test%limited s@$ x@4@00))
-  :qid |quant-u-8187|)))
+  :qid |quant-u-8181|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -210,13 +210,13 @@
     (= (test s@$ x@4@00) (nonTerminating $Snap.unit x@4@00)))
   :pattern ((test s@$ x@4@00))
   :pattern ((test%stateless x@4@00) (foo%trigger s@$ x@4@00))
-  :qid |quant-u-8190|)))
+  :qid |quant-u-8184|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=>
     (test%precondition s@$ x@4@00)
     (nonTerminating%precondition $Snap.unit x@4@00))
   :pattern ((test s@$ x@4@00))
-  :qid |quant-u-8191|)))
+  :qid |quant-u-8185|)))
 ; ---------- FUNCTION test2----------
 (declare-fun x@6@00 () $Ref)
 (declare-fun result@7@00 () Bool)
@@ -226,11 +226,11 @@
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (= (test2%limited s@$ x@6@00) (test2 s@$ x@6@00))
   :pattern ((test2 s@$ x@6@00))
-  :qid |quant-u-8188|)))
+  :qid |quant-u-8182|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (test2%stateless x@6@00)
   :pattern ((test2%limited s@$ x@6@00))
-  :qid |quant-u-8189|)))
+  :qid |quant-u-8183|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -283,13 +283,13 @@
       (= (test2 s@$ x@6@00) (partiallyTerminating ($Snap.first s@$) x@6@00))))
   :pattern ((test2 s@$ x@6@00))
   :pattern ((test2%stateless x@6@00) (foo%trigger s@$ x@6@00))
-  :qid |quant-u-8192|)))
+  :qid |quant-u-8186|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (=>
     (test2%precondition s@$ x@6@00)
     (partiallyTerminating%precondition ($Snap.first s@$) x@6@00))
   :pattern ((test2 s@$ x@6@00))
-  :qid |quant-u-8193|)))
+  :qid |quant-u-8187|)))
 ; ---------- foo ----------
 (declare-const x@10@00 $Ref)
 (set-option :timeout 0)

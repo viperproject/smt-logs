@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:58:23
+; Started: 2025-01-27 02:51:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -41093,7 +41093,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -41454,7 +41454,7 @@
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
-; unsat
+; unknown
 ; [exec]
 ; self := ($struct_set(self, 5, ($struct_get($struct_loc(self, 5)): Int) +
 ;   l$havoc): $Struct)
@@ -42757,7 +42757,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.04s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@592@01 Int)) (!
   (=>
@@ -43205,7 +43205,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.04s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@597@01 Int)) (!
   (=>
@@ -43476,7 +43476,7 @@
 (check-sat)
 ; unsat
 (pop) ; 20
-; 0.03s
+; 0.02s
 ; (get-info :all-statistics)
 (pop) ; 19
 (push) ; 19
@@ -43570,7 +43570,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.83s
+; 0.61s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@601@01 Int)) (!
   (=>

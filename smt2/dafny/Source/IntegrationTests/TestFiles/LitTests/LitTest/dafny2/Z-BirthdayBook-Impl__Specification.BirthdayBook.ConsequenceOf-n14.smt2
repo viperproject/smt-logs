@@ -515,7 +515,7 @@
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#6| |l#0| |l#1| |l#2| |l#3|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (and (|Set#IsMember| |l#1| |$y#0|) (= (MapType0Select BoxType BoxType |l#2| |$y#0|) |l#3|))))
  :qid |ZBirthdayBookdfy.17:8|
- :skolemid |1685|
+ :skolemid |1687|
  :pattern ( (MapType0Select BoxType boolType (|lambda#6| |l#0| |l#1| |l#2| |l#3|) |$y#0|))
 )))
 (assert (forall ((v@@7 T@U) (t0@@3 T@U) (t1@@1 T@U) ) (! (= ($Is MapType v@@7 (TMap t0@@3 t1@@1)) (forall ((bx@@11 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@7) bx@@11) (and ($IsBox (MapType0Select BoxType BoxType (|Map#Elements| v@@7) bx@@11) t1@@1) ($IsBox bx@@11 t0@@3)))
@@ -581,7 +581,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| T@U) ($o@@10 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#2| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@10 $f@@0))  (=> (and (or (not (= $o@@10 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@10) |l#2@@0|)))) (|Set#IsMember| |l#3@@0| ($Box refType $o@@10))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1684|
+ :skolemid |1686|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#2| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o@@10 $f@@0))
 )))
 (assert (forall ((m@@9 T@U) ) (!  (or (= m@@9 |Map#Empty|) (exists ((k@@3 T@U) (v@@8 T@U) ) (! (|Set#IsMember| (|Map#Items| m@@9) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@3 v@@8)))

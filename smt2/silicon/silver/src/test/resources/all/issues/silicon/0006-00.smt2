@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:28
+; Started: 2025-01-27 02:59:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,11 +123,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (bar%limited s@$ x@0@00) (bar s@$ x@0@00))
   :pattern ((bar s@$ x@0@00))
-  :qid |quant-u-10963|)))
+  :qid |quant-u-10956|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (bar%stateless x@0@00)
   :pattern ((bar%limited s@$ x@0@00))
-  :qid |quant-u-10964|)))
+  :qid |quant-u-10957|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= x@0@00 $Ref.null)))
@@ -140,8 +140,8 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=> (bar%precondition s@$ x@0@00) (= (bar s@$ x@0@00) true))
   :pattern ((bar s@$ x@0@00))
-  :qid |quant-u-10965|)))
+  :qid |quant-u-10958|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((bar s@$ x@0@00))
-  :qid |quant-u-10966|)))
+  :qid |quant-u-10959|)))

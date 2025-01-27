@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:05:54
+; Started: 2025-01-27 02:59:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -707,11 +707,11 @@
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
   (= (foo%limited s@$ l@0@00 i@1@00) (foo s@$ l@0@00 i@1@00))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10356|)))
+  :qid |quant-u-10350|)))
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
   (foo%stateless l@0@00 i@1@00)
   :pattern ((foo%limited s@$ l@0@00 i@1@00))
-  :qid |quant-u-10357|)))
+  :qid |quant-u-10351|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (=
@@ -773,7 +773,7 @@
     (and (= this l@0@00) (= i j@6@00))
     (> (ite (and (= this l@0@00) (= i i@1@00)) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-10358|))))
+  :qid |quant-u-10352|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -985,7 +985,7 @@
         (ite (and (= this l@0@00) (= i i@1@00)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-10359|))))
+  :qid |quant-u-10353|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -1421,7 +1421,7 @@
       (= i j@6@00))
     (> (ite (and (= this l@0@00) (= i i@1@00)) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-10360|))))
+  :qid |quant-u-10354|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -3447,7 +3447,7 @@
             ($SortWrappers.IntTo$Snap j)))))) j))
           )))))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10361|)))
+  :qid |quant-u-10355|)))
 ; WARNING: (3342,11): 'not' cannot be used in patterns.
 ; WARNING: (3342,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
@@ -3506,7 +3506,7 @@
         ($SortWrappers.IntTo$Snap j)))))) j))
       )))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10362|)))
+  :qid |quant-u-10356|)))
 ; WARNING: (3399,7): 'not' cannot be used in patterns.
 ; WARNING: (3399,7): 'if' cannot be used in patterns.
 ; ---------- list2 ----------

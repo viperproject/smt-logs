@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:43
+// Date:         2025-01-27 03:40:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/UnfoldedChildren/fourAnd.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/UnfoldedChildren/fourAnd-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,13 +233,13 @@ procedure fourAnd#definedness(a_2: bool, b_24: bool, c: bool, d: bool) returns (
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: bool;
   var y: bool;
   var r_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -250,8 +250,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := true -- fourAnd.vpr@6.4--6.22
     x := true;
@@ -272,8 +272,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r -- fourAnd.vpr@10.4--10.13
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion r might not hold. (fourAnd.vpr@10.11--10.12) [198529]"}
       r_1;
     assume state(Heap, Mask);
@@ -289,8 +289,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !r -- fourAnd.vpr@12.4--12.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !r might not hold. (fourAnd.vpr@12.11--12.13) [198530]"}
       !r_1;
     assume state(Heap, Mask);
@@ -306,8 +306,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !r -- fourAnd.vpr@14.4--14.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !r might not hold. (fourAnd.vpr@14.11--14.13) [198531]"}
       !r_1;
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:30
+// Date:         2025-01-27 03:16:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -753,8 +753,8 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
 {
   var QPMask: MaskType;
   var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_5: int;
   
   // -- Initializing the state
@@ -893,8 +893,8 @@ procedure IsReordered#definedness(origL: (VCTArrayDomainType Ref), newO: (Seq in
     )));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of result == (maxLen <= (alen(origL): Int) && (maxLen <= (alen(newL): Int) && (CheckBounded(newO, maxLen) && (forall i: Int :: { (loc(origL, newO[i]): Ref) } 0 <= i && i < |newO| ==> (loc(newL, i): Ref).Integer__item == (loc(origL, newO[i]): Ref).Integer__item))))
       if (maxLen <= (alen(origL): int)) {
@@ -935,10 +935,10 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var rep__1: bool;
   var i__2: int;
@@ -1052,16 +1052,16 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: rep__1 := IsReordered(origL, order, newL, |order|) -- 0483a.vpr@38.3--38.53
     
     // -- Check definedness of IsReordered(origL, order, newL, |order|)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1144,8 +1144,8 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   //     0 <= i__2 && i__2 < |order| ==>
   //     (loc(newL, i__2): Ref).Integer__item ==
   //     (loc(origL, order[i__2]): Ref).Integer__item) -- 0483a.vpr@40.11--40.181
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (rep__1) {
       
       // -- Check definedness of (forall i__2: Int :: { (loc(origL, order[i__2]): Ref) } 0 <= i__2 && i__2 < |order| ==> (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item)
@@ -1211,8 +1211,8 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
   //     0 <= i__2 && i__2 < |order| ==>
   //     (loc(newL, i__2): Ref).Integer__item ==
   //     (loc(origL, order[i__2]): Ref).Integer__item) -- 0483a.vpr@42.11--42.181
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (rep__1) {
       
       // -- Check definedness of (forall i__2: Int :: { (loc(origL, order[i__2]): Ref) } 0 <= i__2 && i__2 < |order| ==> (loc(newL, i__2): Ref).Integer__item == (loc(origL, order[i__2]): Ref).Integer__item)
@@ -1244,8 +1244,8 @@ procedure PermutationLemma(origL: (VCTArrayDomainType Ref), order: (Seq int), ne
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result -- 0483a.vpr@43.3--43.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result might not hold. (0483a.vpr@43.10--43.21) [57177]"}
       sys__result;
     assume state(Heap, Mask);

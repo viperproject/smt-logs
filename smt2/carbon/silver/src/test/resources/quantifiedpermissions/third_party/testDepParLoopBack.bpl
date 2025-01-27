@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:14
+// Date:         2025-01-27 03:34:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testDepParLoopBack.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testDepParLoopBack-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -706,8 +706,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar_1: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -732,8 +732,8 @@ procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testDepParLoopBack.vpr@10.21--10.44) [150406]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testDepParLoopBack.vpr@10.21--10.44) [150407]"}
@@ -809,8 +809,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
   var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -907,8 +907,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testDepParLoopBack.vpr@19.40--19.68) [150419]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testDepParLoopBack.vpr@19.40--19.68) [150420]"}
@@ -1044,8 +1044,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1165,8 +1165,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testDepParLoopBack.vpr@29.85--29.130) [150442]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testDepParLoopBack.vpr@29.85--29.130) [150443]"}
@@ -1310,8 +1310,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_14: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1431,8 +1431,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testDepParLoopBack.vpr@39.97--39.147) [150469]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testDepParLoopBack.vpr@39.97--39.147) [150470]"}
@@ -1558,8 +1558,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar_1: (Seq int), v_2: int
 procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1584,8 +1584,8 @@ procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) ret
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testDepParLoopBack.vpr@46.36--46.64) [150484]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testDepParLoopBack.vpr@46.36--46.64) [150485]"}
@@ -1661,8 +1661,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1758,8 +1758,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testDepParLoopBack.vpr@55.55--55.84) [150497]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testDepParLoopBack.vpr@55.55--55.84) [150498]"}
@@ -1855,15 +1855,15 @@ procedure Ref__loop_main_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
   var j_9: int;
   var k_23: int;
   var i_12: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_13: int;
   var i_23: int;
   var i_24: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2171,8 +2171,8 @@ procedure Ref__loop_main_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2344,8 +2344,8 @@ procedure Ref__loop_main_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (0 < len_3) {
       assert {:msg "  Postcondition of Ref__loop_main_54 might not hold. Assertion |ar| == len might not hold. (testDepParLoopBack.vpr@72.11--72.38) [150544]"}
         Seq#Length(ar_1) == len_3;
@@ -2498,13 +2498,13 @@ procedure Ref__loop_main_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
 procedure Ref__recv_body_142(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2528,8 +2528,8 @@ procedure Ref__recv_body_142(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2558,8 +2558,8 @@ procedure Ref__recv_body_142(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Postcondition of Ref__recv_body_142 might not hold. Fraction 1 / 2 might be negative. (testDepParLoopBack.vpr@86.11--86.47) [150557]"}
       perm >= NoPerm;
@@ -2582,8 +2582,8 @@ procedure Ref__send_body_152(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2619,8 +2619,8 @@ procedure Ref__send_body_152(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- testDepParLoopBack.vpr@97.3--97.15
     assume false;
@@ -2636,8 +2636,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_5: Ref;
@@ -2646,8 +2646,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
   var __flatten_10: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var __flatten_6: int;
   var __flatten_9: int;
   var ExhaleHeap: HeapType;
@@ -2746,8 +2746,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2815,8 +2815,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method Ref__recv_body_142 might not hold. Assertion diz != null might not hold. (testDepParLoopBack.vpr@127.5--127.54) [150583]"}
             diz != null;
           assert {:msg "  The precondition of method Ref__recv_body_142 might not hold. Assertion current_thread_id >= 0 might not hold. (testDepParLoopBack.vpr@127.5--127.54) [150584]"}
@@ -2914,8 +2914,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method Ref__send_body_152 might not hold. Assertion diz != null might not hold. (testDepParLoopBack.vpr@138.5--138.54) [150600]"}
             diz != null;
           assert {:msg "  The precondition of method Ref__send_body_152 might not hold. Assertion current_thread_id >= 0 might not hold. (testDepParLoopBack.vpr@138.5--138.54) [150601]"}
@@ -2944,8 +2944,8 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__loop_body_54 might not hold. Assertion 0 <= i might not hold. (testDepParLoopBack.vpr@112.11--112.32) [150606]"}
       0 <= i;
     assert {:msg "  Postcondition of Ref__loop_body_54 might not hold. Assertion i < len might not hold. (testDepParLoopBack.vpr@112.11--112.32) [150607]"}
@@ -2989,12 +2989,12 @@ procedure Ref__loop_body_54(diz: Ref, current_thread_id: int, len_3: int, ar_1: 
 procedure Ref__guard_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int, ar_1: (Seq Ref), br: (Seq Ref), i: int, cr: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3019,8 +3019,8 @@ procedure Ref__guard_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int, a
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3035,8 +3035,8 @@ procedure Ref__guard_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int, a
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__guard_check_S2_S1 might not hold. Assertion 1 <= i might not hold. (testDepParLoopBack.vpr@147.11--147.17) [150615]"}
       1 <= i;
     assert {:msg "  Postcondition of Ref__guard_check_S2_S1 might not hold. Assertion i - 1 < len - 1 might not hold. (testDepParLoopBack.vpr@148.11--148.26) [150616]"}
@@ -3051,12 +3051,12 @@ procedure Ref__resource_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3099,8 +3099,8 @@ procedure Ref__resource_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3126,8 +3126,8 @@ procedure Ref__resource_check_S2_S1(diz: Ref, current_thread_id: int, len_3: int
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__resource_check_S2_S1 might not hold. Assertion i - 1 < len - 1 might not hold. (testDepParLoopBack.vpr@160.11--160.26) [150623]"}
       i - 1 < len_3 - 1;
     perm := 1 / 2;
@@ -3161,15 +3161,15 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), br:
   var j_35: int;
   var k_28: int;
   var i_53: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_64: int;
   var i_55: int;
   var i_65: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var j_6_2: int;
@@ -3409,8 +3409,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), br:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3571,22 +3571,22 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), br:
   }
   
   // -- Translating statement: assert |ar| == len -- testDepParLoopBack.vpr@184.3--184.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |ar| == len might not hold. (testDepParLoopBack.vpr@184.10--184.21) [150658]"}
       Seq#Length(ar_1) == len_3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |br| == len -- testDepParLoopBack.vpr@185.3--185.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |br| == len might not hold. (testDepParLoopBack.vpr@185.10--185.21) [150659]"}
       Seq#Length(br) == len_3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |cr| == len -- testDepParLoopBack.vpr@186.3--186.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |cr| == len might not hold. (testDepParLoopBack.vpr@186.10--186.21) [150660]"}
       Seq#Length(cr) == len_3;
     assume state(Heap, Mask);
@@ -3596,8 +3596,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), br:
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Ref__loop_main_54 might not hold. Assertion diz != null might not hold. (testDepParLoopBack.vpr@187.3--187.61) [150661]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_54 might not hold. Assertion current_thread_id >= 0 might not hold. (testDepParLoopBack.vpr@187.3--187.61) [150662]"}
@@ -3960,8 +3960,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), br:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__zero_array might not hold. Assertion |ar| == len might not hold. (testDepParLoopBack.vpr@177.11--177.22) [150686]"}
       Seq#Length(ar_1) == len_3;
     havoc QPMask;

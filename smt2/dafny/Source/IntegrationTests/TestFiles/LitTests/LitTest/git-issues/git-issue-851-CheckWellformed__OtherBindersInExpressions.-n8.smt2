@@ -117,7 +117,7 @@
  :skolemid |3515|
 )))
  :qid |gitissue851dfy.204:8|
- :skolemid |4111|
+ :skolemid |4112|
  :pattern ( (MapType0Select BoxType boolType (|lambda#9| |l#0| |l#1| |l#2|) |$y#0|))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
@@ -218,7 +218,7 @@
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4109|
+ :skolemid |4110|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (=> (or |OtherBindersInExpressions.__default.SetComprehension1#canCall| (< 1 $FunctionContextHeight)) (= OtherBindersInExpressions.__default.SetComprehension1 (LitInt (Div 40 (LitInt 0)))))))

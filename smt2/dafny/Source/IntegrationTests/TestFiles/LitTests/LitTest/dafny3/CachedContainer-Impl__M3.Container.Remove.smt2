@@ -188,7 +188,7 @@
 ))) (= (Ctor BoxType) 3)))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$y#2| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$y#2|))  (and ($IsBox |$y#2| |l#0|) (|Seq#Contains| |l#1| |$y#2|)))
  :qid |unknown.0:0|
- :skolemid |3874|
+ :skolemid |3868|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1|) |$y#2|))
 )))
 (assert (forall ((a@@2 T@U) (b T@U) (y@@0 T@U) ) (!  (=> (|Set#IsMember| b y@@0) (not (|Set#IsMember| (|Set#Difference| a@@2 b) y@@0)))
@@ -808,7 +808,7 @@
 )))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@14 T@U) ($f@@2 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#7| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@14 $f@@2))  (=> (and (or (not (= $o@@14 |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o@@14) |l#2|)))) (|Set#IsMember| |l#3| ($Box refType $o@@14))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |3876|
+ :skolemid |3870|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#7| |l#0@@0| |l#1@@0| |l#2| |l#3|) $o@@14 $f@@2))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((M3.Container$T@@23 T@U) ($Heap@@2 T@U) (this@@5 T@U) ) (!  (=> (or (|M3.Container.Valid#canCall| M3.Container$T@@23 $Heap@@2 this@@5) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@2) (and (or (not (= this@@5 null)) (not true)) (and ($Is refType this@@5 (Tclass.M3.Container M3.Container$T@@23)) ($IsAlloc refType this@@5 (Tclass.M3.Container M3.Container$T@@23) $Heap@@2)))))) (and (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 this@@5) M3.Container.Repr)) ($Box refType this@@5)) (=> (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 this@@5) M3.Container.Repr)) ($Box refType null))) (|M3.Container.Valid_k#canCall| M3.Container$T@@23 $Heap@@2 this@@5))) (= (M3.Container.Valid M3.Container$T@@23 $Heap@@2 this@@5)  (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 this@@5) M3.Container.Repr)) ($Box refType this@@5)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 this@@5) M3.Container.Repr)) ($Box refType null)))) (M3.Container.Valid_k M3.Container$T@@23 $Heap@@2 this@@5)))))

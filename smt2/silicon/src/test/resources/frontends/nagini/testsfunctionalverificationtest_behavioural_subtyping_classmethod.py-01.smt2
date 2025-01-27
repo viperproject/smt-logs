@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:59:26
+; Started: 2025-01-27 02:52:42
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -4082,8 +4082,8 @@
 ; D_res := new()
 (declare-const D_res@153@01 $Ref)
 (assert (not (= D_res@153@01 $Ref.null)))
-(assert (not (= D_res@153@01 _cthread_161@140@01)))
 (assert (not (= D_res@153@01 D_res@150@01)))
+(assert (not (= D_res@153@01 _cthread_161@140@01)))
 ; [exec]
 ; inhale typeof(D_res) == cls_4
 (declare-const $t@154@01 $Snap)
@@ -4397,8 +4397,8 @@
 ; E_res := new()
 (declare-const E_res@177@01 $Ref)
 (assert (not (= E_res@177@01 $Ref.null)))
-(assert (not (= E_res@177@01 _cthread_162@164@01)))
 (assert (not (= E_res@177@01 E_res@174@01)))
+(assert (not (= E_res@177@01 _cthread_162@164@01)))
 ; [exec]
 ; inhale typeof(E_res) == cls_5
 (declare-const $t@178@01 $Snap)
@@ -5011,8 +5011,8 @@
 ; F_res := new()
 (declare-const F_res@221@01 $Ref)
 (assert (not (= F_res@221@01 $Ref.null)))
-(assert (not (= F_res@221@01 F_res@218@01)))
 (assert (not (= F_res@221@01 _cthread_163@208@01)))
+(assert (not (= F_res@221@01 F_res@218@01)))
 ; [exec]
 ; inhale typeof(F_res) == cls_6
 (declare-const $t@222@01 $Snap)

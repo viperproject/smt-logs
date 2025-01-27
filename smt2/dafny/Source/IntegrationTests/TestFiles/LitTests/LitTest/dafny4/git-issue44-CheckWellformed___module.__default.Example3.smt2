@@ -216,11 +216,6 @@
  :skolemid |535|
  :pattern ( ($IsAlloc refType (_module.__default.RepeatArrayValue _module._default.RepeatArrayValue$T@@0 |n#0@@0| |count#0@@0|) (Tclass._System.array _module._default.RepeatArrayValue$T@@0) $Heap@@0))
 ))))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |554|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
-)))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
  :qid |DafnyPreludebpl.214:18|
  :skolemid |38|
@@ -275,6 +270,11 @@
  :skolemid |551|
  :pattern ( (_module.__default.Example3 |len#0@@2|))
 ))))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |554|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

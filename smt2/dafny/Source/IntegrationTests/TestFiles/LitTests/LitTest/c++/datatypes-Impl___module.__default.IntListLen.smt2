@@ -174,11 +174,6 @@
  :skolemid |110|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |547|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
-)))
 (assert (forall ((d@@3 T@U) ) (!  (=> (|$IsA#_module.IntList| d@@3) (or (_module.IntList.Nil_q d@@3) (_module.IntList.Cons_q d@@3)))
  :qid |unknown.0:0|
  :skolemid |820|
@@ -254,6 +249,11 @@
  :qid |unknown.0:0|
  :skolemid |814|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.IntList.tl d@@7) Tclass._module.IntList $h@@2))
+)))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |547|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (forall ((|a#57#0#0| Int) (|a#57#1#0| T@U) ) (! (= (|#_module.IntList.Cons| (LitInt |a#57#0#0|) (Lit DatatypeTypeType |a#57#1#0|)) (Lit DatatypeTypeType (|#_module.IntList.Cons| |a#57#0#0| |a#57#1#0|)))
  :qid |datatypesdfy.116:10|

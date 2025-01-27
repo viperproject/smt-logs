@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:53:53
+; Started: 2025-01-27 02:47:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -48720,13 +48720,4 @@
 (push) ; 19
 (set-option :timeout 10)
 (assert (not (= ret@990@01 ret@1059@01)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (= ret@899@01 ret@1059@01)))
 (check-sat)

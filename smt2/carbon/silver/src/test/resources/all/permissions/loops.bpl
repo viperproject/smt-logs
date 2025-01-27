@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:34
+// Date:         2025-01-27 03:26:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/loops.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/loops-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ procedure test_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -220,8 +220,8 @@ procedure test_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: b := true -- loops.vpr@10.3--10.12
     b_24 := true;
@@ -232,8 +232,8 @@ procedure test_1(x: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [95539]"}
           x != null;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [95540]"}
@@ -281,8 +281,8 @@ procedure test_1(x: Ref) returns ()
             b_24 := false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (loops.vpr@14.15--14.36) [95543]"}
           x != null;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (loops.vpr@14.15--14.36) [95544]"}
@@ -308,10 +308,10 @@ procedure test2_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -334,16 +334,16 @@ procedure test2_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (x.f < 3) -- loops.vpr@26.3--29.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [95545]"}
@@ -386,8 +386,8 @@ procedure test2_1(x: Ref) returns ()
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@27.15--27.23) [95547]"}
@@ -421,8 +421,8 @@ procedure test3_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -444,8 +444,8 @@ procedure test3_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (x.f < 3) -- loops.vpr@36.3--38.4
     
@@ -488,10 +488,10 @@ procedure test3_1(x: Ref) returns ()
 procedure test4_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -512,16 +512,16 @@ procedure test4_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (x.f < 3) -- loops.vpr@44.3--48.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [95549]"}
@@ -564,8 +564,8 @@ procedure test4_1(x: Ref) returns ()
         assume Heap[x, f_7] < 3;
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@46.15--46.23) [95551]"}
@@ -599,10 +599,10 @@ procedure test5_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -625,16 +625,16 @@ procedure test5_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (x.f < 3) -- loops.vpr@54.3--59.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not hold on entry. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [95552]"}
@@ -680,8 +680,8 @@ procedure test5_1(x: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(x.f, write) -- loops.vpr@58.5--58.20
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (loops.vpr@58.12--58.20) [95554]"}
@@ -694,8 +694,8 @@ procedure test5_1(x: Ref) returns ()
             Heap := ExhaleHeap;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) might not be preserved. There might be insufficient permission to access x.f (loops.vpr@56.15--56.23) [95555]"}

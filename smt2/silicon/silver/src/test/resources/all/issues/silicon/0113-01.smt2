@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:10
+; Started: 2025-01-27 02:59:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -125,11 +125,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (= (contains%limited s@$ this@0@00 i@1@00) (contains s@$ this@0@00 i@1@00))
   :pattern ((contains s@$ this@0@00 i@1@00))
-  :qid |quant-u-10520|)))
+  :qid |quant-u-10514|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (contains%stateless this@0@00 i@1@00)
   :pattern ((contains%limited s@$ this@0@00 i@1@00))
-  :qid |quant-u-10521|)))
+  :qid |quant-u-10515|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (and
     ($Perm.isReadVar $k@3@00)
@@ -161,7 +161,7 @@
               ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))))))
   :pattern ((contains s@$ this@0@00 i@1@00))
   :pattern ((contains%stateless this@0@00 i@1@00) (valid%trigger ($Snap.second s@$) this@0@00))
-  :qid |quant-u-10522|)))
+  :qid |quant-u-10516|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (=>
     (and
@@ -183,7 +183,7 @@
       ($Snap.combine $Snap.unit ($Snap.second ($Snap.second ($Snap.second s@$))))
       ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))
   :pattern ((contains s@$ this@0@00 i@1@00))
-  :qid |quant-u-10523|)))
+  :qid |quant-u-10517|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- addother ----------
@@ -773,10 +773,10 @@
 (assert (not (= n@17@01 $Ref.null)))
 (declare-const next@18@01 $Ref)
 (declare-const value@19@01 Int)
-(assert (not
-  (= n@17@01 ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@4@01))))))
 (assert (not (= n@17@01 this@2@01)))
 (assert (not (= n@17@01 n@9@01)))
+(assert (not
+  (= n@17@01 ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@4@01))))))
 ; [exec]
 ; this.next := n
 (push) ; 5

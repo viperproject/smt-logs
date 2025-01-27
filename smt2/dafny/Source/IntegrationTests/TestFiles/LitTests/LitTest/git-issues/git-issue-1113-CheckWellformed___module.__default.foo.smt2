@@ -154,6 +154,11 @@
  :skolemid |38|
  :pattern ( ($IsBox ($Box T@@1 v@@1) t@@0))
 )))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is SeqType |x#0| Tclass._module.subString)  (and ($Is SeqType |x#0| (TSeq TChar)) (and (<= (LitInt 0) (|Seq#Length| |x#0|)) (< (|Seq#Length| |x#0|) 2147483648))))
+ :qid |unknown.0:0|
+ :skolemid |512|
+ :pattern ( ($Is SeqType |x#0| Tclass._module.subString))
+)))
 (assert (forall ((s@@2 T@U) ) (! (<= 0 (|Seq#Length| s@@2))
  :qid |DafnyPreludebpl.1124:15|
  :skolemid |221|
@@ -179,11 +184,6 @@
  :qid |DafnyPreludebpl.167:18|
  :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
-)))
-(assert (forall ((|x#0| T@U) ) (! (= ($Is SeqType |x#0| Tclass._module.subString)  (and ($Is SeqType |x#0| (TSeq TChar)) (and (<= (LitInt 0) (|Seq#Length| |x#0|)) (< (|Seq#Length| |x#0|) 2147483648))))
- :qid |unknown.0:0|
- :skolemid |512|
- :pattern ( ($Is SeqType |x#0| Tclass._module.subString))
 )))
 (assert (forall ((n Int) ) (!  (=> (or (and (<= 0 n) (< n 55296)) (and (<= 57344 n) (< n 1114112))) (= (|char#ToInt| (|char#FromInt| n)) n))
  :qid |DafnyPreludebpl.131:15|

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:32
+// Date:         2025-01-27 03:38:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/access.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/access-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -406,10 +406,10 @@ procedure m_17(this: Ref, b_24: Ref) returns (i: int)
   var perm: Perm;
   var QPMask: MaskType;
   var y_10: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -494,12 +494,12 @@ procedure m_17(this: Ref, b_24: Ref) returns (i: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert b.f >= 0 -- access.vpr@13.3--13.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b.f >= 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access b.f (access.vpr@13.10--13.18) [180635]"}
@@ -519,10 +519,10 @@ procedure m2(this: Ref, b_24: Ref) returns (i: int)
   var perm: Perm;
   var QPMask: MaskType;
   var y_24: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -608,12 +608,12 @@ procedure m2(this: Ref, b_24: Ref) returns (i: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(this.g, write) -- access.vpr@22.3--22.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.g (access.vpr@22.10--22.28) [180643]"}
@@ -627,8 +627,8 @@ procedure m2(this: Ref, b_24: Ref) returns (i: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b.f >= 0 -- access.vpr@25.3--25.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b.f >= 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access b.f (access.vpr@25.10--25.18) [180644]"}
@@ -640,8 +640,8 @@ procedure m2(this: Ref, b_24: Ref) returns (i: int)
   // -- Translating statement: exhale (forall z: Ref ::
   //     { (z in this.g) }
   //     (z in this.g) ==> acc(z.f, write)) -- access.vpr@28.3--28.60
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall z: Ref :: { (z in this.g) } (z in this.g) ==> acc(z.f, write))
       if (*) {

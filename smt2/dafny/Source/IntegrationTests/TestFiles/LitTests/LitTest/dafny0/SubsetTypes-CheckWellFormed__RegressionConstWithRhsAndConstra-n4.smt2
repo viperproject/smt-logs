@@ -24,11 +24,9 @@
 (declare-fun tickleBool (Bool) Bool)
 (assert (and (tickleBool true) (tickleBool false)))
 (declare-fun alloc () T@U)
-(declare-fun Tagclass._System.nat () T@U)
-(declare-fun Tagclass.RegressionConstWithRhsAndConstraints1.C? () T@U)
-(declare-fun Tagclass.RegressionConstWithRhsAndConstraints1.C () T@U)
-(declare-fun tytagFamily$nat () T@U)
-(declare-fun tytagFamily$C () T@U)
+(declare-fun Tagclass.RegressionConstWithRhsAndConstraints2.Default? () T@U)
+(declare-fun Tagclass.RegressionConstWithRhsAndConstraints2.Default () T@U)
+(declare-fun tytagFamily$Default () T@U)
 (declare-fun Ctor (T@T) Int)
 (declare-fun boolType () T@T)
 (declare-fun intType () T@T)
@@ -39,14 +37,13 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
-(declare-fun Tclass._System.nat () T@U)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun refType () T@T)
-(declare-fun Tclass.RegressionConstWithRhsAndConstraints1.C? () T@U)
+(declare-fun Tclass.RegressionConstWithRhsAndConstraints2.Default? () T@U)
 (declare-fun null () T@U)
 (declare-fun dtype (T@U) T@U)
-(declare-fun Tclass.RegressionConstWithRhsAndConstraints1.C () T@U)
+(declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.RegressionConstWithRhsAndConstraints2.Default () T@U)
 (declare-fun $Unbox (T@T T@U) T@U)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -82,24 +79,19 @@
  :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
-(assert (distinct alloc Tagclass._System.nat Tagclass.RegressionConstWithRhsAndConstraints1.C? Tagclass.RegressionConstWithRhsAndConstraints1.C tytagFamily$nat tytagFamily$C)
+(assert (distinct alloc Tagclass.RegressionConstWithRhsAndConstraints2.Default? Tagclass.RegressionConstWithRhsAndConstraints2.Default tytagFamily$Default)
 )
-(assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
- :qid |unknown.0:0|
- :skolemid |4915|
- :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
-)))
 (assert (= (Ctor refType) 3))
-(assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass.RegressionConstWithRhsAndConstraints1.C?)  (or (= $o null) (= (dtype $o) Tclass.RegressionConstWithRhsAndConstraints1.C?)))
+(assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass.RegressionConstWithRhsAndConstraints2.Default?)  (or (= $o null) (= (dtype $o) Tclass.RegressionConstWithRhsAndConstraints2.Default?)))
  :qid |unknown.0:0|
- :skolemid |5050|
- :pattern ( ($Is refType $o Tclass.RegressionConstWithRhsAndConstraints1.C?))
+ :skolemid |5541|
+ :pattern ( ($Is refType $o Tclass.RegressionConstWithRhsAndConstraints2.Default?))
 )))
-(assert (forall ((|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints1.C $h@@0) ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints1.C? $h@@0))
+(assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints2.Default $h) ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints2.Default? $h))
  :qid |unknown.0:0|
- :skolemid |5057|
- :pattern ( ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints1.C $h@@0))
- :pattern ( ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints1.C? $h@@0))
+ :skolemid |5548|
+ :pattern ( ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints2.Default $h))
+ :pattern ( ($IsAlloc refType |c#0| Tclass.RegressionConstWithRhsAndConstraints2.Default? $h))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
@@ -116,40 +108,35 @@
  :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
-(assert (forall (($o@@0 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass.RegressionConstWithRhsAndConstraints1.C? $h@@1)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@0) alloc)))))
+(assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass.RegressionConstWithRhsAndConstraints2.Default? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
  :qid |unknown.0:0|
- :skolemid |5051|
- :pattern ( ($IsAlloc refType $o@@0 Tclass.RegressionConstWithRhsAndConstraints1.C? $h@@1))
+ :skolemid |5542|
+ :pattern ( ($IsAlloc refType $o@@0 Tclass.RegressionConstWithRhsAndConstraints2.Default? $h@@0))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
  :qid |DafnyPreludebpl.108:29|
- :skolemid |4587|
+ :skolemid |5075|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
  :qid |DafnyPreludebpl.102:29|
- :skolemid |4585|
+ :skolemid |5073|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
  :qid |DafnyPreludebpl.168:18|
- :skolemid |4596|
+ :skolemid |5084|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+(assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints2.Default)  (and ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints2.Default?) (or (not (= |c#0@@0| null)) (not true))))
  :qid |unknown.0:0|
- :skolemid |4914|
- :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
-)))
-(assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints1.C)  (and ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints1.C?) (or (not (= |c#0@@0| null)) (not true))))
- :qid |unknown.0:0|
- :skolemid |5056|
- :pattern ( ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints1.C))
- :pattern ( ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints1.C?))
+ :skolemid |5547|
+ :pattern ( ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints2.Default))
+ :pattern ( ($Is refType |c#0@@0| Tclass.RegressionConstWithRhsAndConstraints2.Default?))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
  :qid |DafnyPreludebpl.167:18|
- :skolemid |4595|
+ :skolemid |5083|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
@@ -167,31 +154,30 @@
  :skolemid |9996|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
-(assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
-(assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
-(assert (= (Tag Tclass.RegressionConstWithRhsAndConstraints1.C?) Tagclass.RegressionConstWithRhsAndConstraints1.C?))
-(assert (= (TagFamily Tclass.RegressionConstWithRhsAndConstraints1.C?) tytagFamily$C))
-(assert (= (Tag Tclass.RegressionConstWithRhsAndConstraints1.C) Tagclass.RegressionConstWithRhsAndConstraints1.C))
-(assert (= (TagFamily Tclass.RegressionConstWithRhsAndConstraints1.C) tytagFamily$C))
+(assert (= (Tag Tclass.RegressionConstWithRhsAndConstraints2.Default?) Tagclass.RegressionConstWithRhsAndConstraints2.Default?))
+(assert (= (TagFamily Tclass.RegressionConstWithRhsAndConstraints2.Default?) tytagFamily$Default))
+(assert (= (Tag Tclass.RegressionConstWithRhsAndConstraints2.Default) Tagclass.RegressionConstWithRhsAndConstraints2.Default))
+(assert (= (TagFamily Tclass.RegressionConstWithRhsAndConstraints2.Default) tytagFamily$Default))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
- :skolemid |4588|
+ :skolemid |5076|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
  :qid |DafnyPreludebpl.103:18|
- :skolemid |4586|
+ :skolemid |5074|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun $Heap () T@U)
+(declare-fun |newtype$check#0@0| () Int)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun this () T@U)
 (declare-fun $FunctionContextHeight () Int)
-(set-info :boogie-vc-id CheckWellFormed$$RegressionConstWithRhsAndConstraints1.C.x)
+(set-info :boogie-vc-id CheckWellFormed$$RegressionConstWithRhsAndConstraints2.Default.x)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -207,8 +193,8 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (and (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (= (ControlFlow 0 2) (- 0 1))) ($Is intType (int_2_U (LitInt (- 0 1))) Tclass._System.nat))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass.RegressionConstWithRhsAndConstraints1.C) ($IsAlloc refType this Tclass.RegressionConstWithRhsAndConstraints1.C $Heap))) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 3) 2))) anon0_correct))))
+ (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (=> (and (= |newtype$check#0@0| (LitInt (- 0 1))) (= (ControlFlow 0 2) (- 0 1))) (<= (LitInt 0) |newtype$check#0@0|)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass.RegressionConstWithRhsAndConstraints2.Default) ($IsAlloc refType this Tclass.RegressionConstWithRhsAndConstraints2.Default $Heap))) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 3) 2))) anon0_correct))))
 PreconditionGeneratedEntry_correct)))
 ))
 (check-sat)

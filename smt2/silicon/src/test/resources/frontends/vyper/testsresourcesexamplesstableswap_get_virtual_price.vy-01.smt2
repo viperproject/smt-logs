@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:55:16
+; Started: 2025-01-27 02:48:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.20s
+; 0.14s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.06s
+; 0.08s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.07s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -11024,7 +11024,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.08s
+; 0.06s
 ; (get-info :all-statistics)
 (pop) ; 16
 (push) ; 16
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.22s
+; 0.10s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!

@@ -201,11 +201,6 @@
  :skolemid |490|
  :pattern ( (MapType0Select BoxType boolType (|lambda#0| |l#0@@0| |l#1| |l#2|) |$w#0@@0|))
 )))
-(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.word)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |488|
- :pattern ( ($Is intType |x#0| Tclass._module.word))
-)))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 TInt) (and (= ($Box intType ($Unbox intType bx@@3)) bx@@3) ($Is intType ($Unbox intType bx@@3) TInt)))
  :qid |DafnyPreludebpl.176:15|
  :skolemid |27|
@@ -386,6 +381,11 @@
 )))
 (assert (= (Tag Tclass._module.word) Tagclass._module.word))
 (assert (= (TagFamily Tclass._module.word) tytagFamily$word))
+(assert (forall ((|x#0| T@U) ) (! (= ($Is intType |x#0| Tclass._module.word)  (and (<= (LitInt 0) (U_2_int |x#0|)) (< (U_2_int |x#0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |488|
+ :pattern ( ($Is intType |x#0| Tclass._module.word))
+)))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0| |a#3#1#0|)))
  :qid |unknown.0:0|
  :skolemid |462|

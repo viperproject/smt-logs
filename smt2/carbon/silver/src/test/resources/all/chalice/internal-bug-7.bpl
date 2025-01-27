@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:15:26
+// Date:         2025-01-27 03:25:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-7.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-7-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,8 +232,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -257,8 +257,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(this));
       assume UnfoldingHeap[null, P(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, n_85]), FrameFragment((if UnfoldingHeap[this, n_85] != null then UnfoldingHeap[null, P(UnfoldingHeap[this, n_85])] else EmptyFrame)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(this) (internal-bug-7.vpr@6.3--9.89) [89652]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(this)];
@@ -283,8 +283,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, n_85);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access P(this.n) (internal-bug-7.vpr@9.71--9.85) [89655]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(UnfoldingHeap[this, n_85])];
@@ -316,8 +316,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := 1 + (if Heap[this, n_85] == null then 0 else length_1(Heap, Heap[this, n_85]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of length might not hold. Assertion result >= 1 might not hold. (internal-bug-7.vpr@8.13--8.24) [89656]"}
       Result >= 1;
 }
@@ -398,12 +398,12 @@ procedure test_1(this: Ref, node: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -427,18 +427,18 @@ procedure test_1(this: Ref, node: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert length(node) >= 1 -- internal-bug-7.vpr@14.5--14.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of length(node) >= 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access P(node) (internal-bug-7.vpr@14.13--14.25) [89659]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(node)];

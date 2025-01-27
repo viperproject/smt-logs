@@ -36,12 +36,12 @@
 (declare-fun U_2_int (T@U) Int)
 (declare-fun real_2_U (Real) T@U)
 (declare-fun U_2_real (T@U) Real)
-(declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
-(declare-fun Tclass.Test.uint32 () T@U)
 (declare-fun $FunctionContextHeight () Int)
 (declare-fun Test.__default.Test (Int) Int)
 (declare-fun |Test.__default.Test#canCall| (Int) Bool)
 (declare-fun LitInt (Int) Int)
+(declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun Tclass.Test.uint32 () T@U)
 (declare-fun $HeapSucc (T@U T@U) Bool)
 (declare-fun MapType0Select (T@T T@T T@U T@U) T@U)
 (declare-fun FieldType () T@T)
@@ -80,15 +80,21 @@
 ))))
 (assert (distinct alloc Tagclass.Test.uint32 tytagFamily$uint32)
 )
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0|) (< |x#0| 4294967296)))) (and (<= (LitInt 0) (Test.__default.Test |x#0|)) (< (Test.__default.Test |x#0|) 18446744073709551616)))
+ :qid |functionsdfy.28:17|
+ :skolemid |1085|
+ :pattern ( (Test.__default.Test |x#0|))
+))))
 (assert (forall ((|i#0| T@U) ($h T@U) ) (! ($IsAlloc intType |i#0| Tclass.Test.uint32 $h)
  :qid |unknown.0:0|
  :skolemid |1120|
  :pattern ( ($IsAlloc intType |i#0| Tclass.Test.uint32 $h))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0|) (< |x#0| 4294967296)))) (and (<= (LitInt 0) (Test.__default.Test |x#0|)) (< (Test.__default.Test |x#0|) 18446744073709551616)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@0|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@0|)) (LitInt (+ |x#0@@0| 1))))
  :qid |functionsdfy.28:17|
- :skolemid |1085|
- :pattern ( (Test.__default.Test |x#0|))
+ :weight 3
+ :skolemid |1088|
+ :pattern ( (Test.__default.Test (LitInt |x#0@@0|)))
 ))))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
  :qid |mapAx0:MapType0Select|
@@ -129,22 +135,11 @@
  :skolemid |579|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@0|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@0|) (< |x#0@@0| 4294967296)))) (= (Test.__default.Test |x#0@@0|) (+ |x#0@@0| 1)))
- :qid |functionsdfy.28:17|
- :skolemid |1087|
- :pattern ( (Test.__default.Test |x#0@@0|))
-))))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
  :qid |DafnyPreludebpl.554:18|
  :skolemid |663|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| (LitInt |x#0@@1|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test (LitInt |x#0@@1|)) (LitInt (+ |x#0@@1| 1))))
- :qid |functionsdfy.28:17|
- :weight 3
- :skolemid |1088|
- :pattern ( (Test.__default.Test (LitInt |x#0@@1|)))
-))))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
  :qid |DafnyPreludebpl.606:15|
  :skolemid |670|
@@ -167,7 +162,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |1135|
+ :skolemid |1134|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (= (Tag Tclass.Test.uint32) Tagclass.Test.uint32))
@@ -182,6 +177,11 @@
  :skolemid |569|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|x#0@@1| Int) ) (!  (=> (or (|Test.__default.Test#canCall| |x#0@@1|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 0) |x#0@@1|) (< |x#0@@1| 4294967296)))) (= (Test.__default.Test |x#0@@1|) (+ |x#0@@1| 1)))
+ :qid |functionsdfy.28:17|
+ :skolemid |1087|
+ :pattern ( (Test.__default.Test |x#0@@1|))
+))))
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun $_ModifiesFrame@0 () T@U)

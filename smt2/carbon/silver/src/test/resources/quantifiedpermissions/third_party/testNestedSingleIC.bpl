@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:16:11
+// Date:         2025-01-27 03:33:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testNestedSingleIC.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testNestedSingleIC-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -652,8 +652,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar_1: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -678,8 +678,8 @@ procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@10.21--10.44) [139625]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@10.21--10.44) [139626]"}
@@ -755,8 +755,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
   var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -853,8 +853,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139638]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testNestedSingleIC.vpr@19.40--19.68) [139639]"}
@@ -990,8 +990,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1111,8 +1111,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139661]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@29.85--29.130) [139662]"}
@@ -1256,8 +1256,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_14: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1377,8 +1377,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139688]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testNestedSingleIC.vpr@39.97--39.147) [139689]"}
@@ -1504,8 +1504,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar_1: (Seq int), v_2: int
 procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1530,8 +1530,8 @@ procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) ret
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@46.36--46.64) [139703]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@46.36--46.64) [139704]"}
@@ -1607,8 +1607,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1704,8 +1704,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139716]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testNestedSingleIC.vpr@55.55--55.84) [139717]"}
@@ -1793,14 +1793,14 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), N
   var k_22: int;
   var j_7: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_22: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4_1: int;
   var j_9_1: int;
   var ExhaleHeap: HeapType;
@@ -1901,8 +1901,8 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), N
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1992,8 +1992,8 @@ procedure Ref__loop_main_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), N
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
       if (0 <= i_4_1 && (i_4_1 < M_1 && 0 < N)) {
         assert {:msg "  Postcondition of Ref__loop_main_20 might not hold. Assertion M * N == |ar| might not hold. (testNestedSingleIC.vpr@65.12--65.79) [139737]"}
@@ -2071,14 +2071,14 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), j
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_2: Ref;
   var __flatten_3: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2119,8 +2119,8 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), j
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2182,8 +2182,8 @@ procedure Ref__loop_body_20(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), j
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion 0 <= i might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139751]"}
       0 <= i;
     assert {:msg "  Postcondition of Ref__loop_body_20 might not hold. Assertion i < M might not hold. (testNestedSingleIC.vpr@79.11--79.55) [139752]"}
@@ -2219,16 +2219,16 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1
   var k_24: int;
   var k_21: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_32: int;
   var k_37: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i: int;
   var j_2_2: int;
   var k_11: int;
@@ -2325,8 +2325,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2405,8 +2405,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion diz != null might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139771]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_20 might not hold. Assertion current_thread_id >= 0 might not hold. (testNestedSingleIC.vpr@102.3--102.54) [139772]"}
@@ -2528,8 +2528,8 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2595,14 +2595,14 @@ procedure Ref__zero_array(diz: Ref, current_thread_id: int, ar_1: (Seq Ref), M_1
 procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2617,8 +2617,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2646,8 +2646,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testNestedSingleIC.vpr@112.3--112.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@112.10--112.29) [139782]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -2658,8 +2658,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testNestedSingleIC.vpr@107.11--107.30) [139783]"}
       sys__result != null;
 }

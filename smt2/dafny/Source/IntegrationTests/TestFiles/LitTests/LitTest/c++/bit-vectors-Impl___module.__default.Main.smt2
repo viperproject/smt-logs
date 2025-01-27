@@ -144,6 +144,12 @@
  :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
 )))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@1| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@1|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@1|) (< |i#0@@1| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@1| 64))))))) (= (_module.__default.bit (LitInt |i#0@@1|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@1|))))))
+ :qid |bitvectorsdfy.5:14|
+ :weight 3
+ :skolemid |490|
+ :pattern ( (_module.__default.bit (LitInt |i#0@@1|)))
+))))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
  :qid |mapAx0:MapType1Select|
  :weight 0
@@ -161,12 +167,6 @@
 )))
 (assert (= (Tag Tclass._module.uint64) Tagclass._module.uint64))
 (assert (= (TagFamily Tclass._module.uint64) tytagFamily$uint64))
-(assert  (=> (<= 1 $FunctionContextHeight) (forall ((|i#0@@1| Int) ) (!  (=> (or (|_module.__default.bit#canCall| (LitInt |i#0@@1|)) (and (< 1 $FunctionContextHeight) (and (and (<= (LitInt 0) |i#0@@1|) (< |i#0@@1| 18446744073709551616)) (U_2_bool (Lit boolType (bool_2_U (< |i#0@@1| 64))))))) (= (_module.__default.bit (LitInt |i#0@@1|)) (bvshl #x0000000000000001 (concat #b000000000000000000000000000000000000000000000000000000000 ((_ int2bv 7) (LitInt |i#0@@1|))))))
- :qid |bitvectorsdfy.5:14|
- :weight 3
- :skolemid |490|
- :pattern ( (_module.__default.bit (LitInt |i#0@@1|)))
-))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

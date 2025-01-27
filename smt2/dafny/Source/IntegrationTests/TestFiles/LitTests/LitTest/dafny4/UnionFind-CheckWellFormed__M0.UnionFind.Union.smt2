@@ -168,7 +168,7 @@
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#6| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
  :qid |UnionFinddfy.6:9|
- :skolemid |4514|
+ :skolemid |4518|
  :pattern ( (MapType0Select BoxType boolType (|lambda#6| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a T@U) (b T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a b t)) a)
@@ -303,7 +303,7 @@
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#7| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#0@@0|) ($Box refType (ite  (or (= ($Unbox refType (MapType0Select BoxType BoxType |l#0@@0| |$w#0@@0|)) |l#1@@0|) (= ($Unbox refType (MapType0Select BoxType BoxType |l#2| |$w#0@@0|)) |l#3|)) |l#4| ($Unbox refType (MapType0Select BoxType BoxType |l#5| |$w#0@@0|)))))
  :qid |UnionFinddfy.34:51|
- :skolemid |4515|
+ :skolemid |4519|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#7| |l#0@@0| |l#1@@0| |l#2| |l#3| |l#4| |l#5|) |$w#0@@0|))
 )))
 (assert ($IsGhostField alloc))
@@ -644,7 +644,7 @@
 )))))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|l#2@@0| T@U) (|l#3@@0| T@U) ($o@@11 T@U) ($f@@1 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#3| |l#0@@1| |l#1@@1| |l#2@@0| |l#3@@0|) $o@@11 $f@@1))  (=> (and (or (not (= $o@@11 |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@1| $o@@11) |l#2@@0|)))) (|Set#IsMember| |l#3@@0| ($Box refType $o@@11))))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |4513|
+ :skolemid |4517|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#3| |l#0@@1| |l#1@@1| |l#2@@0| |l#3@@0|) $o@@11 $f@@1))
 )))
 (assert (forall ((m@@11 T@U) ) (!  (or (= m@@11 |Map#Empty|) (exists ((k@@3 T@U) (v@@8 T@U) ) (! (|Set#IsMember| (|Map#Items| m@@11) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@3 v@@8)))

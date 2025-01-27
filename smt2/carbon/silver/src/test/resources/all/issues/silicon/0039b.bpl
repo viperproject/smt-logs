@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 23:14:38
+// Date:         2025-01-27 03:17:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0039b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0039b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -240,8 +240,8 @@ procedure List_size#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -265,8 +265,8 @@ procedure List_size#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List_valid#trigger(UnfoldingHeap, List_valid(this));
       assume UnfoldingHeap[null, List_valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, List_head]), FrameFragment((if UnfoldingHeap[this, List_head] != null then UnfoldingHeap[null, Node_valid(UnfoldingHeap[this, List_head])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List_valid(this) (0039b.vpr@13.1--18.2) [61160]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List_valid(this)];
@@ -291,8 +291,8 @@ procedure List_size#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, List_head);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_size might not hold. There might be insufficient permission to access Node_valid(this.List_head) (0039b.vpr@17.74--17.99) [61163]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_valid(UnfoldingHeap[this, List_head])];
@@ -321,8 +321,8 @@ procedure List_size#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, List_head] == null then 0 else Node_size(Heap, Heap[this, List_head]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of List_size might not hold. Assertion result >= 0 might not hold. (0039b.vpr@15.10--15.21) [61164]"}
       Result >= 0;
 }
@@ -369,8 +369,8 @@ procedure Node_val#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -393,8 +393,8 @@ procedure Node_val#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Node_valid#trigger(UnfoldingHeap, Node_valid(this));
       assume UnfoldingHeap[null, Node_valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_value]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_next] != null then UnfoldingHeap[null, Node_valid(UnfoldingHeap[this, Node_next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_valid(this) (0039b.vpr@43.1--47.2) [61165]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_valid(this)];
@@ -483,8 +483,8 @@ procedure Node_size#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -508,8 +508,8 @@ procedure Node_size#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Node_valid#trigger(UnfoldingHeap, Node_valid(this));
       assume UnfoldingHeap[null, Node_valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_value]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_next] != null then UnfoldingHeap[null, Node_valid(UnfoldingHeap[this, Node_next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_valid(this) (0039b.vpr@49.1--54.2) [61167]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_valid(this)];
@@ -537,8 +537,8 @@ procedure Node_size#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, Node_next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_size might not hold. There might be insufficient permission to access Node_valid(this.Node_next) (0039b.vpr@53.74--53.99) [61170]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_valid(UnfoldingHeap[this, Node_next])];
@@ -584,8 +584,8 @@ procedure Node_size#definedness(this: Ref) returns (Result: int)
     Result := 1 + (if Heap[this, Node_next] != null then Node_size(Heap, Heap[this, Node_next]) else 0);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Node_size might not hold. Assertion result >= 1 might not hold. (0039b.vpr@51.11--51.22) [61171]"}
       Result >= 1;
 }
@@ -738,15 +738,15 @@ procedure List_test(this: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -768,8 +768,8 @@ procedure List_test(this: Ref, i: int) returns ()
     // -- Check definedness of i < List_size(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function List_size might not hold. There might be insufficient permission to access List_valid(this) (0039b.vpr@22.26--22.41) [61176]"}
           NoPerm < perm ==> NoPerm < Mask[null, List_valid(this)];
@@ -786,8 +786,8 @@ procedure List_test(this: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -802,14 +802,14 @@ procedure List_test(this: Ref, i: int) returns ()
   }
   
   // -- Translating statement: assert List_size(this) == 1 -- 0039b.vpr@26.3--26.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of List_size(this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function List_size might not hold. There might be insufficient permission to access List_valid(this) (0039b.vpr@26.10--26.25) [61177]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, List_valid(this)];
@@ -825,8 +825,8 @@ procedure List_test(this: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of List_test might not hold. There might be insufficient permission to access List_valid(this) (0039b.vpr@23.11--23.39) [61179]"}

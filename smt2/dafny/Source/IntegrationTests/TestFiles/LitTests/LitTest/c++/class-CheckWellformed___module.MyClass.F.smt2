@@ -182,16 +182,16 @@
 (assert (= (TagFamily Tclass._module.MyClass?) tytagFamily$MyClass))
 (assert (= (Tag Tclass._module.uint32) Tagclass._module.uint32))
 (assert (= (TagFamily Tclass._module.uint32) tytagFamily$uint32))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :qid |unknown.0:0|
- :skolemid |514|
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
-)))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 T@U) ) (!  (=> (or (|_module.MyClass.F#canCall| this@@1) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 Tclass._module.MyClass)))) (= (_module.MyClass.F this@@1) (LitInt 8)))
  :qid |classdfy.25:12|
  :skolemid |534|
  :pattern ( (_module.MyClass.F this@@1))
 ))))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |514|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
+)))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
  :qid |DafnyPreludebpl.109:15|
  :skolemid |18|

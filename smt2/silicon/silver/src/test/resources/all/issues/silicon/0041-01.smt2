@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 23:06:44
+; Started: 2025-01-27 02:59:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -120,21 +120,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (SL_length%limited s@$ x@0@00) (SL_length s@$ x@0@00))
   :pattern ((SL_length s@$ x@0@00))
-  :qid |quant-u-11323|)))
+  :qid |quant-u-11316|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (SL_length%stateless x@0@00)
   :pattern ((SL_length%limited s@$ x@0@00))
-  :qid |quant-u-11324|)))
+  :qid |quant-u-11317|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (SL_length%limited s@$ x@0@00))) (=>
     (SL_length%precondition s@$ x@0@00)
     (> result@1@00 0)))
   :pattern ((SL_length%limited s@$ x@0@00))
-  :qid |quant-u-11325|)))
+  :qid |quant-u-11318|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (SL_length%limited s@$ x@0@00))) true)
   :pattern ((SL_length%limited s@$ x@0@00))
-  :qid |quant-u-11326|)))
+  :qid |quant-u-11319|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (SL_length%precondition s@$ x@0@00)
@@ -148,7 +148,7 @@
           (SL_length%limited ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))))
   :pattern ((SL_length s@$ x@0@00))
   :pattern ((SL_length%stateless x@0@00) (SL%trigger s@$ x@0@00))
-  :qid |quant-u-11327|)))
+  :qid |quant-u-11320|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (SL_length%precondition s@$ x@0@00)
@@ -157,7 +157,7 @@
       true
       (SL_length%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((SL_length s@$ x@0@00))
-  :qid |quant-u-11328|)))
+  :qid |quant-u-11321|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -344,8 +344,8 @@
 (declare-const x@7@01 $Ref)
 (assert (not (= x@7@01 $Ref.null)))
 (declare-const next@8@01 $Ref)
-(assert (not (= x@7@01 head@4@01)))
 (assert (not (= x@7@01 x@6@01)))
+(assert (not (= x@7@01 head@4@01)))
 ; [exec]
 ; x.next := null
 ; [exec]

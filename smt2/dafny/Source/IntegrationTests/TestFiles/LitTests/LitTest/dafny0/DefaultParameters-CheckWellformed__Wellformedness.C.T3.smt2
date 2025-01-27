@@ -152,7 +152,7 @@
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@2 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#10| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f))  (=> (and (or (not (= $o@@2 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@2) |l#2|)))) (= $o@@2 |l#3|)))
  :qid |DafnyPreludebpl.156:1|
- :skolemid |14273|
+ :skolemid |14264|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#10| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass.Wellformedness.C)  (and ($Is refType |c#0@@0| Tclass.Wellformedness.C?) (or (not (= |c#0@@0| null)) (not true))))

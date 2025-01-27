@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 22:59:09
+; Started: 2025-01-27 02:52:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -11173,29 +11173,20 @@
 (set-option :timeout 10)
 (assert (not (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
 (check-sat)
-; unknown
+; unsat
 (pop) ; 6
 ; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 79 | object___bool__(_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$)))))))))))) | live]
-; [else-branch: 79 | !(object___bool__(_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$))))))))))))) | live]
+; [else-branch: 79 | !(object___bool__(_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$))))))))))))) | dead]
 (set-option :timeout 0)
 (push) ; 6
 ; [then-branch: 79 | object___bool__(_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$))))))))))))]
 (assert (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
 (pop) ; 6
-(push) ; 6
-; [else-branch: 79 | !(object___bool__(_, First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$)))))))))))))]
-(assert (not
-  (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
-(pop) ; 6
 (pop) ; 5
 ; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not
-    (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
-  (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
+(assert (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
 (pop) ; 4
 (push) ; 4
 ; [else-branch: 78 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(s@$))))))))))) == Null]
@@ -11414,10 +11405,7 @@
         $Ref.null)))
   (=
     (joined_unfolding@82@00 s@$ self_3@44@00)
-    (ite
-      (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
+    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
 (assert (=>
   (and
     (=
@@ -11639,10 +11627,7 @@
         ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
       self_3@44@00)
     (object___bool__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
-    (or
-      (not
-        (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
-      (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))
+    (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))
 ; Joined path conditions
 (assert (and
   (tree%trigger ($Snap.second ($Snap.second s@$)) self_3@44@00)
