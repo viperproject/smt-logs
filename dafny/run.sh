@@ -4,7 +4,7 @@ mkdir -p "$(dirname "$OUT")"
 cd "$(dirname "$0")/dafny"
 # The file "git-issue-2134.dfy" produces a stack overflow with an insanely long
 # stack trace. We don't want to see that, so we redirect stderr to /dev/null.
-OUTPUT=$(./Binaries/Dafny /deprecation:0 /compile:0 /timeLimit:$3 /print:$OUT.bpl /vcsCores:1 /proverLog:$OUT-@PROC@.smt2 /normalizeNames:0 "$1" 2> /dev/null)
+OUTPUT=$(./Binaries/Dafny /deprecation:0 /compile:0 /timeLimit:$3 /print:$OUT.bpl /vcsCores:1 /proverLog:$OUT-@PROC@.smt2 /normalizeNames:0 /emitDebugInformation:1 "$1" 2> /dev/null)
 if [ $? -eq 0 ]; then
     exit 0
 fi
