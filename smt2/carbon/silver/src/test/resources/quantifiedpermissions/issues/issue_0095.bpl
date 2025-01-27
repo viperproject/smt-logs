@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:13
+// Date:         2025-01-26 23:16:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0095.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0095-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -506,10 +506,10 @@ procedure Bug(nodes: (Set Ref), rd: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -533,16 +533,16 @@ procedure Bug(nodes: (Set Ref), rd: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Valid(nodes), rd) -- issue_0095.vpr@14.3--14.31
     assert {:msg "  Unfolding Valid(nodes) might fail. Fraction rd might not be positive. (issue_0095.vpr@14.3--14.31) [168234]"}
       rd > NoPerm;
     assume Valid#trigger(Heap, Valid(nodes));
     assume Heap[null, Valid(nodes)] == FrameFragment(Valid#condqp1(Heap, nodes));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := rd;
     assert {:msg "  Unfolding Valid(nodes) might fail. Fraction rd might be negative. (issue_0095.vpr@14.3--14.31) [168235]"}
       perm >= NoPerm;
@@ -603,8 +603,8 @@ procedure Bug(nodes: (Set Ref), rd: Perm) returns ()
   // -- Translating statement: fold acc(Valid(nodes), rd) -- issue_0095.vpr@15.3--15.29
     assert {:msg "  Folding Valid(nodes) might fail. Fraction rd might not be positive. (issue_0095.vpr@15.3--15.29) [168239]"}
       rd > NoPerm;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -686,10 +686,10 @@ procedure NoBug(nodes: (Set Ref), rd: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -713,16 +713,16 @@ procedure NoBug(nodes: (Set Ref), rd: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Valid(nodes), rd) -- issue_0095.vpr@22.3--22.31
     assert {:msg "  Unfolding Valid(nodes) might fail. Fraction rd might not be positive. (issue_0095.vpr@22.3--22.31) [168245]"}
       rd > NoPerm;
     assume Valid#trigger(Heap, Valid(nodes));
     assume Heap[null, Valid(nodes)] == FrameFragment(Valid#condqp1(Heap, nodes));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := rd;
     assert {:msg "  Unfolding Valid(nodes) might fail. Fraction rd might be negative. (issue_0095.vpr@22.3--22.31) [168246]"}
       perm >= NoPerm;
@@ -783,8 +783,8 @@ procedure NoBug(nodes: (Set Ref), rd: Perm) returns ()
   // -- Translating statement: fold acc(Valid(nodes), rd) -- issue_0095.vpr@23.3--23.29
     assert {:msg "  Folding Valid(nodes) might fail. Fraction rd might not be positive. (issue_0095.vpr@23.3--23.29) [168250]"}
       rd > NoPerm;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

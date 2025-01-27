@@ -124,24 +124,34 @@
 (declare-fun TagFamily (T@U) T@U)
 (declare-fun |lambda#9| (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSet alloc Tagclass._module.Berry Tagclass._module.CoBerry Tagclass._module.NatPlus |##_module.Berry.Smultron| |##_module.Berry.Jordgubb| |##_module.Berry.Hjortron| |##_module.Berry.Hallon| |##_module.CoBerry.Smultron| |##_module.CoBerry.Jordgubb| |##_module.CoBerry.Hjortron| |##_module.CoBerry.Hallon| |##_module.NatPlus.Succ| |##_module.NatPlus.Zero| tytagFamily$Berry tytagFamily$CoBerry tytagFamily$NatPlus)
 )
 (assert (forall ((ly T@U) (d0 T@U) (d1 T@U) ) (! (= (|$Eq#_module.CoBerry| ($LS ly) d0 d1) (= d0 d1))
+ :qid |unknown.0:0|
+ :skolemid |2136|
  :pattern ( (|$Eq#_module.CoBerry| ($LS ly) d0 d1))
 )))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |1411|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
@@ -155,8 +165,12 @@
 (assert (= (DatatypeCtorId |#_module.CoBerry.Hallon|) |##_module.CoBerry.Hallon|))
 (assert (= (DatatypeCtorId |#_module.NatPlus.Zero|) |##_module.NatPlus.Zero|))
 (assert (forall ((ly@@0 T@U) (d0@@0 T@U) (d1@@0 T@U) ) (!  (=> (forall ((k Int) ) (!  (=> (<= 0 k) (|$PrefixEq#_module.CoBerry| (|ORD#FromNat| k) ($LS ly@@0) d0@@0 d1@@0))
+ :qid |unknown.0:0|
+ :skolemid |2141|
  :pattern ( (|$PrefixEq#_module.CoBerry| (|ORD#FromNat| k) ($LS ly@@0) d0@@0 d1@@0))
 )) (|$Eq#_module.CoBerry| ($LS ly@@0) d0@@0 d1@@0))
+ :qid |unknown.0:0|
+ :skolemid |2142|
  :pattern ( (|$Eq#_module.CoBerry| ($LS ly@@0) d0@@0 d1@@0))
 )))
 (assert (= (Ctor DatatypeTypeType) 3))
@@ -170,232 +184,382 @@
 (assert ($Is DatatypeTypeType |#_module.CoBerry.Hallon| Tclass._module.CoBerry))
 (assert ($Is DatatypeTypeType |#_module.NatPlus.Zero| Tclass._module.NatPlus))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.Berry#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |2122|
  :pattern ( (|_module.Berry#Equal| a b))
 )))
 (assert (forall ((k@@0 T@U) (ly@@1 T@U) (d0@@1 T@U) (d1@@1 T@U) (m T@U) ) (!  (=> (and (|ORD#Less| k@@0 m) (|$PrefixEq#_module.CoBerry| m ($LS ly@@1) d0@@1 d1@@1)) (|$PrefixEq#_module.CoBerry| k@@0 ($LS ly@@1) d0@@1 d1@@1))
+ :qid |unknown.0:0|
+ :skolemid |2143|
  :pattern ( (|$PrefixEq#_module.CoBerry| k@@0 ($LS ly@@1) d0@@1 d1@@1) (|$PrefixEq#_module.CoBerry| m ($LS ly@@1) d0@@1 d1@@1))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1336|
  :pattern ( (Lit T x@@2))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) ) (!  (=> (or |_module.__default.Inf#canCall| (< 1 $FunctionContextHeight)) (and |_module.__default.Inf#canCall| (= (_module.__default.Inf ($LS $ly)) (Lit DatatypeTypeType (|#_module.NatPlus.Succ| (Lit DatatypeTypeType (_module.__default.Inf $ly)))))))
+ :qid |Datatypedfy.119:10|
+ :skolemid |2039|
  :pattern ( (_module.__default.Inf ($LS $ly)))
 ))))
 (assert (forall ((d T@U) ) (! (= (_module.Berry.Smultron_q d) (= (DatatypeCtorId d) |##_module.Berry.Smultron|))
+ :qid |unknown.0:0|
+ :skolemid |2107|
  :pattern ( (_module.Berry.Smultron_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Berry.Jordgubb_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Berry.Jordgubb|))
+ :qid |unknown.0:0|
+ :skolemid |2109|
  :pattern ( (_module.Berry.Jordgubb_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Berry.Hjortron_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Berry.Hjortron|))
+ :qid |unknown.0:0|
+ :skolemid |2111|
  :pattern ( (_module.Berry.Hjortron_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.Berry.Hallon_q d@@2) (= (DatatypeCtorId d@@2) |##_module.Berry.Hallon|))
+ :qid |unknown.0:0|
+ :skolemid |2113|
  :pattern ( (_module.Berry.Hallon_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.CoBerry.Smultron_q d@@3) (= (DatatypeCtorId d@@3) |##_module.CoBerry.Smultron|))
+ :qid |unknown.0:0|
+ :skolemid |2123|
  :pattern ( (_module.CoBerry.Smultron_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (! (= (_module.CoBerry.Jordgubb_q d@@4) (= (DatatypeCtorId d@@4) |##_module.CoBerry.Jordgubb|))
+ :qid |unknown.0:0|
+ :skolemid |2125|
  :pattern ( (_module.CoBerry.Jordgubb_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (_module.CoBerry.Hjortron_q d@@5) (= (DatatypeCtorId d@@5) |##_module.CoBerry.Hjortron|))
+ :qid |unknown.0:0|
+ :skolemid |2127|
  :pattern ( (_module.CoBerry.Hjortron_q d@@5))
 )))
 (assert (forall ((d@@6 T@U) ) (! (= (_module.CoBerry.Hallon_q d@@6) (= (DatatypeCtorId d@@6) |##_module.CoBerry.Hallon|))
+ :qid |unknown.0:0|
+ :skolemid |2129|
  :pattern ( (_module.CoBerry.Hallon_q d@@6))
 )))
 (assert (forall ((d@@7 T@U) ) (! (= (_module.NatPlus.Succ_q d@@7) (= (DatatypeCtorId d@@7) |##_module.NatPlus.Succ|))
+ :qid |unknown.0:0|
+ :skolemid |2146|
  :pattern ( (_module.NatPlus.Succ_q d@@7))
 )))
 (assert (forall ((d@@8 T@U) ) (! (= (_module.NatPlus.Zero_q d@@8) (= (DatatypeCtorId d@@8) |##_module.NatPlus.Zero|))
+ :qid |unknown.0:0|
+ :skolemid |2152|
  :pattern ( (_module.NatPlus.Zero_q d@@8))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1347|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|b#0| T@U) ) (!  (=> (or (|_module.__default.IsRed#canCall| |b#0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |b#0| Tclass._module.Berry))) (and (|$IsA#_module.Berry| |b#0|) (= (_module.__default.IsRed |b#0|)  (not (|_module.Berry#Equal| |b#0| |#_module.Berry.Hjortron|)))))
+ :qid |Datatypedfy.99:17|
+ :skolemid |2022|
  :pattern ( (_module.__default.IsRed |b#0|))
 ))))
 (assert  (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m@@0 T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m@@0 x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@1 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@1 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 ))) (= (Ctor BoxType) 4)))
 (assert (forall ((m@@2 T@U) (bx T@U) ) (! (= (|Set#IsMember| (|Set#FromBoogieMap| m@@2) bx) (U_2_bool (MapType0Select BoxType boolType m@@2 bx)))
+ :qid |DafnyPreludebpl.805:15|
+ :skolemid |1474|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@2) bx))
 )))
 (assert (forall ((d@@9 T@U) ) (!  (=> (_module.Berry.Smultron_q d@@9) (= d@@9 |#_module.Berry.Smultron|))
+ :qid |unknown.0:0|
+ :skolemid |2108|
  :pattern ( (_module.Berry.Smultron_q d@@9))
 )))
 (assert (forall ((d@@10 T@U) ) (!  (=> (_module.Berry.Jordgubb_q d@@10) (= d@@10 |#_module.Berry.Jordgubb|))
+ :qid |unknown.0:0|
+ :skolemid |2110|
  :pattern ( (_module.Berry.Jordgubb_q d@@10))
 )))
 (assert (forall ((d@@11 T@U) ) (!  (=> (_module.Berry.Hjortron_q d@@11) (= d@@11 |#_module.Berry.Hjortron|))
+ :qid |unknown.0:0|
+ :skolemid |2112|
  :pattern ( (_module.Berry.Hjortron_q d@@11))
 )))
 (assert (forall ((d@@12 T@U) ) (!  (=> (_module.Berry.Hallon_q d@@12) (= d@@12 |#_module.Berry.Hallon|))
+ :qid |unknown.0:0|
+ :skolemid |2114|
  :pattern ( (_module.Berry.Hallon_q d@@12))
 )))
 (assert (forall ((d@@13 T@U) ) (!  (=> (_module.CoBerry.Smultron_q d@@13) (= d@@13 |#_module.CoBerry.Smultron|))
+ :qid |unknown.0:0|
+ :skolemid |2124|
  :pattern ( (_module.CoBerry.Smultron_q d@@13))
 )))
 (assert (forall ((d@@14 T@U) ) (!  (=> (_module.CoBerry.Jordgubb_q d@@14) (= d@@14 |#_module.CoBerry.Jordgubb|))
+ :qid |unknown.0:0|
+ :skolemid |2126|
  :pattern ( (_module.CoBerry.Jordgubb_q d@@14))
 )))
 (assert (forall ((d@@15 T@U) ) (!  (=> (_module.CoBerry.Hjortron_q d@@15) (= d@@15 |#_module.CoBerry.Hjortron|))
+ :qid |unknown.0:0|
+ :skolemid |2128|
  :pattern ( (_module.CoBerry.Hjortron_q d@@15))
 )))
 (assert (forall ((d@@16 T@U) ) (!  (=> (_module.CoBerry.Hallon_q d@@16) (= d@@16 |#_module.CoBerry.Hallon|))
+ :qid |unknown.0:0|
+ :skolemid |2130|
  :pattern ( (_module.CoBerry.Hallon_q d@@16))
 )))
 (assert (forall ((d@@17 T@U) ) (!  (=> (_module.NatPlus.Zero_q d@@17) (= d@@17 |#_module.NatPlus.Zero|))
+ :qid |unknown.0:0|
+ :skolemid |2153|
  :pattern ( (_module.NatPlus.Zero_q d@@17))
 )))
 (assert (= (Ctor SetType) 5))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v bx@@0) ($IsBox bx@@0 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |1367|
  :pattern ( (|Set#IsMember| v bx@@0))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |1368|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
-(assert (forall ((d@@18 T@U) ) (!  (=> (_module.NatPlus.Succ_q d@@18) (exists ((|a#45#0#0| T@U) ) (= d@@18 (|#_module.NatPlus.Succ| |a#45#0#0|))))
+(assert (forall ((d@@18 T@U) ) (!  (=> (_module.NatPlus.Succ_q d@@18) (exists ((|a#45#0#0| T@U) ) (! (= d@@18 (|#_module.NatPlus.Succ| |a#45#0#0|))
+ :qid |Datatypedfy.117:27|
+ :skolemid |2147|
+)))
+ :qid |unknown.0:0|
+ :skolemid |2148|
  :pattern ( (_module.NatPlus.Succ_q d@@18))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|b#0@@0| T@U) ) (!  (=> (or (|_module.__default.IsCoRed#canCall| |b#0@@0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |b#0@@0| Tclass._module.CoBerry))) (and (|$IsA#_module.CoBerry| |b#0@@0|) (= (_module.__default.IsCoRed |b#0@@0|) (|$Eq#_module.CoBerry| ($LS ($LS $LZ)) |b#0@@0| |#_module.CoBerry.Hjortron|))))
+ :qid |Datatypedfy.104:19|
+ :skolemid |2027|
  :pattern ( (_module.__default.IsCoRed |b#0@@0|))
 ))))
 (assert (forall ((k@@1 T@U) (ly@@2 T@U) (d0@@2 T@U) (d1@@2 T@U) ) (!  (=> (or (not (= k@@1 (|ORD#FromNat| 0))) (not true)) (= (|$PrefixEq#_module.CoBerry| k@@1 ($LS ly@@2) d0@@2 d1@@2) (|$PrefixEq#_module.CoBerry| k@@1 ly@@2 d0@@2 d1@@2)))
+ :qid |unknown.0:0|
+ :skolemid |2138|
  :pattern ( (|$PrefixEq#_module.CoBerry| k@@1 ($LS ly@@2) d0@@2 d1@@2))
 )))
 (assert (forall ((ly@@3 T@U) (d0@@3 T@U) (d1@@3 T@U) ) (! (= (|$Eq#_module.CoBerry| ($LS ly@@3) d0@@3 d1@@3) (|$Eq#_module.CoBerry| ly@@3 d0@@3 d1@@3))
+ :qid |unknown.0:0|
+ :skolemid |2135|
  :pattern ( (|$Eq#_module.CoBerry| ($LS ly@@3) d0@@3 d1@@3))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |1360|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert (forall ((n Int) ) (!  (=> (<= 0 n) (and (|ORD#IsNat| (|ORD#FromNat| n)) (= (|ORD#Offset| (|ORD#FromNat| n)) n)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |1407|
  :pattern ( (|ORD#FromNat| n))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.Berry) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) Tclass._module.Berry)))
+ :qid |unknown.0:0|
+ :skolemid |2019|
  :pattern ( ($IsBox bx@@1 Tclass._module.Berry))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._module.CoBerry) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) Tclass._module.CoBerry)))
+ :qid |unknown.0:0|
+ :skolemid |2024|
  :pattern ( ($IsBox bx@@2 Tclass._module.CoBerry))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._module.NatPlus) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@3)) bx@@3) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@3) Tclass._module.NatPlus)))
+ :qid |unknown.0:0|
+ :skolemid |2034|
  :pattern ( ($IsBox bx@@3 Tclass._module.NatPlus))
 )))
 (assert (forall ((|a#46#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.NatPlus.Succ| |a#46#0#0|) Tclass._module.NatPlus) ($Is DatatypeTypeType |a#46#0#0| Tclass._module.NatPlus))
+ :qid |Datatypedfy.117:27|
+ :skolemid |2149|
  :pattern ( ($Is DatatypeTypeType (|#_module.NatPlus.Succ| |a#46#0#0|) Tclass._module.NatPlus))
 )))
 (assert (forall ((ly@@4 T@U) (d0@@4 T@U) (d1@@4 T@U) ) (! (= (|$Eq#_module.CoBerry| ($LS ly@@4) d0@@4 d1@@4) (forall ((k@@2 T@U) ) (! (|$PrefixEq#_module.CoBerry| k@@2 ($LS ly@@4) d0@@4 d1@@4)
+ :qid |unknown.0:0|
+ :skolemid |2139|
  :pattern ( (|$PrefixEq#_module.CoBerry| k@@2 ($LS ly@@4) d0@@4 d1@@4))
 )))
+ :qid |unknown.0:0|
+ :skolemid |2140|
  :pattern ( (|$Eq#_module.CoBerry| ($LS ly@@4) d0@@4 d1@@4))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|b#0@@1| T@U) ) (!  (=> (or (|_module.__default.IsRed#canCall| (Lit DatatypeTypeType |b#0@@1|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |b#0@@1| Tclass._module.Berry))) (and (|$IsA#_module.Berry| (Lit DatatypeTypeType |b#0@@1|)) (= (_module.__default.IsRed (Lit DatatypeTypeType |b#0@@1|))  (not (|_module.Berry#Equal| |b#0@@1| |#_module.Berry.Hjortron|)))))
+ :qid |Datatypedfy.99:17|
  :weight 3
+ :skolemid |2023|
  :pattern ( (_module.__default.IsRed (Lit DatatypeTypeType |b#0@@1|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|b#0@@2| T@U) ) (!  (=> (or (|_module.__default.IsCoRed#canCall| (Lit DatatypeTypeType |b#0@@2|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |b#0@@2| Tclass._module.CoBerry))) (and (|$IsA#_module.CoBerry| (Lit DatatypeTypeType |b#0@@2|)) (= (_module.__default.IsCoRed (Lit DatatypeTypeType |b#0@@2|)) (|$Eq#_module.CoBerry| ($LS ($LS $LZ)) |b#0@@2| |#_module.CoBerry.Hjortron|))))
+ :qid |Datatypedfy.104:19|
  :weight 3
+ :skolemid |2028|
  :pattern ( (_module.__default.IsCoRed (Lit DatatypeTypeType |b#0@@2|)))
 ))))
 (assert (forall ((d@@19 T@U) ) (!  (=> (|$IsA#_module.NatPlus| d@@19) (or (_module.NatPlus.Succ_q d@@19) (_module.NatPlus.Zero_q d@@19)))
+ :qid |unknown.0:0|
+ :skolemid |2155|
  :pattern ( (|$IsA#_module.NatPlus| d@@19))
 )))
 (assert (forall ((o@@0 T@U) (p@@0 T@U) ) (!  (or (or (|ORD#Less| o@@0 p@@0) (= o@@0 p@@0)) (|ORD#Less| p@@0 o@@0))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |1410|
  :pattern ( (|ORD#Less| o@@0 p@@0) (|ORD#Less| p@@0 o@@0))
 )))
 (assert (forall ((d@@20 T@U) ) (!  (=> ($Is DatatypeTypeType d@@20 Tclass._module.NatPlus) (or (_module.NatPlus.Succ_q d@@20) (_module.NatPlus.Zero_q d@@20)))
+ :qid |unknown.0:0|
+ :skolemid |2156|
  :pattern ( (_module.NatPlus.Zero_q d@@20) ($Is DatatypeTypeType d@@20 Tclass._module.NatPlus))
  :pattern ( (_module.NatPlus.Succ_q d@@20) ($Is DatatypeTypeType d@@20 Tclass._module.NatPlus))
 )))
 (assert (forall ((k@@3 T@U) (ly@@5 T@U) (d0@@5 T@U) (d1@@5 T@U) ) (!  (=> (and ($Is DatatypeTypeType d0@@5 Tclass._module.CoBerry) ($Is DatatypeTypeType d1@@5 Tclass._module.CoBerry)) (= (|$PrefixEq#_module.CoBerry| k@@3 ($LS ly@@5) d0@@5 d1@@5)  (and (=> (< 0 (|ORD#Offset| k@@3)) (or (or (or (and (_module.CoBerry.Smultron_q d0@@5) (_module.CoBerry.Smultron_q d1@@5)) (and (_module.CoBerry.Jordgubb_q d0@@5) (_module.CoBerry.Jordgubb_q d1@@5))) (and (_module.CoBerry.Hjortron_q d0@@5) (_module.CoBerry.Hjortron_q d1@@5))) (and (_module.CoBerry.Hallon_q d0@@5) (_module.CoBerry.Hallon_q d1@@5)))) (=> (and (or (not (= k@@3 (|ORD#FromNat| 0))) (not true)) (= (|ORD#Offset| k@@3) 0)) (|$Eq#_module.CoBerry| ly@@5 d0@@5 d1@@5)))))
+ :qid |unknown.0:0|
+ :skolemid |2137|
  :pattern ( (|$PrefixEq#_module.CoBerry| k@@3 ($LS ly@@5) d0@@5 d1@@5))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |1359|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((o@@1 T@U) ) (! (<= 0 (|ORD#Offset| o@@1))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |1406|
  :pattern ( (|ORD#Offset| o@@1))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (_module.Berry.Smultron_q a@@0) (_module.Berry.Smultron_q b@@0)) (|_module.Berry#Equal| a@@0 b@@0))
+ :qid |unknown.0:0|
+ :skolemid |2118|
  :pattern ( (|_module.Berry#Equal| a@@0 b@@0) (_module.Berry.Smultron_q a@@0))
  :pattern ( (|_module.Berry#Equal| a@@0 b@@0) (_module.Berry.Smultron_q b@@0))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (and (_module.Berry.Jordgubb_q a@@1) (_module.Berry.Jordgubb_q b@@1)) (|_module.Berry#Equal| a@@1 b@@1))
+ :qid |unknown.0:0|
+ :skolemid |2119|
  :pattern ( (|_module.Berry#Equal| a@@1 b@@1) (_module.Berry.Jordgubb_q a@@1))
  :pattern ( (|_module.Berry#Equal| a@@1 b@@1) (_module.Berry.Jordgubb_q b@@1))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) ) (!  (=> (and (_module.Berry.Hjortron_q a@@2) (_module.Berry.Hjortron_q b@@2)) (|_module.Berry#Equal| a@@2 b@@2))
+ :qid |unknown.0:0|
+ :skolemid |2120|
  :pattern ( (|_module.Berry#Equal| a@@2 b@@2) (_module.Berry.Hjortron_q a@@2))
  :pattern ( (|_module.Berry#Equal| a@@2 b@@2) (_module.Berry.Hjortron_q b@@2))
 )))
 (assert (forall ((a@@3 T@U) (b@@3 T@U) ) (!  (=> (and (_module.Berry.Hallon_q a@@3) (_module.Berry.Hallon_q b@@3)) (|_module.Berry#Equal| a@@3 b@@3))
+ :qid |unknown.0:0|
+ :skolemid |2121|
  :pattern ( (|_module.Berry#Equal| a@@3 b@@3) (_module.Berry.Hallon_q a@@3))
  :pattern ( (|_module.Berry#Equal| a@@3 b@@3) (_module.Berry.Hallon_q b@@3))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@4 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@4) ($IsAllocBox bx@@4 t0@@1 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |1388|
  :pattern ( (|Set#IsMember| v@@2 bx@@4))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |1389|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1322|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |1323|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((|a#44#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.NatPlus.Succ| |a#44#0#0|)) |##_module.NatPlus.Succ|)
+ :qid |Datatypedfy.117:27|
+ :skolemid |2145|
  :pattern ( (|#_module.NatPlus.Succ| |a#44#0#0|))
 )))
 (assert (forall ((|a#47#0#0| T@U) ) (! (= (_module.NatPlus._h2 (|#_module.NatPlus.Succ| |a#47#0#0|)) |a#47#0#0|)
+ :qid |Datatypedfy.117:27|
+ :skolemid |2151|
  :pattern ( (|#_module.NatPlus.Succ| |a#47#0#0|))
 )))
 (assert (forall ((x@@4 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1346|
  :pattern ( ($Box T@@3 x@@4))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@2 p@@1) (or (not (= o@@2 p@@1)) (not true))) (=> (and (|ORD#IsNat| o@@2) (not (|ORD#IsNat| p@@1))) (|ORD#Less| o@@2 p@@1))) (=> (and (|ORD#IsNat| o@@2) (|ORD#IsNat| p@@1)) (= (|ORD#Less| o@@2 p@@1) (< (|ORD#Offset| o@@2) (|ORD#Offset| p@@1))))) (=> (and (|ORD#Less| o@@2 p@@1) (|ORD#IsNat| p@@1)) (|ORD#IsNat| o@@2)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |1409|
  :pattern ( (|ORD#Less| o@@2 p@@1))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@3 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@3 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@4 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@4 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@4 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@5 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@5 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@5 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
-)))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+)))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2280|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) ) (!  (=> (or |_module.__default.Inf#canCall| (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (_module.__default.Inf $ly@@0) Tclass._module.NatPlus))
+ :qid |Datatypedfy.119:10|
+ :skolemid |2037|
  :pattern ( (_module.__default.Inf $ly@@0))
 ))))
 (assert (forall ((ly@@6 T@U) (d0@@6 T@U) (d1@@6 T@U) ) (!  (=> (and ($Is DatatypeTypeType d0@@6 Tclass._module.CoBerry) ($Is DatatypeTypeType d1@@6 Tclass._module.CoBerry)) (= (|$Eq#_module.CoBerry| ($LS ly@@6) d0@@6 d1@@6)  (or (or (or (and (_module.CoBerry.Smultron_q d0@@6) (_module.CoBerry.Smultron_q d1@@6)) (and (_module.CoBerry.Jordgubb_q d0@@6) (_module.CoBerry.Jordgubb_q d1@@6))) (and (_module.CoBerry.Hjortron_q d0@@6) (_module.CoBerry.Hjortron_q d1@@6))) (and (_module.CoBerry.Hallon_q d0@@6) (_module.CoBerry.Hallon_q d1@@6)))))
+ :qid |unknown.0:0|
+ :skolemid |2134|
  :pattern ( (|$Eq#_module.CoBerry| ($LS ly@@6) d0@@6 d1@@6))
 )))
 (assert (forall (($ly@@1 T@U) ) (! (= (_module.__default.Inf ($LS $ly@@1)) (_module.__default.Inf $ly@@1))
+ :qid |Datatypedfy.119:10|
+ :skolemid |2035|
  :pattern ( (_module.__default.Inf ($LS $ly@@1)))
 )))
 (assert (forall ((bx@@5 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@5 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@5)) bx@@5) ($Is SetType ($Unbox SetType bx@@5) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |1353|
  :pattern ( ($IsBox bx@@5 (TSet t@@3)))
 )))
 (assert (forall ((o@@3 T@U) ) (!  (=> (|ORD#IsNat| o@@3) (= o@@3 (|ORD#FromNat| (|ORD#Offset| o@@3))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |1408|
  :pattern ( (|ORD#Offset| o@@3))
  :pattern ( (|ORD#IsNat| o@@3))
 )))
 (assert (forall ((d@@21 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) ($Is DatatypeTypeType d@@21 Tclass._module.Berry)) ($IsAlloc DatatypeTypeType d@@21 Tclass._module.Berry $h))
+ :qid |unknown.0:0|
+ :skolemid |2115|
  :pattern ( ($IsAlloc DatatypeTypeType d@@21 Tclass._module.Berry $h))
 )))
 (assert (forall ((d@@22 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@22 Tclass._module.CoBerry)) ($IsAlloc DatatypeTypeType d@@22 Tclass._module.CoBerry $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |2131|
  :pattern ( ($IsAlloc DatatypeTypeType d@@22 Tclass._module.CoBerry $h@@0))
 )))
 (assert (forall ((d@@23 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d@@23 Tclass._module.NatPlus)) ($IsAlloc DatatypeTypeType d@@23 Tclass._module.NatPlus $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |2154|
  :pattern ( ($IsAlloc DatatypeTypeType d@@23 Tclass._module.NatPlus $h@@1))
 )))
 (assert (= (Tag Tclass._module.Berry) Tagclass._module.Berry))
@@ -405,6 +569,8 @@
 (assert (= (Tag Tclass._module.NatPlus) Tagclass._module.NatPlus))
 (assert (= (TagFamily Tclass._module.NatPlus) tytagFamily$NatPlus))
 (assert (forall ((|l#0@@0| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#9| |l#0@@0|) |$y#0|))  (and ($IsBox |$y#0| |l#0@@0|) (_module.__default.IsRed ($Unbox DatatypeTypeType |$y#0|))))
+ :qid |Datatypedfy.98:10|
+ :skolemid |2281|
  :pattern ( (MapType0Select BoxType boolType (|lambda#9| |l#0@@0|) |$y#0|))
 )))
 (assert (= |#_module.Berry.Smultron| (Lit DatatypeTypeType |#_module.Berry.Smultron|)))
@@ -412,30 +578,44 @@
 (assert (= |#_module.Berry.Hjortron| (Lit DatatypeTypeType |#_module.Berry.Hjortron|)))
 (assert (= |#_module.Berry.Hallon| (Lit DatatypeTypeType |#_module.Berry.Hallon|)))
 (assert (forall ((d@@24 T@U) ) (!  (=> (|$IsA#_module.Berry| d@@24) (or (or (or (_module.Berry.Smultron_q d@@24) (_module.Berry.Jordgubb_q d@@24)) (_module.Berry.Hjortron_q d@@24)) (_module.Berry.Hallon_q d@@24)))
+ :qid |unknown.0:0|
+ :skolemid |2116|
  :pattern ( (|$IsA#_module.Berry| d@@24))
 )))
 (assert (forall ((d@@25 T@U) ) (!  (=> (|$IsA#_module.CoBerry| d@@25) (or (or (or (_module.CoBerry.Smultron_q d@@25) (_module.CoBerry.Jordgubb_q d@@25)) (_module.CoBerry.Hjortron_q d@@25)) (_module.CoBerry.Hallon_q d@@25)))
+ :qid |unknown.0:0|
+ :skolemid |2132|
  :pattern ( (|$IsA#_module.CoBerry| d@@25))
 )))
 (assert (forall ((d@@26 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.NatPlus.Succ_q d@@26) ($IsAlloc DatatypeTypeType d@@26 Tclass._module.NatPlus $h@@2))) ($IsAlloc DatatypeTypeType (_module.NatPlus._h2 d@@26) Tclass._module.NatPlus $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |2150|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.NatPlus._h2 d@@26) Tclass._module.NatPlus $h@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@5)) (Lit BoxType ($Box T@@4 x@@5)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1337|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@5)))
 )))
 (assert (forall ((d@@27 T@U) ) (!  (=> ($Is DatatypeTypeType d@@27 Tclass._module.Berry) (or (or (or (_module.Berry.Smultron_q d@@27) (_module.Berry.Jordgubb_q d@@27)) (_module.Berry.Hjortron_q d@@27)) (_module.Berry.Hallon_q d@@27)))
+ :qid |unknown.0:0|
+ :skolemid |2117|
  :pattern ( (_module.Berry.Hallon_q d@@27) ($Is DatatypeTypeType d@@27 Tclass._module.Berry))
  :pattern ( (_module.Berry.Hjortron_q d@@27) ($Is DatatypeTypeType d@@27 Tclass._module.Berry))
  :pattern ( (_module.Berry.Jordgubb_q d@@27) ($Is DatatypeTypeType d@@27 Tclass._module.Berry))
  :pattern ( (_module.Berry.Smultron_q d@@27) ($Is DatatypeTypeType d@@27 Tclass._module.Berry))
 )))
 (assert (forall ((d@@28 T@U) ) (!  (=> ($Is DatatypeTypeType d@@28 Tclass._module.CoBerry) (or (or (or (_module.CoBerry.Smultron_q d@@28) (_module.CoBerry.Jordgubb_q d@@28)) (_module.CoBerry.Hjortron_q d@@28)) (_module.CoBerry.Hallon_q d@@28)))
+ :qid |unknown.0:0|
+ :skolemid |2133|
  :pattern ( (_module.CoBerry.Hallon_q d@@28) ($Is DatatypeTypeType d@@28 Tclass._module.CoBerry))
  :pattern ( (_module.CoBerry.Hjortron_q d@@28) ($Is DatatypeTypeType d@@28 Tclass._module.CoBerry))
  :pattern ( (_module.CoBerry.Jordgubb_q d@@28) ($Is DatatypeTypeType d@@28 Tclass._module.CoBerry))
  :pattern ( (_module.CoBerry.Smultron_q d@@28) ($Is DatatypeTypeType d@@28 Tclass._module.CoBerry))
 )))
 (assert (forall ((k@@4 T@U) (ly@@7 T@U) (d0@@7 T@U) (d1@@7 T@U) ) (!  (=> (= d0@@7 d1@@7) (|$PrefixEq#_module.CoBerry| k@@4 ($LS ly@@7) d0@@7 d1@@7))
+ :qid |unknown.0:0|
+ :skolemid |2144|
  :pattern ( (|$PrefixEq#_module.CoBerry| k@@4 ($LS ly@@7) d0@@7 d1@@7))
 )))
 (push 1)
@@ -450,6 +630,7 @@
 (declare-fun |s#0| () T@U)
 (declare-fun |c#0| () T@U)
 (declare-fun |n#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.AllBerry)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -465,10 +646,15 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 11) (let ((anon5_correct  (=> (= (ControlFlow 0 2) (- 0 1)) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Hallon|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Hallon|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Hjortron|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Hjortron|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Jordgubb|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Jordgubb|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Smultron|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Smultron|)))))) (exists ((|$as#c0#0| T@U) )  (and ($Is DatatypeTypeType |$as#c0#0| Tclass._module.CoBerry) (_module.__default.IsCoRed |$as#c0#0|))))))))))
+ (=> (= (ControlFlow 0 0) 11) (let ((anon5_correct  (=> (= (ControlFlow 0 2) (- 0 1)) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Hallon|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Hallon|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Hjortron|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Hjortron|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Jordgubb|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Jordgubb|)))))) (or (and ($Is DatatypeTypeType (Lit DatatypeTypeType |#_module.CoBerry.Smultron|) Tclass._module.CoBerry) (U_2_bool (Lit boolType (bool_2_U (_module.__default.IsCoRed (Lit DatatypeTypeType |#_module.CoBerry.Smultron|)))))) (exists ((|$as#c0#0| T@U) ) (!  (and ($Is DatatypeTypeType |$as#c0#0| Tclass._module.CoBerry) (_module.__default.IsCoRed |$as#c0#0|))
+ :qid |Datatypedfy.111:7|
+ :skolemid |2033|
+)))))))))
 (let ((anon8_Else_correct  (=> (and (not (and ($Is DatatypeTypeType |c#1@0| Tclass._module.CoBerry) ($IsAlloc DatatypeTypeType |c#1@0| Tclass._module.CoBerry $Heap))) (= (ControlFlow 0 4) 2)) anon5_correct)))
 (let ((anon8_Then_correct  (=> (and ($Is DatatypeTypeType |c#1@0| Tclass._module.CoBerry) ($IsAlloc DatatypeTypeType |c#1@0| Tclass._module.CoBerry $Heap)) (=> (and (and ($IsAlloc DatatypeTypeType |c#1@0| Tclass._module.CoBerry $Heap) (|_module.__default.IsCoRed#canCall| |c#1@0|)) (and (|_module.__default.IsCoRed#canCall| |c#1@0|) (= (ControlFlow 0 3) 2))) anon5_correct))))
 (let ((anon3_correct  (=> (and (forall ((|b#1| T@U) ) (!  (=> ($Is DatatypeTypeType |b#1| Tclass._module.Berry) (|_module.__default.IsRed#canCall| |b#1|))
+ :qid |Datatypedfy.109:16|
+ :skolemid |2032|
  :pattern ( (_module.__default.IsRed |b#1|))
 )) (= |s#0@0| (|Set#FromBoogieMap| (|lambda#9| Tclass._module.Berry)))) (and (=> (= (ControlFlow 0 5) 3) anon8_Then_correct) (=> (= (ControlFlow 0 5) 4) anon8_Else_correct)))))
 (let ((anon7_Else_correct  (=> (and (not (_module.__default.IsRed |b#0@0|)) (= (ControlFlow 0 8) 5)) anon3_correct)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:44
+// Date:         2025-01-26 23:15:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/capture_avoidance/capture_avoidance_rule_3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/capture_avoidance/capture_avoidance_rule_3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -523,10 +523,10 @@ procedure function4#definedness(x: bool) returns (Result: bool)
 procedure client1(x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var res: bool;
   var z_3: int;
   var z_8: int;
@@ -547,16 +547,16 @@ procedure client1(x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := function0(x == 0, y == 0) -- capture_avoidance_rule_3.vpr@49.3--49.35
     
     // -- Check definedness of function0(x == 0, y == 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           assert {:msg "  Precondition of function function0 might not hold. Assertion x == 0 might not hold. (capture_avoidance_rule_3.vpr@49.10--49.35) [103508]"}
             x == 0;
@@ -582,8 +582,8 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
             assert {:msg "  Precondition of function function1 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_3.vpr@50.10--50.44) [103510]"}
@@ -620,8 +620,8 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
             assert {:msg "  Precondition of function function2 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_3.vpr@51.10--51.44) [103511]"}
@@ -670,8 +670,8 @@ procedure client1(x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (*) {
             assert {:msg "  Precondition of function function3 might not hold. Assertion z == z might not hold. (capture_avoidance_rule_3.vpr@52.10--52.47) [103513]"}
@@ -711,10 +711,10 @@ procedure client2(x: bool) returns (res: bool)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -770,16 +770,16 @@ procedure client2(x: bool) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := function4(x) -- capture_avoidance_rule_3.vpr@65.3--65.22
     
     // -- Check definedness of function4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function function4 might not hold. Assertion x might not hold. (capture_avoidance_rule_3.vpr@65.10--65.22) [103516]"}
           x;
         havoc QPMask;

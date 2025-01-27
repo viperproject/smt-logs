@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:35
+// Date:         2025-01-26 23:14:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0554.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0554-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,8 +299,8 @@ procedure tree#definedness(this: Ref) returns ()
 procedure treeTest() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var t_2: Ref;
   var t0_1: Ref;
   var t1_1: Ref;
@@ -308,8 +308,8 @@ procedure treeTest() returns ()
   var t5_2: Ref;
   var ctr: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -329,8 +329,8 @@ procedure treeTest() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[t_2, $allocated];
@@ -363,8 +363,8 @@ procedure treeTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(t), write) -- 0554.vpr@21.3--21.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(t) might fail. There might be insufficient permission to access t.data (0554.vpr@21.3--21.15) [62681]"}
@@ -463,8 +463,8 @@ procedure treeTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(t0), write) -- 0554.vpr@27.3--27.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(t0) might fail. There might be insufficient permission to access t0.data (0554.vpr@27.3--27.16) [62696]"}
@@ -563,8 +563,8 @@ procedure treeTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(t1), write) -- 0554.vpr@33.3--33.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(t1) might fail. There might be insufficient permission to access t1.data (0554.vpr@33.3--33.16) [62711]"}
@@ -663,8 +663,8 @@ procedure treeTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(t2), write) -- 0554.vpr@39.3--39.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(t2) might fail. There might be insufficient permission to access t2.data (0554.vpr@39.3--39.16) [62726]"}
@@ -752,8 +752,8 @@ procedure treeTest() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := 1 / 2;
       assert {:msg "  The precondition of method cloneTree might not hold. Fraction 1 / 2 might be negative. (0554.vpr@46.3--46.23) [62738]"}
         perm >= NoPerm;
@@ -785,8 +785,8 @@ procedure treeTest() returns ()
         UnfoldingMask := Mask;
         assume tree#trigger(UnfoldingHeap, tree_1(t5_2));
         assume UnfoldingHeap[null, tree_1(t5_2)] == CombineFrames(FrameFragment(UnfoldingHeap[t5_2, data]), CombineFrames(FrameFragment(UnfoldingHeap[t5_2, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[t5_2, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[t5_2, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[t5_2, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[t5_2, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[t5_2, next_sibling])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := 1 / 2;
         UnfoldingMask := UnfoldingMask[null, tree_1(t5_2):=UnfoldingMask[null, tree_1(t5_2)] - perm];
         perm := 1 / 2;
@@ -869,8 +869,8 @@ procedure treeTest() returns ()
         UnfoldingMask := Mask;
         assume tree#trigger(UnfoldingHeap, tree_1(t5_2));
         assume UnfoldingHeap[null, tree_1(t5_2)] == CombineFrames(FrameFragment(UnfoldingHeap[t5_2, data]), CombineFrames(FrameFragment(UnfoldingHeap[t5_2, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[t5_2, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[t5_2, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[t5_2, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[t5_2, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[t5_2, next_sibling])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := 1 / 2;
         assert {:msg "  An internal error occurred. Fraction 1 / 2 might be negative. (0554.vpr@55.12--57.91) [62741]"}
           perm >= NoPerm;
@@ -923,8 +923,8 @@ procedure treeTest() returns ()
         Unfolding1Mask := UnfoldingMask;
         assume tree#trigger(Unfolding1Heap, tree_1(ctr));
         assume Unfolding1Heap[null, tree_1(ctr)] == CombineFrames(FrameFragment(Unfolding1Heap[ctr, data]), CombineFrames(FrameFragment(Unfolding1Heap[ctr, next_child]), CombineFrames(FrameFragment(Unfolding1Heap[ctr, next_sibling]), CombineFrames(FrameFragment((if Unfolding1Heap[ctr, next_child] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[ctr, next_child])] else EmptyFrame)), FrameFragment((if Unfolding1Heap[ctr, next_sibling] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[ctr, next_sibling])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  An internal error occurred. There might be insufficient permission to access tree(ctr) (0554.vpr@55.12--57.91) [62748]"}
@@ -1029,8 +1029,8 @@ procedure treeTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0554.vpr@48.3--48.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0554.vpr@48.10--48.15) [62749]"}
       false;
     assume state(Heap, Mask);
@@ -1044,14 +1044,14 @@ procedure cloneTree(this: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1065,8 +1065,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
   var ExhaleHeap: HeapType;
   var arg_this_1: Ref;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1087,8 +1087,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1109,8 +1109,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
       UnfoldingMask := PostMask;
       assume tree#trigger(UnfoldingHeap, tree_1(this));
       assume UnfoldingHeap[null, tree_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[this, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_sibling])] else EmptyFrame))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0554.vpr@55.12--57.91) [62752]"}
         perm >= NoPerm;
@@ -1163,8 +1163,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
       Unfolding1Mask := UnfoldingMask;
       assume tree#trigger(Unfolding1Heap, tree_1(res));
       assume Unfolding1Heap[null, tree_1(res)] == CombineFrames(FrameFragment(Unfolding1Heap[res, data]), CombineFrames(FrameFragment(Unfolding1Heap[res, next_child]), CombineFrames(FrameFragment(Unfolding1Heap[res, next_sibling]), CombineFrames(FrameFragment((if Unfolding1Heap[res, next_child] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[res, next_child])] else EmptyFrame)), FrameFragment((if Unfolding1Heap[res, next_sibling] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[res, next_sibling])] else EmptyFrame))))));
-      ExhaleWellDef0Mask := Unfolding1Mask;
       ExhaleWellDef0Heap := Unfolding1Heap;
+      ExhaleWellDef0Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tree(res) (0554.vpr@55.12--57.91) [62759]"}
@@ -1281,8 +1281,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
       UnfoldingMask := PostMask;
       assume tree#trigger(UnfoldingHeap, tree_1(this));
       assume UnfoldingHeap[null, tree_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[this, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_sibling])] else EmptyFrame))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := 1 / 2;
       UnfoldingMask := UnfoldingMask[null, tree_1(this):=UnfoldingMask[null, tree_1(this)] - perm];
       perm := 1 / 2;
@@ -1334,8 +1334,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
   // -- Translating statement: unfold acc(tree(this), 1 / 2) -- 0554.vpr@61.3--61.30
     assume tree#trigger(Heap, tree_1(this));
     assume Heap[null, tree_1(this)] == CombineFrames(FrameFragment(Heap[this, data]), CombineFrames(FrameFragment(Heap[this, next_child]), CombineFrames(FrameFragment(Heap[this, next_sibling]), CombineFrames(FrameFragment((if Heap[this, next_child] != null then Heap[null, tree_1(Heap[this, next_child])] else EmptyFrame)), FrameFragment((if Heap[this, next_sibling] != null then Heap[null, tree_1(Heap[this, next_sibling])] else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding tree(this) might fail. Fraction 1 / 2 might be negative. (0554.vpr@61.3--61.30) [62765]"}
       perm >= NoPerm;
@@ -1430,8 +1430,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
         arg_this := Heap[this, next_child];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := 1 / 2;
           assert {:msg "  The precondition of method cloneTree might not hold. Fraction 1 / 2 might be negative. (0554.vpr@71.7--71.46) [62777]"}
             perm >= NoPerm;
@@ -1463,8 +1463,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_this));
             assume UnfoldingHeap[null, tree_1(arg_this)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_this, data]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_this, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[arg_this, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := 1 / 2;
             UnfoldingMask := UnfoldingMask[null, tree_1(arg_this):=UnfoldingMask[null, tree_1(arg_this)] - perm];
             perm := 1 / 2;
@@ -1547,8 +1547,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_this));
             assume UnfoldingHeap[null, tree_1(arg_this)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_this, data]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_this, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[arg_this, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := 1 / 2;
             assert {:msg "  An internal error occurred. Fraction 1 / 2 might be negative. (0554.vpr@55.12--57.91) [62780]"}
               perm >= NoPerm;
@@ -1601,8 +1601,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             Unfolding1Mask := UnfoldingMask;
             assume tree#trigger(Unfolding1Heap, tree_1(tmp_child));
             assume Unfolding1Heap[null, tree_1(tmp_child)] == CombineFrames(FrameFragment(Unfolding1Heap[tmp_child, data]), CombineFrames(FrameFragment(Unfolding1Heap[tmp_child, next_child]), CombineFrames(FrameFragment(Unfolding1Heap[tmp_child, next_sibling]), CombineFrames(FrameFragment((if Unfolding1Heap[tmp_child, next_child] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[tmp_child, next_child])] else EmptyFrame)), FrameFragment((if Unfolding1Heap[tmp_child, next_sibling] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[tmp_child, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access tree(tmp_child) (0554.vpr@55.12--57.91) [62787]"}
@@ -1716,8 +1716,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
         arg_this_1 := Heap[this, next_sibling];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := 1 / 2;
           assert {:msg "  The precondition of method cloneTree might not hold. Fraction 1 / 2 might be negative. (0554.vpr@74.7--74.50) [62789]"}
             perm >= NoPerm;
@@ -1749,8 +1749,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_this_1));
             assume UnfoldingHeap[null, tree_1(arg_this_1)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, data]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_this_1, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this_1, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[arg_this_1, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this_1, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := 1 / 2;
             UnfoldingMask := UnfoldingMask[null, tree_1(arg_this_1):=UnfoldingMask[null, tree_1(arg_this_1)] - perm];
             perm := 1 / 2;
@@ -1833,8 +1833,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_this_1));
             assume UnfoldingHeap[null, tree_1(arg_this_1)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, data]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[arg_this_1, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_this_1, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this_1, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[arg_this_1, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_this_1, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := 1 / 2;
             assert {:msg "  An internal error occurred. Fraction 1 / 2 might be negative. (0554.vpr@55.12--57.91) [62792]"}
               perm >= NoPerm;
@@ -1887,8 +1887,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
             Unfolding1Mask := UnfoldingMask;
             assume tree#trigger(Unfolding1Heap, tree_1(tmp_sibling));
             assume Unfolding1Heap[null, tree_1(tmp_sibling)] == CombineFrames(FrameFragment(Unfolding1Heap[tmp_sibling, data]), CombineFrames(FrameFragment(Unfolding1Heap[tmp_sibling, next_child]), CombineFrames(FrameFragment(Unfolding1Heap[tmp_sibling, next_sibling]), CombineFrames(FrameFragment((if Unfolding1Heap[tmp_sibling, next_child] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[tmp_sibling, next_child])] else EmptyFrame)), FrameFragment((if Unfolding1Heap[tmp_sibling, next_sibling] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[tmp_sibling, next_sibling])] else EmptyFrame))))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access tree(tmp_sibling) (0554.vpr@55.12--57.91) [62799]"}
@@ -2017,8 +2017,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(this), 1 / 2) -- 0554.vpr@79.3--79.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Folding tree(this) might fail. Fraction 1 / 2 might be negative. (0554.vpr@79.3--79.28) [62805]"}
       perm >= NoPerm;
@@ -2107,8 +2107,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(res), write) -- 0554.vpr@80.3--80.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(res) might fail. There might be insufficient permission to access res.data (0554.vpr@80.3--80.17) [62819]"}
@@ -2185,8 +2185,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Postcondition of cloneTree might not hold. Fraction 1 / 2 might be negative. (0554.vpr@53.11--53.44) [62830]"}
       perm >= NoPerm;
@@ -2207,8 +2207,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
       UnfoldingMask := ExhaleWellDef0Mask;
       assume tree#trigger(UnfoldingHeap, tree_1(this));
       assume UnfoldingHeap[null, tree_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_child]), CombineFrames(FrameFragment(UnfoldingHeap[this, next_sibling]), CombineFrames(FrameFragment((if UnfoldingHeap[this, next_child] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_child])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, next_sibling] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[this, next_sibling])] else EmptyFrame))))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Postcondition of cloneTree might not hold. Fraction 1 / 2 might be negative. (0554.vpr@55.12--57.91) [62833]"}
         perm >= NoPerm;
@@ -2263,8 +2263,8 @@ procedure cloneTree(this: Ref) returns (res: Ref)
       Unfolding1Mask := UnfoldingMask;
       assume tree#trigger(Unfolding1Heap, tree_1(res));
       assume Unfolding1Heap[null, tree_1(res)] == CombineFrames(FrameFragment(Unfolding1Heap[res, data]), CombineFrames(FrameFragment(Unfolding1Heap[res, next_child]), CombineFrames(FrameFragment(Unfolding1Heap[res, next_sibling]), CombineFrames(FrameFragment((if Unfolding1Heap[res, next_child] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[res, next_child])] else EmptyFrame)), FrameFragment((if Unfolding1Heap[res, next_sibling] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[res, next_sibling])] else EmptyFrame))))));
-      ExhaleWellDef1Mask := Unfolding1Mask;
       ExhaleWellDef1Heap := Unfolding1Heap;
+      ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of cloneTree might not hold. There might be insufficient permission to access tree(res) (0554.vpr@55.12--57.91) [62840]"}

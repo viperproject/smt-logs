@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:29:03
+; Started: 2025-01-26 23:01:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -990,11 +990,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (v@1@00 Int) (i@2@00 Int)) (!
   (= (addC%limited s@$ x@0@00 v@1@00 i@2@00) (addC s@$ x@0@00 v@1@00 i@2@00))
   :pattern ((addC s@$ x@0@00 v@1@00 i@2@00))
-  :qid |quant-u-5055|)))
+  :qid |quant-u-5001|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (v@1@00 Int) (i@2@00 Int)) (!
   (addC%stateless x@0@00 v@1@00 i@2@00)
   :pattern ((addC%limited s@$ x@0@00 v@1@00 i@2@00))
-  :qid |quant-u-5056|)))
+  :qid |quant-u-5002|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= x@0@00 $Ref.null)))
@@ -1013,11 +1013,11 @@
       (addC s@$ x@0@00 v@1@00 i@2@00)
       (+ (+ ($SortWrappers.$SnapToInt s@$) v@1@00) i@2@00)))
   :pattern ((addC s@$ x@0@00 v@1@00 i@2@00))
-  :qid |quant-u-5061|)))
+  :qid |quant-u-5007|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (v@1@00 Int) (i@2@00 Int)) (!
   true
   :pattern ((addC s@$ x@0@00 v@1@00 i@2@00))
-  :qid |quant-u-5062|)))
+  :qid |quant-u-5008|)))
 ; ---------- FUNCTION addA----------
 (declare-fun v@4@00 () Int)
 (declare-fun i@5@00 () Int)
@@ -1029,11 +1029,11 @@
 (assert (forall ((s@$ $Snap) (v@4@00 Int) (i@5@00 Int)) (!
   (= (addA%limited s@$ v@4@00 i@5@00) (addA s@$ v@4@00 i@5@00))
   :pattern ((addA s@$ v@4@00 i@5@00))
-  :qid |quant-u-5057|)))
+  :qid |quant-u-5003|)))
 (assert (forall ((s@$ $Snap) (v@4@00 Int) (i@5@00 Int)) (!
   (addA%stateless v@4@00 i@5@00)
   :pattern ((addA%limited s@$ v@4@00 i@5@00))
-  :qid |quant-u-5058|)))
+  :qid |quant-u-5004|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1048,11 +1048,11 @@
     (addA%precondition s@$ v@4@00 i@5@00)
     (= (addA s@$ v@4@00 i@5@00) (+ i@5@00 v@4@00)))
   :pattern ((addA s@$ v@4@00 i@5@00))
-  :qid |quant-u-5063|)))
+  :qid |quant-u-5009|)))
 (assert (forall ((s@$ $Snap) (v@4@00 Int) (i@5@00 Int)) (!
   true
   :pattern ((addA s@$ v@4@00 i@5@00))
-  :qid |quant-u-5064|)))
+  :qid |quant-u-5010|)))
 ; ---------- FUNCTION addB----------
 (declare-fun x@7@00 () $Ref)
 (declare-fun i@8@00 () Int)
@@ -1066,11 +1066,11 @@
 (assert (forall ((s@$ $Snap) (x@7@00 $Ref) (i@8@00 Int)) (!
   (= (addB%limited s@$ x@7@00 i@8@00) (addB s@$ x@7@00 i@8@00))
   :pattern ((addB s@$ x@7@00 i@8@00))
-  :qid |quant-u-5059|)))
+  :qid |quant-u-5005|)))
 (assert (forall ((s@$ $Snap) (x@7@00 $Ref) (i@8@00 Int)) (!
   (addB%stateless x@7@00 i@8@00)
   :pattern ((addB%limited s@$ x@7@00 i@8@00))
-  :qid |quant-u-5060|)))
+  :qid |quant-u-5006|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1096,11 +1096,11 @@
         (+ i@8@00 ($SortWrappers.$SnapToInt ($Snap.first s@$)))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((addB s@$ x@7@00 i@8@00))
-  :qid |quant-u-5065|)))
+  :qid |quant-u-5011|)))
 (assert (forall ((s@$ $Snap) (x@7@00 $Ref) (i@8@00 Int)) (!
   true
   :pattern ((addB s@$ x@7@00 i@8@00))
-  :qid |quant-u-5066|)))
+  :qid |quant-u-5012|)))
 ; ---------- pair ----------
 (declare-const x@10@00 $Ref)
 (declare-const i@11@00 Int)

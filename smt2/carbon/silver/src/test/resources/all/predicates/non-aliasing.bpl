@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:47
+// Date:         2025-01-26 23:13:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/non-aliasing.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/non-aliasing-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -327,10 +327,10 @@ procedure testNestingUnfold(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -351,14 +351,14 @@ procedure testNestingUnfold(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid(this), wildcard) -- non-aliasing.vpr@16.3--16.36
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (non-aliasing.vpr@16.3--16.36) [47161]"}
       Mask[null, valid(this)] > NoPerm;
     havoc wildcard;
@@ -388,8 +388,8 @@ procedure testNestingUnfold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- non-aliasing.vpr@17.3--17.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@17.11--17.32) [47162]"}
@@ -412,8 +412,8 @@ procedure testNestingUnfold(this: Ref) returns ()
             HasDirectPerm(Mask, this, next);
         assume valid#trigger(Heap, valid(Heap[this, next]));
         assume Heap[null, valid(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, valid(Heap[Heap[this, next], next])] else EmptyFrame)));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (non-aliasing.vpr@20.5--20.43) [47167]"}
           Mask[null, valid(Heap[this, next])] > NoPerm;
         havoc wildcard;
@@ -443,8 +443,8 @@ procedure testNestingUnfold(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.next != this.next.next -- non-aliasing.vpr@21.5--21.45
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this.next != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@21.13--21.44) [47168]"}
@@ -458,8 +458,8 @@ procedure testNestingUnfold(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this != this.next.next -- non-aliasing.vpr@22.5--22.40
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of this != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@22.13--22.39) [47172]"}
@@ -481,10 +481,10 @@ procedure testNestingUnfold2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -504,14 +504,14 @@ procedure testNestingUnfold2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid2(this), write) -- non-aliasing.vpr@35.3--35.27
     assume valid2#trigger(Heap, valid2(this));
     assume Heap[null, valid2(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid2(Heap[this, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid2(this) might fail. There might be insufficient permission to access valid2(this) (non-aliasing.vpr@35.3--35.27) [47177]"}
@@ -540,8 +540,8 @@ procedure testNestingUnfold2(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- non-aliasing.vpr@36.3--36.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (non-aliasing.vpr@36.11--36.32) [47180]"}

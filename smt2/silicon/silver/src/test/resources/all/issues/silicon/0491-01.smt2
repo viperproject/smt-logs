@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:33:46
+; Started: 2025-01-26 23:05:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -692,11 +692,11 @@
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
   (= (foo%limited s@$ l@0@00 i@1@00) (foo s@$ l@0@00 i@1@00))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10410|)))
+  :qid |quant-u-10356|)))
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
   (foo%stateless l@0@00 i@1@00)
   :pattern ((foo%limited s@$ l@0@00 i@1@00))
-  :qid |quant-u-10411|)))
+  :qid |quant-u-10357|)))
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
   (and
     (=
@@ -791,7 +791,7 @@
             ($SortWrappers.IntTo$Snap j)))))) j))
           )))))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10415|)))
+  :qid |quant-u-10361|)))
 ; WARNING: (757,11): 'not' cannot be used in patterns.
 ; WARNING: (757,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (l@0@00 $Ref) (i@1@00 Int)) (!
@@ -850,7 +850,7 @@
         ($SortWrappers.IntTo$Snap j)))))) j))
       )))
   :pattern ((foo s@$ l@0@00 i@1@00))
-  :qid |quant-u-10416|)))
+  :qid |quant-u-10362|)))
 ; WARNING: (814,7): 'not' cannot be used in patterns.
 ; WARNING: (814,7): 'if' cannot be used in patterns.
 ; End function- and predicate-related preamble
@@ -881,8 +881,8 @@
 (assert (not (= l1@3@01 $Ref.null)))
 (declare-const elem@4@01 Int)
 (declare-const next@5@01 $Ref)
-(assert (not (= l1@3@01 l1@1@01)))
 (assert (not (= l1@3@01 l2@2@01)))
+(assert (not (= l1@3@01 l1@1@01)))
 ; [exec]
 ; l1.next := null
 ; [exec]
@@ -901,8 +901,8 @@
 (assert (not (= l2@6@01 $Ref.null)))
 (declare-const elem@7@01 Int)
 (declare-const next@8@01 $Ref)
-(assert (not (= l2@6@01 l2@2@01)))
 (assert (not (= l2@6@01 l1@3@01)))
+(assert (not (= l2@6@01 l2@2@01)))
 ; [exec]
 ; l2.next := l1
 ; [exec]

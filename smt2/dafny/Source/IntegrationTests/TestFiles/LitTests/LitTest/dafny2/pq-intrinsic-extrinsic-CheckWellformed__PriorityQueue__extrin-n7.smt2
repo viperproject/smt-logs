@@ -1,0 +1,352 @@
+(set-option :print-success false)
+(set-info :smt-lib-version 2.6)
+(set-option :auto_config false)
+(set-option :type_check true)
+(set-option :smt.qi.eager_threshold 100)
+(set-option :smt.delay_units true)
+(set-option :model_evaluator.completion true)
+(set-option :model.completion true)
+(set-option :model.compact false)
+(set-option :smt.case_split 3)
+(set-option :smt.mbqi false)
+(set-option :model.v2 true)
+(set-option :pp.bv_literals false)
+(set-option :smt.arith.solver 2)
+; done setting options
+
+
+(set-info :category "industrial")
+(declare-sort |T@U| 0)
+(declare-sort |T@T| 0)
+(declare-fun real_pow (Real Real) Real)
+(declare-fun UOrdering2 (|T@U| |T@U|) Bool)
+(declare-fun UOrdering3 (|T@T| |T@U| |T@U|) Bool)
+(declare-fun tickleBool (Bool) Bool)
+(assert (and (tickleBool true) (tickleBool false)))
+(declare-fun TInt () T@U)
+(declare-fun TagInt () T@U)
+(declare-fun alloc () T@U)
+(declare-fun Tagclass.PriorityQueue__extrinsic.T () T@U)
+(declare-fun |##PriorityQueue_extrinsic.T.Leaf| () T@U)
+(declare-fun |##PriorityQueue_extrinsic.T.Node| () T@U)
+(declare-fun tytagFamily$T () T@U)
+(declare-fun Ctor (T@T) Int)
+(declare-fun boolType () T@T)
+(declare-fun intType () T@T)
+(declare-fun realType () T@T)
+(declare-fun bool_2_U (Bool) T@U)
+(declare-fun U_2_bool (T@U) Bool)
+(declare-fun int_2_U (Int) T@U)
+(declare-fun U_2_int (T@U) Int)
+(declare-fun real_2_U (Real) T@U)
+(declare-fun U_2_real (T@U) Real)
+(declare-fun $Is (T@T T@U T@U) Bool)
+(declare-fun DatatypeTypeType () T@T)
+(declare-fun |#PriorityQueue_extrinsic.T.Node| (Int T@U T@U) T@U)
+(declare-fun Tclass.PriorityQueue__extrinsic.T () T@U)
+(declare-fun Tag (T@U) T@U)
+(declare-fun DatatypeCtorId (T@U) T@U)
+(declare-fun PriorityQueue__extrinsic.T.val (T@U) Int)
+(declare-fun PriorityQueue__extrinsic.T.left (T@U) T@U)
+(declare-fun PriorityQueue__extrinsic.T.right (T@U) T@U)
+(declare-fun |#PriorityQueue_extrinsic.T.Leaf| () T@U)
+(declare-fun |PriorityQueue__extrinsic.T#Equal| (T@U T@U) Bool)
+(declare-fun LitInt (Int) Int)
+(declare-fun Lit (T@T T@U) T@U)
+(declare-fun $FunctionContextHeight () Int)
+(declare-fun PriorityQueue__extrinsic.__default.Insert (T@U T@U Int) T@U)
+(declare-fun $LS (T@U) T@U)
+(declare-fun |PriorityQueue__extrinsic.__default.Insert#canCall| (T@U Int) Bool)
+(declare-fun |$IsA#PriorityQueue__extrinsic.T| (T@U) Bool)
+(declare-fun PriorityQueue__extrinsic.T.Leaf_q (T@U) Bool)
+(declare-fun PriorityQueue__extrinsic.T.Node_q (T@U) Bool)
+(declare-fun $Unbox (T@T T@U) T@U)
+(declare-fun $Box (T@T T@U) T@U)
+(declare-fun DtRank (T@U) Int)
+(declare-fun MapType0Select (T@T T@T T@T T@U T@U T@U) T@U)
+(declare-fun refType () T@T)
+(declare-fun FieldType () T@T)
+(declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
+(declare-fun MapType1Select (T@T T@T T@U T@U) T@U)
+(declare-fun BoxType () T@T)
+(declare-fun MapType1Type (T@T T@T) T@T)
+(declare-fun MapType0Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
+(declare-fun MapType1Store (T@T T@T T@U T@U T@U) T@U)
+(declare-fun MapType1TypeInv0 (T@T) T@T)
+(declare-fun MapType1TypeInv1 (T@T) T@T)
+(declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
+(declare-fun $IsGoodHeap (T@U) Bool)
+(declare-fun TagFamily (T@U) T@U)
+(assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
+ :pattern ( (bool_2_U arg0))
+))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
+ :pattern ( (U_2_bool x))
+))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
+ :pattern ( (int_2_U arg0@@0))
+))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
+ :pattern ( (U_2_int x@@0))
+))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
+ :pattern ( (real_2_U arg0@@1))
+))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
+ :pattern ( (U_2_real x@@1))
+))))
+(assert (distinct TInt TagInt alloc Tagclass.PriorityQueue__extrinsic.T |##PriorityQueue_extrinsic.T.Leaf| |##PriorityQueue_extrinsic.T.Node| tytagFamily$T)
+)
+(assert (= (Ctor DatatypeTypeType) 3))
+(assert (forall ((|a#6#0#0| Int) (|a#6#1#0| T@U) (|a#6#2#0| T@U) ) (! (= ($Is DatatypeTypeType (|#PriorityQueue_extrinsic.T.Node| |a#6#0#0| |a#6#1#0| |a#6#2#0|) Tclass.PriorityQueue__extrinsic.T)  (and (and ($Is intType (int_2_U |a#6#0#0|) TInt) ($Is DatatypeTypeType |a#6#1#0| Tclass.PriorityQueue__extrinsic.T)) ($Is DatatypeTypeType |a#6#2#0| Tclass.PriorityQueue__extrinsic.T)))
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |572|
+ :pattern ( ($Is DatatypeTypeType (|#PriorityQueue_extrinsic.T.Node| |a#6#0#0| |a#6#1#0| |a#6#2#0|) Tclass.PriorityQueue__extrinsic.T))
+)))
+(assert (= (Tag TInt) TagInt))
+(assert (forall ((|a#4#0#0| Int) (|a#4#1#0| T@U) (|a#4#2#0| T@U) ) (! (= (DatatypeCtorId (|#PriorityQueue_extrinsic.T.Node| |a#4#0#0| |a#4#1#0| |a#4#2#0|)) |##PriorityQueue_extrinsic.T.Node|)
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |568|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#4#0#0| |a#4#1#0| |a#4#2#0|))
+)))
+(assert (forall ((|a#8#0#0| Int) (|a#8#1#0| T@U) (|a#8#2#0| T@U) ) (! (= (PriorityQueue__extrinsic.T.val (|#PriorityQueue_extrinsic.T.Node| |a#8#0#0| |a#8#1#0| |a#8#2#0|)) |a#8#0#0|)
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |577|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#8#0#0| |a#8#1#0| |a#8#2#0|))
+)))
+(assert (forall ((|a#9#0#0| Int) (|a#9#1#0| T@U) (|a#9#2#0| T@U) ) (! (= (PriorityQueue__extrinsic.T.left (|#PriorityQueue_extrinsic.T.Node| |a#9#0#0| |a#9#1#0| |a#9#2#0|)) |a#9#1#0|)
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |578|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#9#0#0| |a#9#1#0| |a#9#2#0|))
+)))
+(assert (forall ((|a#11#0#0| Int) (|a#11#1#0| T@U) (|a#11#2#0| T@U) ) (! (= (PriorityQueue__extrinsic.T.right (|#PriorityQueue_extrinsic.T.Node| |a#11#0#0| |a#11#1#0| |a#11#2#0|)) |a#11#2#0|)
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |580|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#11#0#0| |a#11#1#0| |a#11#2#0|))
+)))
+(assert (= (DatatypeCtorId |#PriorityQueue_extrinsic.T.Leaf|) |##PriorityQueue_extrinsic.T.Leaf|))
+(assert ($Is DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf| Tclass.PriorityQueue__extrinsic.T))
+(assert (forall ((a T@U) (b T@U) ) (! (= (|PriorityQueue__extrinsic.T#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |587|
+ :pattern ( (|PriorityQueue__extrinsic.T#Equal| a b))
+)))
+(assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
+ :pattern ( (LitInt x@@2))
+)))
+(assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
+ :pattern ( (Lit T x@@3))
+)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|t#0| T@U) (|x#0| Int) ) (!  (=> (or (|PriorityQueue__extrinsic.__default.Insert#canCall| (Lit DatatypeTypeType |t#0|) (LitInt |x#0|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0| Tclass.PriorityQueue__extrinsic.T))) (and (and (|$IsA#PriorityQueue__extrinsic.T| (Lit DatatypeTypeType |t#0|)) (=> (not (|PriorityQueue__extrinsic.T#Equal| |t#0| |#PriorityQueue_extrinsic.T.Leaf|)) (and (=> (U_2_bool (Lit boolType (bool_2_U (< |x#0| (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|)))))) (|PriorityQueue__extrinsic.__default.Insert#canCall| (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.right (Lit DatatypeTypeType |t#0|))) (LitInt (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (< |x#0| (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|))))))) (|PriorityQueue__extrinsic.__default.Insert#canCall| (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.right (Lit DatatypeTypeType |t#0|))) (LitInt |x#0|)))))) (= (PriorityQueue__extrinsic.__default.Insert ($LS $ly) (Lit DatatypeTypeType |t#0|) (LitInt |x#0|)) (ite (|PriorityQueue__extrinsic.T#Equal| |t#0| |#PriorityQueue_extrinsic.T.Leaf|) (|#PriorityQueue_extrinsic.T.Node| (LitInt |x#0|) (Lit DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf|) (Lit DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf|)) (ite (< |x#0| (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|))) (|#PriorityQueue_extrinsic.T.Node| (LitInt |x#0|) (Lit DatatypeTypeType (PriorityQueue__extrinsic.__default.Insert ($LS $ly) (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.right (Lit DatatypeTypeType |t#0|))) (LitInt (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|))))) (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.left (Lit DatatypeTypeType |t#0|)))) (|#PriorityQueue_extrinsic.T.Node| (LitInt (PriorityQueue__extrinsic.T.val (Lit DatatypeTypeType |t#0|))) (Lit DatatypeTypeType (PriorityQueue__extrinsic.__default.Insert ($LS $ly) (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.right (Lit DatatypeTypeType |t#0|))) (LitInt |x#0|))) (Lit DatatypeTypeType (PriorityQueue__extrinsic.T.left (Lit DatatypeTypeType |t#0|)))))))))
+ :qid |pqintrinsicextrinsicdfy.213:12|
+ :weight 3
+ :skolemid |550|
+ :pattern ( (PriorityQueue__extrinsic.__default.Insert ($LS $ly) (Lit DatatypeTypeType |t#0|) (LitInt |x#0|)))
+))))
+(assert (forall ((d T@U) ) (! (= (PriorityQueue__extrinsic.T.Leaf_q d) (= (DatatypeCtorId d) |##PriorityQueue_extrinsic.T.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |566|
+ :pattern ( (PriorityQueue__extrinsic.T.Leaf_q d))
+)))
+(assert (forall ((d@@0 T@U) ) (! (= (PriorityQueue__extrinsic.T.Node_q d@@0) (= (DatatypeCtorId d@@0) |##PriorityQueue_extrinsic.T.Node|))
+ :qid |unknown.0:0|
+ :skolemid |569|
+ :pattern ( (PriorityQueue__extrinsic.T.Node_q d@@0))
+)))
+(assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
+ :pattern ( ($Unbox T@@0 x@@4))
+)))
+(assert (forall ((d@@1 T@U) ) (!  (=> (PriorityQueue__extrinsic.T.Node_q d@@1) (exists ((|a#5#0#0| Int) (|a#5#1#0| T@U) (|a#5#2#0| T@U) ) (! (= d@@1 (|#PriorityQueue_extrinsic.T.Node| |a#5#0#0| |a#5#1#0| |a#5#2#0|))
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |570|
+)))
+ :qid |unknown.0:0|
+ :skolemid |571|
+ :pattern ( (PriorityQueue__extrinsic.T.Node_q d@@1))
+)))
+(assert (forall ((d@@2 T@U) ) (!  (=> (PriorityQueue__extrinsic.T.Leaf_q d@@2) (= d@@2 |#PriorityQueue_extrinsic.T.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |567|
+ :pattern ( (PriorityQueue__extrinsic.T.Leaf_q d@@2))
+)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|t#0@@0| T@U) (|x#0@@0| Int) ) (!  (=> (or (|PriorityQueue__extrinsic.__default.Insert#canCall| |t#0@@0| |x#0@@0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@0| Tclass.PriorityQueue__extrinsic.T))) ($Is DatatypeTypeType (PriorityQueue__extrinsic.__default.Insert $ly@@0 |t#0@@0| |x#0@@0|) Tclass.PriorityQueue__extrinsic.T))
+ :qid |pqintrinsicextrinsicdfy.213:12|
+ :skolemid |547|
+ :pattern ( (PriorityQueue__extrinsic.__default.Insert $ly@@0 |t#0@@0| |x#0@@0|))
+))))
+(assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (PriorityQueue__extrinsic.T.Node_q a@@0) (PriorityQueue__extrinsic.T.Node_q b@@0)) (= (|PriorityQueue__extrinsic.T#Equal| a@@0 b@@0)  (and (and (= (PriorityQueue__extrinsic.T.val a@@0) (PriorityQueue__extrinsic.T.val b@@0)) (|PriorityQueue__extrinsic.T#Equal| (PriorityQueue__extrinsic.T.left a@@0) (PriorityQueue__extrinsic.T.left b@@0))) (|PriorityQueue__extrinsic.T#Equal| (PriorityQueue__extrinsic.T.right a@@0) (PriorityQueue__extrinsic.T.right b@@0)))))
+ :qid |unknown.0:0|
+ :skolemid |586|
+ :pattern ( (|PriorityQueue__extrinsic.T#Equal| a@@0 b@@0) (PriorityQueue__extrinsic.T.Node_q a@@0))
+ :pattern ( (|PriorityQueue__extrinsic.T#Equal| a@@0 b@@0) (PriorityQueue__extrinsic.T.Node_q b@@0))
+)))
+(assert (forall (($ly@@1 T@U) (|t#0@@1| T@U) (|x#0@@1| Int) ) (! (= (PriorityQueue__extrinsic.__default.Insert ($LS $ly@@1) |t#0@@1| |x#0@@1|) (PriorityQueue__extrinsic.__default.Insert $ly@@1 |t#0@@1| |x#0@@1|))
+ :qid |pqintrinsicextrinsicdfy.213:12|
+ :skolemid |545|
+ :pattern ( (PriorityQueue__extrinsic.__default.Insert ($LS $ly@@1) |t#0@@1| |x#0@@1|))
+)))
+(assert (forall ((d@@3 T@U) ) (!  (=> (|$IsA#PriorityQueue__extrinsic.T| d@@3) (or (PriorityQueue__extrinsic.T.Leaf_q d@@3) (PriorityQueue__extrinsic.T.Node_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |583|
+ :pattern ( (|$IsA#PriorityQueue__extrinsic.T| d@@3))
+)))
+(assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) (|t#0@@2| T@U) (|x#0@@2| Int) ) (!  (=> (or (|PriorityQueue__extrinsic.__default.Insert#canCall| |t#0@@2| |x#0@@2|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@2| Tclass.PriorityQueue__extrinsic.T))) (and (and (|$IsA#PriorityQueue__extrinsic.T| |t#0@@2|) (=> (not (|PriorityQueue__extrinsic.T#Equal| |t#0@@2| |#PriorityQueue_extrinsic.T.Leaf|)) (and (=> (< |x#0@@2| (PriorityQueue__extrinsic.T.val |t#0@@2|)) (|PriorityQueue__extrinsic.__default.Insert#canCall| (PriorityQueue__extrinsic.T.right |t#0@@2|) (PriorityQueue__extrinsic.T.val |t#0@@2|))) (=> (<= (PriorityQueue__extrinsic.T.val |t#0@@2|) |x#0@@2|) (|PriorityQueue__extrinsic.__default.Insert#canCall| (PriorityQueue__extrinsic.T.right |t#0@@2|) |x#0@@2|))))) (= (PriorityQueue__extrinsic.__default.Insert ($LS $ly@@2) |t#0@@2| |x#0@@2|) (ite (|PriorityQueue__extrinsic.T#Equal| |t#0@@2| |#PriorityQueue_extrinsic.T.Leaf|) (|#PriorityQueue_extrinsic.T.Node| |x#0@@2| (Lit DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf|) (Lit DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf|)) (ite (< |x#0@@2| (PriorityQueue__extrinsic.T.val |t#0@@2|)) (|#PriorityQueue_extrinsic.T.Node| |x#0@@2| (PriorityQueue__extrinsic.__default.Insert $ly@@2 (PriorityQueue__extrinsic.T.right |t#0@@2|) (PriorityQueue__extrinsic.T.val |t#0@@2|)) (PriorityQueue__extrinsic.T.left |t#0@@2|)) (|#PriorityQueue_extrinsic.T.Node| (PriorityQueue__extrinsic.T.val |t#0@@2|) (PriorityQueue__extrinsic.__default.Insert $ly@@2 (PriorityQueue__extrinsic.T.right |t#0@@2|) |x#0@@2|) (PriorityQueue__extrinsic.T.left |t#0@@2|)))))))
+ :qid |pqintrinsicextrinsicdfy.213:12|
+ :skolemid |549|
+ :pattern ( (PriorityQueue__extrinsic.__default.Insert ($LS $ly@@2) |t#0@@2| |x#0@@2|))
+))))
+(assert (forall ((d@@4 T@U) ) (!  (=> ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__extrinsic.T) (or (PriorityQueue__extrinsic.T.Leaf_q d@@4) (PriorityQueue__extrinsic.T.Node_q d@@4)))
+ :qid |unknown.0:0|
+ :skolemid |584|
+ :pattern ( (PriorityQueue__extrinsic.T.Node_q d@@4) ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__extrinsic.T))
+ :pattern ( (PriorityQueue__extrinsic.T.Leaf_q d@@4) ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__extrinsic.T))
+)))
+(assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (and (PriorityQueue__extrinsic.T.Leaf_q a@@1) (PriorityQueue__extrinsic.T.Leaf_q b@@1)) (|PriorityQueue__extrinsic.T#Equal| a@@1 b@@1))
+ :qid |unknown.0:0|
+ :skolemid |585|
+ :pattern ( (|PriorityQueue__extrinsic.T#Equal| a@@1 b@@1) (PriorityQueue__extrinsic.T.Leaf_q a@@1))
+ :pattern ( (|PriorityQueue__extrinsic.T#Equal| a@@1 b@@1) (PriorityQueue__extrinsic.T.Leaf_q b@@1))
+)))
+(assert (forall ((|a#7#0#0| Int) (|a#7#1#0| T@U) (|a#7#2#0| T@U) ) (! (= (|#PriorityQueue_extrinsic.T.Node| (LitInt |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|) (Lit DatatypeTypeType |a#7#2#0|)) (Lit DatatypeTypeType (|#PriorityQueue_extrinsic.T.Node| |a#7#0#0| |a#7#1#0| |a#7#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |576|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| (LitInt |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|) (Lit DatatypeTypeType |a#7#2#0|)))
+)))
+(assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
+ :pattern ( ($Box T@@1 x@@5))
+)))
+(assert (forall ((|a#10#0#0| Int) (|a#10#1#0| T@U) (|a#10#2#0| T@U) ) (! (< (DtRank |a#10#1#0|) (DtRank (|#PriorityQueue_extrinsic.T.Node| |a#10#0#0| |a#10#1#0| |a#10#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |579|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#10#0#0| |a#10#1#0| |a#10#2#0|))
+)))
+(assert (forall ((|a#12#0#0| Int) (|a#12#1#0| T@U) (|a#12#2#0| T@U) ) (! (< (DtRank |a#12#2#0|) (DtRank (|#PriorityQueue_extrinsic.T.Node| |a#12#0#0| |a#12#1#0| |a#12#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.189:28|
+ :skolemid |581|
+ :pattern ( (|#PriorityQueue_extrinsic.T.Node| |a#12#0#0| |a#12#1#0| |a#12#2#0|))
+)))
+(assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
+ :weight 0
+)) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
+ :weight 0
+)) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
+ :weight 0
+)))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
+ :weight 0
+))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
+ :weight 0
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
+ :pattern ( (MapType1Type arg0@@3 arg1@@0))
+))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
+ :pattern ( (MapType1Type arg0@@4 arg1@@1))
+))))
+(assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3527|
+ :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
+)))
+(assert (forall ((d@@5 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (PriorityQueue__extrinsic.T.Node_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.PriorityQueue__extrinsic.T $h))) ($IsAlloc intType (int_2_U (PriorityQueue__extrinsic.T.val d@@5)) TInt $h))
+ :qid |unknown.0:0|
+ :skolemid |573|
+ :pattern ( ($IsAlloc intType (int_2_U (PriorityQueue__extrinsic.T.val d@@5)) TInt $h))
+)))
+(assert (forall ((d@@6 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@6 Tclass.PriorityQueue__extrinsic.T)) ($IsAlloc DatatypeTypeType d@@6 Tclass.PriorityQueue__extrinsic.T $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |582|
+ :pattern ( ($IsAlloc DatatypeTypeType d@@6 Tclass.PriorityQueue__extrinsic.T $h@@0))
+)))
+(assert (= (Tag Tclass.PriorityQueue__extrinsic.T) Tagclass.PriorityQueue__extrinsic.T))
+(assert (= (TagFamily Tclass.PriorityQueue__extrinsic.T) tytagFamily$T))
+(assert (= |#PriorityQueue_extrinsic.T.Leaf| (Lit DatatypeTypeType |#PriorityQueue_extrinsic.T.Leaf|)))
+(assert (forall ((d@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (PriorityQueue__extrinsic.T.Node_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass.PriorityQueue__extrinsic.T $h@@1))) ($IsAlloc DatatypeTypeType (PriorityQueue__extrinsic.T.left d@@7) Tclass.PriorityQueue__extrinsic.T $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |574|
+ :pattern ( ($IsAlloc DatatypeTypeType (PriorityQueue__extrinsic.T.left d@@7) Tclass.PriorityQueue__extrinsic.T $h@@1))
+)))
+(assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (PriorityQueue__extrinsic.T.Node_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass.PriorityQueue__extrinsic.T $h@@2))) ($IsAlloc DatatypeTypeType (PriorityQueue__extrinsic.T.right d@@8) Tclass.PriorityQueue__extrinsic.T $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |575|
+ :pattern ( ($IsAlloc DatatypeTypeType (PriorityQueue__extrinsic.T.right d@@8) Tclass.PriorityQueue__extrinsic.T $h@@2))
+)))
+(assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
+ :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
+)))
+(assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
+ :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
+)))
+(assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
+ :pattern ( ($IsAlloc intType v TInt h))
+)))
+(assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
+ :pattern ( ($Is intType v@@0 TInt))
+)))
+(push 1)
+(declare-fun ControlFlow (Int Int) Int)
+(declare-fun |t#0@@3| () T@U)
+(declare-fun |x#0@@3| () Int)
+(declare-fun |##t#1@0| () T@U)
+(declare-fun $Heap () T@U)
+(declare-fun |##t#0@0| () T@U)
+(declare-fun |##x#0@0| () Int)
+(declare-fun $_ReadsFrame@0 () T@U)
+(declare-fun null () T@U)
+(declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$PriorityQueue__extrinsic.__default.Insert)
+(set-option :timeout 10000)
+(set-option :rlimit 0)
+(set-option :auto_config false)
+(set-option :type_check true)
+(set-option :smt.qi.eager_threshold 100)
+(set-option :smt.delay_units true)
+(set-option :model_evaluator.completion true)
+(set-option :model.completion true)
+(set-option :model.compact false)
+(set-option :smt.case_split 3)
+(set-option :smt.mbqi false)
+(set-option :model.v2 true)
+(set-option :pp.bv_literals false)
+(set-option :smt.arith.solver 2)
+(assert (not
+ (=> (= (ControlFlow 0 0) 18) (let ((anon11_Else_correct  (=> (<= (PriorityQueue__extrinsic.T.val |t#0@@3|) |x#0@@3|) (and (=> (= (ControlFlow 0 10) (- 0 14)) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)) (=> (PriorityQueue__extrinsic.T.Node_q |t#0@@3|) (and (=> (= (ControlFlow 0 10) (- 0 13)) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)) (=> (PriorityQueue__extrinsic.T.Node_q |t#0@@3|) (=> (= |##t#1@0| (PriorityQueue__extrinsic.T.right |t#0@@3|)) (=> (and ($IsAlloc DatatypeTypeType |##t#1@0| Tclass.PriorityQueue__extrinsic.T $Heap) ($IsAlloc intType (int_2_U |x#0@@3|) TInt $Heap)) (and (=> (= (ControlFlow 0 10) (- 0 12)) (or (or (<= 0 |x#0@@3|) (< (DtRank |##t#1@0|) (DtRank |t#0@@3|))) (= |x#0@@3| |x#0@@3|))) (=> (or (or (<= 0 |x#0@@3|) (< (DtRank |##t#1@0|) (DtRank |t#0@@3|))) (= |x#0@@3| |x#0@@3|)) (and (=> (= (ControlFlow 0 10) (- 0 11)) (or (< (DtRank |##t#1@0|) (DtRank |t#0@@3|)) (and (= (DtRank |##t#1@0|) (DtRank |t#0@@3|)) (< |x#0@@3| |x#0@@3|)))) (=> (or (< (DtRank |##t#1@0|) (DtRank |t#0@@3|)) (and (= (DtRank |##t#1@0|) (DtRank |t#0@@3|)) (< |x#0@@3| |x#0@@3|))) (=> (and (|PriorityQueue__extrinsic.__default.Insert#canCall| (PriorityQueue__extrinsic.T.right |t#0@@3|) |x#0@@3|) (= (ControlFlow 0 10) (- 0 9))) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)))))))))))))))
+(let ((anon11_Then_correct  (=> (< |x#0@@3| (PriorityQueue__extrinsic.T.val |t#0@@3|)) (and (=> (= (ControlFlow 0 4) (- 0 8)) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)) (=> (PriorityQueue__extrinsic.T.Node_q |t#0@@3|) (=> (and (= |##t#0@0| (PriorityQueue__extrinsic.T.right |t#0@@3|)) ($IsAlloc DatatypeTypeType |##t#0@0| Tclass.PriorityQueue__extrinsic.T $Heap)) (and (=> (= (ControlFlow 0 4) (- 0 7)) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)) (=> (PriorityQueue__extrinsic.T.Node_q |t#0@@3|) (=> (and (= |##x#0@0| (PriorityQueue__extrinsic.T.val |t#0@@3|)) ($IsAlloc intType (int_2_U |##x#0@0|) TInt $Heap)) (and (=> (= (ControlFlow 0 4) (- 0 6)) (or (or (<= 0 |x#0@@3|) (< (DtRank |##t#0@0|) (DtRank |t#0@@3|))) (= |##x#0@0| |x#0@@3|))) (=> (or (or (<= 0 |x#0@@3|) (< (DtRank |##t#0@0|) (DtRank |t#0@@3|))) (= |##x#0@0| |x#0@@3|)) (and (=> (= (ControlFlow 0 4) (- 0 5)) (or (< (DtRank |##t#0@0|) (DtRank |t#0@@3|)) (and (= (DtRank |##t#0@0|) (DtRank |t#0@@3|)) (< |##x#0@0| |x#0@@3|)))) (=> (or (< (DtRank |##t#0@0|) (DtRank |t#0@@3|)) (and (= (DtRank |##t#0@0|) (DtRank |t#0@@3|)) (< |##x#0@0| |x#0@@3|))) (=> (and (|PriorityQueue__extrinsic.__default.Insert#canCall| (PriorityQueue__extrinsic.T.right |t#0@@3|) (PriorityQueue__extrinsic.T.val |t#0@@3|)) (= (ControlFlow 0 4) (- 0 3))) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)))))))))))))))
+(let ((anon10_Else_correct  (=> (not (|PriorityQueue__extrinsic.T#Equal| |t#0@@3| |#PriorityQueue_extrinsic.T.Leaf|)) (and (=> (= (ControlFlow 0 15) (- 0 16)) (PriorityQueue__extrinsic.T.Node_q |t#0@@3|)) (=> (PriorityQueue__extrinsic.T.Node_q |t#0@@3|) (and (=> (= (ControlFlow 0 15) 4) anon11_Then_correct) (=> (= (ControlFlow 0 15) 10) anon11_Else_correct)))))))
+(let ((anon10_Then_correct true))
+(let ((anon9_Then_correct true))
+(let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 17) 1) anon9_Then_correct) (=> (= (ControlFlow 0 17) 2) anon10_Then_correct)) (=> (= (ControlFlow 0 17) 15) anon10_Else_correct)))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) ($Is DatatypeTypeType |t#0@@3| Tclass.PriorityQueue__extrinsic.T)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 18) 17))) anon0_correct)))
+PreconditionGeneratedEntry_correct))))))))
+))
+(check-sat)
+(get-info :rlimit)
+(pop 1)
+; Valid
+(reset)
+(set-option :rlimit 0)
+; did a full reset
+(reset)

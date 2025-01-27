@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:58
+// Date:         2025-01-26 23:16:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/trigger-z3-bug.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/trigger-z3-bug-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -639,8 +639,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   var jx_9: int;
   var i_3: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ix_10: int;
@@ -651,8 +651,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   var half: int;
   var offset_1: int;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ix_6_1: int;
   var jx_6_1: int;
   var i_10_1: int;
@@ -835,8 +835,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1079,8 +1079,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@58.17--58.25) [121621]"}
               0 <= tid;
             assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (trigger-z3-bug.vpr@59.17--59.29) [121622]"}
@@ -1553,8 +1553,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
             // -- Translate loop body
               
               // -- Translating statement: assert 0 <= offset + k && offset + k < gsize -- trigger-z3-bug.vpr@79.7--79.55
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion 0 <= offset + k might not hold. (trigger-z3-bug.vpr@79.14--79.55) [121680]"}
                   0 <= offset_1 + k;
                 assert {:msg "  Assert might fail. Assertion offset + k < gsize might not hold. (trigger-z3-bug.vpr@79.14--79.55) [121681]"}
@@ -1612,8 +1612,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
                 k := k + 1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@58.17--58.25) [121698]"}
               0 <= tid;
             assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (trigger-z3-bug.vpr@59.17--59.29) [121699]"}
@@ -1863,8 +1863,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- trigger-z3-bug.vpr@87.3--87.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: __last_barrier := main_barrier(this, tcount, gsize, tid, gid, lid, 1, __last_barrier,
@@ -1874,8 +1874,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     arg_last_barrier := __last_barrier;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method main_barrier might not hold. Assertion false || __last_barrier == 0 might not hold. (trigger-z3-bug.vpr@88.3--88.105) [121724]"}
         arg_last_barrier == 0;
       assert {:msg "  The precondition of method main_barrier might not hold. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@88.3--88.105) [121725]"}
@@ -2131,8 +2131,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   //     { this.src[i] }
   //     0 <= i && i < half ==>
   //     this.dst[0].Integer_value >= this.src[i].Integer_value) -- trigger-z3-bug.vpr@89.3--89.127
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (tid == 0) {
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
@@ -2174,8 +2174,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   //     { this.src[i] }
   //     half <= i && i < gsize ==>
   //     this.dst[1].Integer_value >= this.src[i].Integer_value) -- trigger-z3-bug.vpr@90.3--90.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (tid == 0) {
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
@@ -2257,8 +2257,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@29.11--29.19) [121776]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (trigger-z3-bug.vpr@30.11--30.23) [121777]"}
@@ -2389,8 +2389,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   var QPMask: MaskType;
   var i_17: int;
   var i_11: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ix_17: int;
@@ -2398,8 +2398,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   var i_13: int;
   var i_23: int;
   var i_24: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ix_4: int;
   var jx_4: int;
   var i_13_1: int;
@@ -2657,8 +2657,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2922,8 +2922,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_barrier might not hold. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@118.11--118.19) [121873]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid < tcount might not hold. (trigger-z3-bug.vpr@119.11--119.23) [121874]"}
@@ -3092,15 +3092,15 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   var ix_18: int;
   var jx_18: int;
   var tid_9: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ix_19: int;
   var jx_19: int;
   var i_53: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ix_6_1: int;
   var jx_6_1: int;
   var ExhaleHeap: HeapType;
@@ -3322,8 +3322,8 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3498,8 +3498,8 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (trigger-z3-bug.vpr@155.11--155.26) [121948]"}
       tcount == gsize;
     assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (trigger-z3-bug.vpr@156.11--156.19) [121949]"}
@@ -3622,8 +3622,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   var _x_tid_8: int;
   var i_66: int;
   var i_67: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ix_22: int;
@@ -3631,8 +3631,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   var i_68: int;
   var i_69: int;
   var i_70: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ix_6_1: int;
   var jx_6_1: int;
   var i_13_1: int;
@@ -3920,8 +3920,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4158,8 +4158,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (trigger-z3-bug.vpr@191.11--191.19) [122044]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid < tcount might not hold. (trigger-z3-bug.vpr@192.11--192.23) [122045]"}

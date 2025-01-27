@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:35:24
+; Started: 2025-01-26 23:07:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -996,7 +996,7 @@
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> s@$) (loc<Ref> this@0@00 i@2@00)) (loc<Ref> this@0@00 i@2@00)))
   :pattern ((Seq_contains (Seq_range 0 (length<Int> this@0@00)) i@2@00))
   :pattern ((Seq_contains_trigger (Seq_range 0 (length<Int> this@0@00)) i@2@00))
-  :qid |quant-u-12463|)))
+  :qid |quant-u-12410|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1043,7 +1043,7 @@
       (inv@4@00 s@$ this@0@00 r))
     ($FVF.loc_val ($FVF.lookup_val (sm@6@00 s@$ this@0@00) r) r))
   :pattern ((inv@4@00 s@$ this@0@00 r))
-  :qid |quant-u-12464|)))
+  :qid |quant-u-12411|)))
 (declare-const $t@7@00 $Snap)
 (assert (= $t@7@00 $Snap.unit))
 ; [eval] (forall i: Int :: { loc(this, i).val } { (i in [0..length(this))) } (i in [0..length(this))) ==> (loc(this, i).val in result))
@@ -1194,11 +1194,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (= (elements%limited s@$ this@0@00) (elements s@$ this@0@00))
   :pattern ((elements s@$ this@0@00))
-  :qid |quant-u-12460|)))
+  :qid |quant-u-12407|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (elements%stateless this@0@00)
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-12461|)))
+  :qid |quant-u-12408|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (let ((result@1@00 (elements%limited s@$ this@0@00))) (and
     (forall ((i@2@00 Int)) (!
@@ -1212,7 +1212,7 @@
       :pattern ((Seq_contains_trigger
         (Seq_range 0 (length<Int> this@0@00))
         i@2@00))
-      :qid |quant-u-12463|))
+      :qid |quant-u-12410|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1256,8 +1256,8 @@
         :pattern ((Seq_contains_trigger (Seq_range 0 (length<Int> this@0@00)) i))
         )))))
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-12465|)))
+  :qid |quant-u-12412|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (let ((result@1@00 (elements%limited s@$ this@0@00))) true)
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-12466|)))
+  :qid |quant-u-12413|)))

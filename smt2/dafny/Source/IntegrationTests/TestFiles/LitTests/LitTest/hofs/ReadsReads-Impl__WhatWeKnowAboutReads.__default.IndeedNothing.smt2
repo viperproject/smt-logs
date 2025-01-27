@@ -91,157 +91,250 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun |WhatWeKnowAboutReads.__default.ReadsNothing#requires| () Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSet alloc Tagclass._System.object? Tagclass._System.object Tagclass._System.___hFunc0 |##_System._tuple#0._#Make0| Tagclass._System.Tuple0 tytagFamily$object |tytagFamily$_#Func0| |tytagFamily$_tuple#0|)
 )
 (assert  (and (and (and (and (and (and (and (and (= (Ctor HandleTypeType) 3) (= (Ctor refType) 4)) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 ))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((f T@U) (t0@@0 T@U) (h T@U) ) (!  (=> ($IsGoodHeap h) (= ($IsAlloc HandleTypeType f (Tclass._System.___hFunc0 t0@@0) h)  (=> (Requires0 t0@@0 h f) (forall ((r T@U) ) (!  (=> (and (or (not (= r null)) (not true)) (|Set#IsMember| (Reads0 t0@@0 h f) ($Box refType r))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h r) alloc))))
+ :qid |unknown.0:0|
+ :skolemid |1156|
  :pattern ( (|Set#IsMember| (Reads0 t0@@0 h f) ($Box refType r)))
 )))))
+ :qid |unknown.0:0|
+ :skolemid |1157|
  :pattern ( ($IsAlloc HandleTypeType f (Tclass._System.___hFunc0 t0@@0) h))
 )))
 (assert (forall (($bx T@U) (|#$R| T@U) ($self T@U) ($heap T@U) ) (!  (=> (Requires0 |#$R| $heap $self) (= (|Set#IsMember| (Reads0 (TSet Tclass._System.object?) $heap (|Reads0#Handle| |#$R| $self)) $bx) (|Set#IsMember| (Reads0 |#$R| $heap $self) $bx)))
+ :qid |unknown.0:0|
+ :skolemid |1365|
  :pattern ( (|Set#IsMember| (Reads0 (TSet Tclass._System.object?) $heap (|Reads0#Handle| |#$R| $self)) $bx))
 )))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |846|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert (= (DatatypeCtorId |#_System._tuple#0._#Make0|) |##_System._tuple#0._#Make0|))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._System.object $h) ($IsAlloc refType |c#0| Tclass._System.object? $h))
+ :qid |unknown.0:0|
+ :skolemid |1072|
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object? $h))
 )))
 (assert (= (Ctor DatatypeTypeType) 8))
 (assert ($Is DatatypeTypeType |#_System._tuple#0._#Make0| Tclass._System.Tuple0))
 (assert (forall (($o T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o Tclass._System.object? $h@@0)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1069|
  :pattern ( ($IsAlloc refType $o Tclass._System.object? $h@@0))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |WhatWeKnowAboutReads.__default.ReadsNothing#canCall| (< 0 $FunctionContextHeight)) ($Is DatatypeTypeType WhatWeKnowAboutReads.__default.ReadsNothing Tclass._System.Tuple0))))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |736|
  :pattern ( (Lit T x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |747|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
 (assert (forall ((t0@@1 T@U) (heap T@U) (f@@0 T@U) ) (!  (=> (and (and ($IsGoodHeap heap) ($Is HandleTypeType f@@0 (Tclass._System.___hFunc0 t0@@1))) (|Set#Equal| (Reads0 t0@@1 $OneHeap f@@0) |Set#Empty|)) (= (Requires0 t0@@1 $OneHeap f@@0) (Requires0 t0@@1 heap f@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1151|
  :pattern ( (Requires0 t0@@1 $OneHeap f@@0) ($IsGoodHeap heap))
  :pattern ( (Requires0 t0@@1 heap f@@0))
 )))
 (assert (= (Ctor SetType) 9))
 (assert (forall ((v T@U) (t0@@2 T@U) ) (! (= ($Is SetType v (TSet t0@@2)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0@@2))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |767|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |768|
  :pattern ( ($Is SetType v (TSet t0@@2)))
 )))
 (assert (forall ((|#$R@@0| T@U) ($self@@0 T@U) ($heap@@0 T@U) ) (! (= (Reads0 |#$R@@0| $heap@@0 $self@@0) ($Unbox SetType (Apply0 (TSet Tclass._System.object?) $heap@@0 (|Reads0#Handle| |#$R@@0| $self@@0))))
+ :qid |unknown.0:0|
+ :skolemid |1366|
  :pattern ( (Reads0 |#$R@@0| $heap@@0 $self@@0))
 )))
 (assert ($IsGoodHeap $OneHeap))
 (assert (forall ((v@@0 T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h@@0) ($IsAlloc T@@1 v@@0 t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |760|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h@@0))
 )))
 (assert (forall (($bx@@0 T@U) ($heap@@1 T@U) ) (! (= (|Set#IsMember| (Reads0 Tclass._System.Tuple0 $heap@@1 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|) $bx@@0) false)
+ :qid |unknown.0:0|
+ :skolemid |1361|
  :pattern ( (|Set#IsMember| (Reads0 Tclass._System.Tuple0 $heap@@1 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|) $bx@@0))
 )))
 (assert (forall ((|#$R@@1| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc0 |#$R@@1|)) Tagclass._System.___hFunc0) (= (TagFamily (Tclass._System.___hFunc0 |#$R@@1|)) |tytagFamily$_#Func0|))
+ :qid |unknown.0:0|
+ :skolemid |1132|
  :pattern ( (Tclass._System.___hFunc0 |#$R@@1|))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@0)) bx@@0) ($Is refType ($Unbox refType bx@@0) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |1067|
  :pattern ( ($IsBox bx@@0 Tclass._System.object?))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |1070|
  :pattern ( ($IsBox bx@@1 Tclass._System.object))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._System.Tuple0) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) Tclass._System.Tuple0)))
+ :qid |unknown.0:0|
+ :skolemid |1194|
  :pattern ( ($IsBox bx@@2 Tclass._System.Tuple0))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass._System.object)  (and ($Is refType |c#0@@0| Tclass._System.object?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1071|
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object?))
 )))
 (assert (forall ((|#$R@@2| T@U) ($self@@1 T@U) ($heap@@2 T@U) ) (! (= (Requires0 (TSet Tclass._System.object?) $heap@@2 (|Reads0#Handle| |#$R@@2| $self@@1)) (Requires0 |#$R@@2| $heap@@2 $self@@1))
+ :qid |unknown.0:0|
+ :skolemid |1364|
  :pattern ( (Requires0 (TSet Tclass._System.object?) $heap@@2 (|Reads0#Handle| |#$R@@2| $self@@1)))
 )))
 (assert (forall ((t0@@3 T@U) (heap@@0 T@U) (f@@1 T@U) ) (!  (=> (and ($IsGoodHeap heap@@0) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc0 t0@@3))) (= (|Set#Equal| (Reads0 t0@@3 $OneHeap f@@1) |Set#Empty|) (|Set#Equal| (Reads0 t0@@3 heap@@0 f@@1) |Set#Empty|)))
+ :qid |unknown.0:0|
+ :skolemid |1150|
  :pattern ( (Reads0 t0@@3 $OneHeap f@@1) ($IsGoodHeap heap@@0))
  :pattern ( (Reads0 t0@@3 heap@@0 f@@1))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |871|
  :pattern ( (|Set#Equal| a b))
 )))
 (assert (forall (($heap@@3 T@U) ) (! (= WhatWeKnowAboutReads.__default.ReadsNothing ($Unbox DatatypeTypeType (Apply0 Tclass._System.Tuple0 $heap@@3 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1362|
  :pattern ( WhatWeKnowAboutReads.__default.ReadsNothing ($IsGoodHeap $heap@@3))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |759|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((|#$R@@3| T@U) ($self@@2 T@U) ($heap@@4 T@U) ) (! (= (Apply0 (TSet Tclass._System.object?) $heap@@4 (|Reads0#Handle| |#$R@@3| $self@@2)) ($Box SetType (Reads0 |#$R@@3| $heap@@4 $self@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1363|
  :pattern ( (Apply0 (TSet Tclass._System.object?) $heap@@4 (|Reads0#Handle| |#$R@@3| $self@@2)))
 )))
 (assert (forall ((v@@2 T@U) (t0@@4 T@U) (h@@1 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@4) h@@1) (forall ((bx@@3 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@3) ($IsAllocBox bx@@3 t0@@4 h@@1))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |788|
  :pattern ( (|Set#IsMember| v@@2 bx@@3))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |789|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@4) h@@1))
 )))
 (assert (forall (($o@@0 T@U) ) (! ($Is refType $o@@0 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |1068|
  :pattern ( ($Is refType $o@@0 Tclass._System.object?))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |722|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |723|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((|#$R@@4| T@U) ) (! (= (Tclass._System.___hFunc0_0 (Tclass._System.___hFunc0 |#$R@@4|)) |#$R@@4|)
+ :qid |unknown.0:0|
+ :skolemid |1133|
  :pattern ( (Tclass._System.___hFunc0 |#$R@@4|))
 )))
 (assert (forall ((x@@4 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |746|
  :pattern ( ($Box T@@3 x@@4))
 )))
 (assert  (and (forall ((t0@@5 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@5 t1@@0 t2 (MapType1Store t0@@5 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3453|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (forall (($heap@@5 T@U) ) (! (= (Requires0 Tclass._System.Tuple0 $heap@@5 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|) |WhatWeKnowAboutReads.__default.ReadsNothing#requires|)
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1360|
  :pattern ( (Requires0 Tclass._System.Tuple0 $heap@@5 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|))
 )))
 (assert (forall ((f@@2 T@U) (t0@@6 T@U) ) (! (= ($Is HandleTypeType f@@2 (Tclass._System.___hFunc0 t0@@6)) (forall ((h@@2 T@U) ) (!  (=> (and ($IsGoodHeap h@@2) (Requires0 t0@@6 h@@2 f@@2)) ($IsBox (Apply0 t0@@6 h@@2 f@@2) t0@@6))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1152|
  :pattern ( (Apply0 t0@@6 h@@2 f@@2))
 )))
+ :qid |unknown.0:0|
+ :skolemid |1153|
  :pattern ( ($Is HandleTypeType f@@2 (Tclass._System.___hFunc0 t0@@6)))
 )))
 (assert (forall ((bx@@4 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@4 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@4)) bx@@4) ($Is SetType ($Unbox SetType bx@@4) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |753|
  :pattern ( ($IsBox bx@@4 (TSet t@@3)))
 )))
 (assert (forall ((|#$R@@5| T@U) (bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 (Tclass._System.___hFunc0 |#$R@@5|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@5)) bx@@5) ($Is HandleTypeType ($Unbox HandleTypeType bx@@5) (Tclass._System.___hFunc0 |#$R@@5|))))
+ :qid |unknown.0:0|
+ :skolemid |1134|
  :pattern ( ($IsBox bx@@5 (Tclass._System.___hFunc0 |#$R@@5|)))
 )))
 (assert (forall ((d T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d Tclass._System.Tuple0)) ($IsAlloc DatatypeTypeType d Tclass._System.Tuple0 $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1195|
  :pattern ( ($IsAlloc DatatypeTypeType d Tclass._System.Tuple0 $h@@1))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -252,27 +345,41 @@
 (assert (= (TagFamily Tclass._System.Tuple0) |tytagFamily$_tuple#0|))
 (assert (= |#_System._tuple#0._#Make0| (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)))
 (assert (forall ((f@@3 T@U) (t0@@7 T@U) (h@@3 T@U) ) (!  (=> (and ($IsGoodHeap h@@3) ($IsAlloc HandleTypeType f@@3 (Tclass._System.___hFunc0 t0@@7) h@@3)) (=> (Requires0 t0@@7 h@@3 f@@3) ($IsAllocBox (Apply0 t0@@7 h@@3 f@@3) t0@@7 h@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1158|
  :pattern ( ($IsAlloc HandleTypeType f@@3 (Tclass._System.___hFunc0 t0@@7) h@@3))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|Set#Equal| a@@0 b@@0) (forall ((o@@0 T@U) ) (! (= (|Set#IsMember| a@@0 o@@0) (|Set#IsMember| b@@0 o@@0))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |869|
  :pattern ( (|Set#IsMember| a@@0 o@@0))
  :pattern ( (|Set#IsMember| b@@0 o@@0))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |870|
  :pattern ( (|Set#Equal| a@@0 b@@0))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |WhatWeKnowAboutReads.__default.ReadsNothing#canCall| (< 0 $FunctionContextHeight)) (= WhatWeKnowAboutReads.__default.ReadsNothing (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)))))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |WhatWeKnowAboutReads.__default.ReadsNothing#canCall| (< 0 $FunctionContextHeight)) (= WhatWeKnowAboutReads.__default.ReadsNothing (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)))))
 (assert (forall ((f@@4 T@U) (t0@@8 T@U) (u0@@2 T@U) ) (!  (=> (and ($Is HandleTypeType f@@4 (Tclass._System.___hFunc0 t0@@8)) (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 t0@@8) ($IsBox bx@@6 u0@@2))
+ :qid |unknown.0:0|
+ :skolemid |1154|
  :pattern ( ($IsBox bx@@6 t0@@8))
  :pattern ( ($IsBox bx@@6 u0@@2))
 ))) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc0 u0@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1155|
  :pattern ( ($Is HandleTypeType f@@4 (Tclass._System.___hFunc0 t0@@8)) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc0 u0@@2)))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@5)) (Lit BoxType ($Box T@@4 x@@5)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |737|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@5)))
 )))
 (assert (= |WhatWeKnowAboutReads.__default.ReadsNothing#requires| true))
 (assert (forall (($heap@@6 T@U) ) (! (= (Apply0 Tclass._System.Tuple0 $heap@@6 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|) ($Box DatatypeTypeType WhatWeKnowAboutReads.__default.ReadsNothing))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1359|
  :pattern ( (Apply0 Tclass._System.Tuple0 $heap@@6 |WhatWeKnowAboutReads.__default.ReadsNothing#Handle|))
 )))
 (push 1)
@@ -280,6 +387,7 @@
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id Impl$$WhatWeKnowAboutReads.__default.IndeedNothing)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

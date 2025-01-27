@@ -93,16 +93,22 @@
 (declare-fun |_module.__default.invB_h#canCall| (T@U T@U T@U) Bool)
 (declare-fun $LZ () T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc allocName Tagclass._module.TraitA Tagclass._module.TraitB class._module.TraitA? Tagclass._module.TraitA? class._module.TraitB? Tagclass._module.TraitB? tytagFamily$TraitA tytagFamily$TraitB field$b field$a)
@@ -110,18 +116,26 @@
 (assert (= (FDim alloc) 0))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.TraitA $h) ($IsAlloc refType |c#0| Tclass._module.TraitA? $h))
+ :qid |unknown.0:0|
+ :skolemid |800|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.TraitA $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.TraitA? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.TraitB $h@@0) ($IsAlloc refType |c#0@@0| Tclass._module.TraitB? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |807|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.TraitB $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.TraitB? $h@@0))
 )))
@@ -132,82 +146,131 @@
 (assert (= (FieldOfDecl class._module.TraitB? field$a) _module.TraitB.a))
 (assert  (not ($IsGhostField _module.TraitB.a)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m@@0 T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m@@0 x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@1 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@1 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o Tclass._module.TraitA? $h@@1)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |796|
  :pattern ( ($IsAlloc refType $o Tclass._module.TraitA? $h@@1))
 )))
 (assert (forall (($o@@0 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass._module.TraitB? $h@@2)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |803|
  :pattern ( ($IsAlloc refType $o@@0 Tclass._module.TraitB? $h@@2))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass._module.TraitA)  (and ($Is refType |c#0@@1| Tclass._module.TraitA?) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |799|
  :pattern ( ($Is refType |c#0@@1| Tclass._module.TraitA))
  :pattern ( ($Is refType |c#0@@1| Tclass._module.TraitA?))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass._module.TraitB)  (and ($Is refType |c#0@@2| Tclass._module.TraitB?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |806|
  :pattern ( ($Is refType |c#0@@2| Tclass._module.TraitB))
  :pattern ( ($Is refType |c#0@@2| Tclass._module.TraitB?))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall (($ly T@U) ($Heap T@U) (|_k#0| T@U) (|self#0| T@U) ) (! (= (_module.__default.invA_h ($LS $ly) $Heap |_k#0| |self#0|) (_module.__default.invA_h $ly $Heap |_k#0| |self#0|))
+ :qid |_04LeastGreatestdfy.75:20|
+ :skolemid |707|
  :pattern ( (_module.__default.invA_h ($LS $ly) $Heap |_k#0| |self#0|))
 )))
 (assert (forall (($ly@@0 T@U) ($Heap@@0 T@U) (|_k#0@@0| T@U) (|self#0@@0| T@U) ) (! (= (_module.__default.invB_h ($LS $ly@@0) $Heap@@0 |_k#0@@0| |self#0@@0|) (_module.__default.invB_h $ly@@0 $Heap@@0 |_k#0@@0| |self#0@@0|))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |728|
  :pattern ( (_module.__default.invB_h ($LS $ly@@0) $Heap@@0 |_k#0@@0| |self#0@@0|))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |808|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (forall (($h@@3 T@U) ($o@@2 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@2 null)) (not true)) ($Is refType $o@@2 Tclass._module.TraitA?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) _module.TraitA.b)) Tclass._module.TraitB $h@@3))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |798|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) _module.TraitA.b)))
 )))
 (assert (forall (($h@@4 T@U) ($o@@3 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@4) (and (or (not (= $o@@3 null)) (not true)) ($Is refType $o@@3 Tclass._module.TraitB?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) _module.TraitB.a)) Tclass._module.TraitA $h@@4))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |805|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) _module.TraitB.a)))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
@@ -220,44 +283,74 @@
 (assert (= (Tag Tclass._module.TraitB?) Tagclass._module.TraitB?))
 (assert (= (TagFamily Tclass._module.TraitB?) tytagFamily$TraitB))
 (assert (forall (($h@@5 T@U) ($o@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (or (not (= $o@@4 null)) (not true)) ($Is refType $o@@4 Tclass._module.TraitA?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@4) _module.TraitA.b)) Tclass._module.TraitB))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |797|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@4) _module.TraitA.b)))
 )))
 (assert (forall (($h@@6 T@U) ($o@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@5 null)) (not true)) ($Is refType $o@@5 Tclass._module.TraitB?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@5) _module.TraitB.a)) Tclass._module.TraitA))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |804|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@5) _module.TraitB.a)))
 )))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@1 T@U) ($Heap@@1 T@U) (|self#0@@1| T@U) (|_k#0@@1| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap@@1) ($Is refType |self#0@@1| Tclass._module.TraitA)) (= |_k#0@@1| (|ORD#FromNat| 0))) (_module.__default.invA_h $ly@@1 $Heap@@1 |_k#0@@1| |self#0@@1|))
+ :qid |_04LeastGreatestdfy.75:20|
+ :skolemid |704|
  :pattern ( (_module.__default.invA_h $ly@@1 $Heap@@1 |_k#0@@1| |self#0@@1|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@2 T@U) ($Heap@@2 T@U) (|self#0@@2| T@U) (|_k#0@@2| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap@@2) ($Is refType |self#0@@2| Tclass._module.TraitB)) (= |_k#0@@2| (|ORD#FromNat| 0))) (_module.__default.invB_h $ly@@2 $Heap@@2 |_k#0@@2| |self#0@@2|))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |726|
  :pattern ( (_module.__default.invB_h $ly@@2 $Heap@@2 |_k#0@@2| |self#0@@2|))
 ))))
 (assert (forall (($o@@6 T@U) ) (! (= ($Is refType $o@@6 Tclass._module.TraitA?)  (or (= $o@@6 null) (implements$_module.TraitA (dtype $o@@6))))
+ :qid |unknown.0:0|
+ :skolemid |795|
  :pattern ( ($Is refType $o@@6 Tclass._module.TraitA?))
 )))
 (assert (forall (($o@@7 T@U) ) (! (= ($Is refType $o@@7 Tclass._module.TraitB?)  (or (= $o@@7 null) (implements$_module.TraitB (dtype $o@@7))))
+ :qid |unknown.0:0|
+ :skolemid |802|
  :pattern ( ($Is refType $o@@7 Tclass._module.TraitB?))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@3 T@U) ($Heap@@3 T@U) (|_k#0@@3| T@U) (|self#0@@3| T@U) ) (!  (=> (or (|_module.__default.invA_h#canCall| $Heap@@3 |_k#0@@3| |self#0@@3|) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@3) ($Is refType |self#0@@3| Tclass._module.TraitA)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (|_module.__default.invB_h#canCall| $Heap@@3 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |self#0@@3|) _module.TraitA.b)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (_module.__default.invB_h ($LS $LZ) $Heap@@3 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |self#0@@3|) _module.TraitA.b)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@3|) (|_module.__default.invA_h#canCall| $Heap@@3 |_k'#0| |self#0@@3|))
+ :qid |_04LeastGreatestdfy.75:20|
+ :skolemid |714|
  :pattern ( (_module.__default.invA_h $ly@@3 $Heap@@3 |_k'#0| |self#0@@3|))
 ))))) (= (_module.__default.invA_h ($LS $ly@@3) $Heap@@3 |_k#0@@3| |self#0@@3|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (_module.__default.invB_h ($LS $LZ) $Heap@@3 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |self#0@@3|) _module.TraitA.b)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@3|) (_module.__default.invA_h $ly@@3 $Heap@@3 |_k'#0@@0| |self#0@@3|))
+ :qid |_04LeastGreatestdfy.75:20|
+ :skolemid |713|
  :pattern ( (_module.__default.invA_h $ly@@3 $Heap@@3 |_k'#0@@0| |self#0@@3|))
 )))))))
+ :qid |_04LeastGreatestdfy.75:20|
+ :skolemid |715|
  :pattern ( (_module.__default.invA_h ($LS $ly@@3) $Heap@@3 |_k#0@@3| |self#0@@3|) ($IsGoodHeap $Heap@@3))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@4 T@U) ($Heap@@4 T@U) (|_k#0@@4| T@U) (|self#0@@4| T@U) ) (!  (=> (or (|_module.__default.invB_h#canCall| $Heap@@4 |_k#0@@4| |self#0@@4|) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@4) ($Is refType |self#0@@4| Tclass._module.TraitB)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (|_module.__default.invA_h#canCall| $Heap@@4 (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |self#0@@4|) _module.TraitB.a)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.invA_h ($LS $LZ) $Heap@@4 (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |self#0@@4|) _module.TraitB.a)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#0@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@1| |_k#0@@4|) (|_module.__default.invB_h#canCall| $Heap@@4 |_k'#0@@1| |self#0@@4|))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |735|
  :pattern ( (_module.__default.invB_h $ly@@4 $Heap@@4 |_k'#0@@1| |self#0@@4|))
 ))))) (= (_module.__default.invB_h ($LS $ly@@4) $Heap@@4 |_k#0@@4| |self#0@@4|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.invA_h ($LS $LZ) $Heap@@4 (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |self#0@@4|) _module.TraitB.a)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#0@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@2| |_k#0@@4|) (_module.__default.invB_h $ly@@4 $Heap@@4 |_k'#0@@2| |self#0@@4|))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |734|
  :pattern ( (_module.__default.invB_h $ly@@4 $Heap@@4 |_k'#0@@2| |self#0@@4|))
 )))))))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |736|
  :pattern ( (_module.__default.invB_h ($LS $ly@@4) $Heap@@4 |_k#0@@4| |self#0@@4|) ($IsGoodHeap $Heap@@4))
 ))))
 (push 1)
@@ -272,6 +365,7 @@
 (declare-fun |self##0_0@0| () T@U)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun $Heap@@5 () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.EstablishInvAuxB)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -288,14 +382,20 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 9) (let ((GeneratedUnifiedExit_correct  (and (=> (= (ControlFlow 0 5) (- 0 6)) (=> (|_module.__default.invB_h#canCall| $Heap@3 |k#0| |self#0@@5|) (or (_module.__default.invB_h ($LS $LZ) $Heap@3 |k#0| |self#0@@5|) (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.invA_h ($LS ($LS $LZ)) $Heap@3 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |self#0@@5|) _module.TraitB.a))))))) (=> (=> (|_module.__default.invB_h#canCall| $Heap@3 |k#0| |self#0@@5|) (or (_module.__default.invB_h ($LS $LZ) $Heap@3 |k#0| |self#0@@5|) (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.invA_h ($LS ($LS $LZ)) $Heap@3 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |self#0@@5|) _module.TraitB.a)))))) (=> (= (ControlFlow 0 5) (- 0 4)) (=> (|_module.__default.invB_h#canCall| $Heap@3 |k#0| |self#0@@5|) (or (_module.__default.invB_h ($LS $LZ) $Heap@3 |k#0| |self#0@@5|) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |k#0|) (_module.__default.invB_h ($LS ($LS $LZ)) $Heap@3 |_k'#1| |self#0@@5|))
+ :qid |_04LeastGreatestdfy.79:20|
+ :skolemid |755|
  :pattern ( (_module.__default.invB_h ($LS ($LS $LZ)) $Heap@3 |_k'#1| |self#0@@5|))
 ))))))))))
 (let ((anon3_Else_correct  (=> (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (=> (and (and (= $Heap@0 $Heap@2) (forall ((|j#0_1| T@U) ) (!  (=> (|ORD#Less| |j#0_1| |k#0|) (_module.__default.invA_h ($LS $LZ) $Heap@2 |j#0_1| ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 |self#0@@5|) _module.TraitB.a))))
+ :qid |_04LeastGreatestdfy.104:10|
+ :skolemid |760|
  :pattern ( (_module.__default.invA_h ($LS $LZ) $Heap@2 |j#0_1| ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 |self#0@@5|) _module.TraitB.a))))
  :pattern ( (|ORD#Less| |j#0_1| |k#0|))
 ))) (and (= $Heap@3 $Heap@2) (= (ControlFlow 0 7) 5))) GeneratedUnifiedExit_correct))))
 (let ((anon3_Then_correct  (=> (|ORD#Less| |j#0_0@0| |k#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (not (= |self#0@@5| null)) (not true))) (=> (or (not (= |self#0@@5| null)) (not true)) (=> (and (= |self##0_0@0| ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |self#0@@5|) _module.TraitB.a))) (= (ControlFlow 0 2) (- 0 1))) (or (|ORD#Less| |j#0_0@0| |k#0|) (and (= |j#0_0@0| |k#0|) (and (= |self##0_0@0| null) (or (not (= |self#0@@5| null)) (not true)))))))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@5 alloc false)) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= $Heap@@5 $Heap@0) (forall ((|$ih#k0#0| T@U) (|$ih#self0#0| T@U) ) (!  (=> (and (and ($Is refType |$ih#self0#0| Tclass._module.TraitB) (U_2_bool (Lit boolType (bool_2_U true)))) (or (|ORD#Less| |$ih#k0#0| |k#0|) (and (= |$ih#k0#0| |k#0|) (and (= |$ih#self0#0| null) (or (not (= |self#0@@5| null)) (not true)))))) (_module.__default.invB_h ($LS $LZ) $Heap@0 |$ih#k0#0| |$ih#self0#0|))
+ :qid |_04LeastGreatestdfy.101:24|
+ :skolemid |758|
  :pattern ( (_module.__default.invB_h ($LS $LZ) $Heap@0 |$ih#k0#0| |$ih#self0#0|))
 )))) (and (=> (= (ControlFlow 0 8) 2) anon3_Then_correct) (=> (= (ControlFlow 0 8) 7) anon3_Else_correct))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@5) ($IsHeapAnchor $Heap@@5)) (=> (and (and ($Is refType |self#0@@5| Tclass._module.TraitB) ($IsAlloc refType |self#0@@5| Tclass._module.TraitB $Heap@@5)) (and (= 3 $FunctionContextHeight) (= (ControlFlow 0 9) 8))) anon0_correct))))

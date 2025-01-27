@@ -82,178 +82,285 @@
 (declare-fun MapType0TypeInv1 (T@T) T@T)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSet alloc Tagclass._module.pos tytagFamily$pos)
 )
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._module.pos $h)
+ :qid |unknown.0:0|
+ :skolemid |702|
  :pattern ( ($IsAlloc intType |x#0| Tclass._module.pos $h))
 )))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|p#0| Int) (|x#0@@0| Int) ) (!  (=> (or (|_module.__default.IsFactor#canCall| (LitInt |p#0|) (LitInt |x#0@@0|)) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 1) |p#0|) (<= (LitInt 1) |x#0@@0|)))) (= (_module.__default.IsFactor (LitInt |p#0|) (LitInt |x#0@@0|)) (exists ((|q#1| Int) ) (! (= (Mul (LitInt |p#0|) |q#1|) (LitInt |x#0@@0|))
+ :qid |gcddfy.8:10|
+ :skolemid |532|
  :pattern ( (Mul |p#0| |q#1|))
 ))))
+ :qid |gcddfy.7:26|
  :weight 3
+ :skolemid |533|
  :pattern ( (_module.__default.IsFactor (LitInt |p#0|) (LitInt |x#0@@0|)))
 ))))
 (assert (forall ((a T@U) (b T@U) (o@@0 T@U) ) (! (= (|Set#IsMember| (|Set#Intersection| a b) o@@0)  (and (|Set#IsMember| a o@@0) (|Set#IsMember| b o@@0)))
+ :qid |DafnyPreludebpl.724:15|
+ :skolemid |137|
  :pattern ( (|Set#IsMember| (|Set#Intersection| a b) o@@0))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|Set#Intersection| (|Set#Intersection| a@@0 b@@0) b@@0) (|Set#Intersection| a@@0 b@@0))
+ :qid |DafnyPreludebpl.737:15|
+ :skolemid |140|
  :pattern ( (|Set#Intersection| (|Set#Intersection| a@@0 b@@0) b@@0))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($reveal Bool) (|x#0@@1| Int) (|y#0| Int) ) (!  (=> (or (|_module.__default.Gcd#canCall| |x#0@@1| |y#0|) (and (< 4 $FunctionContextHeight) (and (<= (LitInt 1) |x#0@@1|) (<= (LitInt 1) |y#0|)))) (<= (LitInt 1) (_module.__default.Gcd $reveal |x#0@@1| |y#0|)))
+ :qid |gcddfy.74:23|
+ :skolemid |583|
  :pattern ( (_module.__default.Gcd $reveal |x#0@@1| |y#0|))
 ))))
 (assert (= (Ctor SetType) 3))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@2| Int) ) (!  (=> (or (|_module.__default.Factors#canCall| |x#0@@2|) (and (< 2 $FunctionContextHeight) (<= (LitInt 1) |x#0@@2|))) ($Is SetType (_module.__default.Factors |x#0@@2|) (TSet Tclass._module.pos)))
+ :qid |gcddfy.18:24|
+ :skolemid |542|
  :pattern ( (_module.__default.Factors |x#0@@2|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|x#0@@3| Int) (|y#0@@0| Int) ) (!  (=> (or (|_module.__default.Gcd#canCall| |x#0@@3| |y#0@@0|) (and (< 4 $FunctionContextHeight) (and (<= (LitInt 1) |x#0@@3|) (<= (LitInt 1) |y#0@@0|)))) (and (and (and (|_module.__default.Factors#canCall| |x#0@@3|) (|_module.__default.Factors#canCall| |y#0@@0|)) (let ((|common#0| (|Set#Intersection| (_module.__default.Factors |x#0@@3|) (_module.__default.Factors |y#0@@0|))))
 (|_module.__default.Max#canCall| |common#0|))) (= (_module.__default.Gcd true |x#0@@3| |y#0@@0|) (let ((|common#0@@0| (|Set#Intersection| (_module.__default.Factors |x#0@@3|) (_module.__default.Factors |y#0@@0|))))
 (_module.__default.Max |common#0@@0|)))))
+ :qid |gcddfy.74:27|
+ :skolemid |585|
  :pattern ( (_module.__default.Gcd true |x#0@@3| |y#0@@0|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@4| Int) ) (!  (=> (or (|_module.__default.Factors#canCall| (LitInt |x#0@@4|)) (and (< 2 $FunctionContextHeight) (<= (LitInt 1) |x#0@@4|))) (and (forall ((|p#1| Int) ) (!  (=> (<= (LitInt 1) |p#1|) (=> (<= |p#1| (LitInt |x#0@@4|)) (|_module.__default.IsFactor#canCall| |p#1| (LitInt |x#0@@4|))))
+ :qid |gcddfy.19:7|
+ :skolemid |546|
  :pattern ( (_module.__default.IsFactor |p#1| |x#0@@4|))
 )) (= (_module.__default.Factors (LitInt |x#0@@4|)) (|Set#FromBoogieMap| (|lambda#1| Tclass._module.pos (LitInt |x#0@@4|) (LitInt |x#0@@4|))))))
+ :qid |gcddfy.18:24|
  :weight 3
+ :skolemid |547|
  :pattern ( (_module.__default.Factors (LitInt |x#0@@4|)))
 ))))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 ))) (= (Ctor BoxType) 4)))
 (assert (forall ((m@@1 T@U) (bx T@U) ) (! (= (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx) (U_2_bool (MapType0Select BoxType boolType m@@1 bx)))
+ :qid |DafnyPreludebpl.805:15|
+ :skolemid |153|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx))
 )))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v bx@@0) ($IsBox bx@@0 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@0))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|p#0@@0| Int) (|x#0@@5| Int) ) (!  (=> (or (|_module.__default.IsFactor#canCall| |p#0@@0| |x#0@@5|) (and (< 1 $FunctionContextHeight) (and (<= (LitInt 1) |p#0@@0|) (<= (LitInt 1) |x#0@@5|)))) (= (_module.__default.IsFactor |p#0@@0| |x#0@@5|) (exists ((|q#0| Int) ) (! (= (Mul |p#0@@0| |q#0|) |x#0@@5|)
+ :qid |gcddfy.8:10|
+ :skolemid |530|
  :pattern ( (Mul |p#0@@0| |q#0|))
 ))))
+ :qid |gcddfy.7:26|
+ :skolemid |531|
  :pattern ( (_module.__default.IsFactor |p#0@@0| |x#0@@5|))
 ))))
 (assert (forall ((|x#0@@6| T@U) ) (! (= ($Is intType |x#0@@6| Tclass._module.pos) (<= (LitInt 1) (U_2_int |x#0@@6|)))
+ :qid |unknown.0:0|
+ :skolemid |701|
  :pattern ( ($Is intType |x#0@@6| Tclass._module.pos))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap T@U) (|s#0| T@U) ) (!  (=> (or (|_module.__default.Max#canCall| |s#0|) (and (< 3 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap) ($Is SetType |s#0| (TSet Tclass._module.pos))) (not (|Set#Equal| |s#0| |Set#Empty|))))) (and (|$let#0$canCall| |s#0|) (= (_module.__default.Max |s#0|) (let ((|x#0@@7| (|$let#0_x| |s#0|)))
 |x#0@@7|))))
+ :qid |gcddfy.42:16|
+ :skolemid |559|
  :pattern ( (_module.__default.Max |s#0|) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.pos) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) Tclass._module.pos)))
+ :qid |unknown.0:0|
+ :skolemid |536|
  :pattern ( ($IsBox bx@@1 Tclass._module.pos))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (|Set#Equal| a@@1 b@@1) (= a@@1 b@@1))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@1 b@@1))
 )))
 (assert (forall ((|l#0| T@U) (|l#1| Int) (|l#2| Int) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2|) |$y#0|))  (and ($IsBox |$y#0| |l#0|) (and (<= (U_2_int ($Unbox intType |$y#0|)) |l#1|) (_module.__default.IsFactor (U_2_int ($Unbox intType |$y#0|)) |l#2|))))
+ :qid |gcddfy.5:6|
+ :skolemid |704|
  :pattern ( (MapType0Select BoxType boolType (|lambda#1| |l#0| |l#1| |l#2|) |$y#0|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|x#0@@8| Int) (|y#0@@1| Int) ) (!  (=> (or (|_module.__default.Gcd#canCall| (LitInt |x#0@@8|) (LitInt |y#0@@1|)) (and (< 4 $FunctionContextHeight) (and (<= (LitInt 1) |x#0@@8|) (<= (LitInt 1) |y#0@@1|)))) (and (and (and (|_module.__default.Factors#canCall| (LitInt |x#0@@8|)) (|_module.__default.Factors#canCall| (LitInt |y#0@@1|))) (let ((|common#1| (|Set#Intersection| (_module.__default.Factors (LitInt |x#0@@8|)) (_module.__default.Factors (LitInt |y#0@@1|)))))
 (|_module.__default.Max#canCall| |common#1|))) (= (_module.__default.Gcd true (LitInt |x#0@@8|) (LitInt |y#0@@1|)) (let ((|common#1@@0| (|Set#Intersection| (_module.__default.Factors (LitInt |x#0@@8|)) (_module.__default.Factors (LitInt |y#0@@1|)))))
 (_module.__default.Max |common#1@@0|)))))
+ :qid |gcddfy.74:27|
  :weight 3
+ :skolemid |586|
  :pattern ( (_module.__default.Gcd true (LitInt |x#0@@8|) (LitInt |y#0@@1|)))
 ))))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((s T@U) ) (!  (=> (|$let#0$canCall| s) (and (|Set#IsMember| s ($Box intType (int_2_U (|$let#0_x| s)))) (forall ((|y#0@@2| T@U) ) (!  (=> (|Set#IsMember| s ($Box intType |y#0@@2|)) (<= (U_2_int |y#0@@2|) (|$let#0_x| s)))
+ :qid |gcddfy.47:29|
+ :skolemid |557|
  :pattern ( (|Set#IsMember| s ($Box intType |y#0@@2|)))
 ))))
+ :qid |gcddfy.47:3|
+ :skolemid |558|
  :pattern ( (|$let#0_x| s))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@2 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@2) ($IsAllocBox bx@@2 t0@@1 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@2))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap@@0 T@U) (|s#0@@0| T@U) ) (!  (=> (or (|_module.__default.Max#canCall| (Lit SetType |s#0@@0|)) (and (< 3 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@0) ($Is SetType |s#0@@0| (TSet Tclass._module.pos))) (not (|Set#Equal| |s#0@@0| |Set#Empty|))))) (and (|$let#0$canCall| (Lit SetType |s#0@@0|)) (= (_module.__default.Max (Lit SetType |s#0@@0|)) (let ((|x#1| (|$let#0_x| (Lit SetType |s#0@@0|))))
 |x#1|))))
+ :qid |gcddfy.42:16|
  :weight 3
+ :skolemid |560|
  :pattern ( (_module.__default.Max (Lit SetType |s#0@@0|)) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) ) (! (= (|Set#Intersection| a@@2 (|Set#Intersection| a@@2 b@@2)) (|Set#Intersection| a@@2 b@@2))
+ :qid |DafnyPreludebpl.741:15|
+ :skolemid |141|
  :pattern ( (|Set#Intersection| a@@2 (|Set#Intersection| a@@2 b@@2)))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
-)))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+)))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |703|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@6 y))
 )))
 (assert (forall ((bx@@3 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@3 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@3)) bx@@3) ($Is SetType ($Unbox SetType bx@@3) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@3 (TSet t@@3)))
 )))
 (assert (= (Tag Tclass._module.pos) Tagclass._module.pos))
 (assert (= (TagFamily Tclass._module.pos) tytagFamily$pos))
 (assert (forall ((a@@3 T@U) (b@@3 T@U) ) (! (= (|Set#Equal| a@@3 b@@3) (forall ((o@@1 T@U) ) (! (= (|Set#IsMember| a@@3 o@@1) (|Set#IsMember| b@@3 o@@1))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@3 o@@1))
  :pattern ( (|Set#IsMember| b@@3 o@@1))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@3 b@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|x#0@@9| Int) ) (!  (=> (or (|_module.__default.Factors#canCall| |x#0@@9|) (and (< 2 $FunctionContextHeight) (<= (LitInt 1) |x#0@@9|))) (and (forall ((|p#0@@1| Int) ) (!  (=> (<= (LitInt 1) |p#0@@1|) (=> (<= |p#0@@1| |x#0@@9|) (|_module.__default.IsFactor#canCall| |p#0@@1| |x#0@@9|)))
+ :qid |gcddfy.19:7|
+ :skolemid |544|
  :pattern ( (_module.__default.IsFactor |p#0@@1| |x#0@@9|))
 )) (= (_module.__default.Factors |x#0@@9|) (|Set#FromBoogieMap| (|lambda#1| Tclass._module.pos |x#0@@9| |x#0@@9|)))))
+ :qid |gcddfy.18:24|
+ :skolemid |545|
  :pattern ( (_module.__default.Factors |x#0@@9|))
 ))))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@8)) (Lit BoxType ($Box T@@4 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@8)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|s#0@@1| T@U) ) (!  (=> (or (|_module.__default.Max#canCall| |s#0@@1|) (and (< 3 $FunctionContextHeight) (and ($Is SetType |s#0@@1| (TSet Tclass._module.pos)) (not (|Set#Equal| |s#0@@1| |Set#Empty|))))) (<= (LitInt 1) (_module.__default.Max |s#0@@1|)))
+ :qid |gcddfy.42:20|
+ :skolemid |555|
  :pattern ( (_module.__default.Max |s#0@@1|))
 ))))
 (push 1)
@@ -284,6 +391,7 @@
 (declare-fun |##x#6@0| () Int)
 (declare-fun |common#0@0| () T@U)
 (declare-fun $Heap@4 () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.GcdSubtractAlt_split14)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -299,10 +407,16 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 8) (let ((anon19_correct  (=> (and (and (or (and ($Is intType (int_2_U (LitInt 1)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 1)) (- |y#0@@3| |x#0@@10|))) (or (and ($Is intType (int_2_U (LitInt 0)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 0)) (- |y#0@@3| |x#0@@10|))) (exists ((|$as#b2_0#2_0| Int) )  (and (<= (LitInt 1) |$as#b2_0#2_0|) (= (Mul |q#2_0@0| |$as#b2_0#2_0|) (- |y#0@@3| |x#0@@10|)))))) (<= (LitInt 1) |b#2_0@0|)) (and (= (Mul |q#2_0@0| |b#2_0@0|) (- |y#0@@3| |x#0@@10|)) (= (ControlFlow 0 2) (- 0 1)))) (= |y#0@@3| (+ |x#0@@10| (- |y#0@@3| |x#0@@10|))))))
+ (=> (= (ControlFlow 0 0) 8) (let ((anon19_correct  (=> (and (and (or (and ($Is intType (int_2_U (LitInt 1)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 1)) (- |y#0@@3| |x#0@@10|))) (or (and ($Is intType (int_2_U (LitInt 0)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 0)) (- |y#0@@3| |x#0@@10|))) (exists ((|$as#b2_0#2_0| Int) ) (!  (and (<= (LitInt 1) |$as#b2_0#2_0|) (= (Mul |q#2_0@0| |$as#b2_0#2_0|) (- |y#0@@3| |x#0@@10|)))
+ :qid |gcddfy.245:9|
+ :skolemid |670|
+)))) (<= (LitInt 1) |b#2_0@0|)) (and (= (Mul |q#2_0@0| |b#2_0@0|) (- |y#0@@3| |x#0@@10|)) (= (ControlFlow 0 2) (- 0 1)))) (= |y#0@@3| (+ |x#0@@10| (- |y#0@@3| |x#0@@10|))))))
 (let ((anon41_Else_correct  (=> (and (< |b#2_1@0| (LitInt 1)) (= (ControlFlow 0 4) 2)) anon19_correct)))
 (let ((anon41_Then_correct  (=> (and (and (<= (LitInt 1) |b#2_1@0|) (= |newtype$check#2_1@0| (Mul |q#2_0@0| |b#2_1@0|))) (and (<= (LitInt 1) |newtype$check#2_1@0|) (= (ControlFlow 0 3) 2))) anon19_correct)))
-(let ((anon17_correct  (=> (or (and ($Is intType (int_2_U (LitInt 1)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 1)) |x#0@@10|)) (or (and ($Is intType (int_2_U (LitInt 0)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 0)) |x#0@@10|)) (exists ((|$as#a2_0#2_0| Int) )  (and (<= (LitInt 1) |$as#a2_0#2_0|) (= (Mul |q#2_0@0| |$as#a2_0#2_0|) |x#0@@10|))))) (=> (and (<= (LitInt 1) |a#2_0@0|) (= (Mul |q#2_0@0| |a#2_0@0|) |x#0@@10|)) (and (=> (= (ControlFlow 0 5) 3) anon41_Then_correct) (=> (= (ControlFlow 0 5) 4) anon41_Else_correct))))))
+(let ((anon17_correct  (=> (or (and ($Is intType (int_2_U (LitInt 1)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 1)) |x#0@@10|)) (or (and ($Is intType (int_2_U (LitInt 0)) Tclass._module.pos) (= (Mul |q#2_0@0| (LitInt 0)) |x#0@@10|)) (exists ((|$as#a2_0#2_0| Int) ) (!  (and (<= (LitInt 1) |$as#a2_0#2_0|) (= (Mul |q#2_0@0| |$as#a2_0#2_0|) |x#0@@10|))
+ :qid |gcddfy.244:9|
+ :skolemid |669|
+)))) (=> (and (<= (LitInt 1) |a#2_0@0|) (= (Mul |q#2_0@0| |a#2_0@0|) |x#0@@10|)) (and (=> (= (ControlFlow 0 5) 3) anon41_Then_correct) (=> (= (ControlFlow 0 5) 4) anon41_Else_correct))))))
 (let ((anon40_Else_correct  (=> (and (< |a#2_1@0| (LitInt 1)) (= (ControlFlow 0 7) 5)) anon17_correct)))
 (let ((anon40_Then_correct  (=> (and (and (<= (LitInt 1) |a#2_1@0|) (= |newtype$check#2_0@0| (Mul |q#2_0@0| |a#2_1@0|))) (and (<= (LitInt 1) |newtype$check#2_0@0|) (= (ControlFlow 0 6) 5))) anon17_correct)))
 (let ((anon0_correct  (=> (and ($IsGoodHeap $Heap@@1) ($IsHeapAnchor $Heap@@1)) (=> (and (and (and (<= (LitInt 1) |x#0@@10|) (<= (LitInt 1) |y#0@@3|)) (and (<= (LitInt 1) |p#0@@2|) true)) (and (and (<= (LitInt 1) |a#0_0|) true) (and (<= (LitInt 1) |b#0_0|) true))) (=> (and (and (and (and ($Is SetType |common#0@@1| (TSet Tclass._module.pos)) ($IsAlloc SetType |common#0@@1| (TSet Tclass._module.pos) $Heap@@1)) true) (and (<= (LitInt 1) |a#2_0|) true)) (and (and (and (<= (LitInt 1) |b#2_0|) true) (= 6 $FunctionContextHeight)) (and (and (< |x#0@@10| |y#0@@3|) (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@1 alloc false))) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))))) (=> (and (and (and (and (and (|_module.__default.Gcd#canCall| |x#0@@10| |y#0@@3|) (|_module.__default.Gcd#canCall| |y#0@@3| |x#0@@10|)) (and (= (_module.__default.Gcd reveal__module._default.Gcd |x#0@@10| |y#0@@3|) (_module.__default.Gcd reveal__module._default.Gcd |y#0@@3| |x#0@@10|)) (= $Heap@@1 $Heap@0))) (and (and ($IsAlloc intType (int_2_U |x#0@@10|) Tclass._module.pos $Heap@0) ($IsAlloc intType (int_2_U |y#0@@3|) Tclass._module.pos $Heap@0)) (and (|_module.__default.Gcd#canCall| |x#0@@10| |y#0@@3|) (|_module.__default.Gcd#canCall| |x#0@@10| |y#0@@3|)))) (and (and (and (= |p#0@0| (_module.__default.Gcd reveal__module._default.Gcd |x#0@@10| |y#0@@3|)) ($IsAlloc intType (int_2_U |p#0@0|) Tclass._module.pos $Heap@0)) (and ($Is intType (int_2_U (- |y#0@@3| |x#0@@10|)) Tclass._module.pos) (= |##x#4@0| (- |y#0@@3| |x#0@@10|)))) (and (and ($IsAlloc intType (int_2_U |##x#4@0|) Tclass._module.pos $Heap@0) (|_module.__default.IsFactor#canCall| |p#0@0| (- |y#0@@3| |x#0@@10|))) (and (|_module.__default.IsFactor#canCall| |p#0@0| (- |y#0@@3| |x#0@@10|)) (_module.__default.IsFactor |p#0@0| (- |y#0@@3| |x#0@@10|)))))) (and (and (and (and ($IsAlloc intType (int_2_U |x#0@@10|) Tclass._module.pos $Heap@0) (|_module.__default.Factors#canCall| |x#0@@10|)) (and ($Is intType (int_2_U (- |y#0@@3| |x#0@@10|)) Tclass._module.pos) (= |##x#6@0| (- |y#0@@3| |x#0@@10|)))) (and (and ($IsAlloc intType (int_2_U |##x#6@0|) Tclass._module.pos $Heap@0) (|_module.__default.Factors#canCall| (- |y#0@@3| |x#0@@10|))) (and (|_module.__default.Factors#canCall| |x#0@@10|) (|_module.__default.Factors#canCall| (- |y#0@@3| |x#0@@10|))))) (and (and (and (= |common#0@0| (|Set#Intersection| (_module.__default.Factors |x#0@@10|) (_module.__default.Factors (- |y#0@@3| |x#0@@10|)))) (|Set#IsMember| |common#0@0| ($Box intType (int_2_U |p#0@0|)))) (and (<= (LitInt 1) |q#2_0@0|) (|Set#IsMember| |common#0@0| ($Box intType (int_2_U |q#2_0@0|))))) (and (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (and (= $Heap@0 $Heap@4) reveal__module._default.Gcd))))) (and (=> (= (ControlFlow 0 8) 6) anon40_Then_correct) (=> (= (ControlFlow 0 8) 7) anon40_Else_correct))))))))

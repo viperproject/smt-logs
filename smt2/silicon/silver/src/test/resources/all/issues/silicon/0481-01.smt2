@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:33:42
+; Started: 2025-01-26 23:05:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -914,25 +914,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read%limited s@$) (read s@$))
   :pattern ((read s@$))
-  :qid |quant-u-10262|)))
+  :qid |quant-u-10208|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read%stateless  Bool)
   :pattern ((read%limited s@$))
-  :qid |quant-u-10263|)))
+  :qid |quant-u-10209|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) (=>
     (read%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read%limited s@$))
-  :qid |quant-u-10264|)))
+  :qid |quant-u-10210|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) true)
   :pattern ((read%limited s@$))
-  :qid |quant-u-10265|)))
+  :qid |quant-u-10211|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) true)
   :pattern ((read%limited s@$))
-  :qid |quant-u-10266|)))
+  :qid |quant-u-10212|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------
@@ -1253,7 +1253,7 @@
     (and (<= 0 i@6@01) (< i@6@01 (Seq_length arr@2@01)))
     (read%precondition $Snap.unit))
   :pattern ((Seq_index arr@2@01 i@6@01))
-  :qid |quant-u-10270|)))
+  :qid |quant-u-10216|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1271,7 +1271,7 @@
       (= (inv@7@01 (Seq_index arr@2@01 i@6@01)) i@6@01)
       (img@8@01 (Seq_index arr@2@01 i@6@01))))
   :pattern ((Seq_index arr@2@01 i@6@01))
-  :qid |quant-u-10270|)))
+  :qid |quant-u-10216|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1348,7 +1348,7 @@
       (pTaken@9@01 self))
     $Perm.No)
   
-  :qid |quant-u-10272|))))
+  :qid |quant-u-10218|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1360,7 +1360,7 @@
 (assert (not (forall ((self $Ref)) (!
   (= (pTaken@9@01 self) $Perm.No)
   
-  :qid |quant-u-10273|))))
+  :qid |quant-u-10219|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1375,7 +1375,7 @@
     (= self (Seq_index arr@2@01 1))
     (= (- (read $Snap.unit) (pTaken@9@01 self)) $Perm.No))
   
-  :qid |quant-u-10274|))))
+  :qid |quant-u-10220|))))
 (check-sat)
 ; unsat
 (pop) ; 3

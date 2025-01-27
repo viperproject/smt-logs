@@ -122,16 +122,22 @@
 (declare-fun Inv0_TSet (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool TagSet alloc allocName Tagclass._module.Object Tagclass._module.OwnedObject Tagclass._module.Object? Tagclass._module.Lifetime Tagclass._module.Mutex Tagclass._module.MutexGuardU32 Tagclass._module.Lifetime? Tagclass._module.MutexGuardU32? Tagclass._module.OwnedObject? Tagclass._module.OwnedU32 class._module.OwnedObject? Tagclass._module.OwnedU32? class._module.Mutex? Tagclass._module.Mutex? class._module.MutexGuardU32? tytagFamily$Object tytagFamily$OwnedObject tytagFamily$Lifetime tytagFamily$Mutex tytagFamily$MutexGuardU32 tytagFamily$OwnedU32 field$owner field$mutex field$locked field$data field$guards)
@@ -140,12 +146,18 @@
 (assert (= (Tag TBool) TagBool))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (implements$_module.Object Tclass._module.Lifetime?))
@@ -153,57 +165,89 @@
 (assert (implements$_module.OwnedObject Tclass._module.Mutex?))
 (assert (implements$_module.OwnedObject Tclass._module.MutexGuardU32?))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Lifetime?)  (or (= $o null) (= (dtype $o) Tclass._module.Lifetime?)))
+ :qid |unknown.0:0|
+ :skolemid |2251|
  :pattern ( ($Is refType $o Tclass._module.Lifetime?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.OwnedU32?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.OwnedU32?)))
+ :qid |unknown.0:0|
+ :skolemid |2709|
  :pattern ( ($Is refType $o@@0 Tclass._module.OwnedU32?))
 )))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass._module.Mutex?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass._module.Mutex?)))
+ :qid |unknown.0:0|
+ :skolemid |3252|
  :pattern ( ($Is refType $o@@1 Tclass._module.Mutex?))
 )))
 (assert (forall (($o@@2 T@U) ) (! (= ($Is refType $o@@2 Tclass._module.MutexGuardU32?)  (or (= $o@@2 null) (= (dtype $o@@2) Tclass._module.MutexGuardU32?)))
+ :qid |unknown.0:0|
+ :skolemid |3545|
  :pattern ( ($Is refType $o@@2 Tclass._module.MutexGuardU32?))
 )))
 (assert (forall ((bx T@U) ($h T@U) ) (!  (=> (and ($IsAllocBox bx Tclass._module.OwnedObject? $h) ($IsGoodHeap $h)) ($IsAllocBox bx Tclass._module.Object? $h))
+ :qid |unknown.0:0|
+ :skolemid |3840|
  :pattern ( ($IsAllocBox bx Tclass._module.OwnedObject? $h))
 )))
 (assert (forall ((bx@@0 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsAllocBox bx@@0 Tclass._module.Lifetime? $h@@0) ($IsGoodHeap $h@@0)) ($IsAllocBox bx@@0 Tclass._module.Object? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3844|
  :pattern ( ($IsAllocBox bx@@0 Tclass._module.Lifetime? $h@@0))
 )))
 (assert (forall ((bx@@1 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsAllocBox bx@@1 Tclass._module.OwnedU32? $h@@1) ($IsGoodHeap $h@@1)) ($IsAllocBox bx@@1 Tclass._module.OwnedObject? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |3848|
  :pattern ( ($IsAllocBox bx@@1 Tclass._module.OwnedU32? $h@@1))
 )))
 (assert (forall ((bx@@2 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsAllocBox bx@@2 Tclass._module.Mutex? $h@@2) ($IsGoodHeap $h@@2)) ($IsAllocBox bx@@2 Tclass._module.OwnedObject? $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |3856|
  :pattern ( ($IsAllocBox bx@@2 Tclass._module.Mutex? $h@@2))
 )))
 (assert (forall ((bx@@3 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsAllocBox bx@@3 Tclass._module.MutexGuardU32? $h@@3) ($IsGoodHeap $h@@3)) ($IsAllocBox bx@@3 Tclass._module.OwnedObject? $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |3860|
  :pattern ( ($IsAllocBox bx@@3 Tclass._module.MutexGuardU32? $h@@3))
 )))
 (assert (forall ((|c#0| T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Object $h@@4) ($IsAlloc refType |c#0| Tclass._module.Object? $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |1848|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object $h@@4))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object? $h@@4))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.OwnedObject $h@@5) ($IsAlloc refType |c#0@@0| Tclass._module.OwnedObject? $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |2250|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.OwnedObject $h@@5))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.OwnedObject? $h@@5))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime $h@@6) ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime? $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |2707|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime $h@@6))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime? $h@@6))
 )))
 (assert (forall ((|c#0@@2| T@U) ($h@@7 T@U) ) (! (= ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32 $h@@7) ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32? $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |2958|
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32 $h@@7))
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32? $h@@7))
 )))
 (assert (forall ((|c#0@@3| T@U) ($h@@8 T@U) ) (! (= ($IsAlloc refType |c#0@@3| Tclass._module.Mutex $h@@8) ($IsAlloc refType |c#0@@3| Tclass._module.Mutex? $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |3544|
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass._module.Mutex $h@@8))
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass._module.Mutex? $h@@8))
 )))
 (assert (forall ((|c#0@@4| T@U) ($h@@9 T@U) ) (! (= ($IsAlloc refType |c#0@@4| Tclass._module.MutexGuardU32 $h@@9) ($IsAlloc refType |c#0@@4| Tclass._module.MutexGuardU32? $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |3834|
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._module.MutexGuardU32 $h@@9))
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._module.MutexGuardU32? $h@@9))
 )))
@@ -223,224 +267,365 @@
 (assert (= (FieldOfDecl class._module.Mutex? field$data) _module.Mutex.data))
 (assert  (not ($IsGhostField _module.Mutex.data)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@3 T@U) ($h@@10 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.Object? $h@@10)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1696|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.Object? $h@@10))
 )))
 (assert (forall (($o@@4 T@U) ($h@@11 T@U) ) (! (= ($IsAlloc refType $o@@4 Tclass._module.OwnedObject? $h@@11)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2103|
  :pattern ( ($IsAlloc refType $o@@4 Tclass._module.OwnedObject? $h@@11))
 )))
 (assert (forall (($o@@5 T@U) ($h@@12 T@U) ) (! (= ($IsAlloc refType $o@@5 Tclass._module.Lifetime? $h@@12)  (or (= $o@@5 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@5) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2252|
  :pattern ( ($IsAlloc refType $o@@5 Tclass._module.Lifetime? $h@@12))
 )))
 (assert (forall (($o@@6 T@U) ($h@@13 T@U) ) (! (= ($IsAlloc refType $o@@6 Tclass._module.OwnedU32? $h@@13)  (or (= $o@@6 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@6) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2710|
  :pattern ( ($IsAlloc refType $o@@6 Tclass._module.OwnedU32? $h@@13))
 )))
 (assert (forall (($o@@7 T@U) ($h@@14 T@U) ) (! (= ($IsAlloc refType $o@@7 Tclass._module.Mutex? $h@@14)  (or (= $o@@7 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@7) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3253|
  :pattern ( ($IsAlloc refType $o@@7 Tclass._module.Mutex? $h@@14))
 )))
 (assert (forall (($o@@8 T@U) ($h@@15 T@U) ) (! (= ($IsAlloc refType $o@@8 Tclass._module.MutexGuardU32? $h@@15)  (or (= $o@@8 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@15 $o@@8) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3546|
  :pattern ( ($IsAlloc refType $o@@8 Tclass._module.MutexGuardU32? $h@@15))
 )))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@5))
 )))
 (assert (= (Ctor SetType) 7))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@4 T@U) ) (!  (=> (|Set#IsMember| v bx@@4) ($IsBox bx@@4 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@4))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@9 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#96| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@9 $f))  (=> (and (or (not (= $o@@9 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@9) |l#2|)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#3| $o@@9) |l#4|)))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3867|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#96| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@9 $f))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@16 T@U) ($o@@10 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@16) (and (or (not (= $o@@10 null)) (not true)) (= (dtype $o@@10) Tclass._module.Mutex?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@10) alloc)))) ($IsAlloc boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@10) _module.Mutex.locked)) TBool $h@@16))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3257|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@10) _module.Mutex.locked)))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v@@0) t h) ($IsAlloc T@@0 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@0 v@@0) t h))
 )))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($h@@17 T@U) ($o@@11 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@17) (and (or (not (= $o@@11 null)) (not true)) ($Is refType $o@@11 Tclass._module.OwnedObject?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@17 $o@@11) alloc)))) ($IsAlloc refType (_module.OwnedObject.lifetime $o@@11) Tclass._module.Lifetime $h@@17))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2109|
  :pattern ( (_module.OwnedObject.lifetime $o@@11) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@17 $o@@11) alloc)))
 ))))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($o@@12 T@U) ) (!  (=> (and (or (not (= $o@@12 null)) (not true)) ($Is refType $o@@12 Tclass._module.OwnedObject?)) ($Is refType (_module.OwnedObject.lifetime $o@@12) Tclass._module.Lifetime))
+ :qid |unknown.0:0|
+ :skolemid |2108|
  :pattern ( (_module.OwnedObject.lifetime $o@@12))
 ))))
 (assert (forall (($h@@18 T@U) ($o@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@18) (and (or (not (= $o@@13 null)) (not true)) (= (dtype $o@@13) Tclass._module.Mutex?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@13) _module.Mutex.data)) Tclass._module.OwnedU32))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3254|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@13) _module.Mutex.data)))
 )))
 (assert (forall (($h@@19 T@U) ($o@@14 T@U) ) (!  (=> (and ($IsGoodHeap $h@@19) (and (or (not (= $o@@14 null)) (not true)) (= (dtype $o@@14) Tclass._module.MutexGuardU32?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@14) _module.MutexGuardU32.mutex)) Tclass._module.Mutex))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3547|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@14) _module.MutexGuardU32.mutex)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) ) (!  (=> (or (|_module.Mutex.localUserInv#canCall| $Heap this) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.Mutex) ($IsAlloc refType this Tclass._module.Mutex $Heap)))))) (= (_module.Mutex.localUserInv $Heap this)  (and (and (= (_module.OwnedObject.lifetime this) (_module.OwnedObject.lifetime ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.data)))) (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.locked))) (and ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.data))) _module.OwnedObject.owner)) Tclass._module.MutexGuardU32) (let ((|mutexGuard#0| ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.data))) _module.OwnedObject.owner))))
  (and (and (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |mutexGuard#0|) _module.OwnedObject.owner)) null)) (not true)) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |mutexGuard#0|) _module.MutexGuardU32.mutex)) this)) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.guards)) (|Set#UnionOne| |Set#Empty| ($Box refType |mutexGuard#0|)))))))) (=> (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.locked)))) (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.data))) _module.OwnedObject.owner)) this) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Mutex.guards)) |Set#Empty|))))))
+ :qid |_12MutexLifetimelongdfy.770:19|
+ :skolemid |3285|
  :pattern ( (_module.Mutex.localUserInv $Heap this) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 Tclass._module.Object) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) Tclass._module.Object)))
+ :qid |unknown.0:0|
+ :skolemid |641|
  :pattern ( ($IsBox bx@@5 Tclass._module.Object))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass._module.OwnedObject) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass._module.OwnedObject)))
+ :qid |unknown.0:0|
+ :skolemid |682|
  :pattern ( ($IsBox bx@@6 Tclass._module.OwnedObject))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass._module.Object?) (and (= ($Box refType ($Unbox refType bx@@7)) bx@@7) ($Is refType ($Unbox refType bx@@7) Tclass._module.Object?)))
+ :qid |unknown.0:0|
+ :skolemid |683|
  :pattern ( ($IsBox bx@@7 Tclass._module.Object?))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 Tclass._module.Lifetime) (and (= ($Box refType ($Unbox refType bx@@8)) bx@@8) ($Is refType ($Unbox refType bx@@8) Tclass._module.Lifetime)))
+ :qid |unknown.0:0|
+ :skolemid |685|
  :pattern ( ($IsBox bx@@8 Tclass._module.Lifetime))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 Tclass._module.Mutex) (and (= ($Box refType ($Unbox refType bx@@9)) bx@@9) ($Is refType ($Unbox refType bx@@9) Tclass._module.Mutex)))
+ :qid |unknown.0:0|
+ :skolemid |814|
  :pattern ( ($IsBox bx@@9 Tclass._module.Mutex))
 )))
 (assert (forall ((bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 Tclass._module.MutexGuardU32) (and (= ($Box refType ($Unbox refType bx@@10)) bx@@10) ($Is refType ($Unbox refType bx@@10) Tclass._module.MutexGuardU32)))
+ :qid |unknown.0:0|
+ :skolemid |815|
  :pattern ( ($IsBox bx@@10 Tclass._module.MutexGuardU32))
 )))
 (assert (forall ((bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 Tclass._module.Lifetime?) (and (= ($Box refType ($Unbox refType bx@@11)) bx@@11) ($Is refType ($Unbox refType bx@@11) Tclass._module.Lifetime?)))
+ :qid |unknown.0:0|
+ :skolemid |816|
  :pattern ( ($IsBox bx@@11 Tclass._module.Lifetime?))
 )))
 (assert (forall ((bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 Tclass._module.MutexGuardU32?) (and (= ($Box refType ($Unbox refType bx@@12)) bx@@12) ($Is refType ($Unbox refType bx@@12) Tclass._module.MutexGuardU32?)))
+ :qid |unknown.0:0|
+ :skolemid |992|
  :pattern ( ($IsBox bx@@12 Tclass._module.MutexGuardU32?))
 )))
 (assert (forall ((bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 Tclass._module.OwnedObject?) (and (= ($Box refType ($Unbox refType bx@@13)) bx@@13) ($Is refType ($Unbox refType bx@@13) Tclass._module.OwnedObject?)))
+ :qid |unknown.0:0|
+ :skolemid |1020|
  :pattern ( ($IsBox bx@@13 Tclass._module.OwnedObject?))
 )))
 (assert (forall ((bx@@14 T@U) ) (!  (=> ($IsBox bx@@14 Tclass._module.OwnedU32) (and (= ($Box refType ($Unbox refType bx@@14)) bx@@14) ($Is refType ($Unbox refType bx@@14) Tclass._module.OwnedU32)))
+ :qid |unknown.0:0|
+ :skolemid |1033|
  :pattern ( ($IsBox bx@@14 Tclass._module.OwnedU32))
 )))
 (assert (forall ((bx@@15 T@U) ) (!  (=> ($IsBox bx@@15 Tclass._module.OwnedU32?) (and (= ($Box refType ($Unbox refType bx@@15)) bx@@15) ($Is refType ($Unbox refType bx@@15) Tclass._module.OwnedU32?)))
+ :qid |unknown.0:0|
+ :skolemid |2708|
  :pattern ( ($IsBox bx@@15 Tclass._module.OwnedU32?))
 )))
 (assert (forall ((bx@@16 T@U) ) (!  (=> ($IsBox bx@@16 Tclass._module.Mutex?) (and (= ($Box refType ($Unbox refType bx@@16)) bx@@16) ($Is refType ($Unbox refType bx@@16) Tclass._module.Mutex?)))
+ :qid |unknown.0:0|
+ :skolemid |3251|
  :pattern ( ($IsBox bx@@16 Tclass._module.Mutex?))
 )))
 (assert (forall ((|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| Tclass._module.Object)  (and ($Is refType |c#0@@5| Tclass._module.Object?) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1847|
  :pattern ( ($Is refType |c#0@@5| Tclass._module.Object))
  :pattern ( ($Is refType |c#0@@5| Tclass._module.Object?))
 )))
 (assert (forall ((|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| Tclass._module.OwnedObject)  (and ($Is refType |c#0@@6| Tclass._module.OwnedObject?) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2249|
  :pattern ( ($Is refType |c#0@@6| Tclass._module.OwnedObject))
  :pattern ( ($Is refType |c#0@@6| Tclass._module.OwnedObject?))
 )))
 (assert (forall ((|c#0@@7| T@U) ) (! (= ($Is refType |c#0@@7| Tclass._module.Lifetime)  (and ($Is refType |c#0@@7| Tclass._module.Lifetime?) (or (not (= |c#0@@7| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2706|
  :pattern ( ($Is refType |c#0@@7| Tclass._module.Lifetime))
  :pattern ( ($Is refType |c#0@@7| Tclass._module.Lifetime?))
 )))
 (assert (forall ((|c#0@@8| T@U) ) (! (= ($Is refType |c#0@@8| Tclass._module.OwnedU32)  (and ($Is refType |c#0@@8| Tclass._module.OwnedU32?) (or (not (= |c#0@@8| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2957|
  :pattern ( ($Is refType |c#0@@8| Tclass._module.OwnedU32))
  :pattern ( ($Is refType |c#0@@8| Tclass._module.OwnedU32?))
 )))
 (assert (forall ((|c#0@@9| T@U) ) (! (= ($Is refType |c#0@@9| Tclass._module.Mutex)  (and ($Is refType |c#0@@9| Tclass._module.Mutex?) (or (not (= |c#0@@9| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3543|
  :pattern ( ($Is refType |c#0@@9| Tclass._module.Mutex))
  :pattern ( ($Is refType |c#0@@9| Tclass._module.Mutex?))
 )))
 (assert (forall ((|c#0@@10| T@U) ) (! (= ($Is refType |c#0@@10| Tclass._module.MutexGuardU32)  (and ($Is refType |c#0@@10| Tclass._module.MutexGuardU32?) (or (not (= |c#0@@10| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3833|
  :pattern ( ($Is refType |c#0@@10| Tclass._module.MutexGuardU32))
  :pattern ( ($Is refType |c#0@@10| Tclass._module.MutexGuardU32?))
 )))
 (assert (forall (($h@@20 T@U) ($o@@15 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@20) (and (or (not (= $o@@15 null)) (not true)) (= (dtype $o@@15) Tclass._module.Mutex?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@15) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@15) _module.Mutex.data)) Tclass._module.OwnedU32 $h@@20))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3255|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@15) _module.Mutex.data)))
 )))
 (assert (forall (($h@@21 T@U) ($o@@16 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@21) (and (or (not (= $o@@16 null)) (not true)) (= (dtype $o@@16) Tclass._module.MutexGuardU32?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@16) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@16) _module.MutexGuardU32.mutex)) Tclass._module.Mutex $h@@21))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3548|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@16) _module.MutexGuardU32.mutex)))
 )))
 (assert (forall (($o@@17 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@17 Tclass._module.OwnedObject? $heap) ($IsAlloc refType $o@@17 Tclass._module.Object? $heap))
+ :qid |unknown.0:0|
+ :skolemid |3842|
  :pattern ( ($IsAlloc refType $o@@17 Tclass._module.OwnedObject? $heap))
 )))
 (assert (forall (($o@@18 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@18 Tclass._module.Lifetime? $heap@@0) ($IsAlloc refType $o@@18 Tclass._module.Object? $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |3846|
  :pattern ( ($IsAlloc refType $o@@18 Tclass._module.Lifetime? $heap@@0))
 )))
 (assert (forall (($o@@19 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@19 Tclass._module.OwnedU32? $heap@@1) ($IsAlloc refType $o@@19 Tclass._module.OwnedObject? $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |3850|
  :pattern ( ($IsAlloc refType $o@@19 Tclass._module.OwnedU32? $heap@@1))
 )))
 (assert (forall (($o@@20 T@U) ($heap@@2 T@U) ) (!  (=> ($IsAlloc refType $o@@20 Tclass._module.Mutex? $heap@@2) ($IsAlloc refType $o@@20 Tclass._module.OwnedObject? $heap@@2))
+ :qid |unknown.0:0|
+ :skolemid |3858|
  :pattern ( ($IsAlloc refType $o@@20 Tclass._module.Mutex? $heap@@2))
 )))
 (assert (forall (($o@@21 T@U) ($heap@@3 T@U) ) (!  (=> ($IsAlloc refType $o@@21 Tclass._module.MutexGuardU32? $heap@@3) ($IsAlloc refType $o@@21 Tclass._module.OwnedObject? $heap@@3))
+ :qid |unknown.0:0|
+ :skolemid |3862|
  :pattern ( ($IsAlloc refType $o@@21 Tclass._module.MutexGuardU32? $heap@@3))
 )))
 (assert (forall (($h@@22 T@U) ($o@@22 T@U) ) (!  (=> (and ($IsGoodHeap $h@@22) (and (or (not (= $o@@22 null)) (not true)) (= (dtype $o@@22) Tclass._module.Mutex?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@22) _module.Mutex.guards)) (TSet Tclass._module.MutexGuardU32)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3258|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@22) _module.Mutex.guards)))
 )))
 (assert (forall (($h@@23 T@U) ($o@@23 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@23) (and (or (not (= $o@@23 null)) (not true)) (= (dtype $o@@23) Tclass._module.Mutex?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@23) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@23) _module.Mutex.guards)) (TSet Tclass._module.MutexGuardU32) $h@@23))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3259|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@23) _module.Mutex.guards)))
 )))
 (assert (forall ((a@@2 T@U) (b T@U) ) (!  (=> (|Set#Equal| a@@2 b) (= a@@2 b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@2 b))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@17 T@U) ) (!  (=> ($IsBox bx@@17 TBool) (and (= ($Box boolType ($Unbox boolType bx@@17)) bx@@17) ($Is boolType ($Unbox boolType bx@@17) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@17 TBool))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@1 T@T) ) (! (= ($IsBox ($Box T@@1 v@@1) t@@0) ($Is T@@1 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@1 v@@1) t@@0))
 )))
 (assert (forall ((v@@2 T@U) (t0@@2 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@2) h@@0) (forall ((bx@@18 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@18) ($IsAllocBox bx@@18 t0@@2 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@18))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@2) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((x@@6 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@6))
 )))
 (assert (forall (($h@@24 T@U) ($o@@24 T@U) ) (!  (=> (and ($IsGoodHeap $h@@24) (and (or (not (= $o@@24 null)) (not true)) (= (dtype $o@@24) Tclass._module.Mutex?))) ($Is boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@24) _module.Mutex.locked)) TBool))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3256|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@24) _module.Mutex.locked)))
 )))
 (assert (forall (($h@@25 T@U) ($o@@25 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@25) (and (or (not (= $o@@25 null)) (not true)) ($Is refType $o@@25 Tclass._module.OwnedObject?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@25) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@25) _module.OwnedObject.owner)) Tclass._module.Object? $h@@25))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2107|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@25) _module.OwnedObject.owner)))
 )))
 (assert (forall ((bx@@19 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@19 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@19)) bx@@19) ($Is SetType ($Unbox SetType bx@@19) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@19 (TSet t@@3)))
 )))
 (assert (forall (($o@@26 T@U) ) (!  (=> ($Is refType $o@@26 Tclass._module.OwnedObject?) ($Is refType $o@@26 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3841|
  :pattern ( ($Is refType $o@@26 Tclass._module.OwnedObject?))
 )))
 (assert (forall ((bx@@20 T@U) ) (!  (=> ($IsBox bx@@20 Tclass._module.OwnedObject?) ($IsBox bx@@20 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3839|
  :pattern ( ($IsBox bx@@20 Tclass._module.OwnedObject?))
 )))
 (assert (forall (($o@@27 T@U) ) (!  (=> ($Is refType $o@@27 Tclass._module.Lifetime?) ($Is refType $o@@27 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3845|
  :pattern ( ($Is refType $o@@27 Tclass._module.Lifetime?))
 )))
 (assert (forall ((bx@@21 T@U) ) (!  (=> ($IsBox bx@@21 Tclass._module.Lifetime?) ($IsBox bx@@21 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3843|
  :pattern ( ($IsBox bx@@21 Tclass._module.Lifetime?))
 )))
 (assert (forall (($o@@28 T@U) ) (!  (=> ($Is refType $o@@28 Tclass._module.OwnedU32?) ($Is refType $o@@28 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3849|
  :pattern ( ($Is refType $o@@28 Tclass._module.OwnedU32?))
 )))
 (assert (forall ((bx@@22 T@U) ) (!  (=> ($IsBox bx@@22 Tclass._module.OwnedU32?) ($IsBox bx@@22 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3847|
  :pattern ( ($IsBox bx@@22 Tclass._module.OwnedU32?))
 )))
 (assert (forall (($o@@29 T@U) ) (!  (=> ($Is refType $o@@29 Tclass._module.Mutex?) ($Is refType $o@@29 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3857|
  :pattern ( ($Is refType $o@@29 Tclass._module.Mutex?))
 )))
 (assert (forall ((bx@@23 T@U) ) (!  (=> ($IsBox bx@@23 Tclass._module.Mutex?) ($IsBox bx@@23 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3855|
  :pattern ( ($IsBox bx@@23 Tclass._module.Mutex?))
 )))
 (assert (forall (($o@@30 T@U) ) (!  (=> ($Is refType $o@@30 Tclass._module.MutexGuardU32?) ($Is refType $o@@30 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3861|
  :pattern ( ($Is refType $o@@30 Tclass._module.MutexGuardU32?))
 )))
 (assert (forall ((bx@@24 T@U) ) (!  (=> ($IsBox bx@@24 Tclass._module.MutexGuardU32?) ($IsBox bx@@24 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3859|
  :pattern ( ($IsBox bx@@24 Tclass._module.MutexGuardU32?))
 )))
 (assert (= (Tag Tclass._module.Object) Tagclass._module.Object))
@@ -468,24 +653,38 @@
 (assert (= (Tag Tclass._module.Mutex?) Tagclass._module.Mutex?))
 (assert (= (TagFamily Tclass._module.Mutex?) tytagFamily$Mutex))
 (assert (forall (($h@@26 T@U) ($o@@31 T@U) ) (!  (=> (and ($IsGoodHeap $h@@26) (and (or (not (= $o@@31 null)) (not true)) ($Is refType $o@@31 Tclass._module.OwnedObject?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@31) _module.OwnedObject.owner)) Tclass._module.Object?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2106|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@31) _module.OwnedObject.owner)))
 )))
 (assert (forall (($o@@32 T@U) ) (! (= ($Is refType $o@@32 Tclass._module.Object?)  (or (= $o@@32 null) (implements$_module.Object (dtype $o@@32))))
+ :qid |unknown.0:0|
+ :skolemid |1695|
  :pattern ( ($Is refType $o@@32 Tclass._module.Object?))
 )))
 (assert (forall (($o@@33 T@U) ) (! (= ($Is refType $o@@33 Tclass._module.OwnedObject?)  (or (= $o@@33 null) (implements$_module.OwnedObject (dtype $o@@33))))
+ :qid |unknown.0:0|
+ :skolemid |2102|
  :pattern ( ($Is refType $o@@33 Tclass._module.OwnedObject?))
 )))
 (assert (forall ((a@@3 T@U) (b@@0 T@U) ) (! (= (|Set#Equal| a@@3 b@@0) (forall ((o@@1 T@U) ) (! (= (|Set#IsMember| a@@3 o@@1) (|Set#IsMember| b@@0 o@@1))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@3 o@@1))
  :pattern ( (|Set#IsMember| b@@0 o@@1))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@3 b@@0))
 )))
 (assert (forall ((h@@1 T@U) (v@@3 T@U) ) (! ($IsAlloc boolType v@@3 TBool h@@1)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@3 TBool h@@1))
 )))
 (assert (forall ((v@@4 T@U) ) (! ($Is boolType v@@4 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@4 TBool))
 )))
 (push 1)
@@ -524,6 +723,7 @@
 (declare-fun |newtype$check#1@0| () T@U)
 (declare-fun |let#0#0#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.Mutex.localUserInv)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

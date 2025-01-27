@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:30
+// Date:         2025-01-26 23:14:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0197.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0197-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -298,8 +298,8 @@ procedure LLInf#definedness(x: Ref, i: int) returns ()
 procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -307,11 +307,11 @@ procedure test04(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -349,8 +349,8 @@ procedure test04(x: Ref) returns ()
   var AssertMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   
@@ -365,8 +365,8 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(LLInf(x, 0), write) --*
   // acc(x.next, write) && (acc(x.next.val, write) && x.next.val == 1) {
@@ -390,8 +390,8 @@ procedure test04(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- 0197.vpr@14.11--14.83
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -399,8 +399,8 @@ procedure test04(x: Ref) returns ()
       // -- Translating statement: unfold acc(LLInf(x, 0), write) -- 0197.vpr@15.7--15.30
         assume LLInf#trigger(Ops_1Heap, LLInf(x, 0));
         assume Ops_1Heap[null, LLInf(x, 0)] == CombineFrames(FrameFragment(Ops_1Heap[x, val]), CombineFrames(FrameFragment(Ops_1Heap[x, next]), Ops_1Heap[null, LLInf(Ops_1Heap[x, next], 1)]));
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -502,8 +502,8 @@ procedure test04(x: Ref) returns ()
         }
         assume LLInf#trigger(Ops_1Heap, LLInf(Ops_1Heap[x, next], 1));
         assume Ops_1Heap[null, LLInf(Ops_1Heap[x, next], 1)] == CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[x, next], val]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[x, next], next]), Ops_1Heap[null, LLInf(Ops_1Heap[Ops_1Heap[x, next], next], 2)]));
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -755,8 +755,8 @@ procedure test04(x: Ref) returns ()
   //   acc(x.next, write) && (acc(x.next.val, write) && x.next.val == 1) -- 0197.vpr@19.3--19.80
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of acc(LLInf(x, 0), write) --* acc(x.next, write) && (acc(x.next.val, write) && x.next.val == 1)
       if (*) {
@@ -769,8 +769,8 @@ procedure test04(x: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- 0197.vpr@19.10--19.80
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

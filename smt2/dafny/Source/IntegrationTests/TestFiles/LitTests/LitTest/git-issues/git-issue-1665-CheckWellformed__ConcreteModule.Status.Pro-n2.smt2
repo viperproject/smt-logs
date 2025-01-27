@@ -76,101 +76,161 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._System.nat Tagclass.ConcreteModule.Status |##ConcreteModule.Status.Success| |##ConcreteModule.Status.Failure| tytagFamily$nat tytagFamily$Status)
 )
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert (= (DatatypeCtorId |#ConcreteModule.Status.Success|) |##ConcreteModule.Status.Success|))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert ($Is DatatypeTypeType |#ConcreteModule.Status.Success| Tclass.ConcreteModule.Status))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this T@U) ) (!  (=> (or (|ConcreteModule.Status.PropagateFailure#canCall| (Lit DatatypeTypeType this)) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this Tclass.ConcreteModule.Status) (U_2_bool (Lit boolType (bool_2_U (ConcreteModule.Status.IsFailure (Lit DatatypeTypeType this)))))))) (= (ConcreteModule.Status.PropagateFailure (Lit DatatypeTypeType this)) (Lit DatatypeTypeType (|#ConcreteModule.Status.Failure| (LitInt (ConcreteModule.Status.error (Lit DatatypeTypeType this)))))))
+ :qid |gitissue1665dfy.21:14|
  :weight 3
+ :skolemid |514|
  :pattern ( (ConcreteModule.Status.PropagateFailure (Lit DatatypeTypeType this)))
 ))))
 (assert (forall ((d T@U) ) (! (= (ConcreteModule.Status.Success_q d) (= (DatatypeCtorId d) |##ConcreteModule.Status.Success|))
+ :qid |unknown.0:0|
+ :skolemid |491|
  :pattern ( (ConcreteModule.Status.Success_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (ConcreteModule.Status.Failure_q d@@0) (= (DatatypeCtorId d@@0) |##ConcreteModule.Status.Failure|))
+ :qid |unknown.0:0|
+ :skolemid |494|
  :pattern ( (ConcreteModule.Status.Failure_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((d@@1 T@U) ) (!  (=> (ConcreteModule.Status.Success_q d@@1) (= d@@1 |#ConcreteModule.Status.Success|))
+ :qid |unknown.0:0|
+ :skolemid |492|
  :pattern ( (ConcreteModule.Status.Success_q d@@1))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (ConcreteModule.Status.Failure_q d@@2) (exists ((|a#5#0#0| Int) ) (= d@@2 (|#ConcreteModule.Status.Failure| |a#5#0#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (ConcreteModule.Status.Failure_q d@@2) (exists ((|a#5#0#0| Int) ) (! (= d@@2 (|#ConcreteModule.Status.Failure| |a#5#0#0|))
+ :qid |gitissue1665dfy.18:15|
+ :skolemid |495|
+)))
+ :qid |unknown.0:0|
+ :skolemid |496|
  :pattern ( (ConcreteModule.Status.Failure_q d@@2))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((|a#6#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#ConcreteModule.Status.Failure| |a#6#0#0|) Tclass.ConcreteModule.Status) ($Is intType (int_2_U |a#6#0#0|) Tclass._System.nat))
+ :qid |gitissue1665dfy.18:15|
+ :skolemid |497|
  :pattern ( ($Is DatatypeTypeType (|#ConcreteModule.Status.Failure| |a#6#0#0|) Tclass.ConcreteModule.Status))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((this@@0 T@U) ) (!  (=> (or (|ConcreteModule.Status.IsFailure#canCall| this@@0) (and (< 0 $FunctionContextHeight) ($Is DatatypeTypeType this@@0 Tclass.ConcreteModule.Status))) (= (ConcreteModule.Status.IsFailure this@@0) (ConcreteModule.Status.Failure_q this@@0)))
+ :qid |gitissue1665dfy.20:15|
+ :skolemid |509|
  :pattern ( (ConcreteModule.Status.IsFailure this@@0))
 ))))
 (assert (forall ((d@@3 T@U) ) (!  (=> ($Is DatatypeTypeType d@@3 Tclass.ConcreteModule.Status) (or (ConcreteModule.Status.Success_q d@@3) (ConcreteModule.Status.Failure_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |503|
  :pattern ( (ConcreteModule.Status.Failure_q d@@3) ($Is DatatypeTypeType d@@3 Tclass.ConcreteModule.Status))
  :pattern ( (ConcreteModule.Status.Success_q d@@3) ($Is DatatypeTypeType d@@3 Tclass.ConcreteModule.Status))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 T@U) ) (!  (=> (or (|ConcreteModule.Status.PropagateFailure#canCall| this@@1) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@1 Tclass.ConcreteModule.Status) (ConcreteModule.Status.IsFailure this@@1)))) ($Is DatatypeTypeType (ConcreteModule.Status.PropagateFailure this@@1) Tclass.ConcreteModule.Status))
+ :qid |gitissue1665dfy.21:14|
+ :skolemid |511|
  :pattern ( (ConcreteModule.Status.PropagateFailure this@@1))
 ))))
 (assert (forall ((|a#4#0#0| Int) ) (! (= (DatatypeCtorId (|#ConcreteModule.Status.Failure| |a#4#0#0|)) |##ConcreteModule.Status.Failure|)
+ :qid |gitissue1665dfy.18:15|
+ :skolemid |493|
  :pattern ( (|#ConcreteModule.Status.Failure| |a#4#0#0|))
 )))
 (assert (forall ((|a#8#0#0| Int) ) (! (= (ConcreteModule.Status.error (|#ConcreteModule.Status.Failure| |a#8#0#0|)) |a#8#0#0|)
+ :qid |gitissue1665dfy.18:15|
+ :skolemid |500|
  :pattern ( (|#ConcreteModule.Status.Failure| |a#8#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@2 T@U) ) (!  (=> (or (|ConcreteModule.Status.PropagateFailure#canCall| this@@2) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@2 Tclass.ConcreteModule.Status) (ConcreteModule.Status.IsFailure this@@2)))) (= (ConcreteModule.Status.PropagateFailure this@@2) (|#ConcreteModule.Status.Failure| (ConcreteModule.Status.error this@@2))))
+ :qid |gitissue1665dfy.21:14|
+ :skolemid |513|
  :pattern ( (ConcreteModule.Status.PropagateFailure this@@2))
 ))))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |516|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@4 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@4 Tclass.ConcreteModule.Status)) ($IsAlloc DatatypeTypeType d@@4 Tclass.ConcreteModule.Status $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |501|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 Tclass.ConcreteModule.Status $h@@0))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
@@ -178,20 +238,30 @@
 (assert (= (Tag Tclass.ConcreteModule.Status) Tagclass.ConcreteModule.Status))
 (assert (= (TagFamily Tclass.ConcreteModule.Status) tytagFamily$Status))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((this@@3 T@U) ) (!  (=> (or (|ConcreteModule.Status.IsFailure#canCall| (Lit DatatypeTypeType this@@3)) (and (< 0 $FunctionContextHeight) ($Is DatatypeTypeType this@@3 Tclass.ConcreteModule.Status))) (= (ConcreteModule.Status.IsFailure (Lit DatatypeTypeType this@@3)) (U_2_bool (Lit boolType (bool_2_U (ConcreteModule.Status.Failure_q (Lit DatatypeTypeType this@@3)))))))
+ :qid |gitissue1665dfy.20:15|
  :weight 3
+ :skolemid |510|
  :pattern ( (ConcreteModule.Status.IsFailure (Lit DatatypeTypeType this@@3)))
 ))))
 (assert (= |#ConcreteModule.Status.Success| (Lit DatatypeTypeType |#ConcreteModule.Status.Success|)))
 (assert (forall ((d@@5 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (ConcreteModule.Status.Failure_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.ConcreteModule.Status $h@@1))) ($IsAlloc intType (int_2_U (ConcreteModule.Status.error d@@5)) Tclass._System.nat $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |498|
  :pattern ( ($IsAlloc intType (int_2_U (ConcreteModule.Status.error d@@5)) Tclass._System.nat $h@@1))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#7#0#0| Int) ) (! (= (|#ConcreteModule.Status.Failure| (LitInt |a#7#0#0|)) (Lit DatatypeTypeType (|#ConcreteModule.Status.Failure| |a#7#0#0|)))
+ :qid |gitissue1665dfy.18:15|
+ :skolemid |499|
  :pattern ( (|#ConcreteModule.Status.Failure| (LitInt |a#7#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (push 1)
@@ -201,6 +271,7 @@
 (declare-fun null () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$ConcreteModule.Status.PropagateFailure)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

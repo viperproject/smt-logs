@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:22
+; Started: 2025-01-26 23:06:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -687,11 +687,11 @@
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   (= (correctness_invar%limited s@$ left@0@00) (correctness_invar s@$ left@0@00))
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11024|)))
+  :qid |quant-u-10971|)))
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   (correctness_invar%stateless left@0@00)
   :pattern ((correctness_invar%limited s@$ left@0@00))
-  :qid |quant-u-11025|)))
+  :qid |quant-u-10972|)))
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   (and
     (forall ((i@6@00 Int)) (!
@@ -701,7 +701,7 @@
           (= (inv@8@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00)) i@6@00)
           (img@9@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00))))
       :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> s@$) (loc<Ref> left@0@00 i@6@00)) (loc<Ref> left@0@00 i@6@00)))
-      :qid |quant-u-11029|))
+      :qid |quant-u-10976|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -720,21 +720,21 @@
       (correctness_invar%precondition s@$ left@0@00)
       (= (correctness_invar s@$ left@0@00) true)))
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11031|)))
+  :qid |quant-u-10978|)))
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   true
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11032|)))
+  :qid |quant-u-10979|)))
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   (=
     (correctness_upto%limited s@$ parent@2@00 left@3@00 root@4@00)
     (correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11026|)))
+  :qid |quant-u-10973|)))
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   (correctness_upto%stateless parent@2@00 left@3@00 root@4@00)
   :pattern ((correctness_upto%limited s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11027|)))
+  :qid |quant-u-10974|)))
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   (and
     (forall ((i@11@00 Int)) (!
@@ -746,7 +746,7 @@
             i@11@00)
           (img@13@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> left@3@00 i@11@00))))
       :pattern ((loc<Ref> left@3@00 i@11@00))
-      :qid |quant-u-11034|))
+      :qid |quant-u-10981|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -770,7 +770,7 @@
             i@15@00)
           (img@17@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> parent@2@00 i@15@00))))
       :pattern ((loc<Ref> parent@2@00 i@15@00))
-      :qid |quant-u-11037|))
+      :qid |quant-u-10984|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1046,12 +1046,12 @@
             ($FVF.lookup_int (sm@28@00 s@$ parent@2@00 left@3@00 root@4@00) (loc<Ref> parent@2@00 i))))
           )))))
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11044|)))
+  :qid |quant-u-10991|)))
 ; WARNING: (1014,11): 'and' cannot be used in patterns.
 ; WARNING: (1014,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   true
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11045|)))
+  :qid |quant-u-10992|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

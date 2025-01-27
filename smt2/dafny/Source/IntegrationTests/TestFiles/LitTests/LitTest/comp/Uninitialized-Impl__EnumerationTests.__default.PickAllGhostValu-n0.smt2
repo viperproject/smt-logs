@@ -69,16 +69,22 @@
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._System.nat Tagclass.EnumerationTests.AllGhost tytagFamily$nat tytagFamily$AllGhost)
@@ -86,57 +92,92 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (< 0 $FunctionContextHeight) (forall (($h T@U) ($o T@U) ) (!  (=> (and (and ($IsGoodHeap $h) ($Is DatatypeTypeType $o Tclass.EnumerationTests.AllGhost)) ($IsAlloc DatatypeTypeType $o Tclass.EnumerationTests.AllGhost $h)) ($IsAlloc intType (int_2_U (EnumerationTests.AllGhost.N $o)) TInt $h))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1323|
  :pattern ( (EnumerationTests.AllGhost.N $o) ($IsAlloc DatatypeTypeType $o Tclass.EnumerationTests.AllGhost $h))
 ))))
 (assert (forall ((|x#0| T@U) ($h@@0 T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h@@0)
+ :qid |unknown.0:0|
+ :skolemid |1043|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h@@0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this T@U) (|n#0| Int) ) (!  (=> (or (|EnumerationTests.AllGhost.Is#canCall| this |n#0|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this Tclass.EnumerationTests.AllGhost) (<= (LitInt 0) |n#0|)))) (= (EnumerationTests.AllGhost.Is this |n#0|) (= (EnumerationTests.AllGhost.N this) |n#0|)))
+ :qid |Uninitializeddfy.119:15|
+ :skolemid |1326|
  :pattern ( (EnumerationTests.AllGhost.Is this |n#0|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |711|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |709|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |720|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((this@@0 T@U) ) (! (= (EnumerationTests.AllGhost.N this@@0) (LitInt 13))
+ :qid |Uninitializeddfy.117:11|
+ :skolemid |1321|
  :pattern ( (EnumerationTests.AllGhost.N this@@0))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |1042|
  :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |733|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert  (=> (< 0 $FunctionContextHeight) (forall (($o@@0 T@U) ) (!  (=> ($Is DatatypeTypeType $o@@0 Tclass.EnumerationTests.AllGhost) ($Is intType (int_2_U (EnumerationTests.AllGhost.N $o@@0)) TInt))
+ :qid |unknown.0:0|
+ :skolemid |1322|
  :pattern ( (EnumerationTests.AllGhost.N $o@@0))
 ))))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |719|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |4794|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (forall ((d T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d Tclass.EnumerationTests.AllGhost)) ($IsAlloc DatatypeTypeType d Tclass.EnumerationTests.AllGhost $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1315|
  :pattern ( ($IsAlloc DatatypeTypeType d Tclass.EnumerationTests.AllGhost $h@@1))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
@@ -144,19 +185,29 @@
 (assert (= (Tag Tclass.EnumerationTests.AllGhost) Tagclass.EnumerationTests.AllGhost))
 (assert (= (TagFamily Tclass.EnumerationTests.AllGhost) tytagFamily$AllGhost))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 T@U) (|n#0@@0| Int) ) (!  (=> (or (|EnumerationTests.AllGhost.Is#canCall| (Lit DatatypeTypeType this@@1) (LitInt |n#0@@0|)) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@1 Tclass.EnumerationTests.AllGhost) (<= (LitInt 0) |n#0@@0|)))) (= (EnumerationTests.AllGhost.Is (Lit DatatypeTypeType this@@1) (LitInt |n#0@@0|)) (= (EnumerationTests.AllGhost.N (Lit DatatypeTypeType this@@1)) (LitInt |n#0@@0|))))
+ :qid |Uninitializeddfy.119:15|
  :weight 3
+ :skolemid |1327|
  :pattern ( (EnumerationTests.AllGhost.Is (Lit DatatypeTypeType this@@1) (LitInt |n#0@@0|)))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |712|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |710|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (assert (forall ((h@@0 T@U) (v@@0 T@U) ) (! ($IsAlloc intType v@@0 TInt h@@0)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |755|
  :pattern ( ($IsAlloc intType v@@0 TInt h@@0))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |734|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (push 1)
@@ -170,6 +221,7 @@
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun |r#0| () T@U)
 (declare-fun |ag#0_0| () T@U)
+(set-info :boogie-vc-id Impl$$EnumerationTests.__default.PickAllGhostValue)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -188,6 +240,8 @@
  (=> (= (ControlFlow 0 0) 8) (let ((anon6_Else_correct true))
 (let ((anon6_Then_correct true))
 (let ((anon2_correct  (=> (forall ((|eg$ag#1| T@U) ) (!  (=> ($Is DatatypeTypeType |eg$ag#1| Tclass.EnumerationTests.AllGhost) (|EnumerationTests.AllGhost.Is#canCall| |eg$ag#1| (LitInt 13)))
+ :qid |Uninitializeddfy.149:8|
+ :skolemid |1292|
  :pattern ( (EnumerationTests.AllGhost.Is |eg$ag#1| 13))
 )) (=> (and ($Is DatatypeTypeType |ag#0_0@0| Tclass.EnumerationTests.AllGhost) ($IsAlloc DatatypeTypeType |ag#0_0@0| Tclass.EnumerationTests.AllGhost $Heap)) (and (=> (= (ControlFlow 0 3) 1) anon6_Then_correct) (=> (= (ControlFlow 0 3) 2) anon6_Else_correct))))))
 (let ((anon5_Else_correct  (=> (and (not (and ($Is DatatypeTypeType |eg$ag#0@0| Tclass.EnumerationTests.AllGhost) ($IsAlloc DatatypeTypeType |eg$ag#0@0| Tclass.EnumerationTests.AllGhost $Heap))) (= (ControlFlow 0 6) 3)) anon2_correct)))

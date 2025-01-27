@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:35
+// Date:         2025-01-26 23:13:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/forward-dep.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/forward-dep-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -557,12 +557,12 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -607,8 +607,8 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -684,8 +684,8 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.ar[tid].Integer_value, 1 / 2) -- forward-dep.vpr@26.3--26.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 2)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@26.10--26.46) [22077]"}
@@ -727,8 +727,8 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.ar[tid].Integer_value, 1 / 2) -- forward-dep.vpr@34.3--34.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(this.ar[tid].Integer_value, 1 / 2)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.ar (forward-dep.vpr@34.10--34.46) [22086]"}
@@ -770,8 +770,8 @@ procedure main_main(this: Ref, tcount: int, tid: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (forward-dep.vpr@16.11--16.19) [22095]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (forward-dep.vpr@17.11--17.23) [22096]"}

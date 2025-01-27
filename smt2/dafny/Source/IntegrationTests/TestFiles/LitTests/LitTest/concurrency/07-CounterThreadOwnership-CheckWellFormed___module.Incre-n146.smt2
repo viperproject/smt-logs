@@ -181,16 +181,22 @@
 (declare-fun TagFamily (T@U) T@U)
 (declare-fun implements$_module.Universe (T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSet alloc allocName Tagclass._module.Universe Tagclass._module.Thread Tagclass._module.OwnedObject Tagclass._module.Object class._module.Universe? Tagclass._module.Universe? Tagclass._module.Object? Tagclass._module.Thread? class._module.OwnedObject? Tagclass._module.OwnedObject? class._module.AtomicCounter? Tagclass._module.AtomicCounter? Tagclass._module.AtomicCounter class._module.Remaining? Tagclass._module.Remaining? Tagclass._module.Remaining class._module.IncrementerMethod? Tagclass._module.IncrementerMethod? Tagclass._module.IncrementerMethod tytagFamily$Universe tytagFamily$Thread tytagFamily$OwnedObject tytagFamily$Object tytagFamily$AtomicCounter tytagFamily$Remaining tytagFamily$IncrementerMethod field$content field$owner field$value field$programCounter field$counter field$remaining field$initial_value field$final_value field$i)
@@ -199,21 +205,33 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (DeclName alloc) allocName))
 (assert  (and (and (and (and (and (and (and (and (= (Ctor refType) 3) (= (Ctor SetType) 4)) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 ))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) ) (!  (=> (or (|_module.Universe.globalBaseInv#canCall| $Heap this) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.Universe) ($IsAlloc refType this Tclass._module.Universe $Heap)))))) (= (_module.Universe.globalBaseInv $Heap this) (forall ((|o#0| T@U) ) (!  (=> (and ($Is refType |o#0| Tclass._module.Object) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Universe.content)) ($Box refType |o#0|))) (and (= (_module.Object.universe |o#0|) this) (or (not (= |o#0| this)) (not true))))
+ :qid |_07CounterThreadOwnershipdfy.34:12|
+ :skolemid |498|
  :pattern ( (_module.Object.universe |o#0|))
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Universe.content)) ($Box refType |o#0|)))
 ))))
+ :qid |_07CounterThreadOwnershipdfy.33:19|
+ :skolemid |499|
  :pattern ( (_module.Universe.globalBaseInv $Heap this) ($IsGoodHeap $Heap))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@0 T@U) (this@@0 T@U) ) (!  (=> (or (|_module.IncrementerMethod.baseUserInv#canCall| $Heap@@0 this@@0) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@0 Tclass._module.IncrementerMethod $Heap@@0)))))) (= (_module.IncrementerMethod.baseUserInv $Heap@@0 this@@0)  (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 (_module.Object.universe this@@0)) _module.Universe.content)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) _module.IncrementerMethod.counter)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 (_module.Object.universe this@@0)) _module.Universe.content)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) _module.IncrementerMethod.remaining)))))
+ :qid |_07CounterThreadOwnershipdfy.650:19|
+ :skolemid |2155|
  :pattern ( (_module.IncrementerMethod.baseUserInv $Heap@@0 this@@0) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (implements$_module.Object Tclass._module.Thread?))
@@ -221,66 +239,104 @@
 (assert (implements$_module.OwnedObject Tclass._module.Remaining?))
 (assert (implements$_module.OwnedObject Tclass._module.IncrementerMethod?))
 (assert  (=> (<= 9 $FunctionContextHeight) (forall (($Heap@@1 T@U) (this@@1 T@U) ) (!  (=> (or (|_module.Universe.globalInv#canCall| $Heap@@1 this@@1) (and (< 9 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@1 null)) (not true)) (and ($Is refType this@@1 Tclass._module.Universe) ($IsAlloc refType this@@1 Tclass._module.Universe $Heap@@1)))))) (and (and (|_module.Universe.globalBaseInv#canCall| $Heap@@1 this@@1) (=> (_module.Universe.globalBaseInv $Heap@@1 this@@1) (forall ((|o#0@@0| T@U) ) (!  (=> ($Is refType |o#0@@0| Tclass._module.Object) (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@1) _module.Universe.content)) ($Box refType |o#0@@0|)) (|_module.Object.inv#canCall| $Heap@@1 |o#0@@0|)))
+ :qid |_07CounterThreadOwnershipdfy.39:32|
+ :skolemid |507|
  :pattern ( (_module.Object.inv $Heap@@1 |o#0@@0|))
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@1) _module.Universe.content)) ($Box refType |o#0@@0|)))
 )))) (= (_module.Universe.globalInv $Heap@@1 this@@1)  (and (_module.Universe.globalBaseInv $Heap@@1 this@@1) (forall ((|o#0@@1| T@U) ) (!  (=> (and ($Is refType |o#0@@1| Tclass._module.Object) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@1) _module.Universe.content)) ($Box refType |o#0@@1|))) (_module.Object.inv $Heap@@1 |o#0@@1|))
+ :qid |_07CounterThreadOwnershipdfy.39:32|
+ :skolemid |506|
  :pattern ( (_module.Object.inv $Heap@@1 |o#0@@1|))
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@1) _module.Universe.content)) ($Box refType |o#0@@1|)))
 ))))))
+ :qid |_07CounterThreadOwnershipdfy.38:19|
+ :skolemid |508|
  :pattern ( (_module.Universe.globalInv $Heap@@1 this@@1) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Thread?)  (or (= $o null) (= (dtype $o) Tclass._module.Thread?)))
+ :qid |unknown.0:0|
+ :skolemid |1076|
  :pattern ( ($Is refType $o Tclass._module.Thread?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.AtomicCounter?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.AtomicCounter?)))
+ :qid |unknown.0:0|
+ :skolemid |1646|
  :pattern ( ($Is refType $o@@0 Tclass._module.AtomicCounter?))
 )))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass._module.Remaining?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass._module.Remaining?)))
+ :qid |unknown.0:0|
+ :skolemid |1884|
  :pattern ( ($Is refType $o@@1 Tclass._module.Remaining?))
 )))
 (assert (forall (($o@@2 T@U) ) (! (= ($Is refType $o@@2 Tclass._module.IncrementerMethod?)  (or (= $o@@2 null) (= (dtype $o@@2) Tclass._module.IncrementerMethod?)))
+ :qid |unknown.0:0|
+ :skolemid |2122|
  :pattern ( ($Is refType $o@@2 Tclass._module.IncrementerMethod?))
 )))
 (assert (forall ((bx T@U) ($h T@U) ) (!  (=> (and ($IsAllocBox bx Tclass._module.Thread? $h) ($IsGoodHeap $h)) ($IsAllocBox bx Tclass._module.Object? $h))
+ :qid |unknown.0:0|
+ :skolemid |3517|
  :pattern ( ($IsAllocBox bx Tclass._module.Thread? $h))
 )))
 (assert (forall ((bx@@0 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsAllocBox bx@@0 Tclass._module.OwnedObject? $h@@0) ($IsGoodHeap $h@@0)) ($IsAllocBox bx@@0 Tclass._module.Object? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3521|
  :pattern ( ($IsAllocBox bx@@0 Tclass._module.OwnedObject? $h@@0))
 )))
 (assert (forall ((bx@@1 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsAllocBox bx@@1 Tclass._module.AtomicCounter? $h@@1) ($IsGoodHeap $h@@1)) ($IsAllocBox bx@@1 Tclass._module.OwnedObject? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |3529|
  :pattern ( ($IsAllocBox bx@@1 Tclass._module.AtomicCounter? $h@@1))
 )))
 (assert (forall ((bx@@2 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsAllocBox bx@@2 Tclass._module.Remaining? $h@@2) ($IsGoodHeap $h@@2)) ($IsAllocBox bx@@2 Tclass._module.OwnedObject? $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |3533|
  :pattern ( ($IsAllocBox bx@@2 Tclass._module.Remaining? $h@@2))
 )))
 (assert (forall ((bx@@3 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsAllocBox bx@@3 Tclass._module.IncrementerMethod? $h@@3) ($IsGoodHeap $h@@3)) ($IsAllocBox bx@@3 Tclass._module.OwnedObject? $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |3537|
  :pattern ( ($IsAllocBox bx@@3 Tclass._module.IncrementerMethod? $h@@3))
 )))
 (assert (forall ((|c#0| T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Universe $h@@4) ($IsAlloc refType |c#0| Tclass._module.Universe? $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |962|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Universe $h@@4))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Universe? $h@@4))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.Object $h@@5) ($IsAlloc refType |c#0@@0| Tclass._module.Object? $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |1074|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Object $h@@5))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Object? $h@@5))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass._module.Thread $h@@6) ($IsAlloc refType |c#0@@1| Tclass._module.Thread? $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |1285|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Thread $h@@6))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Thread? $h@@6))
 )))
 (assert (forall ((|c#0@@2| T@U) ($h@@7 T@U) ) (! (= ($IsAlloc refType |c#0@@2| Tclass._module.OwnedObject $h@@7) ($IsAlloc refType |c#0@@2| Tclass._module.OwnedObject? $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |1408|
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedObject $h@@7))
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedObject? $h@@7))
 )))
 (assert (forall ((|c#0@@3| T@U) ($h@@8 T@U) ) (! (= ($IsAlloc refType |c#0@@3| Tclass._module.AtomicCounter $h@@8) ($IsAlloc refType |c#0@@3| Tclass._module.AtomicCounter? $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |1882|
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass._module.AtomicCounter $h@@8))
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass._module.AtomicCounter? $h@@8))
 )))
 (assert (forall ((|c#0@@4| T@U) ($h@@9 T@U) ) (! (= ($IsAlloc refType |c#0@@4| Tclass._module.Remaining $h@@9) ($IsAlloc refType |c#0@@4| Tclass._module.Remaining? $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |2120|
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._module.Remaining $h@@9))
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._module.Remaining? $h@@9))
 )))
 (assert (forall ((|c#0@@5| T@U) ($h@@10 T@U) ) (! (= ($IsAlloc refType |c#0@@5| Tclass._module.IncrementerMethod $h@@10) ($IsAlloc refType |c#0@@5| Tclass._module.IncrementerMethod? $h@@10))
+ :qid |unknown.0:0|
+ :skolemid |3515|
  :pattern ( ($IsAlloc refType |c#0@@5| Tclass._module.IncrementerMethod $h@@10))
  :pattern ( ($IsAlloc refType |c#0@@5| Tclass._module.IncrementerMethod? $h@@10))
 )))
@@ -288,58 +344,86 @@
 (assert (= (FieldOfDecl class._module.OwnedObject? field$owner) _module.OwnedObject.owner))
 (assert ($IsGhostField _module.OwnedObject.owner))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@2 T@U) (this@@2 T@U) ) (!  (=> (or (|_module.AtomicCounter.baseUserInv#canCall| $Heap@@2 this@@2) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 Tclass._module.AtomicCounter)))) (= (_module.OwnedObject.baseUserInv $Heap@@2 this@@2) (_module.AtomicCounter.baseUserInv $Heap@@2 this@@2)))
+ :qid |_07CounterThreadOwnershipdfy.384:19|
+ :skolemid |1670|
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@2 this@@2) ($Is refType this@@2 Tclass._module.AtomicCounter) ($IsGoodHeap $Heap@@2))
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@2 this@@2) (_module.AtomicCounter.baseUserInv $Heap@@2 this@@2) ($IsGoodHeap $Heap@@2))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@3 T@U) (this@@3 T@U) ) (!  (=> (or (|_module.AtomicCounter.localUserInv#canCall| $Heap@@3 this@@3) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@3 null)) (not true)) ($Is refType this@@3 Tclass._module.AtomicCounter)))) (= (_module.OwnedObject.localUserInv $Heap@@3 this@@3) (_module.AtomicCounter.localUserInv $Heap@@3 this@@3)))
+ :qid |_07CounterThreadOwnershipdfy.385:19|
+ :skolemid |1677|
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@3 this@@3) ($Is refType this@@3 Tclass._module.AtomicCounter) ($IsGoodHeap $Heap@@3))
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@3 this@@3) (_module.AtomicCounter.localUserInv $Heap@@3 this@@3) ($IsGoodHeap $Heap@@3))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@4 T@U) (this@@4 T@U) ) (!  (=> (or (|_module.Remaining.baseUserInv#canCall| $Heap@@4 this@@4) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 Tclass._module.Remaining)))) (= (_module.OwnedObject.baseUserInv $Heap@@4 this@@4) (_module.Remaining.baseUserInv $Heap@@4 this@@4)))
+ :qid |_07CounterThreadOwnershipdfy.384:19|
+ :skolemid |1908|
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@4 this@@4) ($Is refType this@@4 Tclass._module.Remaining) ($IsGoodHeap $Heap@@4))
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@4 this@@4) (_module.Remaining.baseUserInv $Heap@@4 this@@4) ($IsGoodHeap $Heap@@4))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@5 T@U) (this@@5 T@U) ) (!  (=> (or (|_module.Remaining.localUserInv#canCall| $Heap@@5 this@@5) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@5 null)) (not true)) ($Is refType this@@5 Tclass._module.Remaining)))) (= (_module.OwnedObject.localUserInv $Heap@@5 this@@5) (_module.Remaining.localUserInv $Heap@@5 this@@5)))
+ :qid |_07CounterThreadOwnershipdfy.385:19|
+ :skolemid |1915|
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@5 this@@5) ($Is refType this@@5 Tclass._module.Remaining) ($IsGoodHeap $Heap@@5))
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@5 this@@5) (_module.Remaining.localUserInv $Heap@@5 this@@5) ($IsGoodHeap $Heap@@5))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@6 T@U) (this@@6 T@U) ) (!  (=> (or (|_module.IncrementerMethod.localUserInv#canCall| $Heap@@6 this@@6) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@6 null)) (not true)) ($Is refType this@@6 Tclass._module.IncrementerMethod)))) (= (_module.OwnedObject.localUserInv $Heap@@6 this@@6) (_module.IncrementerMethod.localUserInv $Heap@@6 this@@6)))
+ :qid |_07CounterThreadOwnershipdfy.385:19|
+ :skolemid |2163|
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@6 this@@6) ($Is refType this@@6 Tclass._module.IncrementerMethod) ($IsGoodHeap $Heap@@6))
  :pattern ( (_module.OwnedObject.localUserInv $Heap@@6 this@@6) (_module.IncrementerMethod.localUserInv $Heap@@6 this@@6) ($IsGoodHeap $Heap@@6))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@7 T@U) (this@@7 T@U) ) (!  (=> (or (|_module.AtomicCounter.userInv#canCall| $Heap@@7 this@@7) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@7 null)) (not true)) ($Is refType this@@7 Tclass._module.AtomicCounter)))) (= (_module.OwnedObject.userInv $Heap@@7 this@@7) (_module.AtomicCounter.userInv $Heap@@7 this@@7)))
+ :qid |_07CounterThreadOwnershipdfy.387:19|
+ :skolemid |1684|
  :pattern ( (_module.OwnedObject.userInv $Heap@@7 this@@7) ($Is refType this@@7 Tclass._module.AtomicCounter) ($IsGoodHeap $Heap@@7))
  :pattern ( (_module.OwnedObject.userInv $Heap@@7 this@@7) (_module.AtomicCounter.userInv $Heap@@7 this@@7) ($IsGoodHeap $Heap@@7))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@8 T@U) (this@@8 T@U) ) (!  (=> (or (|_module.Remaining.userInv#canCall| $Heap@@8 this@@8) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@8 null)) (not true)) ($Is refType this@@8 Tclass._module.Remaining)))) (= (_module.OwnedObject.userInv $Heap@@8 this@@8) (_module.Remaining.userInv $Heap@@8 this@@8)))
+ :qid |_07CounterThreadOwnershipdfy.387:19|
+ :skolemid |1922|
  :pattern ( (_module.OwnedObject.userInv $Heap@@8 this@@8) ($Is refType this@@8 Tclass._module.Remaining) ($IsGoodHeap $Heap@@8))
  :pattern ( (_module.OwnedObject.userInv $Heap@@8 this@@8) (_module.Remaining.userInv $Heap@@8 this@@8) ($IsGoodHeap $Heap@@8))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@9 T@U) (this@@9 T@U) ) (!  (=> (or (|_module.IncrementerMethod.baseUserInv#canCall| $Heap@@9 this@@9) (and (< 2 $FunctionContextHeight) (and (or (not (= this@@9 null)) (not true)) ($Is refType this@@9 Tclass._module.IncrementerMethod)))) (= (_module.OwnedObject.baseUserInv $Heap@@9 this@@9) (_module.IncrementerMethod.baseUserInv $Heap@@9 this@@9)))
+ :qid |_07CounterThreadOwnershipdfy.384:19|
+ :skolemid |2156|
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@9 this@@9) ($Is refType this@@9 Tclass._module.IncrementerMethod) ($IsGoodHeap $Heap@@9))
  :pattern ( (_module.OwnedObject.baseUserInv $Heap@@9 this@@9) (_module.IncrementerMethod.baseUserInv $Heap@@9 this@@9) ($IsGoodHeap $Heap@@9))
 ))))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@10 T@U) (this@@10 T@U) ) (!  (=> (or (|_module.Thread.localInv#canCall| $Heap@@10 this@@10) (and (< 4 $FunctionContextHeight) (and (or (not (= this@@10 null)) (not true)) ($Is refType this@@10 Tclass._module.Thread)))) (= (_module.Object.localInv $Heap@@10 this@@10) (_module.Thread.localInv $Heap@@10 this@@10)))
+ :qid |_07CounterThreadOwnershipdfy.271:19|
+ :skolemid |1089|
  :pattern ( (_module.Object.localInv $Heap@@10 this@@10) ($Is refType this@@10 Tclass._module.Thread) ($IsGoodHeap $Heap@@10))
  :pattern ( (_module.Object.localInv $Heap@@10 this@@10) (_module.Thread.localInv $Heap@@10 this@@10) ($IsGoodHeap $Heap@@10))
 ))))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@11 T@U) (this@@11 T@U) ) (!  (=> (or (|_module.OwnedObject.localInv#canCall| $Heap@@11 this@@11) (and (< 4 $FunctionContextHeight) (and (or (not (= this@@11 null)) (not true)) ($Is refType this@@11 Tclass._module.OwnedObject)))) (= (_module.Object.localInv $Heap@@11 this@@11) (_module.OwnedObject.localInv $Heap@@11 this@@11)))
+ :qid |_07CounterThreadOwnershipdfy.271:19|
+ :skolemid |1304|
  :pattern ( (_module.Object.localInv $Heap@@11 this@@11) ($Is refType this@@11 Tclass._module.OwnedObject) ($IsGoodHeap $Heap@@11))
  :pattern ( (_module.Object.localInv $Heap@@11 this@@11) (_module.OwnedObject.localInv $Heap@@11 this@@11) ($IsGoodHeap $Heap@@11))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@12 T@U) (this@@12 T@U) ) (!  (=> (or (|_module.Thread.inv#canCall| $Heap@@12 this@@12) (and (< 5 $FunctionContextHeight) (and (or (not (= this@@12 null)) (not true)) ($Is refType this@@12 Tclass._module.Thread)))) (= (_module.Object.inv $Heap@@12 this@@12) (_module.Thread.inv $Heap@@12 this@@12)))
+ :qid |_07CounterThreadOwnershipdfy.273:19|
+ :skolemid |1097|
  :pattern ( (_module.Object.inv $Heap@@12 this@@12) ($Is refType this@@12 Tclass._module.Thread) ($IsGoodHeap $Heap@@12))
  :pattern ( (_module.Object.inv $Heap@@12 this@@12) (_module.Thread.inv $Heap@@12 this@@12) ($IsGoodHeap $Heap@@12))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@13 T@U) (this@@13 T@U) ) (!  (=> (or (|_module.IncrementerMethod.userInv#canCall| $Heap@@13 this@@13) (and (< 5 $FunctionContextHeight) (and (or (not (= this@@13 null)) (not true)) ($Is refType this@@13 Tclass._module.IncrementerMethod)))) (= (_module.OwnedObject.userInv $Heap@@13 this@@13) (_module.IncrementerMethod.userInv $Heap@@13 this@@13)))
+ :qid |_07CounterThreadOwnershipdfy.387:19|
+ :skolemid |2170|
  :pattern ( (_module.OwnedObject.userInv $Heap@@13 this@@13) ($Is refType this@@13 Tclass._module.IncrementerMethod) ($IsGoodHeap $Heap@@13))
  :pattern ( (_module.OwnedObject.userInv $Heap@@13 this@@13) (_module.IncrementerMethod.userInv $Heap@@13 this@@13) ($IsGoodHeap $Heap@@13))
 ))))
 (assert  (=> (<= 7 $FunctionContextHeight) (forall (($Heap@@14 T@U) (this@@14 T@U) ) (!  (=> (or (|_module.OwnedObject.inv#canCall| $Heap@@14 this@@14) (and (< 7 $FunctionContextHeight) (and (or (not (= this@@14 null)) (not true)) ($Is refType this@@14 Tclass._module.OwnedObject)))) (= (_module.Object.inv $Heap@@14 this@@14) (_module.OwnedObject.inv $Heap@@14 this@@14)))
+ :qid |_07CounterThreadOwnershipdfy.273:19|
+ :skolemid |1314|
  :pattern ( (_module.Object.inv $Heap@@14 this@@14) ($Is refType this@@14 Tclass._module.OwnedObject) ($IsGoodHeap $Heap@@14))
  :pattern ( (_module.Object.inv $Heap@@14 this@@14) (_module.OwnedObject.inv $Heap@@14 this@@14) ($IsGoodHeap $Heap@@14))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@15 T@U) (this@@15 T@U) ) (!  (=> (or (|_module.IncrementerMethod.userInv#canCall| $Heap@@15 this@@15) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@15) (and (or (not (= this@@15 null)) (not true)) (and ($Is refType this@@15 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@15 Tclass._module.IncrementerMethod $Heap@@15)))))) (and (and (|_module.IncrementerMethod.localUserInv#canCall| $Heap@@15 this@@15) (=> (_module.IncrementerMethod.localUserInv $Heap@@15 this@@15) (and (|_module.OwnedObject.localInv#canCall| $Heap@@15 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@15 this@@15) _module.IncrementerMethod.counter))) (=> (_module.OwnedObject.localInv $Heap@@15 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@15 this@@15) _module.IncrementerMethod.counter))) (|_module.OwnedObject.localInv#canCall| $Heap@@15 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@15 this@@15) _module.IncrementerMethod.remaining))))))) (= (_module.IncrementerMethod.userInv $Heap@@15 this@@15)  (and (and (_module.IncrementerMethod.localUserInv $Heap@@15 this@@15) (_module.OwnedObject.localInv $Heap@@15 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@15 this@@15) _module.IncrementerMethod.counter)))) (_module.OwnedObject.localInv $Heap@@15 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@15 this@@15) _module.IncrementerMethod.remaining)))))))
+ :qid |_07CounterThreadOwnershipdfy.670:19|
+ :skolemid |2169|
  :pattern ( (_module.IncrementerMethod.userInv $Heap@@15 this@@15) ($IsGoodHeap $Heap@@15))
 ))))
 (assert (= (FDim _module.Universe.content) 0))
@@ -370,378 +454,689 @@
 (assert (= (FieldOfDecl class._module.IncrementerMethod? field$i) _module.IncrementerMethod.i))
 (assert  (not ($IsGhostField _module.IncrementerMethod.i)))
 (assert (forall (($o@@3 T@U) ($h@@11 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.Universe? $h@@11)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |491|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.Universe? $h@@11))
 )))
 (assert (forall (($o@@4 T@U) ($h@@12 T@U) ) (! (= ($IsAlloc refType $o@@4 Tclass._module.Object? $h@@12)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |964|
  :pattern ( ($IsAlloc refType $o@@4 Tclass._module.Object? $h@@12))
 )))
 (assert (forall (($o@@5 T@U) ($h@@13 T@U) ) (! (= ($IsAlloc refType $o@@5 Tclass._module.Thread? $h@@13)  (or (= $o@@5 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@5) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1077|
  :pattern ( ($IsAlloc refType $o@@5 Tclass._module.Thread? $h@@13))
 )))
 (assert (forall (($o@@6 T@U) ($h@@14 T@U) ) (! (= ($IsAlloc refType $o@@6 Tclass._module.OwnedObject? $h@@14)  (or (= $o@@6 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@6) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1288|
  :pattern ( ($IsAlloc refType $o@@6 Tclass._module.OwnedObject? $h@@14))
 )))
 (assert (forall (($o@@7 T@U) ($h@@15 T@U) ) (! (= ($IsAlloc refType $o@@7 Tclass._module.AtomicCounter? $h@@15)  (or (= $o@@7 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@15 $o@@7) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1647|
  :pattern ( ($IsAlloc refType $o@@7 Tclass._module.AtomicCounter? $h@@15))
 )))
 (assert (forall (($o@@8 T@U) ($h@@16 T@U) ) (! (= ($IsAlloc refType $o@@8 Tclass._module.Remaining? $h@@16)  (or (= $o@@8 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@8) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1885|
  :pattern ( ($IsAlloc refType $o@@8 Tclass._module.Remaining? $h@@16))
 )))
 (assert (forall (($o@@9 T@U) ($h@@17 T@U) ) (! (= ($IsAlloc refType $o@@9 Tclass._module.IncrementerMethod? $h@@17)  (or (= $o@@9 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@17 $o@@9) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2123|
  :pattern ( ($IsAlloc refType $o@@9 Tclass._module.IncrementerMethod? $h@@17))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@16 T@U) (this@@16 T@U) ) (!  (=> (or (|_module.AtomicCounter.baseUserInv#canCall| $Heap@@16 this@@16) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@16) (and (or (not (= this@@16 null)) (not true)) (and ($Is refType this@@16 Tclass._module.AtomicCounter) ($IsAlloc refType this@@16 Tclass._module.AtomicCounter $Heap@@16)))))) (= (_module.AtomicCounter.baseUserInv $Heap@@16 this@@16) (U_2_bool (Lit boolType (bool_2_U  (and true true))))))
+ :qid |_07CounterThreadOwnershipdfy.490:19|
+ :skolemid |1669|
  :pattern ( (_module.AtomicCounter.baseUserInv $Heap@@16 this@@16) ($IsGoodHeap $Heap@@16))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@17 T@U) (this@@17 T@U) ) (!  (=> (or (|_module.AtomicCounter.localUserInv#canCall| $Heap@@17 this@@17) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@17) (and (or (not (= this@@17 null)) (not true)) (and ($Is refType this@@17 Tclass._module.AtomicCounter) ($IsAlloc refType this@@17 Tclass._module.AtomicCounter $Heap@@17)))))) (= (_module.AtomicCounter.localUserInv $Heap@@17 this@@17) (U_2_bool (Lit boolType (bool_2_U  (and true true))))))
+ :qid |_07CounterThreadOwnershipdfy.494:19|
+ :skolemid |1676|
  :pattern ( (_module.AtomicCounter.localUserInv $Heap@@17 this@@17) ($IsGoodHeap $Heap@@17))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@18 T@U) (this@@18 T@U) ) (!  (=> (or (|_module.Remaining.baseUserInv#canCall| $Heap@@18 this@@18) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@18) (and (or (not (= this@@18 null)) (not true)) (and ($Is refType this@@18 Tclass._module.Remaining) ($IsAlloc refType this@@18 Tclass._module.Remaining $Heap@@18)))))) (= (_module.Remaining.baseUserInv $Heap@@18 this@@18) (U_2_bool (Lit boolType (bool_2_U  (and true true))))))
+ :qid |_07CounterThreadOwnershipdfy.551:19|
+ :skolemid |1907|
  :pattern ( (_module.Remaining.baseUserInv $Heap@@18 this@@18) ($IsGoodHeap $Heap@@18))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@19 T@U) (this@@19 T@U) ) (!  (=> (or (|_module.Remaining.localUserInv#canCall| $Heap@@19 this@@19) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@19) (and (or (not (= this@@19 null)) (not true)) (and ($Is refType this@@19 Tclass._module.Remaining) ($IsAlloc refType this@@19 Tclass._module.Remaining $Heap@@19)))))) (= (_module.Remaining.localUserInv $Heap@@19 this@@19) (U_2_bool (Lit boolType (bool_2_U  (and true true))))))
+ :qid |_07CounterThreadOwnershipdfy.555:19|
+ :skolemid |1914|
  :pattern ( (_module.Remaining.localUserInv $Heap@@19 this@@19) ($IsGoodHeap $Heap@@19))
 ))))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@4 T@U) ) (!  (=> (|Set#IsMember| v bx@@4) ($IsBox bx@@4 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@4))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@18 T@U) ($o@@10 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@18) (and (or (not (= $o@@10 null)) (not true)) (= (dtype $o@@10) Tclass._module.AtomicCounter?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@10) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@10) _module.AtomicCounter.value)) TInt $h@@18))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1649|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@10) _module.AtomicCounter.value)))
 )))
 (assert (forall (($h@@19 T@U) ($o@@11 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@19) (and (or (not (= $o@@11 null)) (not true)) (= (dtype $o@@11) Tclass._module.Remaining?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@11) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@11) _module.Remaining.value)) TInt $h@@19))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1887|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@11) _module.Remaining.value)))
 )))
 (assert (forall (($h@@20 T@U) ($o@@12 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@20) (and (or (not (= $o@@12 null)) (not true)) (= (dtype $o@@12) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@12) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@12) _module.IncrementerMethod.programCounter)) TInt $h@@20))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2125|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@12) _module.IncrementerMethod.programCounter)))
 )))
 (assert (forall (($h@@21 T@U) ($o@@13 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@21) (and (or (not (= $o@@13 null)) (not true)) (= (dtype $o@@13) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@13) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@13) _module.IncrementerMethod.initial__value)) TInt $h@@21))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2131|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@13) _module.IncrementerMethod.initial__value)))
 )))
 (assert (forall (($h@@22 T@U) ($o@@14 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@22) (and (or (not (= $o@@14 null)) (not true)) (= (dtype $o@@14) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@14) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@14) _module.IncrementerMethod.final__value)) TInt $h@@22))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2133|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@14) _module.IncrementerMethod.final__value)))
 )))
 (assert (forall (($h@@23 T@U) ($o@@15 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@23) (and (or (not (= $o@@15 null)) (not true)) (= (dtype $o@@15) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@15) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@15) _module.IncrementerMethod.i)) TInt $h@@23))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2135|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@15) _module.IncrementerMethod.i)))
 )))
 (assert  (=> (<= 7 $FunctionContextHeight) (forall (($Heap@@20 T@U) (this@@20 T@U) ) (!  (=> (or (|_module.OwnedObject.inv#canCall| $Heap@@20 this@@20) (and (< 7 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@20) (and (or (not (= this@@20 null)) (not true)) (and ($Is refType this@@20 Tclass._module.OwnedObject) ($IsAlloc refType this@@20 Tclass._module.OwnedObject $Heap@@20)))))) (and (and (|_module.OwnedObject.localInv#canCall| $Heap@@20 this@@20) (=> (_module.OwnedObject.localInv $Heap@@20 this@@20) (|_module.OwnedObject.userInv#canCall| $Heap@@20 this@@20))) (= (_module.OwnedObject.inv $Heap@@20 this@@20)  (and (_module.OwnedObject.localInv $Heap@@20 this@@20) (_module.OwnedObject.userInv $Heap@@20 this@@20)))))
+ :qid |_07CounterThreadOwnershipdfy.333:19|
+ :skolemid |1313|
  :pattern ( (_module.OwnedObject.inv $Heap@@20 this@@20) ($IsGoodHeap $Heap@@20))
 ))))
 (assert (forall ((v@@0 T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h@@0) ($IsAlloc T@@1 v@@0 t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@5 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@5 t@@0 h@@1) ($IsAllocBox bx@@5 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@5 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@1 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@1 t@@1 h@@2) ($IsAlloc T@@2 v@@1 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@1 t@@1 h@@2))
 )))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($h@@24 T@U) ($o@@16 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@24) (and (or (not (= $o@@16 null)) (not true)) ($Is refType $o@@16 Tclass._module.Object?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@16) alloc)))) ($IsAlloc refType (_module.Object.universe $o@@16) Tclass._module.Universe $h@@24))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |966|
  :pattern ( (_module.Object.universe $o@@16) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@16) alloc)))
 ))))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($o@@17 T@U) ) (!  (=> (and (or (not (= $o@@17 null)) (not true)) ($Is refType $o@@17 Tclass._module.Object?)) ($Is refType (_module.Object.universe $o@@17) Tclass._module.Universe))
+ :qid |unknown.0:0|
+ :skolemid |965|
  :pattern ( (_module.Object.universe $o@@17))
 ))))
 (assert (forall (($h@@25 T@U) ($o@@18 T@U) ) (!  (=> (and ($IsGoodHeap $h@@25) (and (or (not (= $o@@18 null)) (not true)) (= (dtype $o@@18) Tclass._module.IncrementerMethod?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@18) _module.IncrementerMethod.counter)) Tclass._module.AtomicCounter))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2126|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@18) _module.IncrementerMethod.counter)))
 )))
 (assert (forall (($h@@26 T@U) ($o@@19 T@U) ) (!  (=> (and ($IsGoodHeap $h@@26) (and (or (not (= $o@@19 null)) (not true)) (= (dtype $o@@19) Tclass._module.IncrementerMethod?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@19) _module.IncrementerMethod.remaining)) Tclass._module.Remaining))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2128|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@19) _module.IncrementerMethod.remaining)))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass._module.Universe) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass._module.Universe)))
+ :qid |unknown.0:0|
+ :skolemid |481|
  :pattern ( ($IsBox bx@@6 Tclass._module.Universe))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass._module.Thread) (and (= ($Box refType ($Unbox refType bx@@7)) bx@@7) ($Is refType ($Unbox refType bx@@7) Tclass._module.Thread)))
+ :qid |unknown.0:0|
+ :skolemid |482|
  :pattern ( ($IsBox bx@@7 Tclass._module.Thread))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 Tclass._module.OwnedObject) (and (= ($Box refType ($Unbox refType bx@@8)) bx@@8) ($Is refType ($Unbox refType bx@@8) Tclass._module.OwnedObject)))
+ :qid |unknown.0:0|
+ :skolemid |483|
  :pattern ( ($IsBox bx@@8 Tclass._module.OwnedObject))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 Tclass._module.Object) (and (= ($Box refType ($Unbox refType bx@@9)) bx@@9) ($Is refType ($Unbox refType bx@@9) Tclass._module.Object)))
+ :qid |unknown.0:0|
+ :skolemid |488|
  :pattern ( ($IsBox bx@@9 Tclass._module.Object))
 )))
 (assert (forall ((bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 Tclass._module.Universe?) (and (= ($Box refType ($Unbox refType bx@@10)) bx@@10) ($Is refType ($Unbox refType bx@@10) Tclass._module.Universe?)))
+ :qid |unknown.0:0|
+ :skolemid |489|
  :pattern ( ($IsBox bx@@10 Tclass._module.Universe?))
 )))
 (assert (forall ((bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 Tclass._module.Object?) (and (= ($Box refType ($Unbox refType bx@@11)) bx@@11) ($Is refType ($Unbox refType bx@@11) Tclass._module.Object?)))
+ :qid |unknown.0:0|
+ :skolemid |510|
  :pattern ( ($IsBox bx@@11 Tclass._module.Object?))
 )))
 (assert (forall ((bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 Tclass._module.Thread?) (and (= ($Box refType ($Unbox refType bx@@12)) bx@@12) ($Is refType ($Unbox refType bx@@12) Tclass._module.Thread?)))
+ :qid |unknown.0:0|
+ :skolemid |1075|
  :pattern ( ($IsBox bx@@12 Tclass._module.Thread?))
 )))
 (assert (forall ((bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 Tclass._module.OwnedObject?) (and (= ($Box refType ($Unbox refType bx@@13)) bx@@13) ($Is refType ($Unbox refType bx@@13) Tclass._module.OwnedObject?)))
+ :qid |unknown.0:0|
+ :skolemid |1286|
  :pattern ( ($IsBox bx@@13 Tclass._module.OwnedObject?))
 )))
 (assert (forall ((bx@@14 T@U) ) (!  (=> ($IsBox bx@@14 Tclass._module.AtomicCounter?) (and (= ($Box refType ($Unbox refType bx@@14)) bx@@14) ($Is refType ($Unbox refType bx@@14) Tclass._module.AtomicCounter?)))
+ :qid |unknown.0:0|
+ :skolemid |1645|
  :pattern ( ($IsBox bx@@14 Tclass._module.AtomicCounter?))
 )))
 (assert (forall ((bx@@15 T@U) ) (!  (=> ($IsBox bx@@15 Tclass._module.AtomicCounter) (and (= ($Box refType ($Unbox refType bx@@15)) bx@@15) ($Is refType ($Unbox refType bx@@15) Tclass._module.AtomicCounter)))
+ :qid |unknown.0:0|
+ :skolemid |1651|
  :pattern ( ($IsBox bx@@15 Tclass._module.AtomicCounter))
 )))
 (assert (forall ((bx@@16 T@U) ) (!  (=> ($IsBox bx@@16 Tclass._module.Remaining?) (and (= ($Box refType ($Unbox refType bx@@16)) bx@@16) ($Is refType ($Unbox refType bx@@16) Tclass._module.Remaining?)))
+ :qid |unknown.0:0|
+ :skolemid |1883|
  :pattern ( ($IsBox bx@@16 Tclass._module.Remaining?))
 )))
 (assert (forall ((bx@@17 T@U) ) (!  (=> ($IsBox bx@@17 Tclass._module.Remaining) (and (= ($Box refType ($Unbox refType bx@@17)) bx@@17) ($Is refType ($Unbox refType bx@@17) Tclass._module.Remaining)))
+ :qid |unknown.0:0|
+ :skolemid |1889|
  :pattern ( ($IsBox bx@@17 Tclass._module.Remaining))
 )))
 (assert (forall ((bx@@18 T@U) ) (!  (=> ($IsBox bx@@18 Tclass._module.IncrementerMethod?) (and (= ($Box refType ($Unbox refType bx@@18)) bx@@18) ($Is refType ($Unbox refType bx@@18) Tclass._module.IncrementerMethod?)))
+ :qid |unknown.0:0|
+ :skolemid |2121|
  :pattern ( ($IsBox bx@@18 Tclass._module.IncrementerMethod?))
 )))
 (assert (forall ((bx@@19 T@U) ) (!  (=> ($IsBox bx@@19 Tclass._module.IncrementerMethod) (and (= ($Box refType ($Unbox refType bx@@19)) bx@@19) ($Is refType ($Unbox refType bx@@19) Tclass._module.IncrementerMethod)))
+ :qid |unknown.0:0|
+ :skolemid |2137|
  :pattern ( ($IsBox bx@@19 Tclass._module.IncrementerMethod))
 )))
 (assert (forall ((|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| Tclass._module.Universe)  (and ($Is refType |c#0@@6| Tclass._module.Universe?) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |961|
  :pattern ( ($Is refType |c#0@@6| Tclass._module.Universe))
  :pattern ( ($Is refType |c#0@@6| Tclass._module.Universe?))
 )))
 (assert (forall ((|c#0@@7| T@U) ) (! (= ($Is refType |c#0@@7| Tclass._module.Object)  (and ($Is refType |c#0@@7| Tclass._module.Object?) (or (not (= |c#0@@7| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1073|
  :pattern ( ($Is refType |c#0@@7| Tclass._module.Object))
  :pattern ( ($Is refType |c#0@@7| Tclass._module.Object?))
 )))
 (assert (forall ((|c#0@@8| T@U) ) (! (= ($Is refType |c#0@@8| Tclass._module.Thread)  (and ($Is refType |c#0@@8| Tclass._module.Thread?) (or (not (= |c#0@@8| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1284|
  :pattern ( ($Is refType |c#0@@8| Tclass._module.Thread))
  :pattern ( ($Is refType |c#0@@8| Tclass._module.Thread?))
 )))
 (assert (forall ((|c#0@@9| T@U) ) (! (= ($Is refType |c#0@@9| Tclass._module.OwnedObject)  (and ($Is refType |c#0@@9| Tclass._module.OwnedObject?) (or (not (= |c#0@@9| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1407|
  :pattern ( ($Is refType |c#0@@9| Tclass._module.OwnedObject))
  :pattern ( ($Is refType |c#0@@9| Tclass._module.OwnedObject?))
 )))
 (assert (forall ((|c#0@@10| T@U) ) (! (= ($Is refType |c#0@@10| Tclass._module.AtomicCounter)  (and ($Is refType |c#0@@10| Tclass._module.AtomicCounter?) (or (not (= |c#0@@10| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1881|
  :pattern ( ($Is refType |c#0@@10| Tclass._module.AtomicCounter))
  :pattern ( ($Is refType |c#0@@10| Tclass._module.AtomicCounter?))
 )))
 (assert (forall ((|c#0@@11| T@U) ) (! (= ($Is refType |c#0@@11| Tclass._module.Remaining)  (and ($Is refType |c#0@@11| Tclass._module.Remaining?) (or (not (= |c#0@@11| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2119|
  :pattern ( ($Is refType |c#0@@11| Tclass._module.Remaining))
  :pattern ( ($Is refType |c#0@@11| Tclass._module.Remaining?))
 )))
 (assert (forall ((|c#0@@12| T@U) ) (! (= ($Is refType |c#0@@12| Tclass._module.IncrementerMethod)  (and ($Is refType |c#0@@12| Tclass._module.IncrementerMethod?) (or (not (= |c#0@@12| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3514|
  :pattern ( ($Is refType |c#0@@12| Tclass._module.IncrementerMethod))
  :pattern ( ($Is refType |c#0@@12| Tclass._module.IncrementerMethod?))
 )))
 (assert (forall (($h@@27 T@U) ($o@@20 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@27) (and (or (not (= $o@@20 null)) (not true)) (= (dtype $o@@20) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@27 $o@@20) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@27 $o@@20) _module.IncrementerMethod.counter)) Tclass._module.AtomicCounter $h@@27))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2127|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@27 $o@@20) _module.IncrementerMethod.counter)))
 )))
 (assert (forall (($h@@28 T@U) ($o@@21 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@28) (and (or (not (= $o@@21 null)) (not true)) (= (dtype $o@@21) Tclass._module.IncrementerMethod?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@28 $o@@21) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@28 $o@@21) _module.IncrementerMethod.remaining)) Tclass._module.Remaining $h@@28))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2129|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@28 $o@@21) _module.IncrementerMethod.remaining)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap@@21 T@U) (this@@21 T@U) ) (!  (=> (or (|_module.Object.baseInv#canCall| $Heap@@21 this@@21) (and (< 3 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@21) (and (or (not (= this@@21 null)) (not true)) (and ($Is refType this@@21 Tclass._module.Object) ($IsAlloc refType this@@21 Tclass._module.Object $Heap@@21)))))) (and (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@21 (_module.Object.universe this@@21)) _module.Universe.content)) ($Box refType this@@21)) (|_module.Universe.globalBaseInv#canCall| $Heap@@21 (_module.Object.universe this@@21))) (= (_module.Object.baseInv $Heap@@21 this@@21)  (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@21 (_module.Object.universe this@@21)) _module.Universe.content)) ($Box refType this@@21)) (_module.Universe.globalBaseInv $Heap@@21 (_module.Object.universe this@@21))))))
+ :qid |_07CounterThreadOwnershipdfy.243:19|
+ :skolemid |971|
  :pattern ( (_module.Object.baseInv $Heap@@21 this@@21) ($IsGoodHeap $Heap@@21))
 ))))
 (assert (forall (($o@@22 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@22 Tclass._module.Thread? $heap) ($IsAlloc refType $o@@22 Tclass._module.Object? $heap))
+ :qid |unknown.0:0|
+ :skolemid |3519|
  :pattern ( ($IsAlloc refType $o@@22 Tclass._module.Thread? $heap))
 )))
 (assert (forall (($o@@23 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@23 Tclass._module.OwnedObject? $heap@@0) ($IsAlloc refType $o@@23 Tclass._module.Object? $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |3523|
  :pattern ( ($IsAlloc refType $o@@23 Tclass._module.OwnedObject? $heap@@0))
 )))
 (assert (forall (($o@@24 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@24 Tclass._module.AtomicCounter? $heap@@1) ($IsAlloc refType $o@@24 Tclass._module.OwnedObject? $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |3531|
  :pattern ( ($IsAlloc refType $o@@24 Tclass._module.AtomicCounter? $heap@@1))
 )))
 (assert (forall (($o@@25 T@U) ($heap@@2 T@U) ) (!  (=> ($IsAlloc refType $o@@25 Tclass._module.Remaining? $heap@@2) ($IsAlloc refType $o@@25 Tclass._module.OwnedObject? $heap@@2))
+ :qid |unknown.0:0|
+ :skolemid |3535|
  :pattern ( ($IsAlloc refType $o@@25 Tclass._module.Remaining? $heap@@2))
 )))
 (assert (forall (($o@@26 T@U) ($heap@@3 T@U) ) (!  (=> ($IsAlloc refType $o@@26 Tclass._module.IncrementerMethod? $heap@@3) ($IsAlloc refType $o@@26 Tclass._module.OwnedObject? $heap@@3))
+ :qid |unknown.0:0|
+ :skolemid |3539|
  :pattern ( ($IsAlloc refType $o@@26 Tclass._module.IncrementerMethod? $heap@@3))
 )))
 (assert  (=> (<= 10 $FunctionContextHeight) (forall (($Heap@@22 T@U) (this@@22 T@U) ) (!  (=> (or (|_module.Object.objectGlobalInv#canCall| $Heap@@22 this@@22) (and (< 10 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@22) (and (or (not (= this@@22 null)) (not true)) (and ($Is refType this@@22 Tclass._module.Object) ($IsAlloc refType this@@22 Tclass._module.Object $Heap@@22)))))) (and (and (|_module.Object.baseInv#canCall| $Heap@@22 this@@22) (=> (_module.Object.baseInv $Heap@@22 this@@22) (|_module.Universe.globalInv#canCall| $Heap@@22 (_module.Object.universe this@@22)))) (= (_module.Object.objectGlobalInv $Heap@@22 this@@22)  (and (_module.Object.baseInv $Heap@@22 this@@22) (_module.Universe.globalInv $Heap@@22 (_module.Object.universe this@@22))))))
+ :qid |_07CounterThreadOwnershipdfy.264:19|
+ :skolemid |1005|
  :pattern ( (_module.Object.objectGlobalInv $Heap@@22 this@@22) ($IsGoodHeap $Heap@@22))
 ))))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|l#6| T@U) (|l#7| T@U) (|l#8| T@U) ($o@@27 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#164| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8|) $o@@27 $f))  (=> (and (or (not (= $o@@27 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@27) |l#2|)))) (or (or (or (or (or (= $o@@27 |l#3|) (|Set#IsMember| |l#4| ($Box refType $o@@27))) (= $o@@27 |l#5|)) (= $o@@27 |l#6|)) (= $o@@27 |l#7|)) (= $o@@27 |l#8|))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3546|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#164| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8|) $o@@27 $f))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@20 T@U) ) (!  (=> ($IsBox bx@@20 TInt) (and (= ($Box intType ($Unbox intType bx@@20)) bx@@20) ($Is intType ($Unbox intType bx@@20) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@20 TInt))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@23 T@U) (this@@23 T@U) ) (!  (=> (or (|_module.AtomicCounter.userInv#canCall| $Heap@@23 this@@23) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@23) (and (or (not (= this@@23 null)) (not true)) (and ($Is refType this@@23 Tclass._module.AtomicCounter) ($IsAlloc refType this@@23 Tclass._module.AtomicCounter $Heap@@23)))))) (=> (_module.AtomicCounter.userInv $Heap@@23 this@@23) (_module.AtomicCounter.localUserInv $Heap@@23 this@@23)))
+ :qid |_07CounterThreadOwnershipdfy.497:19|
+ :skolemid |1681|
  :pattern ( (_module.AtomicCounter.userInv $Heap@@23 this@@23))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@24 T@U) (this@@24 T@U) ) (!  (=> (or (|_module.Remaining.userInv#canCall| $Heap@@24 this@@24) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@24) (and (or (not (= this@@24 null)) (not true)) (and ($Is refType this@@24 Tclass._module.Remaining) ($IsAlloc refType this@@24 Tclass._module.Remaining $Heap@@24)))))) (=> (_module.Remaining.userInv $Heap@@24 this@@24) (_module.Remaining.localUserInv $Heap@@24 this@@24)))
+ :qid |_07CounterThreadOwnershipdfy.558:19|
+ :skolemid |1919|
  :pattern ( (_module.Remaining.userInv $Heap@@24 this@@24))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@25 T@U) (this@@25 T@U) ) (!  (=> (or (|_module.Thread.inv#canCall| $Heap@@25 this@@25) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@25) (and (or (not (= this@@25 null)) (not true)) (and ($Is refType this@@25 Tclass._module.Thread) ($IsAlloc refType this@@25 Tclass._module.Thread $Heap@@25)))))) (=> (_module.Thread.inv $Heap@@25 this@@25) (_module.Thread.localInv $Heap@@25 this@@25)))
+ :qid |_07CounterThreadOwnershipdfy.287:19|
+ :skolemid |1094|
  :pattern ( (_module.Thread.inv $Heap@@25 this@@25))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@26 T@U) (this@@26 T@U) ) (!  (=> (or (|_module.IncrementerMethod.userInv#canCall| $Heap@@26 this@@26) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@26) (and (or (not (= this@@26 null)) (not true)) (and ($Is refType this@@26 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@26 Tclass._module.IncrementerMethod $Heap@@26)))))) (=> (_module.IncrementerMethod.userInv $Heap@@26 this@@26) (_module.IncrementerMethod.localUserInv $Heap@@26 this@@26)))
+ :qid |_07CounterThreadOwnershipdfy.670:19|
+ :skolemid |2167|
  :pattern ( (_module.IncrementerMethod.userInv $Heap@@26 this@@26))
 ))))
 (assert  (=> (<= 6 $FunctionContextHeight) (forall (($Heap@@27 T@U) (this@@27 T@U) ) (!  (=> (or (|_module.OwnedObject.userInv#canCall| $Heap@@27 this@@27) (and (< 6 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@27) (and (or (not (= this@@27 null)) (not true)) (and ($Is refType this@@27 Tclass._module.OwnedObject) ($IsAlloc refType this@@27 Tclass._module.OwnedObject $Heap@@27)))))) (=> (_module.OwnedObject.userInv $Heap@@27 this@@27) (_module.OwnedObject.localUserInv $Heap@@27 this@@27)))
+ :qid |_07CounterThreadOwnershipdfy.387:19|
+ :skolemid |1399|
  :pattern ( (_module.OwnedObject.userInv $Heap@@27 this@@27))
 ))))
 (assert  (=> (<= 7 $FunctionContextHeight) (forall (($Heap@@28 T@U) (this@@28 T@U) ) (!  (=> (or (|_module.OwnedObject.inv#canCall| $Heap@@28 this@@28) (and (< 7 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@28) (and (or (not (= this@@28 null)) (not true)) (and ($Is refType this@@28 Tclass._module.OwnedObject) ($IsAlloc refType this@@28 Tclass._module.OwnedObject $Heap@@28)))))) (=> (_module.OwnedObject.inv $Heap@@28 this@@28) (_module.OwnedObject.localInv $Heap@@28 this@@28)))
+ :qid |_07CounterThreadOwnershipdfy.333:19|
+ :skolemid |1311|
  :pattern ( (_module.OwnedObject.inv $Heap@@28 this@@28))
 ))))
 (assert  (=> (<= 8 $FunctionContextHeight) (forall (($Heap@@29 T@U) (this@@29 T@U) ) (!  (=> (or (|_module.Object.inv#canCall| $Heap@@29 this@@29) (and (< 8 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@29) (and (or (not (= this@@29 null)) (not true)) (and ($Is refType this@@29 Tclass._module.Object) ($IsAlloc refType this@@29 Tclass._module.Object $Heap@@29)))))) (=> (_module.Object.inv $Heap@@29 this@@29) (_module.Object.localInv $Heap@@29 this@@29)))
+ :qid |_07CounterThreadOwnershipdfy.273:19|
+ :skolemid |1027|
  :pattern ( (_module.Object.inv $Heap@@29 this@@29))
 ))))
 (assert (forall ((v@@2 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@2) t@@2) ($Is T@@3 v@@2 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@2) t@@2))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@30 T@U) (this@@30 T@U) ) (!  (=> (or (|_module.IncrementerMethod.localUserInv#canCall| $Heap@@30 this@@30) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@30) (and (or (not (= this@@30 null)) (not true)) (and ($Is refType this@@30 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@30 Tclass._module.IncrementerMethod $Heap@@30)))))) (= (_module.IncrementerMethod.localUserInv $Heap@@30 this@@30)  (and (and (and (and (and (and (and (and (and (and (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.OwnedObject.owner)) this@@30) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 10)))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 0)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (LitInt 10)))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 1)) (and (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (LitInt 10)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 0))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 2)) (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 9)))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 3)) (and (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 9)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.initial__value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.counter))) _module.AtomicCounter.value))))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 4)) (and (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 9)))) (<= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.initial__value))) 1) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.counter))) _module.AtomicCounter.value))))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 5)) (and (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 9)))) (and (<= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.initial__value))) 1) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.final__value)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.final__value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.counter))) _module.AtomicCounter.value)))))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 6)) (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 9)))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 7)) (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 11)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 10)))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 8)) (and (= (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (LitInt 10)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i)))) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 10)))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 9)) (and (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (LitInt 0)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.i))) (LitInt 10))))) (=> (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.programCounter))) (LitInt 10)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@30 this@@30) _module.IncrementerMethod.remaining))) _module.Remaining.value))) (LitInt 0))))))
+ :qid |_07CounterThreadOwnershipdfy.655:19|
+ :skolemid |2162|
  :pattern ( (_module.IncrementerMethod.localUserInv $Heap@@30 this@@30) ($IsGoodHeap $Heap@@30))
 ))))
 (assert (forall ((v@@3 T@U) (t0@@2 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SetType v@@3 (TSet t0@@2) h@@3) (forall ((bx@@21 T@U) ) (!  (=> (|Set#IsMember| v@@3 bx@@21) ($IsAllocBox bx@@21 t0@@2 h@@3))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@3 bx@@21))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@3 (TSet t0@@2) h@@3))
 )))
 (assert (forall ((t@@3 T@U) ) (! (= (Inv0_TSet (TSet t@@3)) t@@3)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@3))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Tag (TSet t@@4)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@4))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert (forall (($h@@29 T@U) ($o@@28 T@U) ) (!  (=> (and ($IsGoodHeap $h@@29) (and (or (not (= $o@@28 null)) (not true)) (= (dtype $o@@28) Tclass._module.AtomicCounter?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@29 $o@@28) _module.AtomicCounter.value)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1648|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@29 $o@@28) _module.AtomicCounter.value)))
 )))
 (assert (forall (($h@@30 T@U) ($o@@29 T@U) ) (!  (=> (and ($IsGoodHeap $h@@30) (and (or (not (= $o@@29 null)) (not true)) (= (dtype $o@@29) Tclass._module.Remaining?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@30 $o@@29) _module.Remaining.value)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1886|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@30 $o@@29) _module.Remaining.value)))
 )))
 (assert (forall (($h@@31 T@U) ($o@@30 T@U) ) (!  (=> (and ($IsGoodHeap $h@@31) (and (or (not (= $o@@30 null)) (not true)) (= (dtype $o@@30) Tclass._module.IncrementerMethod?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@31 $o@@30) _module.IncrementerMethod.programCounter)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2124|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@31 $o@@30) _module.IncrementerMethod.programCounter)))
 )))
 (assert (forall (($h@@32 T@U) ($o@@31 T@U) ) (!  (=> (and ($IsGoodHeap $h@@32) (and (or (not (= $o@@31 null)) (not true)) (= (dtype $o@@31) Tclass._module.IncrementerMethod?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@32 $o@@31) _module.IncrementerMethod.initial__value)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2130|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@32 $o@@31) _module.IncrementerMethod.initial__value)))
 )))
 (assert (forall (($h@@33 T@U) ($o@@32 T@U) ) (!  (=> (and ($IsGoodHeap $h@@33) (and (or (not (= $o@@32 null)) (not true)) (= (dtype $o@@32) Tclass._module.IncrementerMethod?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@33 $o@@32) _module.IncrementerMethod.final__value)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2132|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@33 $o@@32) _module.IncrementerMethod.final__value)))
 )))
 (assert (forall (($h@@34 T@U) ($o@@33 T@U) ) (!  (=> (and ($IsGoodHeap $h@@34) (and (or (not (= $o@@33 null)) (not true)) (= (dtype $o@@33) Tclass._module.IncrementerMethod?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@34 $o@@33) _module.IncrementerMethod.i)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2134|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@34 $o@@33) _module.IncrementerMethod.i)))
 )))
-(assert (forall (($h0 T@U) ($h1 T@U) (this@@31 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this@@31 null)) (not true)) ($Is refType this@@31 Tclass._module.Universe))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@34 T@U) ($f@@0 T@U) )  (=> (and (or (not (= $o@@34 null)) (not true)) (or (= $o@@34 this@@31) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this@@31) _module.Universe.content)) ($Box refType $o@@34)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@34) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@34) $f@@0)))) (= (_module.Universe.globalBaseInv $h0 this@@31) (_module.Universe.globalBaseInv $h1 this@@31))))
+(assert (forall (($h0 T@U) ($h1 T@U) (this@@31 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this@@31 null)) (not true)) ($Is refType this@@31 Tclass._module.Universe))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@34 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@34 null)) (not true)) (or (= $o@@34 this@@31) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this@@31) _module.Universe.content)) ($Box refType $o@@34)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@34) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@34) $f@@0)))
+ :qid |unknown.0:0|
+ :skolemid |494|
+)) (= (_module.Universe.globalBaseInv $h0 this@@31) (_module.Universe.globalBaseInv $h1 this@@31))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |495|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (_module.Universe.globalBaseInv $h1 this@@31))
 )))
 (assert (forall (($h@@35 T@U) ($o@@35 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@35) (and (or (not (= $o@@35 null)) (not true)) ($Is refType $o@@35 Tclass._module.OwnedObject?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@35 $o@@35) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@35 $o@@35) _module.OwnedObject.owner)) Tclass._module.Object $h@@35))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1292|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@35 $o@@35) _module.OwnedObject.owner)))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@31 T@U) (this@@32 T@U) ) (!  (=> (or (|_module.OwnedObject.localInv#canCall| $Heap@@31 this@@32) (and (< 4 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@31) (and (or (not (= this@@32 null)) (not true)) (and ($Is refType this@@32 Tclass._module.OwnedObject) ($IsAlloc refType this@@32 Tclass._module.OwnedObject $Heap@@31)))))) (and (and (|_module.Object.baseInv#canCall| $Heap@@31 this@@32) (=> (_module.Object.baseInv $Heap@@31 this@@32) (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@31 (_module.Object.universe this@@32)) _module.Universe.content)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@31 this@@32) _module.OwnedObject.owner)) (and (|_module.OwnedObject.baseUserInv#canCall| $Heap@@31 this@@32) (=> (_module.OwnedObject.baseUserInv $Heap@@31 this@@32) (|_module.OwnedObject.localUserInv#canCall| $Heap@@31 this@@32)))))) (= (_module.OwnedObject.localInv $Heap@@31 this@@32)  (and (and (and (_module.Object.baseInv $Heap@@31 this@@32) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@31 (_module.Object.universe this@@32)) _module.Universe.content)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@31 this@@32) _module.OwnedObject.owner))) (_module.OwnedObject.baseUserInv $Heap@@31 this@@32)) (_module.OwnedObject.localUserInv $Heap@@31 this@@32)))))
+ :qid |_07CounterThreadOwnershipdfy.327:19|
+ :skolemid |1303|
  :pattern ( (_module.OwnedObject.localInv $Heap@@31 this@@32) ($IsGoodHeap $Heap@@31))
 ))))
-(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (this@@33 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (and (or (not (= this@@33 null)) (not true)) (and ($Is refType this@@33 Tclass._module.Universe) ($IsAlloc refType this@@33 Tclass._module.Universe $h0@@0)))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@36 T@U) ($f@@1 T@U) )  (=> (and (or (not (= $o@@36 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@36) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@36) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@36) $f@@1)))) (= (_module.Universe.globalInv $h0@@0 this@@33) (_module.Universe.globalInv $h1@@0 this@@33))))
+(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (this@@33 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (and (or (not (= this@@33 null)) (not true)) (and ($Is refType this@@33 Tclass._module.Universe) ($IsAlloc refType this@@33 Tclass._module.Universe $h0@@0)))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@36 T@U) ($f@@1 T@U) ) (!  (=> (and (or (not (= $o@@36 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@36) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@36) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@36) $f@@1)))
+ :qid |unknown.0:0|
+ :skolemid |502|
+)) (= (_module.Universe.globalInv $h0@@0 this@@33) (_module.Universe.globalInv $h1@@0 this@@33))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |503|
  :pattern ( ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0) (_module.Universe.globalInv $h1@@0 this@@33))
 )))
-(assert (forall (($h0@@1 T@U) ($h1@@1 T@U) (this@@34 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@1) ($IsGoodHeap $h1@@1)) (and (or (not (= this@@34 null)) (not true)) (and ($Is refType this@@34 Tclass._module.Object) ($IsAlloc refType this@@34 Tclass._module.Object $h0@@1)))) (and ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1))) (=> (forall (($o@@37 T@U) ($f@@2 T@U) )  (=> (and (or (not (= $o@@37 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@37) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@37) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@1 $o@@37) $f@@2)))) (= (_module.Object.baseInv $h0@@1 this@@34) (_module.Object.baseInv $h1@@1 this@@34))))
+(assert (forall (($h0@@1 T@U) ($h1@@1 T@U) (this@@34 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@1) ($IsGoodHeap $h1@@1)) (and (or (not (= this@@34 null)) (not true)) (and ($Is refType this@@34 Tclass._module.Object) ($IsAlloc refType this@@34 Tclass._module.Object $h0@@1)))) (and ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1))) (=> (forall (($o@@37 T@U) ($f@@2 T@U) ) (!  (=> (and (or (not (= $o@@37 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@37) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@37) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@1 $o@@37) $f@@2)))
+ :qid |unknown.0:0|
+ :skolemid |967|
+)) (= (_module.Object.baseInv $h0@@1 this@@34) (_module.Object.baseInv $h1@@1 this@@34))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |968|
  :pattern ( ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1) (_module.Object.baseInv $h1@@1 this@@34))
 )))
-(assert (forall (($h0@@2 T@U) ($h1@@2 T@U) (this@@35 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@2) ($IsGoodHeap $h1@@2)) (and (or (not (= this@@35 null)) (not true)) (and ($Is refType this@@35 Tclass._module.Object) ($IsAlloc refType this@@35 Tclass._module.Object $h0@@2)))) (and ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2))) (=> (forall (($o@@38 T@U) ($f@@3 T@U) )  (=> (and (or (not (= $o@@38 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@38) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@38) $f@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@2 $o@@38) $f@@3)))) (= (_module.Object.objectGlobalInv $h0@@2 this@@35) (_module.Object.objectGlobalInv $h1@@2 this@@35))))
+(assert (forall (($h0@@2 T@U) ($h1@@2 T@U) (this@@35 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@2) ($IsGoodHeap $h1@@2)) (and (or (not (= this@@35 null)) (not true)) (and ($Is refType this@@35 Tclass._module.Object) ($IsAlloc refType this@@35 Tclass._module.Object $h0@@2)))) (and ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2))) (=> (forall (($o@@38 T@U) ($f@@3 T@U) ) (!  (=> (and (or (not (= $o@@38 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@38) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@38) $f@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@2 $o@@38) $f@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1001|
+)) (= (_module.Object.objectGlobalInv $h0@@2 this@@35) (_module.Object.objectGlobalInv $h1@@2 this@@35))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1002|
  :pattern ( ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2) (_module.Object.objectGlobalInv $h1@@2 this@@35))
 )))
-(assert (forall (($h0@@3 T@U) ($h1@@3 T@U) (this@@36 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@3) ($IsGoodHeap $h1@@3)) (and (or (not (= this@@36 null)) (not true)) (and ($Is refType this@@36 Tclass._module.Object) ($IsAlloc refType this@@36 Tclass._module.Object $h0@@3)))) (and ($IsHeapAnchor $h0@@3) ($HeapSucc $h0@@3 $h1@@3))) (=> (forall (($o@@39 T@U) ($f@@4 T@U) )  (=> (and (or (not (= $o@@39 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@3 $o@@39) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@3 $o@@39) $f@@4) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@3 $o@@39) $f@@4)))) (= (_module.Object.localInv $h0@@3 this@@36) (_module.Object.localInv $h1@@3 this@@36))))
+(assert (forall (($h0@@3 T@U) ($h1@@3 T@U) (this@@36 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@3) ($IsGoodHeap $h1@@3)) (and (or (not (= this@@36 null)) (not true)) (and ($Is refType this@@36 Tclass._module.Object) ($IsAlloc refType this@@36 Tclass._module.Object $h0@@3)))) (and ($IsHeapAnchor $h0@@3) ($HeapSucc $h0@@3 $h1@@3))) (=> (forall (($o@@39 T@U) ($f@@4 T@U) ) (!  (=> (and (or (not (= $o@@39 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@3 $o@@39) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@3 $o@@39) $f@@4) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@3 $o@@39) $f@@4)))
+ :qid |unknown.0:0|
+ :skolemid |1017|
+)) (= (_module.Object.localInv $h0@@3 this@@36) (_module.Object.localInv $h1@@3 this@@36))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1018|
  :pattern ( ($IsHeapAnchor $h0@@3) ($HeapSucc $h0@@3 $h1@@3) (_module.Object.localInv $h1@@3 this@@36))
 )))
-(assert (forall (($h0@@4 T@U) ($h1@@4 T@U) (this@@37 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@4) ($IsGoodHeap $h1@@4)) (and (or (not (= this@@37 null)) (not true)) (and ($Is refType this@@37 Tclass._module.Object) ($IsAlloc refType this@@37 Tclass._module.Object $h0@@4)))) (and ($IsHeapAnchor $h0@@4) ($HeapSucc $h0@@4 $h1@@4))) (=> (forall (($o@@40 T@U) ($f@@5 T@U) )  (=> (and (or (not (= $o@@40 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@4 $o@@40) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@4 $o@@40) $f@@5) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@4 $o@@40) $f@@5)))) (= (_module.Object.inv $h0@@4 this@@37) (_module.Object.inv $h1@@4 this@@37))))
+(assert (forall (($h0@@4 T@U) ($h1@@4 T@U) (this@@37 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@4) ($IsGoodHeap $h1@@4)) (and (or (not (= this@@37 null)) (not true)) (and ($Is refType this@@37 Tclass._module.Object) ($IsAlloc refType this@@37 Tclass._module.Object $h0@@4)))) (and ($IsHeapAnchor $h0@@4) ($HeapSucc $h0@@4 $h1@@4))) (=> (forall (($o@@40 T@U) ($f@@5 T@U) ) (!  (=> (and (or (not (= $o@@40 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@4 $o@@40) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@4 $o@@40) $f@@5) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@4 $o@@40) $f@@5)))
+ :qid |unknown.0:0|
+ :skolemid |1025|
+)) (= (_module.Object.inv $h0@@4 this@@37) (_module.Object.inv $h1@@4 this@@37))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1026|
  :pattern ( ($IsHeapAnchor $h0@@4) ($HeapSucc $h0@@4 $h1@@4) (_module.Object.inv $h1@@4 this@@37))
 )))
-(assert (forall (($h0@@5 T@U) ($h1@@5 T@U) (this@@38 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@5) ($IsGoodHeap $h1@@5)) (and (or (not (= this@@38 null)) (not true)) (and ($Is refType this@@38 Tclass._module.Thread) ($IsAlloc refType this@@38 Tclass._module.Thread $h0@@5)))) (and ($IsHeapAnchor $h0@@5) ($HeapSucc $h0@@5 $h1@@5))) (=> (forall (($o@@41 T@U) ($f@@6 T@U) )  (=> (and (or (not (= $o@@41 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@5 $o@@41) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@5 $o@@41) $f@@6) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@5 $o@@41) $f@@6)))) (= (_module.Thread.localInv $h0@@5 this@@38) (_module.Thread.localInv $h1@@5 this@@38))))
+(assert (forall (($h0@@5 T@U) ($h1@@5 T@U) (this@@38 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@5) ($IsGoodHeap $h1@@5)) (and (or (not (= this@@38 null)) (not true)) (and ($Is refType this@@38 Tclass._module.Thread) ($IsAlloc refType this@@38 Tclass._module.Thread $h0@@5)))) (and ($IsHeapAnchor $h0@@5) ($HeapSucc $h0@@5 $h1@@5))) (=> (forall (($o@@41 T@U) ($f@@6 T@U) ) (!  (=> (and (or (not (= $o@@41 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@5 $o@@41) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@5 $o@@41) $f@@6) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@5 $o@@41) $f@@6)))
+ :qid |unknown.0:0|
+ :skolemid |1084|
+)) (= (_module.Thread.localInv $h0@@5 this@@38) (_module.Thread.localInv $h1@@5 this@@38))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1085|
  :pattern ( ($IsHeapAnchor $h0@@5) ($HeapSucc $h0@@5 $h1@@5) (_module.Thread.localInv $h1@@5 this@@38))
 )))
-(assert (forall (($h0@@6 T@U) ($h1@@6 T@U) (this@@39 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@6) ($IsGoodHeap $h1@@6)) (and (or (not (= this@@39 null)) (not true)) (and ($Is refType this@@39 Tclass._module.Thread) ($IsAlloc refType this@@39 Tclass._module.Thread $h0@@6)))) (and ($IsHeapAnchor $h0@@6) ($HeapSucc $h0@@6 $h1@@6))) (=> (forall (($o@@42 T@U) ($f@@7 T@U) )  (=> (and (or (not (= $o@@42 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@6 $o@@42) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@6 $o@@42) $f@@7) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@6 $o@@42) $f@@7)))) (= (_module.Thread.inv $h0@@6 this@@39) (_module.Thread.inv $h1@@6 this@@39))))
+(assert (forall (($h0@@6 T@U) ($h1@@6 T@U) (this@@39 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@6) ($IsGoodHeap $h1@@6)) (and (or (not (= this@@39 null)) (not true)) (and ($Is refType this@@39 Tclass._module.Thread) ($IsAlloc refType this@@39 Tclass._module.Thread $h0@@6)))) (and ($IsHeapAnchor $h0@@6) ($HeapSucc $h0@@6 $h1@@6))) (=> (forall (($o@@42 T@U) ($f@@7 T@U) ) (!  (=> (and (or (not (= $o@@42 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@6 $o@@42) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@6 $o@@42) $f@@7) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@6 $o@@42) $f@@7)))
+ :qid |unknown.0:0|
+ :skolemid |1092|
+)) (= (_module.Thread.inv $h0@@6 this@@39) (_module.Thread.inv $h1@@6 this@@39))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1093|
  :pattern ( ($IsHeapAnchor $h0@@6) ($HeapSucc $h0@@6 $h1@@6) (_module.Thread.inv $h1@@6 this@@39))
 )))
-(assert (forall (($h0@@7 T@U) ($h1@@7 T@U) (this@@40 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@7) ($IsGoodHeap $h1@@7)) (and (or (not (= this@@40 null)) (not true)) (and ($Is refType this@@40 Tclass._module.OwnedObject) ($IsAlloc refType this@@40 Tclass._module.OwnedObject $h0@@7)))) (and ($IsHeapAnchor $h0@@7) ($HeapSucc $h0@@7 $h1@@7))) (=> (forall (($o@@43 T@U) ($f@@8 T@U) )  (=> (and (or (not (= $o@@43 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@7 $o@@43) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@7 $o@@43) $f@@8) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@7 $o@@43) $f@@8)))) (= (_module.OwnedObject.localInv $h0@@7 this@@40) (_module.OwnedObject.localInv $h1@@7 this@@40))))
+(assert (forall (($h0@@7 T@U) ($h1@@7 T@U) (this@@40 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@7) ($IsGoodHeap $h1@@7)) (and (or (not (= this@@40 null)) (not true)) (and ($Is refType this@@40 Tclass._module.OwnedObject) ($IsAlloc refType this@@40 Tclass._module.OwnedObject $h0@@7)))) (and ($IsHeapAnchor $h0@@7) ($HeapSucc $h0@@7 $h1@@7))) (=> (forall (($o@@43 T@U) ($f@@8 T@U) ) (!  (=> (and (or (not (= $o@@43 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@7 $o@@43) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@7 $o@@43) $f@@8) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@7 $o@@43) $f@@8)))
+ :qid |unknown.0:0|
+ :skolemid |1299|
+)) (= (_module.OwnedObject.localInv $h0@@7 this@@40) (_module.OwnedObject.localInv $h1@@7 this@@40))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1300|
  :pattern ( ($IsHeapAnchor $h0@@7) ($HeapSucc $h0@@7 $h1@@7) (_module.OwnedObject.localInv $h1@@7 this@@40))
 )))
-(assert (forall (($h0@@8 T@U) ($h1@@8 T@U) (this@@41 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@8) ($IsGoodHeap $h1@@8)) (and (or (not (= this@@41 null)) (not true)) (and ($Is refType this@@41 Tclass._module.OwnedObject) ($IsAlloc refType this@@41 Tclass._module.OwnedObject $h0@@8)))) (and ($IsHeapAnchor $h0@@8) ($HeapSucc $h0@@8 $h1@@8))) (=> (forall (($o@@44 T@U) ($f@@9 T@U) )  (=> (and (or (not (= $o@@44 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@8 $o@@44) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@8 $o@@44) $f@@9) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@8 $o@@44) $f@@9)))) (= (_module.OwnedObject.inv $h0@@8 this@@41) (_module.OwnedObject.inv $h1@@8 this@@41))))
+(assert (forall (($h0@@8 T@U) ($h1@@8 T@U) (this@@41 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@8) ($IsGoodHeap $h1@@8)) (and (or (not (= this@@41 null)) (not true)) (and ($Is refType this@@41 Tclass._module.OwnedObject) ($IsAlloc refType this@@41 Tclass._module.OwnedObject $h0@@8)))) (and ($IsHeapAnchor $h0@@8) ($HeapSucc $h0@@8 $h1@@8))) (=> (forall (($o@@44 T@U) ($f@@9 T@U) ) (!  (=> (and (or (not (= $o@@44 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@8 $o@@44) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@8 $o@@44) $f@@9) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@8 $o@@44) $f@@9)))
+ :qid |unknown.0:0|
+ :skolemid |1309|
+)) (= (_module.OwnedObject.inv $h0@@8 this@@41) (_module.OwnedObject.inv $h1@@8 this@@41))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1310|
  :pattern ( ($IsHeapAnchor $h0@@8) ($HeapSucc $h0@@8 $h1@@8) (_module.OwnedObject.inv $h1@@8 this@@41))
 )))
-(assert (forall (($h0@@9 T@U) ($h1@@9 T@U) (this@@42 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@9) ($IsGoodHeap $h1@@9)) (and (or (not (= this@@42 null)) (not true)) (and ($Is refType this@@42 Tclass._module.OwnedObject) ($IsAlloc refType this@@42 Tclass._module.OwnedObject $h0@@9)))) (and ($IsHeapAnchor $h0@@9) ($HeapSucc $h0@@9 $h1@@9))) (=> (forall (($o@@45 T@U) ($f@@10 T@U) )  (=> (and (or (not (= $o@@45 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@9 $o@@45) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@9 $o@@45) $f@@10) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@9 $o@@45) $f@@10)))) (= (_module.OwnedObject.baseUserInv $h0@@9 this@@42) (_module.OwnedObject.baseUserInv $h1@@9 this@@42))))
+(assert (forall (($h0@@9 T@U) ($h1@@9 T@U) (this@@42 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@9) ($IsGoodHeap $h1@@9)) (and (or (not (= this@@42 null)) (not true)) (and ($Is refType this@@42 Tclass._module.OwnedObject) ($IsAlloc refType this@@42 Tclass._module.OwnedObject $h0@@9)))) (and ($IsHeapAnchor $h0@@9) ($HeapSucc $h0@@9 $h1@@9))) (=> (forall (($o@@45 T@U) ($f@@10 T@U) ) (!  (=> (and (or (not (= $o@@45 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@9 $o@@45) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@9 $o@@45) $f@@10) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@9 $o@@45) $f@@10)))
+ :qid |unknown.0:0|
+ :skolemid |1385|
+)) (= (_module.OwnedObject.baseUserInv $h0@@9 this@@42) (_module.OwnedObject.baseUserInv $h1@@9 this@@42))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1386|
  :pattern ( ($IsHeapAnchor $h0@@9) ($HeapSucc $h0@@9 $h1@@9) (_module.OwnedObject.baseUserInv $h1@@9 this@@42))
 )))
-(assert (forall (($h0@@10 T@U) ($h1@@10 T@U) (this@@43 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@10) ($IsGoodHeap $h1@@10)) (and (or (not (= this@@43 null)) (not true)) (and ($Is refType this@@43 Tclass._module.OwnedObject) ($IsAlloc refType this@@43 Tclass._module.OwnedObject $h0@@10)))) (and ($IsHeapAnchor $h0@@10) ($HeapSucc $h0@@10 $h1@@10))) (=> (forall (($o@@46 T@U) ($f@@11 T@U) )  (=> (and (or (not (= $o@@46 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@10 $o@@46) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@10 $o@@46) $f@@11) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@10 $o@@46) $f@@11)))) (= (_module.OwnedObject.localUserInv $h0@@10 this@@43) (_module.OwnedObject.localUserInv $h1@@10 this@@43))))
+(assert (forall (($h0@@10 T@U) ($h1@@10 T@U) (this@@43 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@10) ($IsGoodHeap $h1@@10)) (and (or (not (= this@@43 null)) (not true)) (and ($Is refType this@@43 Tclass._module.OwnedObject) ($IsAlloc refType this@@43 Tclass._module.OwnedObject $h0@@10)))) (and ($IsHeapAnchor $h0@@10) ($HeapSucc $h0@@10 $h1@@10))) (=> (forall (($o@@46 T@U) ($f@@11 T@U) ) (!  (=> (and (or (not (= $o@@46 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@10 $o@@46) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@10 $o@@46) $f@@11) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@10 $o@@46) $f@@11)))
+ :qid |unknown.0:0|
+ :skolemid |1389|
+)) (= (_module.OwnedObject.localUserInv $h0@@10 this@@43) (_module.OwnedObject.localUserInv $h1@@10 this@@43))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1390|
  :pattern ( ($IsHeapAnchor $h0@@10) ($HeapSucc $h0@@10 $h1@@10) (_module.OwnedObject.localUserInv $h1@@10 this@@43))
 )))
-(assert (forall (($h0@@11 T@U) ($h1@@11 T@U) (this@@44 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@11) ($IsGoodHeap $h1@@11)) (and (or (not (= this@@44 null)) (not true)) (and ($Is refType this@@44 Tclass._module.OwnedObject) ($IsAlloc refType this@@44 Tclass._module.OwnedObject $h0@@11)))) (and ($IsHeapAnchor $h0@@11) ($HeapSucc $h0@@11 $h1@@11))) (=> (forall (($o@@47 T@U) ($f@@12 T@U) )  (=> (and (or (not (= $o@@47 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@11 $o@@47) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@11 $o@@47) $f@@12) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@11 $o@@47) $f@@12)))) (= (_module.OwnedObject.userInv $h0@@11 this@@44) (_module.OwnedObject.userInv $h1@@11 this@@44))))
+(assert (forall (($h0@@11 T@U) ($h1@@11 T@U) (this@@44 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@11) ($IsGoodHeap $h1@@11)) (and (or (not (= this@@44 null)) (not true)) (and ($Is refType this@@44 Tclass._module.OwnedObject) ($IsAlloc refType this@@44 Tclass._module.OwnedObject $h0@@11)))) (and ($IsHeapAnchor $h0@@11) ($HeapSucc $h0@@11 $h1@@11))) (=> (forall (($o@@47 T@U) ($f@@12 T@U) ) (!  (=> (and (or (not (= $o@@47 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@11 $o@@47) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@11 $o@@47) $f@@12) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@11 $o@@47) $f@@12)))
+ :qid |unknown.0:0|
+ :skolemid |1397|
+)) (= (_module.OwnedObject.userInv $h0@@11 this@@44) (_module.OwnedObject.userInv $h1@@11 this@@44))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1398|
  :pattern ( ($IsHeapAnchor $h0@@11) ($HeapSucc $h0@@11 $h1@@11) (_module.OwnedObject.userInv $h1@@11 this@@44))
 )))
-(assert (forall (($h0@@12 T@U) ($h1@@12 T@U) (this@@45 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@12) ($IsGoodHeap $h1@@12)) (and (or (not (= this@@45 null)) (not true)) (and ($Is refType this@@45 Tclass._module.AtomicCounter) ($IsAlloc refType this@@45 Tclass._module.AtomicCounter $h0@@12)))) (and ($IsHeapAnchor $h0@@12) ($HeapSucc $h0@@12 $h1@@12))) (=> (forall (($o@@48 T@U) ($f@@13 T@U) )  (=> (and (or (not (= $o@@48 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@12 $o@@48) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@12 $o@@48) $f@@13) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@12 $o@@48) $f@@13)))) (= (_module.AtomicCounter.baseUserInv $h0@@12 this@@45) (_module.AtomicCounter.baseUserInv $h1@@12 this@@45))))
+(assert (forall (($h0@@12 T@U) ($h1@@12 T@U) (this@@45 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@12) ($IsGoodHeap $h1@@12)) (and (or (not (= this@@45 null)) (not true)) (and ($Is refType this@@45 Tclass._module.AtomicCounter) ($IsAlloc refType this@@45 Tclass._module.AtomicCounter $h0@@12)))) (and ($IsHeapAnchor $h0@@12) ($HeapSucc $h0@@12 $h1@@12))) (=> (forall (($o@@48 T@U) ($f@@13 T@U) ) (!  (=> (and (or (not (= $o@@48 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@12 $o@@48) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@12 $o@@48) $f@@13) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@12 $o@@48) $f@@13)))
+ :qid |unknown.0:0|
+ :skolemid |1665|
+)) (= (_module.AtomicCounter.baseUserInv $h0@@12 this@@45) (_module.AtomicCounter.baseUserInv $h1@@12 this@@45))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1666|
  :pattern ( ($IsHeapAnchor $h0@@12) ($HeapSucc $h0@@12 $h1@@12) (_module.AtomicCounter.baseUserInv $h1@@12 this@@45))
 )))
-(assert (forall (($h0@@13 T@U) ($h1@@13 T@U) (this@@46 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@13) ($IsGoodHeap $h1@@13)) (and (or (not (= this@@46 null)) (not true)) (and ($Is refType this@@46 Tclass._module.AtomicCounter) ($IsAlloc refType this@@46 Tclass._module.AtomicCounter $h0@@13)))) (and ($IsHeapAnchor $h0@@13) ($HeapSucc $h0@@13 $h1@@13))) (=> (forall (($o@@49 T@U) ($f@@14 T@U) )  (=> (and (or (not (= $o@@49 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@13 $o@@49) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@13 $o@@49) $f@@14) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@13 $o@@49) $f@@14)))) (= (_module.AtomicCounter.localUserInv $h0@@13 this@@46) (_module.AtomicCounter.localUserInv $h1@@13 this@@46))))
+(assert (forall (($h0@@13 T@U) ($h1@@13 T@U) (this@@46 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@13) ($IsGoodHeap $h1@@13)) (and (or (not (= this@@46 null)) (not true)) (and ($Is refType this@@46 Tclass._module.AtomicCounter) ($IsAlloc refType this@@46 Tclass._module.AtomicCounter $h0@@13)))) (and ($IsHeapAnchor $h0@@13) ($HeapSucc $h0@@13 $h1@@13))) (=> (forall (($o@@49 T@U) ($f@@14 T@U) ) (!  (=> (and (or (not (= $o@@49 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@13 $o@@49) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@13 $o@@49) $f@@14) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@13 $o@@49) $f@@14)))
+ :qid |unknown.0:0|
+ :skolemid |1672|
+)) (= (_module.AtomicCounter.localUserInv $h0@@13 this@@46) (_module.AtomicCounter.localUserInv $h1@@13 this@@46))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1673|
  :pattern ( ($IsHeapAnchor $h0@@13) ($HeapSucc $h0@@13 $h1@@13) (_module.AtomicCounter.localUserInv $h1@@13 this@@46))
 )))
-(assert (forall (($h0@@14 T@U) ($h1@@14 T@U) (this@@47 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@14) ($IsGoodHeap $h1@@14)) (and (or (not (= this@@47 null)) (not true)) (and ($Is refType this@@47 Tclass._module.AtomicCounter) ($IsAlloc refType this@@47 Tclass._module.AtomicCounter $h0@@14)))) (and ($IsHeapAnchor $h0@@14) ($HeapSucc $h0@@14 $h1@@14))) (=> (forall (($o@@50 T@U) ($f@@15 T@U) )  (=> (and (or (not (= $o@@50 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@14 $o@@50) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@14 $o@@50) $f@@15) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@14 $o@@50) $f@@15)))) (= (_module.AtomicCounter.userInv $h0@@14 this@@47) (_module.AtomicCounter.userInv $h1@@14 this@@47))))
+(assert (forall (($h0@@14 T@U) ($h1@@14 T@U) (this@@47 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@14) ($IsGoodHeap $h1@@14)) (and (or (not (= this@@47 null)) (not true)) (and ($Is refType this@@47 Tclass._module.AtomicCounter) ($IsAlloc refType this@@47 Tclass._module.AtomicCounter $h0@@14)))) (and ($IsHeapAnchor $h0@@14) ($HeapSucc $h0@@14 $h1@@14))) (=> (forall (($o@@50 T@U) ($f@@15 T@U) ) (!  (=> (and (or (not (= $o@@50 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@14 $o@@50) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@14 $o@@50) $f@@15) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@14 $o@@50) $f@@15)))
+ :qid |unknown.0:0|
+ :skolemid |1679|
+)) (= (_module.AtomicCounter.userInv $h0@@14 this@@47) (_module.AtomicCounter.userInv $h1@@14 this@@47))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1680|
  :pattern ( ($IsHeapAnchor $h0@@14) ($HeapSucc $h0@@14 $h1@@14) (_module.AtomicCounter.userInv $h1@@14 this@@47))
 )))
-(assert (forall (($h0@@15 T@U) ($h1@@15 T@U) (this@@48 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@15) ($IsGoodHeap $h1@@15)) (and (or (not (= this@@48 null)) (not true)) (and ($Is refType this@@48 Tclass._module.Remaining) ($IsAlloc refType this@@48 Tclass._module.Remaining $h0@@15)))) (and ($IsHeapAnchor $h0@@15) ($HeapSucc $h0@@15 $h1@@15))) (=> (forall (($o@@51 T@U) ($f@@16 T@U) )  (=> (and (or (not (= $o@@51 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@15 $o@@51) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@15 $o@@51) $f@@16) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@15 $o@@51) $f@@16)))) (= (_module.Remaining.baseUserInv $h0@@15 this@@48) (_module.Remaining.baseUserInv $h1@@15 this@@48))))
+(assert (forall (($h0@@15 T@U) ($h1@@15 T@U) (this@@48 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@15) ($IsGoodHeap $h1@@15)) (and (or (not (= this@@48 null)) (not true)) (and ($Is refType this@@48 Tclass._module.Remaining) ($IsAlloc refType this@@48 Tclass._module.Remaining $h0@@15)))) (and ($IsHeapAnchor $h0@@15) ($HeapSucc $h0@@15 $h1@@15))) (=> (forall (($o@@51 T@U) ($f@@16 T@U) ) (!  (=> (and (or (not (= $o@@51 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@15 $o@@51) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@15 $o@@51) $f@@16) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@15 $o@@51) $f@@16)))
+ :qid |unknown.0:0|
+ :skolemid |1903|
+)) (= (_module.Remaining.baseUserInv $h0@@15 this@@48) (_module.Remaining.baseUserInv $h1@@15 this@@48))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1904|
  :pattern ( ($IsHeapAnchor $h0@@15) ($HeapSucc $h0@@15 $h1@@15) (_module.Remaining.baseUserInv $h1@@15 this@@48))
 )))
-(assert (forall (($h0@@16 T@U) ($h1@@16 T@U) (this@@49 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@16) ($IsGoodHeap $h1@@16)) (and (or (not (= this@@49 null)) (not true)) (and ($Is refType this@@49 Tclass._module.Remaining) ($IsAlloc refType this@@49 Tclass._module.Remaining $h0@@16)))) (and ($IsHeapAnchor $h0@@16) ($HeapSucc $h0@@16 $h1@@16))) (=> (forall (($o@@52 T@U) ($f@@17 T@U) )  (=> (and (or (not (= $o@@52 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@16 $o@@52) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@16 $o@@52) $f@@17) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@16 $o@@52) $f@@17)))) (= (_module.Remaining.localUserInv $h0@@16 this@@49) (_module.Remaining.localUserInv $h1@@16 this@@49))))
+(assert (forall (($h0@@16 T@U) ($h1@@16 T@U) (this@@49 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@16) ($IsGoodHeap $h1@@16)) (and (or (not (= this@@49 null)) (not true)) (and ($Is refType this@@49 Tclass._module.Remaining) ($IsAlloc refType this@@49 Tclass._module.Remaining $h0@@16)))) (and ($IsHeapAnchor $h0@@16) ($HeapSucc $h0@@16 $h1@@16))) (=> (forall (($o@@52 T@U) ($f@@17 T@U) ) (!  (=> (and (or (not (= $o@@52 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@16 $o@@52) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@16 $o@@52) $f@@17) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@16 $o@@52) $f@@17)))
+ :qid |unknown.0:0|
+ :skolemid |1910|
+)) (= (_module.Remaining.localUserInv $h0@@16 this@@49) (_module.Remaining.localUserInv $h1@@16 this@@49))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1911|
  :pattern ( ($IsHeapAnchor $h0@@16) ($HeapSucc $h0@@16 $h1@@16) (_module.Remaining.localUserInv $h1@@16 this@@49))
 )))
-(assert (forall (($h0@@17 T@U) ($h1@@17 T@U) (this@@50 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@17) ($IsGoodHeap $h1@@17)) (and (or (not (= this@@50 null)) (not true)) (and ($Is refType this@@50 Tclass._module.Remaining) ($IsAlloc refType this@@50 Tclass._module.Remaining $h0@@17)))) (and ($IsHeapAnchor $h0@@17) ($HeapSucc $h0@@17 $h1@@17))) (=> (forall (($o@@53 T@U) ($f@@18 T@U) )  (=> (and (or (not (= $o@@53 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@17 $o@@53) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@17 $o@@53) $f@@18) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@17 $o@@53) $f@@18)))) (= (_module.Remaining.userInv $h0@@17 this@@50) (_module.Remaining.userInv $h1@@17 this@@50))))
+(assert (forall (($h0@@17 T@U) ($h1@@17 T@U) (this@@50 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@17) ($IsGoodHeap $h1@@17)) (and (or (not (= this@@50 null)) (not true)) (and ($Is refType this@@50 Tclass._module.Remaining) ($IsAlloc refType this@@50 Tclass._module.Remaining $h0@@17)))) (and ($IsHeapAnchor $h0@@17) ($HeapSucc $h0@@17 $h1@@17))) (=> (forall (($o@@53 T@U) ($f@@18 T@U) ) (!  (=> (and (or (not (= $o@@53 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@17 $o@@53) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@17 $o@@53) $f@@18) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@17 $o@@53) $f@@18)))
+ :qid |unknown.0:0|
+ :skolemid |1917|
+)) (= (_module.Remaining.userInv $h0@@17 this@@50) (_module.Remaining.userInv $h1@@17 this@@50))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1918|
  :pattern ( ($IsHeapAnchor $h0@@17) ($HeapSucc $h0@@17 $h1@@17) (_module.Remaining.userInv $h1@@17 this@@50))
 )))
-(assert (forall (($h0@@18 T@U) ($h1@@18 T@U) (this@@51 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@18) ($IsGoodHeap $h1@@18)) (and (or (not (= this@@51 null)) (not true)) (and ($Is refType this@@51 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@51 Tclass._module.IncrementerMethod $h0@@18)))) (and ($IsHeapAnchor $h0@@18) ($HeapSucc $h0@@18 $h1@@18))) (=> (forall (($o@@54 T@U) ($f@@19 T@U) )  (=> (and (or (not (= $o@@54 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@18 $o@@54) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@18 $o@@54) $f@@19) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@18 $o@@54) $f@@19)))) (= (_module.IncrementerMethod.baseUserInv $h0@@18 this@@51) (_module.IncrementerMethod.baseUserInv $h1@@18 this@@51))))
+(assert (forall (($h0@@18 T@U) ($h1@@18 T@U) (this@@51 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@18) ($IsGoodHeap $h1@@18)) (and (or (not (= this@@51 null)) (not true)) (and ($Is refType this@@51 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@51 Tclass._module.IncrementerMethod $h0@@18)))) (and ($IsHeapAnchor $h0@@18) ($HeapSucc $h0@@18 $h1@@18))) (=> (forall (($o@@54 T@U) ($f@@19 T@U) ) (!  (=> (and (or (not (= $o@@54 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@18 $o@@54) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@18 $o@@54) $f@@19) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@18 $o@@54) $f@@19)))
+ :qid |unknown.0:0|
+ :skolemid |2151|
+)) (= (_module.IncrementerMethod.baseUserInv $h0@@18 this@@51) (_module.IncrementerMethod.baseUserInv $h1@@18 this@@51))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2152|
  :pattern ( ($IsHeapAnchor $h0@@18) ($HeapSucc $h0@@18 $h1@@18) (_module.IncrementerMethod.baseUserInv $h1@@18 this@@51))
 )))
-(assert (forall (($h0@@19 T@U) ($h1@@19 T@U) (this@@52 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@19) ($IsGoodHeap $h1@@19)) (and (or (not (= this@@52 null)) (not true)) (and ($Is refType this@@52 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@52 Tclass._module.IncrementerMethod $h0@@19)))) (and ($IsHeapAnchor $h0@@19) ($HeapSucc $h0@@19 $h1@@19))) (=> (forall (($o@@55 T@U) ($f@@20 T@U) )  (=> (and (or (not (= $o@@55 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@19 $o@@55) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@19 $o@@55) $f@@20) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@19 $o@@55) $f@@20)))) (= (_module.IncrementerMethod.localUserInv $h0@@19 this@@52) (_module.IncrementerMethod.localUserInv $h1@@19 this@@52))))
+(assert (forall (($h0@@19 T@U) ($h1@@19 T@U) (this@@52 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@19) ($IsGoodHeap $h1@@19)) (and (or (not (= this@@52 null)) (not true)) (and ($Is refType this@@52 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@52 Tclass._module.IncrementerMethod $h0@@19)))) (and ($IsHeapAnchor $h0@@19) ($HeapSucc $h0@@19 $h1@@19))) (=> (forall (($o@@55 T@U) ($f@@20 T@U) ) (!  (=> (and (or (not (= $o@@55 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@19 $o@@55) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@19 $o@@55) $f@@20) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@19 $o@@55) $f@@20)))
+ :qid |unknown.0:0|
+ :skolemid |2158|
+)) (= (_module.IncrementerMethod.localUserInv $h0@@19 this@@52) (_module.IncrementerMethod.localUserInv $h1@@19 this@@52))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2159|
  :pattern ( ($IsHeapAnchor $h0@@19) ($HeapSucc $h0@@19 $h1@@19) (_module.IncrementerMethod.localUserInv $h1@@19 this@@52))
 )))
-(assert (forall (($h0@@20 T@U) ($h1@@20 T@U) (this@@53 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@20) ($IsGoodHeap $h1@@20)) (and (or (not (= this@@53 null)) (not true)) (and ($Is refType this@@53 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@53 Tclass._module.IncrementerMethod $h0@@20)))) (and ($IsHeapAnchor $h0@@20) ($HeapSucc $h0@@20 $h1@@20))) (=> (forall (($o@@56 T@U) ($f@@21 T@U) )  (=> (and (or (not (= $o@@56 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@20 $o@@56) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@20 $o@@56) $f@@21) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@20 $o@@56) $f@@21)))) (= (_module.IncrementerMethod.userInv $h0@@20 this@@53) (_module.IncrementerMethod.userInv $h1@@20 this@@53))))
+(assert (forall (($h0@@20 T@U) ($h1@@20 T@U) (this@@53 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@20) ($IsGoodHeap $h1@@20)) (and (or (not (= this@@53 null)) (not true)) (and ($Is refType this@@53 Tclass._module.IncrementerMethod) ($IsAlloc refType this@@53 Tclass._module.IncrementerMethod $h0@@20)))) (and ($IsHeapAnchor $h0@@20) ($HeapSucc $h0@@20 $h1@@20))) (=> (forall (($o@@56 T@U) ($f@@21 T@U) ) (!  (=> (and (or (not (= $o@@56 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@20 $o@@56) alloc)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@20 $o@@56) $f@@21) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@20 $o@@56) $f@@21)))
+ :qid |unknown.0:0|
+ :skolemid |2165|
+)) (= (_module.IncrementerMethod.userInv $h0@@20 this@@53) (_module.IncrementerMethod.userInv $h1@@20 this@@53))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2166|
  :pattern ( ($IsHeapAnchor $h0@@20) ($HeapSucc $h0@@20 $h1@@20) (_module.IncrementerMethod.userInv $h1@@20 this@@53))
 )))
 (assert (forall ((bx@@22 T@U) (t@@5 T@U) ) (!  (=> ($IsBox bx@@22 (TSet t@@5)) (and (= ($Box SetType ($Unbox SetType bx@@22)) bx@@22) ($Is SetType ($Unbox SetType bx@@22) (TSet t@@5))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@22 (TSet t@@5)))
 )))
 (assert (forall (($o@@57 T@U) ) (!  (=> ($Is refType $o@@57 Tclass._module.Thread?) ($Is refType $o@@57 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3518|
  :pattern ( ($Is refType $o@@57 Tclass._module.Thread?))
 )))
 (assert (forall ((bx@@23 T@U) ) (!  (=> ($IsBox bx@@23 Tclass._module.Thread?) ($IsBox bx@@23 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3516|
  :pattern ( ($IsBox bx@@23 Tclass._module.Thread?))
 )))
 (assert (forall (($o@@58 T@U) ) (!  (=> ($Is refType $o@@58 Tclass._module.OwnedObject?) ($Is refType $o@@58 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3522|
  :pattern ( ($Is refType $o@@58 Tclass._module.OwnedObject?))
 )))
 (assert (forall ((bx@@24 T@U) ) (!  (=> ($IsBox bx@@24 Tclass._module.OwnedObject?) ($IsBox bx@@24 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3520|
  :pattern ( ($IsBox bx@@24 Tclass._module.OwnedObject?))
 )))
 (assert (forall (($o@@59 T@U) ) (!  (=> ($Is refType $o@@59 Tclass._module.AtomicCounter?) ($Is refType $o@@59 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3530|
  :pattern ( ($Is refType $o@@59 Tclass._module.AtomicCounter?))
 )))
 (assert (forall ((bx@@25 T@U) ) (!  (=> ($IsBox bx@@25 Tclass._module.AtomicCounter?) ($IsBox bx@@25 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3528|
  :pattern ( ($IsBox bx@@25 Tclass._module.AtomicCounter?))
 )))
 (assert (forall (($o@@60 T@U) ) (!  (=> ($Is refType $o@@60 Tclass._module.Remaining?) ($Is refType $o@@60 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3534|
  :pattern ( ($Is refType $o@@60 Tclass._module.Remaining?))
 )))
 (assert (forall ((bx@@26 T@U) ) (!  (=> ($IsBox bx@@26 Tclass._module.Remaining?) ($IsBox bx@@26 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3532|
  :pattern ( ($IsBox bx@@26 Tclass._module.Remaining?))
 )))
 (assert (forall (($o@@61 T@U) ) (!  (=> ($Is refType $o@@61 Tclass._module.IncrementerMethod?) ($Is refType $o@@61 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3538|
  :pattern ( ($Is refType $o@@61 Tclass._module.IncrementerMethod?))
 )))
 (assert (forall ((bx@@27 T@U) ) (!  (=> ($IsBox bx@@27 Tclass._module.IncrementerMethod?) ($IsBox bx@@27 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |3536|
  :pattern ( ($IsBox bx@@27 Tclass._module.IncrementerMethod?))
 )))
 (assert (= (Tag Tclass._module.Universe) Tagclass._module.Universe))
@@ -773,45 +1168,73 @@
 (assert (= (Tag Tclass._module.IncrementerMethod) Tagclass._module.IncrementerMethod))
 (assert (= (TagFamily Tclass._module.IncrementerMethod) tytagFamily$IncrementerMethod))
 (assert (forall (($h@@36 T@U) ($o@@62 T@U) ) (!  (=> (and ($IsGoodHeap $h@@36) (and (or (not (= $o@@62 null)) (not true)) ($Is refType $o@@62 Tclass._module.OwnedObject?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@36 $o@@62) _module.OwnedObject.owner)) Tclass._module.Object))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1291|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@36 $o@@62) _module.OwnedObject.owner)))
 )))
 (assert (forall (($o@@63 T@U) ) (! (= ($Is refType $o@@63 Tclass._module.Universe?)  (or (= $o@@63 null) (implements$_module.Universe (dtype $o@@63))))
+ :qid |unknown.0:0|
+ :skolemid |490|
  :pattern ( ($Is refType $o@@63 Tclass._module.Universe?))
 )))
 (assert (forall (($o@@64 T@U) ) (! (= ($Is refType $o@@64 Tclass._module.Object?)  (or (= $o@@64 null) (implements$_module.Object (dtype $o@@64))))
+ :qid |unknown.0:0|
+ :skolemid |963|
  :pattern ( ($Is refType $o@@64 Tclass._module.Object?))
 )))
 (assert (forall (($o@@65 T@U) ) (! (= ($Is refType $o@@65 Tclass._module.OwnedObject?)  (or (= $o@@65 null) (implements$_module.OwnedObject (dtype $o@@65))))
+ :qid |unknown.0:0|
+ :skolemid |1287|
  :pattern ( ($Is refType $o@@65 Tclass._module.OwnedObject?))
 )))
 (assert (forall (($h@@37 T@U) ($o@@66 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@37) (and (or (not (= $o@@66 null)) (not true)) ($Is refType $o@@66 Tclass._module.Universe?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@37 $o@@66) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@37 $o@@66) _module.Universe.content)) (TSet Tclass._module.Object) $h@@37))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |493|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@37 $o@@66) _module.Universe.content)))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@7)) (Lit BoxType ($Box T@@5 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@7)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@32 T@U) (this@@54 T@U) ) (!  (=> (or (|_module.AtomicCounter.userInv#canCall| $Heap@@32 this@@54) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@32) (and (or (not (= this@@54 null)) (not true)) (and ($Is refType this@@54 Tclass._module.AtomicCounter) ($IsAlloc refType this@@54 Tclass._module.AtomicCounter $Heap@@32)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U true))) (|_module.AtomicCounter.localUserInv#canCall| $Heap@@32 this@@54)) (= (_module.AtomicCounter.userInv $Heap@@32 this@@54)  (and true (_module.AtomicCounter.localUserInv $Heap@@32 this@@54)))))
+ :qid |_07CounterThreadOwnershipdfy.497:19|
+ :skolemid |1683|
  :pattern ( (_module.AtomicCounter.userInv $Heap@@32 this@@54) ($IsGoodHeap $Heap@@32))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@33 T@U) (this@@55 T@U) ) (!  (=> (or (|_module.Remaining.userInv#canCall| $Heap@@33 this@@55) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@33) (and (or (not (= this@@55 null)) (not true)) (and ($Is refType this@@55 Tclass._module.Remaining) ($IsAlloc refType this@@55 Tclass._module.Remaining $Heap@@33)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U true))) (|_module.Remaining.localUserInv#canCall| $Heap@@33 this@@55)) (= (_module.Remaining.userInv $Heap@@33 this@@55)  (and true (_module.Remaining.localUserInv $Heap@@33 this@@55)))))
+ :qid |_07CounterThreadOwnershipdfy.558:19|
+ :skolemid |1921|
  :pattern ( (_module.Remaining.userInv $Heap@@33 this@@55) ($IsGoodHeap $Heap@@33))
 ))))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@34 T@U) (this@@56 T@U) ) (!  (=> (or (|_module.Thread.localInv#canCall| $Heap@@34 this@@56) (and (< 4 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@34) (and (or (not (= this@@56 null)) (not true)) (and ($Is refType this@@56 Tclass._module.Thread) ($IsAlloc refType this@@56 Tclass._module.Thread $Heap@@34)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U true))) (|_module.Object.baseInv#canCall| $Heap@@34 this@@56)) (= (_module.Thread.localInv $Heap@@34 this@@56)  (and true (_module.Object.baseInv $Heap@@34 this@@56)))))
+ :qid |_07CounterThreadOwnershipdfy.284:19|
+ :skolemid |1088|
  :pattern ( (_module.Thread.localInv $Heap@@34 this@@56) ($IsGoodHeap $Heap@@34))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@35 T@U) (this@@57 T@U) ) (!  (=> (or (|_module.Thread.inv#canCall| $Heap@@35 this@@57) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@35) (and (or (not (= this@@57 null)) (not true)) (and ($Is refType this@@57 Tclass._module.Thread) ($IsAlloc refType this@@57 Tclass._module.Thread $Heap@@35)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U true))) (|_module.Thread.localInv#canCall| $Heap@@35 this@@57)) (= (_module.Thread.inv $Heap@@35 this@@57)  (and true (_module.Thread.localInv $Heap@@35 this@@57)))))
+ :qid |_07CounterThreadOwnershipdfy.287:19|
+ :skolemid |1096|
  :pattern ( (_module.Thread.inv $Heap@@35 this@@57) ($IsGoodHeap $Heap@@35))
 ))))
 (assert (forall (($h@@38 T@U) ($o@@67 T@U) ) (!  (=> (and ($IsGoodHeap $h@@38) (and (or (not (= $o@@67 null)) (not true)) ($Is refType $o@@67 Tclass._module.Universe?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@38 $o@@67) _module.Universe.content)) (TSet Tclass._module.Object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |492|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@38 $o@@67) _module.Universe.content)))
 )))
 (assert (forall ((h@@4 T@U) (v@@4 T@U) ) (! ($IsAlloc intType v@@4 TInt h@@4)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@4 TInt h@@4))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@5 TInt))
 )))
 (push 1)
@@ -820,6 +1243,7 @@
 (declare-fun $Heap@@36 () T@U)
 (declare-fun this@@58 () T@U)
 (declare-fun |running#0| () T@U)
+(set-info :boogie-vc-id CheckWellFormed$$_module.IncrementerMethod.Run)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

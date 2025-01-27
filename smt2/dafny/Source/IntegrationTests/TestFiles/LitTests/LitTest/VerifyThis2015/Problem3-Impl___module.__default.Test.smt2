@@ -103,16 +103,22 @@
 (declare-fun |lambda#0| (T@U T@U T@U T@U Int Int T@U) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSeq alloc allocName Tagclass._module.DoublyLinkedList Tagclass._module.Node Tagclass._module.DoublyLinkedList? Tagclass._module.Node? class._module.Node? class._module.DoublyLinkedList? tytagFamily$DoublyLinkedList tytagFamily$Node field$Nodes field$L field$R)
@@ -120,31 +126,47 @@
 (assert (= (FDim alloc) 0))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((s T@U) (v T@U) (x@@2 T@U) ) (! (= (|Seq#Contains| (|Seq#Build| s v) x@@2)  (or (= v x@@2) (|Seq#Contains| s x@@2)))
+ :qid |DafnyPreludebpl.1197:15|
+ :skolemid |234|
  :pattern ( (|Seq#Contains| (|Seq#Build| s v) x@@2))
 )))
 (assert (forall ((x@@3 T@U) ) (!  (not (|Seq#Contains| |Seq#Empty| x@@3))
+ :qid |DafnyPreludebpl.1188:15|
+ :skolemid |232|
  :pattern ( (|Seq#Contains| |Seq#Empty| x@@3))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((s@@0 T@U) (v@@0 T@U) (n Int) ) (!  (=> (and (<= 0 n) (<= n (|Seq#Length| s@@0))) (= (|Seq#Drop| (|Seq#Build| s@@0 v@@0) n) (|Seq#Build| (|Seq#Drop| s@@0 n) v@@0)))
+ :qid |DafnyPreludebpl.1288:15|
+ :skolemid |254|
  :pattern ( (|Seq#Drop| (|Seq#Build| s@@0 v@@0) n))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Node?)  (or (= $o null) (= (dtype $o) Tclass._module.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |630|
  :pattern ( ($Is refType $o Tclass._module.Node?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.DoublyLinkedList?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.DoublyLinkedList?)))
+ :qid |unknown.0:0|
+ :skolemid |638|
  :pattern ( ($Is refType $o@@0 Tclass._module.DoublyLinkedList?))
 )))
 (assert (forall ((s@@1 T@U) (t T@U) (n@@0 Int) ) (!  (=> (= n@@0 (|Seq#Length| s@@1)) (and (= (|Seq#Take| (|Seq#Append| s@@1 t) n@@0) s@@1) (= (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0) t)))
+ :qid |DafnyPreludebpl.1263:15|
+ :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@1 t) n@@0))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Node $h) ($IsAlloc refType |c#0| Tclass._module.Node? $h))
+ :qid |unknown.0:0|
+ :skolemid |637|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Node $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Node? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.DoublyLinkedList $h@@0) ($IsAlloc refType |c#0@@0| Tclass._module.DoublyLinkedList? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |794|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.DoublyLinkedList $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.DoublyLinkedList? $h@@0))
 )))
@@ -158,173 +180,291 @@
 (assert (= (FieldOfDecl class._module.Node? field$R) _module.Node.R))
 (assert  (not ($IsGhostField _module.Node.R)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@1 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@1 Tclass._module.Node? $h@@1)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |631|
  :pattern ( ($IsAlloc refType $o@@1 Tclass._module.Node? $h@@1))
 )))
 (assert (forall (($o@@2 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass._module.DoublyLinkedList? $h@@2)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |639|
  :pattern ( ($IsAlloc refType $o@@2 Tclass._module.DoublyLinkedList? $h@@2))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((s@@2 T@U) (n@@1 Int) ) (!  (=> (= n@@1 0) (= (|Seq#Drop| s@@2 n@@1) s@@2))
+ :qid |DafnyPreludebpl.1293:15|
+ :skolemid |255|
  :pattern ( (|Seq#Drop| s@@2 n@@1))
 )))
 (assert (forall ((x@@4 Int) ) (! (= (LitInt x@@4) x@@4)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@4))
 )))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= (Lit T x@@5) x@@5)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@5))
 )))
 (assert (= (Ctor SeqType) 7))
 (assert (forall ((s@@3 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> (and ($Is SeqType s@@3 (TSeq t@@0)) ($IsBox bx t@@0)) ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
+ :qid |DafnyPreludebpl.1309:15|
+ :skolemid |258|
  :pattern ( ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
 )))
 (assert (forall ((s@@4 T@U) (n@@2 Int) (j Int) ) (!  (=> (and (and (<= 0 j) (< j n@@2)) (< j (|Seq#Length| s@@4))) (= (|Seq#Index| (|Seq#Take| s@@4 n@@2) j) (|Seq#Index| s@@4 j)))
+ :qid |DafnyPreludebpl.1242:15|
  :weight 25
+ :skolemid |245|
  :pattern ( (|Seq#Index| (|Seq#Take| s@@4 n@@2) j))
  :pattern ( (|Seq#Index| s@@4 j) (|Seq#Take| s@@4 n@@2))
 )))
 (assert (forall ((s@@5 T@U) (n@@3 Int) ) (!  (=> (and (<= 0 n@@3) (<= n@@3 (|Seq#Length| s@@5))) (= (|Seq#Length| (|Seq#Drop| s@@5 n@@3)) (- (|Seq#Length| s@@5) n@@3)))
+ :qid |DafnyPreludebpl.1249:15|
+ :skolemid |246|
  :pattern ( (|Seq#Length| (|Seq#Drop| s@@5 n@@3)))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j@@0 Int) ) (!  (=> (and (<= 0 j@@0) (< j@@0 (|Seq#Length| s0))) (= (|Seq#Index| s0 j@@0) (|Seq#Index| s1 j@@0)))
+ :qid |DafnyPreludebpl.1221:19|
+ :skolemid |239|
  :pattern ( (|Seq#Index| s0 j@@0))
  :pattern ( (|Seq#Index| s1 j@@0))
 ))))
+ :qid |DafnyPreludebpl.1217:15|
+ :skolemid |240|
  :pattern ( (|Seq#Equal| s0 s1))
 )))
 (assert (forall ((x@@6 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@6))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((s@@6 T@U) (v@@1 T@U) ) (! (= (|Seq#Length| (|Seq#Build| s@@6 v@@1)) (+ 1 (|Seq#Length| s@@6)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |224|
  :pattern ( (|Seq#Build| s@@6 v@@1))
 )))
 (assert (forall ((v@@2 T@U) (t@@1 T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@2) t@@1 h@@0) ($IsAlloc T@@1 v@@2 t@@1 h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@2) t@@1 h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@0 T@U) (t@@2 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@0 t@@2 h@@1) ($IsAllocBox bx@@0 t@@2 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@0 t@@2 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@3 T@U) (t@@3 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@3 t@@3 h@@2) ($IsAlloc T@@2 v@@3 t@@3 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@3 t@@3 h@@2))
 )))
 (assert (forall ((s@@7 T@U) (n@@4 Int) (j@@1 Int) ) (!  (=> (and (and (<= 0 n@@4) (<= 0 j@@1)) (< j@@1 (- (|Seq#Length| s@@7) n@@4))) (= (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1) (|Seq#Index| s@@7 (+ j@@1 n@@4))))
+ :qid |DafnyPreludebpl.1253:15|
  :weight 25
+ :skolemid |247|
  :pattern ( (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1))
 )))
 (assert (forall (($h@@3 T@U) ($o@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@3 null)) (not true)) (= (dtype $o@@3) Tclass._module.Node?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) _module.Node.L)) Tclass._module.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |632|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) _module.Node.L)))
 )))
 (assert (forall (($h@@4 T@U) ($o@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) Tclass._module.Node?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@4) _module.Node.R)) Tclass._module.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |634|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@4) _module.Node.R)))
 )))
 (assert (forall ((s0@@0 T@U) (s1@@0 T@U) ) (! (= (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)) (+ (|Seq#Length| s0@@0) (|Seq#Length| s1@@0)))
+ :qid |DafnyPreludebpl.1153:15|
+ :skolemid |226|
  :pattern ( (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)))
 )))
-(assert (forall (($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass._module.DoublyLinkedList))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@5 T@U) ($f T@U) )  (=> (and (or (not (= $o@@5 null)) (not true)) (or (= $o@@5 this) (exists (($i Int) )  (and (and (<= 0 $i) (< $i (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) _module.DoublyLinkedList.Nodes)) $i) ($Box refType $o@@5)))))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@5) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@5) $f)))) (= (_module.DoublyLinkedList.Valid $h0 this) (_module.DoublyLinkedList.Valid $h1 this))))
+(assert (forall (($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass._module.DoublyLinkedList))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@5 T@U) ($f T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) (or (= $o@@5 this) (exists (($i Int) ) (!  (and (and (<= 0 $i) (< $i (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) _module.DoublyLinkedList.Nodes)) $i) ($Box refType $o@@5)))
+ :qid |Problem3dfy.63:19|
+ :skolemid |642|
+)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@5) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@5) $f)))
+ :qid |unknown.0:0|
+ :skolemid |643|
+)) (= (_module.DoublyLinkedList.Valid $h0 this) (_module.DoublyLinkedList.Valid $h1 this))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |644|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (_module.DoublyLinkedList.Valid $h1 this))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.DoublyLinkedList) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) Tclass._module.DoublyLinkedList)))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( ($IsBox bx@@1 Tclass._module.DoublyLinkedList))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._module.Node) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) Tclass._module.Node)))
+ :qid |unknown.0:0|
+ :skolemid |529|
  :pattern ( ($IsBox bx@@2 Tclass._module.Node))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._module.DoublyLinkedList?) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) Tclass._module.DoublyLinkedList?)))
+ :qid |unknown.0:0|
+ :skolemid |531|
  :pattern ( ($IsBox bx@@3 Tclass._module.DoublyLinkedList?))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 Tclass._module.Node?) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) Tclass._module.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |617|
  :pattern ( ($IsBox bx@@4 Tclass._module.Node?))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass._module.Node)  (and ($Is refType |c#0@@1| Tclass._module.Node?) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |636|
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Node))
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Node?))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass._module.DoublyLinkedList)  (and ($Is refType |c#0@@2| Tclass._module.DoublyLinkedList?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |793|
  :pattern ( ($Is refType |c#0@@2| Tclass._module.DoublyLinkedList))
  :pattern ( ($Is refType |c#0@@2| Tclass._module.DoublyLinkedList?))
 )))
 (assert (forall ((s@@8 T@U) (i Int) (v@@4 T@U) ) (!  (and (=> (= i (|Seq#Length| s@@8)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@4) i) v@@4)) (=> (or (not (= i (|Seq#Length| s@@8))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@4) i) (|Seq#Index| s@@8 i))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@8 v@@4) i))
 )))
 (assert (forall (($h@@5 T@U) ($o@@6 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@5) (and (or (not (= $o@@6 null)) (not true)) (= (dtype $o@@6) Tclass._module.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@6) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@6) _module.Node.L)) Tclass._module.Node? $h@@5))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |633|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@6) _module.Node.L)))
 )))
 (assert (forall (($h@@6 T@U) ($o@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@7 null)) (not true)) (= (dtype $o@@7) Tclass._module.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) _module.Node.R)) Tclass._module.Node? $h@@6))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |635|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) _module.Node.R)))
 )))
 (assert (forall ((s0@@1 T@U) (s1@@1 T@U) (x@@7 T@U) ) (! (= (|Seq#Contains| (|Seq#Append| s0@@1 s1@@1) x@@7)  (or (|Seq#Contains| s0@@1 x@@7) (|Seq#Contains| s1@@1 x@@7)))
+ :qid |DafnyPreludebpl.1192:15|
+ :skolemid |233|
  :pattern ( (|Seq#Contains| (|Seq#Append| s0@@1 s1@@1) x@@7))
 )))
 (assert (forall ((s@@9 T@U) (n@@5 Int) (x@@8 T@U) ) (! (= (|Seq#Contains| (|Seq#Take| s@@9 n@@5) x@@8) (exists ((i@@0 Int) ) (!  (and (and (and (<= 0 i@@0) (< i@@0 n@@5)) (< i@@0 (|Seq#Length| s@@9))) (= (|Seq#Index| s@@9 i@@0) x@@8))
+ :qid |DafnyPreludebpl.1204:19|
+ :skolemid |235|
  :pattern ( (|Seq#Index| s@@9 i@@0))
 )))
+ :qid |DafnyPreludebpl.1201:15|
+ :skolemid |236|
  :pattern ( (|Seq#Contains| (|Seq#Take| s@@9 n@@5) x@@8))
 )))
 (assert (forall ((s@@10 T@U) (x@@9 T@U) ) (! (= (|Seq#Contains| s@@10 x@@9) (exists ((i@@1 Int) ) (!  (and (and (<= 0 i@@1) (< i@@1 (|Seq#Length| s@@10))) (= (|Seq#Index| s@@10 i@@1) x@@9))
+ :qid |DafnyPreludebpl.1184:19|
+ :skolemid |230|
  :pattern ( (|Seq#Index| s@@10 i@@1))
 )))
+ :qid |DafnyPreludebpl.1181:15|
+ :skolemid |231|
  :pattern ( (|Seq#Contains| s@@10 x@@9))
 )))
 (assert (forall (($h@@7 T@U) ($o@@8 T@U) ) (!  (=> (and ($IsGoodHeap $h@@7) (and (or (not (= $o@@8 null)) (not true)) (= (dtype $o@@8) Tclass._module.DoublyLinkedList?))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@8) _module.DoublyLinkedList.Nodes)) (TSeq Tclass._module.Node)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |640|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@8) _module.DoublyLinkedList.Nodes)))
 )))
 (assert (forall (($h@@8 T@U) ($o@@9 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@9 null)) (not true)) (= (dtype $o@@9) Tclass._module.DoublyLinkedList?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@9) alloc)))) ($IsAlloc SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@9) _module.DoublyLinkedList.Nodes)) (TSeq Tclass._module.Node) $h@@8))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |641|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@9) _module.DoublyLinkedList.Nodes)))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Seq#Equal| a b) (= a b))
+ :qid |DafnyPreludebpl.1225:15|
+ :skolemid |241|
  :pattern ( (|Seq#Equal| a b))
 )))
 (assert (forall ((s@@11 T@U) (n@@6 Int) ) (!  (=> (and (<= 0 n@@6) (<= n@@6 (|Seq#Length| s@@11))) (= (|Seq#Length| (|Seq#Take| s@@11 n@@6)) n@@6))
+ :qid |DafnyPreludebpl.1238:15|
+ :skolemid |244|
  :pattern ( (|Seq#Length| (|Seq#Take| s@@11 n@@6)))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) (c T@U) ) (!  (=> (or (not (= a@@0 c)) (not true)) (=> (and ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c)) ($HeapSucc a@@0 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((v@@5 T@U) (t@@4 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@5) t@@4) ($Is T@@3 v@@5 t@@4))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@5) t@@4))
 )))
 (assert (forall ((s@@12 T@U) ) (! (<= 0 (|Seq#Length| s@@12))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@12))
 )))
 (assert (forall ((v@@6 T@U) (t0@@0 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SeqType v@@6 (TSeq t0@@0) h@@3) (forall ((i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| v@@6))) ($IsAllocBox (|Seq#Index| v@@6 i@@2) t0@@0 h@@3))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@6 i@@2))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@6 (TSeq t0@@0) h@@3))
 )))
 (assert (forall ((t@@5 T@U) ) (! (= (Inv0_TSeq (TSeq t@@5)) t@@5)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@5))
 )))
 (assert (forall ((t@@6 T@U) ) (! (= (Tag (TSeq t@@6)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@6))
 )))
 (assert (forall ((x@@10 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@10)) x@@10)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@10))
 )))
 (assert (forall ((s@@13 T@U) (val@@1 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@13 val@@1)) s@@13) (= (|Seq#Build_inv1| (|Seq#Build| s@@13 val@@1)) val@@1))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |223|
  :pattern ( (|Seq#Build| s@@13 val@@1))
 )))
 (assert (forall ((s@@14 T@U) (n@@7 Int) (x@@11 T@U) ) (! (= (|Seq#Contains| (|Seq#Drop| s@@14 n@@7) x@@11) (exists ((i@@3 Int) ) (!  (and (and (and (<= 0 n@@7) (<= n@@7 i@@3)) (< i@@3 (|Seq#Length| s@@14))) (= (|Seq#Index| s@@14 i@@3) x@@11))
+ :qid |DafnyPreludebpl.1211:19|
+ :skolemid |237|
  :pattern ( (|Seq#Index| s@@14 i@@3))
 )))
+ :qid |DafnyPreludebpl.1208:15|
+ :skolemid |238|
  :pattern ( (|Seq#Contains| (|Seq#Drop| s@@14 n@@7) x@@11))
 )))
 (assert (forall ((bx@@5 T@U) (t@@7 T@U) ) (!  (=> ($IsBox bx@@5 (TSeq t@@7)) (and (= ($Box SeqType ($Unbox SeqType bx@@5)) bx@@5) ($Is SeqType ($Unbox SeqType bx@@5) (TSeq t@@7))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@5 (TSeq t@@7)))
 )))
 (assert (= (Tag Tclass._module.DoublyLinkedList) Tagclass._module.DoublyLinkedList))
@@ -336,49 +476,83 @@
 (assert (= (Tag Tclass._module.Node?) Tagclass._module.Node?))
 (assert (= (TagFamily Tclass._module.Node?) tytagFamily$Node))
 (assert (forall ((s@@15 T@U) (n@@8 Int) (k@@2 Int) ) (!  (=> (and (and (<= 0 n@@8) (<= n@@8 k@@2)) (< k@@2 (|Seq#Length| s@@15))) (= (|Seq#Index| (|Seq#Drop| s@@15 n@@8) (- k@@2 n@@8)) (|Seq#Index| s@@15 k@@2)))
+ :qid |DafnyPreludebpl.1258:15|
  :weight 25
+ :skolemid |248|
  :pattern ( (|Seq#Index| s@@15 k@@2) (|Seq#Drop| s@@15 n@@8))
 )))
 (assert (forall ((s@@16 T@U) (m@@1 Int) (n@@9 Int) ) (!  (=> (and (and (<= 0 m@@1) (<= 0 n@@9)) (<= (+ m@@1 n@@9) (|Seq#Length| s@@16))) (= (|Seq#Drop| (|Seq#Drop| s@@16 m@@1) n@@9) (|Seq#Drop| s@@16 (+ m@@1 n@@9))))
+ :qid |DafnyPreludebpl.1299:15|
+ :skolemid |257|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@16 m@@1) n@@9))
 )))
 (assert (forall ((s0@@2 T@U) (s1@@2 T@U) (n@@10 Int) ) (!  (and (=> (< n@@10 (|Seq#Length| s0@@2)) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10) (|Seq#Index| s0@@2 n@@10))) (=> (<= (|Seq#Length| s0@@2) n@@10) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10) (|Seq#Index| s1@@2 (- n@@10 (|Seq#Length| s0@@2))))))
+ :qid |DafnyPreludebpl.1159:15|
+ :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this@@0 T@U) ) (!  (=> (or (|_module.DoublyLinkedList.Valid#canCall| $Heap this@@0) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.DoublyLinkedList) ($IsAlloc refType this@@0 Tclass._module.DoublyLinkedList $Heap)))))) (= (_module.DoublyLinkedList.Valid $Heap this@@0)  (and (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes))) 0) (and (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null) (forall ((|i#0| Int) ) (!  (=> (and (<= (LitInt 1) |i#0|) (< |i#0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#0|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) (- |i#0| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |647|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#0|))) _module.Node.L)))
 ))) (forall ((|i#1| Int) ) (!  (=> (and (<= (LitInt 0) |i#1|) (< |i#1| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#1|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) (+ |i#1| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |648|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#1|))) _module.Node.R)))
 ))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))) (forall ((|i#2| Int) (|j#0| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#2|) (< |i#2| |j#0|)) (< |j#0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#2|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |j#0|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |649|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |j#0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) _module.DoublyLinkedList.Nodes)) |i#2|)))
 )))))
+ :qid |Problem3dfy.63:19|
+ :skolemid |654|
  :pattern ( (_module.DoublyLinkedList.Valid $Heap this@@0) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((x@@12 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@12))) (Lit BoxType ($Box intType (int_2_U x@@12))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@12))))
 )))
 (assert (forall ((x@@13 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@13)) (Lit BoxType ($Box T@@5 x@@13)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@13)))
 )))
 (assert (forall ((s@@17 T@U) ) (!  (=> (= (|Seq#Length| s@@17) 0) (= s@@17 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@17))
 )))
 (assert (forall ((s@@18 T@U) (n@@11 Int) ) (!  (=> (= n@@11 0) (= (|Seq#Take| s@@18 n@@11) |Seq#Empty|))
+ :qid |DafnyPreludebpl.1295:15|
+ :skolemid |256|
  :pattern ( (|Seq#Take| s@@18 n@@11))
 )))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@2 x0@@1 x1 val@@2) x0@@1 x1) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@3) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@4 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@4) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
-(assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| Int) (|l#5| Int) (|l#6| T@U) ($o@@10 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6|) $o@@10 $f@@0))  (=> (and (or (not (= $o@@10 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@10) |l#2|)))) (or (= $o@@10 |l#3|) (exists (($i@@0 Int) )  (and (and (<= |l#4| $i@@0) (< $i@@0 |l#5|)) (= (|Seq#Index| |l#6| $i@@0) ($Box refType $o@@10)))))))
+(assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| Int) (|l#5| Int) (|l#6| T@U) ($o@@10 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6|) $o@@10 $f@@0))  (=> (and (or (not (= $o@@10 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@10) |l#2|)))) (or (= $o@@10 |l#3|) (exists (($i@@0 Int) ) (!  (and (and (<= |l#4| $i@@0) (< $i@@0 |l#5|)) (= (|Seq#Index| |l#6| $i@@0) ($Box refType $o@@10)))
+ :qid |Problem3dfy.9:8|
+ :skolemid |530|
+)))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |795|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6|) $o@@10 $f@@0))
 )))
 (assert (forall ((v@@7 T@U) (t0@@2 T@U) ) (! (= ($Is SeqType v@@7 (TSeq t0@@2)) (forall ((i@@4 Int) ) (!  (=> (and (<= 0 i@@4) (< i@@4 (|Seq#Length| v@@7))) ($IsBox (|Seq#Index| v@@7 i@@4) t0@@2))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@7 i@@4))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@7 (TSeq t0@@2)))
 )))
 (push 1)
@@ -390,6 +564,7 @@
 (declare-fun $Heap@0 () T@U)
 (declare-fun |call3formal@k#0@0| () Int)
 (declare-fun $Heap@1 () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.Test)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -405,64 +580,152 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 29) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@0 alloc |dd#0| 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)))) (and (=> (= (ControlFlow 0 2) (- 0 28)) (or (not (= |dd#0| null)) (not true))) (=> (or (not (= |dd#0| null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 27)) (forall (($o@@11 T@U) ($f@@1 T@U) )  (=> (and (and (or (not (= $o@@11 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@11) alloc)))) (or (= $o@@11 |dd#0|) (exists (($i@@1 Int) )  (and (and (<= 0 $i@@1) (< $i@@1 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@1) ($Box refType $o@@11)))))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@11 $f@@1))))) (=> (forall (($o@@12 T@U) ($f@@2 T@U) )  (=> (and (and (or (not (= $o@@12 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@12) alloc)))) (or (= $o@@12 |dd#0|) (exists (($i@@2 Int) )  (and (and (<= 0 $i@@2) (< $i@@2 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@2) ($Box refType $o@@12)))))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@12 $f@@2)))) (and (=> (= (ControlFlow 0 2) (- 0 26)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 25)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@0| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@0|) (< |i#0@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@0|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@0| 1)))))
+ (=> (= (ControlFlow 0 0) 29) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@0 alloc |dd#0| 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)))) (and (=> (= (ControlFlow 0 2) (- 0 28)) (or (not (= |dd#0| null)) (not true))) (=> (or (not (= |dd#0| null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 27)) (forall (($o@@11 T@U) ($f@@1 T@U) ) (!  (=> (and (and (or (not (= $o@@11 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@11) alloc)))) (or (= $o@@11 |dd#0|) (exists (($i@@1 Int) ) (!  (and (and (<= 0 $i@@1) (< $i@@1 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@1) ($Box refType $o@@11)))
+ :qid |Problem3dfy.15:27|
+ :skolemid |563|
+)))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@11 $f@@1)))
+ :qid |Problem3dfy.15:27|
+ :skolemid |564|
+))) (=> (forall (($o@@12 T@U) ($f@@2 T@U) ) (!  (=> (and (and (or (not (= $o@@12 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@12) alloc)))) (or (= $o@@12 |dd#0|) (exists (($i@@2 Int) ) (!  (and (and (<= 0 $i@@2) (< $i@@2 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@2) ($Box refType $o@@12)))
+ :qid |Problem3dfy.15:27|
+ :skolemid |563|
+)))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@12 $f@@2)))
+ :qid |Problem3dfy.15:27|
+ :skolemid |564|
+)) (and (=> (= (ControlFlow 0 2) (- 0 26)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 25)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@0| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@0|) (< |i#0@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@0|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@0| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |731|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@0|))) _module.Node.L)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@1| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@1|) (< |i#0@@1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@1|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@1| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |731|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@1|))) _module.Node.L)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 24)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#1@@0| Int) ) (!  (=> (and (<= (LitInt 0) |i#1@@0|) (< |i#1@@0| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@0|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#1@@0| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |732|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@0|))) _module.Node.R)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#1@@1| Int) ) (!  (=> (and (<= (LitInt 0) |i#1@@1|) (< |i#1@@1| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@1|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#1@@1| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |732|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@1|))) _module.Node.R)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 23)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 22)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (forall ((|i#2@@0| Int) (|j#0@@0| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#2@@0|) (< |i#2@@0| |j#0@@0|)) (< |j#0@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@0|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |733|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@0|)))
 ))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (forall ((|i#2@@1| Int) (|j#0@@1| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#2@@1|) (< |i#2@@1| |j#0@@1|)) (< |j#0@@1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@1|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@1|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |733|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@1|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@1|)))
 )))) (and (=> (= (ControlFlow 0 2) (- 0 21)) (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) ($Box refType |x#0|))) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) ($Box refType |x#0|)) (and (=> (= (ControlFlow 0 2) (- 0 20)) (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0))))) (not true))) (=> (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0))))) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 19)) (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))))) (not true))) (=> (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))))) (not true)) (=> (and (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|)) (and (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (and (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (and (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (and (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null) (forall ((|i#3| Int) ) (!  (=> (and (<= (LitInt 1) |i#3|) (< |i#3| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#3|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#3| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |740|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#3|))) _module.Node.L)))
 ))) (forall ((|i#4| Int) ) (!  (=> (and (<= (LitInt 0) |i#4|) (< |i#4| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#4|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#4| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |741|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#4|))) _module.Node.R)))
 ))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))) (forall ((|i#5| Int) (|j#1| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#5|) (< |i#5| |j#1|)) (< |j#1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#5|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#1|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |742|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#1|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#5|)))
-)))))) (and (and (and (<= (LitInt 0) |call3formal@k#0@0|) (< |call3formal@k#0@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (and (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |call3formal@k#0@0| 1)))))) (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.L)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |x#0|) _module.Node.L))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.R)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |x#0|) _module.Node.R)))) (and (forall (($o@@13 T@U) ) (!  (=> (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@13) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@13) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@13)) (or (= $o@@13 |dd#0|) (exists (($i@@3 Int) )  (and (and (<= 0 $i@@3) (< $i@@3 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@3) ($Box refType $o@@13)))))))
+)))))) (and (and (and (<= (LitInt 0) |call3formal@k#0@0|) (< |call3formal@k#0@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (and (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |call3formal@k#0@0| 1)))))) (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.L)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |x#0|) _module.Node.L))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.R)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |x#0|) _module.Node.R)))) (and (forall (($o@@13 T@U) ) (!  (=> (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@13) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@13) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@13)) (or (= $o@@13 |dd#0|) (exists (($i@@3 Int) ) (!  (and (and (<= 0 $i@@3) (< $i@@3 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@3) ($Box refType $o@@13)))
+ :qid |Problem3dfy.115:10|
+ :skolemid |743|
+)))))
+ :qid |Problem3dfy.115:10|
+ :skolemid |744|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@13))
-)) ($HeapSucc $Heap@@0 $Heap@0))))) (and (=> (= (ControlFlow 0 2) (- 0 18)) (or (not (= |dd#0| null)) (not true))) (=> (or (not (= |dd#0| null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 17)) (forall (($o@@14 T@U) ($f@@3 T@U) )  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@14) alloc)))) (or (or (= $o@@14 |dd#0|) (exists (($i@@4 Int) )  (and (and (<= 0 $i@@4) (< $i@@4 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@4) ($Box refType $o@@14))))) (= $o@@14 |x#0|))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@14 $f@@3))))) (=> (forall (($o@@15 T@U) ($f@@4 T@U) )  (=> (and (and (or (not (= $o@@15 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@15) alloc)))) (or (or (= $o@@15 |dd#0|) (exists (($i@@5 Int) )  (and (and (<= 0 $i@@5) (< $i@@5 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@5) ($Box refType $o@@15))))) (= $o@@15 |x#0|))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@15 $f@@4)))) (and (=> (= (ControlFlow 0 2) (- 0 16)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 15)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@2| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@2|) (< |i#0@@2| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@2|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@2| 1)))))
+)) ($HeapSucc $Heap@@0 $Heap@0))))) (and (=> (= (ControlFlow 0 2) (- 0 18)) (or (not (= |dd#0| null)) (not true))) (=> (or (not (= |dd#0| null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 17)) (forall (($o@@14 T@U) ($f@@3 T@U) ) (!  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@14) alloc)))) (or (or (= $o@@14 |dd#0|) (exists (($i@@4 Int) ) (!  (and (and (<= 0 $i@@4) (< $i@@4 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@4) ($Box refType $o@@14)))
+ :qid |Problem3dfy.16:13|
+ :skolemid |565|
+))) (= $o@@14 |x#0|))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@14 $f@@3)))
+ :qid |Problem3dfy.16:13|
+ :skolemid |566|
+))) (=> (forall (($o@@15 T@U) ($f@@4 T@U) ) (!  (=> (and (and (or (not (= $o@@15 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@15) alloc)))) (or (or (= $o@@15 |dd#0|) (exists (($i@@5 Int) ) (!  (and (and (<= 0 $i@@5) (< $i@@5 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@5) ($Box refType $o@@15)))
+ :qid |Problem3dfy.16:13|
+ :skolemid |565|
+))) (= $o@@15 |x#0|))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@15 $f@@4)))
+ :qid |Problem3dfy.16:13|
+ :skolemid |566|
+)) (and (=> (= (ControlFlow 0 2) (- 0 16)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 15)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@2| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@2|) (< |i#0@@2| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@2|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@2| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |764|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@2|))) _module.Node.L)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#0@@3| Int) ) (!  (=> (and (<= (LitInt 1) |i#0@@3|) (< |i#0@@3| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@3|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#0@@3| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |764|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#0@@3|))) _module.Node.L)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 14)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#1@@2| Int) ) (!  (=> (and (<= (LitInt 0) |i#1@@2|) (< |i#1@@2| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@2|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#1@@2| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |765|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@2|))) _module.Node.R)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#1@@3| Int) ) (!  (=> (and (<= (LitInt 0) |i#1@@3|) (< |i#1@@3| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@3|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#1@@3| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |765|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#1@@3|))) _module.Node.R)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 13)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 12)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (forall ((|i#2@@2| Int) (|j#0@@2| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#2@@2|) (< |i#2@@2| |j#0@@2|)) (< |j#0@@2| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@2|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@2|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |766|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@2|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@2|)))
 ))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@0 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@0 |dd#0|) (forall ((|i#2@@3| Int) (|j#0@@3| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#2@@3|) (< |i#2@@3| |j#0@@3|)) (< |j#0@@3| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@3|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@3|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |766|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#0@@3|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#2@@3|)))
 )))) (and (=> (= (ControlFlow 0 2) (- 0 11)) (<= (LitInt 1) |call3formal@k#0@0|)) (=> (<= (LitInt 1) |call3formal@k#0@0|) (and (=> (= (ControlFlow 0 2) (- 0 10)) (< |call3formal@k#0@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (=> (< |call3formal@k#0@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)))) (and (=> (= (ControlFlow 0 2) (- 0 9)) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |call3formal@k#0@0| 1))))) (=> (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |call3formal@k#0@0| 1)))) (and (=> (= (ControlFlow 0 2) (- 0 8)) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|)))) (=> (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |x#0|) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|))) (=> (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|)) (=> (and (and (and (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (and (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (and (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (and (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null) (forall ((|i#3@@0| Int) ) (!  (=> (and (<= (LitInt 1) |i#3@@0|) (< |i#3@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#3@@0|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#3@@0| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |773|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#3@@0|))) _module.Node.L)))
 ))) (forall ((|i#4@@0| Int) ) (!  (=> (and (<= (LitInt 0) |i#4@@0|) (< |i#4@@0| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#4@@0|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#4@@0| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |774|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#4@@0|))) _module.Node.R)))
 ))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))) (forall ((|i#5@@0| Int) (|j#1@@0| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#5@@0|) (< |i#5@@0| |j#1@@0|)) (< |j#1@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#5@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#1@@0|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |775|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#1@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#5@@0|)))
-))))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (|Seq#Append| (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|) (|Seq#Build| |Seq#Empty| ($Box refType |x#0|))) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|)))) (and (forall (($o@@16 T@U) ) (!  (=> (and (or (not (= $o@@16 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@16) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@16) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@16)) (or (or (= $o@@16 |dd#0|) (exists (($i@@6 Int) )  (and (and (<= 0 $i@@6) (< $i@@6 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@6) ($Box refType $o@@16))))) (= $o@@16 |x#0|))))
+))))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (|Seq#Append| (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|) (|Seq#Build| |Seq#Empty| ($Box refType |x#0|))) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |call3formal@k#0@0|)))) (and (forall (($o@@16 T@U) ) (!  (=> (and (or (not (= $o@@16 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@16) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@16) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@16)) (or (or (= $o@@16 |dd#0|) (exists (($i@@6 Int) ) (!  (and (and (<= 0 $i@@6) (< $i@@6 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |dd#0|) _module.DoublyLinkedList.Nodes)) $i@@6) ($Box refType $o@@16)))
+ :qid |Problem3dfy.137:10|
+ :skolemid |776|
+))) (= $o@@16 |x#0|))))
+ :qid |Problem3dfy.137:10|
+ :skolemid |777|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@16))
 )) ($HeapSucc $Heap@0 $Heap@1))) (and (=> (= (ControlFlow 0 2) (- 0 7)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 6)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#9| Int) ) (!  (=> (and (<= (LitInt 1) |i#9|) (< |i#9| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#9|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#9| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |554|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#9|))) _module.Node.L)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#9@@0| Int) ) (!  (=> (and (<= (LitInt 1) |i#9@@0|) (< |i#9@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#9@@0|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#9@@0| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |554|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#9@@0|))) _module.Node.L)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 5)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#10| Int) ) (!  (=> (and (<= (LitInt 0) |i#10|) (< |i#10| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#10|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#10| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |555|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#10|))) _module.Node.R)))
 )))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (forall ((|i#10@@0| Int) ) (!  (=> (and (<= (LitInt 0) |i#10@@0|) (< |i#10@@0| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#10@@0|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#10@@0| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |555|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#10@@0|))) _module.Node.R)))
 ))))) (and (=> (= (ControlFlow 0 2) (- 0 4)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null)))) (and (=> (= (ControlFlow 0 2) (- 0 3)) (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (forall ((|i#11| Int) (|j#3| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#11|) (< |i#11| |j#3|)) (< |j#3| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#11|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#3|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |556|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#3|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#11|)))
 ))))) (=> (=> (|_module.DoublyLinkedList.Valid#canCall| $Heap@1 |dd#0|) (or (_module.DoublyLinkedList.Valid $Heap@1 |dd#0|) (forall ((|i#11@@0| Int) (|j#3@@0| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#11@@0|) (< |i#11@@0| |j#3@@0|)) (< |j#3@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#11@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#3@@0|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |556|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#3@@0|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#11@@0|)))
 )))) (=> (= (ControlFlow 0 2) (- 0 1)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |dd#0|) _module.DoublyLinkedList.Nodes)) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap@@0) ($IsHeapAnchor $Heap@@0)) (and ($Is refType |dd#0| Tclass._module.DoublyLinkedList) ($IsAlloc refType |dd#0| Tclass._module.DoublyLinkedList $Heap@@0))) (=> (and (and (and (and ($Is refType |x#0| Tclass._module.Node) ($IsAlloc refType |x#0| Tclass._module.Node $Heap@@0)) (= 2 $FunctionContextHeight)) (and (|_module.DoublyLinkedList.Valid#canCall| $Heap@@0 |dd#0|) (and (_module.DoublyLinkedList.Valid $Heap@@0 |dd#0|) (and (=> (> (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 0) (and (and (and (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0)))) _module.Node.L)) null) (forall ((|i#6| Int) ) (!  (=> (and (<= (LitInt 1) |i#6|) (< |i#6| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#6|))) _module.Node.L)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- |i#6| 1)))))
+ :qid |Problem3dfy.67:37|
+ :skolemid |551|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#6|))) _module.Node.L)))
 ))) (forall ((|i#7| Int) ) (!  (=> (and (<= (LitInt 0) |i#7|) (< |i#7| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#7|))) _module.Node.R)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (+ |i#7| 1)))))
+ :qid |Problem3dfy.68:15|
+ :skolemid |552|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#7|))) _module.Node.R)))
 ))) (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1)))) _module.Node.R)) null))) (forall ((|i#8| Int) (|j#2| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#8|) (< |i#8| |j#2|)) (< |j#2| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))))) (or (not (= ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#8|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#2|)))) (not true)))
+ :qid |Problem3dfy.70:12|
+ :skolemid |553|
  :pattern ( ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |j#2|)) ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) |i#8|)))
 )))))) (and (and (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) ($Box refType |x#0|)) (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (LitInt 0))))) (not true))) (and (or (not (= |x#0| ($Unbox refType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes)) (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 |dd#0|) _module.DoublyLinkedList.Nodes))) 1))))) (not true)) (= (ControlFlow 0 29) 2)))) anon0_correct))))
 PreconditionGeneratedEntry_correct)))

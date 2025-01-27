@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:35
+// Date:         2025-01-26 23:14:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0336a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0336a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -582,12 +582,12 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var l$0_5: Ref;
@@ -613,8 +613,8 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -629,8 +629,8 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
   // -- Translating statement: unfold acc(uf_bank(b), write) -- 0336a.vpr@19.3--19.20
     assume uf_bank#trigger(Heap, uf_bank(b_24));
     assume Heap[null, uf_bank(b_24)] == CombineFrames(FrameFragment(uf_bank#condqp1(Heap, b_24)), FrameFragment(uf_bank#condqp2(Heap, b_24)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding uf_bank(b) might fail. There might be insufficient permission to access uf_bank(b) (0336a.vpr@19.3--19.20) [62155]"}
@@ -719,8 +719,8 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(uf_bank(b), write) -- 0336a.vpr@20.3--20.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -853,8 +853,8 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
   // -- Translating statement: unfold acc(uf_bank(b), write) -- 0336a.vpr@21.3--21.20
     assume uf_bank#trigger(Heap, uf_bank(b_24));
     assume Heap[null, uf_bank(b_24)] == CombineFrames(FrameFragment(uf_bank#condqp1(Heap, b_24)), FrameFragment(uf_bank#condqp2(Heap, b_24)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding uf_bank(b) might fail. There might be insufficient permission to access uf_bank(b) (0336a.vpr@21.3--21.20) [62170]"}
@@ -943,13 +943,13 @@ procedure bad(b_24: (Set Ref), l_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- 0336a.vpr@22.3--22.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of bad might not hold. Assertion false might not hold. (0336a.vpr@17.11--17.16) [62174]"}
       false;
 }

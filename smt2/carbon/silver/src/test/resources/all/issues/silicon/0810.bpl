@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:01
+// Date:         2025-01-26 23:15:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0810.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0810-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -812,8 +812,8 @@ function  __prim__int___box__#triggerStateless(prim: int): Ref;
 procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -829,8 +829,8 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0810.vpr@182.11--182.32) [80152]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -1107,8 +1107,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var ln_1: int;
   
@@ -1133,8 +1133,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
     // -- Check definedness of list___len__(self)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access self.list_acc (0810.vpr@214.8--214.26) [80154]"}
           NoPerm < perm ==> NoPerm < Mask[self, list_acc];
@@ -1150,8 +1150,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
     // -- Check definedness of int___unbox__(key) < 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.8--215.26) [80155]"}
           (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -1163,8 +1163,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
       // -- Check definedness of int___unbox__(key) >= -ln
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@215.35--215.53) [80156]"}
             (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
           // Stop execution
@@ -1176,8 +1176,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
     // -- Check definedness of int___unbox__(key) >= 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.8--216.26) [80157]"}
           (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -1189,8 +1189,8 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
       // -- Check definedness of int___unbox__(key) < ln
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(key), int()) might not hold. (0810.vpr@216.36--216.54) [80158]"}
             (issubtype((typeof(key_2): PyTypeDomainType), vint): bool);
           // Stop execution
@@ -1208,12 +1208,12 @@ procedure list___getitem__#definedness(self: Ref, key_2: Ref) returns (Result: R
 procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var iii: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var ln_1: int;
   var QPMask: MaskType;
@@ -1230,8 +1230,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(marked_execution_tree.Node_children, write) &&
   //   issubtype(typeof(marked_execution_tree.Node_children), list(Node())) -- 0810.vpr@166.5--167.84
@@ -1275,8 +1275,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
         if ((typeof(iii): PyTypeDomainType) == vint) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@174.30--174.48) [80163]"}
               (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
             // Stop execution
@@ -1289,8 +1289,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
           if (int___ge__(Heap, int___unbox__(Heap, iii), 0)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@175.29--175.47) [80164]"}
                 (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
               // Stop execution
@@ -1300,8 +1300,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
               HasDirectPerm(Mask, marked_execution_tree, Node_children);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function list___len__ might not hold. There might be insufficient permission to access marked_execution_tree.Node_children.list_acc (0810.vpr@175.49--175.98) [80166]"}
                 NoPerm < perm ==> NoPerm < Mask[Heap[marked_execution_tree, Node_children], list_acc];
@@ -1323,8 +1323,8 @@ procedure mcan_node_be_compressed(marked_execution_tree: Ref) returns ()
             HasDirectPerm(Mask, marked_execution_tree, Node_children);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function list___getitem__ might not hold. Assertion issubtype(typeof(iii), int()) might not hold. (0810.vpr@176.22--176.80) [80168]"}
               (issubtype((typeof(iii): PyTypeDomainType), vint): bool);
             perm := FullPerm;

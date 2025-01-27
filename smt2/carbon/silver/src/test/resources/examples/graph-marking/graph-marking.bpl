@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:55
+// Date:         2025-01-26 23:16:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/graph-marking/graph-marking.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/graph-marking/graph-marking-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -499,8 +499,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
   var QPMask: MaskType;
   var n$2_33: Ref;
   var n$3_9: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$7_6: Ref;
@@ -513,8 +513,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_node: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n$2_2: Ref;
   var n$3_2: Ref;
   var ExhaleHeap: HeapType;
@@ -702,8 +702,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1008,8 +1008,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
         arg_node := Heap[node, left_2];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method trav_rec might not hold. Assertion (node.left in nodes) might not hold. (graph-marking.vpr@46.3--46.29) [112690]"}
             nodes[arg_node];
           assert {:msg "  The precondition of method trav_rec might not hold. Assertion !((null in nodes)) might not hold. (graph-marking.vpr@46.3--46.29) [112691]"}
@@ -1328,8 +1328,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
         arg_node_1 := Heap[node, right_1];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method trav_rec might not hold. Assertion (node.right in nodes) might not hold. (graph-marking.vpr@50.3--50.30) [112708]"}
             nodes[arg_node_1];
           assert {:msg "  The precondition of method trav_rec might not hold. Assertion !((null in nodes)) might not hold. (graph-marking.vpr@50.3--50.30) [112709]"}
@@ -1626,8 +1626,8 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of trav_rec might not hold. Assertion (node in nodes) might not hold. (graph-marking.vpr@26.10--26.37) [112722]"}
       nodes[node];
     assert {:msg "  Postcondition of trav_rec might not hold. Assertion !((null in nodes)) might not hold. (graph-marking.vpr@26.10--26.37) [112723]"}
@@ -1853,14 +1853,14 @@ procedure trav_rec(nodes: (Set Ref), node: Ref) returns ()
 procedure client_success() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var b_24: Ref;
   var freshObj: Ref;
   var nodes: (Set Ref);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n_34: Ref;
   var n_1: Ref;
   var PreCallHeap: HeapType;
@@ -1880,8 +1880,8 @@ procedure client_success() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -1948,8 +1948,8 @@ procedure client_success() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall n: Ref :: { (n in nodes) } (n in nodes) ==> !n.is_marked) -- graph-marking.vpr@63.2--63.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Ref :: { (n in nodes) } (n in nodes) ==> !n.is_marked)
       if (*) {
@@ -1977,8 +1977,8 @@ procedure client_success() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method trav_rec might not hold. Assertion (a in nodes) might not hold. (graph-marking.vpr@65.2--65.20) [112746]"}
         nodes[a_2];
       assert {:msg "  The precondition of method trav_rec might not hold. Assertion !((null in nodes)) might not hold. (graph-marking.vpr@65.2--65.20) [112747]"}
@@ -2273,8 +2273,8 @@ procedure client_success() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall n: Ref :: { (n in nodes) } (n in nodes) ==> n.is_marked) -- graph-marking.vpr@67.2--67.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Ref :: { (n in nodes) } (n in nodes) ==> n.is_marked)
       if (*) {
@@ -2305,14 +2305,14 @@ procedure client_success() returns ()
 procedure client_failure() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var b_24: Ref;
   var freshObj: Ref;
   var nodes: (Set Ref);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n_95: Ref;
   var n_1: Ref;
   var PreCallHeap: HeapType;
@@ -2332,8 +2332,8 @@ procedure client_failure() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -2400,8 +2400,8 @@ procedure client_failure() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall n: Ref :: { (n in nodes) } (n in nodes) ==> !n.is_marked) -- graph-marking.vpr@79.2--79.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Ref :: { (n in nodes) } (n in nodes) ==> !n.is_marked)
       if (*) {
@@ -2429,8 +2429,8 @@ procedure client_failure() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method trav_rec might not hold. Assertion (a in nodes) might not hold. (graph-marking.vpr@81.2--81.20) [112770]"}
         nodes[a_2];
       assert {:msg "  The precondition of method trav_rec might not hold. Assertion !((null in nodes)) might not hold. (graph-marking.vpr@81.2--81.20) [112771]"}
@@ -2725,8 +2725,8 @@ procedure client_failure() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall n: Ref :: { (n in nodes) } (n in nodes) ==> n.is_marked) -- graph-marking.vpr@85.2--85.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall n: Ref :: { (n in nodes) } (n in nodes) ==> n.is_marked)
       if (*) {

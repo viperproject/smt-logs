@@ -72,116 +72,184 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass._module.Tree |##_module.Tree.Leaf| |##_module.Tree.Branch| tytagFamily$Tree)
 )
 (assert (forall ((|a#22#0#0| T@U) (|a#22#1#0| Bool) (|a#22#2#0| T@U) ) (! (= (_module.Tree.b (|#_module.Tree.Branch| |a#22#0#0| |a#22#1#0| |a#22#2#0|)) |a#22#1#0|)
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |734|
  :pattern ( (|#_module.Tree.Branch| |a#22#0#0| |a#22#1#0| |a#22#2#0|))
 )))
 (assert (= (Tag TBool) TagBool))
 (assert (forall ((|a#16#0#0| T@U) (|a#16#1#0| Bool) (|a#16#2#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Tree.Branch| |a#16#0#0| |a#16#1#0| |a#16#2#0|)) |##_module.Tree.Branch|)
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |723|
  :pattern ( (|#_module.Tree.Branch| |a#16#0#0| |a#16#1#0| |a#16#2#0|))
 )))
 (assert (forall ((|a#20#0#0| T@U) (|a#20#1#0| Bool) (|a#20#2#0| T@U) ) (! (= (_module.Tree.left (|#_module.Tree.Branch| |a#20#0#0| |a#20#1#0| |a#20#2#0|)) |a#20#0#0|)
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |732|
  :pattern ( (|#_module.Tree.Branch| |a#20#0#0| |a#20#1#0| |a#20#2#0|))
 )))
 (assert (forall ((|a#23#0#0| T@U) (|a#23#1#0| Bool) (|a#23#2#0| T@U) ) (! (= (_module.Tree.right (|#_module.Tree.Branch| |a#23#0#0| |a#23#1#0| |a#23#2#0|)) |a#23#2#0|)
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |735|
  :pattern ( (|#_module.Tree.Branch| |a#23#0#0| |a#23#1#0| |a#23#2#0|))
 )))
 (assert (= (DatatypeCtorId |#_module.Tree.Leaf|) |##_module.Tree.Leaf|))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert ($Is DatatypeTypeType |#_module.Tree.Leaf| Tclass._module.Tree))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@2))
 )))
 (assert (forall ((d T@U) ) (! (= (_module.Tree.Leaf_q d) (= (DatatypeCtorId d) |##_module.Tree.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |721|
  :pattern ( (_module.Tree.Leaf_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Tree.Branch_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Tree.Branch|))
+ :qid |unknown.0:0|
+ :skolemid |724|
  :pattern ( (_module.Tree.Branch_q d@@0))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Tree.Branch_q d@@1) (exists ((|a#17#0#0| T@U) (|a#17#1#0| Bool) (|a#17#2#0| T@U) ) (= d@@1 (|#_module.Tree.Branch| |a#17#0#0| |a#17#1#0| |a#17#2#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Tree.Branch_q d@@1) (exists ((|a#17#0#0| T@U) (|a#17#1#0| Bool) (|a#17#2#0| T@U) ) (! (= d@@1 (|#_module.Tree.Branch| |a#17#0#0| |a#17#1#0| |a#17#2#0|))
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |725|
+)))
+ :qid |unknown.0:0|
+ :skolemid |726|
  :pattern ( (_module.Tree.Branch_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (!  (=> (_module.Tree.Leaf_q d@@2) (= d@@2 |#_module.Tree.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |722|
  :pattern ( (_module.Tree.Leaf_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (|$IsA#_module.Tree| d@@3) (or (_module.Tree.Leaf_q d@@3) (_module.Tree.Branch_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( (|$IsA#_module.Tree| d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> ($Is DatatypeTypeType d@@4 Tclass._module.Tree) (or (_module.Tree.Leaf_q d@@4) (_module.Tree.Branch_q d@@4)))
+ :qid |unknown.0:0|
+ :skolemid |739|
  :pattern ( (_module.Tree.Branch_q d@@4) ($Is DatatypeTypeType d@@4 Tclass._module.Tree))
  :pattern ( (_module.Tree.Leaf_q d@@4) ($Is DatatypeTypeType d@@4 Tclass._module.Tree))
 )))
 (assert (forall ((|a#19#0#0| T@U) (|a#19#1#0| T@U) (|a#19#2#0| T@U) ) (! (= (|#_module.Tree.Branch| (Lit DatatypeTypeType |a#19#0#0|) (U_2_bool (Lit boolType |a#19#1#0|)) (Lit DatatypeTypeType |a#19#2#0|)) (Lit DatatypeTypeType (|#_module.Tree.Branch| |a#19#0#0| (U_2_bool |a#19#1#0|) |a#19#2#0|)))
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |731|
  :pattern ( (|#_module.Tree.Branch| (Lit DatatypeTypeType |a#19#0#0|) (U_2_bool (Lit boolType |a#19#1#0|)) (Lit DatatypeTypeType |a#19#2#0|)))
 )))
 (assert (forall ((x@@4 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@4))
 )))
 (assert (forall ((|a#21#0#0| T@U) (|a#21#1#0| Bool) (|a#21#2#0| T@U) ) (! (< (DtRank |a#21#0#0|) (DtRank (|#_module.Tree.Branch| |a#21#0#0| |a#21#1#0| |a#21#2#0|)))
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |733|
  :pattern ( (|#_module.Tree.Branch| |a#21#0#0| |a#21#1#0| |a#21#2#0|))
 )))
 (assert (forall ((|a#24#0#0| T@U) (|a#24#1#0| Bool) (|a#24#2#0| T@U) ) (! (< (DtRank |a#24#2#0|) (DtRank (|#_module.Tree.Branch| |a#24#0#0| |a#24#1#0| |a#24#2#0|)))
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |736|
  :pattern ( (|#_module.Tree.Branch| |a#24#0#0| |a#24#1#0| |a#24#2#0|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |786|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (_module.Tree.Branch_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass._module.Tree $h))) ($IsAlloc boolType (bool_2_U (_module.Tree.b d@@5)) TBool $h))
+ :qid |unknown.0:0|
+ :skolemid |729|
  :pattern ( ($IsAlloc boolType (bool_2_U (_module.Tree.b d@@5)) TBool $h))
 )))
 (assert (forall ((d@@6 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@6 Tclass._module.Tree)) ($IsAlloc DatatypeTypeType d@@6 Tclass._module.Tree $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |737|
  :pattern ( ($IsAlloc DatatypeTypeType d@@6 Tclass._module.Tree $h@@0))
 )))
 (assert (= (Tag Tclass._module.Tree) Tagclass._module.Tree))
 (assert (= (TagFamily Tclass._module.Tree) tytagFamily$Tree))
 (assert (= |#_module.Tree.Leaf| (Lit DatatypeTypeType |#_module.Tree.Leaf|)))
 (assert (forall ((d@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Tree.Branch_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass._module.Tree $h@@1))) ($IsAlloc DatatypeTypeType (_module.Tree.left d@@7) Tclass._module.Tree $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |728|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Tree.left d@@7) Tclass._module.Tree $h@@1))
 )))
 (assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.Tree.Branch_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass._module.Tree $h@@2))) ($IsAlloc DatatypeTypeType (_module.Tree.right d@@8) Tclass._module.Tree $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |730|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Tree.right d@@8) Tclass._module.Tree $h@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@5)) (Lit BoxType ($Box T@@2 x@@5)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@5)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc boolType v TBool h)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v TBool h))
 )))
 (assert (forall ((|a#18#0#0| T@U) (|a#18#1#0| Bool) (|a#18#2#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Tree.Branch| |a#18#0#0| |a#18#1#0| |a#18#2#0|) Tclass._module.Tree)  (and (and ($Is DatatypeTypeType |a#18#0#0| Tclass._module.Tree) ($Is boolType (bool_2_U |a#18#1#0|) TBool)) ($Is DatatypeTypeType |a#18#2#0| Tclass._module.Tree)))
+ :qid |PatternMatchingErrorsdfy.37:31|
+ :skolemid |727|
  :pattern ( ($Is DatatypeTypeType (|#_module.Tree.Branch| |a#18#0#0| |a#18#1#0| |a#18#2#0|) Tclass._module.Tree))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is boolType v@@0 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@0 TBool))
 )))
 (push 1)
@@ -201,6 +269,7 @@
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.TreeTest)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

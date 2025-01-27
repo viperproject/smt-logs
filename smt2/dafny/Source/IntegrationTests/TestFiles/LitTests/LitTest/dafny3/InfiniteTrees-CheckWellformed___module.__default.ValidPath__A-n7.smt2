@@ -121,16 +121,22 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass._module.Stream Tagclass._module.Tree Tagclass._module.Number Tagclass._module.CoOption |##_module.Stream.Nil| |##_module.Stream.Cons| |##_module.Tree.Node| |##_module.CoOption.None| |##_module.CoOption.Some| |##_module.Number.Succ| |##_module.Number.Zero| tytagFamily$Stream tytagFamily$Tree tytagFamily$Number tytagFamily$CoOption)
@@ -141,63 +147,99 @@
  (=> (U_2_bool (Lit boolType (bool_2_U (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0|))))) (|_module.__default.ValidPath__Alt_h#canCall| (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.Stream.head (Lit DatatypeTypeType |s#0|)))) |r#9|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0|)) (ite (_module.Number.Succ_q (Lit DatatypeTypeType |num#0|)) (let ((|next#10| (Lit DatatypeTypeType (_module.Number._h4 (Lit DatatypeTypeType |num#0|)))))
  (and (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0|)) (_module.__default.ValidPath__Alt_k_h ($LS $ly) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |s#0|))) |next#10|))) (let ((|r#10| (Lit DatatypeTypeType (_module.Number._h5 (Lit DatatypeTypeType |num#0|)))))
  (and (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0|)) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.Stream.head (Lit DatatypeTypeType |s#0|)))) |r#10|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#2| T@U) ) (!  (=> (|ORD#Less| |_k'#2| |_k#0|) (|_module.__default.ValidPath__Alt_k_h#canCall| |_k'#2| |s#0| |num#0|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |976|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly) |_k'#2| |s#0| |num#0|))
 ))))) (= (_module.__default.ValidPath__Alt_k_h ($LS $ly) (Lit BoxType |_k#0|) (Lit DatatypeTypeType |s#0|) (Lit DatatypeTypeType |num#0|))  (and (=> (< 0 (|ORD#Offset| |_k#0|)) (ite (_module.Number.Succ_q (Lit DatatypeTypeType |num#0|)) (let ((|next#8| (Lit DatatypeTypeType (_module.Number._h4 (Lit DatatypeTypeType |num#0|)))))
  (and (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0|)) (_module.__default.ValidPath__Alt_k_h ($LS $ly) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |s#0|))) |next#8|))) (let ((|r#8| (Lit DatatypeTypeType (_module.Number._h5 (Lit DatatypeTypeType |num#0|)))))
  (and (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0|)) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.Stream.head (Lit DatatypeTypeType |s#0|)))) |r#8|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#2@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@0| |_k#0|) (_module.__default.ValidPath__Alt_k_h ($LS $ly) |_k'#2@@0| |s#0| |num#0|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |975|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly) |_k'#2@@0| |s#0| |num#0|))
 )))))))
+ :qid |InfiniteTreesdfy.456:20|
  :weight 3
+ :skolemid |977|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly) (Lit BoxType |_k#0|) (Lit DatatypeTypeType |s#0|) (Lit DatatypeTypeType |num#0|)))
 ))))
 (assert (= (Tag TBool) TagBool))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((d T@U) ) (!  (=> (|$IsA#_module.Tree| d) (_module.Tree.Node_q d))
+ :qid |unknown.0:0|
+ :skolemid |1183|
  :pattern ( (|$IsA#_module.Tree| d))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (DatatypeCtorId |#_module.Stream.Nil|) |##_module.Stream.Nil|))
 (assert (= (DatatypeCtorId |#_module.CoOption.None|) |##_module.CoOption.None|))
 (assert (forall ((d@@0 T@U) ) (!  (=> ($Is DatatypeTypeType d@@0 Tclass._module.Tree) (_module.Tree.Node_q d@@0))
+ :qid |unknown.0:0|
+ :skolemid |1184|
  :pattern ( (_module.Tree.Node_q d@@0) ($Is DatatypeTypeType d@@0 Tclass._module.Tree))
 )))
 (assert (forall ((_module.Stream$T T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) ($IsAlloc DatatypeTypeType |#_module.Stream.Nil| (Tclass._module.Stream _module.Stream$T) $h))
+ :qid |unknown.0:0|
+ :skolemid |1149|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.Stream.Nil| (Tclass._module.Stream _module.Stream$T) $h))
 )))
 (assert (forall ((_module.CoOption$T T@U) ($h@@0 T@U) ) (!  (=> ($IsGoodHeap $h@@0) ($IsAlloc DatatypeTypeType |#_module.CoOption.None| (Tclass._module.CoOption _module.CoOption$T) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1190|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.CoOption.None| (Tclass._module.CoOption _module.CoOption$T) $h@@0))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@0 T@U) (|t#0| T@U) (|r#0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |t#0| Tclass._module.Tree) ($Is DatatypeTypeType |r#0| (Tclass._module.CoOption Tclass._module.Number))) (_module.__default.ValidPath__Alt ($LS $ly@@0) |t#0| |r#0|)) (forall ((|_k#0@@0| T@U) ) (! (_module.__default.ValidPath__Alt_h ($LS $ly@@0) |_k#0@@0| |t#0| |r#0|)
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |936|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@0) |_k#0@@0| |t#0| |r#0|))
 )))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |937|
  :pattern ( (_module.__default.ValidPath__Alt ($LS $ly@@0) |t#0| |r#0|))
 ))))
 (assert (forall ((_module.Stream$T@@0 T@U) ) (! ($Is DatatypeTypeType |#_module.Stream.Nil| (Tclass._module.Stream _module.Stream$T@@0))
+ :qid |unknown.0:0|
+ :skolemid |1148|
  :pattern ( ($Is DatatypeTypeType |#_module.Stream.Nil| (Tclass._module.Stream _module.Stream$T@@0)))
 )))
 (assert (forall ((_module.CoOption$T@@0 T@U) ) (! ($Is DatatypeTypeType |#_module.CoOption.None| (Tclass._module.CoOption _module.CoOption$T@@0))
+ :qid |unknown.0:0|
+ :skolemid |1189|
  :pattern ( ($Is DatatypeTypeType |#_module.CoOption.None| (Tclass._module.CoOption _module.CoOption$T@@0)))
 )))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.Tree#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |1186|
  :pattern ( (|_module.Tree#Equal| a b))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@1 T@U) (|t#0@@0| T@U) (|r#0@@0| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt#canCall| |t#0@@0| |r#0@@0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |t#0@@0| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@0| (Tclass._module.CoOption Tclass._module.Number))))) (and (and (=> (_module.CoOption.None_q |r#0@@0|) (|$IsA#_module.Tree| |t#0@@0|)) (=> (not (_module.CoOption.None_q |r#0@@0|)) (let ((|num#1| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@0|))))
  (and (_module.Tree.Node_q |t#0@@0|) (|_module.__default.ValidPath__Alt_k#canCall| (_module.Tree.children |t#0@@0|) |num#1|))))) (= (_module.__default.ValidPath__Alt ($LS $ly@@1) |t#0@@0| |r#0@@0|) (ite (_module.CoOption.None_q |r#0@@0|) (|_module.Tree#Equal| |t#0@@0| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#0@@0| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@0|))))
 (_module.__default.ValidPath__Alt_k $ly@@1 (_module.Tree.children |t#0@@0|) |num#0@@0|))))))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |935|
  :pattern ( (_module.__default.ValidPath__Alt ($LS $ly@@1) |t#0@@0| |r#0@@0|))
 ))))
 (assert (forall ((_module.Stream$T@@1 T@U) (|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0| |a#5#1#0|) (Tclass._module.Stream _module.Stream$T@@1))  (and ($IsBox |a#5#0#0| _module.Stream$T@@1) ($Is DatatypeTypeType |a#5#1#0| (Tclass._module.Stream _module.Stream$T@@1))))
+ :qid |unknown.0:0|
+ :skolemid |1154|
  :pattern ( ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0| |a#5#1#0|) (Tclass._module.Stream _module.Stream$T@@1)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@2 T@U) (|_k#0@@1| T@U) (|s#0@@0| T@U) (|num#0@@1| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt_k_h#canCall| |_k#0@@1| |s#0@@0| |num#0@@1|) (and (< 3 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@0| (Tclass._module.Stream Tclass._module.Tree)) ($Is DatatypeTypeType |num#0@@1| Tclass._module.Number)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (and (=> (_module.Number.Succ_q |num#0@@1|) (let ((|next#3| (_module.Number._h4 |num#0@@1|)))
@@ -205,148 +247,257 @@
  (=> (_module.Stream.Cons_q |s#0@@0|) (|_module.__default.ValidPath__Alt_h#canCall| (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@0|)) |r#3|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (ite (_module.Number.Succ_q |num#0@@1|) (let ((|next#4| (_module.Number._h4 |num#0@@1|)))
  (and (_module.Stream.Cons_q |s#0@@0|) (_module.__default.ValidPath__Alt_k_h $ly@@2 (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@0|) |next#4|))) (let ((|r#4| (_module.Number._h5 |num#0@@1|)))
  (and (_module.Stream.Cons_q |s#0@@0|) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@0|)) |r#4|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@1|) (|_module.__default.ValidPath__Alt_k_h#canCall| |_k'#0| |s#0@@0| |num#0@@1|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |970|
  :pattern ( (_module.__default.ValidPath__Alt_k_h $ly@@2 |_k'#0| |s#0@@0| |num#0@@1|))
 ))))) (= (_module.__default.ValidPath__Alt_k_h ($LS $ly@@2) |_k#0@@1| |s#0@@0| |num#0@@1|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (ite (_module.Number.Succ_q |num#0@@1|) (let ((|next#2| (_module.Number._h4 |num#0@@1|)))
  (and (_module.Stream.Cons_q |s#0@@0|) (_module.__default.ValidPath__Alt_k_h $ly@@2 (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@0|) |next#2|))) (let ((|r#2| (_module.Number._h5 |num#0@@1|)))
  (and (_module.Stream.Cons_q |s#0@@0|) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@0|)) |r#2|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@1|) (_module.__default.ValidPath__Alt_k_h $ly@@2 |_k'#0@@0| |s#0@@0| |num#0@@1|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |969|
  :pattern ( (_module.__default.ValidPath__Alt_k_h $ly@@2 |_k'#0@@0| |s#0@@0| |num#0@@1|))
 )))))))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |971|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@2) |_k#0@@1| |s#0@@0| |num#0@@1|))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@3 T@U) (|s#0@@1| T@U) (|num#0@@2| T@U) (|_k#0@@2| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |s#0@@1| (Tclass._module.Stream Tclass._module.Tree)) ($Is DatatypeTypeType |num#0@@2| Tclass._module.Number)) (= |_k#0@@2| (|ORD#FromNat| 0))) (_module.__default.ValidPath__Alt_k_h $ly@@3 |_k#0@@2| |s#0@@1| |num#0@@2|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |962|
  :pattern ( (_module.__default.ValidPath__Alt_k_h $ly@@3 |_k#0@@2| |s#0@@1| |num#0@@2|))
 ))))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Stream.Nil_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Stream.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1146|
  :pattern ( (_module.Stream.Nil_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.Stream.Cons_q d@@2) (= (DatatypeCtorId d@@2) |##_module.Stream.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |1151|
  :pattern ( (_module.Stream.Cons_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.Tree.Node_q d@@3) (= (DatatypeCtorId d@@3) |##_module.Tree.Node|))
+ :qid |unknown.0:0|
+ :skolemid |1174|
  :pattern ( (_module.Tree.Node_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (! (= (_module.CoOption.None_q d@@4) (= (DatatypeCtorId d@@4) |##_module.CoOption.None|))
+ :qid |unknown.0:0|
+ :skolemid |1187|
  :pattern ( (_module.CoOption.None_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (_module.CoOption.Some_q d@@5) (= (DatatypeCtorId d@@5) |##_module.CoOption.Some|))
+ :qid |unknown.0:0|
+ :skolemid |1192|
  :pattern ( (_module.CoOption.Some_q d@@5))
 )))
 (assert (forall ((d@@6 T@U) ) (! (= (_module.Number.Succ_q d@@6) (= (DatatypeCtorId d@@6) |##_module.Number.Succ|))
+ :qid |unknown.0:0|
+ :skolemid |1213|
  :pattern ( (_module.Number.Succ_q d@@6))
 )))
 (assert (forall ((d@@7 T@U) ) (! (= (_module.Number.Zero_q d@@7) (= (DatatypeCtorId d@@7) |##_module.Number.Zero|))
+ :qid |unknown.0:0|
+ :skolemid |1222|
  :pattern ( (_module.Number.Zero_q d@@7))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@8 T@U) ) (!  (=> (_module.Stream.Cons_q d@@8) (exists ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (= d@@8 (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|))))
+(assert (forall ((d@@8 T@U) ) (!  (=> (_module.Stream.Cons_q d@@8) (exists ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= d@@8 (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|))
+ :qid |InfiniteTreesdfy.7:35|
+ :skolemid |1152|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1153|
  :pattern ( (_module.Stream.Cons_q d@@8))
 )))
 (assert (forall ((d@@9 T@U) ) (!  (=> (_module.Stream.Nil_q d@@9) (= d@@9 |#_module.Stream.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1147|
  :pattern ( (_module.Stream.Nil_q d@@9))
 )))
 (assert (forall ((d@@10 T@U) ) (!  (=> (_module.CoOption.None_q d@@10) (= d@@10 |#_module.CoOption.None|))
+ :qid |unknown.0:0|
+ :skolemid |1188|
  :pattern ( (_module.CoOption.None_q d@@10))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@4 T@U) (|_k#0@@3| T@U) (|t#0@@1| T@U) (|r#0@@1| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt_h#canCall| (Lit BoxType |_k#0@@3|) (Lit DatatypeTypeType |t#0@@1|) (Lit DatatypeTypeType |r#0@@1|)) (and (< 3 $FunctionContextHeight) (and ($Is DatatypeTypeType |t#0@@1| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@1| (Tclass._module.CoOption Tclass._module.Number))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.CoOption.None_q (Lit DatatypeTypeType |r#0@@1|))))) (|$IsA#_module.Tree| (Lit DatatypeTypeType |t#0@@1|))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.CoOption.None_q (Lit DatatypeTypeType |r#0@@1|)))))) (let ((|num#9| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.CoOption.get (Lit DatatypeTypeType |r#0@@1|))))))
  (and (_module.Tree.Node_q (Lit DatatypeTypeType |t#0@@1|)) (|_module.__default.ValidPath__Alt_k_h#canCall| (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Tree.children (Lit DatatypeTypeType |t#0@@1|))) |num#9|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (ite (_module.CoOption.None_q (Lit DatatypeTypeType |r#0@@1|)) (|_module.Tree#Equal| |t#0@@1| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#10| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.CoOption.get (Lit DatatypeTypeType |r#0@@1|))))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Tree.children (Lit DatatypeTypeType |t#0@@1|))) |num#10|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#2@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@1| |_k#0@@3|) (|_module.__default.ValidPath__Alt_h#canCall| |_k'#2@@1| |t#0@@1| |r#0@@1|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |952|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@4) |_k'#2@@1| |t#0@@1| |r#0@@1|))
 ))))) (= (_module.__default.ValidPath__Alt_h ($LS $ly@@4) (Lit BoxType |_k#0@@3|) (Lit DatatypeTypeType |t#0@@1|) (Lit DatatypeTypeType |r#0@@1|))  (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (ite (_module.CoOption.None_q (Lit DatatypeTypeType |r#0@@1|)) (|_module.Tree#Equal| |t#0@@1| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#8| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.CoOption.get (Lit DatatypeTypeType |r#0@@1|))))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Tree.children (Lit DatatypeTypeType |t#0@@1|))) |num#8|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#2@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@2| |_k#0@@3|) (_module.__default.ValidPath__Alt_h ($LS $ly@@4) |_k'#2@@2| |t#0@@1| |r#0@@1|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |951|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@4) |_k'#2@@2| |t#0@@1| |r#0@@1|))
 )))))))
+ :qid |InfiniteTreesdfy.450:20|
  :weight 3
+ :skolemid |953|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@4) (Lit BoxType |_k#0@@3|) (Lit DatatypeTypeType |t#0@@1|) (Lit DatatypeTypeType |r#0@@1|)))
 ))))
-(assert (forall ((d@@11 T@U) ) (!  (=> (_module.Tree.Node_q d@@11) (exists ((|a#9#0#0| T@U) ) (= d@@11 (|#_module.Tree.Node| |a#9#0#0|))))
+(assert (forall ((d@@11 T@U) ) (!  (=> (_module.Tree.Node_q d@@11) (exists ((|a#9#0#0| T@U) ) (! (= d@@11 (|#_module.Tree.Node| |a#9#0#0|))
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1175|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1176|
  :pattern ( (_module.Tree.Node_q d@@11))
 )))
-(assert (forall ((d@@12 T@U) ) (!  (=> (_module.CoOption.Some_q d@@12) (exists ((|a#18#0#0| T@U) ) (= d@@12 (|#_module.CoOption.Some| |a#18#0#0|))))
+(assert (forall ((d@@12 T@U) ) (!  (=> (_module.CoOption.Some_q d@@12) (exists ((|a#18#0#0| T@U) ) (! (= d@@12 (|#_module.CoOption.Some| |a#18#0#0|))
+ :qid |InfiniteTreesdfy.414:38|
+ :skolemid |1193|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1194|
  :pattern ( (_module.CoOption.Some_q d@@12))
 )))
-(assert (forall ((d@@13 T@U) ) (!  (=> (_module.Number.Succ_q d@@13) (exists ((|a#22#0#0| T@U) ) (= d@@13 (|#_module.Number.Succ| |a#22#0#0|))))
+(assert (forall ((d@@13 T@U) ) (!  (=> (_module.Number.Succ_q d@@13) (exists ((|a#22#0#0| T@U) ) (! (= d@@13 (|#_module.Number.Succ| |a#22#0#0|))
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1214|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1215|
  :pattern ( (_module.Number.Succ_q d@@13))
 )))
-(assert (forall ((d@@14 T@U) ) (!  (=> (_module.Number.Zero_q d@@14) (exists ((|a#28#0#0| T@U) ) (= d@@14 (|#_module.Number.Zero| |a#28#0#0|))))
+(assert (forall ((d@@14 T@U) ) (!  (=> (_module.Number.Zero_q d@@14) (exists ((|a#28#0#0| T@U) ) (! (= d@@14 (|#_module.Number.Zero| |a#28#0#0|))
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1223|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1224|
  :pattern ( (_module.Number.Zero_q d@@14))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@5 T@U) (|t#0@@2| T@U) (|r#0@@2| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |t#0@@2| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@2| (Tclass._module.CoOption Tclass._module.Number))) (forall ((|_k#0@@4| T@U) ) (! (_module.__default.ValidPath__Alt_h ($LS $ly@@5) |_k#0@@4| |t#0@@2| |r#0@@2|)
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |936|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@5) |_k#0@@4| |t#0@@2| |r#0@@2|))
 ))) (_module.__default.ValidPath__Alt ($LS $ly@@5) |t#0@@2| |r#0@@2|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |938|
  :pattern ( (_module.__default.ValidPath__Alt ($LS $ly@@5) |t#0@@2| |r#0@@2|))
 ))))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|_module.Tree#Equal| a@@0 b@@0) (= (_module.Tree.children a@@0) (_module.Tree.children b@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1185|
  :pattern ( (|_module.Tree#Equal| a@@0 b@@0))
 )))
 (assert (forall (($ly@@6 T@U) (|t#0@@3| T@U) (|r#0@@3| T@U) ) (! (= (_module.__default.ValidPath__Alt ($LS $ly@@6) |t#0@@3| |r#0@@3|) (_module.__default.ValidPath__Alt $ly@@6 |t#0@@3| |r#0@@3|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |931|
  :pattern ( (_module.__default.ValidPath__Alt ($LS $ly@@6) |t#0@@3| |r#0@@3|))
 )))
 (assert (forall (($ly@@7 T@U) (|s#0@@2| T@U) (|num#0@@3| T@U) ) (! (= (_module.__default.ValidPath__Alt_k ($LS $ly@@7) |s#0@@2| |num#0@@3|) (_module.__default.ValidPath__Alt_k $ly@@7 |s#0@@2| |num#0@@3|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |954|
  :pattern ( (_module.__default.ValidPath__Alt_k ($LS $ly@@7) |s#0@@2| |num#0@@3|))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.Stream$T@@2 T@U) ) (!  (and (= (Tag (Tclass._module.Stream _module.Stream$T@@2)) Tagclass._module.Stream) (= (TagFamily (Tclass._module.Stream _module.Stream$T@@2)) tytagFamily$Stream))
+ :qid |unknown.0:0|
+ :skolemid |583|
  :pattern ( (Tclass._module.Stream _module.Stream$T@@2))
 )))
 (assert (forall ((_module.CoOption$T@@1 T@U) ) (!  (and (= (Tag (Tclass._module.CoOption _module.CoOption$T@@1)) Tagclass._module.CoOption) (= (TagFamily (Tclass._module.CoOption _module.CoOption$T@@1)) tytagFamily$CoOption))
+ :qid |unknown.0:0|
+ :skolemid |883|
  :pattern ( (Tclass._module.CoOption _module.CoOption$T@@1))
 )))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._module.Tree) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) Tclass._module.Tree)))
+ :qid |unknown.0:0|
+ :skolemid |634|
  :pattern ( ($IsBox bx Tclass._module.Tree))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._module.Number) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) Tclass._module.Number)))
+ :qid |unknown.0:0|
+ :skolemid |882|
  :pattern ( ($IsBox bx@@0 Tclass._module.Number))
 )))
 (assert (forall ((|a#23#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Number.Succ| |a#23#0#0|) Tclass._module.Number) ($Is DatatypeTypeType |a#23#0#0| Tclass._module.Number))
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1216|
  :pattern ( ($Is DatatypeTypeType (|#_module.Number.Succ| |a#23#0#0|) Tclass._module.Number))
 )))
 (assert (forall ((_module.CoOption$T@@2 T@U) (|a#19#0#0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_module.CoOption.Some| |a#19#0#0|) (Tclass._module.CoOption _module.CoOption$T@@2) $h@@1) ($IsAllocBox |a#19#0#0| _module.CoOption$T@@2 $h@@1)))
+ :qid |unknown.0:0|
+ :skolemid |1196|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.CoOption.Some| |a#19#0#0|) (Tclass._module.CoOption _module.CoOption$T@@2) $h@@1))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@8 T@U) (|s#0@@3| T@U) (|num#0@@4| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |s#0@@3| (Tclass._module.Stream Tclass._module.Tree)) ($Is DatatypeTypeType |num#0@@4| Tclass._module.Number)) (_module.__default.ValidPath__Alt_k ($LS $ly@@8) |s#0@@3| |num#0@@4|)) (forall ((|_k#0@@5| T@U) ) (! (_module.__default.ValidPath__Alt_k_h ($LS $ly@@8) |_k#0@@5| |s#0@@3| |num#0@@4|)
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |959|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@8) |_k#0@@5| |s#0@@3| |num#0@@4|))
 )))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |960|
  :pattern ( (_module.__default.ValidPath__Alt_k ($LS $ly@@8) |s#0@@3| |num#0@@4|))
 ))))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert (forall ((|a#10#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Tree.Node| |a#10#0#0|) Tclass._module.Tree) ($Is DatatypeTypeType |a#10#0#0| (Tclass._module.Stream Tclass._module.Tree)))
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1177|
  :pattern ( ($Is DatatypeTypeType (|#_module.Tree.Node| |a#10#0#0|) Tclass._module.Tree))
 )))
 (assert (forall ((|a#29#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Number.Zero| |a#29#0#0|) Tclass._module.Number) ($Is DatatypeTypeType |a#29#0#0| (Tclass._module.CoOption Tclass._module.Number)))
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1225|
  :pattern ( ($Is DatatypeTypeType (|#_module.Number.Zero| |a#29#0#0|) Tclass._module.Number))
 )))
 (assert (forall ((_module.Stream$T@@3 T@U) (d@@15 T@U) ) (!  (=> ($Is DatatypeTypeType d@@15 (Tclass._module.Stream _module.Stream$T@@3)) (or (_module.Stream.Nil_q d@@15) (_module.Stream.Cons_q d@@15)))
+ :qid |unknown.0:0|
+ :skolemid |1161|
  :pattern ( (_module.Stream.Cons_q d@@15) ($Is DatatypeTypeType d@@15 (Tclass._module.Stream _module.Stream$T@@3)))
  :pattern ( (_module.Stream.Nil_q d@@15) ($Is DatatypeTypeType d@@15 (Tclass._module.Stream _module.Stream$T@@3)))
 )))
 (assert (forall ((_module.CoOption$T@@3 T@U) (d@@16 T@U) ) (!  (=> ($Is DatatypeTypeType d@@16 (Tclass._module.CoOption _module.CoOption$T@@3)) (or (_module.CoOption.None_q d@@16) (_module.CoOption.Some_q d@@16)))
+ :qid |unknown.0:0|
+ :skolemid |1200|
  :pattern ( (_module.CoOption.Some_q d@@16) ($Is DatatypeTypeType d@@16 (Tclass._module.CoOption _module.CoOption$T@@3)))
  :pattern ( (_module.CoOption.None_q d@@16) ($Is DatatypeTypeType d@@16 (Tclass._module.CoOption _module.CoOption$T@@3)))
 )))
 (assert (forall ((d@@17 T@U) ) (!  (=> ($Is DatatypeTypeType d@@17 Tclass._module.Number) (or (_module.Number.Succ_q d@@17) (_module.Number.Zero_q d@@17)))
+ :qid |unknown.0:0|
+ :skolemid |1232|
  :pattern ( (_module.Number.Zero_q d@@17) ($Is DatatypeTypeType d@@17 Tclass._module.Number))
  :pattern ( (_module.Number.Succ_q d@@17) ($Is DatatypeTypeType d@@17 Tclass._module.Number))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@9 T@U) (|_k#0@@6| T@U) (|t#0@@4| T@U) (|r#0@@4| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt_h#canCall| |_k#0@@6| |t#0@@4| |r#0@@4|) (and (< 3 $FunctionContextHeight) (and ($Is DatatypeTypeType |t#0@@4| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@4| (Tclass._module.CoOption Tclass._module.Number))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@6|)) (and (=> (_module.CoOption.None_q |r#0@@4|) (|$IsA#_module.Tree| |t#0@@4|)) (=> (not (_module.CoOption.None_q |r#0@@4|)) (let ((|num#3| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@4|))))
  (and (_module.Tree.Node_q |t#0@@4|) (|_module.__default.ValidPath__Alt_k_h#canCall| (|ORD#Minus| |_k#0@@6| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@4|) |num#3|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@6|)) (ite (_module.CoOption.None_q |r#0@@4|) (|_module.Tree#Equal| |t#0@@4| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#4| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@4|))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@6| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@4|) |num#4|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@6|)) (forall ((|_k'#0@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@1| |_k#0@@6|) (|_module.__default.ValidPath__Alt_h#canCall| |_k'#0@@1| |t#0@@4| |r#0@@4|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |946|
  :pattern ( (_module.__default.ValidPath__Alt_h $ly@@9 |_k'#0@@1| |t#0@@4| |r#0@@4|))
 ))))) (= (_module.__default.ValidPath__Alt_h ($LS $ly@@9) |_k#0@@6| |t#0@@4| |r#0@@4|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@6|)) (ite (_module.CoOption.None_q |r#0@@4|) (|_module.Tree#Equal| |t#0@@4| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#2| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@4|))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@6| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@4|) |num#2|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@6|)) (forall ((|_k'#0@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@2| |_k#0@@6|) (_module.__default.ValidPath__Alt_h $ly@@9 |_k'#0@@2| |t#0@@4| |r#0@@4|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |945|
  :pattern ( (_module.__default.ValidPath__Alt_h $ly@@9 |_k'#0@@2| |t#0@@4| |r#0@@4|))
 )))))))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |947|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@9) |_k#0@@6| |t#0@@4| |r#0@@4|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@10 T@U) (|s#0@@4| T@U) (|num#0@@5| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt_k#canCall| |s#0@@4| |num#0@@5|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@4| (Tclass._module.Stream Tclass._module.Tree)) ($Is DatatypeTypeType |num#0@@5| Tclass._module.Number)))) (and (and (=> (_module.Number.Succ_q |num#0@@5|) (let ((|next#1| (_module.Number._h4 |num#0@@5|)))
@@ -354,126 +505,207 @@
  (=> (_module.Stream.Cons_q |s#0@@4|) (|_module.__default.ValidPath__Alt#canCall| ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@4|)) |r#1|))))) (= (_module.__default.ValidPath__Alt_k ($LS $ly@@10) |s#0@@4| |num#0@@5|) (ite (_module.Number.Succ_q |num#0@@5|) (let ((|next#0| (_module.Number._h4 |num#0@@5|)))
  (and (_module.Stream.Cons_q |s#0@@4|) (_module.__default.ValidPath__Alt_k $ly@@10 (_module.Stream.tail |s#0@@4|) |next#0|))) (let ((|r#0@@5| (_module.Number._h5 |num#0@@5|)))
  (and (_module.Stream.Cons_q |s#0@@4|) (_module.__default.ValidPath__Alt $ly@@10 ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@4|)) |r#0@@5|)))))))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |958|
  :pattern ( (_module.__default.ValidPath__Alt_k ($LS $ly@@10) |s#0@@4| |num#0@@5|))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TBool) (and (= ($Box boolType ($Unbox boolType bx@@1)) bx@@1) ($Is boolType ($Unbox boolType bx@@1) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@1 TBool))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall (($ly@@11 T@U) (|_k#0@@7| T@U) (|t#0@@5| T@U) (|r#0@@6| T@U) ) (! (= (_module.__default.ValidPath__Alt_h ($LS $ly@@11) |_k#0@@7| |t#0@@5| |r#0@@6|) (_module.__default.ValidPath__Alt_h $ly@@11 |_k#0@@7| |t#0@@5| |r#0@@6|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |941|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@11) |_k#0@@7| |t#0@@5| |r#0@@6|))
 )))
 (assert (forall (($ly@@12 T@U) (|_k#0@@8| T@U) (|s#0@@5| T@U) (|num#0@@6| T@U) ) (! (= (_module.__default.ValidPath__Alt_k_h ($LS $ly@@12) |_k#0@@8| |s#0@@5| |num#0@@6|) (_module.__default.ValidPath__Alt_k_h $ly@@12 |_k#0@@8| |s#0@@5| |num#0@@6|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |965|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@12) |_k#0@@8| |s#0@@5| |num#0@@6|))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|)) |##_module.Stream.Cons|)
+ :qid |InfiniteTreesdfy.7:35|
+ :skolemid |1150|
  :pattern ( (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= (_module.Stream.head (|#_module.Stream.Cons| |a#6#0#0| |a#6#1#0|)) |a#6#0#0|)
+ :qid |InfiniteTreesdfy.7:35|
+ :skolemid |1158|
  :pattern ( (|#_module.Stream.Cons| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (= (_module.Stream.tail (|#_module.Stream.Cons| |a#7#0#0| |a#7#1#0|)) |a#7#1#0|)
+ :qid |InfiniteTreesdfy.7:35|
+ :skolemid |1159|
  :pattern ( (|#_module.Stream.Cons| |a#7#0#0| |a#7#1#0|))
 )))
 (assert (forall ((_module.Stream$T@@4 T@U) ) (! (= (Tclass._module.Stream_0 (Tclass._module.Stream _module.Stream$T@@4)) _module.Stream$T@@4)
+ :qid |unknown.0:0|
+ :skolemid |584|
  :pattern ( (Tclass._module.Stream _module.Stream$T@@4))
 )))
 (assert (forall ((_module.CoOption$T@@4 T@U) ) (! (= (Tclass._module.CoOption_0 (Tclass._module.CoOption _module.CoOption$T@@4)) _module.CoOption$T@@4)
+ :qid |unknown.0:0|
+ :skolemid |884|
  :pattern ( (Tclass._module.CoOption _module.CoOption$T@@4))
 )))
 (assert (forall ((|a#8#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Tree.Node| |a#8#0#0|)) |##_module.Tree.Node|)
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1173|
  :pattern ( (|#_module.Tree.Node| |a#8#0#0|))
 )))
 (assert (forall ((|a#12#0#0| T@U) ) (! (= (_module.Tree.children (|#_module.Tree.Node| |a#12#0#0|)) |a#12#0#0|)
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1180|
  :pattern ( (|#_module.Tree.Node| |a#12#0#0|))
 )))
 (assert (forall ((|a#17#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.CoOption.Some| |a#17#0#0|)) |##_module.CoOption.Some|)
+ :qid |InfiniteTreesdfy.414:38|
+ :skolemid |1191|
  :pattern ( (|#_module.CoOption.Some| |a#17#0#0|))
 )))
 (assert (forall ((|a#20#0#0| T@U) ) (! (= (_module.CoOption.get (|#_module.CoOption.Some| |a#20#0#0|)) |a#20#0#0|)
+ :qid |InfiniteTreesdfy.414:38|
+ :skolemid |1198|
  :pattern ( (|#_module.CoOption.Some| |a#20#0#0|))
 )))
 (assert (forall ((|a#21#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Number.Succ| |a#21#0#0|)) |##_module.Number.Succ|)
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1212|
  :pattern ( (|#_module.Number.Succ| |a#21#0#0|))
 )))
 (assert (forall ((|a#25#0#0| T@U) ) (! (= (_module.Number._h4 (|#_module.Number.Succ| |a#25#0#0|)) |a#25#0#0|)
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1219|
  :pattern ( (|#_module.Number.Succ| |a#25#0#0|))
 )))
 (assert (forall ((|a#27#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Number.Zero| |a#27#0#0|)) |##_module.Number.Zero|)
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1221|
  :pattern ( (|#_module.Number.Zero| |a#27#0#0|))
 )))
 (assert (forall ((|a#31#0#0| T@U) ) (! (= (_module.Number._h5 (|#_module.Number.Zero| |a#31#0#0|)) |a#31#0#0|)
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1228|
  :pattern ( (|#_module.Number.Zero| |a#31#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert (forall ((_module.CoOption$T@@5 T@U) (|a#19#0#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.CoOption.Some| |a#19#0#0@@0|) (Tclass._module.CoOption _module.CoOption$T@@5)) ($IsBox |a#19#0#0@@0| _module.CoOption$T@@5))
+ :qid |unknown.0:0|
+ :skolemid |1195|
  :pattern ( ($Is DatatypeTypeType (|#_module.CoOption.Some| |a#19#0#0@@0|) (Tclass._module.CoOption _module.CoOption$T@@5)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@13 T@U) (|s#0@@6| T@U) (|num#0@@7| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |s#0@@6| (Tclass._module.Stream Tclass._module.Tree)) ($Is DatatypeTypeType |num#0@@7| Tclass._module.Number)) (forall ((|_k#0@@9| T@U) ) (! (_module.__default.ValidPath__Alt_k_h ($LS $ly@@13) |_k#0@@9| |s#0@@6| |num#0@@7|)
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |959|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@13) |_k#0@@9| |s#0@@6| |num#0@@7|))
 ))) (_module.__default.ValidPath__Alt_k ($LS $ly@@13) |s#0@@6| |num#0@@7|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |961|
  :pattern ( (_module.__default.ValidPath__Alt_k ($LS $ly@@13) |s#0@@6| |num#0@@7|))
 ))))
 (assert (forall ((|a#13#0#0| T@U) ) (! (< (DtRank |a#13#0#0|) (DtRank (|#_module.Tree.Node| |a#13#0#0|)))
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1181|
  :pattern ( (|#_module.Tree.Node| |a#13#0#0|))
 )))
 (assert (forall ((|a#26#0#0| T@U) ) (! (< (DtRank |a#26#0#0|) (DtRank (|#_module.Number.Succ| |a#26#0#0|)))
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1220|
  :pattern ( (|#_module.Number.Succ| |a#26#0#0|))
 )))
 (assert (forall ((|a#32#0#0| T@U) ) (! (< (DtRank |a#32#0#0|) (DtRank (|#_module.Number.Zero| |a#32#0#0|)))
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1229|
  :pattern ( (|#_module.Number.Zero| |a#32#0#0|))
 )))
 (assert (forall ((d@@18 T@U) (_module.Stream$T@@5 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.Stream.Cons_q d@@18) ($IsAlloc DatatypeTypeType d@@18 (Tclass._module.Stream _module.Stream$T@@5) $h@@2))) ($IsAllocBox (_module.Stream.head d@@18) _module.Stream$T@@5 $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1156|
  :pattern ( ($IsAllocBox (_module.Stream.head d@@18) _module.Stream$T@@5 $h@@2))
 )))
 (assert (forall ((d@@19 T@U) (_module.CoOption$T@@6 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.CoOption.Some_q d@@19) ($IsAlloc DatatypeTypeType d@@19 (Tclass._module.CoOption _module.CoOption$T@@6) $h@@3))) ($IsAllocBox (_module.CoOption.get d@@19) _module.CoOption$T@@6 $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1197|
  :pattern ( ($IsAllocBox (_module.CoOption.get d@@19) _module.CoOption$T@@6 $h@@3))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1298|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((_module.Stream$T@@6 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._module.Stream _module.Stream$T@@6)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) (Tclass._module.Stream _module.Stream$T@@6))))
+ :qid |unknown.0:0|
+ :skolemid |585|
  :pattern ( ($IsBox bx@@2 (Tclass._module.Stream _module.Stream$T@@6)))
 )))
 (assert (forall ((_module.CoOption$T@@7 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass._module.CoOption _module.CoOption$T@@7)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@3)) bx@@3) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@3) (Tclass._module.CoOption _module.CoOption$T@@7))))
+ :qid |unknown.0:0|
+ :skolemid |885|
  :pattern ( ($IsBox bx@@3 (Tclass._module.CoOption _module.CoOption$T@@7)))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
 (assert (forall ((d@@20 T@U) (_module.Stream$T@@7 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (_module.Stream.Cons_q d@@20) ($IsAlloc DatatypeTypeType d@@20 (Tclass._module.Stream _module.Stream$T@@7) $h@@4))) ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@20) (Tclass._module.Stream _module.Stream$T@@7) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |1157|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@20) (Tclass._module.Stream _module.Stream$T@@7) $h@@4))
 )))
 (assert (forall ((d@@21 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) ($Is DatatypeTypeType d@@21 Tclass._module.Tree)) ($IsAlloc DatatypeTypeType d@@21 Tclass._module.Tree $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |1182|
  :pattern ( ($IsAlloc DatatypeTypeType d@@21 Tclass._module.Tree $h@@5))
 )))
 (assert (forall ((d@@22 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) ($Is DatatypeTypeType d@@22 Tclass._module.Number)) ($IsAlloc DatatypeTypeType d@@22 Tclass._module.Number $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |1230|
  :pattern ( ($IsAlloc DatatypeTypeType d@@22 Tclass._module.Number $h@@6))
 )))
 (assert (= (Tag Tclass._module.Tree) Tagclass._module.Tree))
@@ -485,63 +717,101 @@
  (=> (_module.Stream.Cons_q |s#0@@7|) (|_module.__default.ValidPath__Alt_h#canCall| (|ORD#Minus| |_k#0@@10| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@7|)) |r#6|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@10|)) (ite (_module.Number.Succ_q |num#0@@8|) (let ((|next#7| (_module.Number._h4 |num#0@@8|)))
  (and (_module.Stream.Cons_q |s#0@@7|) (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) (|ORD#Minus| |_k#0@@10| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@7|) |next#7|))) (let ((|r#7| (_module.Number._h5 |num#0@@8|)))
  (and (_module.Stream.Cons_q |s#0@@7|) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0@@10| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@7|)) |r#7|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@10|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |_k#0@@10|) (|_module.__default.ValidPath__Alt_k_h#canCall| |_k'#1| |s#0@@7| |num#0@@8|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |973|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) |_k'#1| |s#0@@7| |num#0@@8|))
 ))))) (= (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) (Lit BoxType |_k#0@@10|) |s#0@@7| |num#0@@8|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@10|)) (ite (_module.Number.Succ_q |num#0@@8|) (let ((|next#5| (_module.Number._h4 |num#0@@8|)))
  (and (_module.Stream.Cons_q |s#0@@7|) (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) (|ORD#Minus| |_k#0@@10| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@7|) |next#5|))) (let ((|r#5| (_module.Number._h5 |num#0@@8|)))
  (and (_module.Stream.Cons_q |s#0@@7|) (_module.__default.ValidPath__Alt_h ($LS $LZ) (|ORD#Minus| |_k#0@@10| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (_module.Stream.head |s#0@@7|)) |r#5|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@10|)) (forall ((|_k'#1@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@0| |_k#0@@10|) (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) |_k'#1@@0| |s#0@@7| |num#0@@8|))
+ :qid |InfiniteTreesdfy.456:20|
+ :skolemid |972|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) |_k'#1@@0| |s#0@@7| |num#0@@8|))
 )))))))
+ :qid |InfiniteTreesdfy.456:20|
  :weight 3
+ :skolemid |974|
  :pattern ( (_module.__default.ValidPath__Alt_k_h ($LS $ly@@14) (Lit BoxType |_k#0@@10|) |s#0@@7| |num#0@@8|))
 ))))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@15 T@U) (|_k#0@@11| T@U) (|t#0@@6| T@U) (|r#0@@7| T@U) ) (!  (=> (or (|_module.__default.ValidPath__Alt_h#canCall| (Lit BoxType |_k#0@@11|) |t#0@@6| |r#0@@7|) (and (< 3 $FunctionContextHeight) (and ($Is DatatypeTypeType |t#0@@6| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@7| (Tclass._module.CoOption Tclass._module.Number))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@11|)) (and (=> (_module.CoOption.None_q |r#0@@7|) (|$IsA#_module.Tree| |t#0@@6|)) (=> (not (_module.CoOption.None_q |r#0@@7|)) (let ((|num#6| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@7|))))
  (and (_module.Tree.Node_q |t#0@@6|) (|_module.__default.ValidPath__Alt_k_h#canCall| (|ORD#Minus| |_k#0@@11| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@6|) |num#6|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@11|)) (ite (_module.CoOption.None_q |r#0@@7|) (|_module.Tree#Equal| |t#0@@6| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#7| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@7|))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@11| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@6|) |num#7|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@11|)) (forall ((|_k'#1@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@1| |_k#0@@11|) (|_module.__default.ValidPath__Alt_h#canCall| |_k'#1@@1| |t#0@@6| |r#0@@7|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |949|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@15) |_k'#1@@1| |t#0@@6| |r#0@@7|))
 ))))) (= (_module.__default.ValidPath__Alt_h ($LS $ly@@15) (Lit BoxType |_k#0@@11|) |t#0@@6| |r#0@@7|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@11|)) (ite (_module.CoOption.None_q |r#0@@7|) (|_module.Tree#Equal| |t#0@@6| (|#_module.Tree.Node| (Lit DatatypeTypeType |#_module.Stream.Nil|))) (let ((|num#5| ($Unbox DatatypeTypeType (_module.CoOption.get |r#0@@7|))))
 (_module.__default.ValidPath__Alt_k_h ($LS $LZ) (|ORD#Minus| |_k#0@@11| (|ORD#FromNat| 1)) (_module.Tree.children |t#0@@6|) |num#5|)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@11|)) (forall ((|_k'#1@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@2| |_k#0@@11|) (_module.__default.ValidPath__Alt_h ($LS $ly@@15) |_k'#1@@2| |t#0@@6| |r#0@@7|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |948|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@15) |_k'#1@@2| |t#0@@6| |r#0@@7|))
 )))))))
+ :qid |InfiniteTreesdfy.450:20|
  :weight 3
+ :skolemid |950|
  :pattern ( (_module.__default.ValidPath__Alt_h ($LS $ly@@15) (Lit BoxType |_k#0@@11|) |t#0@@6| |r#0@@7|))
 ))))
 (assert (forall ((d@@23 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsGoodHeap $h@@7) (and (_module.Number.Succ_q d@@23) ($IsAlloc DatatypeTypeType d@@23 Tclass._module.Number $h@@7))) ($IsAlloc DatatypeTypeType (_module.Number._h4 d@@23) Tclass._module.Number $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |1217|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Number._h4 d@@23) Tclass._module.Number $h@@7))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@16 T@U) (|t#0@@7| T@U) (|r#0@@8| T@U) (|_k#0@@12| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |t#0@@7| Tclass._module.Tree) ($Is DatatypeTypeType |r#0@@8| (Tclass._module.CoOption Tclass._module.Number))) (= |_k#0@@12| (|ORD#FromNat| 0))) (_module.__default.ValidPath__Alt_h $ly@@16 |_k#0@@12| |t#0@@7| |r#0@@8|))
+ :qid |InfiniteTreesdfy.450:20|
+ :skolemid |939|
  :pattern ( (_module.__default.ValidPath__Alt_h $ly@@16 |_k#0@@12| |t#0@@7| |r#0@@8|))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#11#0#0| T@U) ) (! (= (|#_module.Tree.Node| (Lit DatatypeTypeType |a#11#0#0|)) (Lit DatatypeTypeType (|#_module.Tree.Node| |a#11#0#0|)))
+ :qid |InfiniteTreesdfy.61:22|
+ :skolemid |1179|
  :pattern ( (|#_module.Tree.Node| (Lit DatatypeTypeType |a#11#0#0|)))
 )))
 (assert (forall ((|a#24#0#0| T@U) ) (! (= (|#_module.Number.Succ| (Lit DatatypeTypeType |a#24#0#0|)) (Lit DatatypeTypeType (|#_module.Number.Succ| |a#24#0#0|)))
+ :qid |InfiniteTreesdfy.415:24|
+ :skolemid |1218|
  :pattern ( (|#_module.Number.Succ| (Lit DatatypeTypeType |a#24#0#0|)))
 )))
 (assert (forall ((|a#30#0#0| T@U) ) (! (= (|#_module.Number.Zero| (Lit DatatypeTypeType |a#30#0#0|)) (Lit DatatypeTypeType (|#_module.Number.Zero| |a#30#0#0|)))
+ :qid |InfiniteTreesdfy.415:39|
+ :skolemid |1227|
  :pattern ( (|#_module.Number.Zero| (Lit DatatypeTypeType |a#30#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((d@@24 T@U) ($h@@8 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (_module.Tree.Node_q d@@24) ($IsAlloc DatatypeTypeType d@@24 Tclass._module.Tree $h@@8))) ($IsAlloc DatatypeTypeType (_module.Tree.children d@@24) (Tclass._module.Stream Tclass._module.Tree) $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |1178|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Tree.children d@@24) (Tclass._module.Stream Tclass._module.Tree) $h@@8))
 )))
 (assert (forall ((d@@25 T@U) ($h@@9 T@U) ) (!  (=> (and ($IsGoodHeap $h@@9) (and (_module.Number.Zero_q d@@25) ($IsAlloc DatatypeTypeType d@@25 Tclass._module.Number $h@@9))) ($IsAlloc DatatypeTypeType (_module.Number._h5 d@@25) (Tclass._module.CoOption Tclass._module.Number) $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |1226|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Number._h5 d@@25) (Tclass._module.CoOption Tclass._module.Number) $h@@9))
 )))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc boolType v@@1 TBool h@@0)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@1 TBool h@@0))
 )))
 (assert (forall ((_module.Stream$T@@8 T@U) (|a#5#0#0@@0| T@U) (|a#5#1#0@@0| T@U) ($h@@10 T@U) ) (!  (=> ($IsGoodHeap $h@@10) (= ($IsAlloc DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0@@0| |a#5#1#0@@0|) (Tclass._module.Stream _module.Stream$T@@8) $h@@10)  (and ($IsAllocBox |a#5#0#0@@0| _module.Stream$T@@8 $h@@10) ($IsAlloc DatatypeTypeType |a#5#1#0@@0| (Tclass._module.Stream _module.Stream$T@@8) $h@@10))))
+ :qid |unknown.0:0|
+ :skolemid |1155|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0@@0| |a#5#1#0@@0|) (Tclass._module.Stream _module.Stream$T@@8) $h@@10))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is boolType v@@2 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@2 TBool))
 )))
 (push 1)
@@ -560,6 +830,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.ValidPath__Alt_k)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

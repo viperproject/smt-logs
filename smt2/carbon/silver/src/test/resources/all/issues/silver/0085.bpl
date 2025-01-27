@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:20
+// Date:         2025-01-26 23:14:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0085.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0085-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,8 +188,8 @@ axiom !IsWandField(foo);
 procedure specialVariables() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var resulter: Ref;
   var freshObj: Ref;
   
@@ -201,8 +201,8 @@ procedure specialVariables() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[resulter, $allocated];
@@ -229,8 +229,8 @@ procedure specialVariables() returns ()
 procedure types() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Inter: Ref;
   var Permer: Ref;
   var Booler: Ref;
@@ -245,8 +245,8 @@ procedure types() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[Inter, $allocated];
@@ -318,8 +318,8 @@ procedure types() returns ()
 procedure booleanConstants() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var trueer: Ref;
   var falseer: Ref;
   var freshObj: Ref;
@@ -332,8 +332,8 @@ procedure booleanConstants() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[trueer, $allocated];
@@ -375,8 +375,8 @@ procedure booleanConstants() returns ()
 procedure nulll() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var nuller: Ref;
   var freshObj: Ref;
   
@@ -388,8 +388,8 @@ procedure nulll() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[nuller, $allocated];
@@ -416,8 +416,8 @@ procedure nulll() returns ()
 procedure declarationKeywords() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var methoder: Ref;
   var functioner: Ref;
   var predicateer: Ref;
@@ -438,8 +438,8 @@ procedure declarationKeywords() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[methoder, $allocated];
@@ -601,8 +601,8 @@ procedure declarationKeywords() returns ()
 procedure specifications() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var requireser: Ref;
   var ensureser: Ref;
   var invarianter: Ref;
@@ -616,8 +616,8 @@ procedure specifications() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[requireser, $allocated];
@@ -674,8 +674,8 @@ procedure specifications() returns ()
 procedure statements() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var folder: Ref;
   var unfolder: Ref;
   var inhaleer: Ref;
@@ -694,8 +694,8 @@ procedure statements() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[folder, $allocated];
@@ -827,8 +827,8 @@ procedure statements() returns ()
 procedure controlStructures() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var whileer: Ref;
   var ifer: Ref;
   var elseifer: Ref;
@@ -843,8 +843,8 @@ procedure controlStructures() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[whileer, $allocated];
@@ -916,8 +916,8 @@ procedure controlStructures() returns ()
 procedure specialFreshBlock() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var fresher: Ref;
   var constraininger: Ref;
   var freshObj: Ref;
@@ -930,8 +930,8 @@ procedure specialFreshBlock() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[fresher, $allocated];
@@ -973,8 +973,8 @@ procedure specialFreshBlock() returns ()
 procedure sequences_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Seqer: Ref;
   var freshObj: Ref;
   
@@ -986,8 +986,8 @@ procedure sequences_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[Seqer, $allocated];
@@ -1014,8 +1014,8 @@ procedure sequences_1() returns ()
 procedure setsAndMultisets() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Seter: Ref;
   var Multiseter: Ref;
   var unioner: Ref;
@@ -1032,8 +1032,8 @@ procedure setsAndMultisets() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[Seter, $allocated];
@@ -1135,8 +1135,8 @@ procedure setsAndMultisets() returns ()
 procedure proverHintExpressions() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var unfoldinger: Ref;
   var iner: Ref;
   var freshObj: Ref;
@@ -1149,8 +1149,8 @@ procedure proverHintExpressions() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[unfoldinger, $allocated];
@@ -1192,8 +1192,8 @@ procedure proverHintExpressions() returns ()
 procedure oldExpression() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var older: Ref;
   var freshObj: Ref;
   
@@ -1205,8 +1205,8 @@ procedure oldExpression() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[older, $allocated];
@@ -1233,8 +1233,8 @@ procedure oldExpression() returns ()
 procedure quantification() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var foraller: Ref;
   var existser: Ref;
   var freshObj: Ref;
@@ -1247,8 +1247,8 @@ procedure quantification() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[foraller, $allocated];
@@ -1290,8 +1290,8 @@ procedure quantification() returns ()
 procedure permissionSyntax() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var accer: Ref;
   var wildcarder: Ref;
   var writer: Ref;
@@ -1308,8 +1308,8 @@ procedure permissionSyntax() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[accer, $allocated];
@@ -1411,8 +1411,8 @@ procedure permissionSyntax() returns ()
 procedure modifiers() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var uniqueer: Ref;
   var freshObj: Ref;
   
@@ -1424,8 +1424,8 @@ procedure modifiers() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[uniqueer, $allocated];

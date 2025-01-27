@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:35:33
+; Started: 2025-01-26 23:07:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getNext%limited s@$ this@0@00) (getNext s@$ this@0@00))
   :pattern ((getNext s@$ this@0@00))
-  :qid |quant-u-12603|)))
+  :qid |quant-u-12550|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getNext%stateless this@0@00)
   :pattern ((getNext%limited s@$ this@0@00))
-  :qid |quant-u-12604|)))
+  :qid |quant-u-12551|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
@@ -145,11 +145,11 @@
       (getNext%precondition s@$ this@0@00)
       (= (getNext s@$ this@0@00) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((getNext s@$ this@0@00))
-  :qid |quant-u-12605|)))
+  :qid |quant-u-12552|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getNext s@$ this@0@00))
-  :qid |quant-u-12606|)))
+  :qid |quant-u-12553|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- testNestingUnfold ----------

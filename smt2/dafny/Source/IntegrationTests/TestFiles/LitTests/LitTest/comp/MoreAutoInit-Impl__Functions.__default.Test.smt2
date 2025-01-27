@@ -149,547 +149,890 @@
 (declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc |##_System._tuple#2._#Make2| Tagclass._System.Tuple2 Tagclass.Functions.Class Tagclass.Functions.Class? Tagclass.Functions.Trait Tagclass.Functions.UberTrait Tagclass.Functions.InBetween Tagclass.Functions.Datatype Tagclass.Functions.Newtype Tagclass.Functions.UberTrait? Tagclass.Functions.InBetween? Tagclass.Functions.Trait? |##Functions.Datatype.Dt0| |tytagFamily$_tuple#2| tytagFamily$Class tytagFamily$Trait tytagFamily$UberTrait tytagFamily$InBetween tytagFamily$Datatype tytagFamily$Newtype)
 )
 (assert  (and (and (= (Ctor refType) 3) (= (Ctor BoxType) 4)) (= (Ctor DatatypeTypeType) 5)))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.UberTrait$Au T@U) (Functions.UberTrait.InstanceU0$Bu T@U) (this T@U) (|a#0| T@U) (|b#0| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU0#canCall| Functions.UberTrait$Au Functions.UberTrait.InstanceU0$Bu (Lit refType this) (Lit BoxType |a#0|) (Lit BoxType |b#0|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this null)) (not true)) ($Is refType this (Tclass.Functions.UberTrait Functions.UberTrait$Au))) ($IsBox |a#0| Functions.UberTrait$Au)) ($IsBox |b#0| Functions.UberTrait.InstanceU0$Bu)))) (= (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au Functions.UberTrait.InstanceU0$Bu (Lit refType this) (Lit BoxType |a#0|) (Lit BoxType |b#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0|) (Lit BoxType |b#0|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1570|
  :pattern ( (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au Functions.UberTrait.InstanceU0$Bu (Lit refType this) (Lit BoxType |a#0|) (Lit BoxType |b#0|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.InBetween$Ai T@U) (Functions.InBetween.InstanceU1$Bi T@U) (this@@0 T@U) (|a#0@@0| T@U) (|b#0@@0| T@U) ) (!  (=> (or (|Functions.InBetween.InstanceU1#canCall| Functions.InBetween$Ai Functions.InBetween.InstanceU1$Bi (Lit refType this@@0) (Lit BoxType |a#0@@0|) (Lit BoxType |b#0@@0|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@0 null)) (not true)) ($Is refType this@@0 (Tclass.Functions.InBetween Functions.InBetween$Ai))) ($IsBox |a#0@@0| Functions.InBetween$Ai)) ($IsBox |b#0@@0| Functions.InBetween.InstanceU1$Bi)))) (= (Functions.InBetween.InstanceU1 Functions.InBetween$Ai Functions.InBetween.InstanceU1$Bi (Lit refType this@@0) (Lit BoxType |a#0@@0|) (Lit BoxType |b#0@@0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@0|) (Lit BoxType |b#0@@0|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1588|
  :pattern ( (Functions.InBetween.InstanceU1 Functions.InBetween$Ai Functions.InBetween.InstanceU1$Bi (Lit refType this@@0) (Lit BoxType |a#0@@0|) (Lit BoxType |b#0@@0|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At T@U) (Functions.Trait.InstanceU2$Bt T@U) (this@@1 T@U) (|a#0@@1| T@U) (|b#0@@1| T@U) ) (!  (=> (or (|Functions.Trait.InstanceU2#canCall| Functions.Trait$At Functions.Trait.InstanceU2$Bt (Lit refType this@@1) (Lit BoxType |a#0@@1|) (Lit BoxType |b#0@@1|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 (Tclass.Functions.Trait Functions.Trait$At))) ($IsBox |a#0@@1| Functions.Trait$At)) ($IsBox |b#0@@1| Functions.Trait.InstanceU2$Bt)))) (= (Functions.Trait.InstanceU2 Functions.Trait$At Functions.Trait.InstanceU2$Bt (Lit refType this@@1) (Lit BoxType |a#0@@1|) (Lit BoxType |b#0@@1|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@1|) (Lit BoxType |b#0@@1|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1599|
  :pattern ( (Functions.Trait.InstanceU2 Functions.Trait$At Functions.Trait.InstanceU2$Bt (Lit refType this@@1) (Lit BoxType |a#0@@1|) (Lit BoxType |b#0@@1|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@0 T@U) (Functions.Trait.InstanceTBody$Bt T@U) (this@@2 T@U) (|a#0@@2| T@U) (|b#0@@2| T@U) ) (!  (=> (or (|Functions.Trait.InstanceTBody#canCall| Functions.Trait$At@@0 Functions.Trait.InstanceTBody$Bt (Lit refType this@@2) (Lit BoxType |a#0@@2|) (Lit BoxType |b#0@@2|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 (Tclass.Functions.Trait Functions.Trait$At@@0))) ($IsBox |a#0@@2| Functions.Trait$At@@0)) ($IsBox |b#0@@2| Functions.Trait.InstanceTBody$Bt)))) (= (Functions.Trait.InstanceTBody Functions.Trait$At@@0 Functions.Trait.InstanceTBody$Bt (Lit refType this@@2) (Lit BoxType |a#0@@2|) (Lit BoxType |b#0@@2|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@2|) (Lit BoxType |b#0@@2|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1609|
  :pattern ( (Functions.Trait.InstanceTBody Functions.Trait$At@@0 Functions.Trait.InstanceTBody$Bt (Lit refType this@@2) (Lit BoxType |a#0@@2|) (Lit BoxType |b#0@@2|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac T@U) (Functions.Class.InstanceU3$Bc T@U) (this@@3 T@U) (|a#0@@3| T@U) (|b#0@@3| T@U) ) (!  (=> (or (|Functions.Class.InstanceU3#canCall| Functions.Class$Ac Functions.Class.InstanceU3$Bc (Lit refType this@@3) (Lit BoxType |a#0@@3|) (Lit BoxType |b#0@@3|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@3 null)) (not true)) ($Is refType this@@3 (Tclass.Functions.Class Functions.Class$Ac))) ($IsBox |a#0@@3| Functions.Class$Ac)) ($IsBox |b#0@@3| Functions.Class.InstanceU3$Bc)))) (= (Functions.Class.InstanceU3 Functions.Class$Ac Functions.Class.InstanceU3$Bc (Lit refType this@@3) (Lit BoxType |a#0@@3|) (Lit BoxType |b#0@@3|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@3|) (Lit BoxType |b#0@@3|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1624|
  :pattern ( (Functions.Class.InstanceU3 Functions.Class$Ac Functions.Class.InstanceU3$Bc (Lit refType this@@3) (Lit BoxType |a#0@@3|) (Lit BoxType |b#0@@3|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@0 T@U) (Functions.Class.InstanceT$Bc T@U) (this@@4 T@U) (|a#0@@4| T@U) (|b#0@@4| T@U) ) (!  (=> (or (|Functions.Class.InstanceT#canCall| Functions.Class$Ac@@0 Functions.Class.InstanceT$Bc (Lit refType this@@4) (Lit BoxType |a#0@@4|) (Lit BoxType |b#0@@4|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 (Tclass.Functions.Class Functions.Class$Ac@@0))) ($IsBox |a#0@@4| Functions.Class$Ac@@0)) ($IsBox |b#0@@4| Functions.Class.InstanceT$Bc)))) (= (Functions.Class.InstanceT Functions.Class$Ac@@0 Functions.Class.InstanceT$Bc (Lit refType this@@4) (Lit BoxType |a#0@@4|) (Lit BoxType |b#0@@4|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@4|) (Lit BoxType |b#0@@4|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1631|
  :pattern ( (Functions.Class.InstanceT Functions.Class$Ac@@0 Functions.Class.InstanceT$Bc (Lit refType this@@4) (Lit BoxType |a#0@@4|) (Lit BoxType |b#0@@4|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@1 T@U) (Functions.Class.InstanceC$Bc T@U) (this@@5 T@U) (|a#0@@5| T@U) (|b#0@@5| T@U) ) (!  (=> (or (|Functions.Class.InstanceC#canCall| Functions.Class$Ac@@1 Functions.Class.InstanceC$Bc (Lit refType this@@5) (Lit BoxType |a#0@@5|) (Lit BoxType |b#0@@5|)) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@5 null)) (not true)) ($Is refType this@@5 (Tclass.Functions.Class Functions.Class$Ac@@1))) ($IsBox |a#0@@5| Functions.Class$Ac@@1)) ($IsBox |b#0@@5| Functions.Class.InstanceC$Bc)))) (= (Functions.Class.InstanceC Functions.Class$Ac@@1 Functions.Class.InstanceC$Bc (Lit refType this@@5) (Lit BoxType |a#0@@5|) (Lit BoxType |b#0@@5|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@5|) (Lit BoxType |b#0@@5|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1638|
  :pattern ( (Functions.Class.InstanceC Functions.Class$Ac@@1 Functions.Class.InstanceC$Bc (Lit refType this@@5) (Lit BoxType |a#0@@5|) (Lit BoxType |b#0@@5|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.StaticN$Bn T@U) (|b#0@@6| T@U) ) (!  (=> (or (|Functions.Newtype.StaticN#canCall| Functions.Newtype.StaticN$Bn (Lit BoxType |b#0@@6|)) (and (< 0 $FunctionContextHeight) ($IsBox |b#0@@6| Functions.Newtype.StaticN$Bn))) (= (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn (Lit BoxType |b#0@@6|)) (Lit BoxType |b#0@@6|)))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1539|
  :pattern ( (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn (Lit BoxType |b#0@@6|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.InstanceN$Bn T@U) (this@@6 Int) (|b#0@@7| T@U) ) (!  (=> (or (|Functions.Newtype.InstanceN#canCall| Functions.Newtype.InstanceN$Bn (LitInt this@@6) (Lit BoxType |b#0@@7|)) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) this@@6) (< this@@6 500)) ($IsBox |b#0@@7| Functions.Newtype.InstanceN$Bn)))) (= (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn (LitInt this@@6) (Lit BoxType |b#0@@7|)) (Lit BoxType |b#0@@7|)))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1534|
  :pattern ( (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn (LitInt this@@6) (Lit BoxType |b#0@@7|)))
 ))))
-(assert (forall ((Functions.Class$Ac@@2 T@U) ) (implements$Functions.Trait (Tclass.Functions.Class? Functions.Class$Ac@@2) Functions.Class$Ac@@2)))
+(assert (forall ((Functions.Class$Ac@@2 T@U) ) (! (implements$Functions.Trait (Tclass.Functions.Class? Functions.Class$Ac@@2) Functions.Class$Ac@@2)
+ :qid |unknown.0:0|
+ :skolemid |1619|
+)))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.Functions.Newtype $h)
+ :qid |unknown.0:0|
+ :skolemid |1528|
  :pattern ( ($IsAlloc intType |x#0| Tclass.Functions.Newtype $h))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad T@U) (Functions.Datatype.InstanceD$Bd T@U) (this@@7 T@U) (|a#0@@6| T@U) (|b#0@@8| T@U) ) (!  (=> (or (|Functions.Datatype.InstanceD#canCall| Functions.Datatype$Ad Functions.Datatype.InstanceD$Bd (Lit DatatypeTypeType this@@7) (Lit BoxType |a#0@@6|) (Lit BoxType |b#0@@8|)) (and (< 0 $FunctionContextHeight) (and (and ($Is DatatypeTypeType this@@7 (Tclass.Functions.Datatype Functions.Datatype$Ad)) ($IsBox |a#0@@6| Functions.Datatype$Ad)) ($IsBox |b#0@@8| Functions.Datatype.InstanceD$Bd)))) (= (Functions.Datatype.InstanceD Functions.Datatype$Ad Functions.Datatype.InstanceD$Bd (Lit DatatypeTypeType this@@7) (Lit BoxType |a#0@@6|) (Lit BoxType |b#0@@8|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@6|) (Lit BoxType |b#0@@8|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1558|
  :pattern ( (Functions.Datatype.InstanceD Functions.Datatype$Ad Functions.Datatype.InstanceD$Bd (Lit DatatypeTypeType this@@7) (Lit BoxType |a#0@@6|) (Lit BoxType |b#0@@8|)))
 ))))
 (assert (forall ((Functions.UberTrait$Au@@0 T@U) (|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass.Functions.UberTrait Functions.UberTrait$Au@@0) $h@@0) ($IsAlloc refType |c#0| (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@0) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1581|
  :pattern ( ($IsAlloc refType |c#0| (Tclass.Functions.UberTrait Functions.UberTrait$Au@@0) $h@@0))
  :pattern ( ($IsAlloc refType |c#0| (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@0) $h@@0))
 )))
 (assert (forall ((Functions.InBetween$Ai@@0 T@U) (|c#0@@0| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@0| (Tclass.Functions.InBetween Functions.InBetween$Ai@@0) $h@@1) ($IsAlloc refType |c#0@@0| (Tclass.Functions.InBetween? Functions.InBetween$Ai@@0) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1592|
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass.Functions.InBetween Functions.InBetween$Ai@@0) $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass.Functions.InBetween? Functions.InBetween$Ai@@0) $h@@1))
 )))
 (assert (forall ((Functions.Trait$At@@1 T@U) (|c#0@@1| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType |c#0@@1| (Tclass.Functions.Trait Functions.Trait$At@@1) $h@@2) ($IsAlloc refType |c#0@@1| (Tclass.Functions.Trait? Functions.Trait$At@@1) $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1616|
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.Functions.Trait Functions.Trait$At@@1) $h@@2))
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.Functions.Trait? Functions.Trait$At@@1) $h@@2))
 )))
 (assert (forall ((Functions.Class$Ac@@3 T@U) (|c#0@@2| T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass.Functions.Class Functions.Class$Ac@@3) $h@@3) ($IsAlloc refType |c#0@@2| (Tclass.Functions.Class? Functions.Class$Ac@@3) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1645|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.Functions.Class Functions.Class$Ac@@3) $h@@3))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.Functions.Class? Functions.Class$Ac@@3) $h@@3))
 )))
 (assert (forall ((|_System._tuple#2$T0| T@U) (|_System._tuple#2$T1| T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)) (_System.Tuple2.___hMake2_q d))
+ :qid |unknown.0:0|
+ :skolemid |1328|
  :pattern ( (_System.Tuple2.___hMake2_q d) ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)))
 )))
 (assert (= (DatatypeCtorId |#Functions.Datatype.Dt0|) |##Functions.Datatype.Dt0|))
 (assert (forall ((Functions.Datatype$Ad@@0 T@U) ($h@@4 T@U) ) (!  (=> ($IsGoodHeap $h@@4) ($IsAlloc DatatypeTypeType |#Functions.Datatype.Dt0| (Tclass.Functions.Datatype Functions.Datatype$Ad@@0) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |1543|
  :pattern ( ($IsAlloc DatatypeTypeType |#Functions.Datatype.Dt0| (Tclass.Functions.Datatype Functions.Datatype$Ad@@0) $h@@4))
 )))
 (assert (forall ((|_System._tuple#2$T0@@0| T@U) (|_System._tuple#2$T1@@0| T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|))  (and ($IsBox |a#2#0#0| |_System._tuple#2$T0@@0|) ($IsBox |a#2#1#0| |_System._tuple#2$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |1316|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|)))
 )))
 (assert  (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((Functions.UberTrait$Au@@1 T@U) ($o T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType $o (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@1) $h@@5)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1565|
  :pattern ( ($IsAlloc refType $o (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@1) $h@@5))
 )))
 (assert (forall ((Functions.InBetween$Ai@@1 T@U) ($o@@0 T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@1) $h@@6)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1583|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@1) $h@@6))
 )))
 (assert (forall ((Functions.Trait$At@@2 T@U) ($o@@1 T@U) ($h@@7 T@U) ) (! (= ($IsAlloc refType $o@@1 (Tclass.Functions.Trait? Functions.Trait$At@@2) $h@@7)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1594|
  :pattern ( ($IsAlloc refType $o@@1 (Tclass.Functions.Trait? Functions.Trait$At@@2) $h@@7))
 )))
 (assert (forall ((Functions.Class$Ac@@4 T@U) ($o@@2 T@U) ($h@@8 T@U) ) (! (= ($IsAlloc refType $o@@2 (Tclass.Functions.Class? Functions.Class$Ac@@4) $h@@8)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1618|
  :pattern ( ($IsAlloc refType $o@@2 (Tclass.Functions.Class? Functions.Class$Ac@@4) $h@@8))
 )))
 (assert (forall ((Functions.InBetween$Ai@@2 T@U) ($o@@3 T@U) ) (!  (=> ($Is refType $o@@3 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@2)) ($Is refType $o@@3 (Tclass.Functions.UberTrait? Functions.InBetween$Ai@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1655|
  :pattern ( ($Is refType $o@@3 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@2)))
 )))
 (assert (forall ((Functions.InBetween$Ai@@3 T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass.Functions.InBetween? Functions.InBetween$Ai@@3)) ($IsBox bx (Tclass.Functions.UberTrait? Functions.InBetween$Ai@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1653|
  :pattern ( ($IsBox bx (Tclass.Functions.InBetween? Functions.InBetween$Ai@@3)))
 )))
 (assert (forall ((Functions.Trait$At@@3 T@U) ($o@@4 T@U) ) (!  (=> ($Is refType $o@@4 (Tclass.Functions.Trait? Functions.Trait$At@@3)) ($Is refType $o@@4 (Tclass.Functions.InBetween? Functions.Trait$At@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1659|
  :pattern ( ($Is refType $o@@4 (Tclass.Functions.Trait? Functions.Trait$At@@3)))
 )))
 (assert (forall ((Functions.Trait$At@@4 T@U) (bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 (Tclass.Functions.Trait? Functions.Trait$At@@4)) ($IsBox bx@@0 (Tclass.Functions.InBetween? Functions.Trait$At@@4)))
+ :qid |unknown.0:0|
+ :skolemid |1657|
  :pattern ( ($IsBox bx@@0 (Tclass.Functions.Trait? Functions.Trait$At@@4)))
 )))
 (assert (forall ((Functions.Class$Ac@@5 T@U) ($o@@5 T@U) ) (!  (=> ($Is refType $o@@5 (Tclass.Functions.Class? Functions.Class$Ac@@5)) ($Is refType $o@@5 (Tclass.Functions.Trait? Functions.Class$Ac@@5)))
+ :qid |unknown.0:0|
+ :skolemid |1663|
  :pattern ( ($Is refType $o@@5 (Tclass.Functions.Class? Functions.Class$Ac@@5)))
 )))
 (assert (forall ((Functions.Class$Ac@@6 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass.Functions.Class? Functions.Class$Ac@@6)) ($IsBox bx@@1 (Tclass.Functions.Trait? Functions.Class$Ac@@6)))
+ :qid |unknown.0:0|
+ :skolemid |1661|
  :pattern ( ($IsBox bx@@1 (Tclass.Functions.Class? Functions.Class$Ac@@6)))
 )))
 (assert (forall ((Functions.Datatype$Ad@@1 T@U) ) (! ($Is DatatypeTypeType |#Functions.Datatype.Dt0| (Tclass.Functions.Datatype Functions.Datatype$Ad@@1))
+ :qid |unknown.0:0|
+ :skolemid |1542|
  :pattern ( ($Is DatatypeTypeType |#Functions.Datatype.Dt0| (Tclass.Functions.Datatype Functions.Datatype$Ad@@1)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.StaticN$Bn@@0 T@U) (|b#0@@9| T@U) ) (!  (=> (or (|Functions.Newtype.StaticN#canCall| Functions.Newtype.StaticN$Bn@@0 |b#0@@9|) (and (< 0 $FunctionContextHeight) ($IsBox |b#0@@9| Functions.Newtype.StaticN$Bn@@0))) ($IsBox (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@0 |b#0@@9|) Functions.Newtype.StaticN$Bn@@0))
+ :qid |unknown.0:0|
+ :skolemid |1535|
  :pattern ( (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@0 |b#0@@9|))
 ))))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |950|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |951|
  :pattern ( ($HeapSucc h k))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@2 T@U) (Functions.Datatype.StaticD$Bd T@U) (|a#0@@7| T@U) (|b#0@@10| T@U) ) (!  (=> (or (|Functions.Datatype.StaticD#canCall| Functions.Datatype$Ad@@2 Functions.Datatype.StaticD$Bd (Lit BoxType |a#0@@7|) (Lit BoxType |b#0@@10|)) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@7| Functions.Datatype$Ad@@2) ($IsBox |b#0@@10| Functions.Datatype.StaticD$Bd)))) (= (Functions.Datatype.StaticD Functions.Datatype$Ad@@2 Functions.Datatype.StaticD$Bd (Lit BoxType |a#0@@7|) (Lit BoxType |b#0@@10|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@7|) (Lit BoxType |b#0@@10|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1563|
  :pattern ( (Functions.Datatype.StaticD Functions.Datatype$Ad@@2 Functions.Datatype.StaticD$Bd (Lit BoxType |a#0@@7|) (Lit BoxType |b#0@@10|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@5 T@U) (Functions.Trait.StaticT$Bt T@U) (|a#0@@8| T@U) (|b#0@@11| T@U) ) (!  (=> (or (|Functions.Trait.StaticT#canCall| Functions.Trait$At@@5 Functions.Trait.StaticT$Bt (Lit BoxType |a#0@@8|) (Lit BoxType |b#0@@11|)) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@8| Functions.Trait$At@@5) ($IsBox |b#0@@11| Functions.Trait.StaticT$Bt)))) (= (Functions.Trait.StaticT Functions.Trait$At@@5 Functions.Trait.StaticT$Bt (Lit BoxType |a#0@@8|) (Lit BoxType |b#0@@11|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@8|) (Lit BoxType |b#0@@11|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1614|
  :pattern ( (Functions.Trait.StaticT Functions.Trait$At@@5 Functions.Trait.StaticT$Bt (Lit BoxType |a#0@@8|) (Lit BoxType |b#0@@11|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@7 T@U) (Functions.Class.StaticC$Bc T@U) (|a#0@@9| T@U) (|b#0@@12| T@U) ) (!  (=> (or (|Functions.Class.StaticC#canCall| Functions.Class$Ac@@7 Functions.Class.StaticC$Bc (Lit BoxType |a#0@@9|) (Lit BoxType |b#0@@12|)) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@9| Functions.Class$Ac@@7) ($IsBox |b#0@@12| Functions.Class.StaticC$Bc)))) (= (Functions.Class.StaticC Functions.Class$Ac@@7 Functions.Class.StaticC$Bc (Lit BoxType |a#0@@9|) (Lit BoxType |b#0@@12|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| (Lit BoxType |a#0@@9|) (Lit BoxType |b#0@@12|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1643|
  :pattern ( (Functions.Class.StaticC Functions.Class$Ac@@7 Functions.Class.StaticC$Bc (Lit BoxType |a#0@@9|) (Lit BoxType |b#0@@12|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@3 T@U) (Functions.Datatype.InstanceD$Bd@@0 T@U) (this@@8 T@U) (|a#0@@10| T@U) (|b#0@@13| T@U) ) (!  (=> (or (|Functions.Datatype.InstanceD#canCall| Functions.Datatype$Ad@@3 Functions.Datatype.InstanceD$Bd@@0 (Lit DatatypeTypeType this@@8) |a#0@@10| |b#0@@13|) (and (< 0 $FunctionContextHeight) (and (and ($Is DatatypeTypeType this@@8 (Tclass.Functions.Datatype Functions.Datatype$Ad@@3)) ($IsBox |a#0@@10| Functions.Datatype$Ad@@3)) ($IsBox |b#0@@13| Functions.Datatype.InstanceD$Bd@@0)))) (= (Functions.Datatype.InstanceD Functions.Datatype$Ad@@3 Functions.Datatype.InstanceD$Bd@@0 (Lit DatatypeTypeType this@@8) |a#0@@10| |b#0@@13|) (|#_System._tuple#2._#Make2| |a#0@@10| |b#0@@13|)))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1557|
  :pattern ( (Functions.Datatype.InstanceD Functions.Datatype$Ad@@3 Functions.Datatype.InstanceD$Bd@@0 (Lit DatatypeTypeType this@@8) |a#0@@10| |b#0@@13|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (Functions.UberTrait$Au@@2 T@U) (Functions.UberTrait.InstanceU0$Bu@@0 T@U) (this@@9 T@U) (|a#0@@11| T@U) (|b#0@@14| T@U) ) (!  (=> (and (or (|Functions.UberTrait.InstanceU0#canCall| Functions.UberTrait$Au@@2 Functions.UberTrait.InstanceU0$Bu@@0 this@@9 |a#0@@11| |b#0@@14|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@9 null)) (not true)) ($IsAlloc refType this@@9 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@2) $Heap)) (and ($IsBox |a#0@@11| Functions.UberTrait$Au@@2) ($IsAllocBox |a#0@@11| Functions.UberTrait$Au@@2 $Heap))) (and ($IsBox |b#0@@14| Functions.UberTrait.InstanceU0$Bu@@0) ($IsAllocBox |b#0@@14| Functions.UberTrait.InstanceU0$Bu@@0 $Heap))))) ($IsGoodHeap $Heap)) ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@2 Functions.UberTrait.InstanceU0$Bu@@0 this@@9 |a#0@@11| |b#0@@14|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@2 Functions.UberTrait.InstanceU0$Bu@@0) $Heap))
+ :qid |MoreAutoInitdfy.137:14|
+ :skolemid |1567|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@2 Functions.UberTrait.InstanceU0$Bu@@0 this@@9 |a#0@@11| |b#0@@14|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@2 Functions.UberTrait.InstanceU0$Bu@@0) $Heap))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@0 T@U) (Functions.InBetween$Ai@@4 T@U) (Functions.InBetween.InstanceU1$Bi@@0 T@U) (this@@10 T@U) (|a#0@@12| T@U) (|b#0@@15| T@U) ) (!  (=> (and (or (|Functions.InBetween.InstanceU1#canCall| Functions.InBetween$Ai@@4 Functions.InBetween.InstanceU1$Bi@@0 this@@10 |a#0@@12| |b#0@@15|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@10 null)) (not true)) ($IsAlloc refType this@@10 (Tclass.Functions.InBetween Functions.InBetween$Ai@@4) $Heap@@0)) (and ($IsBox |a#0@@12| Functions.InBetween$Ai@@4) ($IsAllocBox |a#0@@12| Functions.InBetween$Ai@@4 $Heap@@0))) (and ($IsBox |b#0@@15| Functions.InBetween.InstanceU1$Bi@@0) ($IsAllocBox |b#0@@15| Functions.InBetween.InstanceU1$Bi@@0 $Heap@@0))))) ($IsGoodHeap $Heap@@0)) ($IsAlloc DatatypeTypeType (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@4 Functions.InBetween.InstanceU1$Bi@@0 this@@10 |a#0@@12| |b#0@@15|) (Tclass._System.Tuple2 Functions.InBetween$Ai@@4 Functions.InBetween.InstanceU1$Bi@@0) $Heap@@0))
+ :qid |MoreAutoInitdfy.144:14|
+ :skolemid |1585|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@4 Functions.InBetween.InstanceU1$Bi@@0 this@@10 |a#0@@12| |b#0@@15|) (Tclass._System.Tuple2 Functions.InBetween$Ai@@4 Functions.InBetween.InstanceU1$Bi@@0) $Heap@@0))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@1 T@U) (Functions.Trait$At@@6 T@U) (Functions.Trait.InstanceU2$Bt@@0 T@U) (this@@11 T@U) (|a#0@@13| T@U) (|b#0@@16| T@U) ) (!  (=> (and (or (|Functions.Trait.InstanceU2#canCall| Functions.Trait$At@@6 Functions.Trait.InstanceU2$Bt@@0 this@@11 |a#0@@13| |b#0@@16|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@11 null)) (not true)) ($IsAlloc refType this@@11 (Tclass.Functions.Trait Functions.Trait$At@@6) $Heap@@1)) (and ($IsBox |a#0@@13| Functions.Trait$At@@6) ($IsAllocBox |a#0@@13| Functions.Trait$At@@6 $Heap@@1))) (and ($IsBox |b#0@@16| Functions.Trait.InstanceU2$Bt@@0) ($IsAllocBox |b#0@@16| Functions.Trait.InstanceU2$Bt@@0 $Heap@@1))))) ($IsGoodHeap $Heap@@1)) ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceU2 Functions.Trait$At@@6 Functions.Trait.InstanceU2$Bt@@0 this@@11 |a#0@@13| |b#0@@16|) (Tclass._System.Tuple2 Functions.Trait$At@@6 Functions.Trait.InstanceU2$Bt@@0) $Heap@@1))
+ :qid |MoreAutoInitdfy.148:14|
+ :skolemid |1596|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceU2 Functions.Trait$At@@6 Functions.Trait.InstanceU2$Bt@@0 this@@11 |a#0@@13| |b#0@@16|) (Tclass._System.Tuple2 Functions.Trait$At@@6 Functions.Trait.InstanceU2$Bt@@0) $Heap@@1))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@2 T@U) (Functions.Trait$At@@7 T@U) (Functions.Trait.InstanceTBody$Bt@@0 T@U) (this@@12 T@U) (|a#0@@14| T@U) (|b#0@@17| T@U) ) (!  (=> (and (or (|Functions.Trait.InstanceTBody#canCall| Functions.Trait$At@@7 Functions.Trait.InstanceTBody$Bt@@0 this@@12 |a#0@@14| |b#0@@17|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@12 null)) (not true)) ($IsAlloc refType this@@12 (Tclass.Functions.Trait Functions.Trait$At@@7) $Heap@@2)) (and ($IsBox |a#0@@14| Functions.Trait$At@@7) ($IsAllocBox |a#0@@14| Functions.Trait$At@@7 $Heap@@2))) (and ($IsBox |b#0@@17| Functions.Trait.InstanceTBody$Bt@@0) ($IsAllocBox |b#0@@17| Functions.Trait.InstanceTBody$Bt@@0 $Heap@@2))))) ($IsGoodHeap $Heap@@2)) ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceTBody Functions.Trait$At@@7 Functions.Trait.InstanceTBody$Bt@@0 this@@12 |a#0@@14| |b#0@@17|) (Tclass._System.Tuple2 Functions.Trait$At@@7 Functions.Trait.InstanceTBody$Bt@@0) $Heap@@2))
+ :qid |MoreAutoInitdfy.150:14|
+ :skolemid |1606|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceTBody Functions.Trait$At@@7 Functions.Trait.InstanceTBody$Bt@@0 this@@12 |a#0@@14| |b#0@@17|) (Tclass._System.Tuple2 Functions.Trait$At@@7 Functions.Trait.InstanceTBody$Bt@@0) $Heap@@2))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@3 T@U) (Functions.Class$Ac@@8 T@U) (Functions.Class.InstanceU3$Bc@@0 T@U) (this@@13 T@U) (|a#0@@15| T@U) (|b#0@@18| T@U) ) (!  (=> (and (or (|Functions.Class.InstanceU3#canCall| Functions.Class$Ac@@8 Functions.Class.InstanceU3$Bc@@0 this@@13 |a#0@@15| |b#0@@18|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@13 null)) (not true)) ($IsAlloc refType this@@13 (Tclass.Functions.Class Functions.Class$Ac@@8) $Heap@@3)) (and ($IsBox |a#0@@15| Functions.Class$Ac@@8) ($IsAllocBox |a#0@@15| Functions.Class$Ac@@8 $Heap@@3))) (and ($IsBox |b#0@@18| Functions.Class.InstanceU3$Bc@@0) ($IsAllocBox |b#0@@18| Functions.Class.InstanceU3$Bc@@0 $Heap@@3))))) ($IsGoodHeap $Heap@@3)) ($IsAlloc DatatypeTypeType (Functions.Class.InstanceU3 Functions.Class$Ac@@8 Functions.Class.InstanceU3$Bc@@0 this@@13 |a#0@@15| |b#0@@18|) (Tclass._System.Tuple2 Functions.Class$Ac@@8 Functions.Class.InstanceU3$Bc@@0) $Heap@@3))
+ :qid |MoreAutoInitdfy.155:14|
+ :skolemid |1621|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Class.InstanceU3 Functions.Class$Ac@@8 Functions.Class.InstanceU3$Bc@@0 this@@13 |a#0@@15| |b#0@@18|) (Tclass._System.Tuple2 Functions.Class$Ac@@8 Functions.Class.InstanceU3$Bc@@0) $Heap@@3))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@4 T@U) (Functions.Class$Ac@@9 T@U) (Functions.Class.InstanceT$Bc@@0 T@U) (this@@14 T@U) (|a#0@@16| T@U) (|b#0@@19| T@U) ) (!  (=> (and (or (|Functions.Class.InstanceT#canCall| Functions.Class$Ac@@9 Functions.Class.InstanceT$Bc@@0 this@@14 |a#0@@16| |b#0@@19|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@14 null)) (not true)) ($IsAlloc refType this@@14 (Tclass.Functions.Class Functions.Class$Ac@@9) $Heap@@4)) (and ($IsBox |a#0@@16| Functions.Class$Ac@@9) ($IsAllocBox |a#0@@16| Functions.Class$Ac@@9 $Heap@@4))) (and ($IsBox |b#0@@19| Functions.Class.InstanceT$Bc@@0) ($IsAllocBox |b#0@@19| Functions.Class.InstanceT$Bc@@0 $Heap@@4))))) ($IsGoodHeap $Heap@@4)) ($IsAlloc DatatypeTypeType (Functions.Class.InstanceT Functions.Class$Ac@@9 Functions.Class.InstanceT$Bc@@0 this@@14 |a#0@@16| |b#0@@19|) (Tclass._System.Tuple2 Functions.Class$Ac@@9 Functions.Class.InstanceT$Bc@@0) $Heap@@4))
+ :qid |MoreAutoInitdfy.156:14|
+ :skolemid |1628|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Class.InstanceT Functions.Class$Ac@@9 Functions.Class.InstanceT$Bc@@0 this@@14 |a#0@@16| |b#0@@19|) (Tclass._System.Tuple2 Functions.Class$Ac@@9 Functions.Class.InstanceT$Bc@@0) $Heap@@4))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@5 T@U) (Functions.Class$Ac@@10 T@U) (Functions.Class.InstanceC$Bc@@0 T@U) (this@@15 T@U) (|a#0@@17| T@U) (|b#0@@20| T@U) ) (!  (=> (and (or (|Functions.Class.InstanceC#canCall| Functions.Class$Ac@@10 Functions.Class.InstanceC$Bc@@0 this@@15 |a#0@@17| |b#0@@20|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@15 null)) (not true)) ($IsAlloc refType this@@15 (Tclass.Functions.Class Functions.Class$Ac@@10) $Heap@@5)) (and ($IsBox |a#0@@17| Functions.Class$Ac@@10) ($IsAllocBox |a#0@@17| Functions.Class$Ac@@10 $Heap@@5))) (and ($IsBox |b#0@@20| Functions.Class.InstanceC$Bc@@0) ($IsAllocBox |b#0@@20| Functions.Class.InstanceC$Bc@@0 $Heap@@5))))) ($IsGoodHeap $Heap@@5)) ($IsAlloc DatatypeTypeType (Functions.Class.InstanceC Functions.Class$Ac@@10 Functions.Class.InstanceC$Bc@@0 this@@15 |a#0@@17| |b#0@@20|) (Tclass._System.Tuple2 Functions.Class$Ac@@10 Functions.Class.InstanceC$Bc@@0) $Heap@@5))
+ :qid |MoreAutoInitdfy.157:14|
+ :skolemid |1635|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Class.InstanceC Functions.Class$Ac@@10 Functions.Class.InstanceC$Bc@@0 this@@15 |a#0@@17| |b#0@@20|) (Tclass._System.Tuple2 Functions.Class$Ac@@10 Functions.Class.InstanceC$Bc@@0) $Heap@@5))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@6 T@U) (Functions.UberTrait$Au@@3 T@U) (Functions.UberTrait.InstanceU1$Bu T@U) (this@@16 T@U) (|a#0@@18| T@U) (|b#0@@21| T@U) ) (!  (=> (and (or (|Functions.UberTrait.InstanceU1#canCall| Functions.UberTrait$Au@@3 Functions.UberTrait.InstanceU1$Bu this@@16 |a#0@@18| |b#0@@21|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@16 null)) (not true)) ($IsAlloc refType this@@16 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@3) $Heap@@6)) (and ($IsBox |a#0@@18| Functions.UberTrait$Au@@3) ($IsAllocBox |a#0@@18| Functions.UberTrait$Au@@3 $Heap@@6))) (and ($IsBox |b#0@@21| Functions.UberTrait.InstanceU1$Bu) ($IsAllocBox |b#0@@21| Functions.UberTrait.InstanceU1$Bu $Heap@@6))))) ($IsGoodHeap $Heap@@6)) ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU1 Functions.UberTrait$Au@@3 Functions.UberTrait.InstanceU1$Bu this@@16 |a#0@@18| |b#0@@21|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@3 Functions.UberTrait.InstanceU1$Bu) $Heap@@6))
+ :qid |MoreAutoInitdfy.138:14|
+ :skolemid |1572|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU1 Functions.UberTrait$Au@@3 Functions.UberTrait.InstanceU1$Bu this@@16 |a#0@@18| |b#0@@21|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@3 Functions.UberTrait.InstanceU1$Bu) $Heap@@6))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@7 T@U) (Functions.UberTrait$Au@@4 T@U) (Functions.UberTrait.InstanceU2$Bu T@U) (this@@17 T@U) (|a#0@@19| T@U) (|b#0@@22| T@U) ) (!  (=> (and (or (|Functions.UberTrait.InstanceU2#canCall| Functions.UberTrait$Au@@4 Functions.UberTrait.InstanceU2$Bu this@@17 |a#0@@19| |b#0@@22|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@17 null)) (not true)) ($IsAlloc refType this@@17 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@4) $Heap@@7)) (and ($IsBox |a#0@@19| Functions.UberTrait$Au@@4) ($IsAllocBox |a#0@@19| Functions.UberTrait$Au@@4 $Heap@@7))) (and ($IsBox |b#0@@22| Functions.UberTrait.InstanceU2$Bu) ($IsAllocBox |b#0@@22| Functions.UberTrait.InstanceU2$Bu $Heap@@7))))) ($IsGoodHeap $Heap@@7)) ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU2 Functions.UberTrait$Au@@4 Functions.UberTrait.InstanceU2$Bu this@@17 |a#0@@19| |b#0@@22|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@4 Functions.UberTrait.InstanceU2$Bu) $Heap@@7))
+ :qid |MoreAutoInitdfy.139:14|
+ :skolemid |1575|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU2 Functions.UberTrait$Au@@4 Functions.UberTrait.InstanceU2$Bu this@@17 |a#0@@19| |b#0@@22|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@4 Functions.UberTrait.InstanceU2$Bu) $Heap@@7))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@8 T@U) (Functions.UberTrait$Au@@5 T@U) (Functions.UberTrait.InstanceU3$Bu T@U) (this@@18 T@U) (|a#0@@20| T@U) (|b#0@@23| T@U) ) (!  (=> (and (or (|Functions.UberTrait.InstanceU3#canCall| Functions.UberTrait$Au@@5 Functions.UberTrait.InstanceU3$Bu this@@18 |a#0@@20| |b#0@@23|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@18 null)) (not true)) ($IsAlloc refType this@@18 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@5) $Heap@@8)) (and ($IsBox |a#0@@20| Functions.UberTrait$Au@@5) ($IsAllocBox |a#0@@20| Functions.UberTrait$Au@@5 $Heap@@8))) (and ($IsBox |b#0@@23| Functions.UberTrait.InstanceU3$Bu) ($IsAllocBox |b#0@@23| Functions.UberTrait.InstanceU3$Bu $Heap@@8))))) ($IsGoodHeap $Heap@@8)) ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU3 Functions.UberTrait$Au@@5 Functions.UberTrait.InstanceU3$Bu this@@18 |a#0@@20| |b#0@@23|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@5 Functions.UberTrait.InstanceU3$Bu) $Heap@@8))
+ :qid |MoreAutoInitdfy.140:14|
+ :skolemid |1578|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.UberTrait.InstanceU3 Functions.UberTrait$Au@@5 Functions.UberTrait.InstanceU3$Bu this@@18 |a#0@@20| |b#0@@23|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@5 Functions.UberTrait.InstanceU3$Bu) $Heap@@8))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@9 T@U) (Functions.Trait$At@@8 T@U) (Functions.Trait.InstanceT$Bt T@U) (this@@19 T@U) (|a#0@@21| T@U) (|b#0@@24| T@U) ) (!  (=> (and (or (|Functions.Trait.InstanceT#canCall| Functions.Trait$At@@8 Functions.Trait.InstanceT$Bt this@@19 |a#0@@21| |b#0@@24|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@19 null)) (not true)) ($IsAlloc refType this@@19 (Tclass.Functions.Trait Functions.Trait$At@@8) $Heap@@9)) (and ($IsBox |a#0@@21| Functions.Trait$At@@8) ($IsAllocBox |a#0@@21| Functions.Trait$At@@8 $Heap@@9))) (and ($IsBox |b#0@@24| Functions.Trait.InstanceT$Bt) ($IsAllocBox |b#0@@24| Functions.Trait.InstanceT$Bt $Heap@@9))))) ($IsGoodHeap $Heap@@9)) ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceT Functions.Trait$At@@8 Functions.Trait.InstanceT$Bt this@@19 |a#0@@21| |b#0@@24|) (Tclass._System.Tuple2 Functions.Trait$At@@8 Functions.Trait.InstanceT$Bt) $Heap@@9))
+ :qid |MoreAutoInitdfy.149:14|
+ :skolemid |1603|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Trait.InstanceT Functions.Trait$At@@8 Functions.Trait.InstanceT$Bt this@@19 |a#0@@21| |b#0@@24|) (Tclass._System.Tuple2 Functions.Trait$At@@8 Functions.Trait.InstanceT$Bt) $Heap@@9))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |849|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |847|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((|_System._tuple#2$T0@@1| T@U) (|_System._tuple#2$T1@@1| T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@9 T@U) ) (!  (=> ($IsGoodHeap $h@@9) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@9)  (and ($IsAllocBox |a#2#0#0@@0| |_System._tuple#2$T0@@1| $h@@9) ($IsAllocBox |a#2#1#0@@0| |_System._tuple#2$T1@@1| $h@@9))))
+ :qid |unknown.0:0|
+ :skolemid |1317|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@9))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_System.Tuple2.___hMake2_q d@@0) (= (DatatypeCtorId d@@0) |##_System._tuple#2._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |1309|
  :pattern ( (_System.Tuple2.___hMake2_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |858|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.InstanceN$Bn@@0 T@U) (this@@20 Int) (|b#0@@25| T@U) ) (!  (=> (or (|Functions.Newtype.InstanceN#canCall| Functions.Newtype.InstanceN$Bn@@0 this@@20 |b#0@@25|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) this@@20) (< this@@20 500)) ($IsBox |b#0@@25| Functions.Newtype.InstanceN$Bn@@0)))) (= (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@0 this@@20 |b#0@@25|) |b#0@@25|))
+ :qid |unknown.0:0|
+ :skolemid |1532|
  :pattern ( (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@0 this@@20 |b#0@@25|))
 ))))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))
+ :qid |unknown.0:0|
+ :skolemid |1310|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1311|
  :pattern ( (_System.Tuple2.___hMake2_q d@@1))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.UberTrait$Au@@6 T@U) (Functions.UberTrait.InstanceU0$Bu@@1 T@U) (this@@21 T@U) (|a#0@@22| T@U) (|b#0@@26| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU0#canCall| Functions.UberTrait$Au@@6 Functions.UberTrait.InstanceU0$Bu@@1 this@@21 |a#0@@22| |b#0@@26|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@21 null)) (not true)) ($Is refType this@@21 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@6))) ($IsBox |a#0@@22| Functions.UberTrait$Au@@6)) ($IsBox |b#0@@26| Functions.UberTrait.InstanceU0$Bu@@1)))) (= (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@6 Functions.UberTrait.InstanceU0$Bu@@1 this@@21 |a#0@@22| |b#0@@26|) (|#_System._tuple#2._#Make2| |a#0@@22| |b#0@@26|)))
+ :qid |unknown.0:0|
+ :skolemid |1569|
  :pattern ( (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@6 Functions.UberTrait.InstanceU0$Bu@@1 this@@21 |a#0@@22| |b#0@@26|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.InBetween$Ai@@5 T@U) (Functions.InBetween.InstanceU1$Bi@@1 T@U) (this@@22 T@U) (|a#0@@23| T@U) (|b#0@@27| T@U) ) (!  (=> (or (|Functions.InBetween.InstanceU1#canCall| Functions.InBetween$Ai@@5 Functions.InBetween.InstanceU1$Bi@@1 this@@22 |a#0@@23| |b#0@@27|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@22 null)) (not true)) ($Is refType this@@22 (Tclass.Functions.InBetween Functions.InBetween$Ai@@5))) ($IsBox |a#0@@23| Functions.InBetween$Ai@@5)) ($IsBox |b#0@@27| Functions.InBetween.InstanceU1$Bi@@1)))) (= (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@5 Functions.InBetween.InstanceU1$Bi@@1 this@@22 |a#0@@23| |b#0@@27|) (|#_System._tuple#2._#Make2| |a#0@@23| |b#0@@27|)))
+ :qid |unknown.0:0|
+ :skolemid |1587|
  :pattern ( (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@5 Functions.InBetween.InstanceU1$Bi@@1 this@@22 |a#0@@23| |b#0@@27|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@9 T@U) (Functions.Trait.InstanceU2$Bt@@1 T@U) (this@@23 T@U) (|a#0@@24| T@U) (|b#0@@28| T@U) ) (!  (=> (or (|Functions.Trait.InstanceU2#canCall| Functions.Trait$At@@9 Functions.Trait.InstanceU2$Bt@@1 this@@23 |a#0@@24| |b#0@@28|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@23 null)) (not true)) ($Is refType this@@23 (Tclass.Functions.Trait Functions.Trait$At@@9))) ($IsBox |a#0@@24| Functions.Trait$At@@9)) ($IsBox |b#0@@28| Functions.Trait.InstanceU2$Bt@@1)))) (= (Functions.Trait.InstanceU2 Functions.Trait$At@@9 Functions.Trait.InstanceU2$Bt@@1 this@@23 |a#0@@24| |b#0@@28|) (|#_System._tuple#2._#Make2| |a#0@@24| |b#0@@28|)))
+ :qid |unknown.0:0|
+ :skolemid |1598|
  :pattern ( (Functions.Trait.InstanceU2 Functions.Trait$At@@9 Functions.Trait.InstanceU2$Bt@@1 this@@23 |a#0@@24| |b#0@@28|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@10 T@U) (Functions.Trait.InstanceTBody$Bt@@1 T@U) (this@@24 T@U) (|a#0@@25| T@U) (|b#0@@29| T@U) ) (!  (=> (or (|Functions.Trait.InstanceTBody#canCall| Functions.Trait$At@@10 Functions.Trait.InstanceTBody$Bt@@1 this@@24 |a#0@@25| |b#0@@29|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@24 null)) (not true)) ($Is refType this@@24 (Tclass.Functions.Trait Functions.Trait$At@@10))) ($IsBox |a#0@@25| Functions.Trait$At@@10)) ($IsBox |b#0@@29| Functions.Trait.InstanceTBody$Bt@@1)))) (= (Functions.Trait.InstanceTBody Functions.Trait$At@@10 Functions.Trait.InstanceTBody$Bt@@1 this@@24 |a#0@@25| |b#0@@29|) (|#_System._tuple#2._#Make2| |a#0@@25| |b#0@@29|)))
+ :qid |unknown.0:0|
+ :skolemid |1608|
  :pattern ( (Functions.Trait.InstanceTBody Functions.Trait$At@@10 Functions.Trait.InstanceTBody$Bt@@1 this@@24 |a#0@@25| |b#0@@29|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@11 T@U) (Functions.Class.InstanceU3$Bc@@1 T@U) (this@@25 T@U) (|a#0@@26| T@U) (|b#0@@30| T@U) ) (!  (=> (or (|Functions.Class.InstanceU3#canCall| Functions.Class$Ac@@11 Functions.Class.InstanceU3$Bc@@1 this@@25 |a#0@@26| |b#0@@30|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@25 null)) (not true)) ($Is refType this@@25 (Tclass.Functions.Class Functions.Class$Ac@@11))) ($IsBox |a#0@@26| Functions.Class$Ac@@11)) ($IsBox |b#0@@30| Functions.Class.InstanceU3$Bc@@1)))) (= (Functions.Class.InstanceU3 Functions.Class$Ac@@11 Functions.Class.InstanceU3$Bc@@1 this@@25 |a#0@@26| |b#0@@30|) (|#_System._tuple#2._#Make2| |a#0@@26| |b#0@@30|)))
+ :qid |unknown.0:0|
+ :skolemid |1623|
  :pattern ( (Functions.Class.InstanceU3 Functions.Class$Ac@@11 Functions.Class.InstanceU3$Bc@@1 this@@25 |a#0@@26| |b#0@@30|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@12 T@U) (Functions.Class.InstanceT$Bc@@1 T@U) (this@@26 T@U) (|a#0@@27| T@U) (|b#0@@31| T@U) ) (!  (=> (or (|Functions.Class.InstanceT#canCall| Functions.Class$Ac@@12 Functions.Class.InstanceT$Bc@@1 this@@26 |a#0@@27| |b#0@@31|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@26 null)) (not true)) ($Is refType this@@26 (Tclass.Functions.Class Functions.Class$Ac@@12))) ($IsBox |a#0@@27| Functions.Class$Ac@@12)) ($IsBox |b#0@@31| Functions.Class.InstanceT$Bc@@1)))) (= (Functions.Class.InstanceT Functions.Class$Ac@@12 Functions.Class.InstanceT$Bc@@1 this@@26 |a#0@@27| |b#0@@31|) (|#_System._tuple#2._#Make2| |a#0@@27| |b#0@@31|)))
+ :qid |unknown.0:0|
+ :skolemid |1630|
  :pattern ( (Functions.Class.InstanceT Functions.Class$Ac@@12 Functions.Class.InstanceT$Bc@@1 this@@26 |a#0@@27| |b#0@@31|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@13 T@U) (Functions.Class.InstanceC$Bc@@1 T@U) (this@@27 T@U) (|a#0@@28| T@U) (|b#0@@32| T@U) ) (!  (=> (or (|Functions.Class.InstanceC#canCall| Functions.Class$Ac@@13 Functions.Class.InstanceC$Bc@@1 this@@27 |a#0@@28| |b#0@@32|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@27 null)) (not true)) ($Is refType this@@27 (Tclass.Functions.Class Functions.Class$Ac@@13))) ($IsBox |a#0@@28| Functions.Class$Ac@@13)) ($IsBox |b#0@@32| Functions.Class.InstanceC$Bc@@1)))) (= (Functions.Class.InstanceC Functions.Class$Ac@@13 Functions.Class.InstanceC$Bc@@1 this@@27 |a#0@@28| |b#0@@32|) (|#_System._tuple#2._#Make2| |a#0@@28| |b#0@@32|)))
+ :qid |unknown.0:0|
+ :skolemid |1637|
  :pattern ( (Functions.Class.InstanceC Functions.Class$Ac@@13 Functions.Class.InstanceC$Bc@@1 this@@27 |a#0@@28| |b#0@@32|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@4 T@U) (Functions.Datatype.StaticD$Bd@@0 T@U) (|a#0@@29| T@U) (|b#0@@33| T@U) ) (!  (=> (or (|Functions.Datatype.StaticD#canCall| Functions.Datatype$Ad@@4 Functions.Datatype.StaticD$Bd@@0 |a#0@@29| |b#0@@33|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@29| Functions.Datatype$Ad@@4) ($IsBox |b#0@@33| Functions.Datatype.StaticD$Bd@@0)))) (= (Functions.Datatype.StaticD Functions.Datatype$Ad@@4 Functions.Datatype.StaticD$Bd@@0 |a#0@@29| |b#0@@33|) (|#_System._tuple#2._#Make2| |a#0@@29| |b#0@@33|)))
+ :qid |unknown.0:0|
+ :skolemid |1562|
  :pattern ( (Functions.Datatype.StaticD Functions.Datatype$Ad@@4 Functions.Datatype.StaticD$Bd@@0 |a#0@@29| |b#0@@33|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@11 T@U) (Functions.Trait.StaticT$Bt@@0 T@U) (|a#0@@30| T@U) (|b#0@@34| T@U) ) (!  (=> (or (|Functions.Trait.StaticT#canCall| Functions.Trait$At@@11 Functions.Trait.StaticT$Bt@@0 |a#0@@30| |b#0@@34|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@30| Functions.Trait$At@@11) ($IsBox |b#0@@34| Functions.Trait.StaticT$Bt@@0)))) (= (Functions.Trait.StaticT Functions.Trait$At@@11 Functions.Trait.StaticT$Bt@@0 |a#0@@30| |b#0@@34|) (|#_System._tuple#2._#Make2| |a#0@@30| |b#0@@34|)))
+ :qid |unknown.0:0|
+ :skolemid |1613|
  :pattern ( (Functions.Trait.StaticT Functions.Trait$At@@11 Functions.Trait.StaticT$Bt@@0 |a#0@@30| |b#0@@34|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@14 T@U) (Functions.Class.StaticC$Bc@@0 T@U) (|a#0@@31| T@U) (|b#0@@35| T@U) ) (!  (=> (or (|Functions.Class.StaticC#canCall| Functions.Class$Ac@@14 Functions.Class.StaticC$Bc@@0 |a#0@@31| |b#0@@35|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@31| Functions.Class$Ac@@14) ($IsBox |b#0@@35| Functions.Class.StaticC$Bc@@0)))) (= (Functions.Class.StaticC Functions.Class$Ac@@14 Functions.Class.StaticC$Bc@@0 |a#0@@31| |b#0@@35|) (|#_System._tuple#2._#Make2| |a#0@@31| |b#0@@35|)))
+ :qid |unknown.0:0|
+ :skolemid |1642|
  :pattern ( (Functions.Class.StaticC Functions.Class$Ac@@14 Functions.Class.StaticC$Bc@@0 |a#0@@31| |b#0@@35|))
 ))))
 (assert (forall ((Functions.UberTrait$Au@@7 T@U) (|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| (Tclass.Functions.UberTrait Functions.UberTrait$Au@@7))  (and ($Is refType |c#0@@3| (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@7)) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1580|
  :pattern ( ($Is refType |c#0@@3| (Tclass.Functions.UberTrait Functions.UberTrait$Au@@7)))
  :pattern ( ($Is refType |c#0@@3| (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@7)))
 )))
 (assert (forall ((Functions.InBetween$Ai@@6 T@U) (|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| (Tclass.Functions.InBetween Functions.InBetween$Ai@@6))  (and ($Is refType |c#0@@4| (Tclass.Functions.InBetween? Functions.InBetween$Ai@@6)) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1591|
  :pattern ( ($Is refType |c#0@@4| (Tclass.Functions.InBetween Functions.InBetween$Ai@@6)))
  :pattern ( ($Is refType |c#0@@4| (Tclass.Functions.InBetween? Functions.InBetween$Ai@@6)))
 )))
 (assert (forall ((Functions.Trait$At@@12 T@U) (|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| (Tclass.Functions.Trait Functions.Trait$At@@12))  (and ($Is refType |c#0@@5| (Tclass.Functions.Trait? Functions.Trait$At@@12)) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1615|
  :pattern ( ($Is refType |c#0@@5| (Tclass.Functions.Trait Functions.Trait$At@@12)))
  :pattern ( ($Is refType |c#0@@5| (Tclass.Functions.Trait? Functions.Trait$At@@12)))
 )))
 (assert (forall ((Functions.Class$Ac@@15 T@U) (|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| (Tclass.Functions.Class Functions.Class$Ac@@15))  (and ($Is refType |c#0@@6| (Tclass.Functions.Class? Functions.Class$Ac@@15)) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1644|
  :pattern ( ($Is refType |c#0@@6| (Tclass.Functions.Class Functions.Class$Ac@@15)))
  :pattern ( ($Is refType |c#0@@6| (Tclass.Functions.Class? Functions.Class$Ac@@15)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |871|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@2 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@2 t@@0 h@@1) ($IsAllocBox bx@@2 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |943|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@2 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |942|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@5 T@U) (Functions.Datatype.InstanceD$Bd@@1 T@U) (this@@28 T@U) (|a#0@@32| T@U) (|b#0@@36| T@U) ) (!  (=> (or (|Functions.Datatype.InstanceD#canCall| Functions.Datatype$Ad@@5 Functions.Datatype.InstanceD$Bd@@1 this@@28 |a#0@@32| |b#0@@36|) (and (< 0 $FunctionContextHeight) (and (and ($Is DatatypeTypeType this@@28 (Tclass.Functions.Datatype Functions.Datatype$Ad@@5)) ($IsBox |a#0@@32| Functions.Datatype$Ad@@5)) ($IsBox |b#0@@36| Functions.Datatype.InstanceD$Bd@@1)))) (= (Functions.Datatype.InstanceD Functions.Datatype$Ad@@5 Functions.Datatype.InstanceD$Bd@@1 this@@28 |a#0@@32| |b#0@@36|) (|#_System._tuple#2._#Make2| |a#0@@32| |b#0@@36|)))
+ :qid |unknown.0:0|
+ :skolemid |1556|
  :pattern ( (Functions.Datatype.InstanceD Functions.Datatype$Ad@@5 Functions.Datatype.InstanceD$Bd@@1 this@@28 |a#0@@32| |b#0@@36|))
 ))))
 (assert (forall ((Functions.Class$Ac@@16 T@U) ) (!  (and (= (Tag (Tclass.Functions.Class Functions.Class$Ac@@16)) Tagclass.Functions.Class) (= (TagFamily (Tclass.Functions.Class Functions.Class$Ac@@16)) tytagFamily$Class))
+ :qid |unknown.0:0|
+ :skolemid |1499|
  :pattern ( (Tclass.Functions.Class Functions.Class$Ac@@16))
 )))
 (assert (forall ((Functions.Class$Ac@@17 T@U) ) (!  (and (= (Tag (Tclass.Functions.Class? Functions.Class$Ac@@17)) Tagclass.Functions.Class?) (= (TagFamily (Tclass.Functions.Class? Functions.Class$Ac@@17)) tytagFamily$Class))
+ :qid |unknown.0:0|
+ :skolemid |1502|
  :pattern ( (Tclass.Functions.Class? Functions.Class$Ac@@17))
 )))
 (assert (forall ((Functions.Trait$At@@13 T@U) ) (!  (and (= (Tag (Tclass.Functions.Trait Functions.Trait$At@@13)) Tagclass.Functions.Trait) (= (TagFamily (Tclass.Functions.Trait Functions.Trait$At@@13)) tytagFamily$Trait))
+ :qid |unknown.0:0|
+ :skolemid |1505|
  :pattern ( (Tclass.Functions.Trait Functions.Trait$At@@13))
 )))
 (assert (forall ((Functions.UberTrait$Au@@8 T@U) ) (!  (and (= (Tag (Tclass.Functions.UberTrait Functions.UberTrait$Au@@8)) Tagclass.Functions.UberTrait) (= (TagFamily (Tclass.Functions.UberTrait Functions.UberTrait$Au@@8)) tytagFamily$UberTrait))
+ :qid |unknown.0:0|
+ :skolemid |1508|
  :pattern ( (Tclass.Functions.UberTrait Functions.UberTrait$Au@@8))
 )))
 (assert (forall ((Functions.InBetween$Ai@@7 T@U) ) (!  (and (= (Tag (Tclass.Functions.InBetween Functions.InBetween$Ai@@7)) Tagclass.Functions.InBetween) (= (TagFamily (Tclass.Functions.InBetween Functions.InBetween$Ai@@7)) tytagFamily$InBetween))
+ :qid |unknown.0:0|
+ :skolemid |1511|
  :pattern ( (Tclass.Functions.InBetween Functions.InBetween$Ai@@7))
 )))
 (assert (forall ((Functions.Datatype$Ad@@6 T@U) ) (!  (and (= (Tag (Tclass.Functions.Datatype Functions.Datatype$Ad@@6)) Tagclass.Functions.Datatype) (= (TagFamily (Tclass.Functions.Datatype Functions.Datatype$Ad@@6)) tytagFamily$Datatype))
+ :qid |unknown.0:0|
+ :skolemid |1514|
  :pattern ( (Tclass.Functions.Datatype Functions.Datatype$Ad@@6))
 )))
 (assert (forall ((Functions.UberTrait$Au@@9 T@U) ) (!  (and (= (Tag (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@9)) Tagclass.Functions.UberTrait?) (= (TagFamily (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@9)) tytagFamily$UberTrait))
+ :qid |unknown.0:0|
+ :skolemid |1518|
  :pattern ( (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@9))
 )))
 (assert (forall ((Functions.InBetween$Ai@@8 T@U) ) (!  (and (= (Tag (Tclass.Functions.InBetween? Functions.InBetween$Ai@@8)) Tagclass.Functions.InBetween?) (= (TagFamily (Tclass.Functions.InBetween? Functions.InBetween$Ai@@8)) tytagFamily$InBetween))
+ :qid |unknown.0:0|
+ :skolemid |1521|
  :pattern ( (Tclass.Functions.InBetween? Functions.InBetween$Ai@@8))
 )))
 (assert (forall ((Functions.Trait$At@@14 T@U) ) (!  (and (= (Tag (Tclass.Functions.Trait? Functions.Trait$At@@14)) Tagclass.Functions.Trait?) (= (TagFamily (Tclass.Functions.Trait? Functions.Trait$At@@14)) tytagFamily$Trait))
+ :qid |unknown.0:0|
+ :skolemid |1524|
  :pattern ( (Tclass.Functions.Trait? Functions.Trait$At@@14))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@10 T@U) (Functions.Datatype$Ad@@7 T@U) (Functions.Datatype.StaticD$Bd@@1 T@U) (|a#0@@33| T@U) (|b#0@@37| T@U) ) (!  (=> (and (or (|Functions.Datatype.StaticD#canCall| Functions.Datatype$Ad@@7 Functions.Datatype.StaticD$Bd@@1 |a#0@@33| |b#0@@37|) (and (< 0 $FunctionContextHeight) (and (and ($IsBox |a#0@@33| Functions.Datatype$Ad@@7) ($IsAllocBox |a#0@@33| Functions.Datatype$Ad@@7 $Heap@@10)) (and ($IsBox |b#0@@37| Functions.Datatype.StaticD$Bd@@1) ($IsAllocBox |b#0@@37| Functions.Datatype.StaticD$Bd@@1 $Heap@@10))))) ($IsGoodHeap $Heap@@10)) ($IsAlloc DatatypeTypeType (Functions.Datatype.StaticD Functions.Datatype$Ad@@7 Functions.Datatype.StaticD$Bd@@1 |a#0@@33| |b#0@@37|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@7 Functions.Datatype.StaticD$Bd@@1) $Heap@@10))
+ :qid |MoreAutoInitdfy.133:21|
+ :skolemid |1560|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Datatype.StaticD Functions.Datatype$Ad@@7 Functions.Datatype.StaticD$Bd@@1 |a#0@@33| |b#0@@37|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@7 Functions.Datatype.StaticD$Bd@@1) $Heap@@10))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@11 T@U) (Functions.Trait$At@@15 T@U) (Functions.Trait.StaticT$Bt@@1 T@U) (|a#0@@34| T@U) (|b#0@@38| T@U) ) (!  (=> (and (or (|Functions.Trait.StaticT#canCall| Functions.Trait$At@@15 Functions.Trait.StaticT$Bt@@1 |a#0@@34| |b#0@@38|) (and (< 0 $FunctionContextHeight) (and (and ($IsBox |a#0@@34| Functions.Trait$At@@15) ($IsAllocBox |a#0@@34| Functions.Trait$At@@15 $Heap@@11)) (and ($IsBox |b#0@@38| Functions.Trait.StaticT$Bt@@1) ($IsAllocBox |b#0@@38| Functions.Trait.StaticT$Bt@@1 $Heap@@11))))) ($IsGoodHeap $Heap@@11)) ($IsAlloc DatatypeTypeType (Functions.Trait.StaticT Functions.Trait$At@@15 Functions.Trait.StaticT$Bt@@1 |a#0@@34| |b#0@@38|) (Tclass._System.Tuple2 Functions.Trait$At@@15 Functions.Trait.StaticT$Bt@@1) $Heap@@11))
+ :qid |MoreAutoInitdfy.151:21|
+ :skolemid |1611|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Trait.StaticT Functions.Trait$At@@15 Functions.Trait.StaticT$Bt@@1 |a#0@@34| |b#0@@38|) (Tclass._System.Tuple2 Functions.Trait$At@@15 Functions.Trait.StaticT$Bt@@1) $Heap@@11))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@12 T@U) (Functions.Class$Ac@@18 T@U) (Functions.Class.StaticC$Bc@@1 T@U) (|a#0@@35| T@U) (|b#0@@39| T@U) ) (!  (=> (and (or (|Functions.Class.StaticC#canCall| Functions.Class$Ac@@18 Functions.Class.StaticC$Bc@@1 |a#0@@35| |b#0@@39|) (and (< 0 $FunctionContextHeight) (and (and ($IsBox |a#0@@35| Functions.Class$Ac@@18) ($IsAllocBox |a#0@@35| Functions.Class$Ac@@18 $Heap@@12)) (and ($IsBox |b#0@@39| Functions.Class.StaticC$Bc@@1) ($IsAllocBox |b#0@@39| Functions.Class.StaticC$Bc@@1 $Heap@@12))))) ($IsGoodHeap $Heap@@12)) ($IsAlloc DatatypeTypeType (Functions.Class.StaticC Functions.Class$Ac@@18 Functions.Class.StaticC$Bc@@1 |a#0@@35| |b#0@@39|) (Tclass._System.Tuple2 Functions.Class$Ac@@18 Functions.Class.StaticC$Bc@@1) $Heap@@12))
+ :qid |MoreAutoInitdfy.158:21|
+ :skolemid |1640|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Class.StaticC Functions.Class$Ac@@18 Functions.Class.StaticC$Bc@@1 |a#0@@35| |b#0@@39|) (Tclass._System.Tuple2 Functions.Class$Ac@@18 Functions.Class.StaticC$Bc@@1) $Heap@@12))
 ))))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass.Functions.Newtype) (and (= ($Box intType ($Unbox intType bx@@3)) bx@@3) ($Is intType ($Unbox intType bx@@3) Tclass.Functions.Newtype)))
+ :qid |unknown.0:0|
+ :skolemid |1517|
  :pattern ( ($IsBox bx@@3 Tclass.Functions.Newtype))
 )))
 (assert (forall ((Functions.Class$Ac@@19 T@U) ($o@@6 T@U) ) (! (= ($Is refType $o@@6 (Tclass.Functions.Class? Functions.Class$Ac@@19))  (or (= $o@@6 null) (= (dtype $o@@6) (Tclass.Functions.Class? Functions.Class$Ac@@19))))
+ :qid |unknown.0:0|
+ :skolemid |1617|
  :pattern ( ($Is refType $o@@6 (Tclass.Functions.Class? Functions.Class$Ac@@19)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.InBetween$Ai@@9 T@U) (Functions.InBetween.InstanceU1$Bi@@2 T@U) (this@@29 T@U) (|a#0@@36| T@U) (|b#0@@40| T@U) ) (!  (=> (or (|Functions.InBetween.InstanceU1#canCall| Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@29 null)) (not true)) ($Is refType this@@29 (Tclass.Functions.InBetween Functions.InBetween$Ai@@9))))) (= (Functions.UberTrait.InstanceU1 Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|) (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|)))
+ :qid |unknown.0:0|
+ :skolemid |1589|
  :pattern ( (Functions.UberTrait.InstanceU1 Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|) ($Is refType this@@29 (Tclass.Functions.InBetween Functions.InBetween$Ai@@9)))
  :pattern ( (Functions.UberTrait.InstanceU1 Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|) (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@9 Functions.InBetween.InstanceU1$Bi@@2 this@@29 |a#0@@36| |b#0@@40|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@16 T@U) (Functions.Trait.InstanceU2$Bt@@2 T@U) (this@@30 T@U) (|a#0@@37| T@U) (|b#0@@41| T@U) ) (!  (=> (or (|Functions.Trait.InstanceU2#canCall| Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@30 null)) (not true)) ($Is refType this@@30 (Tclass.Functions.Trait Functions.Trait$At@@16))))) (= (Functions.UberTrait.InstanceU2 Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|) (Functions.Trait.InstanceU2 Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|)))
+ :qid |unknown.0:0|
+ :skolemid |1600|
  :pattern ( (Functions.UberTrait.InstanceU2 Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|) ($Is refType this@@30 (Tclass.Functions.Trait Functions.Trait$At@@16)))
  :pattern ( (Functions.UberTrait.InstanceU2 Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|) (Functions.Trait.InstanceU2 Functions.Trait$At@@16 Functions.Trait.InstanceU2$Bt@@2 this@@30 |a#0@@37| |b#0@@41|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@20 T@U) (Functions.Class.InstanceU3$Bc@@2 T@U) (this@@31 T@U) (|a#0@@38| T@U) (|b#0@@42| T@U) ) (!  (=> (or (|Functions.Class.InstanceU3#canCall| Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@31 null)) (not true)) ($Is refType this@@31 (Tclass.Functions.Class Functions.Class$Ac@@20))))) (= (Functions.UberTrait.InstanceU3 Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|) (Functions.Class.InstanceU3 Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|)))
+ :qid |unknown.0:0|
+ :skolemid |1625|
  :pattern ( (Functions.UberTrait.InstanceU3 Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|) ($Is refType this@@31 (Tclass.Functions.Class Functions.Class$Ac@@20)))
  :pattern ( (Functions.UberTrait.InstanceU3 Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|) (Functions.Class.InstanceU3 Functions.Class$Ac@@20 Functions.Class.InstanceU3$Bc@@2 this@@31 |a#0@@38| |b#0@@42|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@21 T@U) (Functions.Class.InstanceT$Bc@@2 T@U) (this@@32 T@U) (|a#0@@39| T@U) (|b#0@@43| T@U) ) (!  (=> (or (|Functions.Class.InstanceT#canCall| Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@32 null)) (not true)) ($Is refType this@@32 (Tclass.Functions.Class Functions.Class$Ac@@21))))) (= (Functions.Trait.InstanceT Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|) (Functions.Class.InstanceT Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|)))
+ :qid |unknown.0:0|
+ :skolemid |1632|
  :pattern ( (Functions.Trait.InstanceT Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|) ($Is refType this@@32 (Tclass.Functions.Class Functions.Class$Ac@@21)))
  :pattern ( (Functions.Trait.InstanceT Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|) (Functions.Class.InstanceT Functions.Class$Ac@@21 Functions.Class.InstanceT$Bc@@2 this@@32 |a#0@@39| |b#0@@43|))
 ))))
 (assert (forall ((Functions.InBetween$Ai@@10 T@U) (bx@@4 T@U) ($h@@10 T@U) ) (!  (=> (and ($IsAllocBox bx@@4 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@10) $h@@10) ($IsGoodHeap $h@@10)) ($IsAllocBox bx@@4 (Tclass.Functions.UberTrait? Functions.InBetween$Ai@@10) $h@@10))
+ :qid |unknown.0:0|
+ :skolemid |1654|
  :pattern ( ($IsAllocBox bx@@4 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@10) $h@@10))
 )))
 (assert (forall ((Functions.Trait$At@@17 T@U) (bx@@5 T@U) ($h@@11 T@U) ) (!  (=> (and ($IsAllocBox bx@@5 (Tclass.Functions.Trait? Functions.Trait$At@@17) $h@@11) ($IsGoodHeap $h@@11)) ($IsAllocBox bx@@5 (Tclass.Functions.InBetween? Functions.Trait$At@@17) $h@@11))
+ :qid |unknown.0:0|
+ :skolemid |1658|
  :pattern ( ($IsAllocBox bx@@5 (Tclass.Functions.Trait? Functions.Trait$At@@17) $h@@11))
 )))
 (assert (forall ((Functions.Class$Ac@@22 T@U) (bx@@6 T@U) ($h@@12 T@U) ) (!  (=> (and ($IsAllocBox bx@@6 (Tclass.Functions.Class? Functions.Class$Ac@@22) $h@@12) ($IsGoodHeap $h@@12)) ($IsAllocBox bx@@6 (Tclass.Functions.Trait? Functions.Class$Ac@@22) $h@@12))
+ :qid |unknown.0:0|
+ :skolemid |1662|
  :pattern ( ($IsAllocBox bx@@6 (Tclass.Functions.Class? Functions.Class$Ac@@22) $h@@12))
 )))
 (assert (forall ((Functions.InBetween$Ai@@11 T@U) ($o@@7 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@7 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@11) $heap) ($IsAlloc refType $o@@7 (Tclass.Functions.UberTrait? Functions.InBetween$Ai@@11) $heap))
+ :qid |unknown.0:0|
+ :skolemid |1656|
  :pattern ( ($IsAlloc refType $o@@7 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@11) $heap))
 )))
 (assert (forall ((Functions.Trait$At@@18 T@U) ($o@@8 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@8 (Tclass.Functions.Trait? Functions.Trait$At@@18) $heap@@0) ($IsAlloc refType $o@@8 (Tclass.Functions.InBetween? Functions.Trait$At@@18) $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |1660|
  :pattern ( ($IsAlloc refType $o@@8 (Tclass.Functions.Trait? Functions.Trait$At@@18) $heap@@0))
 )))
 (assert (forall ((Functions.Class$Ac@@23 T@U) ($o@@9 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@9 (Tclass.Functions.Class? Functions.Class$Ac@@23) $heap@@1) ($IsAlloc refType $o@@9 (Tclass.Functions.Trait? Functions.Class$Ac@@23) $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |1664|
  :pattern ( ($IsAlloc refType $o@@9 (Tclass.Functions.Class? Functions.Class$Ac@@23) $heap@@1))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@13 T@U) (Functions.Datatype$Ad@@8 T@U) (Functions.Datatype.InstanceD$Bd@@2 T@U) (this@@33 T@U) (|a#0@@40| T@U) (|b#0@@44| T@U) ) (!  (=> (and (or (|Functions.Datatype.InstanceD#canCall| Functions.Datatype$Ad@@8 Functions.Datatype.InstanceD$Bd@@2 this@@33 |a#0@@40| |b#0@@44|) (and (< 0 $FunctionContextHeight) (and (and ($IsAlloc DatatypeTypeType this@@33 (Tclass.Functions.Datatype Functions.Datatype$Ad@@8) $Heap@@13) (and ($IsBox |a#0@@40| Functions.Datatype$Ad@@8) ($IsAllocBox |a#0@@40| Functions.Datatype$Ad@@8 $Heap@@13))) (and ($IsBox |b#0@@44| Functions.Datatype.InstanceD$Bd@@2) ($IsAllocBox |b#0@@44| Functions.Datatype.InstanceD$Bd@@2 $Heap@@13))))) ($IsGoodHeap $Heap@@13)) ($IsAlloc DatatypeTypeType (Functions.Datatype.InstanceD Functions.Datatype$Ad@@8 Functions.Datatype.InstanceD$Bd@@2 this@@33 |a#0@@40| |b#0@@44|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@8 Functions.Datatype.InstanceD$Bd@@2) $Heap@@13))
+ :qid |MoreAutoInitdfy.132:14|
+ :skolemid |1554|
  :pattern ( ($IsAlloc DatatypeTypeType (Functions.Datatype.InstanceD Functions.Datatype$Ad@@8 Functions.Datatype.InstanceD$Bd@@2 this@@33 |a#0@@40| |b#0@@44|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@8 Functions.Datatype.InstanceD$Bd@@2) $Heap@@13))
 ))))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |949|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@1) t@@2) ($Is T@@3 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |870|
  :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|)) |##_System._tuple#2._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |1308|
  :pattern ( (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@2| T@U) (|_System._tuple#2$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2_0 (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|)) |_System._tuple#2$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |1313|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@3| T@U) (|_System._tuple#2$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2_1 (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|)) |_System._tuple#2$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |1314|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (_System.Tuple2._0 (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|)) |a#4#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |1323|
  :pattern ( (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= (_System.Tuple2._1 (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|)) |a#6#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |1325|
  :pattern ( (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((Functions.Class$Ac@@24 T@U) ) (! (= (Tclass.Functions.Class_0 (Tclass.Functions.Class Functions.Class$Ac@@24)) Functions.Class$Ac@@24)
+ :qid |unknown.0:0|
+ :skolemid |1500|
  :pattern ( (Tclass.Functions.Class Functions.Class$Ac@@24))
 )))
 (assert (forall ((Functions.Class$Ac@@25 T@U) ) (! (= (Tclass.Functions.Class?_0 (Tclass.Functions.Class? Functions.Class$Ac@@25)) Functions.Class$Ac@@25)
+ :qid |unknown.0:0|
+ :skolemid |1503|
  :pattern ( (Tclass.Functions.Class? Functions.Class$Ac@@25))
 )))
 (assert (forall ((Functions.Trait$At@@19 T@U) ) (! (= (Tclass.Functions.Trait_0 (Tclass.Functions.Trait Functions.Trait$At@@19)) Functions.Trait$At@@19)
+ :qid |unknown.0:0|
+ :skolemid |1506|
  :pattern ( (Tclass.Functions.Trait Functions.Trait$At@@19))
 )))
 (assert (forall ((Functions.UberTrait$Au@@10 T@U) ) (! (= (Tclass.Functions.UberTrait_0 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@10)) Functions.UberTrait$Au@@10)
+ :qid |unknown.0:0|
+ :skolemid |1509|
  :pattern ( (Tclass.Functions.UberTrait Functions.UberTrait$Au@@10))
 )))
 (assert (forall ((Functions.InBetween$Ai@@12 T@U) ) (! (= (Tclass.Functions.InBetween_0 (Tclass.Functions.InBetween Functions.InBetween$Ai@@12)) Functions.InBetween$Ai@@12)
+ :qid |unknown.0:0|
+ :skolemid |1512|
  :pattern ( (Tclass.Functions.InBetween Functions.InBetween$Ai@@12))
 )))
 (assert (forall ((Functions.Datatype$Ad@@9 T@U) ) (! (= (Tclass.Functions.Datatype_0 (Tclass.Functions.Datatype Functions.Datatype$Ad@@9)) Functions.Datatype$Ad@@9)
+ :qid |unknown.0:0|
+ :skolemid |1515|
  :pattern ( (Tclass.Functions.Datatype Functions.Datatype$Ad@@9))
 )))
 (assert (forall ((Functions.UberTrait$Au@@11 T@U) ) (! (= (Tclass.Functions.UberTrait?_0 (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@11)) Functions.UberTrait$Au@@11)
+ :qid |unknown.0:0|
+ :skolemid |1519|
  :pattern ( (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@11))
 )))
 (assert (forall ((Functions.InBetween$Ai@@13 T@U) ) (! (= (Tclass.Functions.InBetween?_0 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@13)) Functions.InBetween$Ai@@13)
+ :qid |unknown.0:0|
+ :skolemid |1522|
  :pattern ( (Tclass.Functions.InBetween? Functions.InBetween$Ai@@13))
 )))
 (assert (forall ((Functions.Trait$At@@20 T@U) ) (! (= (Tclass.Functions.Trait?_0 (Tclass.Functions.Trait? Functions.Trait$At@@20)) Functions.Trait$At@@20)
+ :qid |unknown.0:0|
+ :skolemid |1525|
  :pattern ( (Tclass.Functions.Trait? Functions.Trait$At@@20))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |857|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.InstanceN$Bn@@1 T@U) (this@@34 Int) (|b#0@@45| T@U) ) (!  (=> (or (|Functions.Newtype.InstanceN#canCall| Functions.Newtype.InstanceN$Bn@@1 this@@34 |b#0@@45|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) this@@34) (< this@@34 500)) ($IsBox |b#0@@45| Functions.Newtype.InstanceN$Bn@@1)))) ($IsBox (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@1 this@@34 |b#0@@45|) Functions.Newtype.InstanceN$Bn@@1))
+ :qid |unknown.0:0|
+ :skolemid |1529|
  :pattern ( (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@1 this@@34 |b#0@@45|))
 ))))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |1324|
  :pattern ( (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (< (BoxRank |a#7#1#0|) (DtRank (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |1326|
  :pattern ( (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.UberTrait$Au@@12 T@U) (Functions.UberTrait.InstanceU0$Bu@@2 T@U) (this@@35 T@U) (|a#0@@41| T@U) (|b#0@@46| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU0#canCall| Functions.UberTrait$Au@@12 Functions.UberTrait.InstanceU0$Bu@@2 this@@35 |a#0@@41| |b#0@@46|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@35 null)) (not true)) ($Is refType this@@35 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@12))) ($IsBox |a#0@@41| Functions.UberTrait$Au@@12)) ($IsBox |b#0@@46| Functions.UberTrait.InstanceU0$Bu@@2)))) ($Is DatatypeTypeType (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@12 Functions.UberTrait.InstanceU0$Bu@@2 this@@35 |a#0@@41| |b#0@@46|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@12 Functions.UberTrait.InstanceU0$Bu@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1566|
  :pattern ( (Functions.UberTrait.InstanceU0 Functions.UberTrait$Au@@12 Functions.UberTrait.InstanceU0$Bu@@2 this@@35 |a#0@@41| |b#0@@46|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.InBetween$Ai@@14 T@U) (Functions.InBetween.InstanceU1$Bi@@3 T@U) (this@@36 T@U) (|a#0@@42| T@U) (|b#0@@47| T@U) ) (!  (=> (or (|Functions.InBetween.InstanceU1#canCall| Functions.InBetween$Ai@@14 Functions.InBetween.InstanceU1$Bi@@3 this@@36 |a#0@@42| |b#0@@47|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@36 null)) (not true)) ($Is refType this@@36 (Tclass.Functions.InBetween Functions.InBetween$Ai@@14))) ($IsBox |a#0@@42| Functions.InBetween$Ai@@14)) ($IsBox |b#0@@47| Functions.InBetween.InstanceU1$Bi@@3)))) ($Is DatatypeTypeType (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@14 Functions.InBetween.InstanceU1$Bi@@3 this@@36 |a#0@@42| |b#0@@47|) (Tclass._System.Tuple2 Functions.InBetween$Ai@@14 Functions.InBetween.InstanceU1$Bi@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1584|
  :pattern ( (Functions.InBetween.InstanceU1 Functions.InBetween$Ai@@14 Functions.InBetween.InstanceU1$Bi@@3 this@@36 |a#0@@42| |b#0@@47|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@21 T@U) (Functions.Trait.InstanceU2$Bt@@3 T@U) (this@@37 T@U) (|a#0@@43| T@U) (|b#0@@48| T@U) ) (!  (=> (or (|Functions.Trait.InstanceU2#canCall| Functions.Trait$At@@21 Functions.Trait.InstanceU2$Bt@@3 this@@37 |a#0@@43| |b#0@@48|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@37 null)) (not true)) ($Is refType this@@37 (Tclass.Functions.Trait Functions.Trait$At@@21))) ($IsBox |a#0@@43| Functions.Trait$At@@21)) ($IsBox |b#0@@48| Functions.Trait.InstanceU2$Bt@@3)))) ($Is DatatypeTypeType (Functions.Trait.InstanceU2 Functions.Trait$At@@21 Functions.Trait.InstanceU2$Bt@@3 this@@37 |a#0@@43| |b#0@@48|) (Tclass._System.Tuple2 Functions.Trait$At@@21 Functions.Trait.InstanceU2$Bt@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1595|
  :pattern ( (Functions.Trait.InstanceU2 Functions.Trait$At@@21 Functions.Trait.InstanceU2$Bt@@3 this@@37 |a#0@@43| |b#0@@48|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@22 T@U) (Functions.Trait.InstanceTBody$Bt@@2 T@U) (this@@38 T@U) (|a#0@@44| T@U) (|b#0@@49| T@U) ) (!  (=> (or (|Functions.Trait.InstanceTBody#canCall| Functions.Trait$At@@22 Functions.Trait.InstanceTBody$Bt@@2 this@@38 |a#0@@44| |b#0@@49|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@38 null)) (not true)) ($Is refType this@@38 (Tclass.Functions.Trait Functions.Trait$At@@22))) ($IsBox |a#0@@44| Functions.Trait$At@@22)) ($IsBox |b#0@@49| Functions.Trait.InstanceTBody$Bt@@2)))) ($Is DatatypeTypeType (Functions.Trait.InstanceTBody Functions.Trait$At@@22 Functions.Trait.InstanceTBody$Bt@@2 this@@38 |a#0@@44| |b#0@@49|) (Tclass._System.Tuple2 Functions.Trait$At@@22 Functions.Trait.InstanceTBody$Bt@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1605|
  :pattern ( (Functions.Trait.InstanceTBody Functions.Trait$At@@22 Functions.Trait.InstanceTBody$Bt@@2 this@@38 |a#0@@44| |b#0@@49|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@26 T@U) (Functions.Class.InstanceU3$Bc@@3 T@U) (this@@39 T@U) (|a#0@@45| T@U) (|b#0@@50| T@U) ) (!  (=> (or (|Functions.Class.InstanceU3#canCall| Functions.Class$Ac@@26 Functions.Class.InstanceU3$Bc@@3 this@@39 |a#0@@45| |b#0@@50|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@39 null)) (not true)) ($Is refType this@@39 (Tclass.Functions.Class Functions.Class$Ac@@26))) ($IsBox |a#0@@45| Functions.Class$Ac@@26)) ($IsBox |b#0@@50| Functions.Class.InstanceU3$Bc@@3)))) ($Is DatatypeTypeType (Functions.Class.InstanceU3 Functions.Class$Ac@@26 Functions.Class.InstanceU3$Bc@@3 this@@39 |a#0@@45| |b#0@@50|) (Tclass._System.Tuple2 Functions.Class$Ac@@26 Functions.Class.InstanceU3$Bc@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1620|
  :pattern ( (Functions.Class.InstanceU3 Functions.Class$Ac@@26 Functions.Class.InstanceU3$Bc@@3 this@@39 |a#0@@45| |b#0@@50|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@27 T@U) (Functions.Class.InstanceT$Bc@@3 T@U) (this@@40 T@U) (|a#0@@46| T@U) (|b#0@@51| T@U) ) (!  (=> (or (|Functions.Class.InstanceT#canCall| Functions.Class$Ac@@27 Functions.Class.InstanceT$Bc@@3 this@@40 |a#0@@46| |b#0@@51|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@40 null)) (not true)) ($Is refType this@@40 (Tclass.Functions.Class Functions.Class$Ac@@27))) ($IsBox |a#0@@46| Functions.Class$Ac@@27)) ($IsBox |b#0@@51| Functions.Class.InstanceT$Bc@@3)))) ($Is DatatypeTypeType (Functions.Class.InstanceT Functions.Class$Ac@@27 Functions.Class.InstanceT$Bc@@3 this@@40 |a#0@@46| |b#0@@51|) (Tclass._System.Tuple2 Functions.Class$Ac@@27 Functions.Class.InstanceT$Bc@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1627|
  :pattern ( (Functions.Class.InstanceT Functions.Class$Ac@@27 Functions.Class.InstanceT$Bc@@3 this@@40 |a#0@@46| |b#0@@51|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@28 T@U) (Functions.Class.InstanceC$Bc@@2 T@U) (this@@41 T@U) (|a#0@@47| T@U) (|b#0@@52| T@U) ) (!  (=> (or (|Functions.Class.InstanceC#canCall| Functions.Class$Ac@@28 Functions.Class.InstanceC$Bc@@2 this@@41 |a#0@@47| |b#0@@52|) (and (< 0 $FunctionContextHeight) (and (and (and (or (not (= this@@41 null)) (not true)) ($Is refType this@@41 (Tclass.Functions.Class Functions.Class$Ac@@28))) ($IsBox |a#0@@47| Functions.Class$Ac@@28)) ($IsBox |b#0@@52| Functions.Class.InstanceC$Bc@@2)))) ($Is DatatypeTypeType (Functions.Class.InstanceC Functions.Class$Ac@@28 Functions.Class.InstanceC$Bc@@2 this@@41 |a#0@@47| |b#0@@52|) (Tclass._System.Tuple2 Functions.Class$Ac@@28 Functions.Class.InstanceC$Bc@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1634|
  :pattern ( (Functions.Class.InstanceC Functions.Class$Ac@@28 Functions.Class.InstanceC$Bc@@2 this@@41 |a#0@@47| |b#0@@52|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Functions.UberTrait$Au@@13 T@U) (Functions.UberTrait.InstanceU1$Bu@@0 T@U) (this@@42 T@U) (|a#0@@48| T@U) (|b#0@@53| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU1#canCall| Functions.UberTrait$Au@@13 Functions.UberTrait.InstanceU1$Bu@@0 this@@42 |a#0@@48| |b#0@@53|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@42 null)) (not true)) ($Is refType this@@42 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@13))) ($IsBox |a#0@@48| Functions.UberTrait$Au@@13)) ($IsBox |b#0@@53| Functions.UberTrait.InstanceU1$Bu@@0)))) ($Is DatatypeTypeType (Functions.UberTrait.InstanceU1 Functions.UberTrait$Au@@13 Functions.UberTrait.InstanceU1$Bu@@0 this@@42 |a#0@@48| |b#0@@53|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@13 Functions.UberTrait.InstanceU1$Bu@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1571|
  :pattern ( (Functions.UberTrait.InstanceU1 Functions.UberTrait$Au@@13 Functions.UberTrait.InstanceU1$Bu@@0 this@@42 |a#0@@48| |b#0@@53|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Functions.UberTrait$Au@@14 T@U) (Functions.UberTrait.InstanceU2$Bu@@0 T@U) (this@@43 T@U) (|a#0@@49| T@U) (|b#0@@54| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU2#canCall| Functions.UberTrait$Au@@14 Functions.UberTrait.InstanceU2$Bu@@0 this@@43 |a#0@@49| |b#0@@54|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@43 null)) (not true)) ($Is refType this@@43 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@14))) ($IsBox |a#0@@49| Functions.UberTrait$Au@@14)) ($IsBox |b#0@@54| Functions.UberTrait.InstanceU2$Bu@@0)))) ($Is DatatypeTypeType (Functions.UberTrait.InstanceU2 Functions.UberTrait$Au@@14 Functions.UberTrait.InstanceU2$Bu@@0 this@@43 |a#0@@49| |b#0@@54|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@14 Functions.UberTrait.InstanceU2$Bu@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1574|
  :pattern ( (Functions.UberTrait.InstanceU2 Functions.UberTrait$Au@@14 Functions.UberTrait.InstanceU2$Bu@@0 this@@43 |a#0@@49| |b#0@@54|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Functions.UberTrait$Au@@15 T@U) (Functions.UberTrait.InstanceU3$Bu@@0 T@U) (this@@44 T@U) (|a#0@@50| T@U) (|b#0@@55| T@U) ) (!  (=> (or (|Functions.UberTrait.InstanceU3#canCall| Functions.UberTrait$Au@@15 Functions.UberTrait.InstanceU3$Bu@@0 this@@44 |a#0@@50| |b#0@@55|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@44 null)) (not true)) ($Is refType this@@44 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@15))) ($IsBox |a#0@@50| Functions.UberTrait$Au@@15)) ($IsBox |b#0@@55| Functions.UberTrait.InstanceU3$Bu@@0)))) ($Is DatatypeTypeType (Functions.UberTrait.InstanceU3 Functions.UberTrait$Au@@15 Functions.UberTrait.InstanceU3$Bu@@0 this@@44 |a#0@@50| |b#0@@55|) (Tclass._System.Tuple2 Functions.UberTrait$Au@@15 Functions.UberTrait.InstanceU3$Bu@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1577|
  :pattern ( (Functions.UberTrait.InstanceU3 Functions.UberTrait$Au@@15 Functions.UberTrait.InstanceU3$Bu@@0 this@@44 |a#0@@50| |b#0@@55|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((Functions.Trait$At@@23 T@U) (Functions.Trait.InstanceT$Bt@@0 T@U) (this@@45 T@U) (|a#0@@51| T@U) (|b#0@@56| T@U) ) (!  (=> (or (|Functions.Trait.InstanceT#canCall| Functions.Trait$At@@23 Functions.Trait.InstanceT$Bt@@0 this@@45 |a#0@@51| |b#0@@56|) (and (< 1 $FunctionContextHeight) (and (and (and (or (not (= this@@45 null)) (not true)) ($Is refType this@@45 (Tclass.Functions.Trait Functions.Trait$At@@23))) ($IsBox |a#0@@51| Functions.Trait$At@@23)) ($IsBox |b#0@@56| Functions.Trait.InstanceT$Bt@@0)))) ($Is DatatypeTypeType (Functions.Trait.InstanceT Functions.Trait$At@@23 Functions.Trait.InstanceT$Bt@@0 this@@45 |a#0@@51| |b#0@@56|) (Tclass._System.Tuple2 Functions.Trait$At@@23 Functions.Trait.InstanceT$Bt@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1602|
  :pattern ( (Functions.Trait.InstanceT Functions.Trait$At@@23 Functions.Trait.InstanceT$Bt@@0 this@@45 |a#0@@51| |b#0@@56|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@10 T@U) (Functions.Datatype.StaticD$Bd@@2 T@U) (|a#0@@52| T@U) (|b#0@@57| T@U) ) (!  (=> (or (|Functions.Datatype.StaticD#canCall| Functions.Datatype$Ad@@10 Functions.Datatype.StaticD$Bd@@2 |a#0@@52| |b#0@@57|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@52| Functions.Datatype$Ad@@10) ($IsBox |b#0@@57| Functions.Datatype.StaticD$Bd@@2)))) ($Is DatatypeTypeType (Functions.Datatype.StaticD Functions.Datatype$Ad@@10 Functions.Datatype.StaticD$Bd@@2 |a#0@@52| |b#0@@57|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@10 Functions.Datatype.StaticD$Bd@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1559|
  :pattern ( (Functions.Datatype.StaticD Functions.Datatype$Ad@@10 Functions.Datatype.StaticD$Bd@@2 |a#0@@52| |b#0@@57|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Trait$At@@24 T@U) (Functions.Trait.StaticT$Bt@@2 T@U) (|a#0@@53| T@U) (|b#0@@58| T@U) ) (!  (=> (or (|Functions.Trait.StaticT#canCall| Functions.Trait$At@@24 Functions.Trait.StaticT$Bt@@2 |a#0@@53| |b#0@@58|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@53| Functions.Trait$At@@24) ($IsBox |b#0@@58| Functions.Trait.StaticT$Bt@@2)))) ($Is DatatypeTypeType (Functions.Trait.StaticT Functions.Trait$At@@24 Functions.Trait.StaticT$Bt@@2 |a#0@@53| |b#0@@58|) (Tclass._System.Tuple2 Functions.Trait$At@@24 Functions.Trait.StaticT$Bt@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1610|
  :pattern ( (Functions.Trait.StaticT Functions.Trait$At@@24 Functions.Trait.StaticT$Bt@@2 |a#0@@53| |b#0@@58|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Class$Ac@@29 T@U) (Functions.Class.StaticC$Bc@@2 T@U) (|a#0@@54| T@U) (|b#0@@59| T@U) ) (!  (=> (or (|Functions.Class.StaticC#canCall| Functions.Class$Ac@@29 Functions.Class.StaticC$Bc@@2 |a#0@@54| |b#0@@59|) (and (< 0 $FunctionContextHeight) (and ($IsBox |a#0@@54| Functions.Class$Ac@@29) ($IsBox |b#0@@59| Functions.Class.StaticC$Bc@@2)))) ($Is DatatypeTypeType (Functions.Class.StaticC Functions.Class$Ac@@29 Functions.Class.StaticC$Bc@@2 |a#0@@54| |b#0@@59|) (Tclass._System.Tuple2 Functions.Class$Ac@@29 Functions.Class.StaticC$Bc@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1639|
  :pattern ( (Functions.Class.StaticC Functions.Class$Ac@@29 Functions.Class.StaticC$Bc@@2 |a#0@@54| |b#0@@59|))
 ))))
 (assert (forall ((|_System._tuple#2$T0@@4| T@U) (|_System._tuple#2$T1@@4| T@U) (bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@7)) bx@@7) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@7) (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |1315|
  :pattern ( ($IsBox bx@@7 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)))
 )))
 (assert (forall ((Functions.UberTrait$Au@@16 T@U) ($o@@10 T@U) ) (! (= ($Is refType $o@@10 (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@16))  (or (= $o@@10 null) (implements$Functions.UberTrait (dtype $o@@10) Functions.UberTrait$Au@@16)))
+ :qid |unknown.0:0|
+ :skolemid |1564|
  :pattern ( ($Is refType $o@@10 (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@16)))
 )))
 (assert (forall ((Functions.InBetween$Ai@@15 T@U) ($o@@11 T@U) ) (! (= ($Is refType $o@@11 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@15))  (or (= $o@@11 null) (implements$Functions.InBetween (dtype $o@@11) Functions.InBetween$Ai@@15)))
+ :qid |unknown.0:0|
+ :skolemid |1582|
  :pattern ( ($Is refType $o@@11 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@15)))
 )))
 (assert (forall ((Functions.Trait$At@@25 T@U) ($o@@12 T@U) ) (! (= ($Is refType $o@@12 (Tclass.Functions.Trait? Functions.Trait$At@@25))  (or (= $o@@12 null) (implements$Functions.Trait (dtype $o@@12) Functions.Trait$At@@25)))
+ :qid |unknown.0:0|
+ :skolemid |1593|
  :pattern ( ($Is refType $o@@12 (Tclass.Functions.Trait? Functions.Trait$At@@25)))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@13 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@13 $f))  (=> (and (or (not (= $o@@13 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@13) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |5451|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@13 $f))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.StaticN$Bn@@1 T@U) (|b#0@@60| T@U) ) (!  (=> (or (|Functions.Newtype.StaticN#canCall| Functions.Newtype.StaticN$Bn@@1 |b#0@@60|) (and (< 0 $FunctionContextHeight) ($IsBox |b#0@@60| Functions.Newtype.StaticN$Bn@@1))) (= (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@1 |b#0@@60|) |b#0@@60|))
+ :qid |unknown.0:0|
+ :skolemid |1538|
  :pattern ( (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@1 |b#0@@60|))
 ))))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
+ :qid |unknown.0:0|
+ :skolemid |1312|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Newtype.InstanceN$Bn@@2 T@U) (this@@46 Int) (|b#0@@61| T@U) ) (!  (=> (or (|Functions.Newtype.InstanceN#canCall| Functions.Newtype.InstanceN$Bn@@2 (LitInt this@@46) |b#0@@61|) (and (< 0 $FunctionContextHeight) (and (and (<= (LitInt 0) this@@46) (< this@@46 500)) ($IsBox |b#0@@61| Functions.Newtype.InstanceN$Bn@@2)))) (= (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@2 (LitInt this@@46) |b#0@@61|) |b#0@@61|))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1533|
  :pattern ( (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@2 (LitInt this@@46) |b#0@@61|))
 ))))
 (assert (forall ((d@@2 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@2)) (DtRank d@@2))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |916|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@2)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((Functions.Datatype$Ad@@11 T@U) (Functions.Datatype.InstanceD$Bd@@3 T@U) (this@@47 T@U) (|a#0@@55| T@U) (|b#0@@62| T@U) ) (!  (=> (or (|Functions.Datatype.InstanceD#canCall| Functions.Datatype$Ad@@11 Functions.Datatype.InstanceD$Bd@@3 this@@47 |a#0@@55| |b#0@@62|) (and (< 0 $FunctionContextHeight) (and (and ($Is DatatypeTypeType this@@47 (Tclass.Functions.Datatype Functions.Datatype$Ad@@11)) ($IsBox |a#0@@55| Functions.Datatype$Ad@@11)) ($IsBox |b#0@@62| Functions.Datatype.InstanceD$Bd@@3)))) ($Is DatatypeTypeType (Functions.Datatype.InstanceD Functions.Datatype$Ad@@11 Functions.Datatype.InstanceD$Bd@@3 this@@47 |a#0@@55| |b#0@@62|) (Tclass._System.Tuple2 Functions.Datatype$Ad@@11 Functions.Datatype.InstanceD$Bd@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1553|
  :pattern ( (Functions.Datatype.InstanceD Functions.Datatype$Ad@@11 Functions.Datatype.InstanceD$Bd@@3 this@@47 |a#0@@55| |b#0@@62|))
 ))))
 (assert (forall ((Functions.Class$Ac@@30 T@U) (bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 (Tclass.Functions.Class Functions.Class$Ac@@30)) (and (= ($Box refType ($Unbox refType bx@@8)) bx@@8) ($Is refType ($Unbox refType bx@@8) (Tclass.Functions.Class Functions.Class$Ac@@30))))
+ :qid |unknown.0:0|
+ :skolemid |1501|
  :pattern ( ($IsBox bx@@8 (Tclass.Functions.Class Functions.Class$Ac@@30)))
 )))
 (assert (forall ((Functions.Class$Ac@@31 T@U) (bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 (Tclass.Functions.Class? Functions.Class$Ac@@31)) (and (= ($Box refType ($Unbox refType bx@@9)) bx@@9) ($Is refType ($Unbox refType bx@@9) (Tclass.Functions.Class? Functions.Class$Ac@@31))))
+ :qid |unknown.0:0|
+ :skolemid |1504|
  :pattern ( ($IsBox bx@@9 (Tclass.Functions.Class? Functions.Class$Ac@@31)))
 )))
 (assert (forall ((Functions.Trait$At@@26 T@U) (bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 (Tclass.Functions.Trait Functions.Trait$At@@26)) (and (= ($Box refType ($Unbox refType bx@@10)) bx@@10) ($Is refType ($Unbox refType bx@@10) (Tclass.Functions.Trait Functions.Trait$At@@26))))
+ :qid |unknown.0:0|
+ :skolemid |1507|
  :pattern ( ($IsBox bx@@10 (Tclass.Functions.Trait Functions.Trait$At@@26)))
 )))
 (assert (forall ((Functions.UberTrait$Au@@17 T@U) (bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@17)) (and (= ($Box refType ($Unbox refType bx@@11)) bx@@11) ($Is refType ($Unbox refType bx@@11) (Tclass.Functions.UberTrait Functions.UberTrait$Au@@17))))
+ :qid |unknown.0:0|
+ :skolemid |1510|
  :pattern ( ($IsBox bx@@11 (Tclass.Functions.UberTrait Functions.UberTrait$Au@@17)))
 )))
 (assert (forall ((Functions.InBetween$Ai@@16 T@U) (bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 (Tclass.Functions.InBetween Functions.InBetween$Ai@@16)) (and (= ($Box refType ($Unbox refType bx@@12)) bx@@12) ($Is refType ($Unbox refType bx@@12) (Tclass.Functions.InBetween Functions.InBetween$Ai@@16))))
+ :qid |unknown.0:0|
+ :skolemid |1513|
  :pattern ( ($IsBox bx@@12 (Tclass.Functions.InBetween Functions.InBetween$Ai@@16)))
 )))
 (assert (forall ((Functions.Datatype$Ad@@12 T@U) (bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 (Tclass.Functions.Datatype Functions.Datatype$Ad@@12)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@13)) bx@@13) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@13) (Tclass.Functions.Datatype Functions.Datatype$Ad@@12))))
+ :qid |unknown.0:0|
+ :skolemid |1516|
  :pattern ( ($IsBox bx@@13 (Tclass.Functions.Datatype Functions.Datatype$Ad@@12)))
 )))
 (assert (forall ((Functions.UberTrait$Au@@18 T@U) (bx@@14 T@U) ) (!  (=> ($IsBox bx@@14 (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@18)) (and (= ($Box refType ($Unbox refType bx@@14)) bx@@14) ($Is refType ($Unbox refType bx@@14) (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@18))))
+ :qid |unknown.0:0|
+ :skolemid |1520|
  :pattern ( ($IsBox bx@@14 (Tclass.Functions.UberTrait? Functions.UberTrait$Au@@18)))
 )))
 (assert (forall ((Functions.InBetween$Ai@@17 T@U) (bx@@15 T@U) ) (!  (=> ($IsBox bx@@15 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@17)) (and (= ($Box refType ($Unbox refType bx@@15)) bx@@15) ($Is refType ($Unbox refType bx@@15) (Tclass.Functions.InBetween? Functions.InBetween$Ai@@17))))
+ :qid |unknown.0:0|
+ :skolemid |1523|
  :pattern ( ($IsBox bx@@15 (Tclass.Functions.InBetween? Functions.InBetween$Ai@@17)))
 )))
 (assert (forall ((Functions.Trait$At@@27 T@U) (bx@@16 T@U) ) (!  (=> ($IsBox bx@@16 (Tclass.Functions.Trait? Functions.Trait$At@@27)) (and (= ($Box refType ($Unbox refType bx@@16)) bx@@16) ($Is refType ($Unbox refType bx@@16) (Tclass.Functions.Trait? Functions.Trait$At@@27))))
+ :qid |unknown.0:0|
+ :skolemid |1526|
  :pattern ( ($IsBox bx@@16 (Tclass.Functions.Trait? Functions.Trait$At@@27)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@14 T@U) (Functions.Newtype.StaticN$Bn@@2 T@U) (|b#0@@63| T@U) ) (!  (=> (and (or (|Functions.Newtype.StaticN#canCall| Functions.Newtype.StaticN$Bn@@2 |b#0@@63|) (and (< 0 $FunctionContextHeight) (and ($IsBox |b#0@@63| Functions.Newtype.StaticN$Bn@@2) ($IsAllocBox |b#0@@63| Functions.Newtype.StaticN$Bn@@2 $Heap@@14)))) ($IsGoodHeap $Heap@@14)) ($IsAllocBox (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@2 |b#0@@63|) Functions.Newtype.StaticN$Bn@@2 $Heap@@14))
+ :qid |MoreAutoInitdfy.128:21|
+ :skolemid |1536|
  :pattern ( ($IsAllocBox (Functions.Newtype.StaticN Functions.Newtype.StaticN$Bn@@2 |b#0@@63|) Functions.Newtype.StaticN$Bn@@2 $Heap@@14))
 ))))
 (assert (forall ((h@@3 T@U) (r T@U) (f T@U) (x@@6 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6))) ($HeapSucc h@@3 (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |948|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6)))
 )))
 (assert (= (Tag Tclass.Functions.Newtype) Tagclass.Functions.Newtype))
 (assert (= (TagFamily Tclass.Functions.Newtype) tytagFamily$Newtype))
 (assert (= |#Functions.Datatype.Dt0| (Lit DatatypeTypeType |#Functions.Datatype.Dt0|)))
 (assert (forall ((d@@3 T@U) (|_System._tuple#2$T0@@6| T@U) ($h@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@13) (and (_System.Tuple2.___hMake2_q d@@3) (exists ((|_System._tuple#2$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@13)
+ :qid |unknown.0:0|
+ :skolemid |1318|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@13))
 )))) ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@13))
+ :qid |unknown.0:0|
+ :skolemid |1319|
  :pattern ( ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@13))
 )))
 (assert (forall ((d@@4 T@U) (|_System._tuple#2$T1@@7| T@U) ($h@@14 T@U) ) (!  (=> (and ($IsGoodHeap $h@@14) (and (_System.Tuple2.___hMake2_q d@@4) (exists ((|_System._tuple#2$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@14)
+ :qid |unknown.0:0|
+ :skolemid |1320|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@14))
 )))) ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@14))
+ :qid |unknown.0:0|
+ :skolemid |1321|
  :pattern ( ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@14))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.Functions.Newtype)  (and (<= (LitInt 0) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 500)))
+ :qid |unknown.0:0|
+ :skolemid |1527|
  :pattern ( ($Is intType |x#0@@0| Tclass.Functions.Newtype))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0| |a#3#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |1322|
  :pattern ( (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |850|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@8)) (Lit BoxType ($Box T@@5 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |848|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@8)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@15 T@U) (Functions.Newtype.InstanceN$Bn@@3 T@U) (this@@48 Int) (|b#0@@64| T@U) ) (!  (=> (and (or (|Functions.Newtype.InstanceN#canCall| Functions.Newtype.InstanceN$Bn@@3 this@@48 |b#0@@64|) (and (< 0 $FunctionContextHeight) (and ($IsBox |b#0@@64| Functions.Newtype.InstanceN$Bn@@3) ($IsAllocBox |b#0@@64| Functions.Newtype.InstanceN$Bn@@3 $Heap@@15)))) ($IsGoodHeap $Heap@@15)) ($IsAllocBox (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@3 this@@48 |b#0@@64|) Functions.Newtype.InstanceN$Bn@@3 $Heap@@15))
+ :qid |MoreAutoInitdfy.127:14|
+ :skolemid |1530|
  :pattern ( ($IsAllocBox (Functions.Newtype.InstanceN Functions.Newtype.InstanceN$Bn@@3 this@@48 |b#0@@64|) Functions.Newtype.InstanceN$Bn@@3 $Heap@@15))
 ))))
 (push 1)
@@ -745,6 +1088,7 @@
 (declare-fun |n#0| () Int)
 (declare-fun |b#0@@65| () T@U)
 (declare-fun |p#0| () T@U)
+(set-info :boogie-vc-id Impl$$Functions.__default.Test)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

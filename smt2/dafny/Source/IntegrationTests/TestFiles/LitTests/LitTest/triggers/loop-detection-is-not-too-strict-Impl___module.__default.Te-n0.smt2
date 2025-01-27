@@ -56,64 +56,99 @@
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |562|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@6 y))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@8)) (Lit BoxType ($Box T@@2 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@8)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -150,6 +185,7 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.Test)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -167,9 +203,13 @@
 (assert (not
  (=> (= (ControlFlow 0 0) 70) (let ((anon47_correct  (=> (and (forall ((|x#19| Int) (|_t#0#2| Int) ) (!  (=> (= |_t#0#2| (+ |x#19| 1)) (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#19|) (=> (not (_module.__default.Q |x#19|)) (let ((|xx#0| |_t#0#2|))
 (|_module.__default.Q#canCall| |xx#0|))))))
+ :qid |loopdetectionisnottoostrictdfy.40:17|
+ :skolemid |559|
  :pattern ( (_module.__default.Q |_t#0#2|) (_module.__default.Q |x#19|))
 )) (= (ControlFlow 0 12) (- 0 11))) (forall ((|x#19@@0| Int) (|_t#0#2@@0| Int) ) (!  (=> (= |_t#0#2@@0| (+ |x#19@@0| 1)) (or (or true (_module.__default.Q |x#19@@0|)) (let ((|xx#0@@0| |_t#0#2@@0|))
 (_module.__default.Q |xx#0@@0|))))
+ :qid |loopdetectionisnottoostrictdfy.40:17|
+ :skolemid |561|
  :pattern ( (_module.__default.Q |_t#0#2@@0|) (_module.__default.Q |x#19@@0|))
 )))))
 (let ((anon73_Else_correct  (=> (and (or true (_module.__default.Q |x#18@0|)) (= (ControlFlow 0 14) 12)) anon47_correct)))
@@ -179,10 +219,16 @@
 (let ((anon71_Then_correct  (and (=> (= (ControlFlow 0 17) 15) anon72_Then_correct) (=> (= (ControlFlow 0 17) 16) anon72_Else_correct))))
 (let ((anon71_Else_correct true))
 (let ((anon42_correct  (=> (forall ((|x#17| Int) (|_t#0#1| Int) ) (!  (=> (= |_t#0#1| (ite (> |z#0| 1) |x#17| (+ (Mul (LitInt 3) |z#0|) 1))) (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#17|) (=> (not (_module.__default.Q |x#17|)) (|_module.__default.Q#canCall| |_t#0#1|)))))
+ :qid |loopdetectionisnottoostrictdfy.36:17|
+ :skolemid |556|
  :pattern ( (_module.__default.Q |_t#0#1|) (_module.__default.Q |x#17|))
 )) (and (=> (= (ControlFlow 0 18) (- 0 19)) (forall ((|x#17@@0| Int) (|_t#0#1@@0| Int) ) (!  (=> (= |_t#0#1@@0| (ite (> |z#0| 1) |x#17@@0| (+ (Mul (LitInt 3) |z#0|) 1))) (or (or true (_module.__default.Q |x#17@@0|)) (_module.__default.Q |_t#0#1@@0|)))
+ :qid |loopdetectionisnottoostrictdfy.36:17|
+ :skolemid |558|
  :pattern ( (_module.__default.Q |_t#0#1@@0|) (_module.__default.Q |x#17@@0|))
 ))) (=> (forall ((|x#17@@1| Int) (|_t#0#1@@1| Int) ) (!  (=> (= |_t#0#1@@1| (ite (> |z#0| 1) |x#17@@1| (+ (Mul (LitInt 3) |z#0|) 1))) (or (or true (_module.__default.Q |x#17@@1|)) (_module.__default.Q |_t#0#1@@1|)))
+ :qid |loopdetectionisnottoostrictdfy.36:17|
+ :skolemid |558|
  :pattern ( (_module.__default.Q |_t#0#1@@1|) (_module.__default.Q |x#17@@1|))
 )) (and (=> (= (ControlFlow 0 18) 17) anon71_Then_correct) (=> (= (ControlFlow 0 18) 10) anon71_Else_correct)))))))
 (let ((anon41_correct  (=> (and (and (= |##x#17@0| (ite (> |z#0| 1) |x#16@0| (+ (Mul (LitInt 3) |z#0|) 1))) ($IsAlloc intType (int_2_U |##x#17@0|) TInt $Heap)) (and (|_module.__default.Q#canCall| (ite (> |z#0| 1) |x#16@0| (+ (Mul (LitInt 3) |z#0|) 1))) (= (ControlFlow 0 21) 18))) anon42_correct)))
@@ -195,10 +241,16 @@
 (let ((anon67_Then_correct  (and (=> (= (ControlFlow 0 27) 25) anon68_Then_correct) (=> (= (ControlFlow 0 27) 26) anon68_Else_correct))))
 (let ((anon67_Else_correct true))
 (let ((anon34_correct  (=> (forall ((|x#15| Int) ) (!  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#15|) (=> (not (_module.__default.Q |x#15|)) (|_module.__default.Q#canCall| (ite (> |z#0| 1) |z#0| (+ (Mul (LitInt 3) |z#0|) 1))))))
+ :qid |loopdetectionisnottoostrictdfy.34:17|
+ :skolemid |553|
  :pattern ( (_module.__default.Q |x#15|))
 )) (and (=> (= (ControlFlow 0 28) (- 0 29)) (forall ((|x#15@@0| Int) ) (!  (or (or true (_module.__default.Q |x#15@@0|)) (_module.__default.Q (ite (> |z#0| 1) |z#0| (+ (Mul (LitInt 3) |z#0|) 1))))
+ :qid |loopdetectionisnottoostrictdfy.34:17|
+ :skolemid |555|
  :pattern ( (_module.__default.Q |x#15@@0|))
 ))) (=> (forall ((|x#15@@1| Int) ) (!  (or (or true (_module.__default.Q |x#15@@1|)) (_module.__default.Q (ite (> |z#0| 1) |z#0| (+ (Mul (LitInt 3) |z#0|) 1))))
+ :qid |loopdetectionisnottoostrictdfy.34:17|
+ :skolemid |555|
  :pattern ( (_module.__default.Q |x#15@@1|))
 )) (and (=> (= (ControlFlow 0 28) 27) anon67_Then_correct) (=> (= (ControlFlow 0 28) 9) anon67_Else_correct)))))))
 (let ((anon33_correct  (=> (and (and (= |##x#15@0| (ite (> |z#0| 1) |z#0| (+ (Mul (LitInt 3) |z#0|) 1))) ($IsAlloc intType (int_2_U |##x#15@0|) TInt $Heap)) (and (|_module.__default.Q#canCall| (ite (> |z#0| 1) |z#0| (+ (Mul (LitInt 3) |z#0|) 1))) (= (ControlFlow 0 31) 28))) anon34_correct)))
@@ -211,10 +263,16 @@
 (let ((anon63_Then_correct  (and (=> (= (ControlFlow 0 37) 35) anon64_Then_correct) (=> (= (ControlFlow 0 37) 36) anon64_Else_correct))))
 (let ((anon63_Else_correct true))
 (let ((anon26_correct  (=> (forall ((|x#13| Int) ) (!  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#13|) (=> (not (_module.__default.Q |x#13|)) (|_module.__default.Q#canCall| (LitInt (+ 0 1))))))
+ :qid |loopdetectionisnottoostrictdfy.33:17|
+ :skolemid |550|
  :pattern ( (_module.__default.Q |x#13|))
 )) (and (=> (= (ControlFlow 0 38) (- 0 39)) (forall ((|x#13@@0| Int) ) (!  (or (or true (_module.__default.Q |x#13@@0|)) (_module.__default.Q (LitInt (+ 0 1))))
+ :qid |loopdetectionisnottoostrictdfy.33:17|
+ :skolemid |552|
  :pattern ( (_module.__default.Q |x#13@@0|))
 ))) (=> (forall ((|x#13@@1| Int) ) (!  (or (or true (_module.__default.Q |x#13@@1|)) (_module.__default.Q (LitInt (+ 0 1))))
+ :qid |loopdetectionisnottoostrictdfy.33:17|
+ :skolemid |552|
  :pattern ( (_module.__default.Q |x#13@@1|))
 )) (and (=> (= (ControlFlow 0 38) 37) anon63_Then_correct) (=> (= (ControlFlow 0 38) 8) anon63_Else_correct)))))))
 (let ((anon62_Else_correct  (=> (and (or true (_module.__default.Q |x#12@0|)) (= (ControlFlow 0 41) 38)) anon26_correct)))
@@ -224,12 +282,18 @@
 (let ((anon60_Then_correct  (and (=> (= (ControlFlow 0 44) 42) anon61_Then_correct) (=> (= (ControlFlow 0 44) 43) anon61_Else_correct))))
 (let ((anon60_Else_correct true))
 (let ((anon21_correct  (=> (forall ((|x#11| Int) ) (!  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.P#canCall| |x#11| (LitInt 1)) (=> (not (_module.__default.P |x#11| (LitInt 1))) (|_module.__default.P#canCall| |x#11| |z#0|))))
+ :qid |loopdetectionisnottoostrictdfy.28:17|
+ :skolemid |547|
  :pattern ( (_module.__default.P |x#11| |z#0|))
  :pattern ( (_module.__default.P |x#11| 1))
 )) (and (=> (= (ControlFlow 0 45) (- 0 46)) (forall ((|x#11@@0| Int) ) (!  (or (or true (_module.__default.P |x#11@@0| (LitInt 1))) (_module.__default.P |x#11@@0| |z#0|))
+ :qid |loopdetectionisnottoostrictdfy.28:17|
+ :skolemid |549|
  :pattern ( (_module.__default.P |x#11@@0| |z#0|))
  :pattern ( (_module.__default.P |x#11@@0| 1))
 ))) (=> (forall ((|x#11@@1| Int) ) (!  (or (or true (_module.__default.P |x#11@@1| (LitInt 1))) (_module.__default.P |x#11@@1| |z#0|))
+ :qid |loopdetectionisnottoostrictdfy.28:17|
+ :skolemid |549|
  :pattern ( (_module.__default.P |x#11@@1| |z#0|))
  :pattern ( (_module.__default.P |x#11@@1| 1))
 )) (and (=> (= (ControlFlow 0 45) 44) anon60_Then_correct) (=> (= (ControlFlow 0 45) 7) anon60_Else_correct)))))))
@@ -240,10 +304,16 @@
 (let ((anon57_Then_correct  (and (=> (= (ControlFlow 0 51) 49) anon58_Then_correct) (=> (= (ControlFlow 0 51) 50) anon58_Else_correct))))
 (let ((anon57_Else_correct true))
 (let ((anon16_correct  (=> (forall ((|x#9| Int) ) (!  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#9|) (=> (not (_module.__default.Q |x#9|)) (|_module.__default.Q#canCall| |z#0|))))
+ :qid |loopdetectionisnottoostrictdfy.27:17|
+ :skolemid |544|
  :pattern ( (_module.__default.Q |x#9|))
 )) (and (=> (= (ControlFlow 0 52) (- 0 53)) (forall ((|x#9@@0| Int) ) (!  (or (or true (_module.__default.Q |x#9@@0|)) (_module.__default.Q |z#0|))
+ :qid |loopdetectionisnottoostrictdfy.27:17|
+ :skolemid |546|
  :pattern ( (_module.__default.Q |x#9@@0|))
 ))) (=> (forall ((|x#9@@1| Int) ) (!  (or (or true (_module.__default.Q |x#9@@1|)) (_module.__default.Q |z#0|))
+ :qid |loopdetectionisnottoostrictdfy.27:17|
+ :skolemid |546|
  :pattern ( (_module.__default.Q |x#9@@1|))
 )) (and (=> (= (ControlFlow 0 52) 51) anon57_Then_correct) (=> (= (ControlFlow 0 52) 6) anon57_Else_correct)))))))
 (let ((anon56_Else_correct  (=> (and (or true (_module.__default.Q |x#8@0|)) (= (ControlFlow 0 55) 52)) anon16_correct)))
@@ -253,10 +323,16 @@
 (let ((anon54_Then_correct  (and (=> (= (ControlFlow 0 58) 56) anon55_Then_correct) (=> (= (ControlFlow 0 58) 57) anon55_Else_correct))))
 (let ((anon54_Else_correct true))
 (let ((anon11_correct  (=> (forall ((|x#7| Int) ) (!  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (and (|_module.__default.Q#canCall| |x#7|) (=> (not (_module.__default.Q |x#7|)) (|_module.__default.Q#canCall| (LitInt 0)))))
+ :qid |loopdetectionisnottoostrictdfy.26:17|
+ :skolemid |541|
  :pattern ( (_module.__default.Q |x#7|))
 )) (and (=> (= (ControlFlow 0 59) (- 0 60)) (forall ((|x#7@@0| Int) ) (!  (or (or true (_module.__default.Q |x#7@@0|)) (_module.__default.Q (LitInt 0)))
+ :qid |loopdetectionisnottoostrictdfy.26:17|
+ :skolemid |543|
  :pattern ( (_module.__default.Q |x#7@@0|))
 ))) (=> (forall ((|x#7@@1| Int) ) (!  (or (or true (_module.__default.Q |x#7@@1|)) (_module.__default.Q (LitInt 0)))
+ :qid |loopdetectionisnottoostrictdfy.26:17|
+ :skolemid |543|
  :pattern ( (_module.__default.Q |x#7@@1|))
 )) (and (=> (= (ControlFlow 0 59) 58) anon54_Then_correct) (=> (= (ControlFlow 0 59) 5) anon54_Else_correct)))))))
 (let ((anon53_Else_correct  (=> (and (or true (_module.__default.Q |x#6@0|)) (= (ControlFlow 0 62) 59)) anon11_correct)))
@@ -266,23 +342,35 @@
 (let ((anon51_Then_correct  (and (=> (= (ControlFlow 0 65) 63) anon52_Then_correct) (=> (= (ControlFlow 0 65) 64) anon52_Else_correct))))
 (let ((anon51_Else_correct true))
 (let ((anon50_Then_correct  (=> ($IsAlloc intType (int_2_U |x#4@0|) TInt $Heap) (=> (and (and (and ($IsAlloc intType (int_2_U |y#4@0|) TInt $Heap) (|_module.__default.P#canCall| |x#4@0| |y#4@0|)) (and ($IsAlloc intType (int_2_U |x#4@0|) TInt $Heap) (= |##y#5@0| (+ |y#4@0| 1)))) (and (and ($IsAlloc intType (int_2_U |##y#5@0|) TInt $Heap) (|_module.__default.P#canCall| |x#4@0| (+ |y#4@0| 1))) (and (forall ((|x#5| Int) (|y#5| Int) (|_t#0#0| Int) ) (!  (=> (= |_t#0#0| (+ |y#5| 1)) (and (|_module.__default.P#canCall| |x#5| |y#5|) (|_module.__default.P#canCall| |x#5| |_t#0#0|)))
+ :qid |loopdetectionisnottoostrictdfy.21:17|
+ :skolemid |539|
  :pattern ( (_module.__default.P |x#5| |_t#0#0|) (_module.__default.P |x#5| |y#5|))
 )) (forall ((|x#5@@0| Int) (|y#5@@0| Int) (|_t#0#0@@0| Int) ) (!  (=> (= |_t#0#0@@0| (+ |y#5@@0| 1)) (= (_module.__default.P |x#5@@0| |y#5@@0|) (_module.__default.P |x#5@@0| |_t#0#0@@0|)))
+ :qid |loopdetectionisnottoostrictdfy.21:17|
+ :skolemid |540|
  :pattern ( (_module.__default.P |x#5@@0| |_t#0#0@@0|) (_module.__default.P |x#5@@0| |y#5@@0|))
 ))))) (and (=> (= (ControlFlow 0 66) 65) anon51_Then_correct) (=> (= (ControlFlow 0 66) 4) anon51_Else_correct))))))
 (let ((anon50_Else_correct true))
 (let ((anon49_Then_correct  (=> (and (and (and ($IsAlloc intType (int_2_U |x#2@0|) TInt $Heap) ($IsAlloc intType (int_2_U |y#2@0|) TInt $Heap)) (and (|_module.__default.P#canCall| |x#2@0| |y#2@0|) ($IsAlloc intType (int_2_U |y#2@0|) TInt $Heap))) (and (and ($IsAlloc intType (int_2_U |x#2@0|) TInt $Heap) (|_module.__default.P#canCall| |y#2@0| |x#2@0|)) (and (forall ((|x#3| Int) (|y#3| Int) ) (!  (and (|_module.__default.P#canCall| |x#3| |y#3|) (|_module.__default.P#canCall| |y#3| |x#3|))
+ :qid |loopdetectionisnottoostrictdfy.18:17|
+ :skolemid |537|
  :pattern ( (_module.__default.P |y#3| |x#3|))
  :pattern ( (_module.__default.P |x#3| |y#3|))
 )) (forall ((|x#3@@0| Int) (|y#3@@0| Int) ) (! (= (_module.__default.P |x#3@@0| |y#3@@0|) (_module.__default.P |y#3@@0| |x#3@@0|))
+ :qid |loopdetectionisnottoostrictdfy.18:17|
+ :skolemid |538|
  :pattern ( (_module.__default.P |y#3@@0| |x#3@@0|))
  :pattern ( (_module.__default.P |x#3@@0| |y#3@@0|))
 ))))) (and (=> (= (ControlFlow 0 67) 66) anon50_Then_correct) (=> (= (ControlFlow 0 67) 3) anon50_Else_correct)))))
 (let ((anon49_Else_correct true))
 (let ((anon48_Then_correct  (=> (and (and (and ($IsAlloc intType (int_2_U |x#0@0|) TInt $Heap) ($IsAlloc intType (int_2_U |y#0@0|) TInt $Heap)) (and (|_module.__default.P#canCall| |x#0@0| |y#0@0|) ($IsAlloc intType (int_2_U |y#0@0|) TInt $Heap))) (and (and ($IsAlloc intType (int_2_U |x#0@0|) TInt $Heap) (|_module.__default.P#canCall| |y#0@0| |x#0@0|)) (and (forall ((|x#1| Int) (|y#1| Int) ) (!  (and (|_module.__default.P#canCall| |x#1| |y#1|) (|_module.__default.P#canCall| |y#1| |x#1|))
+ :qid |loopdetectionisnottoostrictdfy.15:17|
+ :skolemid |535|
  :pattern ( (_module.__default.P |y#1| |x#1|))
  :pattern ( (_module.__default.P |x#1| |y#1|))
 )) (forall ((|x#1@@0| Int) (|y#1@@0| Int) ) (! (= (_module.__default.P |x#1@@0| |y#1@@0|) (_module.__default.P |y#1@@0| |x#1@@0|))
+ :qid |loopdetectionisnottoostrictdfy.15:17|
+ :skolemid |536|
  :pattern ( (_module.__default.P |y#1@@0| |x#1@@0|))
  :pattern ( (_module.__default.P |x#1@@0| |y#1@@0|))
 ))))) (and (=> (= (ControlFlow 0 68) 67) anon49_Then_correct) (=> (= (ControlFlow 0 68) 2) anon49_Else_correct)))))

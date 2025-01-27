@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:30
+// Date:         2025-01-26 23:15:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/quantifiers.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/quantifiers-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1072,11 +1072,11 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
 {
   var perm: Perm;
   var i1_10: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i2_10: int;
@@ -1108,8 +1108,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i1_10) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@21.46--21.57) [97863]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1124,8 +1124,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i1_10 && i1_10 < Cell_get_1(Heap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@21.64--21.75) [97864]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1148,8 +1148,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1167,8 +1167,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i2_10) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@23.45--23.56) [97865]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1183,8 +1183,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i2_10 && i2_10 < Cell_get_1(PostHeap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@23.63--23.74) [97866]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1210,8 +1210,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i3_3) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@24.45--24.56) [97867]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1226,8 +1226,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i3_3 && i3_3 < Cell_get_1(PostHeap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@24.63--24.74) [97868]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1251,8 +1251,8 @@ procedure forallCellGet10(c: Ref) returns (d: Ref)
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of forallCellGet10 might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@22.10--22.30) [97869]"}
@@ -1295,12 +1295,12 @@ procedure fail10ForallCellGet10(c: Ref) returns (d: Ref)
   modifies Heap, Mask;
 {
   var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1321,8 +1321,8 @@ procedure fail10ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i_14) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@30.43--30.54) [97872]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1337,8 +1337,8 @@ procedure fail10ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i_14 && i_14 < Cell_get_1(Heap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@30.61--30.72) [97873]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1361,8 +1361,8 @@ procedure fail10ForallCellGet10(c: Ref) returns (d: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -1373,12 +1373,12 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i1_11: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i2_2: int;
@@ -1406,8 +1406,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
     // -- Check definedness of Cell_get(c) > 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@36.11--36.22) [97874]"}
           NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1427,8 +1427,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i1_11) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@37.46--37.57) [97875]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1443,8 +1443,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i1_11 && i1_11 < Cell_get_1(Heap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@37.64--37.75) [97876]"}
               NoPerm < perm ==> NoPerm < Mask[c, Cell_x];
@@ -1467,8 +1467,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1488,8 +1488,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i2_2) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@41.45--41.56) [97877]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1504,8 +1504,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
         if (0 <= i2_2 && i2_2 < Cell_get_1(PostHeap, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access c.Cell_x (quantifiers.vpr@41.63--41.74) [97878]"}
               NoPerm < perm ==> NoPerm < PostMask[c, Cell_x];
@@ -1529,8 +1529,8 @@ procedure fail20ForallCellGet10(c: Ref) returns (d: Ref)
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of fail20ForallCellGet10 might not hold. Assertion c != null might not hold. (quantifiers.vpr@38.10--38.19) [97879]"}
       c != null;
     perm := FullPerm;
@@ -1564,8 +1564,8 @@ procedure noQuantifiedPermissionsPre(s_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var r_24: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1592,8 +1592,8 @@ procedure noQuantifiedPermissionsPre(s_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -1603,13 +1603,13 @@ procedure noQuantifiedPermissionsPre(s_1: (Set Ref)) returns ()
 procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var r_26: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var r_2: Ref;
@@ -1623,8 +1623,8 @@ procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1637,8 +1637,8 @@ procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
         if (s_1[r_26] && r_26 != null) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access r.Cell_x (quantifiers.vpr@51.52--51.63) [97883]"}
               NoPerm < perm ==> NoPerm < PostMask[r_26, Cell_x];
@@ -1651,8 +1651,8 @@ procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function Cell_get might not hold. There might be insufficient permission to access r.Cell_x (quantifiers.vpr@51.67--51.78) [97884]"}
               NoPerm < perm ==> NoPerm < PostMask[r_26, Cell_x];
@@ -1676,8 +1676,8 @@ procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (*) {
       if (s_1[r_2] && r_2 != null) {
         assert {:msg "  Postcondition of noQuantifiedPermissionsPost might not hold. Assertion Cell_get(r) >= Cell_get(r) might not hold. (quantifiers.vpr@51.11--51.79) [97885]"}
@@ -1698,13 +1698,13 @@ procedure noQuantifiedPermissionsPost(s_1: (Set Ref)) returns ()
 procedure succeedsRange10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_8: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
   
   // -- Initializing the state
@@ -1720,20 +1720,20 @@ procedure succeedsRange10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int :: { reqIGt0(i) } 1 <= i ==> reqIGt0(i) == i) -- quantifiers.vpr@57.2--57.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { reqIGt0(i) } 1 <= i ==> reqIGt0(i) == i)
       if (*) {
         if (1 <= i_8) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (quantifiers.vpr@57.39--57.49) [97886]"}
               i_8 >= 0;
             // Stop execution
@@ -1763,13 +1763,13 @@ procedure succeedsRange10(a_2: int) returns ()
 procedure failsRange10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_19: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
   
   // -- Initializing the state
@@ -1781,22 +1781,22 @@ procedure failsRange10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { reqIGt0(i) }
   //     -1 <= i && i < a ==> reqIGt0(i) == i) -- quantifiers.vpr@64.3--64.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { reqIGt0(i) } -1 <= i && i < a ==> reqIGt0(i) == i)
       if (*) {
         if (-1 <= i_19 && i_19 < a_2) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (quantifiers.vpr@64.51--64.61) [97888]"}
               i_19 >= 0;
             // Stop execution
@@ -1826,13 +1826,13 @@ procedure failsRange10(a_2: int) returns ()
 procedure succeedsExplicit10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_9: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
   
   // -- Initializing the state
@@ -1844,22 +1844,22 @@ procedure succeedsExplicit10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int, fresh__244: Int ::
   //     { (i in Seq(fresh__244, 2, 4, 6, 8)) }
   //     (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i) -- quantifiers.vpr@68.3--68.72
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int, fresh__244: Int :: { (i in Seq(fresh__244, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
       if (*) {
         if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_9)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (quantifiers.vpr@68.55--68.67) [97890]"}
               i_9 * i_9 >= 0;
             // Stop execution
@@ -1889,13 +1889,13 @@ procedure succeedsExplicit10(a_2: int) returns ()
 procedure failsExplicit10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_10: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_1: int;
   
   // -- Initializing the state
@@ -1907,22 +1907,22 @@ procedure failsExplicit10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { reqIGt0(i) }
   //     (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i) < i * i) -- quantifiers.vpr@74.3--74.76
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { reqIGt0(i) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i) < i * i)
       if (*) {
         if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_10)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (quantifiers.vpr@74.56--74.66) [97892]"}
               i_10 >= 0;
             // Stop execution
@@ -1952,10 +1952,10 @@ procedure failsExplicit10(a_2: int) returns ()
 procedure succeeds1(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1_12: int;
   var i1_1: int;
   
@@ -1972,12 +1972,12 @@ procedure succeeds1(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i1: Int :: { g(i1) } 0 <= i1 && i1 < a ==> g(i1) >= 0) -- quantifiers.vpr@85.2--85.61
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i1: Int :: { g(i1) } 0 <= i1 && i1 < a ==> g(i1) >= 0)
       if (*) {
@@ -2003,8 +2003,8 @@ procedure succeeds1(a_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (exists i2: Int :: { (i2 in Seq(0)) } (i2 in Seq(0)) ==> true) -- quantifiers.vpr@87.2--87.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (exists i2: Int :: { (i2 in Seq(0)) } (i2 in Seq(0)) ==> true)
       if (*) {
@@ -2020,10 +2020,10 @@ procedure succeeds1(a_2: int) returns ()
 procedure succeeds2(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_13: int;
   var j_23: int;
   var i_1: int;
@@ -2042,14 +2042,14 @@ procedure succeeds2(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int ::(forall j: Int ::
   //       { f(i, j) }
   //       0 <= i && (i < a && (0 <= j && j < a)) ==> f(i, j) >= 0)) -- quantifiers.vpr@100.2--101.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int ::(forall j: Int :: { f(i, j) } 0 <= i && (i < a && (0 <= j && j < a)) ==> f(i, j) >= 0))
       if (*) {
@@ -2095,11 +2095,11 @@ procedure succeeds2(a_2: int) returns ()
 procedure test1_1(A_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var v1_26: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var v2_26: int;
   var v2_1: int;
   
@@ -2112,8 +2112,8 @@ procedure test1_1(A_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@115.9--115.17
     assume Seq#Length(A_1) > 10;
@@ -2157,8 +2157,8 @@ procedure test1_1(A_1: (Seq int)) returns ()
   //     { f2(v2) }
   //     0 <= v2 && (v2 < 3 && f2(v2)) ==>
   //     (exists j2: Int :: 0 <= j2 && (j2 < 3 && j2 == v2))) -- quantifiers.vpr@121.2--122.86
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall v2: Int :: { f2(v2) } 0 <= v2 && (v2 < 3 && f2(v2)) ==> (exists j2: Int :: 0 <= j2 && (j2 < 3 && j2 == v2)))
       if (*) {
@@ -2204,12 +2204,12 @@ procedure test1_1(A_1: (Seq int)) returns ()
 procedure test2_1(A_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var v1_8: int;
   var j1_3: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var v2_27: int;
   var j2_3: int;
   var v2_1: int;
@@ -2223,8 +2223,8 @@ procedure test2_1(A_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@129.9--129.17
     assume Seq#Length(A_1) > 10;
@@ -2276,8 +2276,8 @@ procedure test2_1(A_1: (Seq int)) returns ()
   //     { f2(v2) }
   //     0 <= v2 && (v2 < 3 && f2(v2)) ==>
   //     (exists j2: Int :: { g2(j2, v2) } 0 <= j2 && (j2 < 3 && g2(j2, v2)))) -- quantifiers.vpr@134.2--135.88
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall v2: Int :: { f2(v2) } 0 <= v2 && (v2 < 3 && f2(v2)) ==> (exists j2: Int :: { g2(j2, v2) } 0 <= j2 && (j2 < 3 && g2(j2, v2))))
       if (*) {
@@ -2331,12 +2331,12 @@ procedure test2_1(A_1: (Seq int)) returns ()
 procedure test3_1(A_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var v1_27: int;
   var j1_4: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var v2_28: int;
   var j2_4: int;
   var v2_1: int;
@@ -2350,8 +2350,8 @@ procedure test3_1(A_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@139.9--139.17
     assume Seq#Length(A_1) > 10;
@@ -2403,8 +2403,8 @@ procedure test3_1(A_1: (Seq int)) returns ()
   //     { f2(v2) }
   //     0 <= v2 && (v2 < 3 && f2(v2)) ==>
   //     (exists j2: Int :: { A[j2] } 0 <= j2 && (j2 < 3 && A[j2] == v2))) -- quantifiers.vpr@144.2--145.89
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall v2: Int :: { f2(v2) } 0 <= v2 && (v2 < 3 && f2(v2)) ==> (exists j2: Int :: { A[j2] } 0 <= j2 && (j2 < 3 && A[j2] == v2)))
       if (*) {
@@ -2458,10 +2458,10 @@ procedure test3_1(A_1: (Seq int)) returns ()
 procedure test4_1(A_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2472,8 +2472,8 @@ procedure test4_1(A_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@150.9--150.17
     assume Seq#Length(A_1) > 10;
@@ -2502,8 +2502,8 @@ procedure test4_1(A_1: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f2(0) ==> (exists j2: Int :: 0 <= j2 && (j2 < 3 && j2 > 0)) -- quantifiers.vpr@155.2--155.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f2(0)
       if (*) {
@@ -2532,11 +2532,11 @@ procedure test4_1(A_1: (Seq int)) returns ()
 procedure test5_1(A_1: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j1_5: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j2_5: int;
   
   // -- Initializing the state
@@ -2548,8 +2548,8 @@ procedure test5_1(A_1: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@162.9--162.17
     assume Seq#Length(A_1) > 10;
@@ -2589,8 +2589,8 @@ procedure test5_1(A_1: (Seq int)) returns ()
   
   // -- Translating statement: assert f2(0) ==>
   //   (exists j2: Int :: { f2(j2) } 0 <= j2 && (j2 < 3 && f2(j2))) -- quantifiers.vpr@165.2--165.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f2(0)
       if (*) {
@@ -2627,11 +2627,11 @@ procedure test5_1(A_1: (Seq int)) returns ()
 procedure test6(A_1: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j1_6: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j2_6: int;
   
   // -- Initializing the state
@@ -2643,8 +2643,8 @@ procedure test6(A_1: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |A| > 10 -- quantifiers.vpr@169.9--169.17
     assume Seq#Length(A_1) > 10;
@@ -2673,8 +2673,8 @@ procedure test6(A_1: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (exists j2: Int :: { A[j2] } 0 <= j2 && (j2 < 3 && A[j2] != null)) -- quantifiers.vpr@172.2--172.61
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (exists j2: Int :: { A[j2] } 0 <= j2 && (j2 < 3 && A[j2] != null))
       if (*) {

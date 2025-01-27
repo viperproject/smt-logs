@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:18
+; Started: 2025-01-26 23:06:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -739,7 +739,7 @@
     (Set_in l@6@01 b@2@01)
     (and (= (inv@7@01 l@6@01) l@6@01) (img@8@01 l@6@01)))
   :pattern ((Set_in l@6@01 b@2@01))
-  :qid |quant-u-10931|)))
+  :qid |quant-u-10877|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@8@01 r) (Set_in (inv@7@01 r) b@2@01)) (= (inv@7@01 r) r))
   :pattern ((inv@7@01 r))
@@ -771,7 +771,7 @@
     (Set_in (inv@7@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@9@01  $FVF<parent>) r) r))
   :pattern ((inv@7@01 r))
-  :qid |quant-u-10932|)))
+  :qid |quant-u-10878|)))
 (assert (=
   ($Snap.second ($Snap.first $t@4@01))
   ($Snap.combine
@@ -805,7 +805,7 @@
     (Set_in l@10@01 b@2@01)
     (and (= (inv@11@01 l@10@01) l@10@01) (img@12@01 l@10@01)))
   :pattern ((Set_in l@10@01 b@2@01))
-  :qid |quant-u-10934|)))
+  :qid |quant-u-10880|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@12@01 r) (Set_in (inv@11@01 r) b@2@01)) (= (inv@11@01 r) r))
   :pattern ((inv@11@01 r))
@@ -1191,7 +1191,7 @@
     (Set_in (inv@16@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@9@01  $FVF<parent>) r) r))
   :pattern ((inv@16@01 r))
-  :qid |quant-u-10936|)))
+  :qid |quant-u-10882|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@18@01 ((r $Ref)) $Perm
   (ite
@@ -1216,7 +1216,7 @@
       (pTaken@18@01 r))
     $Perm.No)
   
-  :qid |quant-u-10938|))))
+  :qid |quant-u-10884|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1231,7 +1231,7 @@
     (and (Set_in (inv@16@01 r) b@2@01) (img@17@01 r) (= r (inv@16@01 r)))
     (= (- $Perm.Write (pTaken@18@01 r)) $Perm.No))
   
-  :qid |quant-u-10939|))))
+  :qid |quant-u-10885|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1331,7 +1331,7 @@
       (pTaken@23@01 r))
     $Perm.No)
   
-  :qid |quant-u-10942|))))
+  :qid |quant-u-10888|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1346,7 +1346,7 @@
     (and (Set_in (inv@21@01 r) b@2@01) (img@22@01 r) (= r (inv@21@01 r)))
     (= (- $Perm.Write (pTaken@23@01 r)) $Perm.No))
   
-  :qid |quant-u-10943|))))
+  :qid |quant-u-10889|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1731,7 +1731,7 @@
     (Set_in l@28@01 b@2@01)
     (and (= (inv@29@01 l@28@01) l@28@01) (img@30@01 l@28@01)))
   :pattern ((Set_in l@28@01 b@2@01))
-  :qid |quant-u-10945|)))
+  :qid |quant-u-10891|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@30@01 r) (Set_in (inv@29@01 r) b@2@01)) (= (inv@29@01 r) r))
   :pattern ((inv@29@01 r))
@@ -1763,7 +1763,7 @@
     (Set_in (inv@29@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@31@01  $FVF<parent>) r) r))
   :pattern ((inv@29@01 r))
-  :qid |quant-u-10946|)))
+  :qid |quant-u-10892|)))
 (declare-const l@32@01 $Ref)
 (push) ; 4
 ; [eval] (l in b)
@@ -1792,7 +1792,7 @@
     (Set_in l@32@01 b@2@01)
     (and (= (inv@33@01 l@32@01) l@32@01) (img@34@01 l@32@01)))
   :pattern ((Set_in l@32@01 b@2@01))
-  :qid |quant-u-10948|)))
+  :qid |quant-u-10894|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@34@01 r) (Set_in (inv@33@01 r) b@2@01)) (= (inv@33@01 r) r))
   :pattern ((inv@33@01 r))
@@ -2154,7 +2154,7 @@
       (Set_in l@28@01 b@2@01)
       (and (= (inv@29@01 l@28@01) l@28@01) (img@30@01 l@28@01)))
     :pattern ((Set_in l@28@01 b@2@01))
-    :qid |quant-u-10945|))
+    :qid |quant-u-10891|))
   (forall ((l@28@01 $Ref)) (!
     (=> (Set_in l@28@01 b@2@01) (not (= l@28@01 $Ref.null)))
     :pattern ((Set_in l@28@01 b@2@01))
@@ -2164,14 +2164,14 @@
       (Set_in (inv@29@01 r) b@2@01)
       ($FVF.loc_parent ($FVF.lookup_parent (as sm@31@01  $FVF<parent>) r) r))
     :pattern ((inv@29@01 r))
-    :qid |quant-u-10946|))))
+    :qid |quant-u-10892|))))
 (assert (and
   (forall ((l@32@01 $Ref)) (!
     (=>
       (Set_in l@32@01 b@2@01)
       (and (= (inv@33@01 l@32@01) l@32@01) (img@34@01 l@32@01)))
     :pattern ((Set_in l@32@01 b@2@01))
-    :qid |quant-u-10948|))
+    :qid |quant-u-10894|))
   (forall ((l@32@01 $Ref)) (!
     (=> (Set_in l@32@01 b@2@01) (not (= l@32@01 $Ref.null)))
     :pattern ((Set_in l@32@01 b@2@01))
@@ -2288,7 +2288,7 @@
     (Set_in l@38@01 b@2@01)
     (and (= (inv@39@01 l@38@01) l@38@01) (img@40@01 l@38@01)))
   :pattern ((Set_in l@38@01 b@2@01))
-  :qid |quant-u-10950|)))
+  :qid |quant-u-10896|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@40@01 r) (Set_in (inv@39@01 r) b@2@01)) (= (inv@39@01 r) r))
   :pattern ((inv@39@01 r))
@@ -2320,7 +2320,7 @@
     (Set_in (inv@39@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@41@01  $FVF<parent>) r) r))
   :pattern ((inv@39@01 r))
-  :qid |quant-u-10951|)))
+  :qid |quant-u-10897|)))
 (declare-const l@42@01 $Ref)
 (push) ; 4
 ; [eval] (l in b)
@@ -2349,7 +2349,7 @@
     (Set_in l@42@01 b@2@01)
     (and (= (inv@43@01 l@42@01) l@42@01) (img@44@01 l@42@01)))
   :pattern ((Set_in l@42@01 b@2@01))
-  :qid |quant-u-10953|)))
+  :qid |quant-u-10899|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@44@01 r) (Set_in (inv@43@01 r) b@2@01)) (= (inv@43@01 r) r))
   :pattern ((inv@43@01 r))
@@ -3425,7 +3425,7 @@
       (Set_in l@38@01 b@2@01)
       (and (= (inv@39@01 l@38@01) l@38@01) (img@40@01 l@38@01)))
     :pattern ((Set_in l@38@01 b@2@01))
-    :qid |quant-u-10950|))
+    :qid |quant-u-10896|))
   (forall ((l@38@01 $Ref)) (!
     (=> (Set_in l@38@01 b@2@01) (not (= l@38@01 $Ref.null)))
     :pattern ((Set_in l@38@01 b@2@01))
@@ -3435,14 +3435,14 @@
       (Set_in (inv@39@01 r) b@2@01)
       ($FVF.loc_parent ($FVF.lookup_parent (as sm@41@01  $FVF<parent>) r) r))
     :pattern ((inv@39@01 r))
-    :qid |quant-u-10951|))))
+    :qid |quant-u-10897|))))
 (assert (and
   (forall ((l@42@01 $Ref)) (!
     (=>
       (Set_in l@42@01 b@2@01)
       (and (= (inv@43@01 l@42@01) l@42@01) (img@44@01 l@42@01)))
     :pattern ((Set_in l@42@01 b@2@01))
-    :qid |quant-u-10953|))
+    :qid |quant-u-10899|))
   (forall ((l@42@01 $Ref)) (!
     (=> (Set_in l@42@01 b@2@01) (not (= l@42@01 $Ref.null)))
     :pattern ((Set_in l@42@01 b@2@01))
@@ -3644,7 +3644,7 @@
     (Set_in l@60@01 b@2@01)
     (and (= (inv@61@01 l@60@01) l@60@01) (img@62@01 l@60@01)))
   :pattern ((Set_in l@60@01 b@2@01))
-  :qid |quant-u-10955|)))
+  :qid |quant-u-10901|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@62@01 r) (Set_in (inv@61@01 r) b@2@01)) (= (inv@61@01 r) r))
   :pattern ((inv@61@01 r))
@@ -3676,7 +3676,7 @@
     (Set_in (inv@61@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@63@01  $FVF<parent>) r) r))
   :pattern ((inv@61@01 r))
-  :qid |quant-u-10956|)))
+  :qid |quant-u-10902|)))
 (declare-const l@64@01 $Ref)
 (push) ; 4
 ; [eval] (l in b)
@@ -3705,7 +3705,7 @@
     (Set_in l@64@01 b@2@01)
     (and (= (inv@65@01 l@64@01) l@64@01) (img@66@01 l@64@01)))
   :pattern ((Set_in l@64@01 b@2@01))
-  :qid |quant-u-10958|)))
+  :qid |quant-u-10904|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@66@01 r) (Set_in (inv@65@01 r) b@2@01)) (= (inv@65@01 r) r))
   :pattern ((inv@65@01 r))
@@ -4781,7 +4781,7 @@
       (Set_in l@60@01 b@2@01)
       (and (= (inv@61@01 l@60@01) l@60@01) (img@62@01 l@60@01)))
     :pattern ((Set_in l@60@01 b@2@01))
-    :qid |quant-u-10955|))
+    :qid |quant-u-10901|))
   (forall ((l@60@01 $Ref)) (!
     (=> (Set_in l@60@01 b@2@01) (not (= l@60@01 $Ref.null)))
     :pattern ((Set_in l@60@01 b@2@01))
@@ -4791,14 +4791,14 @@
       (Set_in (inv@61@01 r) b@2@01)
       ($FVF.loc_parent ($FVF.lookup_parent (as sm@63@01  $FVF<parent>) r) r))
     :pattern ((inv@61@01 r))
-    :qid |quant-u-10956|))))
+    :qid |quant-u-10902|))))
 (assert (and
   (forall ((l@64@01 $Ref)) (!
     (=>
       (Set_in l@64@01 b@2@01)
       (and (= (inv@65@01 l@64@01) l@64@01) (img@66@01 l@64@01)))
     :pattern ((Set_in l@64@01 b@2@01))
-    :qid |quant-u-10958|))
+    :qid |quant-u-10904|))
   (forall ((l@64@01 $Ref)) (!
     (=> (Set_in l@64@01 b@2@01) (not (= l@64@01 $Ref.null)))
     :pattern ((Set_in l@64@01 b@2@01))
@@ -5000,7 +5000,7 @@
     (Set_in l@82@01 b@2@01)
     (and (= (inv@83@01 l@82@01) l@82@01) (img@84@01 l@82@01)))
   :pattern ((Set_in l@82@01 b@2@01))
-  :qid |quant-u-10960|)))
+  :qid |quant-u-10906|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@84@01 r) (Set_in (inv@83@01 r) b@2@01)) (= (inv@83@01 r) r))
   :pattern ((inv@83@01 r))
@@ -5032,7 +5032,7 @@
     (Set_in (inv@83@01 r) b@2@01)
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@85@01  $FVF<parent>) r) r))
   :pattern ((inv@83@01 r))
-  :qid |quant-u-10961|)))
+  :qid |quant-u-10907|)))
 (declare-const l@86@01 $Ref)
 (push) ; 4
 ; [eval] (l in b)
@@ -5061,7 +5061,7 @@
     (Set_in l@86@01 b@2@01)
     (and (= (inv@87@01 l@86@01) l@86@01) (img@88@01 l@86@01)))
   :pattern ((Set_in l@86@01 b@2@01))
-  :qid |quant-u-10963|)))
+  :qid |quant-u-10909|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@88@01 r) (Set_in (inv@87@01 r) b@2@01)) (= (inv@87@01 r) r))
   :pattern ((inv@87@01 r))
@@ -6137,7 +6137,7 @@
       (Set_in l@82@01 b@2@01)
       (and (= (inv@83@01 l@82@01) l@82@01) (img@84@01 l@82@01)))
     :pattern ((Set_in l@82@01 b@2@01))
-    :qid |quant-u-10960|))
+    :qid |quant-u-10906|))
   (forall ((l@82@01 $Ref)) (!
     (=> (Set_in l@82@01 b@2@01) (not (= l@82@01 $Ref.null)))
     :pattern ((Set_in l@82@01 b@2@01))
@@ -6147,14 +6147,14 @@
       (Set_in (inv@83@01 r) b@2@01)
       ($FVF.loc_parent ($FVF.lookup_parent (as sm@85@01  $FVF<parent>) r) r))
     :pattern ((inv@83@01 r))
-    :qid |quant-u-10961|))))
+    :qid |quant-u-10907|))))
 (assert (and
   (forall ((l@86@01 $Ref)) (!
     (=>
       (Set_in l@86@01 b@2@01)
       (and (= (inv@87@01 l@86@01) l@86@01) (img@88@01 l@86@01)))
     :pattern ((Set_in l@86@01 b@2@01))
-    :qid |quant-u-10963|))
+    :qid |quant-u-10909|))
   (forall ((l@86@01 $Ref)) (!
     (=> (Set_in l@86@01 b@2@01) (not (= l@86@01 $Ref.null)))
     :pattern ((Set_in l@86@01 b@2@01))
@@ -6317,7 +6317,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.10s
+; 0.07s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1
@@ -6396,7 +6396,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r l@106@01) (= (- $Perm.Write (pTaken@112@01 r)) $Perm.No))
   
-  :qid |quant-u-10966|))))
+  :qid |quant-u-10912|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -6438,7 +6438,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r l@106@01) (= (- $Perm.Write (pTaken@114@01 r)) $Perm.No))
   
-  :qid |quant-u-10969|))))
+  :qid |quant-u-10915|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -6516,7 +6516,7 @@
     (Set_in (inv@117@01 r) (Set_singleton l@106@01))
     ($FVF.loc_parent ($FVF.lookup_parent (as sm@119@01  $FVF<parent>) r) r))
   :pattern ((inv@117@01 r))
-  :qid |quant-u-10971|)))
+  :qid |quant-u-10917|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@120@01 ((r $Ref)) $Perm
   (ite
@@ -6547,7 +6547,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@120@01 r) $Perm.No)
   
-  :qid |quant-u-10974|))))
+  :qid |quant-u-10920|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6565,7 +6565,7 @@
       (= r (inv@117@01 r)))
     (= (- $Perm.Write (pTaken@120@01 r)) $Perm.No))
   
-  :qid |quant-u-10975|))))
+  :qid |quant-u-10921|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -6660,7 +6660,19 @@
 (set-option :timeout 500)
 (assert (not (= (- $Perm.Write (pTaken@125@01 l@106@01)) $Perm.No)))
 (check-sat)
-; unsat
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (forall ((r $Ref)) (!
+  (= (pTaken@125@01 r) $Perm.No)
+  
+  :qid |quant-u-10925|))))
+(check-sat)
+; unknown
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
@@ -6676,7 +6688,7 @@
       (= r (inv@123@01 r)))
     (= (- $Perm.Write (pTaken@125@01 r)) $Perm.No))
   
-  :qid |quant-u-10979|))))
+  :qid |quant-u-10926|))))
 (check-sat)
 ; unsat
 (pop) ; 3

@@ -77,166 +77,269 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._module.MyClass Tagclass._module.MyClass? tytagFamily$MyClass)
 )
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |705|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |713|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (Ctor refType) 3))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A T@U) (_module.MyClass$B T@U) (|_module.MyClass.R#$T| T@U) ($ly T@U) (this T@U) ) (!  (=> (and (and (or (not (= this null)) (not true)) ($Is refType this (Tclass._module.MyClass _module.MyClass$A _module.MyClass$B))) (forall ((|_k#0| T@U) ) (! (_module.MyClass.R_h _module.MyClass$A _module.MyClass$B |_module.MyClass.R#$T| ($LS $ly) this |_k#0|)
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1321|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A _module.MyClass$B |_module.MyClass.R#$T| ($LS $ly) this |_k#0|))
 ))) (_module.MyClass.R _module.MyClass$A _module.MyClass$B |_module.MyClass.R#$T| ($LS $ly) this))
+ :qid |unknown.0:0|
+ :skolemid |1323|
  :pattern ( (_module.MyClass.R _module.MyClass$A _module.MyClass$B |_module.MyClass.R#$T| ($LS $ly) this))
 ))))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A@@0 T@U) (_module.MyClass$B@@0 T@U) (|_module.MyClass.R#$T@@0| T@U) ($ly@@0 T@U) (this@@0 T@U) (|_k#0@@0| T@U) ) (!  (=> (or (|_module.MyClass.R_h#canCall| _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| this@@0 (Lit BoxType |_k#0@@0|)) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@0 null)) (not true)) ($Is refType this@@0 (Tclass._module.MyClass _module.MyClass$A@@0 _module.MyClass$B@@0))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| this@@0 (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |_k#0@@0|) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| this@@0 |_k'#1|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1334|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 |_k'#1|))
 ))))) (= (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 (Lit BoxType |_k#0@@0|))  (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#1@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@0| |_k#0@@0|) (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 |_k'#1@@0|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1333|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 |_k'#1@@0|))
 )))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1335|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@0 _module.MyClass$B@@0 |_module.MyClass.R#$T@@0| ($LS $ly@@0) this@@0 (Lit BoxType |_k#0@@0|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A@@1 T@U) (_module.MyClass$B@@1 T@U) (|_module.MyClass.R#$T@@1| T@U) ($ly@@1 T@U) (this@@1 T@U) (|_k#0@@1| T@U) ) (!  (=> (or (|_module.MyClass.R_h#canCall| _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| this@@1 |_k#0@@1|) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 (Tclass._module.MyClass _module.MyClass$A@@1 _module.MyClass$B@@1))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| this@@1 (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| $ly@@1 this@@1 (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@1|) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| this@@1 |_k'#0|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1331|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| $ly@@1 this@@1 |_k'#0|))
 ))))) (= (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| ($LS $ly@@1) this@@1 |_k#0@@1|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| $ly@@1 this@@1 (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@1|) (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| $ly@@1 this@@1 |_k'#0@@0|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1330|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| $ly@@1 this@@1 |_k'#0@@0|))
 )))))))
+ :qid |unknown.0:0|
+ :skolemid |1332|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@1 _module.MyClass$B@@1 |_module.MyClass.R#$T@@1| ($LS $ly@@1) this@@1 |_k#0@@1|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |632|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |630|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |641|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((_module.MyClass$A@@2 T@U) (_module.MyClass$B@@2 T@U) (|c#0| T@U) ) (! (= ($Is refType |c#0| (Tclass._module.MyClass _module.MyClass$A@@2 _module.MyClass$B@@2))  (and ($Is refType |c#0| (Tclass._module.MyClass? _module.MyClass$A@@2 _module.MyClass$B@@2)) (or (not (= |c#0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1416|
  :pattern ( ($Is refType |c#0| (Tclass._module.MyClass _module.MyClass$A@@2 _module.MyClass$B@@2)))
  :pattern ( ($Is refType |c#0| (Tclass._module.MyClass? _module.MyClass$A@@2 _module.MyClass$B@@2)))
 )))
 (assert (forall ((_module.MyClass$A@@3 T@U) (_module.MyClass$B@@3 T@U) (|_module.MyClass.R#$T@@2| T@U) ($ly@@2 T@U) (this@@2 T@U) (|_k#0@@2| T@U) ) (! (= (_module.MyClass.R_h _module.MyClass$A@@3 _module.MyClass$B@@3 |_module.MyClass.R#$T@@2| ($LS $ly@@2) this@@2 |_k#0@@2|) (_module.MyClass.R_h _module.MyClass$A@@3 _module.MyClass$B@@3 |_module.MyClass.R#$T@@2| $ly@@2 this@@2 |_k#0@@2|))
+ :qid |unknown.0:0|
+ :skolemid |1326|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@3 _module.MyClass$B@@3 |_module.MyClass.R#$T@@2| ($LS $ly@@2) this@@2 |_k#0@@2|))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |654|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.MyClass$A@@4 T@U) (_module.MyClass$B@@4 T@U) ($o T@U) ) (! (= ($Is refType $o (Tclass._module.MyClass? _module.MyClass$A@@4 _module.MyClass$B@@4))  (or (= $o null) (= (dtype $o) (Tclass._module.MyClass? _module.MyClass$A@@4 _module.MyClass$B@@4))))
+ :qid |unknown.0:0|
+ :skolemid |1291|
  :pattern ( ($Is refType $o (Tclass._module.MyClass? _module.MyClass$A@@4 _module.MyClass$B@@4)))
 )))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |710|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |701|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((_module.MyClass$A@@5 T@U) (_module.MyClass$B@@5 T@U) (|c#0@@0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0@@0| (Tclass._module.MyClass _module.MyClass$A@@5 _module.MyClass$B@@5) $h) ($IsAlloc refType |c#0@@0| (Tclass._module.MyClass? _module.MyClass$A@@5 _module.MyClass$B@@5) $h))
+ :qid |unknown.0:0|
+ :skolemid |1417|
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass._module.MyClass _module.MyClass$A@@5 _module.MyClass$B@@5) $h))
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass._module.MyClass? _module.MyClass$A@@5 _module.MyClass$B@@5) $h))
 )))
 (assert (forall ((_module.MyClass$A@@6 T@U) (_module.MyClass$B@@6 T@U) (_module.MyClass.R$T T@U) ($ly@@3 T@U) (this@@3 T@U) ) (! (= (_module.MyClass.R _module.MyClass$A@@6 _module.MyClass$B@@6 _module.MyClass.R$T ($LS $ly@@3) this@@3) (_module.MyClass.R _module.MyClass$A@@6 _module.MyClass$B@@6 _module.MyClass.R$T $ly@@3 this@@3))
+ :qid |unknown.0:0|
+ :skolemid |1316|
  :pattern ( (_module.MyClass.R _module.MyClass$A@@6 _module.MyClass$B@@6 _module.MyClass.R$T ($LS $ly@@3) this@@3))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.MyClass$A@@7 T@U) (_module.MyClass$B@@7 T@U) (_module.MyClass.R$T@@0 T@U) ($ly@@4 T@U) (this@@4 T@U) ) (!  (=> (or (|_module.MyClass.R#canCall| _module.MyClass$A@@7 _module.MyClass$B@@7 _module.MyClass.R$T@@0 this@@4) (and (< 0 $FunctionContextHeight) (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 (Tclass._module.MyClass _module.MyClass$A@@7 _module.MyClass$B@@7))))) (and (|_module.MyClass.R#canCall| _module.MyClass$A@@7 _module.MyClass$B@@7 _module.MyClass.R$T@@0 this@@4) (= (_module.MyClass.R _module.MyClass$A@@7 _module.MyClass$B@@7 _module.MyClass.R$T@@0 ($LS $ly@@4) this@@4) (_module.MyClass.R _module.MyClass$A@@7 _module.MyClass$B@@7 _module.MyClass.R$T@@0 $ly@@4 this@@4))))
+ :qid |unknown.0:0|
+ :skolemid |1320|
  :pattern ( (_module.MyClass.R _module.MyClass$A@@7 _module.MyClass$B@@7 _module.MyClass.R$T@@0 ($LS $ly@@4) this@@4))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A@@8 T@U) (_module.MyClass$B@@8 T@U) (|_module.MyClass.R#$T@@3| T@U) ($ly@@5 T@U) (this@@5 T@U) ) (!  (=> (and (and (or (not (= this@@5 null)) (not true)) ($Is refType this@@5 (Tclass._module.MyClass _module.MyClass$A@@8 _module.MyClass$B@@8))) (_module.MyClass.R _module.MyClass$A@@8 _module.MyClass$B@@8 |_module.MyClass.R#$T@@3| ($LS $ly@@5) this@@5)) (forall ((|_k#0@@3| T@U) ) (! (_module.MyClass.R_h _module.MyClass$A@@8 _module.MyClass$B@@8 |_module.MyClass.R#$T@@3| ($LS $ly@@5) this@@5 |_k#0@@3|)
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1321|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@8 _module.MyClass$B@@8 |_module.MyClass.R#$T@@3| ($LS $ly@@5) this@@5 |_k#0@@3|))
 )))
+ :qid |unknown.0:0|
+ :skolemid |1322|
  :pattern ( (_module.MyClass.R _module.MyClass$A@@8 _module.MyClass$B@@8 |_module.MyClass.R#$T@@3| ($LS $ly@@5) this@@5))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A@@9 T@U) (_module.MyClass$B@@9 T@U) (|_module.MyClass.R#$T@@4| T@U) ($ly@@6 T@U) (this@@6 T@U) (|_k#0@@4| T@U) ) (!  (=> (or (|_module.MyClass.R_h#canCall| _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| (Lit refType this@@6) (Lit BoxType |_k#0@@4|)) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@6 null)) (not true)) ($Is refType this@@6 (Tclass._module.MyClass _module.MyClass$A@@9 _module.MyClass$B@@9))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| (Lit refType this@@6) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) (Lit refType this@@6) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#2| T@U) ) (!  (=> (|ORD#Less| |_k'#2| |_k#0@@4|) (|_module.MyClass.R_h#canCall| _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| this@@6 |_k'#2|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1337|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) this@@6 |_k'#2|))
 ))))) (= (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) (Lit refType this@@6) (Lit BoxType |_k#0@@4|))  (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) (Lit refType this@@6) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#2@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@0| |_k#0@@4|) (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) this@@6 |_k'#2@@0|))
+ :qid |PrefixTypeSubstdfy.9:22|
+ :skolemid |1336|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) this@@6 |_k'#2@@0|))
 )))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1338|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@9 _module.MyClass$B@@9 |_module.MyClass.R#$T@@4| ($LS $ly@@6) (Lit refType this@@6) (Lit BoxType |_k#0@@4|)))
 ))))
 (assert  (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m@@0 T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m@@0 x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@1 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@1 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((_module.MyClass$A@@10 T@U) (_module.MyClass$B@@10 T@U) ($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass._module.MyClass? _module.MyClass$A@@10 _module.MyClass$B@@10) $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1292|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass._module.MyClass? _module.MyClass$A@@10 _module.MyClass$B@@10) $h@@0))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |704|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |700|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((_module.MyClass$A@@11 T@U) (_module.MyClass$B@@11 T@U) ) (! (= (Tclass._module.MyClass_0 (Tclass._module.MyClass _module.MyClass$A@@11 _module.MyClass$B@@11)) _module.MyClass$A@@11)
+ :qid |unknown.0:0|
+ :skolemid |1197|
  :pattern ( (Tclass._module.MyClass _module.MyClass$A@@11 _module.MyClass$B@@11))
 )))
 (assert (forall ((_module.MyClass$A@@12 T@U) (_module.MyClass$B@@12 T@U) ) (! (= (Tclass._module.MyClass_1 (Tclass._module.MyClass _module.MyClass$A@@12 _module.MyClass$B@@12)) _module.MyClass$B@@12)
+ :qid |unknown.0:0|
+ :skolemid |1198|
  :pattern ( (Tclass._module.MyClass _module.MyClass$A@@12 _module.MyClass$B@@12))
 )))
 (assert (forall ((_module.MyClass$A@@13 T@U) (_module.MyClass$B@@13 T@U) ) (! (= (Tclass._module.MyClass?_0 (Tclass._module.MyClass? _module.MyClass$A@@13 _module.MyClass$B@@13)) _module.MyClass$A@@13)
+ :qid |unknown.0:0|
+ :skolemid |1201|
  :pattern ( (Tclass._module.MyClass? _module.MyClass$A@@13 _module.MyClass$B@@13))
 )))
 (assert (forall ((_module.MyClass$A@@14 T@U) (_module.MyClass$B@@14 T@U) ) (! (= (Tclass._module.MyClass?_1 (Tclass._module.MyClass? _module.MyClass$A@@14 _module.MyClass$B@@14)) _module.MyClass$B@@14)
+ :qid |unknown.0:0|
+ :skolemid |1202|
  :pattern ( (Tclass._module.MyClass? _module.MyClass$A@@14 _module.MyClass$B@@14))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |640|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |703|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1439|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (forall ((_module.MyClass$A@@15 T@U) (_module.MyClass$B@@15 T@U) ) (!  (and (= (Tag (Tclass._module.MyClass _module.MyClass$A@@15 _module.MyClass$B@@15)) Tagclass._module.MyClass) (= (TagFamily (Tclass._module.MyClass _module.MyClass$A@@15 _module.MyClass$B@@15)) tytagFamily$MyClass))
+ :qid |unknown.0:0|
+ :skolemid |1196|
  :pattern ( (Tclass._module.MyClass _module.MyClass$A@@15 _module.MyClass$B@@15))
 )))
 (assert (forall ((_module.MyClass$A@@16 T@U) (_module.MyClass$B@@16 T@U) ) (!  (and (= (Tag (Tclass._module.MyClass? _module.MyClass$A@@16 _module.MyClass$B@@16)) Tagclass._module.MyClass?) (= (TagFamily (Tclass._module.MyClass? _module.MyClass$A@@16 _module.MyClass$B@@16)) tytagFamily$MyClass))
+ :qid |unknown.0:0|
+ :skolemid |1200|
  :pattern ( (Tclass._module.MyClass? _module.MyClass$A@@16 _module.MyClass$B@@16))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |702|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |711|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.MyClass$A@@17 T@U) (_module.MyClass$B@@17 T@U) (|_module.MyClass.R#$T@@5| T@U) ($ly@@7 T@U) (this@@7 T@U) (|_k#0@@5| T@U) ) (!  (=> (and (and (or (not (= this@@7 null)) (not true)) ($Is refType this@@7 (Tclass._module.MyClass _module.MyClass$A@@17 _module.MyClass$B@@17))) (= |_k#0@@5| (|ORD#FromNat| 0))) (_module.MyClass.R_h _module.MyClass$A@@17 _module.MyClass$B@@17 |_module.MyClass.R#$T@@5| $ly@@7 this@@7 |_k#0@@5|))
+ :qid |unknown.0:0|
+ :skolemid |1324|
  :pattern ( (_module.MyClass.R_h _module.MyClass$A@@17 _module.MyClass$B@@17 |_module.MyClass.R#$T@@5| $ly@@7 this@@7 |_k#0@@5|))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |633|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |631|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (push 1)
@@ -249,6 +352,7 @@
 (declare-fun |o#0| () T@U)
 (declare-fun _module._default.N$D0 () T@U)
 (declare-fun _module._default.N$D1 () T@U)
+(set-info :boogie-vc-id CheckWellFormed$$_module.__default.N)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

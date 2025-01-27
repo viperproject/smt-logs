@@ -82,16 +82,22 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass._module.Unit Tagclass._module.Wrapper |##_module.Wrapper.Wrap| |##_module.Unit.It| tytagFamily$Unit tytagFamily$Wrapper)
@@ -100,136 +106,220 @@
 (assert (= (DatatypeCtorId |#_module.Unit.It|) |##_module.Unit.It|))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((_module.Wrapper$T T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._module.Wrapper _module.Wrapper$T)) (_module.Wrapper.Wrap_q d))
+ :qid |unknown.0:0|
+ :skolemid |544|
  :pattern ( (_module.Wrapper.Wrap_q d) ($Is DatatypeTypeType d (Tclass._module.Wrapper _module.Wrapper$T)))
 )))
 (assert ($Is DatatypeTypeType |#_module.Unit.It| Tclass._module.Unit))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.Wrapper#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |546|
  :pattern ( (|_module.Wrapper#Equal| a b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|_module.Unit#Equal| a@@0 b@@0) (= a@@0 b@@0))
+ :qid |unknown.0:0|
+ :skolemid |553|
  :pattern ( (|_module.Unit#Equal| a@@0 b@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|a#0| T@U) ) (!  (=> (or (|_module.__default.F#canCall| (Lit DatatypeTypeType |a#0|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |a#0| (Tclass._module.Wrapper Tclass._module.Unit)))) (and (and (_module.Wrapper.Wrap_q (Lit DatatypeTypeType |a#0|)) (let ((|u#3| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.Wrapper._h0 (Lit DatatypeTypeType |a#0|))))))
 (|_module.__default.G#canCall| |u#3|))) (= (_module.__default.F (Lit DatatypeTypeType |a#0|)) (U_2_bool (let ((|u#2| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.Wrapper._h0 (Lit DatatypeTypeType |a#0|))))))
 (Lit boolType (bool_2_U (_module.__default.G |u#2|))))))))
+ :qid |TypeAntecedentsdfy.10:18|
  :weight 3
+ :skolemid |486|
  :pattern ( (_module.__default.F (Lit DatatypeTypeType |a#0|)))
 ))))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@2))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Wrapper.Wrap_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Wrapper.Wrap|))
+ :qid |unknown.0:0|
+ :skolemid |534|
  :pattern ( (_module.Wrapper.Wrap_q d@@0))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Wrapper.Wrap_q d@@1) (exists ((|a#1#0#0| T@U) ) (= d@@1 (|#_module.Wrapper.Wrap| |a#1#0#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Wrapper.Wrap_q d@@1) (exists ((|a#1#0#0| T@U) ) (! (= d@@1 (|#_module.Wrapper.Wrap| |a#1#0#0|))
+ :qid |TypeAntecedentsdfy.6:28|
+ :skolemid |535|
+)))
+ :qid |unknown.0:0|
+ :skolemid |536|
  :pattern ( (_module.Wrapper.Wrap_q d@@1))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (! (= (|_module.Wrapper#Equal| a@@1 b@@1) (= (_module.Wrapper._h0 a@@1) (_module.Wrapper._h0 b@@1)))
+ :qid |unknown.0:0|
+ :skolemid |545|
  :pattern ( (|_module.Wrapper#Equal| a@@1 b@@1))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.Wrapper$T@@0 T@U) ) (!  (and (= (Tag (Tclass._module.Wrapper _module.Wrapper$T@@0)) Tagclass._module.Wrapper) (= (TagFamily (Tclass._module.Wrapper _module.Wrapper$T@@0)) tytagFamily$Wrapper))
+ :qid |unknown.0:0|
+ :skolemid |480|
  :pattern ( (Tclass._module.Wrapper _module.Wrapper$T@@0))
 )))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._module.Unit) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) Tclass._module.Unit)))
+ :qid |unknown.0:0|
+ :skolemid |479|
  :pattern ( ($IsBox bx Tclass._module.Unit))
 )))
 (assert (forall ((_module.Wrapper$T@@1 T@U) (|a#2#0#0| T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) (= ($IsAlloc DatatypeTypeType (|#_module.Wrapper.Wrap| |a#2#0#0|) (Tclass._module.Wrapper _module.Wrapper$T@@1) $h) ($IsAllocBox |a#2#0#0| _module.Wrapper$T@@1 $h)))
+ :qid |unknown.0:0|
+ :skolemid |538|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Wrapper.Wrap| |a#2#0#0|) (Tclass._module.Wrapper _module.Wrapper$T@@1) $h))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|u#0| T@U) ) (!  (=> (or (|_module.__default.G#canCall| |u#0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |u#0| Tclass._module.Unit))) (= (_module.__default.G |u#0|) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |TypeAntecedentsdfy.17:18|
+ :skolemid |490|
  :pattern ( (_module.__default.G |u#0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|u#0@@0| T@U) ) (!  (=> (or (|_module.__default.G#canCall| |u#0@@0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |u#0@@0| Tclass._module.Unit))) (|_module.Unit#Equal| |u#0@@0| |#_module.Unit.It|))
+ :qid |TypeAntecedentsdfy.17:18|
+ :skolemid |488|
  :pattern ( (_module.__default.G |u#0@@0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|u#0@@1| T@U) ) (!  (=> (or (|_module.__default.G#canCall| (Lit DatatypeTypeType |u#0@@1|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |u#0@@1| Tclass._module.Unit))) (= (_module.__default.G (Lit DatatypeTypeType |u#0@@1|)) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |TypeAntecedentsdfy.17:18|
  :weight 3
+ :skolemid |491|
  :pattern ( (_module.__default.G (Lit DatatypeTypeType |u#0@@1|)))
 ))))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TBool) (and (= ($Box boolType ($Unbox boolType bx@@0)) bx@@0) ($Is boolType ($Unbox boolType bx@@0) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@0 TBool))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|a#0@@0| T@U) ) (!  (=> (or (|_module.__default.F#canCall| |a#0@@0|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |a#0@@0| (Tclass._module.Wrapper Tclass._module.Unit)))) (and (and (_module.Wrapper.Wrap_q |a#0@@0|) (let ((|u#1| ($Unbox DatatypeTypeType (_module.Wrapper._h0 |a#0@@0|))))
 (|_module.__default.G#canCall| |u#1|))) (= (_module.__default.F |a#0@@0|) (let ((|u#0@@2| ($Unbox DatatypeTypeType (_module.Wrapper._h0 |a#0@@0|))))
 (_module.__default.G |u#0@@2|)))))
+ :qid |TypeAntecedentsdfy.10:18|
+ :skolemid |485|
  :pattern ( (_module.__default.F |a#0@@0|))
 ))))
 (assert (forall ((_module.Wrapper$T@@2 T@U) ) (! (= (Tclass._module.Wrapper_0 (Tclass._module.Wrapper _module.Wrapper$T@@2)) _module.Wrapper$T@@2)
+ :qid |unknown.0:0|
+ :skolemid |481|
  :pattern ( (Tclass._module.Wrapper _module.Wrapper$T@@2))
 )))
 (assert (forall ((|a#0#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Wrapper.Wrap| |a#0#0#0|)) |##_module.Wrapper.Wrap|)
+ :qid |TypeAntecedentsdfy.6:28|
+ :skolemid |533|
  :pattern ( (|#_module.Wrapper.Wrap| |a#0#0#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) ) (! (= (_module.Wrapper._h0 (|#_module.Wrapper.Wrap| |a#4#0#0|)) |a#4#0#0|)
+ :qid |TypeAntecedentsdfy.6:28|
+ :skolemid |541|
  :pattern ( (|#_module.Wrapper.Wrap| |a#4#0#0|))
 )))
 (assert (forall ((x@@4 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@4))
 )))
 (assert (forall ((_module.Wrapper$T@@3 T@U) (|a#2#0#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Wrapper.Wrap| |a#2#0#0@@0|) (Tclass._module.Wrapper _module.Wrapper$T@@3)) ($IsBox |a#2#0#0@@0| _module.Wrapper$T@@3))
+ :qid |unknown.0:0|
+ :skolemid |537|
  :pattern ( ($Is DatatypeTypeType (|#_module.Wrapper.Wrap| |a#2#0#0@@0|) (Tclass._module.Wrapper _module.Wrapper$T@@3)))
 )))
 (assert (forall ((|a#5#0#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_module.Wrapper.Wrap| |a#5#0#0|)))
+ :qid |TypeAntecedentsdfy.6:28|
+ :skolemid |542|
  :pattern ( (|#_module.Wrapper.Wrap| |a#5#0#0|))
 )))
 (assert (forall ((d@@2 T@U) (_module.Wrapper$T@@4 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.Wrapper.Wrap_q d@@2) ($IsAlloc DatatypeTypeType d@@2 (Tclass._module.Wrapper _module.Wrapper$T@@4) $h@@0))) ($IsAllocBox (_module.Wrapper._h0 d@@2) _module.Wrapper$T@@4 $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |539|
  :pattern ( ($IsAllocBox (_module.Wrapper._h0 d@@2) _module.Wrapper$T@@4 $h@@0))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |623|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@3)) (DtRank d@@3))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@3)))
 )))
 (assert (forall ((_module.Wrapper$T@@5 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass._module.Wrapper _module.Wrapper$T@@5)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) (Tclass._module.Wrapper _module.Wrapper$T@@5))))
+ :qid |unknown.0:0|
+ :skolemid |482|
  :pattern ( ($IsBox bx@@1 (Tclass._module.Wrapper _module.Wrapper$T@@5)))
 )))
 (assert (forall ((d@@4 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d@@4 Tclass._module.Unit)) ($IsAlloc DatatypeTypeType d@@4 Tclass._module.Unit $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |549|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 Tclass._module.Unit $h@@1))
 )))
 (assert (= (Tag Tclass._module.Unit) Tagclass._module.Unit))
 (assert (= (TagFamily Tclass._module.Unit) tytagFamily$Unit))
 (assert (= |#_module.Unit.It| (Lit DatatypeTypeType |#_module.Unit.It|)))
 (assert (forall ((|a#3#0#0| T@U) ) (! (= (|#_module.Wrapper.Wrap| (Lit BoxType |a#3#0#0|)) (Lit DatatypeTypeType (|#_module.Wrapper.Wrap| |a#3#0#0|)))
+ :qid |TypeAntecedentsdfy.6:28|
+ :skolemid |540|
  :pattern ( (|#_module.Wrapper.Wrap| (Lit BoxType |a#3#0#0|)))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@5)) (Lit BoxType ($Box T@@4 x@@5)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@5)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|a#0@@1| T@U) ) (!  (=> (or (|_module.__default.F#canCall| |a#0@@1|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |a#0@@1| (Tclass._module.Wrapper Tclass._module.Unit)))) (|_module.Wrapper#Equal| |a#0@@1| (|#_module.Wrapper.Wrap| ($Box DatatypeTypeType (Lit DatatypeTypeType |#_module.Unit.It|)))))
+ :qid |TypeAntecedentsdfy.10:18|
+ :skolemid |483|
  :pattern ( (_module.__default.F |a#0@@1|))
 ))))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc boolType v@@1 TBool h@@0)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@1 TBool h@@0))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is boolType v@@2 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@2 TBool))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) ) (! (|_module.Unit#Equal| a@@2 b@@2)
+ :qid |unknown.0:0|
+ :skolemid |552|
  :pattern ( (|_module.Unit#Equal| a@@2 b@@2))
 )))
 (push 1)
@@ -242,6 +332,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.F)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

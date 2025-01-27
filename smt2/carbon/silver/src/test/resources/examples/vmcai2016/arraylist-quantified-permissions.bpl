@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:53
+// Date:         2025-01-26 23:16:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/arraylist-quantified-permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/arraylist-quantified-permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -346,8 +346,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -371,8 +371,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume AList#trigger(UnfoldingHeap, AList(this));
       assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, size_3]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@37.1--42.2) [108775]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, AList(this)];
@@ -445,8 +445,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := Heap[this, size_3];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of length might not hold. Assertion result >= 0 might not hold. (arraylist-quantified-permissions.vpr@39.11--39.22) [108778]"}
       Result >= 0;
 }
@@ -491,8 +491,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -517,8 +517,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
     // -- Check definedness of index < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@46.34--46.46) [108779]"}
           NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -539,8 +539,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume AList#trigger(UnfoldingHeap, AList(this));
       assume UnfoldingHeap[null, AList(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, elems_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, size_3]), FrameFragment(AList#condqp1(UnfoldingHeap, this))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@44.1--49.2) [108780]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, AList(this)];
@@ -758,13 +758,13 @@ procedure AList#definedness(this: Ref) returns ()
 procedure create() returns (this: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshObj: Ref;
   var a_2: ArrayDomainType;
@@ -781,8 +781,8 @@ procedure create() returns (this: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -797,8 +797,8 @@ procedure create() returns (this: Ref)
     // -- Check definedness of length(this) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@54.11--54.23) [108791]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -887,8 +887,8 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@65.3--65.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@65.3--65.24) [108797]"}
@@ -976,8 +976,8 @@ procedure create() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of create might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@53.11--53.27) [108807]"}
@@ -1000,11 +1000,11 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_8: int;
@@ -1034,8 +1034,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     // -- Check definedness of 0 < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.16--71.28) [108809]"}
           NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1052,8 +1052,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
       // -- Check definedness of itemAt(this, length(this) - 1) <= elem
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.46--71.58) [108810]"}
             NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1066,8 +1066,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@71.33--71.63) [108811]"}
             NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1089,8 +1089,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1105,8 +1105,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     // -- Check definedness of length(this) == old(length(this)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.11--73.23) [108814]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1119,8 +1119,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@73.31--73.43) [108815]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1135,8 +1135,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     // -- Check definedness of itemAt(this, length(this) - 1) == elem
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.24--74.36) [108816]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1149,8 +1149,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@74.11--74.41) [108817]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1174,8 +1174,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
         if (0 <= i_8) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.46--75.58) [108820]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1187,8 +1187,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
         if (0 <= i_8 && i_8 < length_1(oldHeap, this)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.64--75.79) [108821]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1205,8 +1205,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@75.87--75.102) [108824]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1231,8 +1231,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     // -- Check definedness of itemAt(this, old(length(this))) == elem
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.28--76.40) [108827]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1242,8 +1242,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@76.11--76.42) [108828]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1267,8 +1267,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
   // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@78.3--78.26
     assume AList#trigger(Heap, AList(this));
     assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@78.3--78.26) [108833]"}
@@ -1449,8 +1449,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@91.3--91.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@91.3--91.24) [108853]"}
@@ -1538,8 +1538,8 @@ procedure addAtEnd(this: Ref, elem_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of addAtEnd might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@72.11--72.27) [108863]"}
@@ -1577,12 +1577,12 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var k_23: int;
   var k_24: int;
@@ -1626,8 +1626,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1643,8 +1643,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     // -- Check definedness of j < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@99.25--99.37) [108868]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1662,8 +1662,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     // -- Check definedness of length(this) == old(length(this)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.11--100.23) [108869]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1676,8 +1676,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@100.31--100.43) [108870]"}
           NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1694,8 +1694,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         if (0 <= k_23 && k_23 < j) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.48--101.63) [108871]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1712,8 +1712,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@101.71--101.86) [108874]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1738,8 +1738,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     // -- Check definedness of itemAt(this, j) == elem
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@102.11--102.26) [108877]"}
           NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1763,8 +1763,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         if (j < k_24) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.41--103.53) [108880]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1779,8 +1779,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         if (j < k_24 && k_24 < length_1(PostHeap, this)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.58--103.73) [108881]"}
               NoPerm < perm ==> NoPerm < PostMask[null, AList(this)];
@@ -1797,8 +1797,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@103.81--103.100) [108884]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1831,8 +1831,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(AList(this), write) might not hold on entry. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [108887]"}
@@ -1880,8 +1880,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         // -- Check definedness of j <= length(this)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@108.30--108.42) [108893]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1900,8 +1900,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           // -- Check definedness of itemAt(this, j - 1) <= elem
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@109.25--109.41) [108894]"}
                 NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1924,8 +1924,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         // -- Check definedness of length(this) == old(length(this))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.15--110.27) [108897]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1938,8 +1938,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@110.35--110.47) [108898]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -1956,8 +1956,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             if (0 <= k_21) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.68--111.80) [108899]"}
                   NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1972,8 +1972,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             if (0 <= k_21 && k_21 < length_1(Heap, this)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.85--111.99) [108900]"}
                   NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -1990,8 +1990,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@111.107--111.121) [108903]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -2045,8 +2045,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
         // -- Check definedness of j < length(this) && itemAt(this, j) < elem
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.14--106.26) [108906]"}
               NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -2060,8 +2060,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           if (j < length_1(Heap, this)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@106.30--106.44) [108907]"}
                 NoPerm < perm ==> NoPerm < Mask[null, AList(this)];
@@ -2085,8 +2085,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
           // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@113.5--113.28
             assume AList#trigger(Heap, AList(this));
             assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@113.5--113.28) [108910]"}
@@ -2152,8 +2152,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@115.5--115.26
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@115.5--115.26) [108912]"}
@@ -2240,8 +2240,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(AList(this), write) might not be preserved. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@107.15--107.31) [108919]"}
@@ -2303,8 +2303,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
   // -- Translating statement: unfold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@117.3--117.26
     assume AList#trigger(Heap, AList(this));
     assume Heap[null, AList(this)] == CombineFrames(FrameFragment(Heap[this, elems_1]), CombineFrames(FrameFragment(Heap[this, size_3]), FrameFragment(AList#condqp1(Heap, this))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding AList(this) might fail. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@117.3--117.26) [108927]"}
@@ -2474,8 +2474,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not hold on entry. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108941]"}
           perm >= NoPerm;
@@ -2624,8 +2624,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             HasDirectPerm(Mask, this, size_3);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@133.32--133.44) [108962]"}
               NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -2708,8 +2708,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
                   HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_42): Ref), val);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@136.121--136.135) [108971]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -2746,8 +2746,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
                   HasDirectPerm(Mask, (loc(Heap[this, elems_1], i_51): Ref), val);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@137.120--137.136) [108977]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, AList(this)];
@@ -2874,8 +2874,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
             t_2 := t_2 - 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(this.elems, 1 / 2) && (acc(this.size, 1 / 2) && acc(loc(this.elems, j).val, 1 / 2)) might not be preserved. Fraction 1 / 2 might be negative. (arraylist-quantified-permissions.vpr@131.15--131.91) [108988]"}
           perm >= NoPerm;
@@ -3080,8 +3080,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(AList(this), write) -- arraylist-quantified-permissions.vpr@146.3--146.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding AList(this) might fail. There might be insufficient permission to access this.elems (arraylist-quantified-permissions.vpr@146.3--146.24) [109013]"}
@@ -3169,8 +3169,8 @@ procedure insert(this: Ref, elem_1: int) returns (j: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of insert might not hold. There might be insufficient permission to access AList(this) (arraylist-quantified-permissions.vpr@98.11--98.27) [109023]"}

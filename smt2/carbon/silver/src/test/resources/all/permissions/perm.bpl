@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:27
+// Date:         2025-01-26 23:15:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,10 +189,10 @@ procedure test01a(c1: Ref, c2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -222,8 +222,8 @@ procedure test01a(c1: Ref, c2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale perm(c1.val) >= 1 / 1 -- perm.vpr@9.10--9.29
     assume 1 / 1 <= Mask[c1, val];
@@ -231,8 +231,8 @@ procedure test01a(c1: Ref, c2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- perm.vpr@11.3--11.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@11.10--11.15) [95662]"}
       false;
     assume state(Heap, Mask);
@@ -246,10 +246,10 @@ procedure test01b(c1: Ref, c2: Ref, c3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -287,8 +287,8 @@ procedure test01b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale perm(c3.val) >= 1 / 1 -- perm.vpr@18.10--18.29
     assume 1 / 1 <= Mask[c3, val];
@@ -296,8 +296,8 @@ procedure test01b(c1: Ref, c2: Ref, c3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- perm.vpr@20.3--20.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@20.10--20.15) [95666]"}
       false;
     assume state(Heap, Mask);
@@ -311,10 +311,10 @@ procedure test01c(c1: Ref, c2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -343,8 +343,8 @@ procedure test01c(c1: Ref, c2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale perm(c1.val) >= 1 / 1 -- perm.vpr@26.10--26.29
     assume 1 / 1 <= Mask[c1, val];
@@ -357,8 +357,8 @@ procedure test01c(c1: Ref, c2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- perm.vpr@29.3--29.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@29.10--29.15) [95669]"}
       false;
     assume state(Heap, Mask);
@@ -372,10 +372,10 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -405,8 +405,8 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale perm(c1.val) >= 1 / 1 -- perm.vpr@35.10--35.29
     assume 1 / 1 <= Mask[c1, val];
@@ -414,8 +414,8 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(c1.val, 1 / 2) -- perm.vpr@36.3--36.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Exhale might fail. Fraction 1 / 2 might be negative. (perm.vpr@36.10--36.26) [95672]"}
       perm >= NoPerm;
@@ -436,8 +436,8 @@ procedure test01d(c1: Ref, c2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- perm.vpr@39.3--39.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (perm.vpr@39.10--39.15) [95674]"}
       false;
     assume state(Heap, Mask);
@@ -451,10 +451,10 @@ procedure test02a(c1: Ref, c2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -484,12 +484,12 @@ procedure test02a(c1: Ref, c2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert perm(c1.val) <= 1 / 2 -- perm.vpr@46.3--46.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(c1.val) <= 1 / 2 might not hold. (perm.vpr@46.10--46.29) [95677]"}
       Mask[c1, val] <= 1 / 2;
     assume state(Heap, Mask);
@@ -503,10 +503,10 @@ procedure test02b(c1: Ref, c2: Ref, c3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -544,12 +544,12 @@ procedure test02b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert perm(c3.val) <= 1 / 2 -- perm.vpr@54.3--54.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(c3.val) <= 1 / 2 might not hold. (perm.vpr@54.10--54.29) [95681]"}
       Mask[c3, val] <= 1 / 2;
     assume state(Heap, Mask);
@@ -563,10 +563,10 @@ procedure test03a(c1: Ref, c2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -596,12 +596,12 @@ procedure test03a(c1: Ref, c2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert perm(c1.val) >= 1 / 1 -- perm.vpr@61.3--61.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(c1.val) >= 1 / 1 might not hold. (perm.vpr@61.10--61.29) [95684]"}
       1 / 1 <= Mask[c1, val];
     assume state(Heap, Mask);
@@ -615,10 +615,10 @@ procedure test03b(c1: Ref, c2: Ref, c3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -656,12 +656,12 @@ procedure test03b(c1: Ref, c2: Ref, c3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert perm(c3.val) >= 1 / 1 -- perm.vpr@68.3--68.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(c3.val) >= 1 / 1 might not hold. (perm.vpr@68.10--68.29) [95688]"}
       1 / 1 <= Mask[c3, val];
     assume state(Heap, Mask);

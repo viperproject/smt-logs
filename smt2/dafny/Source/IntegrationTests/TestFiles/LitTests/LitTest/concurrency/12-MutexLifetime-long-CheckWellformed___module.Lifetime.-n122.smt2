@@ -85,16 +85,22 @@
 (declare-fun _module.Lifetime.alive (T@U T@U) Bool)
 (declare-fun |_module.Lifetime.alive#canCall| (T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc allocName Tagclass._module.Object Tagclass._module.Thread Tagclass._module.Object? Tagclass._module.Lifetime Tagclass._module.Thread? Tagclass._module.Lifetime? class._module.Lifetime? tytagFamily$Object tytagFamily$Thread tytagFamily$Lifetime field$owner)
@@ -106,20 +112,30 @@
 (assert (implements$_module.Object Tclass._module.Lifetime?))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Thread?)  (or (= $o null) (= (dtype $o) Tclass._module.Thread?)))
+ :qid |unknown.0:0|
+ :skolemid |1849|
  :pattern ( ($Is refType $o Tclass._module.Thread?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.Lifetime?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.Lifetime?)))
+ :qid |unknown.0:0|
+ :skolemid |2251|
  :pattern ( ($Is refType $o@@0 Tclass._module.Lifetime?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Object $h) ($IsAlloc refType |c#0| Tclass._module.Object? $h))
+ :qid |unknown.0:0|
+ :skolemid |1848|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.Thread $h@@0) ($IsAlloc refType |c#0@@0| Tclass._module.Thread? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |2101|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Thread $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Thread? $h@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime $h@@1) ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |2707|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Lifetime? $h@@1))
 )))
@@ -127,71 +143,112 @@
 (assert (= (FieldOfDecl class._module.Lifetime? field$owner) _module.Lifetime.owner))
 (assert ($IsGhostField _module.Lifetime.owner))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@1 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@1 Tclass._module.Object? $h@@2)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1696|
  :pattern ( ($IsAlloc refType $o@@1 Tclass._module.Object? $h@@2))
 )))
 (assert (forall (($o@@2 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass._module.Thread? $h@@3)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1850|
  :pattern ( ($IsAlloc refType $o@@2 Tclass._module.Thread? $h@@3))
 )))
 (assert (forall (($o@@3 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.Lifetime? $h@@4)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2252|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.Lifetime? $h@@4))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@2))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@5 T@U) ($o@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) Tclass._module.Lifetime?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@4) _module.Lifetime.owner)) Tclass._module.Thread?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2253|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@4) _module.Lifetime.owner)))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#171| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) (and (= $o@@5 |l#3|) (= $f |l#4|))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3871|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#171| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@5 $f))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass._module.Object)  (and ($Is refType |c#0@@2| Tclass._module.Object?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1847|
  :pattern ( ($Is refType |c#0@@2| Tclass._module.Object))
  :pattern ( ($Is refType |c#0@@2| Tclass._module.Object?))
 )))
 (assert (forall ((|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| Tclass._module.Thread)  (and ($Is refType |c#0@@3| Tclass._module.Thread?) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2100|
  :pattern ( ($Is refType |c#0@@3| Tclass._module.Thread))
  :pattern ( ($Is refType |c#0@@3| Tclass._module.Thread?))
 )))
 (assert (forall ((|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| Tclass._module.Lifetime)  (and ($Is refType |c#0@@4| Tclass._module.Lifetime?) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2706|
  :pattern ( ($Is refType |c#0@@4| Tclass._module.Lifetime))
  :pattern ( ($Is refType |c#0@@4| Tclass._module.Lifetime?))
 )))
 (assert (forall (($h@@6 T@U) ($o@@6 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@6 null)) (not true)) (= (dtype $o@@6) Tclass._module.Lifetime?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@6) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@6) _module.Lifetime.owner)) Tclass._module.Thread? $h@@6))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2254|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@6) _module.Lifetime.owner)))
 )))
 (assert (forall (($o@@7 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@7 Tclass._module.Thread? $heap) ($IsAlloc refType $o@@7 Tclass._module.Object? $heap))
+ :qid |unknown.0:0|
+ :skolemid |3838|
  :pattern ( ($IsAlloc refType $o@@7 Tclass._module.Thread? $heap))
 )))
 (assert (forall (($o@@8 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@8 Tclass._module.Lifetime? $heap@@0) ($IsAlloc refType $o@@8 Tclass._module.Object? $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |3846|
  :pattern ( ($IsAlloc refType $o@@8 Tclass._module.Lifetime? $heap@@0))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Unbox T@@0 ($Box T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@0 x@@3))
 )))
 (assert (forall (($o@@9 T@U) ) (!  (=> ($Is refType $o@@9 Tclass._module.Thread?) ($Is refType $o@@9 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3837|
  :pattern ( ($Is refType $o@@9 Tclass._module.Thread?))
 )))
 (assert (forall (($o@@10 T@U) ) (!  (=> ($Is refType $o@@10 Tclass._module.Lifetime?) ($Is refType $o@@10 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |3845|
  :pattern ( ($Is refType $o@@10 Tclass._module.Lifetime?))
 )))
 (assert (= (Tag Tclass._module.Object) Tagclass._module.Object))
@@ -207,15 +264,23 @@
 (assert (= (Tag Tclass._module.Lifetime?) Tagclass._module.Lifetime?))
 (assert (= (TagFamily Tclass._module.Lifetime?) tytagFamily$Lifetime))
 (assert (forall (($o@@11 T@U) ) (! (= ($Is refType $o@@11 Tclass._module.Object?)  (or (= $o@@11 null) (implements$_module.Object (dtype $o@@11))))
+ :qid |unknown.0:0|
+ :skolemid |1695|
  :pattern ( ($Is refType $o@@11 Tclass._module.Object?))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) ) (!  (=> (or (|_module.Lifetime.alive#canCall| $Heap this) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.Lifetime) ($IsAlloc refType this Tclass._module.Lifetime $Heap)))))) (= (_module.Lifetime.alive $Heap this)  (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Lifetime.owner)) null)) (not true))))
+ :qid |_12MutexLifetimelongdfy.552:19|
+ :skolemid |2270|
  :pattern ( (_module.Lifetime.alive $Heap this) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc boolType v TBool h)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v TBool h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is boolType v@@0 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@0 TBool))
 )))
 (push 1)
@@ -225,6 +290,7 @@
 (declare-fun this@@0 () T@U)
 (declare-fun $Heap@@0 () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.Lifetime.alive)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

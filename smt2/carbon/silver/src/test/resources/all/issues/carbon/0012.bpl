@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:05
+// Date:         2025-01-26 23:15:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0012.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0012-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,15 +188,15 @@ axiom !IsWandField(f_7);
 procedure allocTest(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var z: Ref;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var PreCallHeap: HeapType;
@@ -213,8 +213,8 @@ procedure allocTest(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -270,15 +270,15 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- 0012.vpr@17.3--17.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (0012.vpr@17.10--17.16) [81682]"}
       x != y;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- 0012.vpr@18.3--18.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (0012.vpr@18.10--18.16) [81683]"}
       z != y;
     assume state(Heap, Mask);
@@ -292,8 +292,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != x.f -- 0012.vpr@21.3--21.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y != x.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0012.vpr@21.10--21.18) [81685]"}
@@ -311,8 +311,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y.f -- 0012.vpr@24.3--24.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x != y.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0012.vpr@24.10--24.18) [81688]"}
@@ -322,8 +322,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != x.f -- 0012.vpr@26.3--26.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x != x.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0012.vpr@26.10--26.18) [81690]"}
@@ -333,8 +333,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) && acc(y.f, write) -- 0012.vpr@28.3--28.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0012.vpr@28.10--28.30) [81693]"}
@@ -354,15 +354,15 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- 0012.vpr@31.3--31.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (0012.vpr@31.10--31.16) [81696]"}
       x != y;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- 0012.vpr@32.3--32.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (0012.vpr@32.10--32.16) [81697]"}
       z != y;
     assume state(Heap, Mask);
@@ -387,15 +387,15 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- 0012.vpr@37.3--37.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (0012.vpr@37.10--37.16) [81698]"}
       x != y;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- 0012.vpr@38.3--38.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (0012.vpr@38.10--38.16) [81699]"}
       z != y;
     assume state(Heap, Mask);
@@ -409,8 +409,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != x.f -- 0012.vpr@41.3--41.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y != x.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0012.vpr@41.10--41.18) [81701]"}
@@ -428,8 +428,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y.f -- 0012.vpr@44.3--44.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x != y.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (0012.vpr@44.10--44.18) [81704]"}
@@ -439,8 +439,8 @@ procedure allocTest(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != x.f -- 0012.vpr@46.3--46.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x != x.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0012.vpr@46.10--46.18) [81706]"}
@@ -457,8 +457,8 @@ procedure allocTest(x: Ref) returns ()
 procedure m_17() returns (r_1: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var freshObj: Ref;
   
   // -- Initializing the state
@@ -469,8 +469,8 @@ procedure m_17() returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: r := new() -- 0012.vpr@50.3--50.13
     havoc freshObj;

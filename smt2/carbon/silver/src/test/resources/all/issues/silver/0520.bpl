@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:06
+// Date:         2025-01-26 23:14:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0520.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0520-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -202,8 +202,8 @@ procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -230,8 +230,8 @@ procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [54239]"}
           r_1 >= -d;
         assert {:msg "  Loop invariant r >= -d && n == q * d + r might not hold on entry. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [54240]"}
@@ -273,8 +273,8 @@ procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
             q_1 := q_1 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion r >= -d might not hold. (0520.vpr@9.13--9.39) [54241]"}
           r_1 >= -d;
         assert {:msg "  Loop invariant r >= -d && n == q * d + r might not be preserved. Assertion n == q * d + r might not hold. (0520.vpr@9.13--9.39) [54242]"}
@@ -300,8 +300,8 @@ procedure test_1(n: int, d: int) returns (q_1: int, r_1: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test might not hold. Assertion n == q * d + r might not hold. (0520.vpr@3.10--3.43) [54243]"}
       n == q_1 * d + r_1;
     assert {:msg "  Postcondition of test might not hold. Assertion r >= 0 might not hold. (0520.vpr@3.10--3.43) [54244]"}

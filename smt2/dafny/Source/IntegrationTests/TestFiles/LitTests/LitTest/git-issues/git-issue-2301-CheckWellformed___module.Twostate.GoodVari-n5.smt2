@@ -79,116 +79,194 @@
 (declare-fun |Seq#Build_inv1| (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass._module.Twostate? Tagclass._module.Twostate tytagFamily$Twostate)
 )
 (assert (= (Tag TBool) TagBool))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Twostate?)  (or (= $o null) (= (dtype $o) Tclass._module.Twostate?)))
+ :qid |unknown.0:0|
+ :skolemid |537|
  :pattern ( ($Is refType $o Tclass._module.Twostate?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Twostate $h) ($IsAlloc refType |c#0| Tclass._module.Twostate? $h))
+ :qid |unknown.0:0|
+ :skolemid |666|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Twostate $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Twostate? $h))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass._module.Twostate? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |538|
  :pattern ( ($IsAlloc refType $o@@0 Tclass._module.Twostate? $h@@0))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o@@1 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o@@1) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@5))
 )))
 (assert (forall ((a@@2 T@U) (x@@6 T@U) (y@@0 T@U) ) (!  (=> (or (not (= x@@6 y@@0)) (not true)) (= (|MultiSet#Multiplicity| a@@2 y@@0) (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@2 x@@6) y@@0)))
+ :qid |DafnyPreludebpl.978:15|
+ :skolemid |195|
  :pattern ( (|MultiSet#UnionOne| a@@2 x@@6) (|MultiSet#Multiplicity| a@@2 y@@0))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|l#6| T@U) (|l#7| T@U) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#7| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) (or (or (or (= $o@@1 |l#3|) (= $o@@1 |l#4|)) (or (= $o@@1 |l#5|) (= $o@@1 |l#6|))) (= $o@@1 |l#7|))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |669|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#7| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7|) $o@@1 $f))
 )))
 (assert (forall ((s T@U) (v T@U) ) (! (= (|Seq#Length| (|Seq#Build| s v)) (+ 1 (|Seq#Length| s)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |224|
  :pattern ( (|Seq#Build| s v))
 )))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v@@0 T@U) (t T@U) (T@@0 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@0 v@@0 t h@@0) ($IsAlloc T@@0 v@@0 t k@@0)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@0 v@@0 t h@@0))
 )))
-(assert (forall (($prevHeap T@U) ($h0 T@U) ($h1 T@U) (this T@U) (|c#0@@0| T@U) (|d#0| T@U) (|e#0| T@U) (|f#0| T@U) ) (!  (=> (and (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass._module.Twostate))) (or (|_module.Twostate.GoodVariations#canCall| $prevHeap $h0 this |c#0@@0| |d#0| |e#0| |f#0|) (and (and (and ($Is refType |c#0@@0| Tclass._module.Twostate) ($Is refType |d#0| Tclass._module.Twostate)) ($Is refType |e#0| Tclass._module.Twostate)) ($Is refType |f#0| Tclass._module.Twostate)))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@2 T@U) ($f@@0 T@U) )  (=> (and (or (not (= $o@@2 null)) (not true)) (or (or (or (= $o@@2 this) (= $o@@2 |c#0@@0|)) (or (= $o@@2 |d#0|) (= $o@@2 |e#0|))) (= $o@@2 |f#0|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@2) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@2) $f@@0)))) (= (_module.Twostate.GoodVariations $prevHeap $h0 this |c#0@@0| |d#0| |e#0| |f#0|) (_module.Twostate.GoodVariations $prevHeap $h1 this |c#0@@0| |d#0| |e#0| |f#0|))))
+(assert (forall (($prevHeap T@U) ($h0 T@U) ($h1 T@U) (this T@U) (|c#0@@0| T@U) (|d#0| T@U) (|e#0| T@U) (|f#0| T@U) ) (!  (=> (and (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass._module.Twostate))) (or (|_module.Twostate.GoodVariations#canCall| $prevHeap $h0 this |c#0@@0| |d#0| |e#0| |f#0|) (and (and (and ($Is refType |c#0@@0| Tclass._module.Twostate) ($Is refType |d#0| Tclass._module.Twostate)) ($Is refType |e#0| Tclass._module.Twostate)) ($Is refType |f#0| Tclass._module.Twostate)))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@2 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@2 null)) (not true)) (or (or (or (= $o@@2 this) (= $o@@2 |c#0@@0|)) (or (= $o@@2 |d#0|) (= $o@@2 |e#0|))) (= $o@@2 |f#0|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@2) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@2) $f@@0)))
+ :qid |unknown.0:0|
+ :skolemid |630|
+)) (= (_module.Twostate.GoodVariations $prevHeap $h0 this |c#0@@0| |d#0| |e#0| |f#0|) (_module.Twostate.GoodVariations $prevHeap $h1 this |c#0@@0| |d#0| |e#0| |f#0|))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |631|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (_module.Twostate.GoodVariations $prevHeap $h1 this |c#0@@0| |d#0| |e#0| |f#0|))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass._module.Twostate)  (and ($Is refType |c#0@@1| Tclass._module.Twostate?) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |665|
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Twostate))
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Twostate?))
 )))
 (assert (forall ((s@@0 T@U) (i Int) (v@@1 T@U) ) (!  (and (=> (= i (|Seq#Length| s@@0)) (= (|Seq#Index| (|Seq#Build| s@@0 v@@1) i) v@@1)) (=> (or (not (= i (|Seq#Length| s@@0))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@0 v@@1) i) (|Seq#Index| s@@0 i))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@0 v@@1) i))
 )))
 (assert (forall ((a@@3 T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a@@3 c)) (not true)) (=> (and ($HeapSucc a@@3 b) ($HeapSucc b c)) ($HeapSucc a@@3 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@3 b) ($HeapSucc b c))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($prevHeap@@0 T@U) ($Heap T@U) (this@@0 T@U) (|c#0@@2| T@U) (|d#0@@0| T@U) (|e#0@@0| T@U) (|f#0@@0| T@U) ) (!  (=> (or (|_module.Twostate.GoodVariations#canCall| $prevHeap@@0 $Heap this@@0 |c#0@@2| |d#0@@0| |e#0@@0| |f#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (and (and (and (and (and ($IsGoodHeap $prevHeap@@0) ($IsGoodHeap $Heap)) ($HeapSucc $prevHeap@@0 $Heap)) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.Twostate) ($IsAlloc refType this@@0 Tclass._module.Twostate $prevHeap@@0)))) ($Is refType |c#0@@2| Tclass._module.Twostate)) ($Is refType |d#0@@0| Tclass._module.Twostate)) ($Is refType |e#0@@0| Tclass._module.Twostate)) ($Is refType |f#0@@0| Tclass._module.Twostate)))) (= (_module.Twostate.GoodVariations $prevHeap@@0 $Heap this@@0 |c#0@@2| |d#0@@0| |e#0@@0| |f#0@@0|)  (and (and (forall (($o@@3 T@U) ($f@@1 T@U) ) (!  (=> (or (not (= $o@@3 null)) (not true)) (=> (or (= $o@@3 this@@0) (= $o@@3 |c#0@@2|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@3) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $prevHeap@@0 $o@@3) $f@@1))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |634|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@3) $f@@1))
 )) (forall (($o@@4 T@U) ($f@@2 T@U) ) (!  (=> (or (not (= $o@@4 null)) (not true)) (=> (or (= $o@@4 |c#0@@2|) (= $o@@4 |d#0@@0|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@4) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $prevHeap@@0 $o@@4) $f@@2))))
+ :qid |gitissue2301dfy.62:8|
+ :skolemid |635|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@4) $f@@2))
-))) (forall (($o@@5 T@U) ($f@@3 T@U) ) (!  (=> (or (not (= $o@@5 null)) (not true)) (=> (or (or (or (or (or (= $o@@5 |e#0@@0|) (= $o@@5 |e#0@@0|)) (= $o@@5 |c#0@@2|)) (= $o@@5 |e#0@@0|)) (exists (($i Int) )  (and (and (<= 0 $i) (< $i (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |d#0@@0|)) ($Box refType |e#0@@0|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |d#0@@0|)) ($Box refType |e#0@@0|)) $i) ($Box refType $o@@5))))) (exists (($i@@0 Int) )  (and (and (<= 0 $i@@0) (< $i@@0 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |f#0@@0|)) ($Box refType |e#0@@0|)) ($Box refType |d#0@@0|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |f#0@@0|)) ($Box refType |e#0@@0|)) ($Box refType |d#0@@0|)) $i@@0) ($Box refType $o@@5))))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@5) $f@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $prevHeap@@0 $o@@5) $f@@3))))
+))) (forall (($o@@5 T@U) ($f@@3 T@U) ) (!  (=> (or (not (= $o@@5 null)) (not true)) (=> (or (or (or (or (or (= $o@@5 |e#0@@0|) (= $o@@5 |e#0@@0|)) (= $o@@5 |c#0@@2|)) (= $o@@5 |e#0@@0|)) (exists (($i Int) ) (!  (and (and (<= 0 $i) (< $i (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |d#0@@0|)) ($Box refType |e#0@@0|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |d#0@@0|)) ($Box refType |e#0@@0|)) $i) ($Box refType $o@@5)))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |636|
+))) (exists (($i@@0 Int) ) (!  (and (and (<= 0 $i@@0) (< $i@@0 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |f#0@@0|)) ($Box refType |e#0@@0|)) ($Box refType |d#0@@0|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@2|)) ($Box refType |f#0@@0|)) ($Box refType |e#0@@0|)) ($Box refType |d#0@@0|)) $i@@0) ($Box refType $o@@5)))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |637|
+))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@5) $f@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $prevHeap@@0 $o@@5) $f@@3))))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |638|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@5) $f@@3))
 )))))
+ :qid |gitissue2301dfy.58:22|
+ :skolemid |641|
  :pattern ( (_module.Twostate.GoodVariations $prevHeap@@0 $Heap this@@0 |c#0@@2| |d#0@@0| |e#0@@0| |f#0@@0|) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((s@@1 T@U) ) (! (<= 0 (|Seq#Length| s@@1))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@1))
 )))
 (assert (forall ((o@@2 T@U) ) (! (= (|MultiSet#Multiplicity| |MultiSet#Empty| o@@2) 0)
+ :qid |DafnyPreludebpl.938:15|
+ :skolemid |187|
  :pattern ( (|MultiSet#Multiplicity| |MultiSet#Empty| o@@2))
 )))
 (assert (forall ((a@@4 T@U) (x@@7 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@4 x@@7) x@@7) (+ (|MultiSet#Multiplicity| a@@4 x@@7) 1))
+ :qid |DafnyPreludebpl.968:15|
+ :skolemid |193|
  :pattern ( (|MultiSet#UnionOne| a@@4 x@@7))
 )))
 (assert (forall ((x@@8 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@8)) x@@8)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@8))
 )))
 (assert (forall ((s@@2 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@2 val@@4)) s@@2) (= (|Seq#Build_inv1| (|Seq#Build| s@@2 val@@4)) val@@4))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |223|
  :pattern ( (|Seq#Build| s@@2 val@@4))
 )))
 (assert (= (Tag Tclass._module.Twostate?) Tagclass._module.Twostate?))
@@ -196,18 +274,28 @@
 (assert (= (Tag Tclass._module.Twostate) Tagclass._module.Twostate))
 (assert (= (TagFamily Tclass._module.Twostate) tytagFamily$Twostate))
 (assert (forall ((a@@5 T@U) (x@@9 T@U) (y@@1 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| a@@5 y@@1)) (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@5 x@@9) y@@1)))
+ :qid |DafnyPreludebpl.973:15|
+ :skolemid |194|
  :pattern ( (|MultiSet#UnionOne| a@@5 x@@9) (|MultiSet#Multiplicity| a@@5 y@@1))
 )))
 (assert (forall ((s@@3 T@U) ) (!  (=> (= (|Seq#Length| s@@3) 0) (= s@@3 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@3))
 )))
 (assert (forall ((a@@6 T@U) (x@@10 T@U) (o@@3 T@U) ) (! (= (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@6 x@@10) o@@3))  (or (= o@@3 x@@10) (< 0 (|MultiSet#Multiplicity| a@@6 o@@3))))
+ :qid |DafnyPreludebpl.963:15|
+ :skolemid |192|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@6 x@@10) o@@3))
 )))
 (assert (forall ((h@@1 T@U) (v@@2 T@U) ) (! ($IsAlloc boolType v@@2 TBool h@@1)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@2 TBool h@@1))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is boolType v@@3 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@3 TBool))
 )))
 (push 1)
@@ -236,6 +324,7 @@
 (declare-fun |b$reqreads#2@0| () Bool)
 (declare-fun |_s2s_0#0@0| () T@U)
 (declare-fun previous$Heap () T@U)
+(set-info :boogie-vc-id CheckWellformed$$_module.Twostate.GoodVariations)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -252,29 +341,77 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 25) (let ((anon10_correct  (=> (and (= (_module.Twostate.GoodVariations $Heap@@0 current$Heap this@@1 |c#0@@3| |d#0@@1| |e#0@@1| |f#0@@1|)  (and (and (forall (($o@@6 T@U) ($f@@4 T@U) ) (!  (=> (or (not (= $o@@6 null)) (not true)) (=> (or (= $o@@6 this@@1) (= $o@@6 |c#0@@3|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@6) $f@@4) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@6) $f@@4))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |658|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@6) $f@@4))
 )) (forall (($o@@7 T@U) ($f@@5 T@U) ) (!  (=> (or (not (= $o@@7 null)) (not true)) (=> (or (= $o@@7 |c#0@@3|) (= $o@@7 |d#0@@1|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@7) $f@@5) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@7) $f@@5))))
+ :qid |gitissue2301dfy.62:8|
+ :skolemid |659|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@7) $f@@5))
-))) (forall (($o@@8 T@U) ($f@@6 T@U) ) (!  (=> (or (not (= $o@@8 null)) (not true)) (=> (or (or (or (or (or (= $o@@8 |e#0@@1|) (= $o@@8 |e#0@@1|)) (= $o@@8 |c#0@@3|)) (= $o@@8 |e#0@@1|)) (exists (($i@@1 Int) )  (and (and (<= 0 $i@@1) (< $i@@1 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) $i@@1) ($Box refType $o@@8))))) (exists (($i@@2 Int) )  (and (and (<= 0 $i@@2) (< $i@@2 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) $i@@2) ($Box refType $o@@8))))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@8) $f@@6) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@8) $f@@6))))
+))) (forall (($o@@8 T@U) ($f@@6 T@U) ) (!  (=> (or (not (= $o@@8 null)) (not true)) (=> (or (or (or (or (or (= $o@@8 |e#0@@1|) (= $o@@8 |e#0@@1|)) (= $o@@8 |c#0@@3|)) (= $o@@8 |e#0@@1|)) (exists (($i@@1 Int) ) (!  (and (and (<= 0 $i@@1) (< $i@@1 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) $i@@1) ($Box refType $o@@8)))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |660|
+))) (exists (($i@@2 Int) ) (!  (and (and (<= 0 $i@@2) (< $i@@2 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) $i@@2) ($Box refType $o@@8)))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |661|
+))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@8) $f@@6) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@8) $f@@6))))
+ :qid |gitissue2301dfy.63:8|
+ :skolemid |662|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@8) $f@@6))
 )))) ($Is boolType (bool_2_U (_module.Twostate.GoodVariations $Heap@@0 current$Heap this@@1 |c#0@@3| |d#0@@1| |e#0@@1| |f#0@@1|)) TBool)) (and (=> (= (ControlFlow 0 3) (- 0 8)) |b$reqreads#0@0|) (=> |b$reqreads#0@0| (and (=> (= (ControlFlow 0 3) (- 0 7)) |b$reqreads#1@0|) (=> |b$reqreads#1@0| (and (=> (= (ControlFlow 0 3) (- 0 6)) |b$reqreads#2@1|) (=> |b$reqreads#2@1| (and (=> (= (ControlFlow 0 3) (- 0 5)) |b$reqreads#3@1|) (=> |b$reqreads#3@1| (and (=> (= (ControlFlow 0 3) (- 0 4)) |b$reqreads#4@1|) (=> |b$reqreads#4@1| (=> (= (ControlFlow 0 3) (- 0 2)) |b$reqreads#5@1|))))))))))))))
 (let ((anon16_Else_correct  (=> (not (and (forall (($o@@9 T@U) ($f@@7 T@U) ) (!  (=> (or (not (= $o@@9 null)) (not true)) (=> (or (= $o@@9 this@@1) (= $o@@9 |c#0@@3|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@9) $f@@7) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@9) $f@@7))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |651|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@9) $f@@7))
 )) (forall (($o@@10 T@U) ($f@@8 T@U) ) (!  (=> (or (not (= $o@@10 null)) (not true)) (=> (or (= $o@@10 |c#0@@3|) (= $o@@10 |d#0@@1|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@10) $f@@8) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@10) $f@@8))))
+ :qid |gitissue2301dfy.62:8|
+ :skolemid |652|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@10) $f@@8))
 )))) (=> (and (and (= |b$reqreads#3@1| true) (= |b$reqreads#4@1| true)) (and (= |b$reqreads#5@1| true) (= (ControlFlow 0 13) 3))) anon10_correct))))
 (let ((anon16_Then_correct  (=> (and (forall (($o@@11 T@U) ($f@@9 T@U) ) (!  (=> (or (not (= $o@@11 null)) (not true)) (=> (or (= $o@@11 this@@1) (= $o@@11 |c#0@@3|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@11) $f@@9) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@11) $f@@9))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |651|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@11) $f@@9))
 )) (forall (($o@@12 T@U) ($f@@10 T@U) ) (!  (=> (or (not (= $o@@12 null)) (not true)) (=> (or (= $o@@12 |c#0@@3|) (= $o@@12 |d#0@@1|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@12) $f@@10) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@12) $f@@10))))
+ :qid |gitissue2301dfy.62:8|
+ :skolemid |652|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@12) $f@@10))
-))) (and (=> (= (ControlFlow 0 9) (- 0 12)) (=> (> (|MultiSet#Multiplicity| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| |MultiSet#Empty| ($Box refType |e#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |c#0@@3|)) ($Box refType |e#0@@1|)) ($Box refType |$unchanged#x1@0|)) 0) ($IsAlloc refType |$unchanged#x1@0| Tclass._module.Twostate $Heap@@0))) (=> (=> (> (|MultiSet#Multiplicity| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| |MultiSet#Empty| ($Box refType |e#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |c#0@@3|)) ($Box refType |e#0@@1|)) ($Box refType |$unchanged#x1@0|)) 0) ($IsAlloc refType |$unchanged#x1@0| Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#3@0| (forall (($o@@13 T@U) ($f@@11 T@U) )  (=> (and (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@13) alloc)))) (or (or (or (= $o@@13 |e#0@@1|) (= $o@@13 |e#0@@1|)) (= $o@@13 |c#0@@3|)) (= $o@@13 |e#0@@1|))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@13 $f@@11))))) (and (=> (= (ControlFlow 0 9) (- 0 11)) (=> (and (<= 0 |$unchanged#x2@0|) (< |$unchanged#x2@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) |$unchanged#x2@0|)) Tclass._module.Twostate $Heap@@0))) (=> (=> (and (<= 0 |$unchanged#x2@0|) (< |$unchanged#x2@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) |$unchanged#x2@0|)) Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#4@0| (forall (($o@@14 T@U) ($f@@12 T@U) )  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@14) alloc)))) (exists (($i@@3 Int) )  (and (and (<= 0 $i@@3) (< $i@@3 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) $i@@3) ($Box refType $o@@14))))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@14 $f@@12))))) (and (=> (= (ControlFlow 0 9) (- 0 10)) (=> (and (<= 0 |$unchanged#x3@0|) (< |$unchanged#x3@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) |$unchanged#x3@0|)) Tclass._module.Twostate $Heap@@0))) (=> (=> (and (<= 0 |$unchanged#x3@0|) (< |$unchanged#x3@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) |$unchanged#x3@0|)) Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#5@0| (forall (($o@@15 T@U) ($f@@13 T@U) )  (=> (and (and (or (not (= $o@@15 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@15) alloc)))) (exists (($i@@4 Int) )  (and (and (<= 0 $i@@4) (< $i@@4 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) $i@@4) ($Box refType $o@@15))))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@15 $f@@13))))) (=> (and (and (= |b$reqreads#3@1| |b$reqreads#3@0|) (= |b$reqreads#4@1| |b$reqreads#4@0|)) (and (= |b$reqreads#5@1| |b$reqreads#5@0|) (= (ControlFlow 0 9) 3))) anon10_correct)))))))))))))
+))) (and (=> (= (ControlFlow 0 9) (- 0 12)) (=> (> (|MultiSet#Multiplicity| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| |MultiSet#Empty| ($Box refType |e#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |c#0@@3|)) ($Box refType |e#0@@1|)) ($Box refType |$unchanged#x1@0|)) 0) ($IsAlloc refType |$unchanged#x1@0| Tclass._module.Twostate $Heap@@0))) (=> (=> (> (|MultiSet#Multiplicity| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| (|MultiSet#UnionOne| |MultiSet#Empty| ($Box refType |e#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |c#0@@3|)) ($Box refType |e#0@@1|)) ($Box refType |$unchanged#x1@0|)) 0) ($IsAlloc refType |$unchanged#x1@0| Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#3@0| (forall (($o@@13 T@U) ($f@@11 T@U) ) (!  (=> (and (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@13) alloc)))) (or (or (or (= $o@@13 |e#0@@1|) (= $o@@13 |e#0@@1|)) (= $o@@13 |c#0@@3|)) (= $o@@13 |e#0@@1|))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@13 $f@@11)))
+ :qid |gitissue2301dfy.63:18|
+ :skolemid |646|
+))) (and (=> (= (ControlFlow 0 9) (- 0 11)) (=> (and (<= 0 |$unchanged#x2@0|) (< |$unchanged#x2@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) |$unchanged#x2@0|)) Tclass._module.Twostate $Heap@@0))) (=> (=> (and (<= 0 |$unchanged#x2@0|) (< |$unchanged#x2@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) |$unchanged#x2@0|)) Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#4@0| (forall (($o@@14 T@U) ($f@@12 T@U) ) (!  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@14) alloc)))) (exists (($i@@3 Int) ) (!  (and (and (<= 0 $i@@3) (< $i@@3 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |e#0@@1|)) $i@@3) ($Box refType $o@@14)))
+ :qid |gitissue2301dfy.63:40|
+ :skolemid |647|
+))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@14 $f@@12)))
+ :qid |gitissue2301dfy.63:40|
+ :skolemid |648|
+))) (and (=> (= (ControlFlow 0 9) (- 0 10)) (=> (and (<= 0 |$unchanged#x3@0|) (< |$unchanged#x3@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) |$unchanged#x3@0|)) Tclass._module.Twostate $Heap@@0))) (=> (=> (and (<= 0 |$unchanged#x3@0|) (< |$unchanged#x3@0| (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) ($IsAlloc refType ($Unbox refType (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) |$unchanged#x3@0|)) Tclass._module.Twostate $Heap@@0)) (=> (= |b$reqreads#5@0| (forall (($o@@15 T@U) ($f@@13 T@U) ) (!  (=> (and (and (or (not (= $o@@15 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@15) alloc)))) (exists (($i@@4 Int) ) (!  (and (and (<= 0 $i@@4) (< $i@@4 (|Seq#Length| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|))))) (= (|Seq#Index| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box refType |c#0@@3|)) ($Box refType |f#0@@1|)) ($Box refType |e#0@@1|)) ($Box refType |d#0@@1|)) $i@@4) ($Box refType $o@@15)))
+ :qid |gitissue2301dfy.63:51|
+ :skolemid |649|
+))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@15 $f@@13)))
+ :qid |gitissue2301dfy.63:51|
+ :skolemid |650|
+))) (=> (and (and (= |b$reqreads#3@1| |b$reqreads#3@0|) (= |b$reqreads#4@1| |b$reqreads#4@0|)) (and (= |b$reqreads#5@1| |b$reqreads#5@0|) (= (ControlFlow 0 9) 3))) anon10_correct)))))))))))))
 (let ((anon15_Else_correct  (=> (and (not (forall (($o@@16 T@U) ($f@@14 T@U) ) (!  (=> (or (not (= $o@@16 null)) (not true)) (=> (or (= $o@@16 this@@1) (= $o@@16 |c#0@@3|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@16) $f@@14) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@16) $f@@14))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |645|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@16) $f@@14))
 ))) (= |b$reqreads#2@1| true)) (and (=> (= (ControlFlow 0 16) 9) anon16_Then_correct) (=> (= (ControlFlow 0 16) 13) anon16_Else_correct)))))
 (let ((anon15_Then_correct  (=> (forall (($o@@17 T@U) ($f@@15 T@U) ) (!  (=> (or (not (= $o@@17 null)) (not true)) (=> (or (= $o@@17 this@@1) (= $o@@17 |c#0@@3|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@17) $f@@15) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@17) $f@@15))))
+ :qid |gitissue2301dfy.61:8|
+ :skolemid |645|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@17) $f@@15))
-)) (and (=> (= (ControlFlow 0 14) (- 0 15)) (=> (|Set#IsMember| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |$unchanged#x0@0|)) ($IsAlloc refType |$unchanged#x0@0| Tclass._module.Twostate $Heap@@0))) (=> (=> (|Set#IsMember| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |$unchanged#x0@0|)) ($IsAlloc refType |$unchanged#x0@0| Tclass._module.Twostate $Heap@@0)) (=> (and (= |b$reqreads#2@0| (forall (($o@@18 T@U) ($f@@16 T@U) )  (=> (and (and (or (not (= $o@@18 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@18) alloc)))) (or (= $o@@18 |c#0@@3|) (= $o@@18 |d#0@@1|))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@18 $f@@16))))) (= |b$reqreads#2@1| |b$reqreads#2@0|)) (and (=> (= (ControlFlow 0 14) 9) anon16_Then_correct) (=> (= (ControlFlow 0 14) 13) anon16_Else_correct))))))))
-(let ((anon14_Else_correct  (and (=> (= (ControlFlow 0 17) (- 0 19)) ($IsAlloc refType this@@1 Tclass._module.Twostate $Heap@@0)) (=> ($IsAlloc refType this@@1 Tclass._module.Twostate $Heap@@0) (=> (= |b$reqreads#0@0| (forall (($o@@19 T@U) ($f@@17 T@U) )  (=> (and (and (or (not (= $o@@19 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@19) alloc)))) (= $o@@19 this@@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@19 $f@@17))))) (and (=> (= (ControlFlow 0 17) (- 0 18)) ($IsAlloc refType |c#0@@3| Tclass._module.Twostate $Heap@@0)) (=> ($IsAlloc refType |c#0@@3| Tclass._module.Twostate $Heap@@0) (=> (= |b$reqreads#1@0| (forall (($o@@20 T@U) ($f@@18 T@U) )  (=> (and (and (or (not (= $o@@20 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@20) alloc)))) (= $o@@20 |c#0@@3|)) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@20 $f@@18))))) (and (=> (= (ControlFlow 0 17) 14) anon15_Then_correct) (=> (= (ControlFlow 0 17) 16) anon15_Else_correct))))))))))
+)) (and (=> (= (ControlFlow 0 14) (- 0 15)) (=> (|Set#IsMember| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |$unchanged#x0@0|)) ($IsAlloc refType |$unchanged#x0@0| Tclass._module.Twostate $Heap@@0))) (=> (=> (|Set#IsMember| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType |c#0@@3|)) ($Box refType |d#0@@1|)) ($Box refType |$unchanged#x0@0|)) ($IsAlloc refType |$unchanged#x0@0| Tclass._module.Twostate $Heap@@0)) (=> (and (= |b$reqreads#2@0| (forall (($o@@18 T@U) ($f@@16 T@U) ) (!  (=> (and (and (or (not (= $o@@18 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@18) alloc)))) (or (= $o@@18 |c#0@@3|) (= $o@@18 |d#0@@1|))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@18 $f@@16)))
+ :qid |gitissue2301dfy.62:18|
+ :skolemid |644|
+))) (= |b$reqreads#2@1| |b$reqreads#2@0|)) (and (=> (= (ControlFlow 0 14) 9) anon16_Then_correct) (=> (= (ControlFlow 0 14) 13) anon16_Else_correct))))))))
+(let ((anon14_Else_correct  (and (=> (= (ControlFlow 0 17) (- 0 19)) ($IsAlloc refType this@@1 Tclass._module.Twostate $Heap@@0)) (=> ($IsAlloc refType this@@1 Tclass._module.Twostate $Heap@@0) (=> (= |b$reqreads#0@0| (forall (($o@@19 T@U) ($f@@17 T@U) ) (!  (=> (and (and (or (not (= $o@@19 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@19) alloc)))) (= $o@@19 this@@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@19 $f@@17)))
+ :qid |gitissue2301dfy.61:18|
+ :skolemid |642|
+))) (and (=> (= (ControlFlow 0 17) (- 0 18)) ($IsAlloc refType |c#0@@3| Tclass._module.Twostate $Heap@@0)) (=> ($IsAlloc refType |c#0@@3| Tclass._module.Twostate $Heap@@0) (=> (= |b$reqreads#1@0| (forall (($o@@20 T@U) ($f@@18 T@U) ) (!  (=> (and (and (or (not (= $o@@20 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) current$Heap $o@@20) alloc)))) (= $o@@20 |c#0@@3|)) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@20 $f@@18)))
+ :qid |gitissue2301dfy.61:24|
+ :skolemid |643|
+))) (and (=> (= (ControlFlow 0 17) 14) anon15_Then_correct) (=> (= (ControlFlow 0 17) 16) anon15_Else_correct))))))))))
 (let ((anon14_Then_correct true))
 (let ((anon13_Else_correct  (=> (or (not (= |_s2s_0#0@0| |f#0@@1|)) (not true)) (and (=> (= (ControlFlow 0 22) 1) anon14_Then_correct) (=> (= (ControlFlow 0 22) 17) anon14_Else_correct)))))
 (let ((anon13_Then_correct  (=> (= |_s2s_0#0@0| |f#0@@1|) (and (=> (= (ControlFlow 0 21) 1) anon14_Then_correct) (=> (= (ControlFlow 0 21) 17) anon14_Else_correct)))))

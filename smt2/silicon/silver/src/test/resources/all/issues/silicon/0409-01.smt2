@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:34
+; Started: 2025-01-26 23:06:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -815,7 +815,7 @@
 (assert (not (forall ((x@11@01 $Ref)) (!
   (=> (Set_in x@11@01 xs@10@01) (or (= $k@12@01 $Perm.No) (< $Perm.No $k@12@01)))
   
-  :qid |quant-u-11333|))))
+  :qid |quant-u-11280|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -843,7 +843,7 @@
     (and (Set_in x@11@01 xs@10@01) (< $Perm.No $k@12@01))
     (and (= (inv@15@01 x@11@01) x@11@01) (img@16@01 x@11@01)))
   :pattern (($FVF.loc_f ($FVF.lookup_f $t@14@01 x@11@01) x@11@01))
-  :qid |quant-u-11334|)))
+  :qid |quant-u-11281|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -890,7 +890,7 @@
     (Set_in (inv@15@01 r) xs@10@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@17@01  $FVF<f>) r) r))
   :pattern ((inv@15@01 r))
-  :qid |quant-u-11335|)))
+  :qid |quant-u-11282|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -915,7 +915,7 @@
 (assert (not (forall ((x@18@01 $Ref)) (!
   (=> (Set_in x@18@01 xs@10@01) (or (= $k@19@01 $Perm.No) (< $Perm.No $k@19@01)))
   
-  :qid |quant-u-11336|))))
+  :qid |quant-u-11283|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -966,7 +966,7 @@
     (Set_in (inv@20@01 r) xs@10@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@17@01  $FVF<f>) r) r))
   :pattern ((inv@20@01 r))
-  :qid |quant-u-11337|)))
+  :qid |quant-u-11284|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@22@01 ((r $Ref)) $Perm
   (ite
@@ -1018,7 +1018,7 @@
     (and (Set_in (inv@20@01 r) xs@10@01) (img@21@01 r) (= r (inv@20@01 r)))
     (= (- $k@19@01 (pTaken@22@01 r)) $Perm.No))
   
-  :qid |quant-u-11340|))))
+  :qid |quant-u-11287|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1075,7 +1075,7 @@
 (assert (not (forall ((x@23@01 $Ref)) (!
   (=> (Set_in x@23@01 xs@10@01) (or (= $k@24@01 $Perm.No) (< $Perm.No $k@24@01)))
   
-  :qid |quant-u-11341|))))
+  :qid |quant-u-11288|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1141,7 +1141,7 @@
     (Set_in (inv@26@01 r) xs@10@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@28@01  $FVF<f>) r) r))
   :pattern ((inv@26@01 r))
-  :qid |quant-u-11342|)))
+  :qid |quant-u-11289|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@29@01 ((r $Ref)) $Perm
   (ite
@@ -1196,7 +1196,7 @@
     (and (Set_in (inv@26@01 r) xs@10@01) (img@27@01 r) (= r (inv@26@01 r)))
     (= (- $k@24@01 (pTaken@29@01 r)) $Perm.No))
   
-  :qid |quant-u-11345|))))
+  :qid |quant-u-11292|))))
 (check-sat)
 ; unsat
 (pop) ; 3

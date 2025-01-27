@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:06
+// Date:         2025-01-26 23:16:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/par_id.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/par_id-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -592,14 +592,14 @@ procedure loop_main_22(this: Ref, len_3: int, ar_1: (Seq Ref)) returns ()
   var j_14: int;
   var i_3: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
   var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_9_1: int;
   var ExhaleHeap: HeapType;
   
@@ -684,8 +684,8 @@ procedure loop_main_22(this: Ref, len_3: int, ar_1: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -773,8 +773,8 @@ procedure loop_main_22(this: Ref, len_3: int, ar_1: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of loop_main_22 might not hold. Assertion |ar| == len might not hold. (par_id.vpr@14.11--14.22) [148331]"}
       Seq#Length(ar_1) == len_3;
     havoc QPMask;
@@ -843,12 +843,12 @@ procedure loop_body_22(this: Ref, len_3: int, ar_1: (Seq Ref), i: int) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -880,8 +880,8 @@ procedure loop_body_22(this: Ref, len_3: int, ar_1: (Seq Ref), i: int) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -944,8 +944,8 @@ procedure loop_body_22(this: Ref, len_3: int, ar_1: (Seq Ref), i: int) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of loop_body_22 might not hold. Assertion 0 <= i might not hold. (par_id.vpr@25.11--25.32) [148351]"}
       0 <= i;
     assert {:msg "  Postcondition of loop_body_22 might not hold. Assertion i < len might not hold. (par_id.vpr@25.11--25.32) [148352]"}
@@ -977,16 +977,16 @@ procedure par_id(this: Ref, ar_1: (Seq Ref), len_3: int) returns (sys__result: i
   var j_2: int;
   var i_15: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_7: int;
   var i_21: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_11_1: int;
   var j_2_2: int;
   var ExhaleHeap: HeapType;
@@ -1073,8 +1073,8 @@ procedure par_id(this: Ref, ar_1: (Seq Ref), len_3: int) returns (sys__result: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1161,8 +1161,8 @@ procedure par_id(this: Ref, ar_1: (Seq Ref), len_3: int) returns (sys__result: i
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method loop_main_22 might not hold. Assertion |ar| == len might not hold. (par_id.vpr@41.3--41.30) [148372]"}
         Seq#Length(ar_1) == len_3;
       if (*) {
@@ -1266,8 +1266,8 @@ procedure par_id(this: Ref, ar_1: (Seq Ref), len_3: int) returns (sys__result: i
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of par_id might not hold. Assertion |ar| == len might not hold. (par_id.vpr@37.11--37.22) [148377]"}
       Seq#Length(ar_1) == len_3;
     havoc QPMask;

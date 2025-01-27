@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:39:06
+; Started: 2025-01-26 23:11:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -705,11 +705,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (allNodes%limited s@$ this@0@00) (allNodes s@$ this@0@00))
   :pattern ((allNodes s@$ this@0@00))
-  :qid |quant-u-21693|)))
+  :qid |quant-u-21666|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (allNodes%stateless this@0@00)
   :pattern ((allNodes%limited s@$ this@0@00))
-  :qid |quant-u-21694|)))
+  :qid |quant-u-21667|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     (forall ((n@8@00 $Ref)) (!
@@ -723,7 +723,7 @@
       :pattern ((Set_in n@8@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@9@00 s@$ this@0@00 n@8@00))
       :pattern ((img@10@00 s@$ this@0@00 n@8@00))
-      :qid |quant-u-21698|))
+      :qid |quant-u-21671|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -743,19 +743,19 @@
         (allNodes s@$ this@0@00)
         ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$)))))
   :pattern ((allNodes s@$ this@0@00))
-  :qid |quant-u-21699|)))
+  :qid |quant-u-21672|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((allNodes s@$ this@0@00))
-  :qid |quant-u-21700|)))
+  :qid |quant-u-21673|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (= (find%limited s@$ struct@2@00 this@3@00) (find s@$ struct@2@00 this@3@00))
   :pattern ((find s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21695|)))
+  :qid |quant-u-21668|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (find%stateless struct@2@00 this@3@00)
   :pattern ((find%limited s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21696|)))
+  :qid |quant-u-21669|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (let ((result@4@00 (find%limited s@$ struct@2@00 this@3@00))) (and
     ($Perm.isReadVar $k@12@00)
@@ -767,17 +767,17 @@
         (not (= result@4@00 $Ref.null))
         (Set_in result@4@00 (allNodes ($Snap.first ($Snap.second ($Snap.second s@$))) struct@2@00))))))
   :pattern ((find%limited s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21701|)))
+  :qid |quant-u-21674|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (let ((result@4@00 (find%limited s@$ struct@2@00 this@3@00))) true)
   :pattern ((find%limited s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21702|)))
+  :qid |quant-u-21675|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (let ((result@4@00 (find%limited s@$ struct@2@00 this@3@00))) (=>
     (find%precondition s@$ struct@2@00 this@3@00)
     (allNodes%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) struct@2@00)))
   :pattern ((find%limited s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21703|)))
+  :qid |quant-u-21676|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (and
     (forall ((n@18@00 $Ref)) (!
@@ -791,7 +791,7 @@
       :pattern ((Set_in n@18@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first ($Snap.first ($Snap.second ($Snap.second s@$)))))))
       :pattern ((inv@19@00 s@$ struct@2@00 this@3@00 n@18@00))
       :pattern ((img@20@00 s@$ struct@2@00 this@3@00 n@18@00))
-      :qid |quant-u-21705|))
+      :qid |quant-u-21678|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -827,7 +827,7 @@
                 $Snap.unit))) struct@2@00 ($FVF.lookup_parent ($SortWrappers.$SnapTo$FVF<parent> ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))))) this@3@00))))))
   :pattern ((find s@$ struct@2@00 this@3@00))
   :pattern ((find%stateless struct@2@00 this@3@00) (inv%trigger ($Snap.first ($Snap.second ($Snap.second s@$))) struct@2@00))
-  :qid |quant-u-21706|)))
+  :qid |quant-u-21679|)))
 (assert (forall ((s@$ $Snap) (struct@2@00 $Ref) (this@3@00 $Ref)) (!
   (=>
     (find%precondition s@$ struct@2@00 this@3@00)
@@ -844,7 +844,7 @@
             ($Snap.first ($Snap.second ($Snap.second s@$)))
             $Snap.unit))) struct@2@00 ($FVF.lookup_parent ($SortWrappers.$SnapTo$FVF<parent> ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))))) this@3@00))))
   :pattern ((find s@$ struct@2@00 this@3@00))
-  :qid |quant-u-21707|)))
+  :qid |quant-u-21680|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- add ----------

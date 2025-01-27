@@ -692,8 +692,8 @@
 (declare-const fuel%vstd!set.axiom_set_ext_equal_deep. FuelId)
 (declare-const fuel%vstd!set.axiom_set_insert_finite. FuelId)
 (declare-const fuel%vstd!state_machine_internal.impl&%3.update_at_index. FuelId)
-(declare-const fuel%test_crate!X.impl&%0.arrow_4. FuelId)
 (declare-const fuel%test_crate!X.impl&%0.arrow_1. FuelId)
+(declare-const fuel%test_crate!X.impl&%0.arrow_4. FuelId)
 (declare-const fuel%test_crate!X.impl&%0.arrow_2. FuelId)
 (declare-const fuel%test_crate!X.impl&%0.arrow_3. FuelId)
 (declare-const fuel%test_crate!X.impl&%0.arrow_tr_0. FuelId)
@@ -745,8 +745,8 @@
   fuel%vstd!map.axiom_map_insert_same. fuel%vstd!map.axiom_map_insert_different. fuel%vstd!map.axiom_map_ext_equal.
   fuel%vstd!map.axiom_map_ext_equal_deep. fuel%vstd!set.axiom_set_insert_same. fuel%vstd!set.axiom_set_insert_different.
   fuel%vstd!set.axiom_set_ext_equal. fuel%vstd!set.axiom_set_ext_equal_deep. fuel%vstd!set.axiom_set_insert_finite.
-  fuel%vstd!state_machine_internal.impl&%3.update_at_index. fuel%test_crate!X.impl&%0.arrow_4.
-  fuel%test_crate!X.impl&%0.arrow_1. fuel%test_crate!X.impl&%0.arrow_2. fuel%test_crate!X.impl&%0.arrow_3.
+  fuel%vstd!state_machine_internal.impl&%3.update_at_index. fuel%test_crate!X.impl&%0.arrow_1.
+  fuel%test_crate!X.impl&%0.arrow_4. fuel%test_crate!X.impl&%0.arrow_2. fuel%test_crate!X.impl&%0.arrow_3.
   fuel%test_crate!X.impl&%0.arrow_tr_0. fuel%test_crate!X.impl&%0.arrow_tr_1. fuel%test_crate!X.impl&%0.arrow_tr_2.
   fuel%test_crate!X.impl&%0.arrow_tr_3. fuel%test_crate!X.impl&%0.arrow_tr_4. fuel%test_crate!X.impl&%0.arrow_dummy_to_use_type_params_0.
   fuel%test_crate!X.impl&%1.is_tr. fuel%test_crate!X.impl&%1.get_tr_0. fuel%test_crate!X.impl&%1.get_tr_1.
@@ -1206,11 +1206,11 @@
 ;; Function-Decl test_crate::X::State::next
 (declare-fun test_crate!X.impl&%4.next.? (Poly Poly) Bool)
 
-;; Function-Decl test_crate::X::Step::arrow_4
-(declare-fun test_crate!X.impl&%0.arrow_4.? (Poly) Bool)
-
 ;; Function-Decl test_crate::X::Step::arrow_1
 (declare-fun test_crate!X.impl&%0.arrow_1.? (Poly) Bool)
+
+;; Function-Decl test_crate::X::Step::arrow_4
+(declare-fun test_crate!X.impl&%0.arrow_4.? (Poly) Bool)
 
 ;; Function-Decl test_crate::X::Step::arrow_2
 (declare-fun test_crate!X.impl&%0.arrow_2.? (Poly) Bool)
@@ -1908,22 +1908,6 @@
     :skolemid skolem_internal_test_crate!X.impl&__4.next.?_definition
 ))))
 
-;; Function-Axioms test_crate::X::Step::arrow_4
-(assert
- (fuel_bool_default fuel%test_crate!X.impl&%0.arrow_4.)
-)
-(assert
- (=>
-  (fuel_bool fuel%test_crate!X.impl&%0.arrow_4.)
-  (forall ((self! Poly)) (!
-    (= (test_crate!X.impl&%0.arrow_4.? self!) (test_crate!X.Step./tr/4 (%Poly%test_crate!X.Step.
-       self!
-    )))
-    :pattern ((test_crate!X.impl&%0.arrow_4.? self!))
-    :qid internal_test_crate!X.impl&__0.arrow_4.?_definition
-    :skolemid skolem_internal_test_crate!X.impl&__0.arrow_4.?_definition
-))))
-
 ;; Function-Axioms test_crate::X::Step::arrow_1
 (assert
  (fuel_bool_default fuel%test_crate!X.impl&%0.arrow_1.)
@@ -1938,6 +1922,22 @@
     :pattern ((test_crate!X.impl&%0.arrow_1.? self!))
     :qid internal_test_crate!X.impl&__0.arrow_1.?_definition
     :skolemid skolem_internal_test_crate!X.impl&__0.arrow_1.?_definition
+))))
+
+;; Function-Axioms test_crate::X::Step::arrow_4
+(assert
+ (fuel_bool_default fuel%test_crate!X.impl&%0.arrow_4.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%test_crate!X.impl&%0.arrow_4.)
+  (forall ((self! Poly)) (!
+    (= (test_crate!X.impl&%0.arrow_4.? self!) (test_crate!X.Step./tr/4 (%Poly%test_crate!X.Step.
+       self!
+    )))
+    :pattern ((test_crate!X.impl&%0.arrow_4.? self!))
+    :qid internal_test_crate!X.impl&__0.arrow_4.?_definition
+    :skolemid skolem_internal_test_crate!X.impl&__0.arrow_4.?_definition
 ))))
 
 ;; Function-Axioms test_crate::X::Step::arrow_2

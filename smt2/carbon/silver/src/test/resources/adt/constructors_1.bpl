@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:45
+// Date:         2025-01-26 23:15:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/constructors_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/constructors_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -890,8 +890,8 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 procedure constructors_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var list1: (ListDomainType int);
   var list2_1: (ListDomainType (ListDomainType bool));
   var list3: (ListDomainType (Seq int));
@@ -909,8 +909,8 @@ procedure constructors_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: list1 := (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int])): List[Int])): List[Int])): List[Int]) -- constructors_1.vpr@9.5--9.73
     list1 := (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int);

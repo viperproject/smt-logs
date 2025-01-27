@@ -83,16 +83,22 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._System.nat Tagclass._module.cmd |##_module.cmd.Inc| |##_module.cmd.Seq| |##_module.cmd.Repeat| tytagFamily$nat tytagFamily$cmd)
@@ -101,170 +107,271 @@
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly T@U) (|_k#0| Int) (|c#0| T@U) (|s#0| Int) (|t#0| Int) ) (!  (=> (or (|_module.__default.NatBigStep_h#canCall| (LitInt |_k#0|) |c#0| |s#0| |t#0|) (and (< 2 $FunctionContextHeight) (and (<= (LitInt 0) |_k#0|) ($Is DatatypeTypeType |c#0| Tclass._module.cmd)))) (and (=> (< 0 |_k#0|) (=> (not (_module.cmd.Inc_q |c#0|)) (and (=> (_module.cmd.Seq_q |c#0|) (let ((|c1#5| (_module.cmd._h1 |c#0|)))
 (let ((|c0#5| (_module.cmd._h0 |c#0|)))
 (forall ((|s'#14| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0| 1) |c0#5| |s#0| |s'#14|) (=> (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c0#5| |s#0| |s'#14|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0| 1) |c1#5| |s'#14| |t#0|)))
+ :qid |Incdfy.142:12|
+ :skolemid |883|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c1#5| |s'#14| |t#0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c0#5| |s#0| |s'#14|))
 ))))) (=> (not (_module.cmd.Seq_q |c#0|)) (let ((|body#5| (_module.cmd._h2 |c#0|)))
  (=> (or (not (= |s#0| |t#0|)) (not true)) (forall ((|s'#15| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0| 1) |body#5| |s#0| |s'#15|) (=> (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |body#5| |s#0| |s'#15|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0| 1) |c#0| |s'#15| |t#0|)))
+ :qid |Incdfy.145:12|
+ :skolemid |884|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c#0| |s'#15| |t#0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |body#5| |s#0| |s'#15|))
 )))))))) (= (_module.__default.NatBigStep_h ($LS $ly) (LitInt |_k#0|) |c#0| |s#0| |t#0|)  (and (< 0 |_k#0|) (ite (_module.cmd.Inc_q |c#0|) (= |t#0| (+ |s#0| 1)) (ite (_module.cmd.Seq_q |c#0|) (let ((|c1#4| (_module.cmd._h1 |c#0|)))
 (let ((|c0#4| (_module.cmd._h0 |c#0|)))
 (exists ((|s'#12| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c0#4| |s#0| |s'#12|) (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c1#4| |s'#12| |t#0|))
+ :qid |Incdfy.142:12|
+ :skolemid |881|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c1#4| |s'#12| |t#0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c0#4| |s#0| |s'#12|))
 )))) (let ((|body#4| (_module.cmd._h2 |c#0|)))
  (or (= |s#0| |t#0|) (exists ((|s'#13| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |body#4| |s#0| |s'#13|) (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c#0| |s'#13| |t#0|))
+ :qid |Incdfy.145:12|
+ :skolemid |882|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |c#0| |s'#13| |t#0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (- |_k#0| 1) |body#4| |s#0| |s'#13|))
 ))))))))))
+ :qid |Incdfy.136:17|
  :weight 3
+ :skolemid |885|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly) (LitInt |_k#0|) |c#0| |s#0| |t#0|))
 ))))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.cmd.Seq| |a#6#0#0| |a#6#1#0|) Tclass._module.cmd)  (and ($Is DatatypeTypeType |a#6#0#0| Tclass._module.cmd) ($Is DatatypeTypeType |a#6#1#0| Tclass._module.cmd)))
+ :qid |Incdfy.4:26|
+ :skolemid |1149|
  :pattern ( ($Is DatatypeTypeType (|#_module.cmd.Seq| |a#6#0#0| |a#6#1#0|) Tclass._module.cmd))
 )))
 (assert (forall (($ly@@0 T@U) (|_k#0@@0| Int) (|c#0@@0| T@U) (|s#0@@0| Int) (|t#0@@0| Int) ) (! (= (_module.__default.NatBigStep_h ($LS $ly@@0) |_k#0@@0| |c#0@@0| |s#0@@0| |t#0@@0|) (_module.__default.NatBigStep_h $ly@@0 |_k#0@@0| |c#0@@0| |s#0@@0| |t#0@@0|))
+ :qid |Incdfy.136:17|
+ :skolemid |872|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@0) |_k#0@@0| |c#0@@0| |s#0@@0| |t#0@@0|))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert (= (DatatypeCtorId |#_module.cmd.Inc|) |##_module.cmd.Inc|))
 (assert ($Is DatatypeTypeType |#_module.cmd.Inc| Tclass._module.cmd))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@1 T@U) (|_k#0@@1| Int) (|c#0@@1| T@U) (|s#0@@1| Int) (|t#0@@1| Int) ) (!  (=> (or (|_module.__default.NatBigStep_h#canCall| (LitInt |_k#0@@1|) (Lit DatatypeTypeType |c#0@@1|) (LitInt |s#0@@1|) (LitInt |t#0@@1|)) (and (< 2 $FunctionContextHeight) (and (<= (LitInt 0) |_k#0@@1|) ($Is DatatypeTypeType |c#0@@1| Tclass._module.cmd)))) (and (=> (< 0 |_k#0@@1|) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.cmd.Inc_q (Lit DatatypeTypeType |c#0@@1|)))))) (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.cmd.Seq_q (Lit DatatypeTypeType |c#0@@1|))))) (let ((|c1#7| (Lit DatatypeTypeType (_module.cmd._h1 (Lit DatatypeTypeType |c#0@@1|)))))
 (let ((|c0#7| (Lit DatatypeTypeType (_module.cmd._h0 (Lit DatatypeTypeType |c#0@@1|)))))
 (forall ((|s'#18| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@1| 1) |c0#7| (LitInt |s#0@@1|) |s'#18|) (=> (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c0#7| (LitInt |s#0@@1|) |s'#18|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@1| 1) |c1#7| |s'#18| (LitInt |t#0@@1|))))
+ :qid |Incdfy.142:12|
+ :skolemid |888|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c1#7| |s'#18| |t#0@@1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c0#7| |s#0@@1| |s'#18|))
 ))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.cmd.Seq_q (Lit DatatypeTypeType |c#0@@1|)))))) (let ((|body#7| (Lit DatatypeTypeType (_module.cmd._h2 (Lit DatatypeTypeType |c#0@@1|)))))
  (=> (or (not (= (LitInt |s#0@@1|) (LitInt |t#0@@1|))) (not true)) (forall ((|s'#19| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@1| 1) |body#7| (LitInt |s#0@@1|) |s'#19|) (=> (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |body#7| (LitInt |s#0@@1|) |s'#19|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@1| 1) (Lit DatatypeTypeType |c#0@@1|) |s'#19| (LitInt |t#0@@1|))))
+ :qid |Incdfy.145:12|
+ :skolemid |889|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c#0@@1| |s'#19| |t#0@@1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |body#7| |s#0@@1| |s'#19|))
 )))))))) (= (_module.__default.NatBigStep_h ($LS $ly@@1) (LitInt |_k#0@@1|) (Lit DatatypeTypeType |c#0@@1|) (LitInt |s#0@@1|) (LitInt |t#0@@1|))  (and (< 0 |_k#0@@1|) (ite (_module.cmd.Inc_q (Lit DatatypeTypeType |c#0@@1|)) (= (LitInt |t#0@@1|) (LitInt (+ |s#0@@1| 1))) (ite (_module.cmd.Seq_q (Lit DatatypeTypeType |c#0@@1|)) (let ((|c1#6| (Lit DatatypeTypeType (_module.cmd._h1 (Lit DatatypeTypeType |c#0@@1|)))))
 (let ((|c0#6| (Lit DatatypeTypeType (_module.cmd._h0 (Lit DatatypeTypeType |c#0@@1|)))))
 (exists ((|s'#16| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c0#6| (LitInt |s#0@@1|) |s'#16|) (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c1#6| |s'#16| (LitInt |t#0@@1|)))
+ :qid |Incdfy.142:12|
+ :skolemid |886|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c1#6| |s'#16| |t#0@@1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c0#6| |s#0@@1| |s'#16|))
 )))) (let ((|body#6| (Lit DatatypeTypeType (_module.cmd._h2 (Lit DatatypeTypeType |c#0@@1|)))))
  (or (= (LitInt |s#0@@1|) (LitInt |t#0@@1|)) (exists ((|s'#17| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |body#6| (LitInt |s#0@@1|) |s'#17|) (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) (Lit DatatypeTypeType |c#0@@1|) |s'#17| (LitInt |t#0@@1|)))
+ :qid |Incdfy.145:12|
+ :skolemid |887|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |c#0@@1| |s'#17| |t#0@@1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (- |_k#0@@1| 1) |body#6| |s#0@@1| |s'#17|))
 ))))))))))
+ :qid |Incdfy.136:17|
  :weight 3
+ :skolemid |890|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@1) (LitInt |_k#0@@1|) (Lit DatatypeTypeType |c#0@@1|) (LitInt |s#0@@1|) (LitInt |t#0@@1|)))
 ))))
 (assert (forall ((d T@U) ) (! (= (_module.cmd.Inc_q d) (= (DatatypeCtorId d) |##_module.cmd.Inc|))
+ :qid |unknown.0:0|
+ :skolemid |1143|
  :pattern ( (_module.cmd.Inc_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.cmd.Seq_q d@@0) (= (DatatypeCtorId d@@0) |##_module.cmd.Seq|))
+ :qid |unknown.0:0|
+ :skolemid |1146|
  :pattern ( (_module.cmd.Seq_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.cmd.Repeat_q d@@1) (= (DatatypeCtorId d@@1) |##_module.cmd.Repeat|))
+ :qid |unknown.0:0|
+ :skolemid |1158|
  :pattern ( (_module.cmd.Repeat_q d@@1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (_module.cmd.Seq_q d@@2) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (= d@@2 (|#_module.cmd.Seq| |a#5#0#0| |a#5#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (_module.cmd.Seq_q d@@2) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= d@@2 (|#_module.cmd.Seq| |a#5#0#0| |a#5#1#0|))
+ :qid |Incdfy.4:26|
+ :skolemid |1147|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1148|
  :pattern ( (_module.cmd.Seq_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (_module.cmd.Inc_q d@@3) (= d@@3 |#_module.cmd.Inc|))
+ :qid |unknown.0:0|
+ :skolemid |1144|
  :pattern ( (_module.cmd.Inc_q d@@3))
 )))
-(assert (forall ((d@@4 T@U) ) (!  (=> (_module.cmd.Repeat_q d@@4) (exists ((|a#13#0#0| T@U) ) (= d@@4 (|#_module.cmd.Repeat| |a#13#0#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (_module.cmd.Repeat_q d@@4) (exists ((|a#13#0#0| T@U) ) (! (= d@@4 (|#_module.cmd.Repeat| |a#13#0#0|))
+ :qid |Incdfy.4:45|
+ :skolemid |1159|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1160|
  :pattern ( (_module.cmd.Repeat_q d@@4))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
 )))
 (assert (forall ((|a#14#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.cmd.Repeat| |a#14#0#0|) Tclass._module.cmd) ($Is DatatypeTypeType |a#14#0#0| Tclass._module.cmd))
+ :qid |Incdfy.4:45|
+ :skolemid |1161|
  :pattern ( ($Is DatatypeTypeType (|#_module.cmd.Repeat| |a#14#0#0|) Tclass._module.cmd))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@2 T@U) (|c#0@@2| T@U) (|s#0@@2| Int) (|t#0@@2| Int) (|_k#0@@2| Int) ) (!  (=> (and ($Is DatatypeTypeType |c#0@@2| Tclass._module.cmd) (= |_k#0@@2| 0)) (not (_module.__default.NatBigStep_h $ly@@2 |_k#0@@2| |c#0@@2| |s#0@@2| |t#0@@2|)))
+ :qid |Incdfy.136:17|
+ :skolemid |861|
  :pattern ( (_module.__default.NatBigStep_h $ly@@2 |_k#0@@2| |c#0@@2| |s#0@@2| |t#0@@2|))
 ))))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.cmd.Seq| |a#4#0#0| |a#4#1#0|)) |##_module.cmd.Seq|)
+ :qid |Incdfy.4:26|
+ :skolemid |1145|
  :pattern ( (|#_module.cmd.Seq| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#8#0#0| T@U) (|a#8#1#0| T@U) ) (! (= (_module.cmd._h0 (|#_module.cmd.Seq| |a#8#0#0| |a#8#1#0|)) |a#8#0#0|)
+ :qid |Incdfy.4:26|
+ :skolemid |1153|
  :pattern ( (|#_module.cmd.Seq| |a#8#0#0| |a#8#1#0|))
 )))
 (assert (forall ((|a#10#0#0| T@U) (|a#10#1#0| T@U) ) (! (= (_module.cmd._h1 (|#_module.cmd.Seq| |a#10#0#0| |a#10#1#0|)) |a#10#1#0|)
+ :qid |Incdfy.4:26|
+ :skolemid |1155|
  :pattern ( (|#_module.cmd.Seq| |a#10#0#0| |a#10#1#0|))
 )))
 (assert (forall ((|a#12#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.cmd.Repeat| |a#12#0#0|)) |##_module.cmd.Repeat|)
+ :qid |Incdfy.4:45|
+ :skolemid |1157|
  :pattern ( (|#_module.cmd.Repeat| |a#12#0#0|))
 )))
 (assert (forall ((|a#16#0#0| T@U) ) (! (= (_module.cmd._h2 (|#_module.cmd.Repeat| |a#16#0#0|)) |a#16#0#0|)
+ :qid |Incdfy.4:45|
+ :skolemid |1164|
  :pattern ( (|#_module.cmd.Repeat| |a#16#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((d@@5 T@U) ) (!  (=> (|$IsA#_module.cmd| d@@5) (or (or (_module.cmd.Inc_q d@@5) (_module.cmd.Seq_q d@@5)) (_module.cmd.Repeat_q d@@5)))
+ :qid |unknown.0:0|
+ :skolemid |1167|
  :pattern ( (|$IsA#_module.cmd| d@@5))
 )))
 (assert (forall ((|a#9#0#0| T@U) (|a#9#1#0| T@U) ) (! (< (DtRank |a#9#0#0|) (DtRank (|#_module.cmd.Seq| |a#9#0#0| |a#9#1#0|)))
+ :qid |Incdfy.4:26|
+ :skolemid |1154|
  :pattern ( (|#_module.cmd.Seq| |a#9#0#0| |a#9#1#0|))
 )))
 (assert (forall ((|a#11#0#0| T@U) (|a#11#1#0| T@U) ) (! (< (DtRank |a#11#1#0|) (DtRank (|#_module.cmd.Seq| |a#11#0#0| |a#11#1#0|)))
+ :qid |Incdfy.4:26|
+ :skolemid |1156|
  :pattern ( (|#_module.cmd.Seq| |a#11#0#0| |a#11#1#0|))
 )))
 (assert (forall ((|a#17#0#0| T@U) ) (! (< (DtRank |a#17#0#0|) (DtRank (|#_module.cmd.Repeat| |a#17#0#0|)))
+ :qid |Incdfy.4:45|
+ :skolemid |1165|
  :pattern ( (|#_module.cmd.Repeat| |a#17#0#0|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1173|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@3 T@U) (|_k#0@@3| Int) (|c#0@@3| T@U) (|s#0@@3| Int) (|t#0@@3| Int) ) (!  (=> (or (|_module.__default.NatBigStep_h#canCall| |_k#0@@3| |c#0@@3| |s#0@@3| |t#0@@3|) (and (< 2 $FunctionContextHeight) (and (<= (LitInt 0) |_k#0@@3|) ($Is DatatypeTypeType |c#0@@3| Tclass._module.cmd)))) (and (=> (< 0 |_k#0@@3|) (=> (not (_module.cmd.Inc_q |c#0@@3|)) (and (=> (_module.cmd.Seq_q |c#0@@3|) (let ((|c1#3| (_module.cmd._h1 |c#0@@3|)))
 (let ((|c0#3| (_module.cmd._h0 |c#0@@3|)))
 (forall ((|s'#10| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@3| 1) |c0#3| |s#0@@3| |s'#10|) (=> (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c0#3| |s#0@@3| |s'#10|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@3| 1) |c1#3| |s'#10| |t#0@@3|)))
+ :qid |Incdfy.142:12|
+ :skolemid |878|
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c1#3| |s'#10| |t#0@@3|))
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c0#3| |s#0@@3| |s'#10|))
 ))))) (=> (not (_module.cmd.Seq_q |c#0@@3|)) (let ((|body#3| (_module.cmd._h2 |c#0@@3|)))
  (=> (or (not (= |s#0@@3| |t#0@@3|)) (not true)) (forall ((|s'#11| Int) ) (!  (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@3| 1) |body#3| |s#0@@3| |s'#11|) (=> (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |body#3| |s#0@@3| |s'#11|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@3| 1) |c#0@@3| |s'#11| |t#0@@3|)))
+ :qid |Incdfy.145:12|
+ :skolemid |879|
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c#0@@3| |s'#11| |t#0@@3|))
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |body#3| |s#0@@3| |s'#11|))
 )))))))) (= (_module.__default.NatBigStep_h ($LS $ly@@3) |_k#0@@3| |c#0@@3| |s#0@@3| |t#0@@3|)  (and (< 0 |_k#0@@3|) (ite (_module.cmd.Inc_q |c#0@@3|) (= |t#0@@3| (+ |s#0@@3| 1)) (ite (_module.cmd.Seq_q |c#0@@3|) (let ((|c1#2| (_module.cmd._h1 |c#0@@3|)))
 (let ((|c0#2| (_module.cmd._h0 |c#0@@3|)))
 (exists ((|s'#8| Int) ) (!  (and (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c0#2| |s#0@@3| |s'#8|) (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c1#2| |s'#8| |t#0@@3|))
+ :qid |Incdfy.142:12|
+ :skolemid |876|
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c1#2| |s'#8| |t#0@@3|))
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c0#2| |s#0@@3| |s'#8|))
 )))) (let ((|body#2| (_module.cmd._h2 |c#0@@3|)))
  (or (= |s#0@@3| |t#0@@3|) (exists ((|s'#9| Int) ) (!  (and (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |body#2| |s#0@@3| |s'#9|) (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c#0@@3| |s'#9| |t#0@@3|))
+ :qid |Incdfy.145:12|
+ :skolemid |877|
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |c#0@@3| |s'#9| |t#0@@3|))
  :pattern ( (_module.__default.NatBigStep_h $ly@@3 (- |_k#0@@3| 1) |body#2| |s#0@@3| |s'#9|))
 ))))))))))
+ :qid |Incdfy.136:17|
+ :skolemid |880|
  :pattern ( (_module.__default.NatBigStep_h ($LS $ly@@3) |_k#0@@3| |c#0@@3| |s#0@@3| |t#0@@3|))
 ))))
 (assert (forall ((d@@6 T@U) ) (!  (=> ($Is DatatypeTypeType d@@6 Tclass._module.cmd) (or (or (_module.cmd.Inc_q d@@6) (_module.cmd.Seq_q d@@6)) (_module.cmd.Repeat_q d@@6)))
+ :qid |unknown.0:0|
+ :skolemid |1168|
  :pattern ( (_module.cmd.Repeat_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.cmd))
  :pattern ( (_module.cmd.Seq_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.cmd))
  :pattern ( (_module.cmd.Inc_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.cmd))
 )))
 (assert (forall ((d@@7 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@7 Tclass._module.cmd)) ($IsAlloc DatatypeTypeType d@@7 Tclass._module.cmd $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1166|
  :pattern ( ($IsAlloc DatatypeTypeType d@@7 Tclass._module.cmd $h@@0))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
@@ -273,30 +380,48 @@
 (assert (= (TagFamily Tclass._module.cmd) tytagFamily$cmd))
 (assert (= |#_module.cmd.Inc| (Lit DatatypeTypeType |#_module.cmd.Inc|)))
 (assert (forall ((d@@8 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.cmd.Seq_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass._module.cmd $h@@1))) ($IsAlloc DatatypeTypeType (_module.cmd._h0 d@@8) Tclass._module.cmd $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1150|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.cmd._h0 d@@8) Tclass._module.cmd $h@@1))
 )))
 (assert (forall ((d@@9 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.cmd.Seq_q d@@9) ($IsAlloc DatatypeTypeType d@@9 Tclass._module.cmd $h@@2))) ($IsAlloc DatatypeTypeType (_module.cmd._h1 d@@9) Tclass._module.cmd $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1151|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.cmd._h1 d@@9) Tclass._module.cmd $h@@2))
 )))
 (assert (forall ((d@@10 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.cmd.Repeat_q d@@10) ($IsAlloc DatatypeTypeType d@@10 Tclass._module.cmd $h@@3))) ($IsAlloc DatatypeTypeType (_module.cmd._h2 d@@10) Tclass._module.cmd $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1162|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.cmd._h2 d@@10) Tclass._module.cmd $h@@3))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (= (|#_module.cmd.Seq| (Lit DatatypeTypeType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)) (Lit DatatypeTypeType (|#_module.cmd.Seq| |a#7#0#0| |a#7#1#0|)))
+ :qid |Incdfy.4:26|
+ :skolemid |1152|
  :pattern ( (|#_module.cmd.Seq| (Lit DatatypeTypeType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#15#0#0| T@U) ) (! (= (|#_module.cmd.Repeat| (Lit DatatypeTypeType |a#15#0#0|)) (Lit DatatypeTypeType (|#_module.cmd.Repeat| |a#15#0#0|)))
+ :qid |Incdfy.4:45|
+ :skolemid |1163|
  :pattern ( (|#_module.cmd.Repeat| (Lit DatatypeTypeType |a#15#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -335,6 +460,7 @@
 (declare-fun |let#0_0_0#0#0| () T@U)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun null () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.BadNatMonotonic3_h)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -354,40 +480,62 @@
 (let ((anon24_Else_correct true))
 (let ((anon22_Else_correct true))
 (let ((GeneratedUnifiedExit_correct  (=> (= (ControlFlow 0 2) (- 0 1)) (= |s#1| |t#1|))))
-(let ((anon6_correct  (=> (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|) (=> (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c1#6@0| |s'#15@0| |t#1|))) (and (=> (= (ControlFlow 0 29) (- 0 40)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| (LitInt 0) |t#1|))) (exists ((|$as#s'0_1_0#0| Int) )  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |$as#s'0_1_0#0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |$as#s'0_1_0#0| |t#1|))))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| (LitInt 0) |t#1|))) (exists ((|$as#s'0_1_0#0@@0| Int) )  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |$as#s'0_1_0#0@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |$as#s'0_1_0#0@@0| |t#1|)))) (=> (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#14@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |s'#14@0| |t#1|)) (and (=> (= (ControlFlow 0 29) (- 0 39)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##2@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 29) (- 0 38)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (< 0 |_k##2@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (< 0 |_k##2@0|))) (and (=> (= (ControlFlow 0 29) (- 0 37)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (_module.cmd.Inc_q |c0#6@0|) (= |s'#14@0| (+ |s#1| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (_module.cmd.Inc_q |c0#6@0|) (= |s'#14@0| (+ |s#1| 1))))) (and (=> (= (ControlFlow 0 29) (- 0 36)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (not (_module.cmd.Inc_q |c0#6@0|)) (=> (_module.cmd.Seq_q |c0#6@0|) (let ((|c1#2@@0| (_module.cmd._h1 |c0#6@0|)))
+(let ((anon6_correct  (=> (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|) (=> (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c1#6@0| |s'#15@0| |t#1|))) (and (=> (= (ControlFlow 0 29) (- 0 40)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| (LitInt 0) |t#1|))) (exists ((|$as#s'0_1_0#0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |$as#s'0_1_0#0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |$as#s'0_1_0#0| |t#1|))
+ :qid |Incdfy.249:9|
+ :skolemid |1036|
+)))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| (LitInt 0) |t#1|))) (exists ((|$as#s'0_1_0#0@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |$as#s'0_1_0#0@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |$as#s'0_1_0#0@@0| |t#1|))
+ :qid |Incdfy.249:9|
+ :skolemid |1036|
+))) (=> (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#14@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#6@0| |s'#14@0| |t#1|)) (and (=> (= (ControlFlow 0 29) (- 0 39)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##2@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 29) (- 0 38)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (< 0 |_k##2@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (< 0 |_k##2@0|))) (and (=> (= (ControlFlow 0 29) (- 0 37)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (_module.cmd.Inc_q |c0#6@0|) (= |s'#14@0| (+ |s#1| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (_module.cmd.Inc_q |c0#6@0|) (= |s'#14@0| (+ |s#1| 1))))) (and (=> (= (ControlFlow 0 29) (- 0 36)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (not (_module.cmd.Inc_q |c0#6@0|)) (=> (_module.cmd.Seq_q |c0#6@0|) (let ((|c1#2@@0| (_module.cmd._h1 |c0#6@0|)))
 (let ((|c0#2@@0| (_module.cmd._h0 |c0#6@0|)))
 (exists ((|s'#4| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c0#2@@0| |s#1| |s'#4|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c1#2@@0| |s'#4| |s'#14@0|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c1#2@@0| |s'#4| |s'#14@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c0#2@@0| |s#1| |s'#4|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (not (_module.cmd.Inc_q |c0#6@0|)) (=> (_module.cmd.Seq_q |c0#6@0|) (let ((|c1#2@@1| (_module.cmd._h1 |c0#6@0|)))
 (let ((|c0#2@@1| (_module.cmd._h0 |c0#6@0|)))
 (exists ((|s'#4@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c0#2@@1| |s#1| |s'#4@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c1#2@@1| |s'#4@@0| |s'#14@0|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c1#2@@1| |s'#4@@0| |s'#14@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##2@0| 1) |c0#2@@1| |s#1| |s'#4@@0|))
 )))))))) (and (=> (= (ControlFlow 0 29) (- 0 35)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (not (_module.cmd.Inc_q |c0#6@0|)) (=> (not (_module.cmd.Seq_q |c0#6@0|)) (let ((|body#2@@0| (_module.cmd._h2 |c0#6@0|)))
  (or (= |s#1| |s'#14@0|) (exists ((|s'#5| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |body#2@@0| |s#1| |s'#5|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |c0#6@0| |s'#5| |s'#14@0|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |c0#6@0| |s'#5| |s'#14@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |body#2@@0| |s#1| |s'#5|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##2@0| |c0#6@0| |s#1| |s'#14@0|) (=> (not (_module.cmd.Inc_q |c0#6@0|)) (=> (not (_module.cmd.Seq_q |c0#6@0|)) (let ((|body#2@@1| (_module.cmd._h2 |c0#6@0|)))
  (or (= |s#1| |s'#14@0|) (exists ((|s'#5@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |body#2@@1| |s#1| |s'#5@@0|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |c0#6@0| |s'#5@@0| |s'#14@0|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |c0#6@0| |s'#5@@0| |s'#14@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##2@0| 1) |body#2@@1| |s#1| |s'#5@@0|))
 )))))))) (=> (and (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (and (= |s#1| |s'#14@0|) (= $Heap $Heap@2))) (and (=> (= (ControlFlow 0 29) (- 0 34)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##3@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 29) (- 0 33)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (< 0 |_k##3@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (< 0 |_k##3@0|))) (and (=> (= (ControlFlow 0 29) (- 0 32)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (_module.cmd.Inc_q |c1#6@0|) (= |t#1| (+ |s'#14@0| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (_module.cmd.Inc_q |c1#6@0|) (= |t#1| (+ |s'#14@0| 1))))) (and (=> (= (ControlFlow 0 29) (- 0 31)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (not (_module.cmd.Inc_q |c1#6@0|)) (=> (_module.cmd.Seq_q |c1#6@0|) (let ((|c1#2@@2| (_module.cmd._h1 |c1#6@0|)))
 (let ((|c0#2@@2| (_module.cmd._h0 |c1#6@0|)))
 (exists ((|s'#4@@1| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c0#2@@2| |s'#14@0| |s'#4@@1|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c1#2@@2| |s'#4@@1| |t#1|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c1#2@@2| |s'#4@@1| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c0#2@@2| |s'#14@0| |s'#4@@1|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (not (_module.cmd.Inc_q |c1#6@0|)) (=> (_module.cmd.Seq_q |c1#6@0|) (let ((|c1#2@@3| (_module.cmd._h1 |c1#6@0|)))
 (let ((|c0#2@@3| (_module.cmd._h0 |c1#6@0|)))
 (exists ((|s'#4@@2| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c0#2@@3| |s'#14@0| |s'#4@@2|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c1#2@@3| |s'#4@@2| |t#1|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c1#2@@3| |s'#4@@2| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##3@0| 1) |c0#2@@3| |s'#14@0| |s'#4@@2|))
 )))))))) (and (=> (= (ControlFlow 0 29) (- 0 30)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (not (_module.cmd.Inc_q |c1#6@0|)) (=> (not (_module.cmd.Seq_q |c1#6@0|)) (let ((|body#2@@2| (_module.cmd._h2 |c1#6@0|)))
  (or (= |s'#14@0| |t#1|) (exists ((|s'#5@@1| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |body#2@@2| |s'#14@0| |s'#5@@1|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |c1#6@0| |s'#5@@1| |t#1|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |c1#6@0| |s'#5@@1| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |body#2@@2| |s'#14@0| |s'#5@@1|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##3@0| |c1#6@0| |s'#14@0| |t#1|) (=> (not (_module.cmd.Inc_q |c1#6@0|)) (=> (not (_module.cmd.Seq_q |c1#6@0|)) (let ((|body#2@@3| (_module.cmd._h2 |c1#6@0|)))
  (or (= |s'#14@0| |t#1|) (exists ((|s'#5@@2| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |body#2@@3| |s'#14@0| |s'#5@@2|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |c1#6@0| |s'#5@@2| |t#1|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |c1#6@0| |s'#5@@2| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##3@0| 1) |body#2@@3| |s'#14@0| |s'#5@@2|))
 )))))))) (=> (and (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (= |s'#14@0| |t#1|)) (and (= $Heap@2 $Heap@3) (= (ControlFlow 0 29) 2))) GeneratedUnifiedExit_correct))))))))))))))))))))))))))))))
@@ -395,40 +543,62 @@
 (let ((anon21_Then_correct  (=> (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|) (and (=> (= (ControlFlow 0 41) (- 0 42)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |##_k#3@0| (- |_k#0@@4| 1)) (=> (and ($IsAlloc intType (int_2_U |##_k#3@0|) Tclass._System.nat $Heap) ($IsAlloc DatatypeTypeType |c1#6@0| Tclass._module.cmd $Heap)) (=> (and (and ($IsAlloc intType (int_2_U |s'#15@0|) TInt $Heap) ($IsAlloc intType (int_2_U |t#1|) TInt $Heap)) (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c1#6@0| |s'#15@0| |t#1|) (= (ControlFlow 0 41) 29))) anon6_correct))))))))
 (let ((anon20_Then_correct  (and (=> (= (ControlFlow 0 44) (- 0 45)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (and (= |##_k#2@0| (- |_k#0@@4| 1)) ($IsAlloc intType (int_2_U |##_k#2@0|) Tclass._System.nat $Heap)) (=> (and (and ($IsAlloc DatatypeTypeType |c0#6@0| Tclass._module.cmd $Heap) ($IsAlloc intType (int_2_U |s#1|) TInt $Heap)) (and ($IsAlloc intType (int_2_U |s'#15@0|) TInt $Heap) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c0#6@0| |s#1| |s'#15@0|))) (and (=> (= (ControlFlow 0 44) 41) anon21_Then_correct) (=> (= (ControlFlow 0 44) 43) anon21_Else_correct))))))))
 (let ((anon19_Then_correct  (=> (= |c#1| (|#_module.cmd.Seq| |_mcc#0#0@0| |_mcc#1#0@0|)) (=> (and (and ($Is DatatypeTypeType |_mcc#0#0@0| Tclass._module.cmd) ($IsAlloc DatatypeTypeType |_mcc#0#0@0| Tclass._module.cmd $Heap)) (and ($Is DatatypeTypeType |_mcc#1#0@0| Tclass._module.cmd) ($IsAlloc DatatypeTypeType |_mcc#1#0@0| Tclass._module.cmd $Heap))) (=> (and (and (and (and ($Is DatatypeTypeType |c1#6@0| Tclass._module.cmd) ($IsAlloc DatatypeTypeType |c1#6@0| Tclass._module.cmd $Heap)) (= |let#0_1_0#0#0| |_mcc#1#0@0|)) (and ($Is DatatypeTypeType |let#0_1_0#0#0| Tclass._module.cmd) (= |c1#6@0| |let#0_1_0#0#0|))) (and (and (and ($Is DatatypeTypeType |c0#6@0| Tclass._module.cmd) ($IsAlloc DatatypeTypeType |c0#6@0| Tclass._module.cmd $Heap)) (= |let#0_1_1#0#0| |_mcc#0#0@0|)) (and ($Is DatatypeTypeType |let#0_1_1#0#0| Tclass._module.cmd) (= |c0#6@0| |let#0_1_1#0#0|)))) (and (=> (= (ControlFlow 0 46) 44) anon20_Then_correct) (=> (= (ControlFlow 0 46) 28) anon20_Else_correct)))))))
-(let ((anon13_correct  (=> (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#13@0|) (=> (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#13@0|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c#1| |s'#13@0| |t#1|))) (and (=> (= (ControlFlow 0 8) (- 0 19)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| (LitInt 0) |t#1|))) (exists ((|$as#s'0_0_1_0#0| Int) )  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |$as#s'0_0_1_0#0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |$as#s'0_0_1_0#0| |t#1|))))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| (LitInt 0) |t#1|))) (exists ((|$as#s'0_0_1_0#0@@0| Int) )  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |$as#s'0_0_1_0#0@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |$as#s'0_0_1_0#0@@0| |t#1|)))) (=> (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#12@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |s'#12@0| |t#1|)) (and (=> (= (ControlFlow 0 8) (- 0 18)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##0@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 8) (- 0 17)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (< 0 |_k##0@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (< 0 |_k##0@0|))) (and (=> (= (ControlFlow 0 8) (- 0 16)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (_module.cmd.Inc_q |body#6@0|) (= |s'#12@0| (+ |s#1| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (_module.cmd.Inc_q |body#6@0|) (= |s'#12@0| (+ |s#1| 1))))) (and (=> (= (ControlFlow 0 8) (- 0 15)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (not (_module.cmd.Inc_q |body#6@0|)) (=> (_module.cmd.Seq_q |body#6@0|) (let ((|c1#2@@4| (_module.cmd._h1 |body#6@0|)))
+(let ((anon13_correct  (=> (and (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#13@0|) (=> (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#13@0|) (|_module.__default.NatBigStep_h#canCall| (- |_k#0@@4| 1) |c#1| |s'#13@0| |t#1|))) (and (=> (= (ControlFlow 0 8) (- 0 19)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| (LitInt 0) |t#1|))) (exists ((|$as#s'0_0_1_0#0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |$as#s'0_0_1_0#0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |$as#s'0_0_1_0#0| |t#1|))
+ :qid |Incdfy.255:11|
+ :skolemid |1033|
+)))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| (LitInt 0)) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| (LitInt 0) |t#1|))) (exists ((|$as#s'0_0_1_0#0@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |$as#s'0_0_1_0#0@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |$as#s'0_0_1_0#0@@0| |t#1|))
+ :qid |Incdfy.255:11|
+ :skolemid |1033|
+))) (=> (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#6@0| |s#1| |s'#12@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |s'#12@0| |t#1|)) (and (=> (= (ControlFlow 0 8) (- 0 18)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##0@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 8) (- 0 17)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (< 0 |_k##0@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (< 0 |_k##0@0|))) (and (=> (= (ControlFlow 0 8) (- 0 16)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (_module.cmd.Inc_q |body#6@0|) (= |s'#12@0| (+ |s#1| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (_module.cmd.Inc_q |body#6@0|) (= |s'#12@0| (+ |s#1| 1))))) (and (=> (= (ControlFlow 0 8) (- 0 15)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (not (_module.cmd.Inc_q |body#6@0|)) (=> (_module.cmd.Seq_q |body#6@0|) (let ((|c1#2@@4| (_module.cmd._h1 |body#6@0|)))
 (let ((|c0#2@@4| (_module.cmd._h0 |body#6@0|)))
 (exists ((|s'#4@@3| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c0#2@@4| |s#1| |s'#4@@3|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c1#2@@4| |s'#4@@3| |s'#12@0|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c1#2@@4| |s'#4@@3| |s'#12@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c0#2@@4| |s#1| |s'#4@@3|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (not (_module.cmd.Inc_q |body#6@0|)) (=> (_module.cmd.Seq_q |body#6@0|) (let ((|c1#2@@5| (_module.cmd._h1 |body#6@0|)))
 (let ((|c0#2@@5| (_module.cmd._h0 |body#6@0|)))
 (exists ((|s'#4@@4| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c0#2@@5| |s#1| |s'#4@@4|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c1#2@@5| |s'#4@@4| |s'#12@0|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c1#2@@5| |s'#4@@4| |s'#12@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##0@0| 1) |c0#2@@5| |s#1| |s'#4@@4|))
 )))))))) (and (=> (= (ControlFlow 0 8) (- 0 14)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (not (_module.cmd.Inc_q |body#6@0|)) (=> (not (_module.cmd.Seq_q |body#6@0|)) (let ((|body#2@@4| (_module.cmd._h2 |body#6@0|)))
  (or (= |s#1| |s'#12@0|) (exists ((|s'#5@@3| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#2@@4| |s#1| |s'#5@@3|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#6@0| |s'#5@@3| |s'#12@0|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#6@0| |s'#5@@3| |s'#12@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#2@@4| |s#1| |s'#5@@3|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##0@0| |body#6@0| |s#1| |s'#12@0|) (=> (not (_module.cmd.Inc_q |body#6@0|)) (=> (not (_module.cmd.Seq_q |body#6@0|)) (let ((|body#2@@5| (_module.cmd._h2 |body#6@0|)))
  (or (= |s#1| |s'#12@0|) (exists ((|s'#5@@4| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#2@@5| |s#1| |s'#5@@4|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#6@0| |s'#5@@4| |s'#12@0|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#6@0| |s'#5@@4| |s'#12@0|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##0@0| 1) |body#2@@5| |s#1| |s'#5@@4|))
 )))))))) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= |s#1| |s'#12@0|) (= $Heap $Heap@0))) (and (=> (= (ControlFlow 0 8) (- 0 13)) ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (- |_k#0@@4| 1)) Tclass._System.nat) (=> (= |_k##1@0| (- |_k#0@@4| 1)) (and (=> (= (ControlFlow 0 8) (- 0 12)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (< 0 |_k##1@0|)))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (< 0 |_k##1@0|))) (and (=> (= (ControlFlow 0 8) (- 0 11)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (_module.cmd.Inc_q |c#1|) (= |t#1| (+ |s'#12@0| 1)))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (_module.cmd.Inc_q |c#1|) (= |t#1| (+ |s'#12@0| 1))))) (and (=> (= (ControlFlow 0 8) (- 0 10)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (not (_module.cmd.Inc_q |c#1|)) (=> (_module.cmd.Seq_q |c#1|) (let ((|c1#2@@6| (_module.cmd._h1 |c#1|)))
 (let ((|c0#2@@6| (_module.cmd._h0 |c#1|)))
 (exists ((|s'#4@@5| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c0#2@@6| |s'#12@0| |s'#4@@5|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c1#2@@6| |s'#4@@5| |t#1|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c1#2@@6| |s'#4@@5| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c0#2@@6| |s'#12@0| |s'#4@@5|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (not (_module.cmd.Inc_q |c#1|)) (=> (_module.cmd.Seq_q |c#1|) (let ((|c1#2@@7| (_module.cmd._h1 |c#1|)))
 (let ((|c0#2@@7| (_module.cmd._h0 |c#1|)))
 (exists ((|s'#4@@6| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c0#2@@7| |s'#12@0| |s'#4@@6|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c1#2@@7| |s'#4@@6| |t#1|))
+ :qid |Incdfy.142:12|
+ :skolemid |1023|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c1#2@@7| |s'#4@@6| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k##1@0| 1) |c0#2@@7| |s'#12@0| |s'#4@@6|))
 )))))))) (and (=> (= (ControlFlow 0 8) (- 0 9)) (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (not (_module.cmd.Inc_q |c#1|)) (=> (not (_module.cmd.Seq_q |c#1|)) (let ((|body#2@@6| (_module.cmd._h2 |c#1|)))
  (or (= |s'#12@0| |t#1|) (exists ((|s'#5@@5| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |body#2@@6| |s'#12@0| |s'#5@@5|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |c#1| |s'#5@@5| |t#1|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |c#1| |s'#5@@5| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |body#2@@6| |s'#12@0| |s'#5@@5|))
 ))))))))) (=> (=> (|_module.__default.NatBigStep_h#canCall| |_k##1@0| |c#1| |s'#12@0| |t#1|) (or (_module.__default.NatBigStep_h ($LS $LZ) |_k##1@0| |c#1| |s'#12@0| |t#1|) (=> (not (_module.cmd.Inc_q |c#1|)) (=> (not (_module.cmd.Seq_q |c#1|)) (let ((|body#2@@7| (_module.cmd._h2 |c#1|)))
  (or (= |s'#12@0| |t#1|) (exists ((|s'#5@@6| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |body#2@@7| |s'#12@0| |s'#5@@6|) (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |c#1| |s'#5@@6| |t#1|))
+ :qid |Incdfy.145:12|
+ :skolemid |1025|
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |c#1| |s'#5@@6| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS ($LS $LZ)) (- |_k##1@0| 1) |body#2@@7| |s'#12@0| |s'#5@@6|))
 )))))))) (=> (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (= |s'#12@0| |t#1|)) (and (= $Heap@0 $Heap@1) (= (ControlFlow 0 8) 2))) GeneratedUnifiedExit_correct))))))))))))))))))))))))))))))
@@ -447,10 +617,14 @@
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (<= (LitInt 0) |_k#0@@4|)) (=> (and (and (and (and ($Is DatatypeTypeType |c#1| Tclass._module.cmd) ($IsAlloc DatatypeTypeType |c#1| Tclass._module.cmd $Heap)) (|$IsA#_module.cmd| |c#1|)) (= 3 $FunctionContextHeight)) (and (and (|_module.__default.NatBigStep_h#canCall| |_k#0@@4| |c#1| |s#1| |t#1|) (and (_module.__default.NatBigStep_h ($LS $LZ) |_k#0@@4| |c#1| |s#1| |t#1|) (and (< 0 |_k#0@@4|) (ite (_module.cmd.Inc_q |c#1|) (= |t#1| (+ |s#1| 1)) (ite (_module.cmd.Seq_q |c#1|) (let ((|c1#5@@0| (_module.cmd._h1 |c#1|)))
 (let ((|c0#5@@0| (_module.cmd._h0 |c#1|)))
 (exists ((|s'#10@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#5@@0| |s#1| |s'#10@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#5@@0| |s'#10@@0| |t#1|))
+ :qid |Incdfy.142:12|
+ :skolemid |1031|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c1#5@@0| |s'#10@@0| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c0#5@@0| |s#1| |s'#10@@0|))
 )))) (let ((|body#5@@0| (_module.cmd._h2 |c#1|)))
  (or (= |s#1| |t#1|) (exists ((|s'#11@@0| Int) ) (!  (and (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#5@@0| |s#1| |s'#11@@0|) (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |s'#11@@0| |t#1|))
+ :qid |Incdfy.145:12|
+ :skolemid |1032|
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |c#1| |s'#11@@0| |t#1|))
  :pattern ( (_module.__default.NatBigStep_h ($LS $LZ) (- |_k#0@@4| 1) |body#5@@0| |s#1| |s'#11@@0|))
 ))))))))) (= (ControlFlow 0 50) 49))) anon0_correct))))

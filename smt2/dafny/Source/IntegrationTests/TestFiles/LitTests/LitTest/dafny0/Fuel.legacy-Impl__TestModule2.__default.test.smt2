@@ -67,110 +67,173 @@
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall (($ly T@U) ($reveal Bool) (|x#0| Int) ) (! (= (TestModule2.__default.pos4 $ly $reveal |x#0|) (TestModule2.__default.pos4 $LZ $reveal |x#0|))
+ :qid |Fuellegacydfy.42:40|
+ :skolemid |1088|
  :pattern ( (TestModule2.__default.pos4 (AsFuelBottom $ly) $reveal |x#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|x#0@@0| Int) ) (!  (=> (or (|TestModule2.__default.pos4#canCall| |x#0@@0|) (< 1 $FunctionContextHeight)) (and (=> (<= 0 |x#0@@0|) (|TestModule2.__default.pos3#canCall| (- |x#0@@0| 1))) (= (TestModule2.__default.pos4 ($LS $ly@@0) true |x#0@@0|) (ite (< |x#0@@0| 0) 0 (+ 1 (TestModule2.__default.pos3 StartFuelAssert_TestModule2._default.pos3 (- |x#0@@0| 1)))))))
+ :qid |Fuellegacydfy.42:40|
+ :skolemid |1091|
  :pattern ( (TestModule2.__default.pos4 ($LS $ly@@0) true |x#0@@0|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |555|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |553|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |564|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@1 T@U) (|x#0@@1| Int) ) (!  (=> (or (|TestModule2.__default.pos1#canCall| |x#0@@1|) (< 0 $FunctionContextHeight)) (and (=> (<= 0 |x#0@@1|) (|TestModule2.__default.pos1#canCall| (- |x#0@@1| 1))) (= (TestModule2.__default.pos1 ($LS $ly@@1) |x#0@@1|) (ite (< |x#0@@1| 0) 0 (+ 1 (TestModule2.__default.pos1 $ly@@1 (- |x#0@@1| 1)))))))
+ :qid |Fuellegacydfy.24:30|
+ :skolemid |1070|
  :pattern ( (TestModule2.__default.pos1 ($LS $ly@@1) |x#0@@1|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@2 T@U) (|x#0@@2| Int) ) (!  (=> (or (|TestModule2.__default.pos2#canCall| |x#0@@2|) (< 0 $FunctionContextHeight)) (and (=> (<= 0 |x#0@@2|) (|TestModule2.__default.pos2#canCall| (- |x#0@@2| 1))) (= (TestModule2.__default.pos2 ($LS $ly@@2) |x#0@@2|) (ite (< |x#0@@2| 0) 0 (+ 1 (TestModule2.__default.pos2 $ly@@2 (- |x#0@@2| 1)))))))
+ :qid |Fuellegacydfy.30:30|
+ :skolemid |1077|
  :pattern ( (TestModule2.__default.pos2 ($LS $ly@@2) |x#0@@2|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@3 T@U) (|x#0@@3| Int) ) (!  (=> (or (|TestModule2.__default.pos3#canCall| |x#0@@3|) (< 0 $FunctionContextHeight)) (and (=> (<= 0 |x#0@@3|) (|TestModule2.__default.pos3#canCall| (- |x#0@@3| 1))) (= (TestModule2.__default.pos3 ($LS $ly@@3) |x#0@@3|) (ite (< |x#0@@3| 0) 0 (+ 1 (TestModule2.__default.pos3 $ly@@3 (- |x#0@@3| 1)))))))
+ :qid |Fuellegacydfy.36:30|
+ :skolemid |1084|
  :pattern ( (TestModule2.__default.pos3 ($LS $ly@@3) |x#0@@3|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@4 T@U) (|x#0@@4| Int) ) (!  (=> (or (|TestModule2.__default.pos4#canCall| (LitInt |x#0@@4|)) (< 1 $FunctionContextHeight)) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (< |x#0@@4| 0))))) (|TestModule2.__default.pos3#canCall| (LitInt (- |x#0@@4| 1)))) (= (TestModule2.__default.pos4 ($LS $ly@@4) true (LitInt |x#0@@4|)) (ite (< |x#0@@4| 0) 0 (+ 1 (TestModule2.__default.pos3 StartFuelAssert_TestModule2._default.pos3 (LitInt (- |x#0@@4| 1))))))))
+ :qid |Fuellegacydfy.42:40|
  :weight 3
+ :skolemid |1092|
  :pattern ( (TestModule2.__default.pos4 ($LS $ly@@4) true (LitInt |x#0@@4|)))
 ))))
 (assert (forall (($ly@@5 T@U) ($reveal@@0 Bool) (|x#0@@5| Int) ) (! (= (TestModule2.__default.pos4 ($LS $ly@@5) $reveal@@0 |x#0@@5|) (TestModule2.__default.pos4 $ly@@5 $reveal@@0 |x#0@@5|))
+ :qid |Fuellegacydfy.42:40|
+ :skolemid |1087|
  :pattern ( (TestModule2.__default.pos4 ($LS $ly@@5) $reveal@@0 |x#0@@5|))
 )))
 (assert (forall (($ly@@6 T@U) (|x#0@@6| Int) ) (! (= (TestModule2.__default.pos1 $ly@@6 |x#0@@6|) (TestModule2.__default.pos1 $LZ |x#0@@6|))
+ :qid |Fuellegacydfy.24:30|
+ :skolemid |1067|
  :pattern ( (TestModule2.__default.pos1 (AsFuelBottom $ly@@6) |x#0@@6|))
 )))
 (assert (forall (($ly@@7 T@U) (|x#0@@7| Int) ) (! (= (TestModule2.__default.pos2 $ly@@7 |x#0@@7|) (TestModule2.__default.pos2 $LZ |x#0@@7|))
+ :qid |Fuellegacydfy.30:30|
+ :skolemid |1074|
  :pattern ( (TestModule2.__default.pos2 (AsFuelBottom $ly@@7) |x#0@@7|))
 )))
 (assert (forall (($ly@@8 T@U) (|x#0@@8| Int) ) (! (= (TestModule2.__default.pos3 $ly@@8 |x#0@@8|) (TestModule2.__default.pos3 $LZ |x#0@@8|))
+ :qid |Fuellegacydfy.36:30|
+ :skolemid |1081|
  :pattern ( (TestModule2.__default.pos3 (AsFuelBottom $ly@@8) |x#0@@8|))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@9 T@U) (|x#0@@9| Int) ) (!  (=> (or (|TestModule2.__default.pos1#canCall| (LitInt |x#0@@9|)) (< 0 $FunctionContextHeight)) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (< |x#0@@9| 0))))) (|TestModule2.__default.pos1#canCall| (LitInt (- |x#0@@9| 1)))) (= (TestModule2.__default.pos1 ($LS $ly@@9) (LitInt |x#0@@9|)) (ite (< |x#0@@9| 0) 0 (+ 1 (TestModule2.__default.pos1 ($LS $ly@@9) (LitInt (- |x#0@@9| 1))))))))
+ :qid |Fuellegacydfy.24:30|
  :weight 3
+ :skolemid |1071|
  :pattern ( (TestModule2.__default.pos1 ($LS $ly@@9) (LitInt |x#0@@9|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@10 T@U) (|x#0@@10| Int) ) (!  (=> (or (|TestModule2.__default.pos2#canCall| (LitInt |x#0@@10|)) (< 0 $FunctionContextHeight)) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (< |x#0@@10| 0))))) (|TestModule2.__default.pos2#canCall| (LitInt (- |x#0@@10| 1)))) (= (TestModule2.__default.pos2 ($LS $ly@@10) (LitInt |x#0@@10|)) (ite (< |x#0@@10| 0) 0 (+ 1 (TestModule2.__default.pos2 ($LS $ly@@10) (LitInt (- |x#0@@10| 1))))))))
+ :qid |Fuellegacydfy.30:30|
  :weight 3
+ :skolemid |1078|
  :pattern ( (TestModule2.__default.pos2 ($LS $ly@@10) (LitInt |x#0@@10|)))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@11 T@U) (|x#0@@11| Int) ) (!  (=> (or (|TestModule2.__default.pos3#canCall| (LitInt |x#0@@11|)) (< 0 $FunctionContextHeight)) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (< |x#0@@11| 0))))) (|TestModule2.__default.pos3#canCall| (LitInt (- |x#0@@11| 1)))) (= (TestModule2.__default.pos3 ($LS $ly@@11) (LitInt |x#0@@11|)) (ite (< |x#0@@11| 0) 0 (+ 1 (TestModule2.__default.pos3 ($LS $ly@@11) (LitInt (- |x#0@@11| 1))))))))
+ :qid |Fuellegacydfy.36:30|
  :weight 3
+ :skolemid |1085|
  :pattern ( (TestModule2.__default.pos3 ($LS $ly@@11) (LitInt |x#0@@11|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |563|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall (($ly@@12 T@U) (|x#0@@12| Int) ) (! (= (TestModule2.__default.pos1 ($LS $ly@@12) |x#0@@12|) (TestModule2.__default.pos1 $ly@@12 |x#0@@12|))
+ :qid |Fuellegacydfy.24:30|
+ :skolemid |1066|
  :pattern ( (TestModule2.__default.pos1 ($LS $ly@@12) |x#0@@12|))
 )))
 (assert (forall (($ly@@13 T@U) (|x#0@@13| Int) ) (! (= (TestModule2.__default.pos2 ($LS $ly@@13) |x#0@@13|) (TestModule2.__default.pos2 $ly@@13 |x#0@@13|))
+ :qid |Fuellegacydfy.30:30|
+ :skolemid |1073|
  :pattern ( (TestModule2.__default.pos2 ($LS $ly@@13) |x#0@@13|))
 )))
 (assert (forall (($ly@@14 T@U) (|x#0@@14| Int) ) (! (= (TestModule2.__default.pos3 ($LS $ly@@14) |x#0@@14|) (TestModule2.__default.pos3 $ly@@14 |x#0@@14|))
+ :qid |Fuellegacydfy.36:30|
+ :skolemid |1080|
  :pattern ( (TestModule2.__default.pos3 ($LS $ly@@14) |x#0@@14|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |8321|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |556|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |554|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |599|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (push 1)
@@ -204,6 +267,7 @@
 (declare-fun |##x#7@0| () Int)
 (declare-fun |##x#9@0| () Int)
 (declare-fun |##x#11@0| () Int)
+(set-info :boogie-vc-id Impl$$TestModule2.__default.test)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

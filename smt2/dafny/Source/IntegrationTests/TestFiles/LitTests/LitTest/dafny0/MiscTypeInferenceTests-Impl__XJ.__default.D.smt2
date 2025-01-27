@@ -79,16 +79,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TReal TagInt TagReal alloc allocName Tagclass.XJ.Cell Tagclass.XJ.Cell? class.XJ.Cell? tytagFamily$Cell field$data)
@@ -99,9 +105,13 @@
 (assert (= (DeclName alloc) allocName))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass.XJ.Cell?)  (or (= $o null) (= (dtype $o) Tclass.XJ.Cell?)))
+ :qid |unknown.0:0|
+ :skolemid |2974|
  :pattern ( ($Is refType $o Tclass.XJ.Cell?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass.XJ.Cell $h) ($IsAlloc refType |c#0| Tclass.XJ.Cell? $h))
+ :qid |unknown.0:0|
+ :skolemid |2979|
  :pattern ( ($IsAlloc refType |c#0| Tclass.XJ.Cell $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass.XJ.Cell? $h))
 )))
@@ -109,61 +119,96 @@
 (assert (= (FieldOfDecl class.XJ.Cell? field$data) XJ.Cell.data))
 (assert  (not ($IsGhostField XJ.Cell.data)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass.XJ.Cell? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2975|
  :pattern ( ($IsAlloc refType $o@@0 Tclass.XJ.Cell? $h@@0))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2497|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 Real) ) (! (= (LitReal x@@3) x@@3)
+ :qid |DafnyPreludebpl.111:30|
+ :skolemid |2499|
  :pattern ( (LitReal x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T T@T) ) (! (= (Lit T x@@4) x@@4)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2495|
  :pattern ( (Lit T x@@4))
 )))
 (assert (forall ((x@@5 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2506|
  :pattern ( ($Unbox T@@0 x@@5))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|z#0| Real) ) (!  (=> (or (|XJ.__default.Z#canCall| |z#0|) (< 0 $FunctionContextHeight)) (= (XJ.__default.Z |z#0|) (= |z#0| (LitReal 3.14))))
+ :qid |MiscTypeInferenceTestsdfy.100:15|
+ :skolemid |2961|
  :pattern ( (XJ.__default.Z |z#0|))
 ))))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@1 T@U) ($o@@1 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@1) (and (or (not (= $o@@1 null)) (not true)) (= (dtype $o@@1) Tclass.XJ.Cell?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) XJ.Cell.data)) TInt $h@@1))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2977|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) XJ.Cell.data)))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass.XJ.Cell)  (and ($Is refType |c#0@@0| Tclass.XJ.Cell?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2978|
  :pattern ( ($Is refType |c#0@@0| Tclass.XJ.Cell))
  :pattern ( ($Is refType |c#0@@0| Tclass.XJ.Cell?))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|z#0@@0| Real) ) (!  (=> (or (|XJ.__default.Z#canCall| (LitReal |z#0@@0|)) (< 0 $FunctionContextHeight)) (= (XJ.__default.Z (LitReal |z#0@@0|)) (= (LitReal |z#0@@0|) (LitReal 3.14))))
+ :qid |MiscTypeInferenceTestsdfy.100:15|
  :weight 3
+ :skolemid |2962|
  :pattern ( (XJ.__default.Z (LitReal |z#0@@0|)))
 ))))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |2587|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((x@@6 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2505|
  :pattern ( ($Box T@@1 x@@6))
 )))
 (assert (forall (($h@@2 T@U) ($o@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@2 null)) (not true)) (= (dtype $o@@2) Tclass.XJ.Cell?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@2) XJ.Cell.data)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |2976|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@2) XJ.Cell.data)))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |4978|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))
 )))
 (assert (= (Tag Tclass.XJ.Cell) Tagclass.XJ.Cell))
@@ -171,24 +216,38 @@
 (assert (= (Tag Tclass.XJ.Cell?) Tagclass.XJ.Cell?))
 (assert (= (TagFamily Tclass.XJ.Cell?) tytagFamily$Cell))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2498|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 Real) ) (! (= ($Box realType (real_2_U (LitReal x@@8))) (Lit BoxType ($Box realType (real_2_U x@@8))))
+ :qid |DafnyPreludebpl.112:15|
+ :skolemid |2500|
  :pattern ( ($Box realType (real_2_U (LitReal x@@8))))
 )))
 (assert (forall ((x@@9 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@9)) (Lit BoxType ($Box T@@2 x@@9)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2496|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@9)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |2541|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((h@@0 T@U) (v@@0 T@U) ) (! ($IsAlloc realType v@@0 TReal h@@0)
+ :qid |DafnyPreludebpl.290:14|
+ :skolemid |2542|
  :pattern ( ($IsAlloc realType v@@0 TReal h@@0))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |2520|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is realType v@@2 TReal)
+ :qid |DafnyPreludebpl.229:14|
+ :skolemid |2521|
  :pattern ( ($Is realType v@@2 TReal))
 )))
 (push 1)
@@ -218,6 +277,7 @@
 (declare-fun |y'3#0| () T@U)
 (declare-fun |defass#y'4#0| () Bool)
 (declare-fun |y'4#0| () T@U)
+(set-info :boogie-vc-id Impl$$XJ.__default.D)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -234,23 +294,56 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 30) (let ((anon21_Else_correct true))
-(let ((anon21_Then_correct  (=> (and (and ($IsAlloc realType (real_2_U |z#1@0|) TReal $Heap) (|XJ.__default.Z#canCall| |z#1@0|)) (and (|XJ.__default.Z#canCall| |z#1@0|) (= (ControlFlow 0 2) (- 0 1)))) (or (and ($Is realType (real_2_U (LitReal 0.0)) TReal) (U_2_bool (Lit boolType (bool_2_U (XJ.__default.Z (LitReal 0.0)))))) (exists ((|$as#z0#0| Real) ) (XJ.__default.Z |$as#z0#0|))))))
-(let ((anon12_correct  (and (=> (= (ControlFlow 0 4) (- 0 5)) (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U false)))) (exists ((|$as#y'40#0| T@U) )  (and (and ($Is refType |$as#y'40#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'40#0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U false))))))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U false)))) (exists ((|$as#y'40#0@@0| T@U) )  (and (and ($Is refType |$as#y'40#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'40#0@@0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U false)))))) (=> (and (=> true (and ($Is refType |y'4#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y'4#0@0| Tclass.XJ.Cell $Heap))) (U_2_bool (Lit boolType (bool_2_U false)))) (and (=> (= (ControlFlow 0 4) 2) anon21_Then_correct) (=> (= (ControlFlow 0 4) 3) anon21_Else_correct)))))))
+(let ((anon21_Then_correct  (=> (and (and ($IsAlloc realType (real_2_U |z#1@0|) TReal $Heap) (|XJ.__default.Z#canCall| |z#1@0|)) (and (|XJ.__default.Z#canCall| |z#1@0|) (= (ControlFlow 0 2) (- 0 1)))) (or (and ($Is realType (real_2_U (LitReal 0.0)) TReal) (U_2_bool (Lit boolType (bool_2_U (XJ.__default.Z (LitReal 0.0)))))) (exists ((|$as#z0#0| Real) ) (! (XJ.__default.Z |$as#z0#0|)
+ :qid |MiscTypeInferenceTestsdfy.111:9|
+ :skolemid |2973|
+))))))
+(let ((anon12_correct  (and (=> (= (ControlFlow 0 4) (- 0 5)) (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U false)))) (exists ((|$as#y'40#0| T@U) ) (!  (and (and ($Is refType |$as#y'40#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'40#0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U false))))
+ :qid |MiscTypeInferenceTestsdfy.110:9|
+ :skolemid |2972|
+)))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U false)))) (exists ((|$as#y'40#0@@0| T@U) ) (!  (and (and ($Is refType |$as#y'40#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'40#0@@0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U false))))
+ :qid |MiscTypeInferenceTestsdfy.110:9|
+ :skolemid |2972|
+))) (=> (and (=> true (and ($Is refType |y'4#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y'4#0@0| Tclass.XJ.Cell $Heap))) (U_2_bool (Lit boolType (bool_2_U false)))) (and (=> (= (ControlFlow 0 4) 2) anon21_Then_correct) (=> (= (ControlFlow 0 4) 3) anon21_Else_correct)))))))
 (let ((anon20_Else_correct  (=> (and (not (and ($Is refType |y'4#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y'4#1@0| Tclass.XJ.Cell $Heap))) (= (ControlFlow 0 7) 4)) anon12_correct)))
 (let ((anon20_Then_correct  (=> (and (and ($Is refType |y'4#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y'4#1@0| Tclass.XJ.Cell $Heap)) (= (ControlFlow 0 6) 4)) anon12_correct)))
-(let ((anon10_correct  (and (=> (= (ControlFlow 0 8) (- 0 9)) (or (and ($Is refType null Tclass.XJ.Cell) (= |k#0| (LitInt 113))) (exists ((|$as#y'30#0| T@U) )  (and (and ($Is refType |$as#y'30#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'30#0| Tclass.XJ.Cell $Heap)) (= |k#0| (LitInt 113)))))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (= |k#0| (LitInt 113))) (exists ((|$as#y'30#0@@0| T@U) )  (and (and ($Is refType |$as#y'30#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'30#0@@0| Tclass.XJ.Cell $Heap)) (= |k#0| (LitInt 113))))) (=> (and (=> true (and ($Is refType |y'3#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y'3#0@0| Tclass.XJ.Cell $Heap))) (= |k#0| (LitInt 113))) (and (=> (= (ControlFlow 0 8) 6) anon20_Then_correct) (=> (= (ControlFlow 0 8) 7) anon20_Else_correct)))))))
+(let ((anon10_correct  (and (=> (= (ControlFlow 0 8) (- 0 9)) (or (and ($Is refType null Tclass.XJ.Cell) (= |k#0| (LitInt 113))) (exists ((|$as#y'30#0| T@U) ) (!  (and (and ($Is refType |$as#y'30#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'30#0| Tclass.XJ.Cell $Heap)) (= |k#0| (LitInt 113)))
+ :qid |MiscTypeInferenceTestsdfy.109:9|
+ :skolemid |2971|
+)))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (= |k#0| (LitInt 113))) (exists ((|$as#y'30#0@@0| T@U) ) (!  (and (and ($Is refType |$as#y'30#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y'30#0@@0| Tclass.XJ.Cell $Heap)) (= |k#0| (LitInt 113)))
+ :qid |MiscTypeInferenceTestsdfy.109:9|
+ :skolemid |2971|
+))) (=> (and (=> true (and ($Is refType |y'3#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y'3#0@0| Tclass.XJ.Cell $Heap))) (= |k#0| (LitInt 113))) (and (=> (= (ControlFlow 0 8) 6) anon20_Then_correct) (=> (= (ControlFlow 0 8) 7) anon20_Else_correct)))))))
 (let ((anon19_Else_correct  (=> (and (not (and ($Is refType |y'3#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y'3#1@0| Tclass.XJ.Cell $Heap))) (= (ControlFlow 0 11) 8)) anon10_correct)))
 (let ((anon19_Then_correct  (=> (and (and ($Is refType |y'3#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y'3#1@0| Tclass.XJ.Cell $Heap)) (= (ControlFlow 0 10) 8)) anon10_correct)))
-(let ((anon8_correct  (and (=> (= (ControlFlow 0 12) (- 0 13)) (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U true)))) (exists ((|$as#y''0#0| T@U) )  (and (and ($Is refType |$as#y''0#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y''0#0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U true))))))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U true)))) (exists ((|$as#y''0#0@@0| T@U) )  (and (and ($Is refType |$as#y''0#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y''0#0@@0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U true)))))) (=> (=> true (and ($Is refType |y''#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y''#0@0| Tclass.XJ.Cell $Heap))) (and (=> (= (ControlFlow 0 12) 10) anon19_Then_correct) (=> (= (ControlFlow 0 12) 11) anon19_Else_correct)))))))
+(let ((anon8_correct  (and (=> (= (ControlFlow 0 12) (- 0 13)) (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U true)))) (exists ((|$as#y''0#0| T@U) ) (!  (and (and ($Is refType |$as#y''0#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y''0#0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U true))))
+ :qid |MiscTypeInferenceTestsdfy.107:9|
+ :skolemid |2970|
+)))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (U_2_bool (Lit boolType (bool_2_U true)))) (exists ((|$as#y''0#0@@0| T@U) ) (!  (and (and ($Is refType |$as#y''0#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y''0#0@@0| Tclass.XJ.Cell $Heap)) (U_2_bool (Lit boolType (bool_2_U true))))
+ :qid |MiscTypeInferenceTestsdfy.107:9|
+ :skolemid |2970|
+))) (=> (=> true (and ($Is refType |y''#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y''#0@0| Tclass.XJ.Cell $Heap))) (and (=> (= (ControlFlow 0 12) 10) anon19_Then_correct) (=> (= (ControlFlow 0 12) 11) anon19_Else_correct)))))))
 (let ((anon18_Else_correct  (=> (and (not (and ($Is refType |y''#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y''#1@0| Tclass.XJ.Cell $Heap))) (= (ControlFlow 0 15) 12)) anon8_correct)))
 (let ((anon18_Then_correct  (=> (and (and ($Is refType |y''#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y''#1@0| Tclass.XJ.Cell $Heap)) (= (ControlFlow 0 14) 12)) anon8_correct)))
-(let ((anon6_correct  (and (=> (= (ControlFlow 0 16) (- 0 17)) (or (and ($Is refType null Tclass.XJ.Cell?) (or (= null null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 8)))) (exists ((|$as#y'0#0| T@U) )  (and (and ($Is refType |$as#y'0#0| Tclass.XJ.Cell?) ($IsAlloc refType |$as#y'0#0| Tclass.XJ.Cell? $Heap)) (or (= |$as#y'0#0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y'0#0|) XJ.Cell.data))) (LitInt 8))))))) (=> (or (and ($Is refType null Tclass.XJ.Cell?) (or (= null null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 8)))) (exists ((|$as#y'0#0@@0| T@U) )  (and (and ($Is refType |$as#y'0#0@@0| Tclass.XJ.Cell?) ($IsAlloc refType |$as#y'0#0@@0| Tclass.XJ.Cell? $Heap)) (or (= |$as#y'0#0@@0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y'0#0@@0|) XJ.Cell.data))) (LitInt 8)))))) (=> (and (and ($Is refType |y'#0@0| Tclass.XJ.Cell?) ($IsAlloc refType |y'#0@0| Tclass.XJ.Cell? $Heap)) (or (= |y'#0@0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |y'#0@0|) XJ.Cell.data))) (LitInt 8)))) (and (=> (= (ControlFlow 0 16) 14) anon18_Then_correct) (=> (= (ControlFlow 0 16) 15) anon18_Else_correct)))))))
+(let ((anon6_correct  (and (=> (= (ControlFlow 0 16) (- 0 17)) (or (and ($Is refType null Tclass.XJ.Cell?) (or (= null null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 8)))) (exists ((|$as#y'0#0| T@U) ) (!  (and (and ($Is refType |$as#y'0#0| Tclass.XJ.Cell?) ($IsAlloc refType |$as#y'0#0| Tclass.XJ.Cell? $Heap)) (or (= |$as#y'0#0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y'0#0|) XJ.Cell.data))) (LitInt 8))))
+ :qid |MiscTypeInferenceTestsdfy.106:9|
+ :skolemid |2969|
+)))) (=> (or (and ($Is refType null Tclass.XJ.Cell?) (or (= null null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 8)))) (exists ((|$as#y'0#0@@0| T@U) ) (!  (and (and ($Is refType |$as#y'0#0@@0| Tclass.XJ.Cell?) ($IsAlloc refType |$as#y'0#0@@0| Tclass.XJ.Cell? $Heap)) (or (= |$as#y'0#0@@0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y'0#0@@0|) XJ.Cell.data))) (LitInt 8))))
+ :qid |MiscTypeInferenceTestsdfy.106:9|
+ :skolemid |2969|
+))) (=> (and (and ($Is refType |y'#0@0| Tclass.XJ.Cell?) ($IsAlloc refType |y'#0@0| Tclass.XJ.Cell? $Heap)) (or (= |y'#0@0| null) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |y'#0@0|) XJ.Cell.data))) (LitInt 8)))) (and (=> (= (ControlFlow 0 16) 14) anon18_Then_correct) (=> (= (ControlFlow 0 16) 15) anon18_Else_correct)))))))
 (let ((anon5_correct  (=> (= (ControlFlow 0 19) 16) anon6_correct)))
 (let ((anon17_Else_correct  (=> (and (= |y'#1@0| null) (= (ControlFlow 0 22) 19)) anon5_correct)))
 (let ((anon17_Then_correct  (=> (or (not (= |y'#1@0| null)) (not true)) (and (=> (= (ControlFlow 0 20) (- 0 21)) (or (not (= |y'#1@0| null)) (not true))) (=> (= (ControlFlow 0 20) 19) anon5_correct)))))
 (let ((anon16_Then_correct  (=> (and ($Is refType |y'#1@0| Tclass.XJ.Cell?) ($IsAlloc refType |y'#1@0| Tclass.XJ.Cell? $Heap)) (and (=> (= (ControlFlow 0 23) 20) anon17_Then_correct) (=> (= (ControlFlow 0 23) 22) anon17_Else_correct)))))
 (let ((anon16_Else_correct  (=> (and (not (and ($Is refType |y'#1@0| Tclass.XJ.Cell?) ($IsAlloc refType |y'#1@0| Tclass.XJ.Cell? $Heap))) (= (ControlFlow 0 18) 16)) anon6_correct)))
-(let ((anon2_correct  (and (=> (= (ControlFlow 0 24) (- 0 25)) (or (and ($Is refType null Tclass.XJ.Cell) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 7))) (exists ((|$as#y0#0| T@U) )  (and (and ($Is refType |$as#y0#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y0#0| Tclass.XJ.Cell $Heap)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y0#0|) XJ.Cell.data))) (LitInt 7)))))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 7))) (exists ((|$as#y0#0@@0| T@U) )  (and (and ($Is refType |$as#y0#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y0#0@@0| Tclass.XJ.Cell $Heap)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y0#0@@0|) XJ.Cell.data))) (LitInt 7))))) (=> (and (=> true (and ($Is refType |y#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y#0@0| Tclass.XJ.Cell $Heap))) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |y#0@0|) XJ.Cell.data))) (LitInt 7))) (and (=> (= (ControlFlow 0 24) 23) anon16_Then_correct) (=> (= (ControlFlow 0 24) 18) anon16_Else_correct)))))))
+(let ((anon2_correct  (and (=> (= (ControlFlow 0 24) (- 0 25)) (or (and ($Is refType null Tclass.XJ.Cell) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 7))) (exists ((|$as#y0#0| T@U) ) (!  (and (and ($Is refType |$as#y0#0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y0#0| Tclass.XJ.Cell $Heap)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y0#0|) XJ.Cell.data))) (LitInt 7)))
+ :qid |MiscTypeInferenceTestsdfy.105:9|
+ :skolemid |2967|
+)))) (=> (or (and ($Is refType null Tclass.XJ.Cell) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap null) XJ.Cell.data))) (LitInt 7))) (exists ((|$as#y0#0@@0| T@U) ) (!  (and (and ($Is refType |$as#y0#0@@0| Tclass.XJ.Cell) ($IsAlloc refType |$as#y0#0@@0| Tclass.XJ.Cell $Heap)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |$as#y0#0@@0|) XJ.Cell.data))) (LitInt 7)))
+ :qid |MiscTypeInferenceTestsdfy.105:9|
+ :skolemid |2967|
+))) (=> (and (=> true (and ($Is refType |y#0@0| Tclass.XJ.Cell) ($IsAlloc refType |y#0@0| Tclass.XJ.Cell $Heap))) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |y#0@0|) XJ.Cell.data))) (LitInt 7))) (and (=> (= (ControlFlow 0 24) 23) anon16_Then_correct) (=> (= (ControlFlow 0 24) 18) anon16_Else_correct)))))))
 (let ((anon15_Else_correct  (=> (and (not (and ($Is refType |y#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y#1@0| Tclass.XJ.Cell $Heap))) (= (ControlFlow 0 28) 24)) anon2_correct)))
 (let ((anon15_Then_correct  (=> (and ($Is refType |y#1@0| Tclass.XJ.Cell) ($IsAlloc refType |y#1@0| Tclass.XJ.Cell $Heap)) (and (=> (= (ControlFlow 0 26) (- 0 27)) (or (not (= |y#1@0| null)) (not true))) (=> (= (ControlFlow 0 26) 24) anon2_correct)))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 29) 26) anon15_Then_correct) (=> (= (ControlFlow 0 29) 28) anon15_Else_correct)))))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:29
+// Date:         2025-01-26 23:15:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/welldef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/welldef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -198,8 +198,8 @@ axiom !IsWandField(f_7);
 procedure t1_a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -213,8 +213,8 @@ procedure t1_a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := this.f -- welldef.vpr@14.5--14.25
     
@@ -232,8 +232,8 @@ procedure t1_a(this: Ref) returns ()
 procedure t1_b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -247,8 +247,8 @@ procedure t1_b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale this != null -- welldef.vpr@19.12--19.24
     assume this != null;
@@ -271,8 +271,8 @@ procedure t1_b(this: Ref) returns ()
 procedure t2_a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -286,8 +286,8 @@ procedure t2_a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := func(this.f) -- welldef.vpr@27.5--27.31
     
@@ -305,8 +305,8 @@ procedure t2_a(this: Ref) returns ()
 procedure t2_b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -320,8 +320,8 @@ procedure t2_b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale this != null -- welldef.vpr@32.12--32.24
     assume this != null;
@@ -344,8 +344,8 @@ procedure t2_b(this: Ref) returns ()
 procedure t4_a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -358,8 +358,8 @@ procedure t4_a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: this.f := 1 -- welldef.vpr@40.5--40.16
     assert {:msg "  Assignment might fail. There might be insufficient permission to access this.f (welldef.vpr@40.5--40.16) [96819]"}
@@ -375,8 +375,8 @@ procedure t4_a(this: Ref) returns ()
 procedure t4_b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -389,8 +389,8 @@ procedure t4_b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale this != null -- welldef.vpr@45.12--45.24
     assume this != null;

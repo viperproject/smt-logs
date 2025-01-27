@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:47
+// Date:         2025-01-26 23:14:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0768.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0768-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -931,8 +931,8 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
   modifies Heap, Mask;
 {
   var i_18: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var i_3: int;
   var j_15: int;
@@ -954,8 +954,8 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
         if (0 <= i_18 && i_18 < n) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71430]"}
               0 <= (pointer_offset(inp): int) + i_18;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71431]"}
@@ -1019,8 +1019,8 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
           if (i_3 != j_15) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [71434]"}
                 0 <= (pointer_offset(inp): int) + i_3;
               assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [71435]"}
@@ -1036,8 +1036,8 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
               HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_3)), ref_2);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [71437]"}
                 0 <= (pointer_offset(inp): int) + j_15;
               assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [71438]"}
@@ -1067,8 +1067,8 @@ procedure inp_to_seq_2#definedness(inp: pointerDomainType, n: int) returns (Resu
         if (0 <= i_4 && i_4 < n) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@83.21--83.36) [71440]"}
               0 <= (pointer_offset(inp): int) + i_4;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [71441]"}
@@ -1263,8 +1263,8 @@ procedure id#definedness(i: int) returns (Result: int)
 procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b1: bool;
   
   // -- Initializing the state
@@ -1276,8 +1276,8 @@ procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset_1: int) 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b1) -- 0768.vpr@53.12--53.43
     if (b1) {
@@ -1303,15 +1303,15 @@ procedure ptr_add_pres_termination_proof(p_1: pointerDomainType, offset_1: int) 
 procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b8: bool;
   var b4: bool;
   var b2: bool;
   var b3: bool;
   var i1_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var i_14: int;
   var QPMask: MaskType;
@@ -1335,8 +1335,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b8) -- 0768.vpr@64.12--66.24
     if (b8) {
@@ -1385,8 +1385,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 // -- Check definedness of acc(ptr_deref(ptr_add(inp, i1)).ref, 1 * write / 10)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i1 might not hold. (0768.vpr@70.21--70.36) [71445]"}
                       0 <= (pointer_offset(inp): int) + i1_9;
                     assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i1 < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71446]"}
@@ -1427,8 +1427,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 if (0 <= i_14 && i_14 < n) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71448]"}
                       0 <= (pointer_offset(inp): int) + i_14;
                     assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71449]"}
@@ -1560,8 +1560,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             if (0 <= i_5 && i_5 < n) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@70.21--70.36) [71452]"}
                   0 <= (pointer_offset(inp): int) + i_5;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@70.21--70.36) [71453]"}
@@ -1623,8 +1623,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
             if ((0 <= i_15 && (i_15 < n && (0 <= j_16 && j_16 < n))) && i_15 != j_16) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i might not hold. (0768.vpr@78.17--78.34) [71456]"}
                   0 <= (pointer_offset(inp): int) + i_15;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i < block_length(pointer_block(inp)) might not hold. (0768.vpr@78.17--78.34) [71457]"}
@@ -1640,8 +1640,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
                 HasDirectPerm(Mask, ptr_deref(Heap, ptr_add(Heap, inp, i_15)), ref_2);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + j might not hold. (0768.vpr@79.17--79.34) [71459]"}
                   0 <= (pointer_offset(inp): int) + j_16;
                 assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + j < block_length(pointer_block(inp)) might not hold. (0768.vpr@79.17--79.34) [71460]"}
@@ -1692,8 +1692,8 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
         // -- Check definedness of acc(ptr_deref(ptr_add(inp, i3)).ref.x, 1 * write / 10)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion 0 <= pointer_offset(inp) + i3 might not hold. (0768.vpr@83.21--83.36) [71462]"}
               0 <= (pointer_offset(inp): int) + i3_1;
             assert {:msg "  Precondition of function ptr_add might not hold. Assertion pointer_offset(inp) + i3 < block_length(pointer_block(inp)) might not hold. (0768.vpr@83.21--83.36) [71463]"}
@@ -1726,10 +1726,10 @@ procedure inp_to_seq_2_pres_termination_proof(inp: pointerDomainType, n: int) re
 procedure leafCount_termination_proof(t_2: treeDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1740,16 +1740,16 @@ procedure leafCount_termination_proof(t_2: treeDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (tree_tag(t) == 0 && tree_tag(t) == 0) -- <no position>
     if ((tree_tag(t_2): int) == 0 && (tree_tag(t_2): int) == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(1, old(1)): Bool) && (bounded(old(1)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [71466]"}
           (decreasing(1, 1): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [71467]"}
@@ -1757,8 +1757,8 @@ procedure leafCount_termination_proof(t_2: treeDomainType) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert (decreasing(1, old(1)): Bool) && (bounded(old(1)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing(1, old(1)): Bool) might not hold. (<no position>) [71468]"}
           (decreasing(1, 1): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(1)): Bool) might not hold. (<no position>) [71469]"}

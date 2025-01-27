@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:22
+; Started: 2025-01-26 23:06:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -734,7 +734,7 @@
       (= (inv@8@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00)) i@6@00)
       (img@9@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00))))
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> s@$) (loc<Ref> left@0@00 i@6@00)) (loc<Ref> left@0@00 i@6@00)))
-  :qid |quant-u-11029|)))
+  :qid |quant-u-10976|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -779,16 +779,16 @@
       (< (inv@8@00 s@$ left@0@00 r) (len<Int> left@0@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@10@00 s@$ left@0@00) r) r))
   :pattern ((inv@8@00 s@$ left@0@00 r))
-  :qid |quant-u-11030|)))
+  :qid |quant-u-10977|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   (= (correctness_invar%limited s@$ left@0@00) (correctness_invar s@$ left@0@00))
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11024|)))
+  :qid |quant-u-10971|)))
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   (correctness_invar%stateless left@0@00)
   :pattern ((correctness_invar%limited s@$ left@0@00))
-  :qid |quant-u-11025|)))
+  :qid |quant-u-10972|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -825,7 +825,7 @@
       (= (inv@8@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00)) i@6@00)
       (img@9@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00))))
   :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> s@$) (loc<Ref> left@0@00 i@6@00)) (loc<Ref> left@0@00 i@6@00)))
-  :qid |quant-u-11029|)))
+  :qid |quant-u-10976|)))
 (assert (forall ((i@6@00 Int)) (!
   (=>
     (and (<= 0 i@6@00) (< i@6@00 (len<Int> left@0@00)))
@@ -839,7 +839,7 @@
       (< (inv@8@00 s@$ left@0@00 r) (len<Int> left@0@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@10@00 s@$ left@0@00) r) r))
   :pattern ((inv@8@00 s@$ left@0@00 r))
-  :qid |quant-u-11030|)))
+  :qid |quant-u-10977|)))
 (assert (forall ((i@6@00 Int)) (!
   (=>
     (and (<= 0 i@6@00) (< i@6@00 (len<Int> left@0@00)))
@@ -861,7 +861,7 @@
           (= (inv@8@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00)) i@6@00)
           (img@9@00 s@$ left@0@00 (loc<Ref> left@0@00 i@6@00))))
       :pattern (($FVF.loc_int ($FVF.lookup_int ($SortWrappers.$SnapTo$FVF<int> s@$) (loc<Ref> left@0@00 i@6@00)) (loc<Ref> left@0@00 i@6@00)))
-      :qid |quant-u-11029|))
+      :qid |quant-u-10976|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -880,11 +880,11 @@
       (correctness_invar%precondition s@$ left@0@00)
       (= (correctness_invar s@$ left@0@00) true)))
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11031|)))
+  :qid |quant-u-10978|)))
 (assert (forall ((s@$ $Snap) (left@0@00 array)) (!
   true
   :pattern ((correctness_invar s@$ left@0@00))
-  :qid |quant-u-11032|)))
+  :qid |quant-u-10979|)))
 ; ---------- FUNCTION correctness_upto----------
 (declare-fun parent@2@00 () array)
 (declare-fun left@3@00 () array)
@@ -954,7 +954,7 @@
         i@11@00)
       (img@13@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> left@3@00 i@11@00))))
   :pattern ((loc<Ref> left@3@00 i@11@00))
-  :qid |quant-u-11034|)))
+  :qid |quant-u-10981|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1003,7 +1003,7 @@
       (< (inv@12@00 s@$ parent@2@00 left@3@00 root@4@00 r) (len<Int> left@3@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@14@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@12@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11035|)))
+  :qid |quant-u-10982|)))
 (assert (=
   ($Snap.second s@$)
   ($Snap.combine
@@ -1069,7 +1069,7 @@
         i@15@00)
       (img@17@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> parent@2@00 i@15@00))))
   :pattern ((loc<Ref> parent@2@00 i@15@00))
-  :qid |quant-u-11037|)))
+  :qid |quant-u-10984|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1113,7 +1113,7 @@
             (inv@12@00 s@$ parent@2@00 left@3@00 root@4@00 r)
             (len<Int> left@3@00))))))
   
-  :qid |quant-u-11038|))))
+  :qid |quant-u-10985|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -1166,7 +1166,7 @@
         (len<Int> parent@2@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@18@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@16@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11039|)))
+  :qid |quant-u-10986|)))
 (assert (= ($Snap.second ($Snap.second s@$)) $Snap.unit))
 ; [eval] correctness_invar(left)
 (set-option :timeout 0)
@@ -1257,13 +1257,13 @@
       (< (inv@20@00 s@$ parent@2@00 left@3@00 root@4@00 r) (len<Int> left@3@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@18@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@20@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11041|)))
+  :qid |quant-u-10988|)))
 (push) ; 3
 (set-option :timeout 10)
 (assert (not (forall ((i@19@00 Int)) (!
   (= (loc<Ref> left@3@00 i@19@00) (loc<Ref> parent@2@00 i@19@00))
   
-  :qid |quant-u-11042|))))
+  :qid |quant-u-10989|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1307,7 +1307,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-11043|))))
+  :qid |quant-u-10990|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1505,7 +1505,7 @@
           (len<Int> left@3@00)))
       ($FVF.loc_int ($FVF.lookup_int (sm@18@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
     :pattern ((inv@20@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-    :qid |quant-u-11041|))
+    :qid |quant-u-10988|))
   (correctness_invar%precondition ($SortWrappers.$FVF<int>To$Snap (sm@22@00 s@$ parent@2@00 left@3@00 root@4@00)) left@3@00)))
 (assert (correctness_invar ($SortWrappers.$FVF<int>To$Snap (sm@22@00 s@$ parent@2@00 left@3@00 root@4@00)) left@3@00))
 (pop) ; 1
@@ -1514,11 +1514,11 @@
     (correctness_upto%limited s@$ parent@2@00 left@3@00 root@4@00)
     (correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11026|)))
+  :qid |quant-u-10973|)))
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   (correctness_upto%stateless parent@2@00 left@3@00 root@4@00)
   :pattern ((correctness_upto%limited s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11027|)))
+  :qid |quant-u-10974|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -1676,7 +1676,7 @@
         i@15@00)
       (img@17@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> parent@2@00 i@15@00))))
   :pattern ((loc<Ref> parent@2@00 i@15@00))
-  :qid |quant-u-11037|)))
+  :qid |quant-u-10984|)))
 (assert (forall ((i@15@00 Int)) (!
   (=>
     (and (<= 0 i@15@00) (< i@15@00 (len<Int> parent@2@00)))
@@ -1692,7 +1692,7 @@
         (len<Int> parent@2@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@18@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@16@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11039|)))
+  :qid |quant-u-10986|)))
 (assert (= ($Snap.second ($Snap.second s@$)) $Snap.unit))
 (assert (forall ((i@19@00 Int)) (!
   (=>
@@ -1707,7 +1707,7 @@
       (< (inv@20@00 s@$ parent@2@00 left@3@00 root@4@00 r) (len<Int> left@3@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@18@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@20@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11041|)))
+  :qid |quant-u-10988|)))
 (assert (correctness_invar%precondition ($SortWrappers.$FVF<int>To$Snap (sm@22@00 s@$ parent@2@00 left@3@00 root@4@00)) left@3@00))
 (assert (correctness_invar ($SortWrappers.$FVF<int>To$Snap (sm@22@00 s@$ parent@2@00 left@3@00 root@4@00)) left@3@00))
 (assert (forall ((r $Ref)) (!
@@ -1750,7 +1750,7 @@
         i@11@00)
       (img@13@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> left@3@00 i@11@00))))
   :pattern ((loc<Ref> left@3@00 i@11@00))
-  :qid |quant-u-11034|)))
+  :qid |quant-u-10981|)))
 (assert (forall ((i@11@00 Int)) (!
   (=>
     (and (<= 0 i@11@00) (< i@11@00 (len<Int> left@3@00)))
@@ -1764,7 +1764,7 @@
       (< (inv@12@00 s@$ parent@2@00 left@3@00 root@4@00 r) (len<Int> left@3@00)))
     ($FVF.loc_int ($FVF.lookup_int (sm@14@00 s@$ parent@2@00 left@3@00 root@4@00) r) r))
   :pattern ((inv@12@00 s@$ parent@2@00 left@3@00 root@4@00 r))
-  :qid |quant-u-11035|)))
+  :qid |quant-u-10982|)))
 (assert (=
   ($Snap.second s@$)
   ($Snap.combine
@@ -2718,7 +2718,7 @@
             i@11@00)
           (img@13@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> left@3@00 i@11@00))))
       :pattern ((loc<Ref> left@3@00 i@11@00))
-      :qid |quant-u-11034|))
+      :qid |quant-u-10981|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -2742,7 +2742,7 @@
             i@15@00)
           (img@17@00 s@$ parent@2@00 left@3@00 root@4@00 (loc<Ref> parent@2@00 i@15@00))))
       :pattern ((loc<Ref> parent@2@00 i@15@00))
-      :qid |quant-u-11037|))
+      :qid |quant-u-10984|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -3018,10 +3018,10 @@
             ($FVF.lookup_int (sm@28@00 s@$ parent@2@00 left@3@00 root@4@00) (loc<Ref> parent@2@00 i))))
           )))))
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11044|)))
+  :qid |quant-u-10991|)))
 ; WARNING: (2820,11): 'and' cannot be used in patterns.
 ; WARNING: (2820,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (parent@2@00 array) (left@3@00 array) (root@4@00 Int)) (!
   true
   :pattern ((correctness_upto s@$ parent@2@00 left@3@00 root@4@00))
-  :qid |quant-u-11045|)))
+  :qid |quant-u-10992|)))

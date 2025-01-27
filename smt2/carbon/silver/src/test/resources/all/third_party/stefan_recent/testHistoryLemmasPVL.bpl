@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:43
+// Date:         2025-01-26 23:13:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryLemmasPVL.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testHistoryLemmasPVL-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -247,15 +247,15 @@ axiom (forall n: int, m_18: int ::
 procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_n: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -276,8 +276,8 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -298,8 +298,8 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
         arg_n := n - 2;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method History__lemma might not hold. Assertion diz != null might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [40282]"}
             diz != null;
           assert {:msg "  The precondition of method History__lemma might not hold. Assertion current_thread_id >= 0 might not hold. (testHistoryLemmasPVL.vpr@51.5--51.50) [40283]"}
@@ -315,8 +315,8 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of History__lemma might not hold. Assertion p_single(n) == (n > 0 ? p_seq(p_single(n - 1), p_incr()) : p_empty()) might not hold. (testHistoryLemmasPVL.vpr@47.11--47.80) [40285]"}
       (p_single(n): ProcessDomainType) == (if n > 0 then (p_seq((p_single(n - 1): ProcessDomainType), (p_incr(): ProcessDomainType)): ProcessDomainType) else (p_empty(): ProcessDomainType));
 }
@@ -328,12 +328,12 @@ procedure History__lemma(diz: Ref, current_thread_id: int, n: int) returns ()
 procedure History__single_axiom(diz: Ref, current_thread_id: int, m_18: int, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -355,8 +355,8 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_18: int, n: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -374,8 +374,8 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_18: int, n: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of History__single_axiom might not hold. Assertion p_seq(p_single(m), p_single(n)) == p_single(m + n) might not hold. (testHistoryLemmasPVL.vpr@59.11--59.61) [40286]"}
       (p_seq((p_single(m_18): ProcessDomainType), (p_single(n): ProcessDomainType)): ProcessDomainType) == (p_single(m_18 + n): ProcessDomainType);
 }
@@ -387,8 +387,8 @@ procedure History__single_axiom(diz: Ref, current_thread_id: int, m_18: int, n: 
 procedure History__if_any_random(diz: Ref, current_thread_id: int) returns (sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -407,8 +407,8 @@ procedure History__if_any_random(diz: Ref, current_thread_id: int) returns (sys_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryLemmasPVL.vpr@68.3--68.15
     assume false;

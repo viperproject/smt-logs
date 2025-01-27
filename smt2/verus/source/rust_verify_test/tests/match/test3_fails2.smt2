@@ -678,12 +678,12 @@
 ;; MODULE 'root module'
 
 ;; Fuel
-(declare-const fuel%impl&%0.arrow_1. FuelId)
 (declare-const fuel%impl&%0.arrow_0. FuelId)
+(declare-const fuel%impl&%0.arrow_1. FuelId)
 (declare-const fuel%impl&%0.arrow_Pair_0. FuelId)
 (declare-const fuel%impl&%0.arrow_Pair_1. FuelId)
 (assert
- (distinct fuel%impl&%0.arrow_1. fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_Pair_0. fuel%impl&%0.arrow_Pair_1.)
+ (distinct fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_1. fuel%impl&%0.arrow_Pair_0. fuel%impl&%0.arrow_Pair_1.)
 )
 
 ;; Datatypes
@@ -809,41 +809,17 @@
    :skolemid skolem_internal_crate__tuple__0_has_type_always_definition
 )))
 
-;; Function-Decl crate::Pair::arrow_1
-(declare-fun impl&%0.arrow_1.? (Dcr Type Dcr Type Poly) Poly)
-
 ;; Function-Decl crate::Pair::arrow_0
 (declare-fun impl&%0.arrow_0.? (Dcr Type Dcr Type Poly) Poly)
+
+;; Function-Decl crate::Pair::arrow_1
+(declare-fun impl&%0.arrow_1.? (Dcr Type Dcr Type Poly) Poly)
 
 ;; Function-Decl crate::Pair::arrow_Pair_0
 (declare-fun impl&%0.arrow_Pair_0.? (Dcr Type Dcr Type Poly) Poly)
 
 ;; Function-Decl crate::Pair::arrow_Pair_1
 (declare-fun impl&%0.arrow_Pair_1.? (Dcr Type Dcr Type Poly) Poly)
-
-;; Function-Axioms crate::Pair::arrow_1
-(assert
- (fuel_bool_default fuel%impl&%0.arrow_1.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%0.arrow_1.)
-  (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type) (self! Poly)) (!
-    (= (impl&%0.arrow_1.? A&. A& B&. B& self!) (Pair./Pair/1 (%Poly%Pair. self!)))
-    :pattern ((impl&%0.arrow_1.? A&. A& B&. B& self!))
-    :qid internal_impl&__0.arrow_1.?_definition
-    :skolemid skolem_internal_impl&__0.arrow_1.?_definition
-))))
-(assert
- (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type) (self! Poly)) (!
-   (=>
-    (has_type self! (TYPE%Pair. A&. A& B&. B&))
-    (has_type (impl&%0.arrow_1.? A&. A& B&. B& self!) B&)
-   )
-   :pattern ((impl&%0.arrow_1.? A&. A& B&. B& self!))
-   :qid internal_impl&__0.arrow_1.?_pre_post_definition
-   :skolemid skolem_internal_impl&__0.arrow_1.?_pre_post_definition
-)))
 
 ;; Function-Axioms crate::Pair::arrow_0
 (assert
@@ -867,6 +843,30 @@
    :pattern ((impl&%0.arrow_0.? A&. A& B&. B& self!))
    :qid internal_impl&__0.arrow_0.?_pre_post_definition
    :skolemid skolem_internal_impl&__0.arrow_0.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::Pair::arrow_1
+(assert
+ (fuel_bool_default fuel%impl&%0.arrow_1.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%0.arrow_1.)
+  (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type) (self! Poly)) (!
+    (= (impl&%0.arrow_1.? A&. A& B&. B& self!) (Pair./Pair/1 (%Poly%Pair. self!)))
+    :pattern ((impl&%0.arrow_1.? A&. A& B&. B& self!))
+    :qid internal_impl&__0.arrow_1.?_definition
+    :skolemid skolem_internal_impl&__0.arrow_1.?_definition
+))))
+(assert
+ (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%Pair. A&. A& B&. B&))
+    (has_type (impl&%0.arrow_1.? A&. A& B&. B& self!) B&)
+   )
+   :pattern ((impl&%0.arrow_1.? A&. A& B&. B& self!))
+   :qid internal_impl&__0.arrow_1.?_pre_post_definition
+   :skolemid skolem_internal_impl&__0.arrow_1.?_pre_post_definition
 )))
 
 ;; Function-Axioms crate::Pair::arrow_Pair_0

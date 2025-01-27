@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:09
+// Date:         2025-01-26 23:14:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0059.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0059-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -546,10 +546,10 @@ procedure m_17(a_2: (Seq int)) returns ()
 {
   var j_15: int;
   var j_13: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_16: int;
   var j_17: int;
   var j_11_1: int;
@@ -608,12 +608,12 @@ procedure m_17(a_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (exists j: Int :: { (j in a) } (j in a) && j > 0) -- 0059.vpr@9.3--9.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (exists j: Int :: { (j in a) } (j in a) && j > 0)
       if (*) {
@@ -627,8 +627,8 @@ procedure m_17(a_2: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0) -- 0059.vpr@10.3--10.62
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (exists j: Int :: { a[j] } 0 <= j && j < |a| && a[j] > 0)
       if (*) {
@@ -650,8 +650,8 @@ procedure m_17(a_2: (Seq int)) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { (j in a) }
   //     (j in a) ==> (exists k: Int :: { (k in a) } (k in a) && k > 0)) -- 0059.vpr@11.3--11.74
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { (j in a) } (j in a) ==> (exists k: Int :: { (k in a) } (k in a) && k > 0))
       if (*) {

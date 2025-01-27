@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:11
+// Date:         2025-01-26 23:16:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_par_id.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_par_id-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -652,8 +652,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar_1: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -678,8 +678,8 @@ procedure sum_list#definedness(i: int, hi: int, ar_1: (Seq int)) returns (Result
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (test_par_id.vpr@10.21--10.44) [162711]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (test_par_id.vpr@10.21--10.44) [162712]"}
@@ -755,8 +755,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
   var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_9_1: int;
   var j_4_1: int;
   var ExhaleHeap: HeapType;
@@ -853,8 +853,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar_1: (Seq Ref)) retur
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (test_par_id.vpr@19.40--19.68) [162724]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (test_par_id.vpr@19.40--19.68) [162725]"}
@@ -990,8 +990,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_9_1: int;
   var j_4_1: int;
   var ExhaleHeap: HeapType;
@@ -1111,8 +1111,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (test_par_id.vpr@29.85--29.130) [162747]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (test_par_id.vpr@29.85--29.130) [162748]"}
@@ -1256,8 +1256,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_14: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_9_1: int;
   var j_4_1: int;
   var ExhaleHeap: HeapType;
@@ -1377,8 +1377,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (test_par_id.vpr@39.97--39.147) [162774]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (test_par_id.vpr@39.97--39.147) [162775]"}
@@ -1504,8 +1504,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar_1: (Seq int), v_2: int
 procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1530,8 +1530,8 @@ procedure count_list#definedness(i: int, hi: int, ar_1: (Seq int), v_2: int) ret
           i < Seq#Length(ar_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (test_par_id.vpr@46.36--46.64) [162789]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (test_par_id.vpr@46.36--46.64) [162790]"}
@@ -1607,8 +1607,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_9_1: int;
   var j_4_1: int;
   var ExhaleHeap: HeapType;
@@ -1704,8 +1704,8 @@ procedure count_array#definedness(i: int, hi: int, ar_1: (Seq Ref), v_2: int) re
           HasDirectPerm(Mask, Seq#Index(ar_1, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (test_par_id.vpr@55.55--55.84) [162802]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (test_par_id.vpr@55.55--55.84) [162803]"}
@@ -1793,14 +1793,14 @@ procedure Ref__loop_main_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
   var j_6: int;
   var i_19: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_9: int;
   var i_10: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_7_1: int;
   var ExhaleHeap: HeapType;
   
@@ -1892,8 +1892,8 @@ procedure Ref__loop_main_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1983,8 +1983,8 @@ procedure Ref__loop_main_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (0 < len_3) {
       assert {:msg "  Postcondition of Ref__loop_main_22 might not hold. Assertion |a| == len might not hold. (test_par_id.vpr@64.11--64.37) [162826]"}
         Seq#Length(a_2) == len_3;
@@ -2055,15 +2055,15 @@ procedure Ref__loop_body_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_2: Ref;
   var __flatten_4: Ref;
   var __flatten_3: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2100,8 +2100,8 @@ procedure Ref__loop_body_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2182,8 +2182,8 @@ procedure Ref__loop_body_22(diz: Ref, current_thread_id: int, len_3: int, a_2: (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__loop_body_22 might not hold. Assertion 0 <= i might not hold. (test_par_id.vpr@77.11--77.32) [162846]"}
       0 <= i;
     assert {:msg "  Postcondition of Ref__loop_body_22 might not hold. Assertion i < len might not hold. (test_par_id.vpr@77.11--77.32) [162847]"}
@@ -2215,16 +2215,16 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
   var j_22: int;
   var i_11: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_12: int;
   var i_13: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_2_2: int;
   var j_2_2: int;
   var ExhaleHeap: HeapType;
@@ -2321,8 +2321,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2409,8 +2409,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__loop_main_22 might not hold. Assertion diz != null might not hold. (test_par_id.vpr@101.3--101.52) [162867]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_22 might not hold. Assertion current_thread_id >= 0 might not hold. (test_par_id.vpr@101.3--101.52) [162868]"}
@@ -2527,8 +2527,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
       // -- Translating statement: assert acc(a[0].Ref__Integer_value, write) -- test_par_id.vpr@103.5--103.47
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         
         // -- Check definedness of acc(a[0].Ref__Integer_value, write)
           assert {:msg "  Assert might fail. Index a[0] into a might exceed sequence length. (test_par_id.vpr@103.12--103.47) [162874]"}
@@ -2542,8 +2542,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
         assume state(Heap, Mask);
       
       // -- Translating statement: assert a[0].Ref__Integer_value == old(a[0].Ref__Integer_value) -- test_par_id.vpr@104.5--104.67
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of a[0].Ref__Integer_value == old(a[0].Ref__Integer_value)
           assert {:msg "  Assert might fail. Index a[0] into a might exceed sequence length. (test_par_id.vpr@104.12--104.67) [162877]"}
@@ -2564,8 +2564,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
   //     { old(a[i]) }
   //     0 <= i && i < len ==>
   //     a[i].Ref__Integer_value == old(a[i].Ref__Integer_value)) -- test_par_id.vpr@106.3--106.112
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { old(a[i]) } 0 <= i && i < len ==> a[i].Ref__Integer_value == old(a[i].Ref__Integer_value))
       if (*) {
@@ -2599,8 +2599,8 @@ procedure Ref__example(diz: Ref, current_thread_id: int, a_2: (Seq Ref), len_3: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__example might not hold. Assertion |a| == len might not hold. (test_par_id.vpr@97.11--97.21) [162889]"}
       Seq#Length(a_2) == len_3;
     havoc QPMask;

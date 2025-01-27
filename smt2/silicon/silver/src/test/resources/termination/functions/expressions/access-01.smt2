@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:30:46
+; Started: 2025-01-26 23:02:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,51 +126,51 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (nonTerminating%limited s@$ x@0@00) (nonTerminating s@$ x@0@00))
   :pattern ((nonTerminating s@$ x@0@00))
-  :qid |quant-u-8262|)))
+  :qid |quant-u-8208|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (nonTerminating%stateless x@0@00)
   :pattern ((nonTerminating%limited s@$ x@0@00))
-  :qid |quant-u-8263|)))
+  :qid |quant-u-8209|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (test1%limited s@$ x@2@00) (test1 s@$ x@2@00))
   :pattern ((test1 s@$ x@2@00))
-  :qid |quant-u-8264|)))
+  :qid |quant-u-8210|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (test1%stateless x@2@00)
   :pattern ((test1%limited s@$ x@2@00))
-  :qid |quant-u-8265|)))
+  :qid |quant-u-8211|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=>
     (test1%precondition s@$ x@2@00)
     (= (test1 s@$ x@2@00) (nonTerminating $Snap.unit x@2@00)))
   :pattern ((test1 s@$ x@2@00))
-  :qid |quant-u-8268|)))
+  :qid |quant-u-8214|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=>
     (test1%precondition s@$ x@2@00)
     (nonTerminating%precondition $Snap.unit x@2@00))
   :pattern ((test1 s@$ x@2@00))
-  :qid |quant-u-8269|)))
+  :qid |quant-u-8215|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test2%limited s@$ x@4@00) (test2 s@$ x@4@00))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-8266|)))
+  :qid |quant-u-8212|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test2%stateless x@4@00)
   :pattern ((test2%limited s@$ x@4@00))
-  :qid |quant-u-8267|)))
+  :qid |quant-u-8213|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=>
     (test2%precondition s@$ x@4@00)
     (= (test2 s@$ x@4@00) (nonTerminating $Snap.unit x@4@00)))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-8270|)))
+  :qid |quant-u-8216|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=>
     (test2%precondition s@$ x@4@00)
     (nonTerminating%precondition $Snap.unit x@4@00))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-8271|)))
+  :qid |quant-u-8217|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test1_termination_proof ----------

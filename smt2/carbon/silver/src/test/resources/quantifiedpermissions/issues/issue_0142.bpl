@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:14
+// Date:         2025-01-26 23:16:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0142.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0142-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -641,8 +641,8 @@ procedure fun#definedness(xs: (Seq Ref)) returns (Result: int)
   var i2_12: int;
   var i_3: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1_4: int;
   var i2_4: int;
   var ExhaleHeap: HeapType;
@@ -728,8 +728,8 @@ procedure fun#definedness(xs: (Seq Ref)) returns (Result: int)
     // -- Check definedness of fun_impl(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun_impl might not hold. Assertion 0 < |xs| might not hold. (issue_0142.vpr@10.3--10.15) [168499]"}
           0 < Seq#Length(xs);
         if (*) {
@@ -936,12 +936,12 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i1_9: int;
   var i2: int;
   var QPMask: MaskType;
@@ -971,18 +971,18 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert fun(Seq(x)) == 1 -- issue_0142.vpr@21.3--21.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun(Seq(x)) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun might not hold. Assertion 0 < |Seq(x)| might not hold. (issue_0142.vpr@21.10--21.21) [168513]"}
           0 < Seq#Length(Seq#Singleton(x));
         if (*) {
@@ -1044,10 +1044,10 @@ procedure test02(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1_9: int;
   var i2: int;
   var QPMask: MaskType;
@@ -1079,8 +1079,8 @@ procedure test02(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale fun(Seq(x)) == 1 -- issue_0142.vpr@27.3--27.26
     assume state(Heap, Mask);
@@ -1088,8 +1088,8 @@ procedure test02(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun(Seq(x)) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun might not hold. Assertion 0 < |Seq(x)| might not hold. (issue_0142.vpr@27.10--27.21) [168518]"}
           0 < Seq#Length(Seq#Singleton(x));
         if (*) {
@@ -1148,8 +1148,8 @@ procedure test02(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun(Seq(y)) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun might not hold. Assertion 0 < |Seq(y)| might not hold. (issue_0142.vpr@28.10--28.21) [168522]"}
           0 < Seq#Length(Seq#Singleton(y));
         if (*) {
@@ -1203,8 +1203,8 @@ procedure test02(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue_0142.vpr@31.3--31.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (issue_0142.vpr@31.10--31.15) [168526]"}
       false;
     assume state(Heap, Mask);
@@ -1218,10 +1218,10 @@ procedure test03(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1_9: int;
   var i2: int;
   var QPMask: MaskType;
@@ -1253,8 +1253,8 @@ procedure test03(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale fun_impl(Seq(x)) == 1 -- issue_0142.vpr@37.3--37.31
     assume state(Heap, Mask);
@@ -1262,8 +1262,8 @@ procedure test03(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun_impl(Seq(x)) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun_impl might not hold. Assertion 0 < |Seq(x)| might not hold. (issue_0142.vpr@37.10--37.26) [168527]"}
           0 < Seq#Length(Seq#Singleton(x));
         if (*) {
@@ -1322,8 +1322,8 @@ procedure test03(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun_impl(Seq(y)) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun_impl might not hold. Assertion 0 < |Seq(y)| might not hold. (issue_0142.vpr@38.10--38.26) [168531]"}
           0 < Seq#Length(Seq#Singleton(y));
         if (*) {
@@ -1377,8 +1377,8 @@ procedure test03(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue_0142.vpr@41.3--41.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (issue_0142.vpr@41.10--41.15) [168535]"}
       false;
     assume state(Heap, Mask);

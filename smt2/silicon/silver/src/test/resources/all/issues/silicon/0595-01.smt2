@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:33:11
+; Started: 2025-01-26 23:05:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -779,7 +779,7 @@
 (assert (forall ((i@2@01 Int)) (!
   (=> (= i@2@01 0) (and (= (as inv@4@01  Int) i@2@01) (as img@5@01  Bool)))
   
-  :qid |quant-u-9550|)))
+  :qid |quant-u-9496|)))
 ; Permissions are non-negative
 (pop) ; 2
 (push) ; 2
@@ -893,7 +893,7 @@
 (assert (forall ((i@12@01 Int)) (!
   (=> (= i@12@01 0) (and (= (inv@14@01 x@11@01) i@12@01) (img@15@01 x@11@01)))
   
-  :qid |quant-u-9557|)))
+  :qid |quant-u-9503|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@15@01 r) (= (inv@14@01 r) 0)) (= x@11@01 r))
   :pattern ((inv@14@01 r))
@@ -953,7 +953,7 @@
     (= i@18@01 0)
     (and (= (inv@20@01 true true) i@18@01) (img@21@01 true true)))
   
-  :qid |quant-u-9559|)))
+  :qid |quant-u-9505|)))
 (assert (forall ((x0 Bool) (x1 Bool)) (!
   (=>
     (and (img@21@01 x0 x1) (= (inv@20@01 x0 x1) 0))

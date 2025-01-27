@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:20
+; Started: 2025-01-26 23:06:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -955,19 +955,19 @@
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (= (dummy%limited s@$ x@0@00) (dummy s@$ x@0@00))
   :pattern ((dummy s@$ x@0@00))
-  :qid |quant-u-11001|)))
+  :qid |quant-u-10948|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (dummy%stateless x@0@00)
   :pattern ((dummy%limited s@$ x@0@00))
-  :qid |quant-u-11002|)))
+  :qid |quant-u-10949|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (=> (dummy%precondition s@$ x@0@00) (= (dummy s@$ x@0@00) true))
   :pattern ((dummy s@$ x@0@00))
-  :qid |quant-u-11003|)))
+  :qid |quant-u-10950|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   true
   :pattern ((dummy s@$ x@0@00))
-  :qid |quant-u-11004|)))
+  :qid |quant-u-10951|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- quicksort_rec ----------
@@ -1046,7 +1046,7 @@
       (= (inv@11@01 (loc<Ref> a@4@01 i@9@01)) i@9@01)
       (img@12@01 (loc<Ref> a@4@01 i@9@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.second $t@8@01)) (loc<Ref> a@4@01 i@9@01)) (loc<Ref> a@4@01 i@9@01)))
-  :qid |quant-u-11006|)))
+  :qid |quant-u-10953|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1086,7 +1086,7 @@
     (and (<= lo@5@01 (inv@11@01 r)) (<= (inv@11@01 r) hi@6@01))
     ($FVF.loc_val ($FVF.lookup_val (as sm@13@01  $FVF<val>) r) r))
   :pattern ((inv@11@01 r))
-  :qid |quant-u-11007|)))
+  :qid |quant-u-10954|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -1155,7 +1155,7 @@
       (= (inv@17@01 (loc<Ref> a@4@01 i@15@01)) i@15@01)
       (img@18@01 (loc<Ref> a@4@01 i@15@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first $t@14@01)) (loc<Ref> a@4@01 i@15@01)) (loc<Ref> a@4@01 i@15@01)))
-  :qid |quant-u-11009|)))
+  :qid |quant-u-10956|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1195,7 +1195,7 @@
     (and (<= lo@5@01 (inv@17@01 r)) (<= (inv@17@01 r) hi@6@01))
     ($FVF.loc_val ($FVF.lookup_val (as sm@19@01  $FVF<val>) r) r))
   :pattern ((inv@17@01 r))
-  :qid |quant-u-11010|)))
+  :qid |quant-u-10957|)))
 (assert (= ($Snap.second $t@14@01) $Snap.unit))
 ; [eval] (forall i$0: Int, j: Int :: { loc(a, i$0).val, loc(a, j).val } lo <= i$0 && (i$0 <= j && j <= hi) ==> loc(a, i$0).val <= loc(a, j).val)
 (declare-const i$0@20@01 Int)
@@ -1482,7 +1482,7 @@
     (and (<= lo@5@01 (inv@23@01 r)) (<= (inv@23@01 r) hi@6@01))
     ($FVF.loc_val ($FVF.lookup_val (as sm@13@01  $FVF<val>) r) r))
   :pattern ((inv@23@01 r))
-  :qid |quant-u-11012|)))
+  :qid |quant-u-10959|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@25@01 ((r $Ref)) $Perm
   (ite
@@ -1520,7 +1520,7 @@
       (pTaken@25@01 r))
     $Perm.No)
   
-  :qid |quant-u-11014|))))
+  :qid |quant-u-10961|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1538,7 +1538,7 @@
       (= r (loc<Ref> a@4@01 (inv@23@01 r))))
     (= (- $Perm.Write (pTaken@25@01 r)) $Perm.No))
   
-  :qid |quant-u-11015|))))
+  :qid |quant-u-10962|))))
 (check-sat)
 ; unsat
 (pop) ; 3

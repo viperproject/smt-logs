@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:05
+// Date:         2025-01-26 23:15:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0223.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0223-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -457,8 +457,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
   var QPMask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var perm: Perm;
@@ -520,8 +520,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
+      ExhaleWellDef0Mask := assertingMask;
       assert {:msg "  Function might not be well-formed. Assertion (x in Set(x)) might not hold. (0223.vpr@11.1--15.4) [81832]"}
         Set#Singleton(x)[x];
       
@@ -530,8 +530,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
         UnfoldingMask := Mask;
         assume bar#trigger_1(UnfoldingHeap, bar_3(x));
         assume UnfoldingHeap[null, bar_3(x)] == FrameFragment(UnfoldingHeap[x, val]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access bar(x) (0223.vpr@11.1--15.4) [81833]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, bar_3(x)];
@@ -614,12 +614,12 @@ procedure set_3(x: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -641,8 +641,8 @@ procedure set_3(x: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -656,8 +656,8 @@ procedure set_3(x: Ref, i: int) returns ()
     // -- Check definedness of get(x) == i
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -705,8 +705,8 @@ procedure set_3(x: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@19.11--19.32) [81837]"}
@@ -729,16 +729,16 @@ procedure test_1(x: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -799,16 +799,16 @@ procedure test_1(x: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: set(x, 4) -- 0223.vpr@25.3--25.11
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@25.3--25.11) [81840]"}
@@ -830,14 +830,14 @@ procedure test_1(x: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 4 -- 0223.vpr@26.3--26.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(x) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -882,8 +882,8 @@ procedure test_1(x: Ref, z: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(z) (0223.vpr@27.3--27.11) [81844]"}
@@ -905,14 +905,14 @@ procedure test_1(x: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 4 -- 0223.vpr@28.3--28.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(x) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -957,8 +957,8 @@ procedure test_1(x: Ref, z: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access bar(x) (0223.vpr@29.3--29.11) [81848]"}
@@ -980,14 +980,14 @@ procedure test_1(x: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 4 -- 0223.vpr@32.3--32.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(x) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive

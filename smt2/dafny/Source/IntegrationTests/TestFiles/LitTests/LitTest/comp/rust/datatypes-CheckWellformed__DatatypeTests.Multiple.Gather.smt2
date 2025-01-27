@@ -79,129 +79,211 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass.DatatypeTests.u8 Tagclass.DatatypeTests.Multiple |##DatatypeTests.Multiple.ConstructorA| |##DatatypeTests.Multiple.ConstructorB| |##DatatypeTests.Multiple.ConstructorAB| tytagFamily$u8 tytagFamily$Multiple)
 )
 (assert (= (Tag TBool) TagBool))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass.DatatypeTests.u8 $h)
+ :qid |unknown.0:0|
+ :skolemid |1505|
  :pattern ( ($IsAlloc intType |x#0| Tclass.DatatypeTests.u8 $h))
 )))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((this T@U) (|other#0| T@U) ) (!  (=> (or (|DatatypeTests.Multiple.Gather#canCall| this |other#0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType this Tclass.DatatypeTests.Multiple) ($Is DatatypeTypeType |other#0| Tclass.DatatypeTests.Multiple)))) ($Is DatatypeTypeType (DatatypeTests.Multiple.Gather this |other#0|) Tclass.DatatypeTests.Multiple))
+ :qid |datatypesdfy.59:14|
+ :skolemid |1644|
  :pattern ( (DatatypeTests.Multiple.Gather this |other#0|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((this@@0 T@U) (|other#0@@0| T@U) ) (!  (=> (or (|DatatypeTests.Multiple.Gather#canCall| (Lit DatatypeTypeType this@@0) (Lit DatatypeTypeType |other#0@@0|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@0 Tclass.DatatypeTests.Multiple) ($Is DatatypeTypeType |other#0@@0| Tclass.DatatypeTests.Multiple)))) (= (DatatypeTests.Multiple.Gather (Lit DatatypeTypeType this@@0) (Lit DatatypeTypeType |other#0@@0|)) (ite (DatatypeTests.Multiple.ConstructorA_q (Lit DatatypeTypeType this@@0)) (let ((|a#4| (LitInt (DatatypeTests.Multiple.a (Lit DatatypeTypeType this@@0)))))
 (ite (DatatypeTests.Multiple.ConstructorB_q (Lit DatatypeTypeType |other#0@@0|)) (|#DatatypeTests.Multiple.ConstructorAB| |a#4| (U_2_bool (Lit boolType (bool_2_U (DatatypeTests.Multiple.b (Lit DatatypeTypeType |other#0@@0|)))))) this@@0)) (ite (DatatypeTests.Multiple.ConstructorB_q (Lit DatatypeTypeType this@@0)) (let ((|b#4| (U_2_bool (Lit boolType (bool_2_U (DatatypeTests.Multiple.b (Lit DatatypeTypeType this@@0)))))))
 (ite (DatatypeTests.Multiple.ConstructorA_q (Lit DatatypeTypeType |other#0@@0|)) (|#DatatypeTests.Multiple.ConstructorAB| (LitInt (DatatypeTests.Multiple.a (Lit DatatypeTypeType |other#0@@0|))) |b#4|) this@@0)) (Lit DatatypeTypeType this@@0)))))
+ :qid |datatypesdfy.59:14|
  :weight 3
+ :skolemid |1647|
  :pattern ( (DatatypeTests.Multiple.Gather (Lit DatatypeTypeType this@@0) (Lit DatatypeTypeType |other#0@@0|)))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |1019|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1017|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d T@U) ) (! (= (DatatypeTests.Multiple.ConstructorA_q d) (= (DatatypeCtorId d) |##DatatypeTests.Multiple.ConstructorA|))
+ :qid |unknown.0:0|
+ :skolemid |1612|
  :pattern ( (DatatypeTests.Multiple.ConstructorA_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (DatatypeTests.Multiple.ConstructorB_q d@@0) (= (DatatypeCtorId d@@0) |##DatatypeTests.Multiple.ConstructorB|))
+ :qid |unknown.0:0|
+ :skolemid |1620|
  :pattern ( (DatatypeTests.Multiple.ConstructorB_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (DatatypeTests.Multiple.ConstructorAB_q d@@1) (= (DatatypeCtorId d@@1) |##DatatypeTests.Multiple.ConstructorAB|))
+ :qid |unknown.0:0|
+ :skolemid |1628|
  :pattern ( (DatatypeTests.Multiple.ConstructorAB_q d@@1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1028|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((|a#12#0#0| Int) (|a#12#1#0| Bool) ) (! (= ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorAB| |a#12#0#0| |a#12#1#0|) Tclass.DatatypeTests.Multiple)  (and ($Is intType (int_2_U |a#12#0#0|) Tclass.DatatypeTests.u8) ($Is boolType (bool_2_U |a#12#1#0|) TBool)))
+ :qid |datatypesdfy.57:21|
+ :skolemid |1631|
  :pattern ( ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorAB| |a#12#0#0| |a#12#1#0|) Tclass.DatatypeTests.Multiple))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorAB_q d@@2) (exists ((|a#11#0#0| Int) (|a#11#1#0| Bool) ) (= d@@2 (|#DatatypeTests.Multiple.ConstructorAB| |a#11#0#0| |a#11#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorAB_q d@@2) (exists ((|a#11#0#0| Int) (|a#11#1#0| Bool) ) (! (= d@@2 (|#DatatypeTests.Multiple.ConstructorAB| |a#11#0#0| |a#11#1#0|))
+ :qid |datatypesdfy.57:21|
+ :skolemid |1629|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1630|
  :pattern ( (DatatypeTests.Multiple.ConstructorAB_q d@@2))
 )))
-(assert (forall ((d@@3 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorA_q d@@3) (exists ((|a#1#0#0| Int) ) (= d@@3 (|#DatatypeTests.Multiple.ConstructorA| |a#1#0#0|))))
+(assert (forall ((d@@3 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorA_q d@@3) (exists ((|a#1#0#0| Int) ) (! (= d@@3 (|#DatatypeTests.Multiple.ConstructorA| |a#1#0#0|))
+ :qid |datatypesdfy.55:20|
+ :skolemid |1613|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1614|
  :pattern ( (DatatypeTests.Multiple.ConstructorA_q d@@3))
 )))
-(assert (forall ((d@@4 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorB_q d@@4) (exists ((|a#6#0#0| Bool) ) (= d@@4 (|#DatatypeTests.Multiple.ConstructorB| |a#6#0#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (DatatypeTests.Multiple.ConstructorB_q d@@4) (exists ((|a#6#0#0| Bool) ) (! (= d@@4 (|#DatatypeTests.Multiple.ConstructorB| |a#6#0#0|))
+ :qid |datatypesdfy.56:20|
+ :skolemid |1621|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1622|
  :pattern ( (DatatypeTests.Multiple.ConstructorB_q d@@4))
 )))
 (assert (forall ((|a#2#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorA| |a#2#0#0|) Tclass.DatatypeTests.Multiple) ($Is intType (int_2_U |a#2#0#0|) Tclass.DatatypeTests.u8))
+ :qid |datatypesdfy.55:20|
+ :skolemid |1615|
  :pattern ( ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorA| |a#2#0#0|) Tclass.DatatypeTests.Multiple))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((this@@1 T@U) (|other#0@@1| T@U) ) (!  (=> (or (|DatatypeTests.Multiple.Gather#canCall| this@@1 |other#0@@1|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@1 Tclass.DatatypeTests.Multiple) ($Is DatatypeTypeType |other#0@@1| Tclass.DatatypeTests.Multiple)))) (= (DatatypeTests.Multiple.Gather this@@1 |other#0@@1|) (ite (DatatypeTests.Multiple.ConstructorA_q this@@1) (let ((|a#0| (DatatypeTests.Multiple.a this@@1)))
 (ite (DatatypeTests.Multiple.ConstructorB_q |other#0@@1|) (|#DatatypeTests.Multiple.ConstructorAB| |a#0| (DatatypeTests.Multiple.b |other#0@@1|)) this@@1)) (ite (DatatypeTests.Multiple.ConstructorB_q this@@1) (let ((|b#0| (DatatypeTests.Multiple.b this@@1)))
 (ite (DatatypeTests.Multiple.ConstructorA_q |other#0@@1|) (|#DatatypeTests.Multiple.ConstructorAB| (DatatypeTests.Multiple.a |other#0@@1|) |b#0|) this@@1)) this@@1))))
+ :qid |datatypesdfy.59:14|
+ :skolemid |1646|
  :pattern ( (DatatypeTests.Multiple.Gather this@@1 |other#0@@1|))
 ))))
 (assert (forall ((|a#15#0#0| Int) (|a#15#1#0| Bool) ) (! (= (DatatypeTests.Multiple.b (|#DatatypeTests.Multiple.ConstructorAB| |a#15#0#0| |a#15#1#0|)) |a#15#1#0|)
+ :qid |datatypesdfy.57:21|
+ :skolemid |1636|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorAB| |a#15#0#0| |a#15#1#0|))
 )))
 (assert (forall ((|a#9#0#0| Bool) ) (! (= (DatatypeTests.Multiple.b (|#DatatypeTests.Multiple.ConstructorB| |a#9#0#0|)) |a#9#0#0|)
+ :qid |datatypesdfy.56:20|
+ :skolemid |1626|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorB| |a#9#0#0|))
 )))
 (assert (forall ((|a#10#0#0| Int) (|a#10#1#0| Bool) ) (! (= (DatatypeCtorId (|#DatatypeTests.Multiple.ConstructorAB| |a#10#0#0| |a#10#1#0|)) |##DatatypeTests.Multiple.ConstructorAB|)
+ :qid |datatypesdfy.57:21|
+ :skolemid |1627|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorAB| |a#10#0#0| |a#10#1#0|))
 )))
 (assert (forall ((|a#14#0#0| Int) (|a#14#1#0| Bool) ) (! (= (DatatypeTests.Multiple.a (|#DatatypeTests.Multiple.ConstructorAB| |a#14#0#0| |a#14#1#0|)) |a#14#0#0|)
+ :qid |datatypesdfy.57:21|
+ :skolemid |1635|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorAB| |a#14#0#0| |a#14#1#0|))
 )))
 (assert (forall ((|a#0#0#0| Int) ) (! (= (DatatypeCtorId (|#DatatypeTests.Multiple.ConstructorA| |a#0#0#0|)) |##DatatypeTests.Multiple.ConstructorA|)
+ :qid |datatypesdfy.55:20|
+ :skolemid |1611|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorA| |a#0#0#0|))
 )))
 (assert (forall ((|a#4#0#0| Int) ) (! (= (DatatypeTests.Multiple.a (|#DatatypeTests.Multiple.ConstructorA| |a#4#0#0|)) |a#4#0#0|)
+ :qid |datatypesdfy.55:20|
+ :skolemid |1618|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorA| |a#4#0#0|))
 )))
 (assert (forall ((|a#5#0#0| Bool) ) (! (= (DatatypeCtorId (|#DatatypeTests.Multiple.ConstructorB| |a#5#0#0|)) |##DatatypeTests.Multiple.ConstructorB|)
+ :qid |datatypesdfy.56:20|
+ :skolemid |1619|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorB| |a#5#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1027|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((|a#7#0#0| Bool) ) (! (= ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorB| |a#7#0#0|) Tclass.DatatypeTests.Multiple) ($Is boolType (bool_2_U |a#7#0#0|) TBool))
+ :qid |datatypesdfy.56:20|
+ :skolemid |1623|
  :pattern ( ($Is DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorB| |a#7#0#0|) Tclass.DatatypeTests.Multiple))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1758|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (DatatypeTests.Multiple.ConstructorB_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.DatatypeTests.Multiple $h@@0))) ($IsAlloc boolType (bool_2_U (DatatypeTests.Multiple.b d@@5)) TBool $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1624|
  :pattern ( ($IsAlloc boolType (bool_2_U (DatatypeTests.Multiple.b d@@5)) TBool $h@@0))
 )))
 (assert (forall ((d@@6 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (DatatypeTests.Multiple.ConstructorAB_q d@@6) ($IsAlloc DatatypeTypeType d@@6 Tclass.DatatypeTests.Multiple $h@@1))) ($IsAlloc boolType (bool_2_U (DatatypeTests.Multiple.b d@@6)) TBool $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1633|
  :pattern ( ($IsAlloc boolType (bool_2_U (DatatypeTests.Multiple.b d@@6)) TBool $h@@1))
 )))
 (assert (forall ((d@@7 T@U) ) (!  (=> ($Is DatatypeTypeType d@@7 Tclass.DatatypeTests.Multiple) (or (or (DatatypeTests.Multiple.ConstructorA_q d@@7) (DatatypeTests.Multiple.ConstructorB_q d@@7)) (DatatypeTests.Multiple.ConstructorAB_q d@@7)))
+ :qid |unknown.0:0|
+ :skolemid |1639|
  :pattern ( (DatatypeTests.Multiple.ConstructorAB_q d@@7) ($Is DatatypeTypeType d@@7 Tclass.DatatypeTests.Multiple))
  :pattern ( (DatatypeTests.Multiple.ConstructorB_q d@@7) ($Is DatatypeTypeType d@@7 Tclass.DatatypeTests.Multiple))
  :pattern ( (DatatypeTests.Multiple.ConstructorA_q d@@7) ($Is DatatypeTypeType d@@7 Tclass.DatatypeTests.Multiple))
 )))
 (assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) ($Is DatatypeTypeType d@@8 Tclass.DatatypeTests.Multiple)) ($IsAlloc DatatypeTypeType d@@8 Tclass.DatatypeTests.Multiple $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1637|
  :pattern ( ($IsAlloc DatatypeTypeType d@@8 Tclass.DatatypeTests.Multiple $h@@2))
 )))
 (assert (= (Tag Tclass.DatatypeTests.u8) Tagclass.DatatypeTests.u8))
@@ -209,33 +291,53 @@
 (assert (= (Tag Tclass.DatatypeTests.Multiple) Tagclass.DatatypeTests.Multiple))
 (assert (= (TagFamily Tclass.DatatypeTests.Multiple) tytagFamily$Multiple))
 (assert (forall ((d@@9 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (DatatypeTests.Multiple.ConstructorA_q d@@9) ($IsAlloc DatatypeTypeType d@@9 Tclass.DatatypeTests.Multiple $h@@3))) ($IsAlloc intType (int_2_U (DatatypeTests.Multiple.a d@@9)) Tclass.DatatypeTests.u8 $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1616|
  :pattern ( ($IsAlloc intType (int_2_U (DatatypeTests.Multiple.a d@@9)) Tclass.DatatypeTests.u8 $h@@3))
 )))
 (assert (forall ((d@@10 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (DatatypeTests.Multiple.ConstructorAB_q d@@10) ($IsAlloc DatatypeTypeType d@@10 Tclass.DatatypeTests.Multiple $h@@4))) ($IsAlloc intType (int_2_U (DatatypeTests.Multiple.a d@@10)) Tclass.DatatypeTests.u8 $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |1632|
  :pattern ( ($IsAlloc intType (int_2_U (DatatypeTests.Multiple.a d@@10)) Tclass.DatatypeTests.u8 $h@@4))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass.DatatypeTests.u8)  (and (<= (LitInt 0) (U_2_int |x#0@@0|)) (< (U_2_int |x#0@@0|) 255)))
+ :qid |unknown.0:0|
+ :skolemid |1504|
  :pattern ( ($Is intType |x#0@@0| Tclass.DatatypeTests.u8))
 )))
 (assert (forall ((|a#13#0#0| Int) (|a#13#1#0| T@U) ) (! (= (|#DatatypeTests.Multiple.ConstructorAB| (LitInt |a#13#0#0|) (U_2_bool (Lit boolType |a#13#1#0|))) (Lit DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorAB| |a#13#0#0| (U_2_bool |a#13#1#0|))))
+ :qid |datatypesdfy.57:21|
+ :skolemid |1634|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorAB| (LitInt |a#13#0#0|) (U_2_bool (Lit boolType |a#13#1#0|))))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |1020|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#3#0#0| Int) ) (! (= (|#DatatypeTests.Multiple.ConstructorA| (LitInt |a#3#0#0|)) (Lit DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorA| |a#3#0#0|)))
+ :qid |datatypesdfy.55:20|
+ :skolemid |1617|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorA| (LitInt |a#3#0#0|)))
 )))
 (assert (forall ((|a#8#0#0| T@U) ) (! (= (|#DatatypeTests.Multiple.ConstructorB| (U_2_bool (Lit boolType |a#8#0#0|))) (Lit DatatypeTypeType (|#DatatypeTests.Multiple.ConstructorB| (U_2_bool |a#8#0#0|))))
+ :qid |datatypesdfy.56:20|
+ :skolemid |1625|
  :pattern ( (|#DatatypeTests.Multiple.ConstructorB| (U_2_bool (Lit boolType |a#8#0#0|))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1018|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc boolType v TBool h)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |1065|
  :pattern ( ($IsAlloc boolType v TBool h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is boolType v@@0 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |1044|
  :pattern ( ($Is boolType v@@0 TBool))
 )))
 (push 1)
@@ -252,6 +354,7 @@
 (declare-fun null () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$DatatypeTests.Multiple.Gather)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

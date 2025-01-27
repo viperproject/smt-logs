@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:36:18
+; Started: 2025-01-26 23:08:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1062,7 +1062,7 @@
   (=> (= x@7@01 y@4@01) (and (= (inv@9@01 x@7@01) x@7@01) (img@10@01 x@7@01)))
   :pattern ((inv@9@01 x@7@01))
   :pattern ((img@10@01 x@7@01))
-  :qid |quant-u-13185|)))
+  :qid |quant-u-13132|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@10@01 r) (= (inv@9@01 r) y@4@01)) (= (inv@9@01 r) r))
   :pattern ((inv@9@01 r))
@@ -1133,7 +1133,7 @@
         ($SortWrappers.$PermTo$Snap $Perm.Write))
       ($SortWrappers.$RefTo$Snap y@4@01))
     ($SortWrappers.$PermTo$Snap $Perm.Write))))
-  :qid |quant-u-13187|)))
+  :qid |quant-u-13134|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and (img@16@01 x0 x1 x2 x3) (Set_in (inv@15@01 x0 x1 x2 x3) xs@3@01))
@@ -1182,7 +1182,7 @@
         ($SortWrappers.$RefTo$Snap x2))
       ($SortWrappers.$PermTo$Snap x3))))
   :pattern ((inv@15@01 x0 x1 x2 x3))
-  :qid |quant-u-13188|)))
+  :qid |quant-u-13135|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1305,7 +1305,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@4@01) false)
   
-  :qid |quant-u-13189|))))
+  :qid |quant-u-13136|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1352,7 +1352,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@26@01 r) $Perm.No)
   
-  :qid |quant-u-13192|))))
+  :qid |quant-u-13139|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1365,7 +1365,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@4@01) (= (- $Perm.Write (pTaken@26@01 r)) $Perm.No))
   
-  :qid |quant-u-13193|))))
+  :qid |quant-u-13140|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1377,7 +1377,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@4@01) (= (- $Perm.Write (pTaken@26@01 r)) $Perm.No))
   
-  :qid |quant-u-13193|))))
+  :qid |quant-u-13140|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1418,7 +1418,7 @@
       (pTaken@28@01 r))
     $Perm.No)
   
-  :qid |quant-u-13195|))))
+  :qid |quant-u-13142|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1430,7 +1430,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@28@01 r) $Perm.No)
   
-  :qid |quant-u-13196|))))
+  :qid |quant-u-13143|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1445,7 +1445,7 @@
     (= r y@4@01)
     (= (- (- $Perm.Write (pTaken@26@01 r)) (pTaken@28@01 r)) $Perm.No))
   
-  :qid |quant-u-13197|))))
+  :qid |quant-u-13144|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1473,7 +1473,7 @@
   :pattern (($FVF.lookup_f (as sm@25@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f (as sm@27@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@30@01 r))
-  :qid |quant-u-13198|)))
+  :qid |quant-u-13145|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -1485,7 +1485,7 @@
   :pattern (($FVF.lookup_f $t@30@01 r))
   :pattern (($FVF.lookup_f (as sm@29@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@31@01 r))
-  :qid |quant-u-13199|)))
+  :qid |quant-u-13146|)))
 ; Create MagicWandSnapFunction for wand acc(z.f, write) --* acc(y.f, write)
 (declare-const mwsf@32@01 $MWSF)
 (assert (forall (($t@23@01 $Snap)) (!
@@ -1493,7 +1493,7 @@
     (MWSF_apply mwsf@32@01 $t@23@01)
     ($SortWrappers.IntTo$Snap ($FVF.lookup_f (as sm@29@01  $FVF<f>) y@4@01)))
   :pattern ((MWSF_apply mwsf@32@01 $t@23@01))
-  :qid |quant-u-13200|)))
+  :qid |quant-u-13147|)))
 (declare-const sm@33@01 $PSF<wand@0>)
 ; Definitional axioms for singleton-SM's value
 (assert (=
@@ -1532,7 +1532,7 @@
       (MWSF_apply mwsf@32@01 $t@23@01)
       ($SortWrappers.IntTo$Snap ($FVF.lookup_f (as sm@29@01  $FVF<f>) y@4@01)))
     :pattern ((MWSF_apply mwsf@32@01 $t@23@01))
-    :qid |quant-u-13200|))
+    :qid |quant-u-13147|))
   (=
     ($PSF.lookup_wand@0 (as sm@33@01  $PSF<wand@0>) ($Snap.combine
       ($Snap.combine
@@ -1663,7 +1663,7 @@
     (and (= (inv@45@01 x@43@01) x@43@01) (img@46@01 x@43@01)))
   :pattern ((inv@45@01 x@43@01))
   :pattern ((img@46@01 x@43@01))
-  :qid |quant-u-13202|)))
+  :qid |quant-u-13149|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@46@01 r) (= (inv@45@01 r) z@41@01)) (= (inv@45@01 r) r))
   :pattern ((inv@45@01 r))
@@ -1718,7 +1718,7 @@
     (Set_in x@47@01 xs@39@01)
     (and (= (inv@51@01 x@47@01) x@47@01) (img@52@01 x@47@01)))
   :pattern (($PSF.loc_p1 ($PSF.lookup_p1 $t@50@01 ($SortWrappers.$RefTo$Snap x@47@01)) ($SortWrappers.$RefTo$Snap x@47@01)))
-  :qid |quant-u-13204|)))
+  :qid |quant-u-13151|)))
 (assert (forall ((x $Ref)) (!
   (=> (and (img@52@01 x) (Set_in (inv@51@01 x) xs@39@01)) (= (inv@51@01 x) x))
   :pattern ((inv@51@01 x))
@@ -1749,7 +1749,7 @@
     (Set_in (inv@51@01 x) xs@39@01)
     ($PSF.loc_p1 ($PSF.lookup_p1 (as sm@53@01  $PSF<p1>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@51@01 x))
-  :qid |quant-u-13205|)))
+  :qid |quant-u-13152|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1907,7 +1907,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@42@01) (= (- $Perm.Write (pTaken@64@01 r)) $Perm.No))
   
-  :qid |quant-u-13208|))))
+  :qid |quant-u-13155|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2067,7 +2067,7 @@
     (and (= (inv@78@01 x@76@01) x@76@01) (img@79@01 x@76@01)))
   :pattern ((inv@78@01 x@76@01))
   :pattern ((img@79@01 x@76@01))
-  :qid |quant-u-13210|)))
+  :qid |quant-u-13157|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@79@01 r) (= (inv@78@01 r) y@73@01)) (= (inv@78@01 r) r))
   :pattern ((inv@78@01 r))
@@ -2138,7 +2138,7 @@
         ($SortWrappers.$PermTo$Snap $Perm.Write))
       ($SortWrappers.$RefTo$Snap y@73@01))
     ($SortWrappers.$PermTo$Snap $Perm.Write))))
-  :qid |quant-u-13212|)))
+  :qid |quant-u-13159|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and (img@85@01 x0 x1 x2 x3) (Seq_contains xs@72@01 (inv@84@01 x0 x1 x2 x3)))
@@ -2189,7 +2189,7 @@
         ($SortWrappers.$RefTo$Snap x2))
       ($SortWrappers.$PermTo$Snap x3))))
   :pattern ((inv@84@01 x0 x1 x2 x3))
-  :qid |quant-u-13213|)))
+  :qid |quant-u-13160|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -2244,7 +2244,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@73@01) false)
   
-  :qid |quant-u-13214|))))
+  :qid |quant-u-13161|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2291,7 +2291,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@93@01 r) $Perm.No)
   
-  :qid |quant-u-13217|))))
+  :qid |quant-u-13164|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2304,7 +2304,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@73@01) (= (- $Perm.Write (pTaken@93@01 r)) $Perm.No))
   
-  :qid |quant-u-13218|))))
+  :qid |quant-u-13165|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2316,7 +2316,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@73@01) (= (- $Perm.Write (pTaken@93@01 r)) $Perm.No))
   
-  :qid |quant-u-13218|))))
+  :qid |quant-u-13165|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2357,7 +2357,7 @@
       (pTaken@95@01 r))
     $Perm.No)
   
-  :qid |quant-u-13220|))))
+  :qid |quant-u-13167|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2369,7 +2369,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@95@01 r) $Perm.No)
   
-  :qid |quant-u-13221|))))
+  :qid |quant-u-13168|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -2384,7 +2384,7 @@
     (= r y@73@01)
     (= (- (- $Perm.Write (pTaken@93@01 r)) (pTaken@95@01 r)) $Perm.No))
   
-  :qid |quant-u-13222|))))
+  :qid |quant-u-13169|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2412,7 +2412,7 @@
   :pattern (($FVF.lookup_f (as sm@92@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f (as sm@94@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@97@01 r))
-  :qid |quant-u-13223|)))
+  :qid |quant-u-13170|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -2424,7 +2424,7 @@
   :pattern (($FVF.lookup_f $t@97@01 r))
   :pattern (($FVF.lookup_f (as sm@96@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@98@01 r))
-  :qid |quant-u-13224|)))
+  :qid |quant-u-13171|)))
 ; Create MagicWandSnapFunction for wand acc(z.f, write) --* acc(y.f, write)
 (declare-const mwsf@99@01 $MWSF)
 (assert (forall (($t@90@01 $Snap)) (!
@@ -2432,7 +2432,7 @@
     (MWSF_apply mwsf@99@01 $t@90@01)
     ($SortWrappers.IntTo$Snap ($FVF.lookup_f (as sm@96@01  $FVF<f>) y@73@01)))
   :pattern ((MWSF_apply mwsf@99@01 $t@90@01))
-  :qid |quant-u-13225|)))
+  :qid |quant-u-13172|)))
 (declare-const sm@100@01 $PSF<wand@0>)
 ; Definitional axioms for singleton-SM's value
 (assert (=
@@ -2471,7 +2471,7 @@
       (MWSF_apply mwsf@99@01 $t@90@01)
       ($SortWrappers.IntTo$Snap ($FVF.lookup_f (as sm@96@01  $FVF<f>) y@73@01)))
     :pattern ((MWSF_apply mwsf@99@01 $t@90@01))
-    :qid |quant-u-13225|))
+    :qid |quant-u-13172|))
   (=
     ($PSF.lookup_wand@0 (as sm@100@01  $PSF<wand@0>) ($Snap.combine
       ($Snap.combine
@@ -2760,7 +2760,7 @@
     (and (= (inv@116@01 x@114@01) x@114@01) (img@117@01 x@114@01)))
   :pattern ((inv@116@01 x@114@01))
   :pattern ((img@117@01 x@114@01))
-  :qid |quant-u-13227|)))
+  :qid |quant-u-13174|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@117@01 r) (= (inv@116@01 r) z@112@01)) (= (inv@116@01 r) r))
   :pattern ((inv@116@01 r))
@@ -2815,7 +2815,7 @@
     (Set_in x@118@01 xs@110@01)
     (and (= (inv@122@01 x@118@01) x@118@01) (img@123@01 x@118@01)))
   :pattern (($PSF.loc_p1 ($PSF.lookup_p1 $t@121@01 ($SortWrappers.$RefTo$Snap x@118@01)) ($SortWrappers.$RefTo$Snap x@118@01)))
-  :qid |quant-u-13229|)))
+  :qid |quant-u-13176|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and (img@123@01 x) (Set_in (inv@122@01 x) xs@110@01))
@@ -2848,7 +2848,7 @@
     (Set_in (inv@122@01 x) xs@110@01)
     ($PSF.loc_p1 ($PSF.lookup_p1 (as sm@124@01  $PSF<p1>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@122@01 x))
-  :qid |quant-u-13230|)))
+  :qid |quant-u-13177|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -2964,7 +2964,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r y@113@01) (= (- $Perm.Write (pTaken@133@01 r)) $Perm.No))
   
-  :qid |quant-u-13233|))))
+  :qid |quant-u-13180|))))
 (check-sat)
 ; unsat
 (pop) ; 3

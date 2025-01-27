@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:35
+// Date:         2025-01-26 23:15:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/heap.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/heap-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,12 +188,12 @@ axiom !IsWandField(f_7);
 procedure t0() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var c: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -203,8 +203,8 @@ procedure t0() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[c, $allocated];
@@ -218,8 +218,8 @@ procedure t0() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c.f != c -- heap.vpr@14.5--14.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of c.f != c
       assert {:msg "  Assert might fail. There might be insufficient permission to access c.f (heap.vpr@14.12--14.20) [101014]"}
@@ -236,16 +236,16 @@ procedure t0() returns ()
 procedure t1_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var c: Ref;
   var perm: Perm;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -256,8 +256,8 @@ procedure t1_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -289,8 +289,8 @@ procedure t1_2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set_f might not hold. There might be insufficient permission to access a.f (heap.vpr@29.5--29.16) [101017]"}
@@ -315,8 +315,8 @@ procedure t1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f != c -- heap.vpr@32.5--32.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f != c
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (heap.vpr@32.12--32.20) [101020]"}
@@ -334,12 +334,12 @@ procedure set_f(monitor: Ref, value: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -364,8 +364,8 @@ procedure set_f(monitor: Ref, value: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -387,8 +387,8 @@ procedure set_f(monitor: Ref, value: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of set_f might not hold. There might be insufficient permission to access monitor.f (heap.vpr@38.11--38.32) [101023]"}
@@ -408,10 +408,10 @@ procedure set_f(monitor: Ref, value: Ref) returns ()
 procedure t2_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -424,23 +424,23 @@ procedure t2_2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (r != null) -- heap.vpr@44.3--49.4
     if (r_1 != null) {
       
       // -- Translating statement: assert perm(r.f) == none -- heap.vpr@45.5--45.29
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(r.f) == none might not hold. (heap.vpr@45.12--45.29) [101024]"}
           Mask[r_1, f_7] == NoPerm;
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert perm(r.f) == none -- heap.vpr@47.5--47.29
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(r.f) == none might not hold. (heap.vpr@47.12--47.29) [101025]"}
           Mask[r_1, f_7] == NoPerm;
         assume state(Heap, Mask);
@@ -456,8 +456,8 @@ procedure t3(r_1: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -494,8 +494,8 @@ procedure t3(r_1: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := r.f.f -- heap.vpr@58.5--58.17
     

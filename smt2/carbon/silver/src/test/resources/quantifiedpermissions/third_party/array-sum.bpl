@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:05
+// Date:         2025-01-26 23:16:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array-sum.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array-sum-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -635,8 +635,8 @@ procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)) r
   var k_6: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k1_4: int;
   var k2_4: int;
   var ExhaleHeap: HeapType;
@@ -736,8 +736,8 @@ procedure sum#definedness(diz: Ref, lo: int, hi: int, i: int, ar_1: (Seq Ref)) r
           HasDirectPerm(Mask, Seq#Index(ar_1, i), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@18.25--18.52) [145525]"}
             diz != null;
           assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= lo might not hold. (array-sum.vpr@18.25--18.52) [145526]"}
@@ -830,16 +830,16 @@ procedure do_sum(diz: Ref, ar_1: (Seq Ref)) returns ()
   var k2_2: int;
   var k_7: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k1_2_1: int;
   var k2_2_1: int;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var k1_4: int;
   var k2_4: int;
   
@@ -936,8 +936,8 @@ procedure do_sum(diz: Ref, ar_1: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale diz.res == sum(diz, 0, |ar|, 0, ar) -- array-sum.vpr@27.10--27.45
     assume state(Heap, Mask);
@@ -947,8 +947,8 @@ procedure do_sum(diz: Ref, ar_1: (Seq Ref)) returns ()
         HasDirectPerm(Mask, diz, res_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@27.21--27.45) [145544]"}
           diz != null;
         assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@27.21--27.45) [145545]"}
@@ -1021,16 +1021,16 @@ procedure do_sum(diz: Ref, ar_1: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert diz.res == sum(diz, 0, |ar|, 0, ar) -- array-sum.vpr@28.3--28.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of diz.res == sum(diz, 0, |ar|, 0, ar)
       assert {:msg "  Assert might fail. There might be insufficient permission to access diz.res (array-sum.vpr@28.10--28.45) [145552]"}
         HasDirectPerm(ExhaleWellDef0Mask, diz, res_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function sum might not hold. Assertion diz != null might not hold. (array-sum.vpr@28.21--28.45) [145553]"}
           diz != null;
         assert {:msg "  Precondition of function sum might not hold. Assertion 0 <= |ar| might not hold. (array-sum.vpr@28.21--28.45) [145554]"}

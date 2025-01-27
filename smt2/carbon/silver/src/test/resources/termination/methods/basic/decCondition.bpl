@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:30
+// Date:         2025-01-26 23:13:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/decCondition.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/decCondition-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -212,10 +212,10 @@ function  bounded<T>(arg1_1: T): bool;
 procedure m_17(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_x: int;
@@ -229,8 +229,8 @@ procedure m_17(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x >= 0) -- decCondition.vpr@10.3--17.4
     if (x >= 0) {
@@ -239,8 +239,8 @@ procedure m_17(x: int) returns ()
         if (x != 0) {
           
           // -- Translating statement: assert !old(x >= 0) || x - 1 >= 0 -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 1 >= 0 might not hold. (<no position>) [20067]"}
               !(x >= 0) || x - 1 >= 0;
             assume state(Heap, Mask);
@@ -248,8 +248,8 @@ procedure m_17(x: int) returns ()
           // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   x - 1 == old(x) && false -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (x >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) || x - 1 == old(x) && false might not hold. (<no position>) [20068]"}
                 (decreasing(x - 1, x): bool) && (bounded(x): bool);
@@ -269,8 +269,8 @@ procedure m_17(x: int) returns ()
     } else {
       
       // -- Translating statement: assert !old(x >= 0) || y >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || y >= 0 might not hold. (<no position>) [20069]"}
           !(x >= 0) || y >= 0;
         assume state(Heap, Mask);
@@ -278,8 +278,8 @@ procedure m_17(x: int) returns ()
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20070]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
@@ -304,10 +304,10 @@ procedure m_17(x: int) returns ()
 procedure n_83(y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -319,12 +319,12 @@ procedure n_83(y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert y >= 0 || y < 0 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion y >= 0 || y < 0 might not hold. (<no position>) [20071]"}
       y >= 0 || y < 0;
     assume state(Heap, Mask);
@@ -345,10 +345,10 @@ procedure n_83(y: int) returns ()
 procedure m_e(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_x: int;
@@ -362,8 +362,8 @@ procedure m_e(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x >= 0) -- decCondition.vpr@31.3--39.4
     if (x >= 0) {
@@ -372,8 +372,8 @@ procedure m_e(x: int) returns ()
         if (x != 0) {
           
           // -- Translating statement: assert !old(x >= 0) || x - 2 >= 0 -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 2 >= 0 might not hold. (<no position>) [20072]"}
               !(x >= 0) || x - 2 >= 0;
             assume state(Heap, Mask);
@@ -381,8 +381,8 @@ procedure m_e(x: int) returns ()
           // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 2, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   x - 2 == old(x) && false -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (x >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(x - 2, old(x)): Bool) && (bounded(old(x)): Bool) || x - 2 == old(x) && false might not hold. (<no position>) [20073]"}
                 (decreasing(x - 2, x): bool) && (bounded(x): bool);
@@ -402,8 +402,8 @@ procedure m_e(x: int) returns ()
     } else {
       
       // -- Translating statement: assert !old(x >= 0) || y >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || y >= 0 might not hold. (<no position>) [20074]"}
           !(x >= 0) || y >= 0;
         assume state(Heap, Mask);
@@ -411,8 +411,8 @@ procedure m_e(x: int) returns ()
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [20075]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
@@ -437,10 +437,10 @@ procedure m_e(x: int) returns ()
 procedure n_e(y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -452,12 +452,12 @@ procedure n_e(y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert y >= 0 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion y >= 0 might not hold. (decCondition.vpr@28.18--28.24) [20076]"}
       y >= 0;
     assume state(Heap, Mask);

@@ -123,46 +123,66 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagMultiSet alloc Tagclass._module.List |##_module.List.Nil| |##_module.List.Cons| tytagFamily$List)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly T@U) (|xs#0| T@U) ) (!  (=> (or (|_module.__default.sequences#canCall| |xs#0|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0| (Tclass._module.List Tclass._module.G)))) (and (not (|_module.List#Equal| (_module.__default.sequences $ly |xs#0|) |#_module.List.Nil|)) ($Is DatatypeTypeType (_module.__default.sequences $ly |xs#0|) (Tclass._module.List (Tclass._module.List Tclass._module.G)))))
+ :qid |GHCMergeSortdfy.85:10|
+ :skolemid |651|
  :pattern ( (_module.__default.sequences $ly |xs#0|))
 ))))
 (assert ($AlwaysAllocated Tclass._module.G))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.length$_T0 T@U) ($ly@@0 T@U) (|xs#0@@0| T@U) ) (!  (=> (or (|_module.__default.length#canCall| _module._default.length$_T0 (Lit DatatypeTypeType |xs#0@@0|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@0| (Tclass._module.List _module._default.length$_T0)))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@0|)))))) (let ((|ys#3| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@0|)))))
 (|_module.__default.length#canCall| _module._default.length$_T0 |ys#3|))) (= (_module.__default.length _module._default.length$_T0 ($LS $ly@@0) (Lit DatatypeTypeType |xs#0@@0|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@0|)) 0 (let ((|ys#2| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@0|)))))
 (LitInt (+ 1 (_module.__default.length _module._default.length$_T0 ($LS $ly@@0) |ys#2|))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |589|
  :pattern ( (_module.__default.length _module._default.length$_T0 ($LS $ly@@0) (Lit DatatypeTypeType |xs#0@@0|)))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@1 T@U) (|a#0| T@U) (|xs#0@@1| T@U) (|ys#0| T@U) ) (!  (=> (or (|_module.__default.ascending#canCall| |a#0| |xs#0@@1| |ys#0|) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@1| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (_module.List.Cons_q |ys#0|) (|_module.__default.Below#canCall| |a#0| (_module.List.head |ys#0|))) (=> (and (_module.List.Cons_q |ys#0|) (_module.__default.Below |a#0| (_module.List.head |ys#0|))) (|_module.__default.ascending#canCall| (_module.List.head |ys#0|) (|#_module.List.Cons| |a#0| |xs#0@@1|) (_module.List.tail |ys#0|)))) (=> (not (and (_module.List.Cons_q |ys#0|) (_module.__default.Below |a#0| (_module.List.head |ys#0|)))) (and (|_module.__default.reverse#canCall| Tclass._module.G (|#_module.List.Cons| |a#0| |xs#0@@1|) (Lit DatatypeTypeType |#_module.List.Nil|)) (|_module.__default.sequences#canCall| |ys#0|)))) (= (_module.__default.ascending ($LS $ly@@1) |a#0| |xs#0@@1| |ys#0|) (ite  (and (_module.List.Cons_q |ys#0|) (_module.__default.Below |a#0| (_module.List.head |ys#0|))) (_module.__default.ascending $ly@@1 (_module.List.head |ys#0|) (|#_module.List.Cons| |a#0| |xs#0@@1|) (_module.List.tail |ys#0|)) (|#_module.List.Cons| ($Box DatatypeTypeType (_module.__default.reverse Tclass._module.G ($LS $LZ) (|#_module.List.Cons| |a#0| |xs#0@@1|) (Lit DatatypeTypeType |#_module.List.Nil|))) (_module.__default.sequences $ly@@1 |ys#0|))))))
+ :qid |GHCMergeSortdfy.107:10|
+ :skolemid |672|
  :pattern ( (_module.__default.ascending ($LS $ly@@1) |a#0| |xs#0@@1| |ys#0|))
 ))))
 (assert (forall ((_module._default.length$_T0@@0 T@U) ($ly@@2 T@U) (|xs#0@@2| T@U) ) (! (= (_module.__default.length _module._default.length$_T0@@0 ($LS $ly@@2) |xs#0@@2|) (_module.__default.length _module._default.length$_T0@@0 $ly@@2 |xs#0@@2|))
+ :qid |unknown.0:0|
+ :skolemid |581|
  :pattern ( (_module.__default.length _module._default.length$_T0@@0 ($LS $ly@@2) |xs#0@@2|))
 )))
 (assert (forall ((_module._default.multiset_of$T T@U) ($ly@@3 T@U) (|xs#0@@3| T@U) ) (! (= (_module.__default.multiset__of _module._default.multiset_of$T ($LS $ly@@3) |xs#0@@3|) (_module.__default.multiset__of _module._default.multiset_of$T $ly@@3 |xs#0@@3|))
+ :qid |unknown.0:0|
+ :skolemid |599|
  :pattern ( (_module.__default.multiset__of _module._default.multiset_of$T ($LS $ly@@3) |xs#0@@3|))
 )))
 (assert (forall ((_module._default.MultisetUnion$T T@U) ($ly@@4 T@U) (|xs#0@@4| T@U) ) (! (= (_module.__default.MultisetUnion _module._default.MultisetUnion$T ($LS $ly@@4) |xs#0@@4|) (_module.__default.MultisetUnion _module._default.MultisetUnion$T $ly@@4 |xs#0@@4|))
+ :qid |unknown.0:0|
+ :skolemid |607|
  :pattern ( (_module.__default.MultisetUnion _module._default.MultisetUnion$T ($LS $ly@@4) |xs#0@@4|))
 )))
 (assert (= (DatatypeCtorId |#_module.List.Nil|) |##_module.List.Nil|))
 (assert (= (Ctor MultiSetType) 4))
 (assert (forall ((v T@U) (t0 T@U) ) (!  (=> ($Is MultiSetType v (TMultiSet t0)) ($IsGoodMultiSet v))
+ :qid |DafnyPreludebpl.250:15|
+ :skolemid |52|
  :pattern ( ($Is MultiSetType v (TMultiSet t0)))
 )))
 (assert (= (Ctor BoxType) 5))
@@ -175,98 +195,153 @@
 (ite (_module.List.Nil_q (Lit DatatypeTypeType |ys#0@@0|)) |xs#0@@5| (let ((|ys'#2| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@0|)))))
 (let ((|b#2| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@0|)))))
 (ite (_module.__default.Below |a#2| |b#2|) (|#_module.List.Cons| |a#2| (Lit DatatypeTypeType (_module.__default.merge ($LS $ly@@5) |xs'#2| (Lit DatatypeTypeType |ys#0@@0|)))) (|#_module.List.Cons| |b#2| (Lit DatatypeTypeType (_module.__default.merge ($LS $ly@@5) (Lit DatatypeTypeType |xs#0@@5|) |ys'#2|)))))))))))))
+ :qid |GHCMergeSortdfy.138:10|
  :weight 3
+ :skolemid |700|
  :pattern ( (_module.__default.merge ($LS $ly@@5) (Lit DatatypeTypeType |xs#0@@5|) (Lit DatatypeTypeType |ys#0@@0|)))
 ))))
 (assert (forall ((_module.List$T T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) ($IsAlloc DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T) $h))
+ :qid |unknown.0:0|
+ :skolemid |1094|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T) $h))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@6 T@U) (|x#0| T@U) ) (!  (=> (or (|_module.__default.mergePairs#canCall| |x#0|) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |x#0| (Tclass._module.List (Tclass._module.List Tclass._module.G))))) (and (and (and (<= (_module.__default.length (Tclass._module.List Tclass._module.G) ($LS $LZ) (_module.__default.mergePairs $ly@@6 |x#0|)) (_module.__default.length (Tclass._module.List Tclass._module.G) ($LS $LZ) |x#0|)) (=> (and (_module.List.Cons_q |x#0|) (_module.List.Cons_q (_module.List.tail |x#0|))) (< (_module.__default.length (Tclass._module.List Tclass._module.G) ($LS $LZ) (_module.__default.mergePairs $ly@@6 |x#0|)) (_module.__default.length (Tclass._module.List Tclass._module.G) ($LS $LZ) |x#0|)))) (=> (not (|_module.List#Equal| |x#0| |#_module.List.Nil|)) (not (|_module.List#Equal| (_module.__default.mergePairs $ly@@6 |x#0|) |#_module.List.Nil|)))) ($Is DatatypeTypeType (_module.__default.mergePairs $ly@@6 |x#0|) (Tclass._module.List (Tclass._module.List Tclass._module.G)))))
+ :qid |GHCMergeSortdfy.127:10|
+ :skolemid |689|
  :pattern ( (_module.__default.mergePairs $ly@@6 |x#0|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@7 T@U) (|a#0@@0| T@U) (|xs#0@@6| T@U) (|ys#0@@1| T@U) ) (!  (=> (or (|_module.__default.descending#canCall| |a#0@@0| |xs#0@@6| |ys#0@@1|) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@0| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@6| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@1| (Tclass._module.List Tclass._module.G))))) (and (not (|_module.List#Equal| (_module.__default.descending $ly@@7 |a#0@@0| |xs#0@@6| |ys#0@@1|) |#_module.List.Nil|)) ($Is DatatypeTypeType (_module.__default.descending $ly@@7 |a#0@@0| |xs#0@@6| |ys#0@@1|) (Tclass._module.List (Tclass._module.List Tclass._module.G)))))
+ :qid |GHCMergeSortdfy.97:10|
+ :skolemid |660|
  :pattern ( (_module.__default.descending $ly@@7 |a#0@@0| |xs#0@@6| |ys#0@@1|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@8 T@U) (|a#0@@1| T@U) (|xs#0@@7| T@U) (|ys#0@@2| T@U) ) (!  (=> (or (|_module.__default.ascending#canCall| |a#0@@1| |xs#0@@7| |ys#0@@2|) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@1| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@7| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@2| (Tclass._module.List Tclass._module.G))))) (and (not (|_module.List#Equal| (_module.__default.ascending $ly@@8 |a#0@@1| |xs#0@@7| |ys#0@@2|) |#_module.List.Nil|)) ($Is DatatypeTypeType (_module.__default.ascending $ly@@8 |a#0@@1| |xs#0@@7| |ys#0@@2|) (Tclass._module.List (Tclass._module.List Tclass._module.G)))))
+ :qid |GHCMergeSortdfy.107:10|
+ :skolemid |670|
  :pattern ( (_module.__default.ascending $ly@@8 |a#0@@1| |xs#0@@7| |ys#0@@2|))
 ))))
 (assert (forall ((_module.List$T@@0 T@U) ) (! ($Is DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T@@0))
+ :qid |unknown.0:0|
+ :skolemid |1093|
  :pattern ( ($Is DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T@@0)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.multiset_of$T@@0 T@U) ($ly@@9 T@U) (|xs#0@@8| T@U) ) (!  (=> (or (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@0 |xs#0@@8|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@8| (Tclass._module.List _module._default.multiset_of$T@@0)))) (and (=> (not (_module.List.Nil_q |xs#0@@8|)) (let ((|ys#1| (_module.List.tail |xs#0@@8|)))
 (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@0 |ys#1|))) (= (_module.__default.multiset__of _module._default.multiset_of$T@@0 ($LS $ly@@9) |xs#0@@8|) (ite (_module.List.Nil_q |xs#0@@8|) |MultiSet#Empty| (let ((|ys#0@@3| (_module.List.tail |xs#0@@8|)))
 (let ((|a#0@@2| (_module.List.head |xs#0@@8|)))
 (|MultiSet#Union| (|MultiSet#UnionOne| |MultiSet#Empty| |a#0@@2|) (_module.__default.multiset__of _module._default.multiset_of$T@@0 $ly@@9 |ys#0@@3|))))))))
+ :qid |unknown.0:0|
+ :skolemid |604|
  :pattern ( (_module.__default.multiset__of _module._default.multiset_of$T@@0 ($LS $ly@@9) |xs#0@@8|))
 ))))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.List#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |1112|
  :pattern ( (|_module.List#Equal| a b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (_module.List.Cons_q a@@0) (_module.List.Cons_q b@@0)) (= (|_module.List#Equal| a@@0 b@@0)  (and (= (_module.List.head a@@0) (_module.List.head b@@0)) (|_module.List#Equal| (_module.List.tail a@@0) (_module.List.tail b@@0)))))
+ :qid |unknown.0:0|
+ :skolemid |1111|
  :pattern ( (|_module.List#Equal| a@@0 b@@0) (_module.List.Cons_q a@@0))
  :pattern ( (|_module.List#Equal| a@@0 b@@0) (_module.List.Cons_q b@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@10 T@U) (|a#0@@3| T@U) (|xs#0@@9| T@U) (|ys#0@@4| T@U) ) (!  (=> (or (|_module.__default.descending#canCall| (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|) (Lit DatatypeTypeType |ys#0@@4|)) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@3| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@9| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@4| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@4|))))) (|_module.__default.Below#canCall| (Lit BoxType |a#0@@3|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|))))) (=> (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@4|)) (not (U_2_bool (Lit boolType (bool_2_U (_module.__default.Below (Lit BoxType |a#0@@3|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|))))))))) (|_module.__default.descending#canCall| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|))) (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|))) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@4|)))))) (=> (not (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@4|)) (not (U_2_bool (Lit boolType (bool_2_U (_module.__default.Below (Lit BoxType |a#0@@3|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|)))))))))) (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |ys#0@@4|)))) (= (_module.__default.descending ($LS $ly@@10) (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|) (Lit DatatypeTypeType |ys#0@@4|)) (ite  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@4|)) (not (U_2_bool (Lit boolType (bool_2_U (_module.__default.Below (Lit BoxType |a#0@@3|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|))))))))) (_module.__default.descending ($LS $ly@@10) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@4|))) (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|))) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@4|)))) (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|)))) (Lit DatatypeTypeType (_module.__default.sequences ($LS $ly@@10) (Lit DatatypeTypeType |ys#0@@4|))))))))
+ :qid |GHCMergeSortdfy.97:10|
  :weight 3
+ :skolemid |664|
  :pattern ( (_module.__default.descending ($LS $ly@@10) (Lit BoxType |a#0@@3|) (Lit DatatypeTypeType |xs#0@@9|) (Lit DatatypeTypeType |ys#0@@4|)))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall ((|xs#0@@10| T@U) ) (!  (=> (or (|_module.__default.sort#canCall| (Lit DatatypeTypeType |xs#0@@10|)) (and (< 5 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@10| (Tclass._module.List Tclass._module.G)))) (and (and (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |xs#0@@10|)) (|_module.__default.mergeAll#canCall| (Lit DatatypeTypeType (_module.__default.sequences ($LS $LZ) (Lit DatatypeTypeType |xs#0@@10|))))) (= (_module.__default.sort (Lit DatatypeTypeType |xs#0@@10|)) (Lit DatatypeTypeType (_module.__default.mergeAll ($LS $LZ) (Lit DatatypeTypeType (_module.__default.sequences ($LS $LZ) (Lit DatatypeTypeType |xs#0@@10|))))))))
+ :qid |GHCMergeSortdfy.80:15|
  :weight 3
+ :skolemid |646|
  :pattern ( (_module.__default.sort (Lit DatatypeTypeType |xs#0@@10|)))
 ))))
 (assert (forall ((_module.List$T@@1 T@U) (|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.List.Cons| |a#6#0#0| |a#6#1#0|) (Tclass._module.List _module.List$T@@1))  (and ($IsBox |a#6#0#0| _module.List$T@@1) ($Is DatatypeTypeType |a#6#1#0| (Tclass._module.List _module.List$T@@1))))
+ :qid |unknown.0:0|
+ :skolemid |1099|
  :pattern ( ($Is DatatypeTypeType (|#_module.List.Cons| |a#6#0#0| |a#6#1#0|) (Tclass._module.List _module.List$T@@1)))
 )))
 (assert (forall ((d T@U) ) (! (= (_module.List.Nil_q d) (= (DatatypeCtorId d) |##_module.List.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1091|
  :pattern ( (_module.List.Nil_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.List.Cons_q d@@0) (= (DatatypeCtorId d@@0) |##_module.List.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |1096|
  :pattern ( (_module.List.Cons_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@11 T@U) (|xs#0@@11| T@U) ) (!  (=> (or (|_module.__default.sorted#canCall| (Lit DatatypeTypeType |xs#0@@11|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@11| (Tclass._module.List Tclass._module.G)))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@11|)))))) (let ((|ys#3@@0| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@11|)))))
 (let ((|a#3@@0| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@11|)))))
  (and (forall ((|y#3| T@U) ) (!  (=> ($IsBox |y#3| Tclass._module.G) (and (|_module.__default.multiset__of#canCall| Tclass._module.G |ys#3@@0|) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#3@@0|) |y#3|) 0) (|_module.__default.Below#canCall| |a#3@@0| |y#3|))))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |713|
  :pattern ( (_module.__default.Below |a#3@@0| |y#3|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#3@@0|) |y#3|))
 )) (=> (forall ((|y#3@@0| T@U) ) (!  (=> ($IsBox |y#3@@0| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#3@@0|) |y#3@@0|) 0) (_module.__default.Below |a#3@@0| |y#3@@0|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |714|
  :pattern ( (_module.__default.Below |a#3@@0| |y#3@@0|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#3@@0|) |y#3@@0|))
 )) (|_module.__default.sorted#canCall| |ys#3@@0|)))))) (= (_module.__default.sorted ($LS $ly@@11) (Lit DatatypeTypeType |xs#0@@11|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@11|)) true (let ((|ys#2@@0| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@11|)))))
 (let ((|a#2@@0| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@11|)))))
  (and (forall ((|y#2| T@U) ) (!  (=> ($IsBox |y#2| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (Lit MultiSetType (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#2@@0|)) |y#2|) 0) (_module.__default.Below |a#2@@0| |y#2|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |712|
  :pattern ( (_module.__default.Below |a#2@@0| |y#2|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#2@@0|) |y#2|))
 )) (_module.__default.sorted ($LS $ly@@11) |ys#2@@0|))))))))
+ :qid |GHCMergeSortdfy.151:17|
  :weight 3
+ :skolemid |715|
  :pattern ( (_module.__default.sorted ($LS $ly@@11) (Lit DatatypeTypeType |xs#0@@11|)))
 ))))
 (assert (forall ((a@@1 T@U) (x@@5 T@U) (y T@U) ) (!  (=> (or (not (= x@@5 y)) (not true)) (= (|MultiSet#Multiplicity| a@@1 y) (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@1 x@@5) y)))
+ :qid |DafnyPreludebpl.978:15|
+ :skolemid |195|
  :pattern ( (|MultiSet#UnionOne| a@@1 x@@5) (|MultiSet#Multiplicity| a@@1 y))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.multiset_of$T@@1 T@U) ($ly@@12 T@U) (|xs#0@@12| T@U) ) (!  (=> (or (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@1 (Lit DatatypeTypeType |xs#0@@12|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@12| (Tclass._module.List _module._default.multiset_of$T@@1)))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@12|)))))) (let ((|ys#3@@1| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@12|)))))
 (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@1 |ys#3@@1|))) (= (_module.__default.multiset__of _module._default.multiset_of$T@@1 ($LS $ly@@12) (Lit DatatypeTypeType |xs#0@@12|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@12|)) |MultiSet#Empty| (let ((|ys#2@@1| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@12|)))))
 (let ((|a#2@@1| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@12|)))))
 (|MultiSet#Union| (|MultiSet#UnionOne| |MultiSet#Empty| |a#2@@1|) (_module.__default.multiset__of _module._default.multiset_of$T@@1 ($LS $ly@@12) |ys#2@@1|))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |605|
  :pattern ( (_module.__default.multiset__of _module._default.multiset_of$T@@1 ($LS $ly@@12) (Lit DatatypeTypeType |xs#0@@12|)))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@13 T@U) (|a#0@@4| T@U) (|xs#0@@13| T@U) (|ys#0@@5| T@U) ) (!  (=> (or (|_module.__default.descending#canCall| |a#0@@4| |xs#0@@13| |ys#0@@5|) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@4| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@13| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@5| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (_module.List.Cons_q |ys#0@@5|) (|_module.__default.Below#canCall| |a#0@@4| (_module.List.head |ys#0@@5|))) (=> (and (_module.List.Cons_q |ys#0@@5|) (not (_module.__default.Below |a#0@@4| (_module.List.head |ys#0@@5|)))) (|_module.__default.descending#canCall| (_module.List.head |ys#0@@5|) (|#_module.List.Cons| |a#0@@4| |xs#0@@13|) (_module.List.tail |ys#0@@5|)))) (=> (not (and (_module.List.Cons_q |ys#0@@5|) (not (_module.__default.Below |a#0@@4| (_module.List.head |ys#0@@5|))))) (|_module.__default.sequences#canCall| |ys#0@@5|))) (= (_module.__default.descending ($LS $ly@@13) |a#0@@4| |xs#0@@13| |ys#0@@5|) (ite  (and (_module.List.Cons_q |ys#0@@5|) (not (_module.__default.Below |a#0@@4| (_module.List.head |ys#0@@5|)))) (_module.__default.descending $ly@@13 (_module.List.head |ys#0@@5|) (|#_module.List.Cons| |a#0@@4| |xs#0@@13|) (_module.List.tail |ys#0@@5|)) (|#_module.List.Cons| ($Box DatatypeTypeType (|#_module.List.Cons| |a#0@@4| |xs#0@@13|)) (_module.__default.sequences $ly@@13 |ys#0@@5|))))))
+ :qid |GHCMergeSortdfy.97:10|
+ :skolemid |662|
  :pattern ( (_module.__default.descending ($LS $ly@@13) |a#0@@4| |xs#0@@13| |ys#0@@5|))
 ))))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.List.Cons_q d@@1) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (= d@@1 (|#_module.List.Cons| |a#5#0#0| |a#5#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.List.Cons_q d@@1) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= d@@1 (|#_module.List.Cons| |a#5#0#0| |a#5#1#0|))
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1097|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1098|
  :pattern ( (_module.List.Cons_q d@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|a#0@@5| T@U) (|b#0| T@U) ) (!  (=> (or (|_module.__default.Below#canCall| (Lit BoxType |a#0@@5|) (Lit BoxType |b#0|)) (and (< 1 $FunctionContextHeight) (and ($IsBox |a#0@@5| Tclass._module.G) ($IsBox |b#0| Tclass._module.G)))) (and (and (|_module.__default.key#canCall| (Lit BoxType |a#0@@5|)) (|_module.__default.key#canCall| (Lit BoxType |b#0|))) (= (_module.__default.Below (Lit BoxType |a#0@@5|) (Lit BoxType |b#0|)) (<= (_module.__default.key (Lit BoxType |a#0@@5|)) (_module.__default.key (Lit BoxType |b#0|))))))
+ :qid |GHCMergeSortdfy.75:17|
  :weight 3
+ :skolemid |640|
  :pattern ( (_module.__default.Below (Lit BoxType |a#0@@5|) (Lit BoxType |b#0|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@14 T@U) (|g#0| T@U) (|xs#0@@14| T@U) ) (!  (=> (or (|_module.__default.filter#canCall| |g#0| (Lit DatatypeTypeType |xs#0@@14|)) (and (< 1 $FunctionContextHeight) (and ($IsBox |g#0| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@14| (Tclass._module.List Tclass._module.G))))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@14|)))))) (let ((|ys#3@@2| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@14|)))))
@@ -274,13 +349,19 @@
  (and (and (and (|_module.__default.key#canCall| |g#0|) (|_module.__default.key#canCall| |b#3@@0|)) (=> (= (_module.__default.key |g#0|) (_module.__default.key |b#3@@0|)) (|_module.__default.filter#canCall| |g#0| |ys#3@@2|))) (=> (or (not (= (_module.__default.key |g#0|) (_module.__default.key |b#3@@0|))) (not true)) (|_module.__default.filter#canCall| |g#0| |ys#3@@2|)))))) (= (_module.__default.filter ($LS $ly@@14) |g#0| (Lit DatatypeTypeType |xs#0@@14|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@14|)) |#_module.List.Nil| (let ((|ys#2@@2| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@14|)))))
 (let ((|b#2@@0| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@14|)))))
 (ite (= (_module.__default.key |g#0|) (_module.__default.key |b#2@@0|)) (|#_module.List.Cons| |b#2@@0| (_module.__default.filter ($LS $ly@@14) |g#0| |ys#2@@2|)) (_module.__default.filter ($LS $ly@@14) |g#0| |ys#2@@2|))))))))
+ :qid |GHCMergeSortdfy.160:16|
  :weight 3
+ :skolemid |729|
  :pattern ( (_module.__default.filter ($LS $ly@@14) |g#0| (Lit DatatypeTypeType |xs#0@@14|)))
 ))))
 (assert (forall ((d@@2 T@U) ) (!  (=> (_module.List.Nil_q d@@2) (= d@@2 |#_module.List.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1092|
  :pattern ( (_module.List.Nil_q d@@2))
 )))
 (assert (forall ((a@@2 T@U) (x@@6 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#UnionOne| a@@2 x@@6)) (+ (|MultiSet#Card| a@@2) 1))
+ :qid |DafnyPreludebpl.983:15|
+ :skolemid |196|
  :pattern ( (|MultiSet#Card| (|MultiSet#UnionOne| a@@2 x@@6)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@15 T@U) (|xs#0@@15| T@U) (|ys#0@@6| T@U) ) (!  (=> (or (|_module.__default.merge#canCall| |xs#0@@15| |ys#0@@6|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@15| (Tclass._module.List Tclass._module.G)) ($Is DatatypeTypeType |ys#0@@6| (Tclass._module.List Tclass._module.G))))) (and (=> (not (_module.List.Nil_q |xs#0@@15|)) (let ((|xs'#1| (_module.List.tail |xs#0@@15|)))
@@ -292,52 +373,80 @@
 (ite (_module.List.Nil_q |ys#0@@6|) |xs#0@@15| (let ((|ys'#0| (_module.List.tail |ys#0@@6|)))
 (let ((|b#0@@0| (_module.List.head |ys#0@@6|)))
 (ite (_module.__default.Below |a#0@@6| |b#0@@0|) (|#_module.List.Cons| |a#0@@6| (_module.__default.merge $ly@@15 |xs'#0| |ys#0@@6|)) (|#_module.List.Cons| |b#0@@0| (_module.__default.merge $ly@@15 |xs#0@@15| |ys'#0|))))))))))))
+ :qid |GHCMergeSortdfy.138:10|
+ :skolemid |699|
  :pattern ( (_module.__default.merge ($LS $ly@@15) |xs#0@@15| |ys#0@@6|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|xs#0@@16| T@U) (|ys#0@@7| T@U) ) (!  (=> (or (|_module.__default.stable#canCall| |xs#0@@16| |ys#0@@7|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@16| (Tclass._module.List Tclass._module.G)) ($Is DatatypeTypeType |ys#0@@7| (Tclass._module.List Tclass._module.G))))) (and (forall ((|g#0@@0| T@U) ) (!  (=> ($IsBox |g#0@@0| Tclass._module.G) (and (and (|$IsA#_module.List| (_module.__default.filter ($LS $LZ) |g#0@@0| |xs#0@@16|)) (|$IsA#_module.List| (_module.__default.filter ($LS $LZ) |g#0@@0| |ys#0@@7|))) (and (|_module.__default.filter#canCall| |g#0@@0| |xs#0@@16|) (|_module.__default.filter#canCall| |g#0@@0| |ys#0@@7|))))
+ :qid |GHCMergeSortdfy.169:10|
+ :skolemid |738|
  :pattern ( (_module.__default.filter ($LS $LZ) |g#0@@0| |ys#0@@7|))
  :pattern ( (_module.__default.filter ($LS $LZ) |g#0@@0| |xs#0@@16|))
 )) (= (_module.__default.stable |xs#0@@16| |ys#0@@7|) (forall ((|g#0@@1| T@U) ) (!  (=> ($IsBox |g#0@@1| Tclass._module.G) (|_module.List#Equal| (_module.__default.filter ($LS $LZ) |g#0@@1| |xs#0@@16|) (_module.__default.filter ($LS $LZ) |g#0@@1| |ys#0@@7|)))
+ :qid |GHCMergeSortdfy.169:10|
+ :skolemid |737|
  :pattern ( (_module.__default.filter ($LS $LZ) |g#0@@1| |ys#0@@7|))
  :pattern ( (_module.__default.filter ($LS $LZ) |g#0@@1| |xs#0@@16|))
 )))))
+ :qid |GHCMergeSortdfy.167:24|
+ :skolemid |739|
  :pattern ( (_module.__default.stable |xs#0@@16| |ys#0@@7|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.length$_T0@@1 T@U) ($ly@@16 T@U) (|xs#0@@17| T@U) ) (!  (=> (or (|_module.__default.length#canCall| _module._default.length$_T0@@1 |xs#0@@17|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@17| (Tclass._module.List _module._default.length$_T0@@1)))) (and (=> (not (_module.List.Nil_q |xs#0@@17|)) (let ((|ys#1@@0| (_module.List.tail |xs#0@@17|)))
 (|_module.__default.length#canCall| _module._default.length$_T0@@1 |ys#1@@0|))) (= (_module.__default.length _module._default.length$_T0@@1 ($LS $ly@@16) |xs#0@@17|) (ite (_module.List.Nil_q |xs#0@@17|) 0 (let ((|ys#0@@8| (_module.List.tail |xs#0@@17|)))
 (+ 1 (_module.__default.length _module._default.length$_T0@@1 $ly@@16 |ys#0@@8|)))))))
+ :qid |unknown.0:0|
+ :skolemid |588|
  :pattern ( (_module.__default.length _module._default.length$_T0@@1 ($LS $ly@@16) |xs#0@@17|))
 ))))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@17 T@U) (|xs#0@@18| T@U) ) (!  (=> (or (|_module.__default.sorted#canCall| |xs#0@@18|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@18| (Tclass._module.List Tclass._module.G)))) (and (=> (not (_module.List.Nil_q |xs#0@@18|)) (let ((|ys#1@@1| (_module.List.tail |xs#0@@18|)))
 (let ((|a#1@@0| (_module.List.head |xs#0@@18|)))
  (and (forall ((|y#1| T@U) ) (!  (=> ($IsBox |y#1| Tclass._module.G) (and (|_module.__default.multiset__of#canCall| Tclass._module.G |ys#1@@1|) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@1|) |y#1|) 0) (|_module.__default.Below#canCall| |a#1@@0| |y#1|))))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |709|
  :pattern ( (_module.__default.Below |a#1@@0| |y#1|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@1|) |y#1|))
 )) (=> (forall ((|y#1@@0| T@U) ) (!  (=> ($IsBox |y#1@@0| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@1|) |y#1@@0|) 0) (_module.__default.Below |a#1@@0| |y#1@@0|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |710|
  :pattern ( (_module.__default.Below |a#1@@0| |y#1@@0|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@1|) |y#1@@0|))
 )) (|_module.__default.sorted#canCall| |ys#1@@1|)))))) (= (_module.__default.sorted ($LS $ly@@17) |xs#0@@18|) (ite (_module.List.Nil_q |xs#0@@18|) true (let ((|ys#0@@9| (_module.List.tail |xs#0@@18|)))
 (let ((|a#0@@7| (_module.List.head |xs#0@@18|)))
  (and (forall ((|y#0| T@U) ) (!  (=> ($IsBox |y#0| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#0@@9|) |y#0|) 0) (_module.__default.Below |a#0@@7| |y#0|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |708|
  :pattern ( (_module.__default.Below |a#0@@7| |y#0|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#0@@9|) |y#0|))
 )) (_module.__default.sorted $ly@@17 |ys#0@@9|))))))))
+ :qid |GHCMergeSortdfy.151:17|
+ :skolemid |711|
  :pattern ( (_module.__default.sorted ($LS $ly@@17) |xs#0@@18|))
 ))))
 (assert (forall ((_module.List$T@@2 T@U) ) (!  (and (= (Tag (Tclass._module.List _module.List$T@@2)) Tagclass._module.List) (= (TagFamily (Tclass._module.List _module.List$T@@2)) tytagFamily$List))
+ :qid |unknown.0:0|
+ :skolemid |583|
  :pattern ( (Tclass._module.List _module.List$T@@2))
 )))
 (assert (forall ((a@@3 T@U) (b@@1 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#Union| a@@3 b@@1)) (+ (|MultiSet#Card| a@@3) (|MultiSet#Card| b@@1)))
+ :qid |DafnyPreludebpl.994:15|
+ :skolemid |198|
  :pattern ( (|MultiSet#Card| (|MultiSet#Union| a@@3 b@@1)))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($ly@@18 T@U) (|x#0@@0| T@U) ) (!  (=> (or (|_module.__default.mergeAll#canCall| (Lit DatatypeTypeType |x#0@@0|)) (and (< 4 $FunctionContextHeight) (and ($Is DatatypeTypeType |x#0@@0| (Tclass._module.List (Tclass._module.List Tclass._module.G))) (not (|_module.List#Equal| |x#0@@0| |#_module.List.Nil|))))) (and (and (|$IsA#_module.List| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@0|)))) (=> (not (|_module.List#Equal| (_module.List.tail (Lit DatatypeTypeType |x#0@@0|)) |#_module.List.Nil|)) (and (|_module.__default.mergePairs#canCall| (Lit DatatypeTypeType |x#0@@0|)) (|_module.__default.mergeAll#canCall| (Lit DatatypeTypeType (_module.__default.mergePairs ($LS $LZ) (Lit DatatypeTypeType |x#0@@0|))))))) (= (_module.__default.mergeAll ($LS $ly@@18) (Lit DatatypeTypeType |x#0@@0|)) (ite (|_module.List#Equal| (_module.List.tail (Lit DatatypeTypeType |x#0@@0|)) |#_module.List.Nil|) ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType |x#0@@0|))) (_module.__default.mergeAll ($LS $ly@@18) (Lit DatatypeTypeType (_module.__default.mergePairs ($LS $LZ) (Lit DatatypeTypeType |x#0@@0|))))))))
+ :qid |GHCMergeSortdfy.117:10|
  :weight 3
+ :skolemid |684|
  :pattern ( (_module.__default.mergeAll ($LS $ly@@18) (Lit DatatypeTypeType |x#0@@0|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|a#0@@8| T@U) (|b#0@@1| T@U) ) (!  (=> (or (|_module.__default.Below#canCall| |a#0@@8| |b#0@@1|) (and (< 1 $FunctionContextHeight) (and ($IsBox |a#0@@8| Tclass._module.G) ($IsBox |b#0@@1| Tclass._module.G)))) (and (and (|_module.__default.key#canCall| |a#0@@8|) (|_module.__default.key#canCall| |b#0@@1|)) (= (_module.__default.Below |a#0@@8| |b#0@@1|) (<= (_module.__default.key |a#0@@8|) (_module.__default.key |b#0@@1|)))))
+ :qid |GHCMergeSortdfy.75:17|
+ :skolemid |639|
  :pattern ( (_module.__default.Below |a#0@@8| |b#0@@1|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@19 T@U) (|g#0@@2| T@U) (|xs#0@@19| T@U) ) (!  (=> (or (|_module.__default.filter#canCall| (Lit BoxType |g#0@@2|) (Lit DatatypeTypeType |xs#0@@19|)) (and (< 1 $FunctionContextHeight) (and ($IsBox |g#0@@2| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@19| (Tclass._module.List Tclass._module.G))))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@19|)))))) (let ((|ys#5| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@19|)))))
@@ -345,16 +454,24 @@
  (and (and (and (|_module.__default.key#canCall| (Lit BoxType |g#0@@2|)) (|_module.__default.key#canCall| |b#5|)) (=> (= (_module.__default.key (Lit BoxType |g#0@@2|)) (_module.__default.key |b#5|)) (|_module.__default.filter#canCall| (Lit BoxType |g#0@@2|) |ys#5|))) (=> (or (not (= (_module.__default.key (Lit BoxType |g#0@@2|)) (_module.__default.key |b#5|))) (not true)) (|_module.__default.filter#canCall| (Lit BoxType |g#0@@2|) |ys#5|)))))) (= (_module.__default.filter ($LS $ly@@19) (Lit BoxType |g#0@@2|) (Lit DatatypeTypeType |xs#0@@19|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@19|)) |#_module.List.Nil| (let ((|ys#4| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@19|)))))
 (let ((|b#4| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@19|)))))
 (ite (= (_module.__default.key (Lit BoxType |g#0@@2|)) (_module.__default.key |b#4|)) (|#_module.List.Cons| |b#4| (Lit DatatypeTypeType (_module.__default.filter ($LS $ly@@19) (Lit BoxType |g#0@@2|) |ys#4|))) (_module.__default.filter ($LS $ly@@19) (Lit BoxType |g#0@@2|) |ys#4|))))))))
+ :qid |GHCMergeSortdfy.160:16|
  :weight 3
+ :skolemid |730|
  :pattern ( (_module.__default.filter ($LS $ly@@19) (Lit BoxType |g#0@@2|) (Lit DatatypeTypeType |xs#0@@19|)))
 ))))
 (assert (forall (($ly@@20 T@U) (|xs#0@@20| T@U) (|ys#0@@10| T@U) ) (! (= (_module.__default.merge ($LS $ly@@20) |xs#0@@20| |ys#0@@10|) (_module.__default.merge $ly@@20 |xs#0@@20| |ys#0@@10|))
+ :qid |GHCMergeSortdfy.138:10|
+ :skolemid |695|
  :pattern ( (_module.__default.merge ($LS $ly@@20) |xs#0@@20| |ys#0@@10|))
 )))
 (assert (forall (($ly@@21 T@U) (|g#0@@3| T@U) (|xs#0@@21| T@U) ) (! (= (_module.__default.filter ($LS $ly@@21) |g#0@@3| |xs#0@@21|) (_module.__default.filter $ly@@21 |g#0@@3| |xs#0@@21|))
+ :qid |GHCMergeSortdfy.160:16|
+ :skolemid |724|
  :pattern ( (_module.__default.filter ($LS $ly@@21) |g#0@@3| |xs#0@@21|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($ly@@22 T@U) (|x#0@@1| T@U) ) (!  (=> (or (|_module.__default.mergeAll#canCall| |x#0@@1|) (and (< 4 $FunctionContextHeight) (and ($Is DatatypeTypeType |x#0@@1| (Tclass._module.List (Tclass._module.List Tclass._module.G))) (not (|_module.List#Equal| |x#0@@1| |#_module.List.Nil|))))) ($Is DatatypeTypeType (_module.__default.mergeAll $ly@@22 |x#0@@1|) (Tclass._module.List Tclass._module.G)))
+ :qid |GHCMergeSortdfy.117:10|
+ :skolemid |681|
  :pattern ( (_module.__default.mergeAll $ly@@22 |x#0@@1|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.reverse$_T0 T@U) ($ly@@23 T@U) (|xs#0@@22| T@U) (|acc#0| T@U) ) (!  (=> (or (|_module.__default.reverse#canCall| _module._default.reverse$_T0 |xs#0@@22| |acc#0|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@22| (Tclass._module.List _module._default.reverse$_T0)) ($Is DatatypeTypeType |acc#0| (Tclass._module.List _module._default.reverse$_T0))))) (and (=> (not (_module.List.Nil_q |xs#0@@22|)) (let ((|ys#1@@2| (_module.List.tail |xs#0@@22|)))
@@ -362,20 +479,30 @@
 (|_module.__default.reverse#canCall| _module._default.reverse$_T0 |ys#1@@2| (|#_module.List.Cons| |a#1@@1| |acc#0|))))) (= (_module.__default.reverse _module._default.reverse$_T0 ($LS $ly@@23) |xs#0@@22| |acc#0|) (ite (_module.List.Nil_q |xs#0@@22|) |acc#0| (let ((|ys#0@@11| (_module.List.tail |xs#0@@22|)))
 (let ((|a#0@@9| (_module.List.head |xs#0@@22|)))
 (_module.__default.reverse _module._default.reverse$_T0 $ly@@23 |ys#0@@11| (|#_module.List.Cons| |a#0@@9| |acc#0|))))))))
+ :qid |unknown.0:0|
+ :skolemid |596|
  :pattern ( (_module.__default.reverse _module._default.reverse$_T0 ($LS $ly@@23) |xs#0@@22| |acc#0|))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@24 T@U) (|x#0@@2| T@U) ) (!  (=> (or (|_module.__default.mergePairs#canCall| (Lit DatatypeTypeType |x#0@@2|)) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |x#0@@2| (Tclass._module.List (Tclass._module.List Tclass._module.G))))) (and (=> (U_2_bool (Lit boolType (bool_2_U  (and (_module.List.Cons_q (Lit DatatypeTypeType |x#0@@2|)) (_module.List.Cons_q (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|)))))))) (and (|_module.__default.merge#canCall| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType |x#0@@2|)))) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|))))))) (|_module.__default.mergePairs#canCall| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|)))))))) (= (_module.__default.mergePairs ($LS $ly@@24) (Lit DatatypeTypeType |x#0@@2|)) (ite  (and (_module.List.Cons_q (Lit DatatypeTypeType |x#0@@2|)) (_module.List.Cons_q (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|))))) (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType (_module.__default.merge ($LS $LZ) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType |x#0@@2|)))) (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|))))))))) (Lit DatatypeTypeType (_module.__default.mergePairs ($LS $ly@@24) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |x#0@@2|)))))))) |x#0@@2|))))
+ :qid |GHCMergeSortdfy.127:10|
  :weight 3
+ :skolemid |692|
  :pattern ( (_module.__default.mergePairs ($LS $ly@@24) (Lit DatatypeTypeType |x#0@@2|)))
 ))))
 (assert (forall ((d@@3 T@U) ) (!  (=> (|$IsA#_module.List| d@@3) (or (_module.List.Nil_q d@@3) (_module.List.Cons_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |1108|
  :pattern ( (|$IsA#_module.List| d@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap T@U) (_module._default.MultisetUnion$T@@0 T@U) ($ly@@25 T@U) (|xs#0@@23| T@U) ) (!  (=> (and (or (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@0 |xs#0@@23|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@23| (Tclass._module.List (Tclass._module.List _module._default.MultisetUnion$T@@0))) ($IsAlloc DatatypeTypeType |xs#0@@23| (Tclass._module.List (Tclass._module.List _module._default.MultisetUnion$T@@0)) $Heap)))) ($IsGoodHeap $Heap)) ($IsAlloc MultiSetType (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@0 $ly@@25 |xs#0@@23|) (TMultiSet _module._default.MultisetUnion$T@@0) $Heap))
+ :qid |GHCMergeSortdfy.38:16|
+ :skolemid |610|
  :pattern ( ($IsAlloc MultiSetType (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@0 $ly@@25 |xs#0@@23|) (TMultiSet _module._default.MultisetUnion$T@@0) $Heap))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@26 T@U) (|a#0@@10| T@U) (|xs#0@@24| T@U) (|ys#0@@12| T@U) ) (!  (=> (or (|_module.__default.ascending#canCall| (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|) (Lit DatatypeTypeType |ys#0@@12|)) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@10| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@24| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@12| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@12|))))) (|_module.__default.Below#canCall| (Lit BoxType |a#0@@10|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|))))) (=> (U_2_bool (Lit boolType (bool_2_U  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@12|)) (_module.__default.Below (Lit BoxType |a#0@@10|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|)))))))) (|_module.__default.ascending#canCall| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|))) (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|))) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@12|)))))) (=> (not (U_2_bool (Lit boolType (bool_2_U  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@12|)) (_module.__default.Below (Lit BoxType |a#0@@10|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|))))))))) (and (|_module.__default.reverse#canCall| Tclass._module.G (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|))) (Lit DatatypeTypeType |#_module.List.Nil|)) (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |ys#0@@12|))))) (= (_module.__default.ascending ($LS $ly@@26) (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|) (Lit DatatypeTypeType |ys#0@@12|)) (ite  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@12|)) (_module.__default.Below (Lit BoxType |a#0@@10|) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|))))) (_module.__default.ascending ($LS $ly@@26) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@12|))) (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|))) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@12|)))) (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType (_module.__default.reverse Tclass._module.G ($LS $LZ) (Lit DatatypeTypeType (|#_module.List.Cons| (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|))) (Lit DatatypeTypeType |#_module.List.Nil|)))) (Lit DatatypeTypeType (_module.__default.sequences ($LS $ly@@26) (Lit DatatypeTypeType |ys#0@@12|))))))))
+ :qid |GHCMergeSortdfy.107:10|
  :weight 3
+ :skolemid |674|
  :pattern ( (_module.__default.ascending ($LS $ly@@26) (Lit BoxType |a#0@@10|) (Lit DatatypeTypeType |xs#0@@24|) (Lit DatatypeTypeType |ys#0@@12|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@27 T@U) (|g#0@@4| T@U) (|xs#0@@25| T@U) ) (!  (=> (or (|_module.__default.filter#canCall| |g#0@@4| |xs#0@@25|) (and (< 1 $FunctionContextHeight) (and ($IsBox |g#0@@4| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@25| (Tclass._module.List Tclass._module.G))))) (and (=> (not (_module.List.Nil_q |xs#0@@25|)) (let ((|ys#1@@3| (_module.List.tail |xs#0@@25|)))
@@ -383,6 +510,8 @@
  (and (and (and (|_module.__default.key#canCall| |g#0@@4|) (|_module.__default.key#canCall| |b#1@@0|)) (=> (= (_module.__default.key |g#0@@4|) (_module.__default.key |b#1@@0|)) (|_module.__default.filter#canCall| |g#0@@4| |ys#1@@3|))) (=> (or (not (= (_module.__default.key |g#0@@4|) (_module.__default.key |b#1@@0|))) (not true)) (|_module.__default.filter#canCall| |g#0@@4| |ys#1@@3|)))))) (= (_module.__default.filter ($LS $ly@@27) |g#0@@4| |xs#0@@25|) (ite (_module.List.Nil_q |xs#0@@25|) |#_module.List.Nil| (let ((|ys#0@@13| (_module.List.tail |xs#0@@25|)))
 (let ((|b#0@@2| (_module.List.head |xs#0@@25|)))
 (ite (= (_module.__default.key |g#0@@4|) (_module.__default.key |b#0@@2|)) (|#_module.List.Cons| |b#0@@2| (_module.__default.filter $ly@@27 |g#0@@4| |ys#0@@13|)) (_module.__default.filter $ly@@27 |g#0@@4| |ys#0@@13|))))))))
+ :qid |GHCMergeSortdfy.160:16|
+ :skolemid |728|
  :pattern ( (_module.__default.filter ($LS $ly@@27) |g#0@@4| |xs#0@@25|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@28 T@U) (|xs#0@@26| T@U) ) (!  (=> (or (|_module.__default.sequences#canCall| |xs#0@@26|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@26| (Tclass._module.List Tclass._module.G)))) (and (=> (not (_module.List.Nil_q |xs#0@@26|)) (let ((|ys#1@@4| (_module.List.tail |xs#0@@26|)))
@@ -394,31 +523,49 @@
 (ite (_module.List.Nil_q |ys#0@@14|) (|#_module.List.Cons| ($Box DatatypeTypeType |xs#0@@26|) (Lit DatatypeTypeType |#_module.List.Nil|)) (let ((|zs#0| (_module.List.tail |ys#0@@14|)))
 (let ((|b#0@@3| (_module.List.head |ys#0@@14|)))
 (ite  (not (_module.__default.Below |a#0@@11| |b#0@@3|)) (_module.__default.descending $ly@@28 |b#0@@3| (|#_module.List.Cons| |a#0@@11| (Lit DatatypeTypeType |#_module.List.Nil|)) |zs#0|) (_module.__default.ascending $ly@@28 |b#0@@3| (|#_module.List.Cons| |a#0@@11| (Lit DatatypeTypeType |#_module.List.Nil|)) |zs#0|)))))))))))
+ :qid |GHCMergeSortdfy.85:10|
+ :skolemid |653|
  :pattern ( (_module.__default.sequences ($LS $ly@@28) |xs#0@@26|))
 ))))
 (assert (forall ((_module.List$T@@3 T@U) (d@@4 T@U) ) (!  (=> ($Is DatatypeTypeType d@@4 (Tclass._module.List _module.List$T@@3)) (or (_module.List.Nil_q d@@4) (_module.List.Cons_q d@@4)))
+ :qid |unknown.0:0|
+ :skolemid |1109|
  :pattern ( (_module.List.Cons_q d@@4) ($Is DatatypeTypeType d@@4 (Tclass._module.List _module.List$T@@3)))
  :pattern ( (_module.List.Nil_q d@@4) ($Is DatatypeTypeType d@@4 (Tclass._module.List _module.List$T@@3)))
 )))
 (assert (forall ((a@@4 T@U) (b@@2 T@U) ) (!  (=> (|MultiSet#Equal| a@@4 b@@2) (= a@@4 b@@2))
+ :qid |DafnyPreludebpl.1054:15|
+ :skolemid |209|
  :pattern ( (|MultiSet#Equal| a@@4 b@@2))
 )))
 (assert (forall ((v@@1 T@U) (t0@@0 T@U) ) (! (= ($Is MultiSetType v@@1 (TMultiSet t0@@0)) (forall ((bx T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| v@@1 bx)) ($IsBox bx t0@@0))
+ :qid |DafnyPreludebpl.248:11|
+ :skolemid |50|
  :pattern ( (|MultiSet#Multiplicity| v@@1 bx))
 )))
+ :qid |DafnyPreludebpl.246:15|
+ :skolemid |51|
  :pattern ( ($Is MultiSetType v@@1 (TMultiSet t0@@0)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@29 T@U) (|a#0@@12| T@U) (|xs#0@@27| T@U) (|ys#0@@15| T@U) ) (!  (=> (or (|_module.__default.ascending#canCall| |a#0@@12| |xs#0@@27| (Lit DatatypeTypeType |ys#0@@15|)) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@12| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@27| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@15| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@15|))))) (|_module.__default.Below#canCall| |a#0@@12| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|))))) (=> (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@15|)) (_module.__default.Below |a#0@@12| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|))))) (|_module.__default.ascending#canCall| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|))) (|#_module.List.Cons| |a#0@@12| |xs#0@@27|) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@15|)))))) (=> (not (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@15|)) (_module.__default.Below |a#0@@12| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|)))))) (and (|_module.__default.reverse#canCall| Tclass._module.G (|#_module.List.Cons| |a#0@@12| |xs#0@@27|) (Lit DatatypeTypeType |#_module.List.Nil|)) (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |ys#0@@15|))))) (= (_module.__default.ascending ($LS $ly@@29) |a#0@@12| |xs#0@@27| (Lit DatatypeTypeType |ys#0@@15|)) (ite  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@15|)) (_module.__default.Below |a#0@@12| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|))))) (_module.__default.ascending ($LS $ly@@29) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@15|))) (|#_module.List.Cons| |a#0@@12| |xs#0@@27|) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@15|)))) (|#_module.List.Cons| ($Box DatatypeTypeType (_module.__default.reverse Tclass._module.G ($LS $LZ) (|#_module.List.Cons| |a#0@@12| |xs#0@@27|) (Lit DatatypeTypeType |#_module.List.Nil|))) (Lit DatatypeTypeType (_module.__default.sequences ($LS $ly@@29) (Lit DatatypeTypeType |ys#0@@15|))))))))
+ :qid |GHCMergeSortdfy.107:10|
  :weight 3
+ :skolemid |673|
  :pattern ( (_module.__default.ascending ($LS $ly@@29) |a#0@@12| |xs#0@@27| (Lit DatatypeTypeType |ys#0@@15|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@30 T@U) (|g#0@@5| T@U) (|xs#0@@28| T@U) ) (!  (=> (or (|_module.__default.filter#canCall| |g#0@@5| |xs#0@@28|) (and (< 1 $FunctionContextHeight) (and ($IsBox |g#0@@5| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@28| (Tclass._module.List Tclass._module.G))))) ($Is DatatypeTypeType (_module.__default.filter $ly@@30 |g#0@@5| |xs#0@@28|) (Tclass._module.List Tclass._module.G)))
+ :qid |GHCMergeSortdfy.160:16|
+ :skolemid |726|
  :pattern ( (_module.__default.filter $ly@@30 |g#0@@5| |xs#0@@28|))
 ))))
 (assert (forall (($ly@@31 T@U) (|xs#0@@29| T@U) ) (! (= (_module.__default.sorted ($LS $ly@@31) |xs#0@@29|) (_module.__default.sorted $ly@@31 |xs#0@@29|))
+ :qid |GHCMergeSortdfy.151:17|
+ :skolemid |704|
  :pattern ( (_module.__default.sorted ($LS $ly@@31) |xs#0@@29|))
 )))
 (assert (forall ((v@@2 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@2) t@@0) ($Is T@@2 v@@2 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@2) t@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.MultisetUnion$T@@1 T@U) ($ly@@32 T@U) (|xs#0@@30| T@U) ) (!  (=> (or (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@1 |xs#0@@30|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@30| (Tclass._module.List (Tclass._module.List _module._default.MultisetUnion$T@@1))))) (and (=> (not (_module.List.Nil_q |xs#0@@30|)) (let ((|ys#1@@5| (_module.List.tail |xs#0@@30|)))
@@ -426,47 +573,77 @@
  (and (|_module.__default.multiset__of#canCall| _module._default.MultisetUnion$T@@1 |a#1@@3|) (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@1 |ys#1@@5|))))) (= (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@1 ($LS $ly@@32) |xs#0@@30|) (ite (_module.List.Nil_q |xs#0@@30|) |MultiSet#Empty| (let ((|ys#0@@16| (_module.List.tail |xs#0@@30|)))
 (let ((|a#0@@13| ($Unbox DatatypeTypeType (_module.List.head |xs#0@@30|))))
 (|MultiSet#Union| (_module.__default.multiset__of _module._default.MultisetUnion$T@@1 ($LS $LZ) |a#0@@13|) (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@1 $ly@@32 |ys#0@@16|))))))))
+ :qid |unknown.0:0|
+ :skolemid |612|
  :pattern ( (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@1 ($LS $ly@@32) |xs#0@@30|))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall ((|xs#0@@31| T@U) ) (!  (=> (or (|_module.__default.sort#canCall| |xs#0@@31|) (and (< 5 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@31| (Tclass._module.List Tclass._module.G)))) (and (and (|_module.__default.sequences#canCall| |xs#0@@31|) (|_module.__default.mergeAll#canCall| (_module.__default.sequences ($LS $LZ) |xs#0@@31|))) (= (_module.__default.sort |xs#0@@31|) (_module.__default.mergeAll ($LS $LZ) (_module.__default.sequences ($LS $LZ) |xs#0@@31|)))))
+ :qid |GHCMergeSortdfy.80:15|
+ :skolemid |645|
  :pattern ( (_module.__default.sort |xs#0@@31|))
 ))))
 (assert (forall ((ms T@U) ) (! (= ($IsGoodMultiSet ms) (forall ((bx@@0 T@U) ) (!  (and (<= 0 (|MultiSet#Multiplicity| ms bx@@0)) (<= (|MultiSet#Multiplicity| ms bx@@0) (|MultiSet#Card| ms)))
+ :qid |DafnyPreludebpl.921:19|
+ :skolemid |183|
  :pattern ( (|MultiSet#Multiplicity| ms bx@@0))
 )))
+ :qid |DafnyPreludebpl.918:15|
+ :skolemid |184|
  :pattern ( ($IsGoodMultiSet ms))
 )))
 (assert (forall ((s T@U) ) (! (<= 0 (|MultiSet#Card| s))
+ :qid |DafnyPreludebpl.928:15|
+ :skolemid |185|
  :pattern ( (|MultiSet#Card| s))
 )))
 (assert (forall ((ty T@U) ) (!  (=> ($AlwaysAllocated ty) (forall ((h@@0 T@U) (v@@3 T@U) ) (!  (=> ($IsBox v@@3 ty) ($IsAllocBox v@@3 ty h@@0))
+ :qid |DafnyPreludebpl.337:13|
+ :skolemid |79|
  :pattern ( ($IsAllocBox v@@3 ty h@@0))
 )))
+ :qid |DafnyPreludebpl.335:17|
+ :skolemid |80|
  :pattern ( ($AlwaysAllocated ty))
 )))
 (assert (forall ((a@@5 T@U) (b@@3 T@U) ) (!  (=> (and (_module.List.Nil_q a@@5) (_module.List.Nil_q b@@3)) (|_module.List#Equal| a@@5 b@@3))
+ :qid |unknown.0:0|
+ :skolemid |1110|
  :pattern ( (|_module.List#Equal| a@@5 b@@3) (_module.List.Nil_q a@@5))
  :pattern ( (|_module.List#Equal| a@@5 b@@3) (_module.List.Nil_q b@@3))
 )))
 (assert (forall ((o T@U) ) (! (= (|MultiSet#Multiplicity| |MultiSet#Empty| o) 0)
+ :qid |DafnyPreludebpl.938:15|
+ :skolemid |187|
  :pattern ( (|MultiSet#Multiplicity| |MultiSet#Empty| o))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.List.Cons| |a#4#0#0| |a#4#1#0|)) |##_module.List.Cons|)
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1095|
  :pattern ( (|#_module.List.Cons| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#8#0#0| T@U) (|a#8#1#0| T@U) ) (! (= (_module.List.head (|#_module.List.Cons| |a#8#0#0| |a#8#1#0|)) |a#8#0#0|)
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1104|
  :pattern ( (|#_module.List.Cons| |a#8#0#0| |a#8#1#0|))
 )))
 (assert (forall ((|a#10#0#0| T@U) (|a#10#1#0| T@U) ) (! (= (_module.List.tail (|#_module.List.Cons| |a#10#0#0| |a#10#1#0|)) |a#10#1#0|)
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1106|
  :pattern ( (|#_module.List.Cons| |a#10#0#0| |a#10#1#0|))
 )))
 (assert (forall ((a@@6 T@U) (x@@7 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@6 x@@7) x@@7) (+ (|MultiSet#Multiplicity| a@@6 x@@7) 1))
+ :qid |DafnyPreludebpl.968:15|
+ :skolemid |193|
  :pattern ( (|MultiSet#UnionOne| a@@6 x@@7))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@33 T@U) (|xs#0@@32| T@U) (|ys#0@@17| T@U) ) (!  (=> (or (|_module.__default.merge#canCall| |xs#0@@32| |ys#0@@17|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@32| (Tclass._module.List Tclass._module.G)) ($Is DatatypeTypeType |ys#0@@17| (Tclass._module.List Tclass._module.G))))) ($Is DatatypeTypeType (_module.__default.merge $ly@@33 |xs#0@@32| |ys#0@@17|) (Tclass._module.List Tclass._module.G)))
+ :qid |GHCMergeSortdfy.138:10|
+ :skolemid |697|
  :pattern ( (_module.__default.merge $ly@@33 |xs#0@@32| |ys#0@@17|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.reverse$_T0@@0 T@U) ($ly@@34 T@U) (|xs#0@@33| T@U) (|acc#0@@0| T@U) ) (!  (=> (or (|_module.__default.reverse#canCall| _module._default.reverse$_T0@@0 |xs#0@@33| |acc#0@@0|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@33| (Tclass._module.List _module._default.reverse$_T0@@0)) ($Is DatatypeTypeType |acc#0@@0| (Tclass._module.List _module._default.reverse$_T0@@0))))) ($Is DatatypeTypeType (_module.__default.reverse _module._default.reverse$_T0@@0 $ly@@34 |xs#0@@33| |acc#0@@0|) (Tclass._module.List _module._default.reverse$_T0@@0)))
+ :qid |unknown.0:0|
+ :skolemid |593|
  :pattern ( (_module.__default.reverse _module._default.reverse$_T0@@0 $ly@@34 |xs#0@@33| |acc#0@@0|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@35 T@U) (|xs#0@@34| T@U) ) (!  (=> (or (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |xs#0@@34|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@34| (Tclass._module.List Tclass._module.G)))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@34|)))))) (let ((|ys#3@@3| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@34|)))))
@@ -478,55 +655,89 @@
 (ite (_module.List.Nil_q |ys#2@@3|) (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType |xs#0@@34|)) (Lit DatatypeTypeType |#_module.List.Nil|)) (let ((|zs#2| (Lit DatatypeTypeType (_module.List.tail |ys#2@@3|))))
 (let ((|b#2@@1| (Lit BoxType (_module.List.head |ys#2@@3|))))
 (ite  (not (U_2_bool (Lit boolType (bool_2_U (_module.__default.Below |a#2@@2| |b#2@@1|))))) (_module.__default.descending ($LS $ly@@35) |b#2@@1| (Lit DatatypeTypeType (|#_module.List.Cons| |a#2@@2| (Lit DatatypeTypeType |#_module.List.Nil|))) |zs#2|) (_module.__default.ascending ($LS $ly@@35) |b#2@@1| (Lit DatatypeTypeType (|#_module.List.Cons| |a#2@@2| (Lit DatatypeTypeType |#_module.List.Nil|))) |zs#2|)))))))))))
+ :qid |GHCMergeSortdfy.85:10|
  :weight 3
+ :skolemid |654|
  :pattern ( (_module.__default.sequences ($LS $ly@@35) (Lit DatatypeTypeType |xs#0@@34|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@0 T@U) (_module._default.multiset_of$T@@2 T@U) ($ly@@36 T@U) (|xs#0@@35| T@U) ) (!  (=> (and (or (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@2 |xs#0@@35|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@35| (Tclass._module.List _module._default.multiset_of$T@@2)) ($IsAlloc DatatypeTypeType |xs#0@@35| (Tclass._module.List _module._default.multiset_of$T@@2) $Heap@@0)))) ($IsGoodHeap $Heap@@0)) ($IsAlloc MultiSetType (_module.__default.multiset__of _module._default.multiset_of$T@@2 $ly@@36 |xs#0@@35|) (TMultiSet _module._default.multiset_of$T@@2) $Heap@@0))
+ :qid |GHCMergeSortdfy.31:16|
+ :skolemid |602|
  :pattern ( ($IsAlloc MultiSetType (_module.__default.multiset__of _module._default.multiset_of$T@@2 $ly@@36 |xs#0@@35|) (TMultiSet _module._default.multiset_of$T@@2) $Heap@@0))
 ))))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TMultiSet (TMultiSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.49:15|
+ :skolemid |5|
  :pattern ( (TMultiSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TMultiSet t@@2)) TagMultiSet)
+ :qid |DafnyPreludebpl.50:15|
+ :skolemid |6|
  :pattern ( (TMultiSet t@@2))
 )))
 (assert (forall ((_module.List$T@@4 T@U) ) (! (= (Tclass._module.List_0 (Tclass._module.List _module.List$T@@4)) _module.List$T@@4)
+ :qid |unknown.0:0|
+ :skolemid |584|
  :pattern ( (Tclass._module.List _module.List$T@@4))
 )))
 (assert (forall ((x@@8 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@8)) x@@8)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@8))
 )))
 (assert (forall ((|a#9#0#0| T@U) (|a#9#1#0| T@U) ) (! (< (BoxRank |a#9#0#0|) (DtRank (|#_module.List.Cons| |a#9#0#0| |a#9#1#0|)))
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1105|
  :pattern ( (|#_module.List.Cons| |a#9#0#0| |a#9#1#0|))
 )))
 (assert (forall ((|a#11#0#0| T@U) (|a#11#1#0| T@U) ) (! (< (DtRank |a#11#1#0|) (DtRank (|#_module.List.Cons| |a#11#0#0| |a#11#1#0|)))
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1107|
  :pattern ( (|#_module.List.Cons| |a#11#0#0| |a#11#1#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.multiset_of$T@@3 T@U) ($ly@@37 T@U) (|xs#0@@36| T@U) ) (!  (=> (or (|_module.__default.multiset__of#canCall| _module._default.multiset_of$T@@3 |xs#0@@36|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@36| (Tclass._module.List _module._default.multiset_of$T@@3)))) ($Is MultiSetType (_module.__default.multiset__of _module._default.multiset_of$T@@3 $ly@@37 |xs#0@@36|) (TMultiSet _module._default.multiset_of$T@@3)))
+ :qid |unknown.0:0|
+ :skolemid |601|
  :pattern ( (_module.__default.multiset__of _module._default.multiset_of$T@@3 $ly@@37 |xs#0@@36|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|xs#0@@37| T@U) (|ys#0@@18| T@U) ) (!  (=> (or (|_module.__default.stable#canCall| (Lit DatatypeTypeType |xs#0@@37|) (Lit DatatypeTypeType |ys#0@@18|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@37| (Tclass._module.List Tclass._module.G)) ($Is DatatypeTypeType |ys#0@@18| (Tclass._module.List Tclass._module.G))))) (and (forall ((|g#1| T@U) ) (!  (=> ($IsBox |g#1| Tclass._module.G) (and (and (|$IsA#_module.List| (_module.__default.filter ($LS $LZ) |g#1| (Lit DatatypeTypeType |xs#0@@37|))) (|$IsA#_module.List| (_module.__default.filter ($LS $LZ) |g#1| (Lit DatatypeTypeType |ys#0@@18|)))) (and (|_module.__default.filter#canCall| |g#1| (Lit DatatypeTypeType |xs#0@@37|)) (|_module.__default.filter#canCall| |g#1| (Lit DatatypeTypeType |ys#0@@18|)))))
+ :qid |GHCMergeSortdfy.169:10|
+ :skolemid |741|
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1| |ys#0@@18|))
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1| |xs#0@@37|))
 )) (= (_module.__default.stable (Lit DatatypeTypeType |xs#0@@37|) (Lit DatatypeTypeType |ys#0@@18|)) (forall ((|g#1@@0| T@U) ) (!  (=> ($IsBox |g#1@@0| Tclass._module.G) (|_module.List#Equal| (_module.__default.filter ($LS $LZ) |g#1@@0| (Lit DatatypeTypeType |xs#0@@37|)) (_module.__default.filter ($LS $LZ) |g#1@@0| (Lit DatatypeTypeType |ys#0@@18|))))
+ :qid |GHCMergeSortdfy.169:10|
+ :skolemid |740|
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1@@0| |ys#0@@18|))
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1@@0| |xs#0@@37|))
 )))))
+ :qid |GHCMergeSortdfy.167:24|
  :weight 3
+ :skolemid |742|
  :pattern ( (_module.__default.stable (Lit DatatypeTypeType |xs#0@@37|) (Lit DatatypeTypeType |ys#0@@18|)))
 ))))
 (assert (forall (($ly@@38 T@U) (|xs#0@@38| T@U) ) (! (= (_module.__default.sequences ($LS $ly@@38) |xs#0@@38|) (_module.__default.sequences $ly@@38 |xs#0@@38|))
+ :qid |GHCMergeSortdfy.85:10|
+ :skolemid |649|
  :pattern ( (_module.__default.sequences ($LS $ly@@38) |xs#0@@38|))
 )))
 (assert (forall (($ly@@39 T@U) (|x#0@@3| T@U) ) (! (= (_module.__default.mergeAll ($LS $ly@@39) |x#0@@3|) (_module.__default.mergeAll $ly@@39 |x#0@@3|))
+ :qid |GHCMergeSortdfy.117:10|
+ :skolemid |679|
  :pattern ( (_module.__default.mergeAll ($LS $ly@@39) |x#0@@3|))
 )))
 (assert (forall (($ly@@40 T@U) (|x#0@@4| T@U) ) (! (= (_module.__default.mergePairs ($LS $ly@@40) |x#0@@4|) (_module.__default.mergePairs $ly@@40 |x#0@@4|))
+ :qid |GHCMergeSortdfy.127:10|
+ :skolemid |687|
  :pattern ( (_module.__default.mergePairs ($LS $ly@@40) |x#0@@4|))
 )))
 (assert (forall ((s@@0 T@U) ) (!  (and (= (= (|MultiSet#Card| s@@0) 0) (= s@@0 |MultiSet#Empty|)) (=> (or (not (= (|MultiSet#Card| s@@0) 0)) (not true)) (exists ((x@@9 T@U) ) (! (< 0 (|MultiSet#Multiplicity| s@@0 x@@9))
+ :qid |DafnyPreludebpl.946:20|
+ :skolemid |188|
  :pattern ( (|MultiSet#Multiplicity| s@@0 x@@9))
 ))))
+ :qid |DafnyPreludebpl.942:15|
+ :skolemid |189|
  :pattern ( (|MultiSet#Card| s@@0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.reverse$_T0@@1 T@U) ($ly@@41 T@U) (|xs#0@@39| T@U) (|acc#0@@1| T@U) ) (!  (=> (or (|_module.__default.reverse#canCall| _module._default.reverse$_T0@@1 (Lit DatatypeTypeType |xs#0@@39|) (Lit DatatypeTypeType |acc#0@@1|)) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@39| (Tclass._module.List _module._default.reverse$_T0@@1)) ($Is DatatypeTypeType |acc#0@@1| (Tclass._module.List _module._default.reverse$_T0@@1))))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@39|)))))) (let ((|ys#3@@4| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@39|)))))
@@ -534,75 +745,120 @@
 (|_module.__default.reverse#canCall| _module._default.reverse$_T0@@1 |ys#3@@4| (|#_module.List.Cons| |a#3@@2| (Lit DatatypeTypeType |acc#0@@1|)))))) (= (_module.__default.reverse _module._default.reverse$_T0@@1 ($LS $ly@@41) (Lit DatatypeTypeType |xs#0@@39|) (Lit DatatypeTypeType |acc#0@@1|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@39|)) |acc#0@@1| (let ((|ys#2@@4| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@39|)))))
 (let ((|a#2@@3| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0@@39|)))))
 (Lit DatatypeTypeType (_module.__default.reverse _module._default.reverse$_T0@@1 ($LS $ly@@41) |ys#2@@4| (Lit DatatypeTypeType (|#_module.List.Cons| |a#2@@3| (Lit DatatypeTypeType |acc#0@@1|)))))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |597|
  :pattern ( (_module.__default.reverse _module._default.reverse$_T0@@1 ($LS $ly@@41) (Lit DatatypeTypeType |xs#0@@39|) (Lit DatatypeTypeType |acc#0@@1|)))
 ))))
 (assert (forall (($ly@@42 T@U) (|a#0@@14| T@U) (|xs#0@@40| T@U) (|ys#0@@19| T@U) ) (! (= (_module.__default.descending ($LS $ly@@42) |a#0@@14| |xs#0@@40| |ys#0@@19|) (_module.__default.descending $ly@@42 |a#0@@14| |xs#0@@40| |ys#0@@19|))
+ :qid |GHCMergeSortdfy.97:10|
+ :skolemid |658|
  :pattern ( (_module.__default.descending ($LS $ly@@42) |a#0@@14| |xs#0@@40| |ys#0@@19|))
 )))
 (assert (forall (($ly@@43 T@U) (|a#0@@15| T@U) (|xs#0@@41| T@U) (|ys#0@@20| T@U) ) (! (= (_module.__default.ascending ($LS $ly@@43) |a#0@@15| |xs#0@@41| |ys#0@@20|) (_module.__default.ascending $ly@@43 |a#0@@15| |xs#0@@41| |ys#0@@20|))
+ :qid |GHCMergeSortdfy.107:10|
+ :skolemid |668|
  :pattern ( (_module.__default.ascending ($LS $ly@@43) |a#0@@15| |xs#0@@41| |ys#0@@20|))
 )))
 (assert (forall ((a@@7 T@U) (b@@4 T@U) (o@@0 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#Union| a@@7 b@@4) o@@0) (+ (|MultiSet#Multiplicity| a@@7 o@@0) (|MultiSet#Multiplicity| b@@4 o@@0)))
+ :qid |DafnyPreludebpl.989:15|
+ :skolemid |197|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Union| a@@7 b@@4) o@@0))
 )))
 (assert (forall ((d@@5 T@U) (_module.List$T@@5 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.List.Cons_q d@@5) ($IsAlloc DatatypeTypeType d@@5 (Tclass._module.List _module.List$T@@5) $h@@0))) ($IsAllocBox (_module.List.head d@@5) _module.List$T@@5 $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1101|
  :pattern ( ($IsAllocBox (_module.List.head d@@5) _module.List$T@@5 $h@@0))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0@@1 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@1 t1 t2 (MapType0Store t0@@1 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((t0@@2 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 (MapType1Store t0@@2 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1113|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@1 T@U) (_module._default.reverse$_T0@@2 T@U) ($ly@@44 T@U) (|xs#0@@42| T@U) (|acc#0@@2| T@U) ) (!  (=> (and (or (|_module.__default.reverse#canCall| _module._default.reverse$_T0@@2 |xs#0@@42| |acc#0@@2|) (and (< 1 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |xs#0@@42| (Tclass._module.List _module._default.reverse$_T0@@2)) ($IsAlloc DatatypeTypeType |xs#0@@42| (Tclass._module.List _module._default.reverse$_T0@@2) $Heap@@1)) (and ($Is DatatypeTypeType |acc#0@@2| (Tclass._module.List _module._default.reverse$_T0@@2)) ($IsAlloc DatatypeTypeType |acc#0@@2| (Tclass._module.List _module._default.reverse$_T0@@2) $Heap@@1))))) ($IsGoodHeap $Heap@@1)) ($IsAlloc DatatypeTypeType (_module.__default.reverse _module._default.reverse$_T0@@2 $ly@@44 |xs#0@@42| |acc#0@@2|) (Tclass._module.List _module._default.reverse$_T0@@2) $Heap@@1))
+ :qid |GHCMergeSortdfy.24:10|
+ :skolemid |594|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.__default.reverse _module._default.reverse$_T0@@2 $ly@@44 |xs#0@@42| |acc#0@@2|) (Tclass._module.List _module._default.reverse$_T0@@2) $Heap@@1))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@45 T@U) (|x#0@@5| T@U) ) (!  (=> (or (|_module.__default.mergePairs#canCall| |x#0@@5|) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |x#0@@5| (Tclass._module.List (Tclass._module.List Tclass._module.G))))) (and (=> (and (_module.List.Cons_q |x#0@@5|) (_module.List.Cons_q (_module.List.tail |x#0@@5|))) (and (|_module.__default.merge#canCall| ($Unbox DatatypeTypeType (_module.List.head |x#0@@5|)) ($Unbox DatatypeTypeType (_module.List.head (_module.List.tail |x#0@@5|)))) (|_module.__default.mergePairs#canCall| (_module.List.tail (_module.List.tail |x#0@@5|))))) (= (_module.__default.mergePairs ($LS $ly@@45) |x#0@@5|) (ite  (and (_module.List.Cons_q |x#0@@5|) (_module.List.Cons_q (_module.List.tail |x#0@@5|))) (|#_module.List.Cons| ($Box DatatypeTypeType (_module.__default.merge ($LS $LZ) ($Unbox DatatypeTypeType (_module.List.head |x#0@@5|)) ($Unbox DatatypeTypeType (_module.List.head (_module.List.tail |x#0@@5|))))) (_module.__default.mergePairs $ly@@45 (_module.List.tail (_module.List.tail |x#0@@5|)))) |x#0@@5|))))
+ :qid |GHCMergeSortdfy.127:10|
+ :skolemid |691|
  :pattern ( (_module.__default.mergePairs ($LS $ly@@45) |x#0@@5|))
 ))))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall ((|xs#0@@43| T@U) ) (!  (=> (or (|_module.__default.sort#canCall| |xs#0@@43|) (and (< 5 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@43| (Tclass._module.List Tclass._module.G)))) ($Is DatatypeTypeType (_module.__default.sort |xs#0@@43|) (Tclass._module.List Tclass._module.G)))
+ :qid |GHCMergeSortdfy.80:15|
+ :skolemid |643|
  :pattern ( (_module.__default.sort |xs#0@@43|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.MultisetUnion$T@@2 T@U) ($ly@@46 T@U) (|xs#0@@44| T@U) ) (!  (=> (or (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@2 |xs#0@@44|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@44| (Tclass._module.List (Tclass._module.List _module._default.MultisetUnion$T@@2))))) ($Is MultiSetType (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@2 $ly@@46 |xs#0@@44|) (TMultiSet _module._default.MultisetUnion$T@@2)))
+ :qid |unknown.0:0|
+ :skolemid |609|
  :pattern ( (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@2 $ly@@46 |xs#0@@44|))
 ))))
 (assert (forall ((d@@6 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@6)) (DtRank d@@6))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@6)))
 )))
 (assert (forall ((_module._default.reverse$_T0@@3 T@U) ($ly@@47 T@U) (|xs#0@@45| T@U) (|acc#0@@3| T@U) ) (! (= (_module.__default.reverse _module._default.reverse$_T0@@3 ($LS $ly@@47) |xs#0@@45| |acc#0@@3|) (_module.__default.reverse _module._default.reverse$_T0@@3 $ly@@47 |xs#0@@45| |acc#0@@3|))
+ :qid |unknown.0:0|
+ :skolemid |591|
  :pattern ( (_module.__default.reverse _module._default.reverse$_T0@@3 ($LS $ly@@47) |xs#0@@45| |acc#0@@3|))
 )))
 (assert (forall ((bx@@1 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@1 (TMultiSet t@@3)) (and (= ($Box MultiSetType ($Unbox MultiSetType bx@@1)) bx@@1) ($Is MultiSetType ($Unbox MultiSetType bx@@1) (TMultiSet t@@3))))
+ :qid |DafnyPreludebpl.201:15|
+ :skolemid |34|
  :pattern ( ($IsBox bx@@1 (TMultiSet t@@3)))
 )))
 (assert (forall ((_module.List$T@@6 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._module.List _module.List$T@@6)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) (Tclass._module.List _module.List$T@@6))))
+ :qid |unknown.0:0|
+ :skolemid |585|
  :pattern ( ($IsBox bx@@2 (Tclass._module.List _module.List$T@@6)))
 )))
 (assert (forall ((d@@7 T@U) (_module.List$T@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.List.Cons_q d@@7) ($IsAlloc DatatypeTypeType d@@7 (Tclass._module.List _module.List$T@@7) $h@@1))) ($IsAlloc DatatypeTypeType (_module.List.tail d@@7) (Tclass._module.List _module.List$T@@7) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1102|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.List.tail d@@7) (Tclass._module.List _module.List$T@@7) $h@@1))
 )))
 (assert (= |#_module.List.Nil| (Lit DatatypeTypeType |#_module.List.Nil|)))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@48 T@U) (|a#0@@16| T@U) (|xs#0@@46| T@U) (|ys#0@@21| T@U) ) (!  (=> (or (|_module.__default.descending#canCall| |a#0@@16| |xs#0@@46| (Lit DatatypeTypeType |ys#0@@21|)) (and (< 2 $FunctionContextHeight) (and (and ($IsBox |a#0@@16| Tclass._module.G) ($Is DatatypeTypeType |xs#0@@46| (Tclass._module.List Tclass._module.G))) ($Is DatatypeTypeType |ys#0@@21| (Tclass._module.List Tclass._module.G))))) (and (and (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@21|))))) (|_module.__default.Below#canCall| |a#0@@16| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|))))) (=> (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@21|)) (not (_module.__default.Below |a#0@@16| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|)))))) (|_module.__default.descending#canCall| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|))) (|#_module.List.Cons| |a#0@@16| |xs#0@@46|) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@21|)))))) (=> (not (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@21|)) (not (_module.__default.Below |a#0@@16| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|))))))) (|_module.__default.sequences#canCall| (Lit DatatypeTypeType |ys#0@@21|)))) (= (_module.__default.descending ($LS $ly@@48) |a#0@@16| |xs#0@@46| (Lit DatatypeTypeType |ys#0@@21|)) (ite  (and (_module.List.Cons_q (Lit DatatypeTypeType |ys#0@@21|)) (not (_module.__default.Below |a#0@@16| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|)))))) (_module.__default.descending ($LS $ly@@48) (Lit BoxType (_module.List.head (Lit DatatypeTypeType |ys#0@@21|))) (|#_module.List.Cons| |a#0@@16| |xs#0@@46|) (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |ys#0@@21|)))) (|#_module.List.Cons| ($Box DatatypeTypeType (|#_module.List.Cons| |a#0@@16| |xs#0@@46|)) (Lit DatatypeTypeType (_module.__default.sequences ($LS $ly@@48) (Lit DatatypeTypeType |ys#0@@21|))))))))
+ :qid |GHCMergeSortdfy.97:10|
  :weight 3
+ :skolemid |663|
  :pattern ( (_module.__default.descending ($LS $ly@@48) |a#0@@16| |xs#0@@46| (Lit DatatypeTypeType |ys#0@@21|)))
 ))))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($ly@@49 T@U) (|x#0@@6| T@U) ) (!  (=> (or (|_module.__default.mergeAll#canCall| |x#0@@6|) (and (< 4 $FunctionContextHeight) (and ($Is DatatypeTypeType |x#0@@6| (Tclass._module.List (Tclass._module.List Tclass._module.G))) (not (|_module.List#Equal| |x#0@@6| |#_module.List.Nil|))))) (and (and (|$IsA#_module.List| (_module.List.tail |x#0@@6|)) (=> (not (|_module.List#Equal| (_module.List.tail |x#0@@6|) |#_module.List.Nil|)) (and (|_module.__default.mergePairs#canCall| |x#0@@6|) (|_module.__default.mergeAll#canCall| (_module.__default.mergePairs ($LS $LZ) |x#0@@6|))))) (= (_module.__default.mergeAll ($LS $ly@@49) |x#0@@6|) (ite (|_module.List#Equal| (_module.List.tail |x#0@@6|) |#_module.List.Nil|) ($Unbox DatatypeTypeType (_module.List.head |x#0@@6|)) (_module.__default.mergeAll $ly@@49 (_module.__default.mergePairs ($LS $LZ) |x#0@@6|))))))
+ :qid |GHCMergeSortdfy.117:10|
+ :skolemid |683|
  :pattern ( (_module.__default.mergeAll ($LS $ly@@49) |x#0@@6|))
 ))))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (= (|#_module.List.Cons| (Lit BoxType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)) (Lit DatatypeTypeType (|#_module.List.Cons| |a#7#0#0| |a#7#1#0|)))
+ :qid |GHCMergeSortdfy.14:31|
+ :skolemid |1103|
  :pattern ( (|#_module.List.Cons| (Lit BoxType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.MultisetUnion$T@@3 T@U) ($ly@@50 T@U) (|xs#0@@47| T@U) ) (!  (=> (or (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@3 (Lit DatatypeTypeType |xs#0@@47|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@47| (Tclass._module.List (Tclass._module.List _module._default.MultisetUnion$T@@3))))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@47|)))))) (let ((|ys#3@@5| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@47|)))))
@@ -610,36 +866,58 @@
  (and (|_module.__default.multiset__of#canCall| _module._default.MultisetUnion$T@@3 |a#3@@3|) (|_module.__default.MultisetUnion#canCall| _module._default.MultisetUnion$T@@3 |ys#3@@5|))))) (= (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@3 ($LS $ly@@50) (Lit DatatypeTypeType |xs#0@@47|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0@@47|)) |MultiSet#Empty| (let ((|ys#2@@5| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0@@47|)))))
 (let ((|a#2@@4| (Lit DatatypeTypeType ($Unbox DatatypeTypeType (_module.List.head (Lit DatatypeTypeType |xs#0@@47|))))))
 (|MultiSet#Union| (_module.__default.multiset__of _module._default.MultisetUnion$T@@3 ($LS $LZ) |a#2@@4|) (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@3 ($LS $ly@@50) |ys#2@@5|))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |613|
  :pattern ( (_module.__default.MultisetUnion _module._default.MultisetUnion$T@@3 ($LS $ly@@50) (Lit DatatypeTypeType |xs#0@@47|)))
 ))))
 (assert (forall ((x@@10 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@10))) (Lit BoxType ($Box intType (int_2_U x@@10))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@10))))
 )))
 (assert (forall ((x@@11 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@11)) (Lit BoxType ($Box T@@4 x@@11)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@11)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.length$_T0@@2 T@U) ($ly@@51 T@U) (|xs#0@@48| T@U) ) (!  (=> (or (|_module.__default.length#canCall| _module._default.length$_T0@@2 |xs#0@@48|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |xs#0@@48| (Tclass._module.List _module._default.length$_T0@@2)))) (<= (LitInt 0) (_module.__default.length _module._default.length$_T0@@2 $ly@@51 |xs#0@@48|)))
+ :qid |unknown.0:0|
+ :skolemid |586|
  :pattern ( (_module.__default.length _module._default.length$_T0@@2 $ly@@51 |xs#0@@48|))
 ))))
 (assert (forall ((a@@8 T@U) (x@@12 T@U) (y@@0 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| a@@8 y@@0)) (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@8 x@@12) y@@0)))
+ :qid |DafnyPreludebpl.973:15|
+ :skolemid |194|
  :pattern ( (|MultiSet#UnionOne| a@@8 x@@12) (|MultiSet#Multiplicity| a@@8 y@@0))
 )))
 (assert (forall ((a@@9 T@U) (x@@13 T@U) (o@@1 T@U) ) (! (= (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@9 x@@13) o@@1))  (or (= o@@1 x@@13) (< 0 (|MultiSet#Multiplicity| a@@9 o@@1))))
+ :qid |DafnyPreludebpl.963:15|
+ :skolemid |192|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@9 x@@13) o@@1))
 )))
 (assert (forall ((a@@10 T@U) (b@@5 T@U) ) (! (= (|MultiSet#Equal| a@@10 b@@5) (forall ((o@@2 T@U) ) (! (= (|MultiSet#Multiplicity| a@@10 o@@2) (|MultiSet#Multiplicity| b@@5 o@@2))
+ :qid |DafnyPreludebpl.1050:19|
+ :skolemid |207|
  :pattern ( (|MultiSet#Multiplicity| a@@10 o@@2))
  :pattern ( (|MultiSet#Multiplicity| b@@5 o@@2))
 )))
+ :qid |DafnyPreludebpl.1047:15|
+ :skolemid |208|
  :pattern ( (|MultiSet#Equal| a@@10 b@@5))
 )))
 (assert (forall ((v@@4 T@U) (t0@@3 T@U) (h@@1 T@U) ) (! (= ($IsAlloc MultiSetType v@@4 (TMultiSet t0@@3) h@@1) (forall ((bx@@3 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| v@@4 bx@@3)) ($IsAllocBox bx@@3 t0@@3 h@@1))
+ :qid |DafnyPreludebpl.307:11|
+ :skolemid |71|
  :pattern ( (|MultiSet#Multiplicity| v@@4 bx@@3))
 )))
+ :qid |DafnyPreludebpl.305:15|
+ :skolemid |72|
  :pattern ( ($IsAlloc MultiSetType v@@4 (TMultiSet t0@@3) h@@1))
 )))
 (assert (forall ((_module.List$T@@8 T@U) (|a#6#0#0@@0| T@U) (|a#6#1#0@@0| T@U) ($h@@2 T@U) ) (!  (=> ($IsGoodHeap $h@@2) (= ($IsAlloc DatatypeTypeType (|#_module.List.Cons| |a#6#0#0@@0| |a#6#1#0@@0|) (Tclass._module.List _module.List$T@@8) $h@@2)  (and ($IsAllocBox |a#6#0#0@@0| _module.List$T@@8 $h@@2) ($IsAlloc DatatypeTypeType |a#6#1#0@@0| (Tclass._module.List _module.List$T@@8) $h@@2))))
+ :qid |unknown.0:0|
+ :skolemid |1100|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.List.Cons| |a#6#0#0@@0| |a#6#1#0@@0|) (Tclass._module.List _module.List$T@@8) $h@@2))
 )))
 (push 1)
@@ -662,6 +940,7 @@
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $Heap@@2 () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.Correctness)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -680,20 +959,28 @@
  (=> (= (ControlFlow 0 0) 20) (let ((GeneratedUnifiedExit_correct  (and (=> (= (ControlFlow 0 12) (- 0 16)) (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (_module.List.Nil_q (_module.__default.sort |xs#0@@49|)) (U_2_bool (Lit boolType (bool_2_U true))))))) (=> (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (_module.List.Nil_q (_module.__default.sort |xs#0@@49|)) (U_2_bool (Lit boolType (bool_2_U true)))))) (and (=> (= (ControlFlow 0 12) (- 0 15)) (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (not (_module.List.Nil_q (_module.__default.sort |xs#0@@49|))) (let ((|ys#2@@6| (_module.List.tail (_module.__default.sort |xs#0@@49|))))
 (let ((|a#2@@5| (_module.List.head (_module.__default.sort |xs#0@@49|))))
 (forall ((|y#2@@0| T@U) ) (!  (=> ($IsBox |y#2@@0| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |ys#2@@6|) |y#2@@0|) 0) (_module.__default.Below |a#2@@5| |y#2@@0|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |754|
  :pattern ( (_module.__default.Below |a#2@@5| |y#2@@0|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |ys#2@@6|) |y#2@@0|))
 )))))))) (=> (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (not (_module.List.Nil_q (_module.__default.sort |xs#0@@49|))) (let ((|ys#2@@7| (_module.List.tail (_module.__default.sort |xs#0@@49|))))
 (let ((|a#2@@6| (_module.List.head (_module.__default.sort |xs#0@@49|))))
 (forall ((|y#2@@1| T@U) ) (!  (=> ($IsBox |y#2@@1| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |ys#2@@7|) |y#2@@1|) 0) (_module.__default.Below |a#2@@6| |y#2@@1|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |754|
  :pattern ( (_module.__default.Below |a#2@@6| |y#2@@1|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |ys#2@@7|) |y#2@@1|))
 ))))))) (and (=> (= (ControlFlow 0 12) (- 0 14)) (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (not (_module.List.Nil_q (_module.__default.sort |xs#0@@49|))) (let ((|ys#2@@8| (_module.List.tail (_module.__default.sort |xs#0@@49|))))
 (_module.__default.sorted ($LS ($LS $LZ)) |ys#2@@8|)))))) (=> (=> (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (or (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (=> (not (_module.List.Nil_q (_module.__default.sort |xs#0@@49|))) (let ((|ys#2@@9| (_module.List.tail (_module.__default.sort |xs#0@@49|))))
 (_module.__default.sorted ($LS ($LS $LZ)) |ys#2@@9|))))) (and (=> (= (ControlFlow 0 12) (- 0 13)) (|MultiSet#Equal| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) (_module.__default.sort |xs#0@@49|)) (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |xs#0@@49|))) (=> (|MultiSet#Equal| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) (_module.__default.sort |xs#0@@49|)) (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) |xs#0@@49|)) (=> (= (ControlFlow 0 12) (- 0 11)) (=> (|_module.__default.stable#canCall| (_module.__default.sort |xs#0@@49|) |xs#0@@49|) (or (_module.__default.stable (_module.__default.sort |xs#0@@49|) |xs#0@@49|) (forall ((|g#1@@1| T@U) ) (!  (=> ($IsBox |g#1@@1| Tclass._module.G) (|_module.List#Equal| (_module.__default.filter ($LS ($LS $LZ)) |g#1@@1| (_module.__default.sort |xs#0@@49|)) (_module.__default.filter ($LS ($LS $LZ)) |g#1@@1| |xs#0@@49|)))
+ :qid |GHCMergeSortdfy.169:10|
+ :skolemid |757|
  :pattern ( (_module.__default.filter ($LS ($LS $LZ)) |g#1@@1| |xs#0@@49|))
  :pattern ( (_module.__default.filter ($LS ($LS $LZ)) |g#1@@1| (_module.__default.sort |xs#0@@49|)))
 )))))))))))))))
 (let ((anon12_Else_correct  (=> (and (and (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)) (= $Heap@3 $Heap@5)) (and (forall ((|g#1_1| T@U) ) (!  (=> (and ($IsBox |g#1_1| Tclass._module.G) (U_2_bool (Lit boolType (bool_2_U true)))) (|_module.List#Equal| (_module.__default.filter ($LS $LZ) |g#1_1| (_module.__default.sort |xs#0@@49|)) (_module.__default.filter ($LS $LZ) |g#1_1| |xs#0@@49|)))
+ :qid |GHCMergeSortdfy.184:10|
+ :skolemid |765|
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1_1| |xs#0@@49|))
  :pattern ( (_module.__default.filter ($LS $LZ) |g#1_1| (_module.__default.sort |xs#0@@49|)))
 )) (= (ControlFlow 0 17) 12))) GeneratedUnifiedExit_correct)))
@@ -701,6 +988,8 @@
 (let ((anon11_Else_correct  (=> (|MultiSet#Equal| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |xs#0@@49|)) (=> (and (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (and (|_module.__default.sort#canCall| |xs#0@@49|) (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)))) (and (and (|_module.__default.sorted#canCall| (_module.__default.sort |xs#0@@49|)) (and (_module.__default.sorted ($LS $LZ) (_module.__default.sort |xs#0@@49|)) (ite (_module.List.Nil_q (_module.__default.sort |xs#0@@49|)) true (let ((|ys#1@@6| (_module.List.tail (_module.__default.sort |xs#0@@49|))))
 (let ((|a#1@@4| (_module.List.head (_module.__default.sort |xs#0@@49|))))
  (and (forall ((|y#1@@1| T@U) ) (!  (=> ($IsBox |y#1@@1| Tclass._module.G) (=> (> (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@6|) |y#1@@1|) 0) (_module.__default.Below |a#1@@4| |y#1@@1|)))
+ :qid |GHCMergeSortdfy.156:13|
+ :skolemid |786|
  :pattern ( (_module.__default.Below |a#1@@4| |y#1@@1|))
  :pattern ( (|MultiSet#Multiplicity| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |ys#1@@6|) |y#1@@1|))
 )) (_module.__default.sorted ($LS $LZ) |ys#1@@6|))))))) (= $Heap@0 $Heap@3))) (and (=> (= (ControlFlow 0 18) 10) anon12_Then_correct) (=> (= (ControlFlow 0 18) 17) anon12_Else_correct))))))
@@ -709,6 +998,8 @@
 (let ((anon9_Then_correct  (=> ($IsAlloc DatatypeTypeType |xs#0@@49| (Tclass._module.List Tclass._module.G) $Heap@0) (=> (and (|_module.__default.sort#canCall| |xs#0@@49|) (= |##xs#0_2_0@0| (_module.__default.sort |xs#0@@49|))) (=> (and (and (and ($IsAlloc DatatypeTypeType |##xs#0_2_0@0| (Tclass._module.List Tclass._module.G) $Heap@0) (|_module.__default.multiset__of#canCall| Tclass._module.G (_module.__default.sort |xs#0@@49|))) (and (|_module.__default.sort#canCall| |xs#0@@49|) (|_module.__default.multiset__of#canCall| Tclass._module.G (_module.__default.sort |xs#0@@49|)))) (and (and ($IsAlloc DatatypeTypeType |xs#0@@49| (Tclass._module.List Tclass._module.G) $Heap@0) (|_module.__default.sequences#canCall| |xs#0@@49|)) (and (= |##x#0_2_0@0| (_module.__default.sequences ($LS $LZ) |xs#0@@49|)) ($IsAlloc DatatypeTypeType |##x#0_2_0@0| (Tclass._module.List (Tclass._module.List Tclass._module.G)) $Heap@0)))) (and (=> (= (ControlFlow 0 3) (- 0 4)) (not (|_module.List#Equal| |##x#0_2_0@0| |#_module.List.Nil|))) (=> (and (and (|_module.__default.mergeAll#canCall| (_module.__default.sequences ($LS $LZ) |xs#0@@49|)) (= |##xs#0_2_2@0| (_module.__default.mergeAll ($LS $LZ) (_module.__default.sequences ($LS $LZ) |xs#0@@49|)))) (and ($IsAlloc DatatypeTypeType |##xs#0_2_2@0| (Tclass._module.List Tclass._module.G) $Heap@0) (|_module.__default.multiset__of#canCall| Tclass._module.G (_module.__default.mergeAll ($LS $LZ) (_module.__default.sequences ($LS $LZ) |xs#0@@49|))))) (=> (and (and (and (|_module.__default.sequences#canCall| |xs#0@@49|) (|_module.__default.mergeAll#canCall| (_module.__default.sequences ($LS $LZ) |xs#0@@49|))) (|_module.__default.multiset__of#canCall| Tclass._module.G (_module.__default.mergeAll ($LS $LZ) (_module.__default.sequences ($LS $LZ) |xs#0@@49|)))) (= (ControlFlow 0 3) (- 0 2))) (|MultiSet#Equal| (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) (_module.__default.sort |xs#0@@49|)) (_module.__default.multiset__of Tclass._module.G ($LS ($LS $LZ)) (_module.__default.mergeAll ($LS ($LS $LZ)) (_module.__default.sequences ($LS ($LS $LZ)) |xs#0@@49|))))))))))))
 (let ((anon8_Then_correct true))
 (let ((anon0_correct  (=> (and (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@2 alloc false)) (|$IsA#_module.List| |xs#0@@49|)) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= $Heap@@2 $Heap@0) (forall ((|$ih#xs0#0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |$ih#xs0#0| (Tclass._module.List Tclass._module.G)) (U_2_bool (Lit boolType (bool_2_U true)))) (< (DtRank |$ih#xs0#0|) (DtRank |xs#0@@49|))) (and (and (_module.__default.sorted ($LS $LZ) (_module.__default.sort |$ih#xs0#0|)) (|MultiSet#Equal| (_module.__default.multiset__of Tclass._module.G ($LS $LZ) (_module.__default.sort |$ih#xs0#0|)) (_module.__default.multiset__of Tclass._module.G ($LS $LZ) |$ih#xs0#0|))) (_module.__default.stable (_module.__default.sort |$ih#xs0#0|) |$ih#xs0#0|)))
+ :qid |GHCMergeSortdfy.172:19|
+ :skolemid |760|
  :pattern ( (_module.__default.sort |$ih#xs0#0|))
 )))) (and (and (and (and (=> (= (ControlFlow 0 19) 1) anon8_Then_correct) (=> (= (ControlFlow 0 19) 3) anon9_Then_correct)) (=> (= (ControlFlow 0 19) 6) anon10_Then_correct)) (=> (= (ControlFlow 0 19) 9) anon11_Then_correct)) (=> (= (ControlFlow 0 19) 18) anon11_Else_correct))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@2) ($IsHeapAnchor $Heap@@2)) (=> (and (and (and ($Is DatatypeTypeType |xs#0@@49| (Tclass._module.List Tclass._module.G)) ($IsAlloc DatatypeTypeType |xs#0@@49| (Tclass._module.List Tclass._module.G) $Heap@@2)) (|$IsA#_module.List| |xs#0@@49|)) (and (= 8 $FunctionContextHeight) (= (ControlFlow 0 20) 19))) anon0_correct))))

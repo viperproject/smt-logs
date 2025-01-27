@@ -93,16 +93,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc allocName Tagclass.A.Result Tagclass.A.EvenGood__OddBad? Tagclass.A.EvenGood__OddBad class.A.EvenGood__OddBad? |##A.Result.Good| |##A.Result.Bad| tytagFamily$Result tytagFamily$EvenGood_OddBad field$a)
@@ -112,9 +118,13 @@
 (assert (= (DeclName alloc) allocName))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass.A.EvenGood__OddBad?)  (or (= $o null) (= (dtype $o) Tclass.A.EvenGood__OddBad?)))
+ :qid |unknown.0:0|
+ :skolemid |491|
  :pattern ( ($Is refType $o Tclass.A.EvenGood__OddBad?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass.A.EvenGood__OddBad $h) ($IsAlloc refType |c#0| Tclass.A.EvenGood__OddBad? $h))
+ :qid |unknown.0:0|
+ :skolemid |507|
  :pattern ( ($IsAlloc refType |c#0| Tclass.A.EvenGood__OddBad $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass.A.EvenGood__OddBad? $h))
 )))
@@ -122,121 +132,205 @@
 (assert (= (FieldOfDecl class.A.EvenGood__OddBad? field$a) A.EvenGood__OddBad.a))
 (assert  (not ($IsGhostField A.EvenGood__OddBad.a)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass.A.EvenGood__OddBad? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |492|
  :pattern ( ($IsAlloc refType $o@@0 Tclass.A.EvenGood__OddBad? $h@@0))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d T@U) ) (! (= (A.Result.Good_q d) (= (DatatypeCtorId d) |##A.Result.Good|))
+ :qid |unknown.0:0|
+ :skolemid |509|
  :pattern ( (A.Result.Good_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (A.Result.Bad_q d@@0) (= (DatatypeCtorId d@@0) |##A.Result.Bad|))
+ :qid |unknown.0:0|
+ :skolemid |518|
  :pattern ( (A.Result.Bad_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (A.Result.Good_q d@@1) (exists ((|a#1#0#0| Int) ) (= d@@1 (|#A.Result.Good| |a#1#0#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (A.Result.Good_q d@@1) (exists ((|a#1#0#0| Int) ) (! (= d@@1 (|#A.Result.Good| |a#1#0#0|))
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |510|
+)))
+ :qid |unknown.0:0|
+ :skolemid |511|
  :pattern ( (A.Result.Good_q d@@1))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (A.Result.Bad_q d@@2) (exists ((|a#6#0#0| T@U) ) (= d@@2 (|#A.Result.Bad| |a#6#0#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (A.Result.Bad_q d@@2) (exists ((|a#6#0#0| T@U) ) (! (= d@@2 (|#A.Result.Bad| |a#6#0#0|))
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |519|
+)))
+ :qid |unknown.0:0|
+ :skolemid |520|
  :pattern ( (A.Result.Bad_q d@@2))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@1 T@U) ($o@@1 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@1) (and (or (not (= $o@@1 null)) (not true)) (= (dtype $o@@1) Tclass.A.EvenGood__OddBad?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) A.EvenGood__OddBad.a)) TInt $h@@1))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |494|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) A.EvenGood__OddBad.a)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx t@@0 h@@1) ($IsAllocBox bx t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
 )))
 (assert (= (Ctor DatatypeTypeType) 7))
 (assert (forall ((|a#7#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#A.Result.Bad| |a#7#0#0|) Tclass.A.Result) ($Is refType |a#7#0#0| Tclass.A.EvenGood__OddBad))
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |521|
  :pattern ( ($Is DatatypeTypeType (|#A.Result.Bad| |a#7#0#0|) Tclass.A.Result))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass.A.EvenGood__OddBad)  (and ($Is refType |c#0@@0| Tclass.A.EvenGood__OddBad?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |506|
  :pattern ( ($Is refType |c#0@@0| Tclass.A.EvenGood__OddBad))
  :pattern ( ($Is refType |c#0@@0| Tclass.A.EvenGood__OddBad?))
 )))
 (assert (forall ((|a#2#0#0| Int) ($h@@2 T@U) ) (!  (=> ($IsGoodHeap $h@@2) (= ($IsAlloc DatatypeTypeType (|#A.Result.Good| |a#2#0#0|) Tclass.A.Result $h@@2) ($IsAlloc intType (int_2_U |a#2#0#0|) TInt $h@@2)))
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |513|
  :pattern ( ($IsAlloc DatatypeTypeType (|#A.Result.Good| |a#2#0#0|) Tclass.A.Result $h@@2))
 )))
 (assert (forall ((|a#7#0#0@@0| T@U) ($h@@3 T@U) ) (!  (=> ($IsGoodHeap $h@@3) (= ($IsAlloc DatatypeTypeType (|#A.Result.Bad| |a#7#0#0@@0|) Tclass.A.Result $h@@3) ($IsAlloc refType |a#7#0#0@@0| Tclass.A.EvenGood__OddBad $h@@3)))
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |522|
  :pattern ( ($IsAlloc DatatypeTypeType (|#A.Result.Bad| |a#7#0#0@@0|) Tclass.A.Result $h@@3))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> ($Is DatatypeTypeType d@@3 Tclass.A.Result) (or (A.Result.Good_q d@@3) (A.Result.Bad_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |527|
  :pattern ( (A.Result.Bad_q d@@3) ($Is DatatypeTypeType d@@3 Tclass.A.Result))
  :pattern ( (A.Result.Good_q d@@3) ($Is DatatypeTypeType d@@3 Tclass.A.Result))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((|a#0#0#0| Int) ) (! (= (DatatypeCtorId (|#A.Result.Good| |a#0#0#0|)) |##A.Result.Good|)
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |508|
  :pattern ( (|#A.Result.Good| |a#0#0#0|))
 )))
 (assert (forall ((|a#4#0#0| Int) ) (! (= (A.Result.x (|#A.Result.Good| |a#4#0#0|)) |a#4#0#0|)
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |516|
  :pattern ( (|#A.Result.Good| |a#4#0#0|))
 )))
 (assert (forall ((|a#5#0#0| T@U) ) (! (= (DatatypeCtorId (|#A.Result.Bad| |a#5#0#0|)) |##A.Result.Bad|)
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |517|
  :pattern ( (|#A.Result.Bad| |a#5#0#0|))
 )))
 (assert (forall ((|a#9#0#0| T@U) ) (! (= (A.Result.c (|#A.Result.Bad| |a#9#0#0|)) |a#9#0#0|)
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |525|
  :pattern ( (|#A.Result.Bad| |a#9#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
-(assert (forall (($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass.A.EvenGood__OddBad))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@2 T@U) ($f T@U) )  (=> (and (or (not (= $o@@2 null)) (not true)) (= $o@@2 this)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@2) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@2) $f)))) (= (A.EvenGood__OddBad.IsFailure $h0 this) (A.EvenGood__OddBad.IsFailure $h1 this))))
+(assert (forall (($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass.A.EvenGood__OddBad))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@2 T@U) ($f T@U) ) (!  (=> (and (or (not (= $o@@2 null)) (not true)) (= $o@@2 this)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@2) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@2) $f)))
+ :qid |unknown.0:0|
+ :skolemid |495|
+)) (= (A.EvenGood__OddBad.IsFailure $h0 this) (A.EvenGood__OddBad.IsFailure $h1 this))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |496|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (A.EvenGood__OddBad.IsFailure $h1 this))
 )))
 (assert (forall (($h@@4 T@U) ($o@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (or (not (= $o@@3 null)) (not true)) (= (dtype $o@@3) Tclass.A.EvenGood__OddBad?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) A.EvenGood__OddBad.a)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |493|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) A.EvenGood__OddBad.a)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this@@0 T@U) ) (!  (=> (or (|A.EvenGood__OddBad.IsFailure#canCall| $Heap this@@0) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass.A.EvenGood__OddBad) ($IsAlloc refType this@@0 Tclass.A.EvenGood__OddBad $Heap)))))) (= (A.EvenGood__OddBad.IsFailure $Heap this@@0) (= (Mod (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this@@0) A.EvenGood__OddBad.a))) (LitInt 2)) (LitInt 1))))
+ :qid |gitissue2693dfy.18:14|
+ :skolemid |499|
  :pattern ( (A.EvenGood__OddBad.IsFailure $Heap this@@0) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((|a#2#0#0@@0| Int) ) (! (= ($Is DatatypeTypeType (|#A.Result.Good| |a#2#0#0@@0|) Tclass.A.Result) ($Is intType (int_2_U |a#2#0#0@@0|) TInt))
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |512|
  :pattern ( ($Is DatatypeTypeType (|#A.Result.Good| |a#2#0#0@@0|) Tclass.A.Result))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@4 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f@@0))  (=> (and (or (not (= $o@@4 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@4) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1048|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f@@0))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mod x@@6 y) (mod x@@6 y))
+ :qid |DafnyPreludebpl.1649:14|
+ :skolemid |340|
  :pattern ( (Mod x@@6 y))
 )))
 (assert (forall ((d@@4 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (A.Result.Good_q d@@4) ($IsAlloc DatatypeTypeType d@@4 Tclass.A.Result $h@@5))) ($IsAlloc intType (int_2_U (A.Result.x d@@4)) TInt $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |514|
  :pattern ( ($IsAlloc intType (int_2_U (A.Result.x d@@4)) TInt $h@@5))
 )))
 (assert (= (Tag Tclass.A.Result) Tagclass.A.Result))
@@ -246,24 +340,38 @@
 (assert (= (Tag Tclass.A.EvenGood__OddBad) Tagclass.A.EvenGood__OddBad))
 (assert (= (TagFamily Tclass.A.EvenGood__OddBad) tytagFamily$EvenGood_OddBad))
 (assert (forall ((d@@5 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (A.Result.Bad_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.A.Result $h@@6))) ($IsAlloc refType (A.Result.c d@@5) Tclass.A.EvenGood__OddBad $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |523|
  :pattern ( ($IsAlloc refType (A.Result.c d@@5) Tclass.A.EvenGood__OddBad $h@@6))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((|a#3#0#0| Int) ) (! (= (|#A.Result.Good| (LitInt |a#3#0#0|)) (Lit DatatypeTypeType (|#A.Result.Good| |a#3#0#0|)))
+ :qid |gitissue2693dfy.41:26|
+ :skolemid |515|
  :pattern ( (|#A.Result.Good| (LitInt |a#3#0#0|)))
 )))
 (assert (forall ((|a#8#0#0| T@U) ) (! (= (|#A.Result.Bad| (Lit refType |a#8#0#0|)) (Lit DatatypeTypeType (|#A.Result.Bad| |a#8#0#0|)))
+ :qid |gitissue2693dfy.41:40|
+ :skolemid |524|
  :pattern ( (|#A.Result.Bad| (Lit refType |a#8#0#0|)))
 )))
 (assert (forall ((x@@8 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@8)) (Lit BoxType ($Box T@@4 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@8)))
 )))
 (assert (forall ((h@@3 T@U) (v@@1 T@U) ) (! ($IsAlloc intType v@@1 TInt h@@3)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@1 TInt h@@3))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is intType v@@2 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@2 TInt))
 )))
 (push 1)
@@ -273,6 +381,7 @@
 (declare-fun $Heap@@0 () T@U)
 (declare-fun $Heap@0 () T@U)
 (declare-fun |result#0| () T@U)
+(set-info :boogie-vc-id CheckWellFormed$$A.__default.Test)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -291,6 +400,8 @@
  (=> (= (ControlFlow 0 0) 6) (let ((anon4_Else_correct true))
 (let ((anon4_Then_correct  (=> (A.Result.Bad_q |result#0@0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (A.Result.Bad_q |result#0@0|)) (=> (A.Result.Bad_q |result#0@0|) (=> (= (ControlFlow 0 2) (- 0 1)) (or (not (= (A.Result.c |result#0@0|) null)) (not true))))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@0 alloc false)) (=> (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (=> (and (and (forall (($o@@5 T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@5) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@5) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 $o@@5)))
+ :qid |gitissue2693dfy.5:10|
+ :skolemid |480|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@5))
 )) ($HeapSucc $Heap@@0 $Heap@0)) (and ($Is DatatypeTypeType |result#0@0| Tclass.A.Result) ($IsAlloc DatatypeTypeType |result#0@0| Tclass.A.Result $Heap@0))) (and (=> (= (ControlFlow 0 5) 2) anon4_Then_correct) (=> (= (ControlFlow 0 5) 4) anon4_Else_correct)))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@0) ($IsHeapAnchor $Heap@@0)) (=> (and (and ($Is DatatypeTypeType |result#0| Tclass.A.Result) ($IsAlloc DatatypeTypeType |result#0| Tclass.A.Result $Heap@@0)) (and (= 3 $FunctionContextHeight) (= (ControlFlow 0 6) 5))) anon0_correct))))

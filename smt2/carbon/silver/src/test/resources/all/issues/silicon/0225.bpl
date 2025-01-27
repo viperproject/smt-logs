@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:52
+// Date:         2025-01-26 23:14:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0225.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0225-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -374,8 +374,8 @@ axiom (forall Heap: HeapType ::
 procedure test4_1(y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -383,8 +383,8 @@ procedure test4_1(y: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -399,8 +399,8 @@ procedure test4_1(y: Ref) returns ()
   var b_3: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -415,8 +415,8 @@ procedure test4_1(y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(P(), write) --*
   // acc(P(), write) && (forall j: Int :: { f4(j) } f4(j)) {
@@ -438,8 +438,8 @@ procedure test4_1(y: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- 0225.vpr@13.11--13.60
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(P(), write) && (forall j: Int :: { f4(j) } f4(j))
@@ -517,8 +517,8 @@ procedure test4_1(y: Ref) returns ()
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := ResultMask;
               ExhaleWellDef0Heap := ResultHeap;
+              ExhaleWellDef0Mask := ResultMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access P() (0225.vpr@13.54--13.59) [74565]"}
                 NoPerm < perm ==> NoPerm < ResultMask[null, P()];
@@ -554,19 +554,19 @@ procedure test_1(y: Ref) returns ()
 {
   var perm: Perm;
   var j_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_5: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -604,8 +604,8 @@ procedure test_1(y: Ref) returns ()
         if (j_2 > 0) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function f2 might not hold. There might be insufficient permission to access y.v (0225.vpr@26.41--26.49) [74567]"}
               NoPerm < perm ==> NoPerm < Mask[y, v_35];
@@ -628,8 +628,8 @@ procedure test_1(y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(y.v, write) --*
   // acc(y.v, write) && (forall j: Int :: { f2(y, j) } j > 0 ==> f2(y, j) == j) {
@@ -651,8 +651,8 @@ procedure test_1(y: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- 0225.vpr@28.13--28.79
       lhs3:
-      Labellhs3Mask := Ops_3Mask;
       Labellhs3Heap := Ops_3Heap;
+      Labellhs3Mask := Ops_3Mask;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(y.v, write) && (forall j: Int :: { f2(y, j) } j > 0 ==> f2(y, j) == j)
@@ -725,8 +725,8 @@ procedure test_1(y: Ref) returns ()
             if (j_4 > 0) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Result_1Mask;
                 ExhaleWellDef0Heap := Result_1Heap;
+                ExhaleWellDef0Mask := Result_1Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function f2 might not hold. There might be insufficient permission to access y.v (0225.vpr@28.65--28.73) [74570]"}
                   NoPerm < perm ==> NoPerm < Result_1Mask[y, v_35];

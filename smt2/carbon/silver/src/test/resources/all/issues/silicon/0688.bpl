@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:41
+// Date:         2025-01-26 23:14:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0688.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0688-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -329,14 +329,14 @@ axiom (forall Heap: HeapType, index: int ::
 procedure test_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var address: Ref;
   var marcoAddress: Ref;
   var marco: Perm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -349,8 +349,8 @@ procedure test_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[address, $allocated];
@@ -378,8 +378,8 @@ procedure test_1() returns ()
   // -- Translating statement: exhale (forall index: Int ::
   //     { trigger(loopkup(address), index) }
   //     false ==> acc(P2(index), write)) -- 0688.vpr@25.3--30.4
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall index: Int :: { trigger(loopkup(address), index) } false ==> acc(P2(index), write))
       if (*) {
@@ -418,8 +418,8 @@ procedure test_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0688.vpr@33.3--33.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0688.vpr@33.10--33.15) [68668]"}
       false;
     assume state(Heap, Mask);

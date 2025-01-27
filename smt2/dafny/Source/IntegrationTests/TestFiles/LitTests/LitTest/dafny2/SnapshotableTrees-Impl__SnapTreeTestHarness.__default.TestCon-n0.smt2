@@ -154,16 +154,22 @@
 (declare-fun TagFamily (T@U) T@U)
 (declare-fun reveal_SnapTree.Tree.Valid () Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TagBool TagInt TagSet TagSeq alloc allocName Tagclass._System.object? Tagclass._System.object Tagclass.SnapTree.Tree Tagclass.SnapTree.Tree? Tagclass.SnapTree.Node class.SnapTree.Tree? Tagclass.SnapTree.Node? class.SnapTree.Node? tytagFamily$object tytagFamily$Tree tytagFamily$Node field$MutableRepr field$Repr field$Contents field$IsReadonly field$root field$reprIsShared field$data field$left field$right)
@@ -173,62 +179,101 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |1231|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |1232|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |1230|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (forall ((s T@U) (v T@U) (x@@5 T@U) ) (! (= (|Seq#Contains| (|Seq#Build| s v) x@@5)  (or (= v x@@5) (|Seq#Contains| s x@@5)))
+ :qid |DafnyPreludebpl.1197:15|
+ :skolemid |1336|
  :pattern ( (|Seq#Contains| (|Seq#Build| s v) x@@5))
 )))
 (assert  (and (= (Ctor refType) 3) (= (Ctor SeqType) 4)))
 (assert (forall (($Heap T@U) (|left#0| T@U) (|data#0| Int) (|right#0| T@U) ) (!  (=> (or (|SnapTree.Node.CombineSplit#canCall| $Heap |left#0| |data#0| |right#0|) (and (and ($IsGoodHeap $Heap) (and ($Is refType |left#0| Tclass.SnapTree.Node?) ($IsAlloc refType |left#0| Tclass.SnapTree.Node? $Heap))) (and ($Is refType |right#0| Tclass.SnapTree.Node?) ($IsAlloc refType |right#0| Tclass.SnapTree.Node? $Heap)))) ($Is SeqType (SnapTree.Node.CombineSplit $Heap |left#0| |data#0| |right#0|) (TSeq TInt)))
+ :qid |SnapshotableTreesdfy.273:27|
+ :skolemid |1908|
  :pattern ( (SnapTree.Node.CombineSplit $Heap |left#0| |data#0| |right#0|))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |1227|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall ((x@@6 T@U) ) (!  (not (|Seq#Contains| |Seq#Empty| x@@6))
+ :qid |DafnyPreludebpl.1188:15|
+ :skolemid |1334|
  :pattern ( (|Seq#Contains| |Seq#Empty| x@@6))
 )))
 (assert  (and (and (and (and (and (and (and (= (Ctor SetType) 5) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 ))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 6)) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 6)) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
-(assert (forall (($reveal Bool) ($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass.SnapTree.Tree))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o T@U) ($f T@U) )  (=> (and (or (not (= $o null)) (not true)) (or (= $o this) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) SnapTree.Tree.Repr)) ($Box refType $o)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o) $f)))) (= (SnapTree.Tree.Valid $reveal $h0 this) (SnapTree.Tree.Valid $reveal $h1 this))))
+(assert (forall (($reveal Bool) ($h0 T@U) ($h1 T@U) (this T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this null)) (not true)) ($Is refType this Tclass.SnapTree.Tree))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o T@U) ($f T@U) ) (!  (=> (and (or (not (= $o null)) (not true)) (or (= $o this) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 this) SnapTree.Tree.Repr)) ($Box refType $o)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o) $f)))
+ :qid |unknown.0:0|
+ :skolemid |1831|
+)) (= (SnapTree.Tree.Valid $reveal $h0 this) (SnapTree.Tree.Valid $reveal $h1 this))))
+ :qid |unknown.0:0|
+ :skolemid |1832|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (SnapTree.Tree.Valid $reveal $h1 this))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((s@@0 T@U) (v@@0 T@U) (n Int) ) (!  (=> (and (<= 0 n) (<= n (|Seq#Length| s@@0))) (= (|Seq#Drop| (|Seq#Build| s@@0 v@@0) n) (|Seq#Build| (|Seq#Drop| s@@0 n) v@@0)))
+ :qid |DafnyPreludebpl.1288:15|
+ :skolemid |1356|
  :pattern ( (|Seq#Drop| (|Seq#Build| s@@0 v@@0) n))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass.SnapTree.Tree?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass.SnapTree.Tree?)))
+ :qid |unknown.0:0|
+ :skolemid |1816|
  :pattern ( ($Is refType $o@@0 Tclass.SnapTree.Tree?))
 )))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass.SnapTree.Node?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass.SnapTree.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |1882|
  :pattern ( ($Is refType $o@@1 Tclass.SnapTree.Node?))
 )))
 (assert (forall ((s@@1 T@U) (t T@U) (n@@0 Int) ) (!  (=> (= n@@0 (|Seq#Length| s@@1)) (and (= (|Seq#Take| (|Seq#Append| s@@1 t) n@@0) s@@1) (= (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0) t)))
+ :qid |DafnyPreludebpl.1263:15|
+ :skolemid |1351|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@1 t) n@@0))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._System.object $h) ($IsAlloc refType |c#0| Tclass._System.object? $h))
+ :qid |unknown.0:0|
+ :skolemid |1453|
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass.SnapTree.Tree $h@@0) ($IsAlloc refType |c#0@@0| Tclass.SnapTree.Tree? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1881|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass.SnapTree.Tree $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass.SnapTree.Tree? $h@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass.SnapTree.Node $h@@1) ($IsAlloc refType |c#0@@1| Tclass.SnapTree.Node? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1912|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass.SnapTree.Node $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass.SnapTree.Node? $h@@1))
 )))
@@ -248,8 +293,12 @@
 (assert (= (FieldOfDecl class.SnapTree.Node? field$Contents) SnapTree.Node.Contents))
 (assert ($IsGhostField SnapTree.Node.Contents))
 (assert (forall ((|s#0| T@U) (|d#0| Int) ) (!  (=> (or (|SnapTree.Tree.AllBelow#canCall| |s#0| |d#0|) ($Is SeqType |s#0| (TSeq TInt))) (= (SnapTree.Tree.AllBelow |s#0| |d#0|) (forall ((|i#4| Int) ) (!  (=> (and (<= (LitInt 0) |i#4|) (< |i#4| (|Seq#Length| |s#0|))) (< (U_2_int ($Unbox intType (|Seq#Index| |s#0| |i#4|))) |d#0|))
+ :qid |SnapshotableTreesdfy.126:14|
+ :skolemid |1845|
  :pattern ( ($Unbox intType (|Seq#Index| |s#0| |i#4|)))
 ))))
+ :qid |SnapshotableTreesdfy.124:37|
+ :skolemid |1846|
  :pattern ( (SnapTree.Tree.AllBelow |s#0| |d#0|))
 )))
 (assert (= (FDim SnapTree.Tree.IsReadonly) 0))
@@ -271,327 +320,551 @@
 (assert (= (FieldOfDecl class.SnapTree.Node? field$right) SnapTree.Node.right))
 (assert  (not ($IsGhostField SnapTree.Node.right)))
 (assert (forall (($o@@2 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass._System.object? $h@@2)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1450|
  :pattern ( ($IsAlloc refType $o@@2 Tclass._System.object? $h@@2))
 )))
 (assert (forall (($o@@3 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass.SnapTree.Tree? $h@@3)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1817|
  :pattern ( ($IsAlloc refType $o@@3 Tclass.SnapTree.Tree? $h@@3))
 )))
 (assert (forall (($o@@4 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@4 Tclass.SnapTree.Node? $h@@4)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1883|
  :pattern ( ($IsAlloc refType $o@@4 Tclass.SnapTree.Node? $h@@4))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o@@1 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o@@1) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |1220|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |1221|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((|left#0@@0| T@U) (|data#0@@0| Int) (|right#0@@0| T@U) ) (!  (=> (or (|SnapTree.Tree.SortedSplit#canCall| |left#0@@0| |data#0@@0| |right#0@@0|) (and ($Is SeqType |left#0@@0| (TSeq TInt)) ($Is SeqType |right#0@@0| (TSeq TInt)))) (and (and (|SnapTree.Tree.IsSorted#canCall| |left#0@@0|) (=> (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted |left#0@@0|) (and (|SnapTree.Tree.IsSorted#canCall| |right#0@@0|) (=> (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted |right#0@@0|) (and (|SnapTree.Tree.AllBelow#canCall| |left#0@@0| |data#0@@0|) (=> (SnapTree.Tree.AllBelow |left#0@@0| |data#0@@0|) (|SnapTree.Tree.AllAbove#canCall| |data#0@@0| |right#0@@0|))))))) (= (SnapTree.Tree.SortedSplit |left#0@@0| |data#0@@0| |right#0@@0|)  (and (and (and (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted |left#0@@0|) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted |right#0@@0|)) (SnapTree.Tree.AllBelow |left#0@@0| |data#0@@0|)) (SnapTree.Tree.AllAbove |data#0@@0| |right#0@@0|)))))
+ :qid |SnapshotableTreesdfy.132:40|
+ :skolemid |1857|
  :pattern ( (SnapTree.Tree.SortedSplit |left#0@@0| |data#0@@0| |right#0@@0|))
 )))
 (assert (forall ((s@@2 T@U) (n@@1 Int) ) (!  (=> (= n@@1 0) (= (|Seq#Drop| s@@2 n@@1) s@@2))
+ :qid |DafnyPreludebpl.1293:15|
+ :skolemid |1357|
  :pattern ( (|Seq#Drop| s@@2 n@@1))
 )))
 (assert (forall ((x@@7 Int) ) (! (= (LitInt x@@7) x@@7)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |1119|
  :pattern ( (LitInt x@@7))
 )))
 (assert (forall ((x@@8 T@U) (T T@T) ) (! (= (Lit T x@@8) x@@8)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1117|
  :pattern ( (Lit T x@@8))
 )))
 (assert (forall ((s@@3 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> (and ($Is SeqType s@@3 (TSeq t@@0)) ($IsBox bx t@@0)) ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
+ :qid |DafnyPreludebpl.1309:15|
+ :skolemid |1360|
  :pattern ( ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
 )))
 (assert (forall ((a@@2 T@U) (b T@U) ) (! (= (|Set#Subset| a@@2 b) (forall ((o@@2 T@U) ) (!  (=> (|Set#IsMember| a@@2 o@@2) (|Set#IsMember| b o@@2))
+ :qid |DafnyPreludebpl.774:19|
+ :skolemid |1248|
  :pattern ( (|Set#IsMember| a@@2 o@@2))
  :pattern ( (|Set#IsMember| b o@@2))
 )))
+ :qid |DafnyPreludebpl.771:15|
+ :skolemid |1249|
  :pattern ( (|Set#Subset| a@@2 b))
 )))
 (assert (forall ((s@@4 T@U) (n@@2 Int) (j Int) ) (!  (=> (and (and (<= 0 j) (< j n@@2)) (< j (|Seq#Length| s@@4))) (= (|Seq#Index| (|Seq#Take| s@@4 n@@2) j) (|Seq#Index| s@@4 j)))
+ :qid |DafnyPreludebpl.1242:15|
  :weight 25
+ :skolemid |1347|
  :pattern ( (|Seq#Index| (|Seq#Take| s@@4 n@@2) j))
  :pattern ( (|Seq#Index| s@@4 j) (|Seq#Take| s@@4 n@@2))
 )))
 (assert (forall ((s@@5 T@U) (n@@3 Int) ) (!  (=> (and (<= 0 n@@3) (<= n@@3 (|Seq#Length| s@@5))) (= (|Seq#Length| (|Seq#Drop| s@@5 n@@3)) (- (|Seq#Length| s@@5) n@@3)))
+ :qid |DafnyPreludebpl.1249:15|
+ :skolemid |1348|
  :pattern ( (|Seq#Length| (|Seq#Drop| s@@5 n@@3)))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j@@0 Int) ) (!  (=> (and (<= 0 j@@0) (< j@@0 (|Seq#Length| s0))) (= (|Seq#Index| s0 j@@0) (|Seq#Index| s1 j@@0)))
+ :qid |DafnyPreludebpl.1221:19|
+ :skolemid |1341|
  :pattern ( (|Seq#Index| s0 j@@0))
  :pattern ( (|Seq#Index| s1 j@@0))
 ))))
+ :qid |DafnyPreludebpl.1217:15|
+ :skolemid |1342|
  :pattern ( (|Seq#Equal| s0 s1))
 )))
 (assert (forall ((x@@9 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1128|
  :pattern ( ($Unbox T@@0 x@@9))
 )))
-(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (|left#0@@1| T@U) (|data#0@@1| Int) (|right#0@@1| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (or (|SnapTree.Node.SortedSplit#canCall| $h0@@0 |left#0@@1| |data#0@@1| |right#0@@1|) (and ($Is refType |left#0@@1| Tclass.SnapTree.Node?) ($Is refType |right#0@@1| Tclass.SnapTree.Node?)))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@5 T@U) ($f@@0 T@U) )  (=> (and (or (not (= $o@@5 null)) (not true)) (or (= $o@@5 |left#0@@1|) (= $o@@5 |right#0@@1|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@5) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@5) $f@@0)))) (= (SnapTree.Node.SortedSplit $h0@@0 |left#0@@1| |data#0@@1| |right#0@@1|) (SnapTree.Node.SortedSplit $h1@@0 |left#0@@1| |data#0@@1| |right#0@@1|))))
+(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (|left#0@@1| T@U) (|data#0@@1| Int) (|right#0@@1| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (or (|SnapTree.Node.SortedSplit#canCall| $h0@@0 |left#0@@1| |data#0@@1| |right#0@@1|) (and ($Is refType |left#0@@1| Tclass.SnapTree.Node?) ($Is refType |right#0@@1| Tclass.SnapTree.Node?)))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@5 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) (or (= $o@@5 |left#0@@1|) (= $o@@5 |right#0@@1|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@5) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@5) $f@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1901|
+)) (= (SnapTree.Node.SortedSplit $h0@@0 |left#0@@1| |data#0@@1| |right#0@@1|) (SnapTree.Node.SortedSplit $h1@@0 |left#0@@1| |data#0@@1| |right#0@@1|))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1902|
  :pattern ( ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0) (SnapTree.Node.SortedSplit $h1@@0 |left#0@@1| |data#0@@1| |right#0@@1|))
 )))
 (assert (forall ((a@@3 T@U) (b@@0 T@U) ) (! (= (|Set#Disjoint| a@@3 b@@0) (forall ((o@@3 T@U) ) (!  (or (not (|Set#IsMember| a@@3 o@@3)) (not (|Set#IsMember| b@@0 o@@3)))
+ :qid |DafnyPreludebpl.794:19|
+ :skolemid |1253|
  :pattern ( (|Set#IsMember| a@@3 o@@3))
  :pattern ( (|Set#IsMember| b@@0 o@@3))
 )))
+ :qid |DafnyPreludebpl.791:15|
+ :skolemid |1254|
  :pattern ( (|Set#Disjoint| a@@3 b@@0))
 )))
 (assert (forall ((v@@1 T@U) (t0@@0 T@U) ) (! (= ($Is SetType v@@1 (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v@@1 bx@@0) ($IsBox bx@@0 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |1148|
  :pattern ( (|Set#IsMember| v@@1 bx@@0))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |1149|
  :pattern ( ($Is SetType v@@1 (TSet t0@@0)))
 )))
 (assert (forall ((|d#0@@0| Int) (|s#0@@0| T@U) ) (!  (=> (or (|SnapTree.Tree.AllAbove#canCall| (LitInt |d#0@@0|) (Lit SeqType |s#0@@0|)) ($Is SeqType |s#0@@0| (TSeq TInt))) (= (SnapTree.Tree.AllAbove (LitInt |d#0@@0|) (Lit SeqType |s#0@@0|)) (forall ((|i#5| Int) ) (!  (=> (and (<= (LitInt 0) |i#5|) (< |i#5| (|Seq#Length| (Lit SeqType |s#0@@0|)))) (< |d#0@@0| (U_2_int ($Unbox intType (|Seq#Index| (Lit SeqType |s#0@@0|) |i#5|)))))
+ :qid |SnapshotableTreesdfy.130:14|
+ :skolemid |1853|
  :pattern ( ($Unbox intType (|Seq#Index| |s#0@@0| |i#5|)))
 ))))
+ :qid |SnapshotableTreesdfy.128:37|
  :weight 3
+ :skolemid |1854|
  :pattern ( (SnapTree.Tree.AllAbove (LitInt |d#0@@0|) (Lit SeqType |s#0@@0|)))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((s@@6 T@U) (v@@2 T@U) ) (! (= (|Seq#Length| (|Seq#Build| s@@6 v@@2)) (+ 1 (|Seq#Length| s@@6)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |1326|
  :pattern ( (|Seq#Build| s@@6 v@@2))
 )))
-(assert (forall (($h0@@1 T@U) ($h1@@1 T@U) (|left#0@@2| T@U) (|data#0@@2| Int) (|right#0@@2| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@1) ($IsGoodHeap $h1@@1)) (or (|SnapTree.Node.CombineSplit#canCall| $h0@@1 |left#0@@2| |data#0@@2| |right#0@@2|) (and ($Is refType |left#0@@2| Tclass.SnapTree.Node?) ($Is refType |right#0@@2| Tclass.SnapTree.Node?)))) (and ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1))) (=> (forall (($o@@6 T@U) ($f@@1 T@U) )  (=> (and (or (not (= $o@@6 null)) (not true)) (or (= $o@@6 |left#0@@2|) (= $o@@6 |right#0@@2|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@6) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@1 $o@@6) $f@@1)))) (= (SnapTree.Node.CombineSplit $h0@@1 |left#0@@2| |data#0@@2| |right#0@@2|) (SnapTree.Node.CombineSplit $h1@@1 |left#0@@2| |data#0@@2| |right#0@@2|))))
+(assert (forall (($h0@@1 T@U) ($h1@@1 T@U) (|left#0@@2| T@U) (|data#0@@2| Int) (|right#0@@2| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@1) ($IsGoodHeap $h1@@1)) (or (|SnapTree.Node.CombineSplit#canCall| $h0@@1 |left#0@@2| |data#0@@2| |right#0@@2|) (and ($Is refType |left#0@@2| Tclass.SnapTree.Node?) ($Is refType |right#0@@2| Tclass.SnapTree.Node?)))) (and ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1))) (=> (forall (($o@@6 T@U) ($f@@1 T@U) ) (!  (=> (and (or (not (= $o@@6 null)) (not true)) (or (= $o@@6 |left#0@@2|) (= $o@@6 |right#0@@2|))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@1 $o@@6) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@1 $o@@6) $f@@1)))
+ :qid |unknown.0:0|
+ :skolemid |1906|
+)) (= (SnapTree.Node.CombineSplit $h0@@1 |left#0@@2| |data#0@@2| |right#0@@2|) (SnapTree.Node.CombineSplit $h1@@1 |left#0@@2| |data#0@@2| |right#0@@2|))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1907|
  :pattern ( ($IsHeapAnchor $h0@@1) ($HeapSucc $h0@@1 $h1@@1) (SnapTree.Node.CombineSplit $h1@@1 |left#0@@2| |data#0@@2| |right#0@@2|))
 )))
 (assert (forall (($h@@5 T@U) ($o@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@5) (and (or (not (= $o@@7 null)) (not true)) (= (dtype $o@@7) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@7) alloc)))) ($IsAlloc boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@7) SnapTree.Tree.IsReadonly)) TBool $h@@5))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1821|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@7) SnapTree.Tree.IsReadonly)))
 )))
 (assert (forall (($h@@6 T@U) ($o@@8 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@8 null)) (not true)) (= (dtype $o@@8) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@8) alloc)))) ($IsAlloc boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@8) SnapTree.Tree.reprIsShared)) TBool $h@@6))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1830|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@8) SnapTree.Tree.reprIsShared)))
 )))
 (assert (forall (($h@@7 T@U) ($o@@9 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@7) (and (or (not (= $o@@9 null)) (not true)) (= (dtype $o@@9) Tclass.SnapTree.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@9) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@9) SnapTree.Node.data)) TInt $h@@7))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1889|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@9) SnapTree.Node.data)))
 )))
 (assert (forall (($ly T@U) ($reveal@@0 Bool) ($Heap@@0 T@U) (this@@0 T@U) ) (!  (=> (or (|SnapTree.Node.NodeValid#canCall| $Heap@@0 this@@0) (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass.SnapTree.Node) ($IsAlloc refType this@@0 Tclass.SnapTree.Node $Heap@@0))))) (=> (SnapTree.Node.NodeValid $ly reveal_SnapTree.Node.NodeValid $Heap@@0 this@@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) SnapTree.Node.Repr)) ($Box refType this@@0)) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) SnapTree.Node.Contents))))))
+ :qid |SnapshotableTreesdfy.253:31|
+ :skolemid |1898|
  :pattern ( (SnapTree.Node.NodeValid $ly $reveal@@0 $Heap@@0 this@@0))
 )))
 (assert (forall ((v@@3 T@U) (t@@1 T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@3) t@@1 h@@0) ($IsAlloc T@@1 v@@3 t@@1 h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |1141|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@3) t@@1 h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@1 T@U) (t@@2 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@1 t@@2 h@@1) ($IsAllocBox bx@@1 t@@2 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |1213|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@1 t@@2 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@4 T@U) (t@@3 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@4 t@@3 h@@2) ($IsAlloc T@@2 v@@4 t@@3 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |1212|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@4 t@@3 h@@2))
 )))
 (assert (forall ((s@@7 T@U) (n@@4 Int) (j@@1 Int) ) (!  (=> (and (and (<= 0 n@@4) (<= 0 j@@1)) (< j@@1 (- (|Seq#Length| s@@7) n@@4))) (= (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1) (|Seq#Index| s@@7 (+ j@@1 n@@4))))
+ :qid |DafnyPreludebpl.1253:15|
  :weight 25
+ :skolemid |1349|
  :pattern ( (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1))
 )))
-(assert (forall (($ly@@0 T@U) ($reveal@@1 Bool) ($h0@@2 T@U) ($h1@@2 T@U) (this@@1 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@2) ($IsGoodHeap $h1@@2)) (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 Tclass.SnapTree.Node))) (and ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2))) (=> (forall (($o@@10 T@U) ($f@@2 T@U) )  (=> (and (or (not (= $o@@10 null)) (not true)) (or (= $o@@10 this@@1) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 this@@1) SnapTree.Node.Repr)) ($Box refType $o@@10)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@10) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@2 $o@@10) $f@@2)))) (= (SnapTree.Node.NodeValid $ly@@0 $reveal@@1 $h0@@2 this@@1) (SnapTree.Node.NodeValid $ly@@0 $reveal@@1 $h1@@2 this@@1))))
+(assert (forall (($ly@@0 T@U) ($reveal@@1 Bool) ($h0@@2 T@U) ($h1@@2 T@U) (this@@1 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@2) ($IsGoodHeap $h1@@2)) (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 Tclass.SnapTree.Node))) (and ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2))) (=> (forall (($o@@10 T@U) ($f@@2 T@U) ) (!  (=> (and (or (not (= $o@@10 null)) (not true)) (or (= $o@@10 this@@1) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 this@@1) SnapTree.Node.Repr)) ($Box refType $o@@10)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@2 $o@@10) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@2 $o@@10) $f@@2)))
+ :qid |unknown.0:0|
+ :skolemid |1896|
+)) (= (SnapTree.Node.NodeValid $ly@@0 $reveal@@1 $h0@@2 this@@1) (SnapTree.Node.NodeValid $ly@@0 $reveal@@1 $h1@@2 this@@1))))
+ :qid |unknown.0:0|
+ :skolemid |1897|
  :pattern ( ($IsHeapAnchor $h0@@2) ($HeapSucc $h0@@2 $h1@@2) (SnapTree.Node.NodeValid $ly@@0 $reveal@@1 $h1@@2 this@@1))
 )))
 (assert (forall (($h@@8 T@U) ($o@@11 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@11 null)) (not true)) (= (dtype $o@@11) Tclass.SnapTree.Tree?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@11) SnapTree.Tree.root)) Tclass.SnapTree.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1827|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@11) SnapTree.Tree.root)))
 )))
 (assert (forall (($h@@9 T@U) ($o@@12 T@U) ) (!  (=> (and ($IsGoodHeap $h@@9) (and (or (not (= $o@@12 null)) (not true)) (= (dtype $o@@12) Tclass.SnapTree.Node?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@12) SnapTree.Node.left)) Tclass.SnapTree.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1890|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@12) SnapTree.Node.left)))
 )))
 (assert (forall (($h@@10 T@U) ($o@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@10) (and (or (not (= $o@@13 null)) (not true)) (= (dtype $o@@13) Tclass.SnapTree.Node?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@13) SnapTree.Node.right)) Tclass.SnapTree.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1892|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@13) SnapTree.Node.right)))
 )))
 (assert (forall ((s0@@0 T@U) (s1@@0 T@U) ) (! (= (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)) (+ (|Seq#Length| s0@@0) (|Seq#Length| s1@@0)))
+ :qid |DafnyPreludebpl.1153:15|
+ :skolemid |1328|
  :pattern ( (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (!  (=> (or (|SnapTree.Tree.IsSorted#canCall| |c#0@@2|) ($Is SeqType |c#0@@2| (TSeq TInt))) (= (SnapTree.Tree.IsSorted true |c#0@@2|) (forall ((|i#4@@0| Int) (|j#4| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#4@@0|) (< |i#4@@0| |j#4|)) (< |j#4| (|Seq#Length| |c#0@@2|))) (< (U_2_int ($Unbox intType (|Seq#Index| |c#0@@2| |i#4@@0|))) (U_2_int ($Unbox intType (|Seq#Index| |c#0@@2| |j#4|)))))
+ :qid |SnapshotableTreesdfy.112:14|
+ :skolemid |1838|
  :pattern ( ($Unbox intType (|Seq#Index| |c#0@@2| |j#4|)) ($Unbox intType (|Seq#Index| |c#0@@2| |i#4@@0|)))
 ))))
+ :qid |SnapshotableTreesdfy.110:47|
+ :skolemid |1839|
  :pattern ( (SnapTree.Tree.IsSorted true |c#0@@2|))
 )))
 (assert (forall (($h@@11 T@U) ($o@@14 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@11) (and (or (not (= $o@@14 null)) (not true)) (= (dtype $o@@14) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@14) alloc)))) ($IsAlloc SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@14) SnapTree.Tree.Contents)) (TSeq TInt) $h@@11))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1819|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@14) SnapTree.Tree.Contents)))
 )))
 (assert (forall (($h@@12 T@U) ($o@@15 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@12) (and (or (not (= $o@@15 null)) (not true)) (= (dtype $o@@15) Tclass.SnapTree.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@15) alloc)))) ($IsAlloc SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@15) SnapTree.Node.Contents)) (TSeq TInt) $h@@12))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1885|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@15) SnapTree.Node.Contents)))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |1448|
  :pattern ( ($IsBox bx@@2 Tclass._System.object?))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |1451|
  :pattern ( ($IsBox bx@@3 Tclass._System.object))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 Tclass.SnapTree.Tree) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) Tclass.SnapTree.Tree)))
+ :qid |unknown.0:0|
+ :skolemid |1743|
  :pattern ( ($IsBox bx@@4 Tclass.SnapTree.Tree))
 )))
 (assert (forall ((bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 Tclass.SnapTree.Tree?) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) Tclass.SnapTree.Tree?)))
+ :qid |unknown.0:0|
+ :skolemid |1754|
  :pattern ( ($IsBox bx@@5 Tclass.SnapTree.Tree?))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass.SnapTree.Node) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass.SnapTree.Node)))
+ :qid |unknown.0:0|
+ :skolemid |1802|
  :pattern ( ($IsBox bx@@6 Tclass.SnapTree.Node))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass.SnapTree.Node?) (and (= ($Box refType ($Unbox refType bx@@7)) bx@@7) ($Is refType ($Unbox refType bx@@7) Tclass.SnapTree.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |1826|
  :pattern ( ($IsBox bx@@7 Tclass.SnapTree.Node?))
 )))
 (assert (forall ((|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| Tclass._System.object)  (and ($Is refType |c#0@@3| Tclass._System.object?) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1452|
  :pattern ( ($Is refType |c#0@@3| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@3| Tclass._System.object?))
 )))
 (assert (forall ((|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| Tclass.SnapTree.Tree)  (and ($Is refType |c#0@@4| Tclass.SnapTree.Tree?) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1880|
  :pattern ( ($Is refType |c#0@@4| Tclass.SnapTree.Tree))
  :pattern ( ($Is refType |c#0@@4| Tclass.SnapTree.Tree?))
 )))
 (assert (forall ((|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| Tclass.SnapTree.Node)  (and ($Is refType |c#0@@5| Tclass.SnapTree.Node?) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1911|
  :pattern ( ($Is refType |c#0@@5| Tclass.SnapTree.Node))
  :pattern ( ($Is refType |c#0@@5| Tclass.SnapTree.Node?))
 )))
 (assert (forall ((s@@8 T@U) (i Int) (v@@5 T@U) ) (!  (and (=> (= i (|Seq#Length| s@@8)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@5) i) v@@5)) (=> (or (not (= i (|Seq#Length| s@@8))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@5) i) (|Seq#Index| s@@8 i))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |1327|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@8 v@@5) i))
 )))
 (assert (forall (($h@@13 T@U) ($o@@16 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@13) (and (or (not (= $o@@16 null)) (not true)) (= (dtype $o@@16) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@16) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@16) SnapTree.Tree.root)) Tclass.SnapTree.Node? $h@@13))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1828|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@16) SnapTree.Tree.root)))
 )))
 (assert (forall (($h@@14 T@U) ($o@@17 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@14) (and (or (not (= $o@@17 null)) (not true)) (= (dtype $o@@17) Tclass.SnapTree.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@17) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@17) SnapTree.Node.left)) Tclass.SnapTree.Node? $h@@14))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1891|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@17) SnapTree.Node.left)))
 )))
 (assert (forall (($h@@15 T@U) ($o@@18 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@15) (and (or (not (= $o@@18 null)) (not true)) (= (dtype $o@@18) Tclass.SnapTree.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@15 $o@@18) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@15 $o@@18) SnapTree.Node.right)) Tclass.SnapTree.Node? $h@@15))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1893|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@15 $o@@18) SnapTree.Node.right)))
 )))
 (assert (forall ((s0@@1 T@U) (s1@@1 T@U) (x@@10 T@U) ) (! (= (|Seq#Contains| (|Seq#Append| s0@@1 s1@@1) x@@10)  (or (|Seq#Contains| s0@@1 x@@10) (|Seq#Contains| s1@@1 x@@10)))
+ :qid |DafnyPreludebpl.1192:15|
+ :skolemid |1335|
  :pattern ( (|Seq#Contains| (|Seq#Append| s0@@1 s1@@1) x@@10))
 )))
 (assert (forall ((s@@9 T@U) (n@@5 Int) (x@@11 T@U) ) (! (= (|Seq#Contains| (|Seq#Take| s@@9 n@@5) x@@11) (exists ((i@@0 Int) ) (!  (and (and (and (<= 0 i@@0) (< i@@0 n@@5)) (< i@@0 (|Seq#Length| s@@9))) (= (|Seq#Index| s@@9 i@@0) x@@11))
+ :qid |DafnyPreludebpl.1204:19|
+ :skolemid |1337|
  :pattern ( (|Seq#Index| s@@9 i@@0))
 )))
+ :qid |DafnyPreludebpl.1201:15|
+ :skolemid |1338|
  :pattern ( (|Seq#Contains| (|Seq#Take| s@@9 n@@5) x@@11))
 )))
 (assert (forall ((s@@10 T@U) (x@@12 T@U) ) (! (= (|Seq#Contains| s@@10 x@@12) (exists ((i@@1 Int) ) (!  (and (and (<= 0 i@@1) (< i@@1 (|Seq#Length| s@@10))) (= (|Seq#Index| s@@10 i@@1) x@@12))
+ :qid |DafnyPreludebpl.1184:19|
+ :skolemid |1332|
  :pattern ( (|Seq#Index| s@@10 i@@1))
 )))
+ :qid |DafnyPreludebpl.1181:15|
+ :skolemid |1333|
  :pattern ( (|Seq#Contains| s@@10 x@@12))
 )))
 (assert (forall (($h@@16 T@U) ($o@@19 T@U) ) (!  (=> (and ($IsGoodHeap $h@@16) (and (or (not (= $o@@19 null)) (not true)) (= (dtype $o@@19) Tclass.SnapTree.Tree?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@19) SnapTree.Tree.Repr)) (TSet Tclass._System.object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1822|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@16 $o@@19) SnapTree.Tree.Repr)))
 )))
 (assert (forall (($h@@17 T@U) ($o@@20 T@U) ) (!  (=> (and ($IsGoodHeap $h@@17) (and (or (not (= $o@@20 null)) (not true)) (= (dtype $o@@20) Tclass.SnapTree.Tree?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@17 $o@@20) SnapTree.Tree.MutableRepr)) (TSet Tclass._System.object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1824|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@17 $o@@20) SnapTree.Tree.MutableRepr)))
 )))
 (assert (forall (($h@@18 T@U) ($o@@21 T@U) ) (!  (=> (and ($IsGoodHeap $h@@18) (and (or (not (= $o@@21 null)) (not true)) (= (dtype $o@@21) Tclass.SnapTree.Node?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@21) SnapTree.Node.Repr)) (TSet Tclass._System.object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1886|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@18 $o@@21) SnapTree.Node.Repr)))
 )))
 (assert (forall (($h@@19 T@U) ($o@@22 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@19) (and (or (not (= $o@@22 null)) (not true)) (= (dtype $o@@22) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@22) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@22) SnapTree.Tree.Repr)) (TSet Tclass._System.object) $h@@19))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1823|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@19 $o@@22) SnapTree.Tree.Repr)))
 )))
 (assert (forall (($h@@20 T@U) ($o@@23 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@20) (and (or (not (= $o@@23 null)) (not true)) (= (dtype $o@@23) Tclass.SnapTree.Tree?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@23) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@23) SnapTree.Tree.MutableRepr)) (TSet Tclass._System.object) $h@@20))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1825|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@20 $o@@23) SnapTree.Tree.MutableRepr)))
 )))
 (assert (forall (($h@@21 T@U) ($o@@24 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@21) (and (or (not (= $o@@24 null)) (not true)) (= (dtype $o@@24) Tclass.SnapTree.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@24) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@24) SnapTree.Node.Repr)) (TSet Tclass._System.object) $h@@21))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1887|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@24) SnapTree.Node.Repr)))
 )))
 (assert (forall ((a@@4 T@U) (b@@1 T@U) ) (!  (=> (|Set#Equal| a@@4 b@@1) (= a@@4 b@@1))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |1252|
  :pattern ( (|Set#Equal| a@@4 b@@1))
 )))
 (assert (forall ((a@@5 T@U) (b@@2 T@U) ) (!  (=> (|Seq#Equal| a@@5 b@@2) (= a@@5 b@@2))
+ :qid |DafnyPreludebpl.1225:15|
+ :skolemid |1343|
  :pattern ( (|Seq#Equal| a@@5 b@@2))
 )))
 (assert (forall ((s@@11 T@U) (n@@6 Int) ) (!  (=> (and (<= 0 n@@6) (<= n@@6 (|Seq#Length| s@@11))) (= (|Seq#Length| (|Seq#Take| s@@11 n@@6)) n@@6))
+ :qid |DafnyPreludebpl.1238:15|
+ :skolemid |1346|
  :pattern ( (|Seq#Length| (|Seq#Take| s@@11 n@@6)))
 )))
 (assert (forall ((a@@6 T@U) (b@@3 T@U) (c T@U) ) (!  (=> (or (not (= a@@6 c)) (not true)) (=> (and ($HeapSucc a@@6 b@@3) ($HeapSucc b@@3 c)) ($HeapSucc a@@6 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |1219|
  :pattern ( ($HeapSucc a@@6 b@@3) ($HeapSucc b@@3 c))
 )))
 (assert (forall ((|d#0@@1| Int) (|s#0@@1| T@U) ) (!  (=> (or (|SnapTree.Tree.AllAbove#canCall| |d#0@@1| |s#0@@1|) ($Is SeqType |s#0@@1| (TSeq TInt))) (= (SnapTree.Tree.AllAbove |d#0@@1| |s#0@@1|) (forall ((|i#4@@1| Int) ) (!  (=> (and (<= (LitInt 0) |i#4@@1|) (< |i#4@@1| (|Seq#Length| |s#0@@1|))) (< |d#0@@1| (U_2_int ($Unbox intType (|Seq#Index| |s#0@@1| |i#4@@1|)))))
+ :qid |SnapshotableTreesdfy.130:14|
+ :skolemid |1851|
  :pattern ( ($Unbox intType (|Seq#Index| |s#0@@1| |i#4@@1|)))
 ))))
+ :qid |SnapshotableTreesdfy.128:37|
+ :skolemid |1852|
  :pattern ( (SnapTree.Tree.AllAbove |d#0@@1| |s#0@@1|))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |1209|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 TInt) (and (= ($Box intType ($Unbox intType bx@@8)) bx@@8) ($Is intType ($Unbox intType bx@@8) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |1129|
  :pattern ( ($IsBox bx@@8 TInt))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 TBool) (and (= ($Box boolType ($Unbox boolType bx@@9)) bx@@9) ($Is boolType ($Unbox boolType bx@@9) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |1131|
  :pattern ( ($IsBox bx@@9 TBool))
 )))
 (assert (forall ((v@@6 T@U) (t@@4 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@6) t@@4) ($Is T@@3 v@@6 t@@4))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |1140|
  :pattern ( ($IsBox ($Box T@@3 v@@6) t@@4))
 )))
 (assert (forall ((|left#0@@3| T@U) (|data#0@@3| Int) (|right#0@@3| T@U) ) (!  (=> (or (|SnapTree.Tree.SortedSplit#canCall| (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|) (Lit SeqType |right#0@@3|)) (and ($Is SeqType |left#0@@3| (TSeq TInt)) ($Is SeqType |right#0@@3| (TSeq TInt)))) (and (and (|SnapTree.Tree.IsSorted#canCall| (Lit SeqType |left#0@@3|)) (=> (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted (Lit SeqType |left#0@@3|)) (and (|SnapTree.Tree.IsSorted#canCall| (Lit SeqType |right#0@@3|)) (=> (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted (Lit SeqType |right#0@@3|)) (and (|SnapTree.Tree.AllBelow#canCall| (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|)) (=> (U_2_bool (Lit boolType (bool_2_U (SnapTree.Tree.AllBelow (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|))))) (|SnapTree.Tree.AllAbove#canCall| (LitInt |data#0@@3|) (Lit SeqType |right#0@@3|)))))))) (= (SnapTree.Tree.SortedSplit (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|) (Lit SeqType |right#0@@3|))  (and (and (and (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted (Lit SeqType |left#0@@3|)) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted (Lit SeqType |right#0@@3|))) (SnapTree.Tree.AllBelow (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|))) (SnapTree.Tree.AllAbove (LitInt |data#0@@3|) (Lit SeqType |right#0@@3|))))))
+ :qid |SnapshotableTreesdfy.132:40|
  :weight 3
+ :skolemid |1858|
  :pattern ( (SnapTree.Tree.SortedSplit (Lit SeqType |left#0@@3|) (LitInt |data#0@@3|) (Lit SeqType |right#0@@3|)))
 )))
 (assert (forall (($ly@@1 T@U) ($Heap@@1 T@U) (this@@2 T@U) ) (!  (=> (or (|SnapTree.Node.NodeValid#canCall| $Heap@@1 this@@2) (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@2 null)) (not true)) (and ($Is refType this@@2 Tclass.SnapTree.Node) ($IsAlloc refType this@@2 Tclass.SnapTree.Node $Heap@@1))))) (and (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) ($Box refType this@@2)) (and (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) null)) (not true)) (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (=> (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr))) (=> (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Box refType this@@2))) (|SnapTree.Node.NodeValid#canCall| $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))))))) (=> (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) null)) (not true)) (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Box refType this@@2)))) (SnapTree.Node.NodeValid $ly@@1 reveal_SnapTree.Node.NodeValid $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))))) (and (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) null)) (not true)) (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) (=> (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr))) (=> (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Box refType this@@2))) (|SnapTree.Node.NodeValid#canCall| $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))))))) (=> (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) null)) (not true)) (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Box refType this@@2)))) (SnapTree.Node.NodeValid $ly@@1 reveal_SnapTree.Node.NodeValid $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))))) (=> (=> (and (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) null)) (not true)) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) null)) (not true))) (|Set#Disjoint| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)))) (and (|SnapTree.Node.SortedSplit#canCall| $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) (=> (SnapTree.Node.SortedSplit $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) (and (|SnapTree.Node.CombineSplit#canCall| $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) (=> (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Contents)) (SnapTree.Node.CombineSplit $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)))) (|SnapTree.Tree.IsSorted#canCall| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Contents))))))))))))) (= (SnapTree.Node.NodeValid ($LS $ly@@1) true $Heap@@1 this@@2)  (and (and (and (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) ($Box refType this@@2)) (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) null)) (not true)) (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Box refType this@@2)))) (SnapTree.Node.NodeValid $ly@@1 reveal_SnapTree.Node.NodeValid $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)))))) (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) null)) (not true)) (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr)) ($Box refType this@@2)))) (SnapTree.Node.NodeValid $ly@@1 reveal_SnapTree.Node.NodeValid $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)))))) (=> (and (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) null)) (not true)) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)) null)) (not true))) (|Set#Disjoint| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))) SnapTree.Node.Repr))))) (SnapTree.Node.SortedSplit $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right)))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Contents)) (SnapTree.Node.CombineSplit $Heap@@1 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.left)) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.data))) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.right))))) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@2) SnapTree.Node.Contents)))))))
+ :qid |SnapshotableTreesdfy.253:31|
+ :skolemid |1900|
  :pattern ( (SnapTree.Node.NodeValid ($LS $ly@@1) true $Heap@@1 this@@2) ($IsGoodHeap $Heap@@1))
 )))
 (assert (forall (($ly@@2 T@U) ($reveal@@2 Bool) ($Heap@@2 T@U) (this@@3 T@U) ) (! (= (SnapTree.Node.NodeValid ($LS $ly@@2) $reveal@@2 $Heap@@2 this@@3) (SnapTree.Node.NodeValid $ly@@2 $reveal@@2 $Heap@@2 this@@3))
+ :qid |SnapshotableTreesdfy.253:31|
+ :skolemid |1894|
  :pattern ( (SnapTree.Node.NodeValid ($LS $ly@@2) $reveal@@2 $Heap@@2 this@@3))
 )))
 (assert (forall ((s@@12 T@U) ) (! (<= 0 (|Seq#Length| s@@12))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |1323|
  :pattern ( (|Seq#Length| s@@12))
 )))
 (assert (forall ((v@@7 T@U) (t0@@1 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SetType v@@7 (TSet t0@@1) h@@3) (forall ((bx@@10 T@U) ) (!  (=> (|Set#IsMember| v@@7 bx@@10) ($IsAllocBox bx@@10 t0@@1 h@@3))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |1169|
  :pattern ( (|Set#IsMember| v@@7 bx@@10))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |1170|
  :pattern ( ($IsAlloc SetType v@@7 (TSet t0@@1) h@@3))
 )))
 (assert (forall (($o@@25 T@U) ) (! ($Is refType $o@@25 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |1449|
  :pattern ( ($Is refType $o@@25 Tclass._System.object?))
 )))
 (assert (forall ((v@@8 T@U) (t0@@2 T@U) (h@@4 T@U) ) (! (= ($IsAlloc SeqType v@@8 (TSeq t0@@2) h@@4) (forall ((i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| v@@8))) ($IsAllocBox (|Seq#Index| v@@8 i@@2) t0@@2 h@@4))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |1175|
  :pattern ( (|Seq#Index| v@@8 i@@2))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |1176|
  :pattern ( ($IsAlloc SeqType v@@8 (TSeq t0@@2) h@@4))
 )))
 (assert (forall ((t@@5 T@U) ) (! (= (Inv0_TSet (TSet t@@5)) t@@5)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1103|
  :pattern ( (TSet t@@5))
 )))
 (assert (forall ((t@@6 T@U) ) (! (= (Tag (TSet t@@6)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |1104|
  :pattern ( (TSet t@@6))
 )))
 (assert (forall ((t@@7 T@U) ) (! (= (Inv0_TSeq (TSeq t@@7)) t@@7)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |1109|
  :pattern ( (TSeq t@@7))
 )))
 (assert (forall ((t@@8 T@U) ) (! (= (Tag (TSeq t@@8)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |1110|
  :pattern ( (TSeq t@@8))
 )))
 (assert (forall ((x@@13 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@13)) x@@13)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1127|
  :pattern ( ($Box T@@4 x@@13))
 )))
 (assert (forall (($Heap@@3 T@U) (this@@4 T@U) ) (!  (=> (or (|SnapTree.Tree.Valid#canCall| $Heap@@3 this@@4) (and ($IsGoodHeap $Heap@@3) (and (or (not (= this@@4 null)) (not true)) (and ($Is refType this@@4 Tclass.SnapTree.Tree) ($IsAlloc refType this@@4 Tclass.SnapTree.Tree $Heap@@3))))) (and (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr)) ($Box refType this@@4)) (=> (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr))) (=> (=> (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)) |Seq#Empty|)) (and (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null)) (not true)) (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) (=> (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr))) (=> (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Box refType this@@4))) (|SnapTree.Node.NodeValid#canCall| $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))))))) (=> (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null)) (not true)) (and (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Box refType this@@4)))) (SnapTree.Node.NodeValid ($LS $LZ) reveal_SnapTree.Node.NodeValid $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Contents))))) (|SnapTree.Tree.IsSorted#canCall| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)))))))) (= (SnapTree.Tree.Valid true $Heap@@3 this@@4)  (and (and (and (and (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr)) ($Box refType this@@4)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)))) (=> (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)) |Seq#Empty|))) (=> (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null)) (not true)) (and (and (and (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Repr)))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Box refType this@@4)))) (SnapTree.Node.NodeValid ($LS $LZ) reveal_SnapTree.Node.NodeValid $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Contents)))))) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.Contents)))) (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.IsReadonly))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.reprIsShared))))) (=> (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.reprIsShared)))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root)) null)) (not true))) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.root))) SnapTree.Node.Repr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr))))) (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.reprIsShared))) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 this@@4) SnapTree.Tree.MutableRepr)) (|Set#UnionOne| |Set#Empty| ($Box refType this@@4))))))))
+ :qid |SnapshotableTreesdfy.94:28|
+ :skolemid |1835|
  :pattern ( (SnapTree.Tree.Valid true $Heap@@3 this@@4) ($IsGoodHeap $Heap@@3))
 )))
 (assert (forall (($h@@22 T@U) ($o@@26 T@U) ) (!  (=> (and ($IsGoodHeap $h@@22) (and (or (not (= $o@@26 null)) (not true)) (= (dtype $o@@26) Tclass.SnapTree.Tree?))) ($Is boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@26) SnapTree.Tree.IsReadonly)) TBool))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1820|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@26) SnapTree.Tree.IsReadonly)))
 )))
 (assert (forall (($h@@23 T@U) ($o@@27 T@U) ) (!  (=> (and ($IsGoodHeap $h@@23) (and (or (not (= $o@@27 null)) (not true)) (= (dtype $o@@27) Tclass.SnapTree.Tree?))) ($Is boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@27) SnapTree.Tree.reprIsShared)) TBool))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1829|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@27) SnapTree.Tree.reprIsShared)))
 )))
 (assert (forall (($h@@24 T@U) ($o@@28 T@U) ) (!  (=> (and ($IsGoodHeap $h@@24) (and (or (not (= $o@@28 null)) (not true)) (= (dtype $o@@28) Tclass.SnapTree.Node?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@28) SnapTree.Node.data)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1888|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@28) SnapTree.Node.data)))
 )))
 (assert (forall ((|c#0@@6| T@U) ) (!  (=> (or (|SnapTree.Tree.IsSorted#canCall| (Lit SeqType |c#0@@6|)) ($Is SeqType |c#0@@6| (TSeq TInt))) (= (SnapTree.Tree.IsSorted true (Lit SeqType |c#0@@6|)) (forall ((|i#5@@0| Int) (|j#5| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#5@@0|) (< |i#5@@0| |j#5|)) (< |j#5| (|Seq#Length| (Lit SeqType |c#0@@6|)))) (< (U_2_int ($Unbox intType (|Seq#Index| (Lit SeqType |c#0@@6|) |i#5@@0|))) (U_2_int ($Unbox intType (|Seq#Index| (Lit SeqType |c#0@@6|) |j#5|)))))
+ :qid |SnapshotableTreesdfy.112:14|
+ :skolemid |1840|
  :pattern ( ($Unbox intType (|Seq#Index| |c#0@@6| |j#5|)) ($Unbox intType (|Seq#Index| |c#0@@6| |i#5@@0|)))
 ))))
+ :qid |SnapshotableTreesdfy.110:47|
  :weight 3
+ :skolemid |1841|
  :pattern ( (SnapTree.Tree.IsSorted true (Lit SeqType |c#0@@6|)))
 )))
 (assert (forall (($Heap@@4 T@U) (|left#0@@4| T@U) (|data#0@@4| Int) (|right#0@@4| T@U) ) (!  (=> (or (|SnapTree.Node.SortedSplit#canCall| $Heap@@4 |left#0@@4| |data#0@@4| |right#0@@4|) (and (and ($IsGoodHeap $Heap@@4) ($Is refType |left#0@@4| Tclass.SnapTree.Node?)) ($Is refType |right#0@@4| Tclass.SnapTree.Node?))) (and (|SnapTree.Tree.SortedSplit#canCall| (ite (= |left#0@@4| null) |Seq#Empty| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |left#0@@4|) SnapTree.Node.Contents))) |data#0@@4| (ite (= |right#0@@4| null) |Seq#Empty| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |right#0@@4|) SnapTree.Node.Contents)))) (= (SnapTree.Node.SortedSplit $Heap@@4 |left#0@@4| |data#0@@4| |right#0@@4|) (SnapTree.Tree.SortedSplit (ite (= |left#0@@4| null) |Seq#Empty| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |left#0@@4|) SnapTree.Node.Contents))) |data#0@@4| (ite (= |right#0@@4| null) |Seq#Empty| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |right#0@@4|) SnapTree.Node.Contents)))))))
+ :qid |SnapshotableTreesdfy.268:28|
+ :skolemid |1905|
  :pattern ( (SnapTree.Node.SortedSplit $Heap@@4 |left#0@@4| |data#0@@4| |right#0@@4|) ($IsGoodHeap $Heap@@4))
 )))
 (assert  (and (forall ((t0@@3 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@3 t1@@0 t2 (MapType1Store t0@@3 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@29 T@U) ($f@@3 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@29 $f@@3))  (=> (and (or (not (= $o@@29 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@29) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1947|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@29 $f@@3))
 )))
 (assert (forall ((s@@13 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@13 val@@4)) s@@13) (= (|Seq#Build_inv1| (|Seq#Build| s@@13 val@@4)) val@@4))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |1325|
  :pattern ( (|Seq#Build| s@@13 val@@4))
 )))
 (assert (forall ((s@@14 T@U) (n@@7 Int) (x@@14 T@U) ) (! (= (|Seq#Contains| (|Seq#Drop| s@@14 n@@7) x@@14) (exists ((i@@3 Int) ) (!  (and (and (and (<= 0 n@@7) (<= n@@7 i@@3)) (< i@@3 (|Seq#Length| s@@14))) (= (|Seq#Index| s@@14 i@@3) x@@14))
+ :qid |DafnyPreludebpl.1211:19|
+ :skolemid |1339|
  :pattern ( (|Seq#Index| s@@14 i@@3))
 )))
+ :qid |DafnyPreludebpl.1208:15|
+ :skolemid |1340|
  :pattern ( (|Seq#Contains| (|Seq#Drop| s@@14 n@@7) x@@14))
 )))
 (assert (forall ((bx@@11 T@U) (t@@9 T@U) ) (!  (=> ($IsBox bx@@11 (TSet t@@9)) (and (= ($Box SetType ($Unbox SetType bx@@11)) bx@@11) ($Is SetType ($Unbox SetType bx@@11) (TSet t@@9))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |1134|
  :pattern ( ($IsBox bx@@11 (TSet t@@9)))
 )))
 (assert (forall ((bx@@12 T@U) (t@@10 T@U) ) (!  (=> ($IsBox bx@@12 (TSeq t@@10)) (and (= ($Box SeqType ($Unbox SeqType bx@@12)) bx@@12) ($Is SeqType ($Unbox SeqType bx@@12) (TSeq t@@10))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |1137|
  :pattern ( ($IsBox bx@@12 (TSeq t@@10)))
 )))
 (assert (forall (($h@@25 T@U) ($o@@30 T@U) ) (!  (=> (and ($IsGoodHeap $h@@25) (and (or (not (= $o@@30 null)) (not true)) (= (dtype $o@@30) Tclass.SnapTree.Tree?))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@30) SnapTree.Tree.Contents)) (TSeq TInt)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1818|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@30) SnapTree.Tree.Contents)))
 )))
 (assert (forall (($h@@26 T@U) ($o@@31 T@U) ) (!  (=> (and ($IsGoodHeap $h@@26) (and (or (not (= $o@@31 null)) (not true)) (= (dtype $o@@31) Tclass.SnapTree.Node?))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@31) SnapTree.Node.Contents)) (TSeq TInt)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1884|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@31) SnapTree.Node.Contents)))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -607,60 +880,98 @@
 (assert (= (Tag Tclass.SnapTree.Node?) Tagclass.SnapTree.Node?))
 (assert (= (TagFamily Tclass.SnapTree.Node?) tytagFamily$Node))
 (assert (forall ((s@@15 T@U) (n@@8 Int) (k@@2 Int) ) (!  (=> (and (and (<= 0 n@@8) (<= n@@8 k@@2)) (< k@@2 (|Seq#Length| s@@15))) (= (|Seq#Index| (|Seq#Drop| s@@15 n@@8) (- k@@2 n@@8)) (|Seq#Index| s@@15 k@@2)))
+ :qid |DafnyPreludebpl.1258:15|
  :weight 25
+ :skolemid |1350|
  :pattern ( (|Seq#Index| s@@15 k@@2) (|Seq#Drop| s@@15 n@@8))
 )))
 (assert (forall ((|s#0@@2| T@U) (|d#0@@2| Int) ) (!  (=> (or (|SnapTree.Tree.AllBelow#canCall| (Lit SeqType |s#0@@2|) (LitInt |d#0@@2|)) ($Is SeqType |s#0@@2| (TSeq TInt))) (= (SnapTree.Tree.AllBelow (Lit SeqType |s#0@@2|) (LitInt |d#0@@2|)) (forall ((|i#5@@1| Int) ) (!  (=> (and (<= (LitInt 0) |i#5@@1|) (< |i#5@@1| (|Seq#Length| (Lit SeqType |s#0@@2|)))) (< (U_2_int ($Unbox intType (|Seq#Index| (Lit SeqType |s#0@@2|) |i#5@@1|))) |d#0@@2|))
+ :qid |SnapshotableTreesdfy.126:14|
+ :skolemid |1847|
  :pattern ( ($Unbox intType (|Seq#Index| |s#0@@2| |i#5@@1|)))
 ))))
+ :qid |SnapshotableTreesdfy.124:37|
  :weight 3
+ :skolemid |1848|
  :pattern ( (SnapTree.Tree.AllBelow (Lit SeqType |s#0@@2|) (LitInt |d#0@@2|)))
 )))
 (assert (forall (($reveal@@3 Bool) ($Heap@@5 T@U) (this@@5 T@U) ) (!  (=> (or (|SnapTree.Tree.Valid#canCall| $Heap@@5 this@@5) (and ($IsGoodHeap $Heap@@5) (and (or (not (= this@@5 null)) (not true)) (and ($Is refType this@@5 Tclass.SnapTree.Tree) ($IsAlloc refType this@@5 Tclass.SnapTree.Tree $Heap@@5))))) (and (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@@5 this@@5) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@5) SnapTree.Tree.Repr)) ($Box refType this@@5)) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@5) SnapTree.Tree.MutableRepr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@5) SnapTree.Tree.Repr))))) (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@@5 this@@5) (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@5 this@@5) SnapTree.Tree.Contents))))))
+ :qid |SnapshotableTreesdfy.94:28|
+ :skolemid |1833|
  :pattern ( (SnapTree.Tree.Valid $reveal@@3 $Heap@@5 this@@5))
 )))
 (assert (forall ((a@@7 T@U) (b@@4 T@U) ) (! (= (|Set#Equal| a@@7 b@@4) (forall ((o@@4 T@U) ) (! (= (|Set#IsMember| a@@7 o@@4) (|Set#IsMember| b@@4 o@@4))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |1250|
  :pattern ( (|Set#IsMember| a@@7 o@@4))
  :pattern ( (|Set#IsMember| b@@4 o@@4))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |1251|
  :pattern ( (|Set#Equal| a@@7 b@@4))
 )))
 (assert (forall ((s@@16 T@U) (m@@4 Int) (n@@9 Int) ) (!  (=> (and (and (<= 0 m@@4) (<= 0 n@@9)) (<= (+ m@@4 n@@9) (|Seq#Length| s@@16))) (= (|Seq#Drop| (|Seq#Drop| s@@16 m@@4) n@@9) (|Seq#Drop| s@@16 (+ m@@4 n@@9))))
+ :qid |DafnyPreludebpl.1299:15|
+ :skolemid |1359|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@16 m@@4) n@@9))
 )))
 (assert (forall ((s0@@2 T@U) (s1@@2 T@U) (n@@10 Int) ) (!  (and (=> (< n@@10 (|Seq#Length| s0@@2)) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10) (|Seq#Index| s0@@2 n@@10))) (=> (<= (|Seq#Length| s0@@2) n@@10) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10) (|Seq#Index| s1@@2 (- n@@10 (|Seq#Length| s0@@2))))))
+ :qid |DafnyPreludebpl.1159:15|
+ :skolemid |1329|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@10))
 )))
 (assert (forall ((x@@15 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@15))) (Lit BoxType ($Box intType (int_2_U x@@15))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |1120|
  :pattern ( ($Box intType (int_2_U (LitInt x@@15))))
 )))
 (assert (forall ((x@@16 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@16)) (Lit BoxType ($Box T@@5 x@@16)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1118|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@16)))
 )))
 (assert (forall (($Heap@@6 T@U) (|left#0@@5| T@U) (|data#0@@5| Int) (|right#0@@5| T@U) ) (!  (=> (or (|SnapTree.Node.CombineSplit#canCall| $Heap@@6 |left#0@@5| |data#0@@5| |right#0@@5|) (and (and ($IsGoodHeap $Heap@@6) ($Is refType |left#0@@5| Tclass.SnapTree.Node?)) ($Is refType |right#0@@5| Tclass.SnapTree.Node?))) (= (SnapTree.Node.CombineSplit $Heap@@6 |left#0@@5| |data#0@@5| |right#0@@5|) (ite  (and (= |left#0@@5| null) (= |right#0@@5| null)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |data#0@@5|))) (ite  (and (or (not (= |left#0@@5| null)) (not true)) (= |right#0@@5| null)) (|Seq#Append| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 |left#0@@5|) SnapTree.Node.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |data#0@@5|)))) (ite  (and (= |left#0@@5| null) (or (not (= |right#0@@5| null)) (not true))) (|Seq#Append| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |data#0@@5|))) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 |right#0@@5|) SnapTree.Node.Contents))) (|Seq#Append| (|Seq#Append| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 |left#0@@5|) SnapTree.Node.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |data#0@@5|)))) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 |right#0@@5|) SnapTree.Node.Contents))))))))
+ :qid |SnapshotableTreesdfy.273:27|
+ :skolemid |1910|
  :pattern ( (SnapTree.Node.CombineSplit $Heap@@6 |left#0@@5| |data#0@@5| |right#0@@5|) ($IsGoodHeap $Heap@@6))
 )))
 (assert (forall ((s@@17 T@U) ) (!  (=> (= (|Seq#Length| s@@17) 0) (= s@@17 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |1324|
  :pattern ( (|Seq#Length| s@@17))
 )))
 (assert (forall ((s@@18 T@U) (n@@11 Int) ) (!  (=> (= n@@11 0) (= (|Seq#Take| s@@18 n@@11) |Seq#Empty|))
+ :qid |DafnyPreludebpl.1295:15|
+ :skolemid |1358|
  :pattern ( (|Seq#Take| s@@18 n@@11))
 )))
 (assert (forall ((h@@5 T@U) (v@@9 T@U) ) (! ($IsAlloc intType v@@9 TInt h@@5)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |1163|
  :pattern ( ($IsAlloc intType v@@9 TInt h@@5))
 )))
 (assert (forall ((h@@6 T@U) (v@@10 T@U) ) (! ($IsAlloc boolType v@@10 TBool h@@6)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |1165|
  :pattern ( ($IsAlloc boolType v@@10 TBool h@@6))
 )))
 (assert (forall ((v@@11 T@U) (t0@@4 T@U) ) (! (= ($Is SeqType v@@11 (TSeq t0@@4)) (forall ((i@@4 Int) ) (!  (=> (and (<= 0 i@@4) (< i@@4 (|Seq#Length| v@@11))) ($IsBox (|Seq#Index| v@@11 i@@4) t0@@4))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |1155|
  :pattern ( (|Seq#Index| v@@11 i@@4))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |1156|
  :pattern ( ($Is SeqType v@@11 (TSeq t0@@4)))
 )))
 (assert (forall ((v@@12 T@U) ) (! ($Is intType v@@12 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |1142|
  :pattern ( ($Is intType v@@12 TInt))
 )))
 (assert (forall ((v@@13 T@U) ) (! ($Is boolType v@@13 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |1144|
  :pattern ( ($Is boolType v@@13 TBool))
 )))
 (push 1)
@@ -682,6 +993,7 @@
 (declare-fun |t#0| () T@U)
 (declare-fun |hc#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$SnapTreeTestHarness.__default.TestContents)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -706,38 +1018,78 @@
 (let ((anon13_Else_correct  (=> (or (not (= (U_2_int ($Unbox intType (|Seq#Index| |hc#0@0| (LitInt 0)))) (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 16) 12) anon14_Then_correct) (=> (= (ControlFlow 0 16) 13) anon14_Else_correct)))))
 (let ((anon13_Then_correct  (=> (= (U_2_int ($Unbox intType (|Seq#Index| |hc#0@0| (LitInt 0)))) (LitInt 2)) (and (=> (= (ControlFlow 0 14) (- 0 15)) (and (<= 0 (LitInt 1)) (< (LitInt 1) (|Seq#Length| |hc#0@0|)))) (and (=> (= (ControlFlow 0 14) 12) anon14_Then_correct) (=> (= (ControlFlow 0 14) 13) anon14_Else_correct))))))
 (let ((anon4_correct  (and (=> (= (ControlFlow 0 17) (- 0 19)) (=> (= |call3formal@pos#0@0| (LitInt 1)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))) ($Box intType (int_2_U (LitInt 1))))))) (=> (and (=> (= |call3formal@pos#0@0| (LitInt 1)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))) ($Box intType (int_2_U (LitInt 1)))))) (= |hc#0@0| (Lit SeqType (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))) ($Box intType (int_2_U (LitInt 1))))))) (=> (and (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (|SnapTree.Tree.IsSorted#canCall| |hc#0@0|)) (and (= (SnapTree.Tree.IsSorted reveal_SnapTree.Tree.IsSorted |hc#0@0|) (forall ((|i#1| Int) (|j#1| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#1|) (< |i#1| |j#1|)) (< |j#1| (|Seq#Length| |hc#0@0|))) (< (U_2_int ($Unbox intType (|Seq#Index| |hc#0@0| |i#1|))) (U_2_int ($Unbox intType (|Seq#Index| |hc#0@0| |j#1|)))))
+ :qid |SnapshotableTreesdfy.115:39|
+ :skolemid |1842|
  :pattern ( ($Unbox intType (|Seq#Index| |hc#0@0| |j#1|)) ($Unbox intType (|Seq#Index| |hc#0@0| |i#1|)))
 ))) (= $Heap@2 $Heap@3))) (and (=> (= (ControlFlow 0 17) (- 0 18)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |hc#0@0|)))) (and (=> (= (ControlFlow 0 17) 14) anon13_Then_correct) (=> (= (ControlFlow 0 17) 16) anon13_Else_correct))))))))
 (let ((anon12_Else_correct  (=> (and (or (not (= |call3formal@pos#0@0| (LitInt 1))) (not true)) (= (ControlFlow 0 23) 17)) anon4_correct)))
 (let ((anon12_Then_correct  (=> (= |call3formal@pos#0@0| (LitInt 1)) (and (=> (= (ControlFlow 0 20) (- 0 22)) true) (and (=> (= (ControlFlow 0 20) (- 0 21)) (or (not (= call1formal@this@0 null)) (not true))) (=> (= (ControlFlow 0 20) 17) anon4_correct))))))
-(let ((anon2_correct  (and (=> (= (ControlFlow 0 24) (- 0 31)) (= |call3formal@pos#0@0@@0| (LitInt 0))) (and (=> (= (ControlFlow 0 24) (- 0 30)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))))) (=> (and (= |call3formal@pos#0@0@@0| (LitInt 0)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))))) (and (=> (= (ControlFlow 0 24) (- 0 29)) true) (and (=> (= (ControlFlow 0 24) (- 0 28)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |x##1@0| (LitInt 1)) (and (=> (= (ControlFlow 0 24) (- 0 27)) (forall (($o@@32 T@U) ($f@@4 T@U) )  (=> (and (and (or (not (= $o@@32 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@32) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@32))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@32 $f@@4))))) (=> (forall (($o@@33 T@U) ($f@@5 T@U) )  (=> (and (and (or (not (= $o@@33 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@33) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@33))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@33 $f@@5)))) (and (=> (= (ControlFlow 0 24) (- 0 26)) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0)) (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0) (and (=> (= (ControlFlow 0 24) (- 0 25)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly))))) (=> (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly)))) (=> (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (=> (and (and (and (and (|SnapTree.Tree.Valid#canCall| $Heap@2 call1formal@this@0) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@2 call1formal@this@0)) (and (forall (($o@@34 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@34)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@34)))) (or (not (= $o@@34 null)) (not true)))
+(let ((anon2_correct  (and (=> (= (ControlFlow 0 24) (- 0 31)) (= |call3formal@pos#0@0@@0| (LitInt 0))) (and (=> (= (ControlFlow 0 24) (- 0 30)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))))) (=> (and (= |call3formal@pos#0@0@@0| (LitInt 0)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 2)))))) (and (=> (= (ControlFlow 0 24) (- 0 29)) true) (and (=> (= (ControlFlow 0 24) (- 0 28)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |x##1@0| (LitInt 1)) (and (=> (= (ControlFlow 0 24) (- 0 27)) (forall (($o@@32 T@U) ($f@@4 T@U) ) (!  (=> (and (and (or (not (= $o@@32 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@32) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@32))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@32 $f@@4)))
+ :qid |SnapshotableTreesdfy.49:20|
+ :skolemid |1785|
+))) (=> (forall (($o@@33 T@U) ($f@@5 T@U) ) (!  (=> (and (and (or (not (= $o@@33 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@33) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@33))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@33 $f@@5)))
+ :qid |SnapshotableTreesdfy.49:20|
+ :skolemid |1785|
+)) (and (=> (= (ControlFlow 0 24) (- 0 26)) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0)) (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0) (and (=> (= (ControlFlow 0 24) (- 0 25)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly))))) (=> (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly)))) (=> (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (=> (and (and (and (and (|SnapTree.Tree.Valid#canCall| $Heap@2 call1formal@this@0) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@2 call1formal@this@0)) (and (forall (($o@@34 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@34)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@34)))) (or (not (= $o@@34 null)) (not true)))
+ :qid |SnapshotableTreesdfy.191:26|
+ :skolemid |1869|
  :pattern (  (or (not (= $o@@34 null)) (not true)))
 )) (forall (($o@@35 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@35)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@35)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@35) alloc)))))
+ :qid |SnapshotableTreesdfy.191:26|
+ :skolemid |1870|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@35) alloc)))
 )))) (and (and (forall (($o@@36 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@36)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@36)))) (or (not (= $o@@36 null)) (not true)))
+ :qid |SnapshotableTreesdfy.191:53|
+ :skolemid |1871|
  :pattern (  (or (not (= $o@@36 null)) (not true)))
 )) (forall (($o@@37 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@37)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@37)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@37) alloc)))))
+ :qid |SnapshotableTreesdfy.191:53|
+ :skolemid |1872|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@37) alloc)))
 ))) (= (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.IsReadonly))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly)))))) (and (and (and (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|))) (< |call3formal@pos#0@0| 0)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents)) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents))))) (and (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|)))) (<= (LitInt 0) |call3formal@pos#0@0|)) (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|)))) (< |call3formal@pos#0@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents))))))) (and (and (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|)))) (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents))) (+ (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents))) 1))) (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##1@0|)))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Append| (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) |call3formal@pos#0@0|) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |x##1@0|)))) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) |call3formal@pos#0@0|))))) (and (forall (($o@@38 T@U) ) (!  (=> (and (or (not (= $o@@38 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@38) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@38) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@38)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@38))))
+ :qid |SnapshotableTreesdfy.188:12|
+ :skolemid |1873|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@38))
 )) ($HeapSucc $Heap@1 $Heap@2))))) (and (=> (= (ControlFlow 0 24) 20) anon12_Then_correct) (=> (= (ControlFlow 0 24) 23) anon12_Else_correct)))))))))))))))))))
 (let ((anon11_Else_correct  (=> (and (or (not (= |call3formal@pos#0@0@@0| (LitInt 0))) (not true)) (= (ControlFlow 0 35) 24)) anon2_correct)))
 (let ((anon11_Then_correct  (=> (= |call3formal@pos#0@0@@0| (LitInt 0)) (and (=> (= (ControlFlow 0 32) (- 0 34)) true) (and (=> (= (ControlFlow 0 32) (- 0 33)) (or (not (= call1formal@this@0 null)) (not true))) (=> (= (ControlFlow 0 32) 24) anon2_correct))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@7 alloc false)) (=> (and (and (or (not (= call1formal@this null)) (not true)) (and ($Is refType call1formal@this Tclass.SnapTree.Tree) ($IsAlloc refType call1formal@this Tclass.SnapTree.Tree $Heap@@7))) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))) (=> (and (and (and (and (or (not (= call1formal@this@0 null)) (not true)) (and ($Is refType call1formal@this@0 Tclass.SnapTree.Tree) ($IsAlloc refType call1formal@this@0 Tclass.SnapTree.Tree $Heap@0))) (|SnapTree.Tree.Valid#canCall| $Heap@0 call1formal@this@0)) (and (and (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@0 call1formal@this@0) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |Seq#Empty|)) (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly)))) (|Set#Subset| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)))))) (and (and (and (forall (($o@@39 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@39)) (or (not (= $o@@39 null)) (not true)))
+ :qid |SnapshotableTreesdfy.146:38|
+ :skolemid |1859|
  :pattern (  (or (not (= $o@@39 null)) (not true)))
 )) (forall (($o@@40 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@40)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@7 $o@@40) alloc)))))
+ :qid |SnapshotableTreesdfy.146:38|
+ :skolemid |1860|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@40)))
 ))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@7 call1formal@this@0) alloc))))) (and (forall (($o@@41 T@U) ) (!  (=> (and (or (not (= $o@@41 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@7 $o@@41) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@41) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@7 $o@@41)))
+ :qid |SnapshotableTreesdfy.144:17|
+ :skolemid |1861|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@41))
-)) ($HeapSucc $Heap@@7 $Heap@0)))) (and (=> (= (ControlFlow 0 36) (- 0 44)) true) (and (=> (= (ControlFlow 0 36) (- 0 43)) (or (not (= call1formal@this@0 null)) (not true))) (and (=> (= (ControlFlow 0 36) (- 0 42)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |Seq#Empty|)) (=> (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |Seq#Empty|) (and (=> (= (ControlFlow 0 36) (- 0 41)) true) (and (=> (= (ControlFlow 0 36) (- 0 40)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |x##0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 36) (- 0 39)) (forall (($o@@42 T@U) ($f@@6 T@U) )  (=> (and (and (or (not (= $o@@42 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@42) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@42))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@42 $f@@6))))) (=> (forall (($o@@43 T@U) ($f@@7 T@U) )  (=> (and (and (or (not (= $o@@43 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@43) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@43))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@43 $f@@7)))) (and (=> (= (ControlFlow 0 36) (- 0 38)) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@0 call1formal@this@0)) (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@0 call1formal@this@0) (and (=> (= (ControlFlow 0 36) (- 0 37)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly))))) (=> (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly)))) (=> (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (=> (and (and (and (and (|SnapTree.Tree.Valid#canCall| $Heap@1 call1formal@this@0) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0)) (and (forall (($o@@44 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@44)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@44)))) (or (not (= $o@@44 null)) (not true)))
+)) ($HeapSucc $Heap@@7 $Heap@0)))) (and (=> (= (ControlFlow 0 36) (- 0 44)) true) (and (=> (= (ControlFlow 0 36) (- 0 43)) (or (not (= call1formal@this@0 null)) (not true))) (and (=> (= (ControlFlow 0 36) (- 0 42)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |Seq#Empty|)) (=> (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |Seq#Empty|) (and (=> (= (ControlFlow 0 36) (- 0 41)) true) (and (=> (= (ControlFlow 0 36) (- 0 40)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |x##0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 36) (- 0 39)) (forall (($o@@42 T@U) ($f@@6 T@U) ) (!  (=> (and (and (or (not (= $o@@42 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@42) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@42))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@42 $f@@6)))
+ :qid |SnapshotableTreesdfy.47:30|
+ :skolemid |1784|
+))) (=> (forall (($o@@43 T@U) ($f@@7 T@U) ) (!  (=> (and (and (or (not (= $o@@43 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@43) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@43))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@43 $f@@7)))
+ :qid |SnapshotableTreesdfy.47:30|
+ :skolemid |1784|
+)) (and (=> (= (ControlFlow 0 36) (- 0 38)) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@0 call1formal@this@0)) (=> (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@0 call1formal@this@0) (and (=> (= (ControlFlow 0 36) (- 0 37)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly))))) (=> (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly)))) (=> (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (=> (and (and (and (and (|SnapTree.Tree.Valid#canCall| $Heap@1 call1formal@this@0) (SnapTree.Tree.Valid reveal_SnapTree.Tree.Valid $Heap@1 call1formal@this@0)) (and (forall (($o@@44 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@44)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@44)))) (or (not (= $o@@44 null)) (not true)))
+ :qid |SnapshotableTreesdfy.191:26|
+ :skolemid |1869|
  :pattern (  (or (not (= $o@@44 null)) (not true)))
 )) (forall (($o@@45 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@45)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Repr)) ($Box refType $o@@45)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@45) alloc)))))
+ :qid |SnapshotableTreesdfy.191:26|
+ :skolemid |1870|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@45) alloc)))
 )))) (and (and (forall (($o@@46 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@46)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@46)))) (or (not (= $o@@46 null)) (not true)))
+ :qid |SnapshotableTreesdfy.191:53|
+ :skolemid |1871|
  :pattern (  (or (not (= $o@@46 null)) (not true)))
 )) (forall (($o@@47 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@47)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@47)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@47) alloc)))))
+ :qid |SnapshotableTreesdfy.191:53|
+ :skolemid |1872|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@47) alloc)))
 ))) (= (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.IsReadonly))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.IsReadonly)))))) (and (and (and (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|))) (< |call3formal@pos#0@0@@0| 0)) (=> (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents))))) (and (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|)))) (<= (LitInt 0) |call3formal@pos#0@0@@0|)) (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|)))) (< |call3formal@pos#0@0@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents))))))) (and (and (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|)))) (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents))) (+ (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents))) 1))) (=> (not (|Seq#Contains| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) ($Box intType (int_2_U |x##0@0|)))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) SnapTree.Tree.Contents)) (|Seq#Append| (|Seq#Append| (|Seq#Take| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |call3formal@pos#0@0@@0|) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |x##0@0|)))) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.Contents)) |call3formal@pos#0@0@@0|))))) (and (forall (($o@@48 T@U) ) (!  (=> (and (or (not (= $o@@48 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@48) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@48) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@48)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) SnapTree.Tree.MutableRepr)) ($Box refType $o@@48))))
+ :qid |SnapshotableTreesdfy.188:12|
+ :skolemid |1873|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@48))
 )) ($HeapSucc $Heap@0 $Heap@1))))) (and (=> (= (ControlFlow 0 36) 32) anon11_Then_correct) (=> (= (ControlFlow 0 36) 35) anon11_Else_correct)))))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap@@7) ($IsHeapAnchor $Heap@@7)) (and (=> |defass#t#0| (and ($Is refType |t#0| Tclass.SnapTree.Tree) ($IsAlloc refType |t#0| Tclass.SnapTree.Tree $Heap@@7))) true)) (=> (and (and (and ($Is SeqType |hc#0| (TSeq TInt)) ($IsAlloc SeqType |hc#0| (TSeq TInt) $Heap@@7)) true) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 45) 36))) anon0_correct))))

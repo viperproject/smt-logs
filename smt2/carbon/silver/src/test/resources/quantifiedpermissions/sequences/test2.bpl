@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:28
+// Date:         2025-01-26 23:16:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/test2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/test2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -607,14 +607,14 @@ procedure test01(s_1: (Seq Ref), t_2: (Seq Ref)) returns ()
   var i1_8: int;
   var i2_8: int;
   var i_14: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_5: int;
   var i_15: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -759,8 +759,8 @@ procedure test01(s_1: (Seq Ref), t_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -863,8 +863,8 @@ procedure test01(s_1: (Seq Ref), t_2: (Seq Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -964,10 +964,10 @@ procedure test02(s_1: (Seq Ref), x: Ref) returns ()
   var i2_13: int;
   var i_21: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1048,12 +1048,12 @@ procedure test02(s_1: (Seq Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert x.f == old(x.f) -- test2.vpr@20.3--20.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (test2.vpr@20.10--20.25) [187046]"}
@@ -1076,10 +1076,10 @@ procedure test03(s_1: (Seq Ref), x: Ref) returns ()
   var i2_14: int;
   var i_19: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1162,12 +1162,12 @@ procedure test03(s_1: (Seq Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert x.f == old(x.f) -- test2.vpr@28.3--28.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (test2.vpr@28.10--28.25) [187056]"}
@@ -1191,10 +1191,10 @@ procedure test04(s_1: (Seq Ref), x: Ref) returns ()
   var i_10: int;
   var QPMask: MaskType;
   var i_17: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_11: int;
   var ExhaleHeap: HeapType;
   
@@ -1305,15 +1305,15 @@ procedure test04(s_1: (Seq Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale (forall i: Int ::
   //     { (i in [0..|s|)) }
   //     { s[i] }
   //     (i in [0..|s|)) && s[i].f > 5 ==> acc(s[i].f, write)) -- test2.vpr@37.3--37.70
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|s|)) } { s[i] } (i in [0..|s|)) && s[i].f > 5 ==> acc(s[i].f, write))
       if (*) {
@@ -1381,8 +1381,8 @@ procedure test04(s_1: (Seq Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == old(x.f) -- test2.vpr@40.3--40.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (test2.vpr@40.10--40.25) [187080]"}
@@ -1406,11 +1406,11 @@ procedure test05(s_1: (Seq Ref), x: Ref) returns ()
   var i_13: int;
   var QPMask: MaskType;
   var i_23: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_24: int;
   var ExhaleHeap: HeapType;
   
@@ -1521,8 +1521,8 @@ procedure test05(s_1: (Seq Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: v := x.f -- test2.vpr@49.3--49.20
     
@@ -1536,8 +1536,8 @@ procedure test05(s_1: (Seq Ref), x: Ref) returns ()
   //     { (i in [0..|s|)) }
   //     { s[i] }
   //     (i in [0..|s|)) && s[i].f > 5 ==> acc(s[i].f, write)) -- test2.vpr@50.3--50.70
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|s|)) } { s[i] } (i in [0..|s|)) && s[i].f > 5 ==> acc(s[i].f, write))
       if (*) {
@@ -1608,8 +1608,8 @@ procedure test05(s_1: (Seq Ref), x: Ref) returns ()
     if (v_2 <= 0) {
       
       // -- Translating statement: assert x.f == old(x.f) -- test2.vpr@53.5--53.27
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of x.f == old(x.f)
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (test2.vpr@53.12--53.27) [187105]"}

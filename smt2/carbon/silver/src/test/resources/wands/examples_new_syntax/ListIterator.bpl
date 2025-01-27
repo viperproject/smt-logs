@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:45:06
+// Date:         2025-01-26 23:17:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_new_syntax/ListIterator.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/examples_new_syntax/ListIterator-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -317,8 +317,8 @@ procedure Node_get_next#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -341,8 +341,8 @@ procedure Node_get_next#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Node_state#trigger(UnfoldingHeap, Node_state(this));
       assume UnfoldingHeap[null, Node_state(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_val_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_prev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_next] != null then UnfoldingHeap[null, Node_state(UnfoldingHeap[this, Node_next])] else EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_state(this) (ListIterator.vpr@297.1--299.48) [220406]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_state(this)];
@@ -430,8 +430,8 @@ procedure Node_get_prev#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -454,8 +454,8 @@ procedure Node_get_prev#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Node_state#trigger(UnfoldingHeap, Node_state(this));
       assume UnfoldingHeap[null, Node_state(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_val_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_prev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_next] != null then UnfoldingHeap[null, Node_state(UnfoldingHeap[this, Node_next])] else EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_state(this) (ListIterator.vpr@301.1--303.48) [220408]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_state(this)];
@@ -543,8 +543,8 @@ procedure Node_rev_next#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -567,8 +567,8 @@ procedure Node_rev_next#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Node_reverse#trigger(UnfoldingHeap, Node_reverse(this));
       assume UnfoldingHeap[null, Node_reverse(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_val_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_prev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_prev] != null then UnfoldingHeap[null, Node_reverse(UnfoldingHeap[this, Node_prev])] else EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@305.1--307.50) [220410]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_reverse(this)];
@@ -658,8 +658,8 @@ procedure Node_rev_prev#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -682,8 +682,8 @@ procedure Node_rev_prev#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Node_reverse#trigger(UnfoldingHeap, Node_reverse(this));
       assume UnfoldingHeap[null, Node_reverse(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_val_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_prev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_prev] != null then UnfoldingHeap[null, Node_reverse(UnfoldingHeap[this, Node_prev])] else EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@309.1--311.50) [220412]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_reverse(this)];
@@ -773,8 +773,8 @@ procedure Node_first#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -798,8 +798,8 @@ procedure Node_first#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Node_reverse#trigger(UnfoldingHeap, Node_reverse(this));
       assume UnfoldingHeap[null, Node_reverse(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Node_val_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_prev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Node_next]), FrameFragment((if UnfoldingHeap[this, Node_prev] != null then UnfoldingHeap[null, Node_reverse(UnfoldingHeap[this, Node_prev])] else EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@314.1--317.94) [220414]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_reverse(this)];
@@ -834,8 +834,8 @@ procedure Node_first#definedness(this: Ref) returns (Result: Ref)
           HasDirectPerm(UnfoldingMask, this, Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this.Node_prev) (ListIterator.vpr@317.67--317.93) [220417]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node_reverse(UnfoldingHeap[this, Node_prev])];
@@ -908,8 +908,8 @@ procedure Iterator_ready#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Iterator_ready
@@ -1025,8 +1025,8 @@ procedure Iterator_ready#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_current], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@91.6--91.49) [220438]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])];
@@ -1051,8 +1051,8 @@ procedure Iterator_ready#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_current], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@92.6--92.52) [220443]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])];
@@ -1126,8 +1126,8 @@ procedure Iterator_readyForNext#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Iterator_readyForNext
@@ -1243,8 +1243,8 @@ procedure Iterator_readyForNext#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_current], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@115.6--115.49) [220469]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])];
@@ -1269,8 +1269,8 @@ procedure Iterator_readyForNext#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_current], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@116.6--116.52) [220474]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])];
@@ -1351,8 +1351,8 @@ procedure Iterator_readyForRemove#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Iterator_readyForRemove
@@ -1540,8 +1540,8 @@ procedure Iterator_readyForRemove#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_last], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_last.Node_prev) (ListIterator.vpr@155.6--155.46) [220518]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_last], Node_prev])];
@@ -1566,8 +1566,8 @@ procedure Iterator_readyForRemove#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, Heap[this, Iterator_last], Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_last.Node_prev) (ListIterator.vpr@156.6--156.49) [220523]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[Heap[this, Iterator_last], Node_prev])];
@@ -1776,8 +1776,8 @@ procedure Node_reverse#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of Node_reverse
@@ -1819,8 +1819,8 @@ procedure Node_reverse#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, this, Node_prev);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Node_prev) (ListIterator.vpr@294.66--294.95) [220535]"}
             NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(Heap[this, Node_prev])];
@@ -1844,15 +1844,15 @@ procedure main(l_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var arg_v: int;
   var b_24: bool;
@@ -1879,8 +1879,8 @@ procedure main(l_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1903,8 +1903,8 @@ procedure main(l_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method List_put might not hold. There might be insufficient permission to access List_state(l) (ListIterator.vpr@27.3--27.17) [220536]"}
@@ -1928,8 +1928,8 @@ procedure main(l_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method List_put might not hold. There might be insufficient permission to access List_state(l) (ListIterator.vpr@28.3--28.17) [220537]"}
@@ -1954,8 +1954,8 @@ procedure main(l_1: Ref) returns ()
     arg_v := -1;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method List_put might not hold. There might be insufficient permission to access List_state(l) (ListIterator.vpr@29.3--29.18) [220538]"}
@@ -1979,8 +1979,8 @@ procedure main(l_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Iterator_new might not hold. Assertion l != null might not hold. (ListIterator.vpr@33.3--33.23) [220539]"}
         l_1 != null;
       perm := FullPerm;
@@ -2012,8 +2012,8 @@ procedure main(l_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method Iterator_hasNext might not hold. There might be insufficient permission to access Iterator_ready(i) (ListIterator.vpr@36.3--36.27) [220541]"}
@@ -2047,8 +2047,8 @@ procedure main(l_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -2120,8 +2120,8 @@ procedure main(l_1: Ref) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method Iterator_next might not hold. There might be insufficient permission to access Iterator_readyForNext(i) (ListIterator.vpr@45.5--45.28) [220544]"}
@@ -2153,8 +2153,8 @@ procedure main(l_1: Ref) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method Iterator_remove might not hold. There might be insufficient permission to access Iterator_readyForRemove(i) (ListIterator.vpr@51.7--51.25) [220545]"}
@@ -2178,8 +2178,8 @@ procedure main(l_1: Ref) returns ()
   //   acc(Iterator_ready(i), write) -- ListIterator.vpr@55.7--55.61
                 
                 // -- check if wand is held and remove an instance
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   // permLe
                   assert {:msg "  Applying wand might fail. Magic wand instance not found. (ListIterator.vpr@55.7--55.61) [220546]"}
                     FullPerm <= Mask[null, wand(i, i)];
@@ -2187,8 +2187,8 @@ procedure main(l_1: Ref) returns ()
                 assume state(Heap, Mask);
                 
                 // -- check if LHS holds and remove permissions 
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  Applying wand might fail. There might be insufficient permission to access Iterator_readyForRemove(i) (ListIterator.vpr@55.7--55.61) [220547]"}
@@ -2215,8 +2215,8 @@ procedure main(l_1: Ref) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method Iterator_hasNext might not hold. There might be insufficient permission to access Iterator_ready(i) (ListIterator.vpr@59.5--59.29) [220548]"}
@@ -2245,8 +2245,8 @@ procedure main(l_1: Ref) returns ()
               assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -2290,8 +2290,8 @@ procedure main(l_1: Ref) returns ()
   // -- Translating statement: apply acc(Iterator_ready(i), write) --* acc(List_state(l), write) -- ListIterator.vpr@63.3--63.44
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (ListIterator.vpr@63.3--63.44) [220551]"}
         FullPerm <= Mask[null, wand_1(i, l_1)];
@@ -2299,8 +2299,8 @@ procedure main(l_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access Iterator_ready(i) (ListIterator.vpr@63.3--63.44) [220553]"}
@@ -2321,8 +2321,8 @@ procedure main(l_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main might not hold. Assertion l != null might not hold. (ListIterator.vpr@23.10--23.34) [220555]"}
       l_1 != null;
     perm := FullPerm;
@@ -2345,19 +2345,19 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -2367,8 +2367,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -2416,8 +2416,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
   var b_11: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var arg_3_13: Ref;
   var b_12: bool;
   var Result_7Heap: HeapType;
@@ -2473,8 +2473,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2496,8 +2496,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
         
         // -- Translating statement: label lhs3 -- ListIterator.vpr@167.10--167.48
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -2527,8 +2527,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
   // -- Translating statement: unfold acc(List_state(l), write) -- ListIterator.vpr@169.3--169.23
     assume List_state#trigger(Heap, List_state(l_1));
     assume Heap[null, List_state(l_1)] == CombineFrames(FrameFragment(Heap[l_1, List_sentinel]), Heap[null, Node_state(Heap[l_1, List_sentinel])]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List_state(l) might fail. There might be insufficient permission to access List_state(l) (ListIterator.vpr@169.3--169.23) [220559]"}
@@ -2572,8 +2572,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
         HasDirectPerm(Mask, this, Iterator_current);
     assume Node_state#trigger(Heap, Node_state(Heap[this, Iterator_current]));
     assume Heap[null, Node_state(Heap[this, Iterator_current])] == CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_next]), FrameFragment((if Heap[Heap[this, Iterator_current], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, Iterator_current], Node_next])] else EmptyFrame)))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node_state(this.Iterator_current) might fail. There might be insufficient permission to access Node_state(this.Iterator_current) (ListIterator.vpr@171.3--171.43) [220567]"}
@@ -2626,8 +2626,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Iterator_ready(this), write) -- ListIterator.vpr@174.3--174.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Folding Iterator_ready(this) might fail. Fraction 1 / 2 might be negative. (ListIterator.vpr@174.3--174.28) [220576]"}
       perm >= NoPerm;
@@ -2772,8 +2772,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
     
     // -- Translating statement: label lhs4 -- ListIterator.vpr@176.11--176.49
       lhs4:
-      Labellhs4Heap := Ops_1Heap;
       Labellhs4Mask := Ops_1Mask;
+      Labellhs4Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -2781,8 +2781,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
       // -- Translating statement: unfold acc(Iterator_ready(this), write) -- ListIterator.vpr@177.5--177.32
         assume Iterator_ready#trigger(Ops_1Heap, Iterator_ready(this));
         assume Ops_1Heap[null, Iterator_ready(this)] == CombineFrames(FrameFragment(Ops_1Heap[this, Iterator_iteratee]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[this, Iterator_iteratee], List_sentinel]), CombineFrames(FrameFragment(Ops_1Heap[this, Iterator_current]), CombineFrames(FrameFragment(Ops_1Heap[this, Iterator_last]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_next]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment((if Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_prev] == null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_prev] != null then Ops_1Heap[null, Node_reverse(Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_prev])] else EmptyFrame)), FrameFragment((if Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_next] != null then Ops_1Heap[null, Node_state(Ops_1Heap[Ops_1Heap[this, Iterator_current], Node_next])] else EmptyFrame)))))))))));
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -2923,8 +2923,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
             assert {:msg "  Folding Node_state(this.Iterator_current) might fail. There might be insufficient permission to access this.Iterator_current (ListIterator.vpr@178.5--178.43) [220613]"}
               HasDirectPerm(Ops_1Mask, this, Iterator_current);
         }
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -3263,8 +3263,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
               HasDirectPerm(Ops_1Mask, this, Iterator_current);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Ops_1Heap;
               ExhaleWellDef0Mask := Ops_1Mask;
+              ExhaleWellDef0Heap := Ops_1Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function Node_get_prev might not hold. There might be insufficient permission to access Node_state(this.Iterator_current) (ListIterator.vpr@181.9--181.45) [220630]"}
                 NoPerm < perm ==> NoPerm < Ops_1Mask[null, Node_state(Ops_1Heap[this, Iterator_current])];
@@ -3289,8 +3289,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
                   HasDirectPerm(Ops_1Mask, this, Iterator_current);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := Ops_1Heap;
                   ExhaleWellDef0Mask := Ops_1Mask;
+                  ExhaleWellDef0Heap := Ops_1Heap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function Node_get_prev might not hold. There might be insufficient permission to access Node_state(this.Iterator_current) (ListIterator.vpr@182.19--182.55) [220632]"}
                     NoPerm < perm ==> NoPerm < Ops_1Mask[null, Node_state(Ops_1Heap[this, Iterator_current])];
@@ -3321,8 +3321,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
             arg_nxt := Ops_1Heap[this, Iterator_current];
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Ops_1Heap;
               ExhaleWellDef0Mask := Ops_1Mask;
+              ExhaleWellDef0Heap := Ops_1Heap;
               havoc Used_3Heap;
               Used_3Mask := ZeroMask;
               b_10 := b_10 && state(Used_3Heap, Used_3Mask);
@@ -3401,8 +3401,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
                   // -- Check definedness of Node_rev_next(arg_this) == arg_nxt
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef1Heap := Result_6Heap;
                       ExhaleWellDef1Mask := Result_6Mask;
+                      ExhaleWellDef1Heap := Result_6Heap;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(arg_this) (ListIterator.vpr@332.47--332.66) [220639]"}
                         NoPerm < perm ==> NoPerm < Result_6Mask[null, Node_reverse(arg_this)];
@@ -3500,8 +3500,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
                   // -- Check definedness of Node_first(arg_this) == arg_fst
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef1Heap := Result_8Heap;
                       ExhaleWellDef1Mask := Result_8Mask;
+                      ExhaleWellDef1Heap := Result_8Heap;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(arg_this) (ListIterator.vpr@332.114--332.130) [220643]"}
                         NoPerm < perm ==> NoPerm < Result_8Mask[null, Node_reverse(arg_this)];
@@ -3538,8 +3538,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
       // -- Translating statement: assert acc(this.Iterator_iteratee, write) -- ListIterator.vpr@188.5--188.39
         AssertHeap := Ops_1Heap;
         AssertMask := Ops_1Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_14 := b_14 && state(Used_4Heap, Used_4Mask);
@@ -3646,8 +3646,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
     if (b_1_1) {
       
       // -- Translating statement: fold acc(List_state(l), write) -- ListIterator.vpr@189.5--189.23
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_5Heap;
         Used_5Mask := ZeroMask;
         b_17 := b_17 && state(Used_5Heap, Used_5Mask);
@@ -3897,8 +3897,8 @@ procedure Iterator_new(l_1: Ref) returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Iterator_new might not hold. There might be insufficient permission to access Iterator_ready(this) (ListIterator.vpr@164.10--164.30) [220660]"}
@@ -3923,12 +3923,12 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -3952,8 +3952,8 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3978,8 +3978,8 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
   // -- Translating statement: unfold acc(Iterator_ready(this), write) -- ListIterator.vpr@202.3--202.30
     assume Iterator_ready#trigger(Heap, Iterator_ready(this));
     assume Heap[null, Iterator_ready(this)] == CombineFrames(FrameFragment(Heap[this, Iterator_iteratee]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_iteratee], List_sentinel]), CombineFrames(FrameFragment(Heap[this, Iterator_current]), CombineFrames(FrameFragment(Heap[this, Iterator_last]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_next]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_prev] == null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_prev] != null then Heap[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])] else EmptyFrame)), FrameFragment((if Heap[Heap[this, Iterator_current], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, Iterator_current], Node_next])] else EmptyFrame)))))))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Iterator_ready(this) might fail. There might be insufficient permission to access Iterator_ready(this) (ListIterator.vpr@202.3--202.30) [220664]"}
@@ -4065,8 +4065,8 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
     if (!res) {
       
       // -- Translating statement: fold acc(Iterator_ready(this), write) -- ListIterator.vpr@205.5--205.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Folding Iterator_ready(this) might fail. Fraction 1 / 2 might be negative. (ListIterator.vpr@205.5--205.30) [220677]"}
           perm >= NoPerm;
@@ -4186,8 +4186,8 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
     } else {
       
       // -- Translating statement: fold acc(Iterator_readyForNext(this), write) -- ListIterator.vpr@207.5--207.37
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Folding Iterator_readyForNext(this) might fail. Fraction 1 / 2 might be negative. (ListIterator.vpr@207.5--207.37) [220703]"}
           perm >= NoPerm;
@@ -4310,8 +4310,8 @@ procedure Iterator_hasNext(this: Ref) returns (res: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (res) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -4342,18 +4342,18 @@ procedure Iterator_next(this: Ref) returns (res: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -4363,8 +4363,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_22: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_1: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
@@ -4396,8 +4396,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
   var b_30_1: bool;
   var Result_18Heap: HeapType;
   var Result_18Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var b_31_1: bool;
   var Result_19Heap: HeapType;
@@ -4469,8 +4469,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4492,8 +4492,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
         
         // -- Translating statement: label lhs6 -- ListIterator.vpr@217.9--217.63
           lhs6:
-          Labellhs6Heap := WandDefLHSHeap;
           Labellhs6Mask := WandDefLHSMask;
+          Labellhs6Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -4513,8 +4513,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
   // -- Translating statement: unfold acc(Iterator_readyForNext(this), write) -- ListIterator.vpr@218.3--218.37
     assume Iterator_readyForNext#trigger(Heap, Iterator_readyForNext(this));
     assume Heap[null, Iterator_readyForNext(this)] == CombineFrames(FrameFragment(Heap[this, Iterator_iteratee]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_iteratee], List_sentinel]), CombineFrames(FrameFragment(Heap[this, Iterator_current]), CombineFrames(FrameFragment(Heap[this, Iterator_last]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_next]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_prev] == null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_prev] != null then Heap[null, Node_reverse(Heap[Heap[this, Iterator_current], Node_prev])] else EmptyFrame)), FrameFragment((if Heap[Heap[this, Iterator_current], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, Iterator_current], Node_next])] else EmptyFrame)))))))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Iterator_readyForNext(this) might fail. There might be insufficient permission to access Iterator_readyForNext(this) (ListIterator.vpr@218.3--218.37) [220733]"}
@@ -4616,8 +4616,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
         HasDirectPerm(Mask, this, Iterator_current);
     assume Node_state#trigger(Heap, Node_state(Heap[this, Iterator_current]));
     assume Heap[null, Node_state(Heap[this, Iterator_current])] == CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_next]), FrameFragment((if Heap[Heap[this, Iterator_current], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, Iterator_current], Node_next])] else EmptyFrame)))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node_state(this.Iterator_current) might fail. There might be insufficient permission to access Node_state(this.Iterator_current) (ListIterator.vpr@221.3--221.43) [220751]"}
@@ -4678,8 +4678,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Iterator_readyForRemove(this), write) -- ListIterator.vpr@224.3--224.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Folding Iterator_readyForRemove(this) might fail. Fraction 1 / 2 might be negative. (ListIterator.vpr@224.3--224.37) [220762]"}
       perm >= NoPerm;
@@ -4851,8 +4851,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
     
     // -- Translating statement: label lhs7 -- ListIterator.vpr@226.11--226.65
       lhs7:
-      Labellhs7Heap := Ops_3Heap;
       Labellhs7Mask := Ops_3Mask;
+      Labellhs7Heap := Ops_3Heap;
       b_23 := b_23 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_23) {
@@ -4860,8 +4860,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
       // -- Translating statement: unfold acc(Iterator_readyForRemove(this), write) -- ListIterator.vpr@227.5--227.41
         assume Iterator_readyForRemove#trigger(Ops_3Heap, Iterator_readyForRemove(this));
         assume Ops_3Heap[null, Iterator_readyForRemove(this)] == CombineFrames(FrameFragment(Ops_3Heap[this, Iterator_iteratee]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_iteratee], List_sentinel]), CombineFrames(FrameFragment(Ops_3Heap[this, Iterator_current]), CombineFrames(FrameFragment(Ops_3Heap[this, Iterator_last]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_next]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment((if Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_prev] == null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_next] != null then Ops_3Heap[null, Node_state(Ops_3Heap[Ops_3Heap[this, Iterator_current], Node_next])] else EmptyFrame)), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_val_1]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_next]), CombineFrames(FrameFragment(Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_prev]), CombineFrames(FrameFragment((if Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_prev] == null then EmptyFrame else EmptyFrame)), FrameFragment((if Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_prev] != null then Ops_3Heap[null, Node_reverse(Ops_3Heap[Ops_3Heap[this, Iterator_last], Node_prev])] else EmptyFrame)))))))))))))));
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_8Heap;
         Used_8Mask := ZeroMask;
         b_24_1 := b_24_1 && state(Used_8Heap, Used_8Mask);
@@ -5022,8 +5022,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
             assert {:msg "  Folding Node_reverse(this.Iterator_current.Node_prev) might fail. There might be insufficient permission to access this.Iterator_current.Node_prev (ListIterator.vpr@230.5--230.55) [220813]"}
               HasDirectPerm(Ops_3Mask, Ops_3Heap[this, Iterator_current], Node_prev);
         }
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_9Heap;
         Used_9Mask := ZeroMask;
         b_26_1 := b_26_1 && state(Used_9Heap, Used_9Mask);
@@ -5337,8 +5337,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
                   HasDirectPerm(Result_18Mask, Result_18Heap[Result_18Heap[this, Iterator_current], Node_prev], Node_prev);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Heap := Result_18Heap;
                   ExhaleWellDef1Mask := Result_18Mask;
+                  ExhaleWellDef1Heap := Result_18Heap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev.Node_prev) (ListIterator.vpr@294.66--294.95) [220835]"}
                     NoPerm < perm ==> NoPerm < Result_18Mask[null, Node_reverse(Result_18Heap[Result_18Heap[Result_18Heap[this, Iterator_current], Node_prev], Node_prev])];
@@ -5400,8 +5400,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
     if (b_23) {
       
       // -- Translating statement: fold acc(Iterator_ready(this), write) -- ListIterator.vpr@232.5--232.30
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_10Heap;
         Used_10Mask := ZeroMask;
         b_32_1 := b_32_1 && state(Used_10Heap, Used_10Mask);
@@ -6019,8 +6019,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
                   HasDirectPerm(Result_28Mask, Result_28Heap[this, Iterator_current], Node_prev);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Heap := Result_28Heap;
                   ExhaleWellDef1Mask := Result_28Mask;
+                  ExhaleWellDef1Heap := Result_28Heap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@91.6--91.49) [220876]"}
                     NoPerm < perm ==> NoPerm < Result_28Mask[null, Node_reverse(Result_28Heap[Result_28Heap[this, Iterator_current], Node_prev])];
@@ -6054,8 +6054,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
                   HasDirectPerm(Result_28Mask, Result_28Heap[this, Iterator_current], Node_prev);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Heap := Result_28Heap;
                   ExhaleWellDef1Mask := Result_28Mask;
+                  ExhaleWellDef1Heap := Result_28Heap;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this.Iterator_current.Node_prev) (ListIterator.vpr@92.6--92.52) [220882]"}
                     NoPerm < perm ==> NoPerm < Result_28Mask[null, Node_reverse(Result_28Heap[Result_28Heap[this, Iterator_current], Node_prev])];
@@ -6288,8 +6288,8 @@ procedure Iterator_next(this: Ref) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Iterator_next might not hold. There might be insufficient permission to access Iterator_readyForRemove(this) (ListIterator.vpr@214.9--214.38) [220892]"}
@@ -6314,12 +6314,12 @@ procedure Iterator_remove(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -6343,8 +6343,8 @@ procedure Iterator_remove(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6361,8 +6361,8 @@ procedure Iterator_remove(this: Ref) returns ()
   // -- Translating statement: unfold acc(Iterator_readyForRemove(this), write) -- ListIterator.vpr@240.3--240.39
     assume Iterator_readyForRemove#trigger(Heap, Iterator_readyForRemove(this));
     assume Heap[null, Iterator_readyForRemove(this)] == CombineFrames(FrameFragment(Heap[this, Iterator_iteratee]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_iteratee], List_sentinel]), CombineFrames(FrameFragment(Heap[this, Iterator_current]), CombineFrames(FrameFragment(Heap[this, Iterator_last]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_next]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_current], Node_prev]), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_prev] == null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_current], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, Iterator_current], Node_next])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_last], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_last], Node_next]), CombineFrames(FrameFragment(Heap[Heap[this, Iterator_last], Node_prev]), CombineFrames(FrameFragment((if Heap[Heap[this, Iterator_last], Node_prev] == null then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[Heap[this, Iterator_last], Node_prev] != null then Heap[null, Node_reverse(Heap[Heap[this, Iterator_last], Node_prev])] else EmptyFrame)))))))))))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Iterator_readyForRemove(this) might fail. There might be insufficient permission to access Iterator_readyForRemove(this) (ListIterator.vpr@240.3--240.39) [220896]"}
@@ -6479,8 +6479,8 @@ procedure Iterator_remove(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Iterator_ready(this), write) -- ListIterator.vpr@243.3--243.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Folding Iterator_ready(this) might fail. Fraction 1 / 2 might be negative. (ListIterator.vpr@243.3--243.28) [220916]"}
       perm >= NoPerm;
@@ -6599,8 +6599,8 @@ procedure Iterator_remove(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Iterator_remove might not hold. There might be insufficient permission to access Iterator_ready(this) (ListIterator.vpr@239.9--239.29) [220941]"}
@@ -6620,8 +6620,8 @@ procedure Iterator_remove(this: Ref) returns ()
 procedure List_new() returns (this: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -6629,8 +6629,8 @@ procedure List_new() returns (this: Ref)
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -6644,8 +6644,8 @@ procedure List_new() returns (this: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6675,8 +6675,8 @@ procedure List_new() returns (this: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (null != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
@@ -6711,8 +6711,8 @@ procedure List_new() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List_state(this), write) -- ListIterator.vpr@262.3--262.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List_state(this) might fail. There might be insufficient permission to access this.List_sentinel (ListIterator.vpr@262.3--262.24) [220946]"}
@@ -6752,8 +6752,8 @@ procedure List_new() returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of List_new might not hold. There might be insufficient permission to access List_state(this) (ListIterator.vpr@257.9--257.25) [220951]"}
@@ -6774,13 +6774,13 @@ procedure List_put(this: Ref, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var sentNode_next: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -6807,8 +6807,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6828,8 +6828,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
   // -- Translating statement: unfold acc(List_state(this), write) -- ListIterator.vpr@269.3--269.26
     assume List_state#trigger(Heap, List_state(this));
     assume Heap[null, List_state(this)] == CombineFrames(FrameFragment(Heap[this, List_sentinel]), Heap[null, Node_state(Heap[this, List_sentinel])]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List_state(this) might fail. There might be insufficient permission to access List_state(this) (ListIterator.vpr@269.3--269.26) [220954]"}
@@ -6863,8 +6863,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
         HasDirectPerm(Mask, this, List_sentinel);
     assume Node_state#trigger(Heap, Node_state(Heap[this, List_sentinel]));
     assume Heap[null, Node_state(Heap[this, List_sentinel])] == CombineFrames(FrameFragment(Heap[Heap[this, List_sentinel], Node_val_1]), CombineFrames(FrameFragment(Heap[Heap[this, List_sentinel], Node_prev]), CombineFrames(FrameFragment(Heap[Heap[this, List_sentinel], Node_next]), FrameFragment((if Heap[Heap[this, List_sentinel], Node_next] != null then Heap[null, Node_state(Heap[Heap[this, List_sentinel], Node_next])] else EmptyFrame)))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node_state(this.List_sentinel) might fail. There might be insufficient permission to access Node_state(this.List_sentinel) (ListIterator.vpr@270.3--270.40) [220960]"}
@@ -6912,8 +6912,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
     arg_n := Heap[Heap[this, List_sentinel], Node_next];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (arg_n != null) {
         perm := FullPerm;
         if (perm != NoPerm) {
@@ -6956,8 +6956,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
     // -- Check definedness of acc(Node_state(this.List_sentinel), write)
       assert {:msg "  Folding Node_state(this.List_sentinel) might fail. There might be insufficient permission to access this.List_sentinel (ListIterator.vpr@274.3--274.38) [220970]"}
         HasDirectPerm(Mask, this, List_sentinel);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Node_state(this.List_sentinel) might fail. There might be insufficient permission to access this.List_sentinel.Node_val (ListIterator.vpr@274.3--274.38) [220973]"}
@@ -7013,8 +7013,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List_state(this), write) -- ListIterator.vpr@275.3--275.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List_state(this) might fail. There might be insufficient permission to access this.List_sentinel (ListIterator.vpr@275.3--275.24) [220983]"}
@@ -7054,8 +7054,8 @@ procedure List_put(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of List_put might not hold. There might be insufficient permission to access List_state(this) (ListIterator.vpr@268.9--268.25) [220988]"}
@@ -7076,12 +7076,12 @@ procedure Node_new(v_2: int, n: Ref) returns (this: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshObj: Ref;
   var freshVersion: FrameType;
@@ -7107,8 +7107,8 @@ procedure Node_new(v_2: int, n: Ref) returns (this: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -7122,8 +7122,8 @@ procedure Node_new(v_2: int, n: Ref) returns (this: Ref)
     // -- Check definedness of Node_get_next(this) == n
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function Node_get_next might not hold. There might be insufficient permission to access Node_state(this) (ListIterator.vpr@322.29--322.48) [220989]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Node_state(this)];
@@ -7165,8 +7165,8 @@ procedure Node_new(v_2: int, n: Ref) returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Node_state(this), write) -- ListIterator.vpr@327.3--327.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Node_state(this) might fail. There might be insufficient permission to access this.Node_val (ListIterator.vpr@327.3--327.24) [220994]"}
@@ -7222,8 +7222,8 @@ procedure Node_new(v_2: int, n: Ref) returns (this: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Node_new might not hold. There might be insufficient permission to access Node_state(this) (ListIterator.vpr@322.9--322.53) [221002]"}
@@ -7248,11 +7248,11 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -7283,8 +7283,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
     // -- Check definedness of Node_rev_next(this) == nxt
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function Node_rev_next might not hold. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@332.47--332.66) [221005]"}
           NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(this)];
@@ -7306,8 +7306,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
     // -- Check definedness of Node_first(this) == fst
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function Node_first might not hold. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@332.114--332.130) [221006]"}
           NoPerm < perm ==> NoPerm < Mask[null, Node_reverse(this)];
@@ -7324,8 +7324,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -7343,8 +7343,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
   // -- Translating statement: unfold acc(Node_reverse(this), write) -- ListIterator.vpr@334.3--334.28
     assume Node_reverse#trigger(Heap, Node_reverse(this));
     assume Heap[null, Node_reverse(this)] == CombineFrames(FrameFragment(Heap[this, Node_val_1]), CombineFrames(FrameFragment(Heap[this, Node_prev]), CombineFrames(FrameFragment(Heap[this, Node_next]), FrameFragment((if Heap[this, Node_prev] != null then Heap[null, Node_reverse(Heap[this, Node_prev])] else EmptyFrame)))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node_reverse(this) might fail. There might be insufficient permission to access Node_reverse(this) (ListIterator.vpr@334.3--334.28) [221009]"}
@@ -7390,8 +7390,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
     if (Heap[this, Node_prev] == null) {
       
       // -- Translating statement: fold acc(Node_state(this), write) -- ListIterator.vpr@338.5--338.26
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding Node_state(this) might fail. There might be insufficient permission to access this.Node_val (ListIterator.vpr@338.5--338.26) [221017]"}
@@ -7459,8 +7459,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(Node_state(this), write) -- ListIterator.vpr@344.5--344.26
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding Node_state(this) might fail. There might be insufficient permission to access this.Node_val (ListIterator.vpr@344.5--344.26) [221028]"}
@@ -7520,8 +7520,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method Node_swap might not hold. Assertion fst != null might not hold. (ListIterator.vpr@345.5--345.29) [221036]"}
             fst_1 != null;
           perm := FullPerm;
@@ -7558,8 +7558,8 @@ procedure Node_swap(this: Ref, fst_1: Ref, nxt: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Node_swap might not hold. Assertion fst != null might not hold. (ListIterator.vpr@333.10--333.40) [221041]"}
       fst_1 != null;
     perm := FullPerm;

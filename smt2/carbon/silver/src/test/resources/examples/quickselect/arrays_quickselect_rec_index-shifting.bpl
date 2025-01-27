@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:52
+// Date:         2025-01-26 23:16:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec_index-shifting.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/quickselect/arrays_quickselect_rec_index-shifting-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -715,13 +715,13 @@ procedure swap(a_2: IArrayDomainType, i: int, j: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var t_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -753,8 +753,8 @@ procedure swap(a_2: IArrayDomainType, i: int, j: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -817,8 +817,8 @@ procedure swap(a_2: IArrayDomainType, i: int, j: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of swap might not hold. There might be insufficient permission to access loc(a, i).val (arrays_quickselect_rec_index-shifting.vpr@25.11--25.29) [106461]"}
@@ -851,8 +851,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
@@ -864,8 +864,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
   var pivotValue: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var j_4_1: int;
@@ -954,8 +954,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1129,8 +1129,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= pivotIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106486]"}
         0 <= pivotIndex;
       assert {:msg "  The precondition of method swap might not hold. Assertion pivotIndex < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@75.3--75.29) [106487]"}
@@ -1202,8 +1202,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106496]"}
           left <= j_4_1;
         assert {:msg "  Loop invariant left <= j && j <= right might not hold on entry. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106497]"}
@@ -1558,8 +1558,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106528]"}
                     0 <= j_4_1;
                   assert {:msg "  The precondition of method swap might not hold. Assertion j < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@110.7--110.29) [106529]"}
@@ -1628,8 +1628,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
             j_4_1 := j_4_1 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion left <= j might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106538]"}
           left <= j_4_1;
         assert {:msg "  Loop invariant left <= j && j <= right might not be preserved. Assertion j <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@88.15--88.38) [106539]"}
@@ -1819,8 +1819,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method swap might not hold. Assertion 0 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106553]"}
         0 <= right_2;
       assert {:msg "  The precondition of method swap might not hold. Assertion right < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@124.3--124.29) [106554]"}
@@ -1880,8 +1880,8 @@ procedure partition(a_2: IArrayDomainType, left: int, right_2: int, pivotIndex: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of partition might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [106563]"}
       left <= storeIndex;
     assert {:msg "  Postcondition of partition might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@56.11--56.52) [106564]"}
@@ -2002,8 +2002,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_13: int;
@@ -2016,8 +2016,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_pivotIndex: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var pwPar: (Seq int);
   var arg_right: int;
@@ -2092,8 +2092,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2268,8 +2268,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
         arg_pivotIndex := pivotIndex;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method partition might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106593]"}
             0 <= left;
           assert {:msg "  The precondition of method partition might not hold. Assertion left < right might not hold. (arrays_quickselect_rec_index-shifting.vpr@165.5--165.63) [106594]"}
@@ -2412,8 +2412,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
                 arg_right := pivotIndex - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= left might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106601]"}
                     0 <= left;
                   assert {:msg "  The precondition of method select_rec might not hold. Assertion left <= pivotIndex - 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@171.7--171.66) [106602]"}
@@ -2536,8 +2536,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert dummy(pwRec[storeIndex - left]) -- arrays_quickselect_rec_index-shifting.vpr@180.7--180.43
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of dummy(pwRec[storeIndex - left])
                   assert {:msg "  Assert might fail. Index pwRec[storeIndex - left] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@180.14--180.43) [106609]"}
@@ -2620,8 +2620,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
                 arg_left := pivotIndex + 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method select_rec might not hold. Assertion 0 <= pivotIndex + 1 might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106622]"}
                     0 <= arg_left;
                   assert {:msg "  The precondition of method select_rec might not hold. Assertion pivotIndex + 1 <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@201.7--201.67) [106623]"}
@@ -2744,8 +2744,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert dummy(pwRec[storeIndex - (pivotIndex + 1)]) -- arrays_quickselect_rec_index-shifting.vpr@203.7--203.57
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of dummy(pwRec[storeIndex - (pivotIndex + 1)])
                   assert {:msg "  Assert might fail. Index pwRec[storeIndex - (pivotIndex + 1)] into pwRec might be negative. (arrays_quickselect_rec_index-shifting.vpr@203.14--203.57) [106630]"}
@@ -2828,8 +2828,8 @@ procedure select_rec(a_2: IArrayDomainType, left: int, right_2: int, n: int) ret
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of select_rec might not hold. Assertion left <= storeIndex might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [106643]"}
       left <= storeIndex;
     assert {:msg "  Postcondition of select_rec might not hold. Assertion storeIndex <= right might not hold. (arrays_quickselect_rec_index-shifting.vpr@139.11--139.52) [106644]"}
@@ -2951,14 +2951,14 @@ procedure client(a_2: IArrayDomainType) returns ()
 {
   var QPMask: MaskType;
   var i_55: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var storeIndex: int;
   var pw: (Seq int);
@@ -3030,8 +3030,8 @@ procedure client(a_2: IArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3086,8 +3086,8 @@ procedure client(a_2: IArrayDomainType) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method select_rec might not hold. Assertion 10 < len(a) might not hold. (arrays_quickselect_rec_index-shifting.vpr@221.3--221.44) [106658]"}
         10 < (len(a_2): int);
       havoc QPMask;
@@ -3202,15 +3202,15 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert storeIndex == 3 -- arrays_quickselect_rec_index-shifting.vpr@223.3--223.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion storeIndex == 3 might not hold. (arrays_quickselect_rec_index-shifting.vpr@223.10--223.25) [106662]"}
       storeIndex == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val) -- arrays_quickselect_rec_index-shifting.vpr@224.3--224.67
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of loc(a, storeIndex).val == old(loc(a, pw[storeIndex]).val)
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, storeIndex).val (arrays_quickselect_rec_index-shifting.vpr@224.10--224.67) [106663]"}
@@ -3226,8 +3226,8 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 0).val) == 0 -- arrays_quickselect_rec_index-shifting.vpr@226.3--226.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(loc(a, 0).val) == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 0).val (arrays_quickselect_rec_index-shifting.vpr@226.10--226.33) [106668]"}
@@ -3237,8 +3237,8 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 3).val) == 3 -- arrays_quickselect_rec_index-shifting.vpr@227.3--227.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(loc(a, 3).val) == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 3).val (arrays_quickselect_rec_index-shifting.vpr@227.10--227.33) [106670]"}
@@ -3248,8 +3248,8 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(loc(a, 2).val) != old(loc(a, 3).val) -- arrays_quickselect_rec_index-shifting.vpr@228.3--228.50
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(loc(a, 2).val) != old(loc(a, 3).val)
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 2).val (arrays_quickselect_rec_index-shifting.vpr@228.10--228.50) [106672]"}
@@ -3261,8 +3261,8 @@ procedure client(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

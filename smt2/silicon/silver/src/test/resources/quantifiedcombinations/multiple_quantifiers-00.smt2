@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:29:08
+; Started: 2025-01-26 23:01:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1231,7 +1231,7 @@
         (img@19@00 s@$ mat@0@00 (loc<Ref> mat@0@00 c@16@00 r@17@00))
         (img@21@00 s@$ mat@0@00 (loc<Ref> mat@0@00 c@16@00 r@17@00)))))
   :pattern ((loc<Ref> mat@0@00 c@16@00 r@17@00))
-  :qid |quant-u-5851|)))
+  :qid |quant-u-5797|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1265,11 +1265,11 @@
 (assert (forall ((s@$ $Snap) (mat@0@00 IMatrix)) (!
   (= (det%limited s@$ mat@0@00) (det s@$ mat@0@00))
   :pattern ((det s@$ mat@0@00))
-  :qid |quant-u-5838|)))
+  :qid |quant-u-5784|)))
 (assert (forall ((s@$ $Snap) (mat@0@00 IMatrix)) (!
   (det%stateless mat@0@00)
   :pattern ((det%limited s@$ mat@0@00))
-  :qid |quant-u-5839|)))
+  :qid |quant-u-5785|)))
 ; ---------- FUNCTION colsum----------
 (declare-fun mat@2@00 () IMatrix)
 (declare-fun col@3@00 () Int)
@@ -1351,7 +1351,7 @@
         r@22@00)
       (img@24@00 s@$ mat@2@00 col@3@00 (loc<Ref> mat@2@00 col@3@00 r@22@00))))
   :pattern ((loc<Ref> mat@2@00 col@3@00 r@22@00))
-  :qid |quant-u-5853|)))
+  :qid |quant-u-5799|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1374,11 +1374,11 @@
 (assert (forall ((s@$ $Snap) (mat@2@00 IMatrix) (col@3@00 Int)) (!
   (= (colsum%limited s@$ mat@2@00 col@3@00) (colsum s@$ mat@2@00 col@3@00))
   :pattern ((colsum s@$ mat@2@00 col@3@00))
-  :qid |quant-u-5840|)))
+  :qid |quant-u-5786|)))
 (assert (forall ((s@$ $Snap) (mat@2@00 IMatrix) (col@3@00 Int)) (!
   (colsum%stateless mat@2@00 col@3@00)
   :pattern ((colsum%limited s@$ mat@2@00 col@3@00))
-  :qid |quant-u-5841|)))
+  :qid |quant-u-5787|)))
 ; ---------- FUNCTION prm----------
 (declare-fun i@5@00 () Int)
 (declare-fun result@6@00 () $Perm)
@@ -1392,21 +1392,21 @@
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (= (prm%limited s@$ i@5@00) (prm s@$ i@5@00))
   :pattern ((prm s@$ i@5@00))
-  :qid |quant-u-5842|)))
+  :qid |quant-u-5788|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (prm%stateless i@5@00)
   :pattern ((prm%limited s@$ i@5@00))
-  :qid |quant-u-5843|)))
+  :qid |quant-u-5789|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (prm%limited s@$ i@5@00))) (=>
     (prm%precondition s@$ i@5@00)
     (< $Perm.No result@6@00)))
   :pattern ((prm%limited s@$ i@5@00))
-  :qid |quant-u-5854|)))
+  :qid |quant-u-5800|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (prm%limited s@$ i@5@00))) true)
   :pattern ((prm%limited s@$ i@5@00))
-  :qid |quant-u-5855|)))
+  :qid |quant-u-5801|)))
 ; ---------- FUNCTION rowsum----------
 (declare-fun mat@7@00 () IMatrix)
 (declare-fun row@8@00 () Int)
@@ -1488,7 +1488,7 @@
         c@26@00)
       (img@28@00 s@$ mat@7@00 row@8@00 (loc<Ref> mat@7@00 c@26@00 row@8@00))))
   :pattern ((loc<Ref> mat@7@00 c@26@00 row@8@00))
-  :qid |quant-u-5857|)))
+  :qid |quant-u-5803|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1511,11 +1511,11 @@
 (assert (forall ((s@$ $Snap) (mat@7@00 IMatrix) (row@8@00 Int)) (!
   (= (rowsum%limited s@$ mat@7@00 row@8@00) (rowsum s@$ mat@7@00 row@8@00))
   :pattern ((rowsum s@$ mat@7@00 row@8@00))
-  :qid |quant-u-5844|)))
+  :qid |quant-u-5790|)))
 (assert (forall ((s@$ $Snap) (mat@7@00 IMatrix) (row@8@00 Int)) (!
   (rowsum%stateless mat@7@00 row@8@00)
   :pattern ((rowsum%limited s@$ mat@7@00 row@8@00))
-  :qid |quant-u-5845|)))
+  :qid |quant-u-5791|)))
 ; ---------- FUNCTION getP----------
 (declare-fun x@10@00 () $Ref)
 (declare-fun y@11@00 () $Ref)
@@ -1526,11 +1526,11 @@
 (assert (forall ((s@$ $Snap) (x@10@00 $Ref) (y@11@00 $Ref)) (!
   (= (getP%limited s@$ x@10@00 y@11@00) (getP s@$ x@10@00 y@11@00))
   :pattern ((getP s@$ x@10@00 y@11@00))
-  :qid |quant-u-5846|)))
+  :qid |quant-u-5792|)))
 (assert (forall ((s@$ $Snap) (x@10@00 $Ref) (y@11@00 $Ref)) (!
   (getP%stateless x@10@00 y@11@00)
   :pattern ((getP%limited s@$ x@10@00 y@11@00))
-  :qid |quant-u-5847|)))
+  :qid |quant-u-5793|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1594,11 +1594,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$))))))
   :pattern ((getP s@$ x@10@00 y@11@00))
-  :qid |quant-u-5858|)))
+  :qid |quant-u-5804|)))
 (assert (forall ((s@$ $Snap) (x@10@00 $Ref) (y@11@00 $Ref)) (!
   true
   :pattern ((getP s@$ x@10@00 y@11@00))
-  :qid |quant-u-5859|)))
+  :qid |quant-u-5805|)))
 ; ---------- FUNCTION rcvr----------
 (declare-fun i@13@00 () Int)
 (declare-fun j@14@00 () Int)
@@ -1610,11 +1610,11 @@
 (assert (forall ((s@$ $Snap) (i@13@00 Int) (j@14@00 Int)) (!
   (= (rcvr%limited s@$ i@13@00 j@14@00) (rcvr s@$ i@13@00 j@14@00))
   :pattern ((rcvr s@$ i@13@00 j@14@00))
-  :qid |quant-u-5848|)))
+  :qid |quant-u-5794|)))
 (assert (forall ((s@$ $Snap) (i@13@00 Int) (j@14@00 Int)) (!
   (rcvr%stateless i@13@00 j@14@00)
   :pattern ((rcvr%limited s@$ i@13@00 j@14@00))
-  :qid |quant-u-5849|)))
+  :qid |quant-u-5795|)))
 ; ---------- P ----------
 (declare-const x@29@00 $Ref)
 (declare-const y@30@00 $Ref)

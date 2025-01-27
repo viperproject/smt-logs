@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:39:43
+; Started: 2025-01-26 23:11:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -127,11 +127,11 @@
     (fourAnd%limited s@$ a@0@00 b@1@00 c@2@00 d@3@00)
     (fourAnd s@$ a@0@00 b@1@00 c@2@00 d@3@00))
   :pattern ((fourAnd s@$ a@0@00 b@1@00 c@2@00 d@3@00))
-  :qid |quant-u-23007|)))
+  :qid |quant-u-22980|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Bool) (b@1@00 Bool) (c@2@00 Bool) (d@3@00 Bool)) (!
   (fourAnd%stateless a@0@00 b@1@00 c@2@00 d@3@00)
   :pattern ((fourAnd%limited s@$ a@0@00 b@1@00 c@2@00 d@3@00))
-  :qid |quant-u-23008|)))
+  :qid |quant-u-22981|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -201,8 +201,8 @@
       (fourAnd s@$ a@0@00 b@1@00 c@2@00 d@3@00)
       (and a@0@00 (and b@1@00 (and c@2@00 d@3@00)))))
   :pattern ((fourAnd s@$ a@0@00 b@1@00 c@2@00 d@3@00))
-  :qid |quant-u-23009|)))
+  :qid |quant-u-22982|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Bool) (b@1@00 Bool) (c@2@00 Bool) (d@3@00 Bool)) (!
   true
   :pattern ((fourAnd s@$ a@0@00 b@1@00 c@2@00 d@3@00))
-  :qid |quant-u-23010|)))
+  :qid |quant-u-22983|)))

@@ -80,16 +80,22 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TagBool TagInt alloc Tagclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream |##AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| tytagFamily$Stream)
@@ -98,129 +104,215 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T)) (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d))
+ :qid |unknown.0:0|
+ :skolemid |3497|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d) ($Is DatatypeTypeType d (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|b#0| Bool) ) (!  (=> (or (|AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F#canCall| |b#0|) (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F $ly |b#0|) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream TInt)))
+ :qid |Corecursiondfy.181:18|
+ :skolemid |3461|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F $ly |b#0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) ) (!  (=> (or |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G#canCall| (< 1 $FunctionContextHeight)) (and (|AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F#canCall| (U_2_bool (Lit boolType (bool_2_U false)))) (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G ($LS $ly@@0)) (Lit DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F $ly@@0 (U_2_bool (Lit boolType (bool_2_U false))))))))
+ :qid |Corecursiondfy.185:18|
+ :skolemid |3470|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G ($LS $ly@@0)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) ) (!  (=> (or |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H#canCall| (< 1 $FunctionContextHeight)) (and (|AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F#canCall| (U_2_bool (Lit boolType (bool_2_U true)))) (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H ($LS $ly@@1)) (Lit DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F $ly@@1 (U_2_bool (Lit boolType (bool_2_U true))))))))
+ :qid |Corecursiondfy.177:18|
+ :skolemid |3457|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H ($LS $ly@@1)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) ) (!  (=> (or |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H#canCall| (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H $ly@@2) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream TInt)))
+ :qid |Corecursiondfy.177:18|
+ :skolemid |3455|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H $ly@@2))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@3 T@U) ) (!  (=> (or |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G#canCall| (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G $ly@@3) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream TInt)))
+ :qid |Corecursiondfy.185:18|
+ :skolemid |3468|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G $ly@@3))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@4 T@U) (|b#0@@0| Bool) ) (!  (=> (or (|AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F#canCall| |b#0@@0|) (< 1 $FunctionContextHeight)) (and (and (=> |b#0@@0| |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G#canCall|) (=> (not |b#0@@0|) |AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H#canCall|)) (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F ($LS $ly@@4) |b#0@@0|) (ite |b#0@@0| (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| ($Box intType (int_2_U (LitInt 5))) (Lit DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G $ly@@4))) (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| ($Box intType (int_2_U (LitInt 7))) (Lit DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H $ly@@4)))))))
+ :qid |Corecursiondfy.181:18|
+ :skolemid |3463|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F ($LS $ly@@4) |b#0@@0|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2939|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2937|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@0 T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#2#0#0| |a#2#1#0|) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@0))  (and ($IsBox |a#2#0#0| AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@0) ($Is DatatypeTypeType |a#2#1#0| (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@0))))
+ :qid |unknown.0:0|
+ :skolemid |3490|
  :pattern ( ($Is DatatypeTypeType (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#2#0#0| |a#2#1#0|) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@0)))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@0) (= (DatatypeCtorId d@@0) |##AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |3487|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2948|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#1#0#0| |a#1#1#0|))
+ :qid |Corecursiondfy.174:31|
+ :skolemid |3488|
+)))
+ :qid |unknown.0:0|
+ :skolemid |3489|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@1))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |2961|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@1 T@U) ) (!  (and (= (Tag (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@1)) Tagclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream) (= (TagFamily (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@1)) tytagFamily$Stream))
+ :qid |unknown.0:0|
+ :skolemid |3452|
  :pattern ( (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@1))
 )))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx TInt) (and (= ($Box intType ($Unbox intType bx)) bx) ($Is intType ($Unbox intType bx) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |2949|
  :pattern ( ($IsBox bx TInt))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TBool) (and (= ($Box boolType ($Unbox boolType bx@@0)) bx@@0) ($Is boolType ($Unbox boolType bx@@0) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |2951|
  :pattern ( ($IsBox bx@@0 TBool))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |2960|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#0#0#0| |a#0#1#0|)) |##AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons|)
+ :qid |Corecursiondfy.174:31|
+ :skolemid |3486|
  :pattern ( (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.head (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#3#0#0| |a#3#1#0|)) |a#3#0#0|)
+ :qid |Corecursiondfy.174:31|
+ :skolemid |3494|
  :pattern ( (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.tail (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#4#0#0| |a#4#1#0|)) |a#4#1#0|)
+ :qid |Corecursiondfy.174:31|
+ :skolemid |3495|
  :pattern ( (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@2 T@U) ) (! (= (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream_0 (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@2)) AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@2)
+ :qid |unknown.0:0|
+ :skolemid |3453|
  :pattern ( (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2947|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall (($ly@@5 T@U) (|b#0@@1| Bool) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F ($LS $ly@@5) |b#0@@1|) (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F $ly@@5 |b#0@@1|))
+ :qid |Corecursiondfy.181:18|
+ :skolemid |3459|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.F ($LS $ly@@5) |b#0@@1|))
 )))
 (assert (forall ((d@@2 T@U) (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@3 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@2) ($IsAlloc DatatypeTypeType d@@2 (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@3) $h))) ($IsAllocBox (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.head d@@2) AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@3 $h))
+ :qid |unknown.0:0|
+ :skolemid |3492|
  :pattern ( ($IsAllocBox (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.head d@@2) AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@3 $h))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3514|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall (($ly@@6 T@U) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H ($LS $ly@@6)) (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H $ly@@6))
+ :qid |Corecursiondfy.177:18|
+ :skolemid |3450|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.H ($LS $ly@@6)))
 )))
 (assert (forall (($ly@@7 T@U) ) (! (= (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G ($LS $ly@@7)) (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G $ly@@7))
+ :qid |Corecursiondfy.185:18|
+ :skolemid |3466|
  :pattern ( (AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G ($LS $ly@@7)))
 )))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@4 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@4)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@4))))
+ :qid |unknown.0:0|
+ :skolemid |3454|
  :pattern ( ($IsBox bx@@1 (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@4)))
 )))
 (assert (forall ((d@@3 T@U) (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@5 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons_q d@@3) ($IsAlloc DatatypeTypeType d@@3 (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@5) $h@@0))) ($IsAlloc DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.tail d@@3) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@5) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3493|
  :pattern ( ($IsAlloc DatatypeTypeType (AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.tail d@@3) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@5) $h@@0))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2940|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2938|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc intType v@@1 TInt h@@0)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |2983|
  :pattern ( ($IsAlloc intType v@@1 TInt h@@0))
 )))
 (assert (forall ((h@@1 T@U) (v@@2 T@U) ) (! ($IsAlloc boolType v@@2 TBool h@@1)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |2985|
  :pattern ( ($IsAlloc boolType v@@2 TBool h@@1))
 )))
 (assert (forall ((AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@6 T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@6) $h@@1)  (and ($IsAllocBox |a#2#0#0@@0| AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@6 $h@@1) ($IsAlloc DatatypeTypeType |a#2#1#0@@0| (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@6) $h@@1))))
+ :qid |unknown.0:0|
+ :skolemid |3491|
  :pattern ( ($IsAlloc DatatypeTypeType (|#AutomaticPrefixingOfCoClusterDecreasesClauses.Stream.Cons| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass.AutomaticPrefixingOfCoClusterDecreasesClauses.Stream AutomaticPrefixingOfCoClusterDecreasesClauses.Stream$T@@6) $h@@1))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |2962|
  :pattern ( ($Is intType v@@3 TInt))
 )))
 (assert (forall ((v@@4 T@U) ) (! ($Is boolType v@@4 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |2964|
  :pattern ( ($Is boolType v@@4 TBool))
 )))
 (push 1)
@@ -230,6 +322,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$AutomaticPrefixingOfCoClusterDecreasesClauses.__default.G)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

@@ -96,256 +96,420 @@
 (declare-fun null () T@U)
 (declare-fun |_module.__default.TotalLang_h#canCall| (T@U T@U T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TagBool alloc Tagclass._System.___hFunc1 Tagclass._module.Lang |##_module.Lang.L| |tytagFamily$_#Func1| tytagFamily$Lang)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.TotalLang#$S| T@U) ($ly T@U) ($Heap T@U) (|l#0| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap) ($Is DatatypeTypeType |l#0| (Tclass._module.Lang |_module._default.TotalLang#$S|))) (_module.__default.TotalLang |_module._default.TotalLang#$S| ($LS $ly) $Heap |l#0|)) (forall ((|_k#0| T@U) ) (! (_module.__default.TotalLang_h |_module._default.TotalLang#$S| ($LS $ly) $Heap |_k#0| |l#0|)
+ :qid |ExpandedGuardednessdfy.141:20|
+ :skolemid |658|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S| ($LS $ly) $Heap |_k#0| |l#0|))
 )))
+ :qid |unknown.0:0|
+ :skolemid |659|
  :pattern ( (_module.__default.TotalLang |_module._default.TotalLang#$S| ($LS $ly) $Heap |l#0|))
 ))))
 (assert (= (Tag TBool) TagBool))
 (assert (= (Ctor HandleTypeType) 4))
 (assert (forall ((_module.Lang$S T@U) (|a#15#0#0| Bool) (|a#15#1#0| T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) (= ($IsAlloc DatatypeTypeType (|#_module.Lang.L| |a#15#0#0| |a#15#1#0|) (Tclass._module.Lang _module.Lang$S) $h)  (and ($IsAlloc boolType (bool_2_U |a#15#0#0|) TBool $h) ($IsAlloc HandleTypeType |a#15#1#0| (Tclass._System.___hFunc1 _module.Lang$S (Tclass._module.Lang _module.Lang$S)) $h))))
+ :qid |unknown.0:0|
+ :skolemid |835|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Lang.L| |a#15#0#0| |a#15#1#0|) (Tclass._module.Lang _module.Lang$S) $h))
 )))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (forall ((o@@1 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@1))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@1))
 )))
 (assert (forall ((_module.Lang$S@@0 T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._module.Lang _module.Lang$S@@0)) (_module.Lang.L_q d))
+ :qid |unknown.0:0|
+ :skolemid |842|
  :pattern ( (_module.Lang.L_q d) ($Is DatatypeTypeType d (Tclass._module.Lang _module.Lang$S@@0)))
 )))
 (assert (forall ((f T@U) (t0 T@U) (t1 T@U) (u0 T@U) (u1 T@U) ) (!  (=> (and (and ($Is HandleTypeType f (Tclass._System.___hFunc1 t0 t1)) (forall ((bx T@U) ) (!  (=> ($IsBox bx u0) ($IsBox bx t0))
+ :qid |unknown.0:0|
+ :skolemid |389|
  :pattern ( ($IsBox bx u0))
  :pattern ( ($IsBox bx t0))
 ))) (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 t1) ($IsBox bx@@0 u1))
+ :qid |unknown.0:0|
+ :skolemid |390|
  :pattern ( ($IsBox bx@@0 t1))
  :pattern ( ($IsBox bx@@0 u1))
 ))) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0 u1)))
+ :qid |unknown.0:0|
+ :skolemid |391|
  :pattern ( ($Is HandleTypeType f (Tclass._System.___hFunc1 t0 t1)) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0 u1)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.TotalLang$S T@U) ($ly@@0 T@U) ($Heap@@0 T@U) (|l#0@@0| T@U) ) (!  (=> (or (|_module.__default.TotalLang#canCall| _module._default.TotalLang$S $Heap@@0 |l#0@@0|) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) ($Is DatatypeTypeType |l#0@@0| (Tclass._module.Lang _module._default.TotalLang$S))))) (and (forall ((|s#0| T@U) ) (!  (=> ($IsBox |s#0| _module._default.TotalLang$S) (and (and (_module.Lang.L_q |l#0@@0|) true) (=> (Requires1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|) (and (and (_module.Lang.L_q |l#0@@0|) true) (=> (|Set#Equal| (Reads1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|) |Set#Empty|) (and (_module.Lang.L_q |l#0@@0|) (|_module.__default.TotalLang#canCall| _module._default.TotalLang$S $Heap@@0 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|)))))))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |656|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|)))
  :pattern ( (Reads1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|))
  :pattern ( (Requires1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0|))
 )) (= (_module.__default.TotalLang _module._default.TotalLang$S ($LS $ly@@0) $Heap@@0 |l#0@@0|) (forall ((|s#0@@0| T@U) ) (!  (=> ($IsBox |s#0@@0| _module._default.TotalLang$S) (and (and (Requires1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|) (|Set#Equal| (Reads1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|) |Set#Empty|)) (_module.__default.TotalLang _module._default.TotalLang$S $ly@@0 $Heap@@0 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|)))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |655|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|)))
  :pattern ( (Reads1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|))
  :pattern ( (Requires1 _module._default.TotalLang$S (Tclass._module.Lang _module._default.TotalLang$S) $Heap@@0 (_module.Lang.deriv |l#0@@0|) |s#0@@0|))
 )))))
+ :qid |unknown.0:0|
+ :skolemid |657|
  :pattern ( (_module.__default.TotalLang _module._default.TotalLang$S ($LS $ly@@0) $Heap@@0 |l#0@@0|) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((t0@@0 T@U) (t1@@0 T@U) (heap T@U) (f@@0 T@U) (bx0 T@U) ) (!  (=> (and ($IsGoodHeap heap) (and ($IsBox bx0 t0@@0) ($Is HandleTypeType f@@0 (Tclass._System.___hFunc1 t0@@0 t1@@0)))) (= (|Set#Equal| (Reads1 t0@@0 t1@@0 $OneHeap f@@0 bx0) |Set#Empty|) (|Set#Equal| (Reads1 t0@@0 t1@@0 heap f@@0 bx0) |Set#Empty|)))
+ :qid |unknown.0:0|
+ :skolemid |385|
  :pattern ( (Reads1 t0@@0 t1@@0 $OneHeap f@@0 bx0) ($IsGoodHeap heap))
  :pattern ( (Reads1 t0@@0 t1@@0 heap f@@0 bx0))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Lang.L_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Lang.L|))
+ :qid |unknown.0:0|
+ :skolemid |831|
  :pattern ( (_module.Lang.L_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Lang.L_q d@@1) (exists ((|a#14#0#0| Bool) (|a#14#1#0| T@U) ) (= d@@1 (|#_module.Lang.L| |a#14#0#0| |a#14#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Lang.L_q d@@1) (exists ((|a#14#0#0| Bool) (|a#14#1#0| T@U) ) (! (= d@@1 (|#_module.Lang.L| |a#14#0#0| |a#14#1#0|))
+ :qid |ExpandedGuardednessdfy.129:25|
+ :skolemid |832|
+)))
+ :qid |unknown.0:0|
+ :skolemid |833|
  :pattern ( (_module.Lang.L_q d@@1))
 )))
 (assert (forall ((_module.Lang$S@@1 T@U) (|a#15#0#0@@0| Bool) (|a#15#1#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Lang.L| |a#15#0#0@@0| |a#15#1#0@@0|) (Tclass._module.Lang _module.Lang$S@@1))  (and ($Is boolType (bool_2_U |a#15#0#0@@0|) TBool) ($Is HandleTypeType |a#15#1#0@@0| (Tclass._System.___hFunc1 _module.Lang$S@@1 (Tclass._module.Lang _module.Lang$S@@1)))))
+ :qid |unknown.0:0|
+ :skolemid |834|
  :pattern ( ($Is DatatypeTypeType (|#_module.Lang.L| |a#15#0#0@@0| |a#15#1#0@@0|) (Tclass._module.Lang _module.Lang$S@@1)))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0@@1 T@T) (t1@@1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@1 t1@@1 t2 (MapType0Store t0@@1 t1@@1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0@@0 u1@@0 u2 (MapType0Store u0@@0 u1@@0 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0@@0 u1@@0 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@1 u1@@1 u2@@0 (MapType0Store u0@@1 u1@@1 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@1 u1@@1 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@2 T@T) (t1@@2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@2 t1@@2 (MapType1Store t0@@2 t1@@2 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@2 T@T) (u1@@2 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@2 u1@@2 (MapType1Store u0@@2 u1@@2 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@2 u1@@2 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0@@1| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#16| |l#0@@1| |l#1| |l#2| |l#3| |l#4|) $o $f))  (=> (and (or (not (= $o |l#0@@1|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#3| $o) |l#4|)))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |910|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#16| |l#0@@1| |l#1| |l#2| |l#3| |l#4|) $o $f))
 )))
 (assert ($IsGoodHeap $OneHeap))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.Lang$S@@2 T@U) ) (!  (and (= (Tag (Tclass._module.Lang _module.Lang$S@@2)) Tagclass._module.Lang) (= (TagFamily (Tclass._module.Lang _module.Lang$S@@2)) tytagFamily$Lang))
+ :qid |unknown.0:0|
+ :skolemid |538|
  :pattern ( (Tclass._module.Lang _module.Lang$S@@2))
 )))
 (assert (forall ((o@@2 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@2))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@2 p@@0)) (|ORD#IsNat| o@@2)) (= (|ORD#Offset| (|ORD#Minus| o@@2 p@@0)) (- (|ORD#Offset| o@@2) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@2 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((d@@2 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.Lang.L_q d@@2) (exists ((_module.Lang$S@@3 T@U) ) (! ($IsAlloc DatatypeTypeType d@@2 (Tclass._module.Lang _module.Lang$S@@3) $h@@0)
+ :qid |unknown.0:0|
+ :skolemid |836|
  :pattern ( ($IsAlloc DatatypeTypeType d@@2 (Tclass._module.Lang _module.Lang$S@@3) $h@@0))
 )))) ($IsAlloc boolType (bool_2_U (_module.Lang.nullable d@@2)) TBool $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |837|
  :pattern ( ($IsAlloc boolType (bool_2_U (_module.Lang.nullable d@@2)) TBool $h@@0))
 )))
 (assert (forall ((f@@1 T@U) (t0@@3 T@U) (t1@@3 T@U) (h@@0 T@U) ) (!  (=> (and ($IsGoodHeap h@@0) ($IsAlloc HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@3 t1@@3) h@@0)) (forall ((bx0@@0 T@U) ) (!  (=> (and ($IsAllocBox bx0@@0 t0@@3 h@@0) (Requires1 t0@@3 t1@@3 h@@0 f@@1 bx0@@0)) ($IsAllocBox (Apply1 t0@@3 t1@@3 h@@0 f@@1 bx0@@0) t1@@3 h@@0))
+ :qid |unknown.0:0|
+ :skolemid |395|
  :pattern ( (Apply1 t0@@3 t1@@3 h@@0 f@@1 bx0@@0))
 )))
+ :qid |unknown.0:0|
+ :skolemid |396|
  :pattern ( ($IsAlloc HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@3 t1@@3) h@@0))
 )))
 (assert (forall ((o@@3 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@3 p@@1) (= o@@3 p@@1)) (|ORD#Less| p@@1 o@@3))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@3 p@@1) (|ORD#Less| p@@1 o@@3))
 )))
 (assert (forall ((|a#16#0#0| Bool) (|a#16#1#0| T@U) ) (! (= (_module.Lang.nullable (|#_module.Lang.L| |a#16#0#0| |a#16#1#0|)) |a#16#0#0|)
+ :qid |ExpandedGuardednessdfy.129:25|
+ :skolemid |839|
  :pattern ( (|#_module.Lang.L| |a#16#0#0| |a#16#1#0|))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a b))
 )))
 (assert (forall ((f@@2 T@U) (t0@@4 T@U) (t1@@4 T@U) ) (! (= ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@4 t1@@4)) (forall ((h@@1 T@U) (bx0@@1 T@U) ) (!  (=> (and (and ($IsGoodHeap h@@1) ($IsBox bx0@@1 t0@@4)) (Requires1 t0@@4 t1@@4 h@@1 f@@2 bx0@@1)) ($IsBox (Apply1 t0@@4 t1@@4 h@@1 f@@2 bx0@@1) t1@@4))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |387|
  :pattern ( (Apply1 t0@@4 t1@@4 h@@1 f@@2 bx0@@1))
 )))
+ :qid |unknown.0:0|
+ :skolemid |388|
  :pattern ( ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@4 t1@@4)))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TBool) (and (= ($Box boolType ($Unbox boolType bx@@1)) bx@@1) ($Is boolType ($Unbox boolType bx@@1) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@1 TBool))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((o@@4 T@U) ) (! (<= 0 (|ORD#Offset| o@@4))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@4))
 )))
 (assert (forall ((ty T@U) ) (!  (=> ($AlwaysAllocated ty) (forall ((h@@2 T@U) (v@@1 T@U) ) (!  (=> ($IsBox v@@1 ty) ($IsAllocBox v@@1 ty h@@2))
+ :qid |DafnyPreludebpl.337:13|
+ :skolemid |79|
  :pattern ( ($IsAllocBox v@@1 ty h@@2))
 )))
+ :qid |DafnyPreludebpl.335:17|
+ :skolemid |80|
  :pattern ( ($AlwaysAllocated ty))
 )))
 (assert (forall ((|#$T0| T@U) (|#$R| T@U) ) (! (= (Tclass._System.___hFunc1_0 (Tclass._System.___hFunc1 |#$T0| |#$R|)) |#$T0|)
+ :qid |unknown.0:0|
+ :skolemid |367|
  :pattern ( (Tclass._System.___hFunc1 |#$T0| |#$R|))
 )))
 (assert (forall ((|#$T0@@0| T@U) (|#$R@@0| T@U) ) (! (= (Tclass._System.___hFunc1_1 (Tclass._System.___hFunc1 |#$T0@@0| |#$R@@0|)) |#$R@@0|)
+ :qid |unknown.0:0|
+ :skolemid |368|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@0| |#$R@@0|))
 )))
 (assert (forall ((|a#13#0#0| Bool) (|a#13#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Lang.L| |a#13#0#0| |a#13#1#0|)) |##_module.Lang.L|)
+ :qid |ExpandedGuardednessdfy.129:25|
+ :skolemid |830|
  :pattern ( (|#_module.Lang.L| |a#13#0#0| |a#13#1#0|))
 )))
 (assert (forall ((|a#17#0#0| Bool) (|a#17#1#0| T@U) ) (! (= (_module.Lang.deriv (|#_module.Lang.L| |a#17#0#0| |a#17#1#0|)) |a#17#1#0|)
+ :qid |ExpandedGuardednessdfy.129:25|
+ :skolemid |840|
  :pattern ( (|#_module.Lang.L| |a#17#0#0| |a#17#1#0|))
 )))
 (assert (forall ((_module.Lang$S@@4 T@U) ) (! (= (Tclass._module.Lang_0 (Tclass._module.Lang _module.Lang$S@@4)) _module.Lang$S@@4)
+ :qid |unknown.0:0|
+ :skolemid |539|
  :pattern ( (Tclass._module.Lang _module.Lang$S@@4))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall ((o@@5 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@5 p@@2) (or (not (= o@@5 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@5) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@5 p@@2))) (=> (and (|ORD#IsNat| o@@5) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@5 p@@2) (< (|ORD#Offset| o@@5) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@5 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@5)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@5 p@@2))
 )))
 (assert (forall ((_module._default.TotalLang$S@@0 T@U) ($ly@@1 T@U) ($Heap@@1 T@U) (|l#0@@2| T@U) ) (! (= (_module.__default.TotalLang _module._default.TotalLang$S@@0 ($LS $ly@@1) $Heap@@1 |l#0@@2|) (_module.__default.TotalLang _module._default.TotalLang$S@@0 $ly@@1 $Heap@@1 |l#0@@2|))
+ :qid |unknown.0:0|
+ :skolemid |649|
  :pattern ( (_module.__default.TotalLang _module._default.TotalLang$S@@0 ($LS $ly@@1) $Heap@@1 |l#0@@2|))
 )))
 (assert (forall ((f@@3 T@U) (t0@@5 T@U) (t1@@5 T@U) (h@@3 T@U) ) (!  (=> ($IsGoodHeap h@@3) (= ($IsAlloc HandleTypeType f@@3 (Tclass._System.___hFunc1 t0@@5 t1@@5) h@@3) (forall ((bx0@@2 T@U) ) (!  (=> (and (and ($IsBox bx0@@2 t0@@5) ($IsAllocBox bx0@@2 t0@@5 h@@3)) (Requires1 t0@@5 t1@@5 h@@3 f@@3 bx0@@2)) (forall ((r@@0 T@U) ) (!  (=> (and (or (not (= r@@0 null)) (not true)) (|Set#IsMember| (Reads1 t0@@5 t1@@5 h@@3 f@@3 bx0@@2) ($Box refType r@@0))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@3 r@@0) alloc))))
+ :qid |unknown.0:0|
+ :skolemid |392|
  :pattern ( (|Set#IsMember| (Reads1 t0@@5 t1@@5 h@@3 f@@3 bx0@@2) ($Box refType r@@0)))
 )))
+ :qid |unknown.0:0|
+ :skolemid |393|
  :pattern ( (Apply1 t0@@5 t1@@5 h@@3 f@@3 bx0@@2))
  :pattern ( (Reads1 t0@@5 t1@@5 h@@3 f@@3 bx0@@2))
 ))))
+ :qid |unknown.0:0|
+ :skolemid |394|
  :pattern ( ($IsAlloc HandleTypeType f@@3 (Tclass._System.___hFunc1 t0@@5 t1@@5) h@@3))
 )))
 (assert (forall ((|#$T0@@1| T@U) (|#$R@@1| T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@2)) bx@@2) ($Is HandleTypeType ($Unbox HandleTypeType bx@@2) (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|))))
+ :qid |unknown.0:0|
+ :skolemid |369|
  :pattern ( ($IsBox bx@@2 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.TotalLang#$S@@0| T@U) ($ly@@2 T@U) ($Heap@@2 T@U) (|l#0@@3| T@U) (|_k#0@@0| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap@@2) ($Is DatatypeTypeType |l#0@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@0|))) (= |_k#0@@0| (|ORD#FromNat| 0))) (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@0| $ly@@2 $Heap@@2 |_k#0@@0| |l#0@@3|))
+ :qid |unknown.0:0|
+ :skolemid |661|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@0| $ly@@2 $Heap@@2 |_k#0@@0| |l#0@@3|))
 ))))
 (assert (forall ((|#$T0@@2| T@U) (|#$R@@2| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) |tytagFamily$_#Func1|))
+ :qid |unknown.0:0|
+ :skolemid |366|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|))
 )))
 (assert (forall ((t0@@6 T@U) (t1@@6 T@U) (heap@@0 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and ($IsGoodHeap heap@@0) (and ($IsBox bx0@@3 t0@@6) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@6 t1@@6)))) (|Set#Equal| (Reads1 t0@@6 t1@@6 $OneHeap f@@4 bx0@@3) |Set#Empty|)) (= (Requires1 t0@@6 t1@@6 $OneHeap f@@4 bx0@@3) (Requires1 t0@@6 t1@@6 heap@@0 f@@4 bx0@@3)))
+ :qid |unknown.0:0|
+ :skolemid |386|
  :pattern ( (Requires1 t0@@6 t1@@6 $OneHeap f@@4 bx0@@3) ($IsGoodHeap heap@@0))
  :pattern ( (Requires1 t0@@6 t1@@6 heap@@0 f@@4 bx0@@3))
 )))
 (assert (forall ((_module.Lang$S@@5 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass._module.Lang _module.Lang$S@@5)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@3)) bx@@3) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@3) (Tclass._module.Lang _module.Lang$S@@5))))
+ :qid |unknown.0:0|
+ :skolemid |540|
  :pattern ( ($IsBox bx@@3 (Tclass._module.Lang _module.Lang$S@@5)))
 )))
 (assert (forall ((|_module._default.TotalLang#$S@@1| T@U) ($ly@@3 T@U) ($Heap@@3 T@U) (|_k#0@@1| T@U) (|l#0@@4| T@U) ) (! (= (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@1| ($LS $ly@@3) $Heap@@3 |_k#0@@1| |l#0@@4|) (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@1| $ly@@3 $Heap@@3 |_k#0@@1| |l#0@@4|))
+ :qid |unknown.0:0|
+ :skolemid |669|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@1| ($LS $ly@@3) $Heap@@3 |_k#0@@1| |l#0@@4|))
 )))
 (assert (forall ((o@@6 T@U) ) (!  (=> (|ORD#IsNat| o@@6) (= o@@6 (|ORD#FromNat| (|ORD#Offset| o@@6))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@6))
  :pattern ( (|ORD#IsNat| o@@6))
 )))
 (assert (forall ((o@@7 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@7))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@7 p@@3) o@@7)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@7 p@@3) o@@7))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@7 p@@3))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|Set#Equal| a@@0 b@@0) (forall ((o@@8 T@U) ) (! (= (|Set#IsMember| a@@0 o@@8) (|Set#IsMember| b@@0 o@@8))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@0 o@@8))
  :pattern ( (|Set#IsMember| b@@0 o@@8))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@0 b@@0))
 )))
 (assert (forall ((d@@3 T@U) (_module.Lang$S@@6 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Lang.L_q d@@3) ($IsAlloc DatatypeTypeType d@@3 (Tclass._module.Lang _module.Lang$S@@6) $h@@1))) ($IsAlloc HandleTypeType (_module.Lang.deriv d@@3) (Tclass._System.___hFunc1 _module.Lang$S@@6 (Tclass._module.Lang _module.Lang$S@@6)) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |838|
  :pattern ( ($IsAlloc HandleTypeType (_module.Lang.deriv d@@3) (Tclass._System.___hFunc1 _module.Lang$S@@6 (Tclass._module.Lang _module.Lang$S@@6)) $h@@1))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.TotalLang#$S@@2| T@U) ($ly@@4 T@U) ($Heap@@4 T@U) (|l#0@@5| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap@@4) ($Is DatatypeTypeType |l#0@@5| (Tclass._module.Lang |_module._default.TotalLang#$S@@2|))) (forall ((|_k#0@@2| T@U) ) (! (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@2| ($LS $ly@@4) $Heap@@4 |_k#0@@2| |l#0@@5|)
+ :qid |ExpandedGuardednessdfy.141:20|
+ :skolemid |658|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@2| ($LS $ly@@4) $Heap@@4 |_k#0@@2| |l#0@@5|))
 ))) (_module.__default.TotalLang |_module._default.TotalLang#$S@@2| ($LS $ly@@4) $Heap@@4 |l#0@@5|))
+ :qid |unknown.0:0|
+ :skolemid |660|
  :pattern ( (_module.__default.TotalLang |_module._default.TotalLang#$S@@2| ($LS $ly@@4) $Heap@@4 |l#0@@5|))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((h@@4 T@U) (v@@2 T@U) ) (! ($IsAlloc boolType v@@2 TBool h@@4)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@2 TBool h@@4))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.TotalLang#$S@@3| T@U) ($ly@@5 T@U) ($Heap@@5 T@U) (|_k#0@@3| T@U) (|l#0@@6| T@U) ) (!  (=> (or (|_module.__default.TotalLang_h#canCall| |_module._default.TotalLang#$S@@3| $Heap@@5 |_k#0@@3| |l#0@@6|) (and (< 2 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@5) ($Is DatatypeTypeType |l#0@@6| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|))))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (forall ((|s#3| T@U) ) (!  (=> ($IsBox |s#3| |_module._default.TotalLang#$S@@3|) (and (and (_module.Lang.L_q |l#0@@6|) true) (=> (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|) (and (and (_module.Lang.L_q |l#0@@6|) true) (=> (|Set#Equal| (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|) |Set#Empty|) (and (_module.Lang.L_q |l#0@@6|) (|_module.__default.TotalLang_h#canCall| |_module._default.TotalLang#$S@@3| $Heap@@5 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|)))))))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |677|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|)))
  :pattern ( (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|))
  :pattern ( (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3|))
 ))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (forall ((|s#3@@0| T@U) ) (!  (=> ($IsBox |s#3@@0| |_module._default.TotalLang#$S@@3|) (and (and (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|) (|Set#Equal| (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|) |Set#Empty|)) (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| $ly@@5 $Heap@@5 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|)))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |679|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|)))
  :pattern ( (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|))
  :pattern ( (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@0|))
 ))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@3|) (|_module.__default.TotalLang_h#canCall| |_module._default.TotalLang#$S@@3| $Heap@@5 |_k'#0| |l#0@@6|))
+ :qid |ExpandedGuardednessdfy.141:20|
+ :skolemid |678|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| $ly@@5 $Heap@@5 |_k'#0| |l#0@@6|))
 ))))) (= (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| ($LS $ly@@5) $Heap@@5 |_k#0@@3| |l#0@@6|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (forall ((|s#3@@1| T@U) ) (!  (=> ($IsBox |s#3@@1| |_module._default.TotalLang#$S@@3|) (and (and (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|) (|Set#Equal| (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|) |Set#Empty|)) (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| $ly@@5 $Heap@@5 (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|)))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |675|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|)))
  :pattern ( (Reads1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|))
  :pattern ( (Requires1 |_module._default.TotalLang#$S@@3| (Tclass._module.Lang |_module._default.TotalLang#$S@@3|) $Heap@@5 (_module.Lang.deriv |l#0@@6|) |s#3@@1|))
 ))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@3|) (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| $ly@@5 $Heap@@5 |_k'#0@@0| |l#0@@6|))
+ :qid |ExpandedGuardednessdfy.141:20|
+ :skolemid |676|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| $ly@@5 $Heap@@5 |_k'#0@@0| |l#0@@6|))
 )))))))
+ :qid |unknown.0:0|
+ :skolemid |680|
  :pattern ( (_module.__default.TotalLang_h |_module._default.TotalLang#$S@@3| ($LS $ly@@5) $Heap@@5 |_k#0@@3| |l#0@@6|) ($IsGoodHeap $Heap@@5))
 ))))
 (assert (forall ((v@@3 T@U) ) (! ($Is boolType v@@3 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@3 TBool))
 )))
 (push 1)
@@ -367,6 +531,7 @@
 (declare-fun |b$reqreads#3@0| () Bool)
 (declare-fun |b$reqreads#1@0| () Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.TotalLang)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -383,19 +548,35 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 16) (let ((anon8_correct  (=> (= (_module.__default.TotalLang _module._default.TotalLang$S@@1 ($LS $LZ) $Heap@@6 |l#0@@7|) (forall ((|s#2| T@U) ) (!  (=> ($IsBox |s#2| _module._default.TotalLang$S@@1) (and (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|) (|Set#Equal| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|) |Set#Empty|)) (_module.__default.TotalLang _module._default.TotalLang$S@@1 ($LS $LZ) $Heap@@6 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|)))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |667|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|)))
  :pattern ( (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|))
  :pattern ( (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2|))
 ))) (=> (and (forall ((|s#2@@0| T@U) ) (!  (=> ($IsBox |s#2@@0| _module._default.TotalLang$S@@1) (and (and (_module.Lang.L_q |l#0@@7|) true) (=> (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|) (and (and (_module.Lang.L_q |l#0@@7|) true) (=> (|Set#Equal| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|) |Set#Empty|) (and (_module.Lang.L_q |l#0@@7|) (|_module.__default.TotalLang#canCall| _module._default.TotalLang$S@@1 $Heap@@6 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|)))))))))
+ :qid |ExpandedGuardednessdfy.144:10|
+ :skolemid |668|
  :pattern ( ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|)))
  :pattern ( (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|))
  :pattern ( (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#2@@0|))
 )) ($Is boolType (bool_2_U (_module.__default.TotalLang _module._default.TotalLang$S@@1 ($LS $LZ) $Heap@@6 |l#0@@7|)) TBool)) (and (=> (= (ControlFlow 0 3) (- 0 6)) |b$reqreads#0@1|) (=> |b$reqreads#0@1| (and (=> (= (ControlFlow 0 3) (- 0 5)) |b$reqreads#1@2|) (=> |b$reqreads#1@2| (and (=> (= (ControlFlow 0 3) (- 0 4)) |b$reqreads#2@1|) (=> |b$reqreads#2@1| (=> (= (ControlFlow 0 3) (- 0 2)) |b$reqreads#3@1|)))))))))))
 (let ((anon13_Else_correct  (=> (and (not (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (|Set#Equal| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) |Set#Empty|))) (= |b$reqreads#0@1| |b$reqreads#0@0|)) (=> (and (and (= |b$reqreads#1@2| |b$reqreads#1@1|) (= |b$reqreads#2@1| true)) (and (= |b$reqreads#3@1| true) (= (ControlFlow 0 10) 3))) anon8_correct))))
-(let ((anon13_Then_correct  (=> (and (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (|Set#Equal| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) |Set#Empty|)) (_module.Lang.L_q |l#0@@7|)) (and (=> (= (ControlFlow 0 8) (- 0 9)) (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)) (=> (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (=> (and (= |b$reqreads#2@0| (forall (($o@@0 T@U) ($f@@0 T@U) )  (=> (and (and (or (not (= $o@@0 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@0) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@0))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@0 $f@@0))))) (= |##l#0@0| ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)))) (=> (and (and (and ($IsAlloc DatatypeTypeType |##l#0@0| (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6) (= |b$reqreads#3@0| (forall (($o@@1 T@U) ($f@@1 T@U) )  (=> (and (and (or (not (= $o@@1 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@1) alloc)))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@1) alloc)))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@1 $f@@1)))))) (and (|_module.__default.TotalLang#canCall| _module._default.TotalLang$S@@1 $Heap@@6 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|))) (= |b$reqreads#0@1| |b$reqreads#0@0|))) (and (and (= |b$reqreads#1@2| |b$reqreads#1@1|) (= |b$reqreads#2@1| |b$reqreads#2@0|)) (and (= |b$reqreads#3@1| |b$reqreads#3@0|) (= (ControlFlow 0 8) 3)))) anon8_correct)))))))
+(let ((anon13_Then_correct  (=> (and (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (|Set#Equal| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) |Set#Empty|)) (_module.Lang.L_q |l#0@@7|)) (and (=> (= (ControlFlow 0 8) (- 0 9)) (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)) (=> (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (=> (and (= |b$reqreads#2@0| (forall (($o@@0 T@U) ($f@@0 T@U) ) (!  (=> (and (and (or (not (= $o@@0 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@0) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@0))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@0 $f@@0)))
+ :qid |ExpandedGuardednessdfy.144:79|
+ :skolemid |664|
+))) (= |##l#0@0| ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)))) (=> (and (and (and ($IsAlloc DatatypeTypeType |##l#0@0| (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6) (= |b$reqreads#3@0| (forall (($o@@1 T@U) ($f@@1 T@U) ) (!  (=> (and (and (or (not (= $o@@1 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@1) alloc)))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@1) alloc)))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@1 $f@@1)))
+ :qid |ExpandedGuardednessdfy.144:67|
+ :skolemid |665|
+)))) (and (|_module.__default.TotalLang#canCall| _module._default.TotalLang$S@@1 $Heap@@6 ($Unbox DatatypeTypeType (Apply1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|))) (= |b$reqreads#0@1| |b$reqreads#0@0|))) (and (and (= |b$reqreads#1@2| |b$reqreads#1@1|) (= |b$reqreads#2@1| |b$reqreads#2@0|)) (and (= |b$reqreads#3@1| |b$reqreads#3@0|) (= (ControlFlow 0 8) 3)))) anon8_correct)))))))
 (let ((anon12_Else_correct  (=> (and (not (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)) (= |b$reqreads#1@1| true)) (and (=> (= (ControlFlow 0 13) 8) anon13_Then_correct) (=> (= (ControlFlow 0 13) 10) anon13_Else_correct)))))
-(let ((anon12_Then_correct  (=> (and (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (_module.Lang.L_q |l#0@@7|)) (and ($IsAllocBox ($Box HandleTypeType (_module.Lang.deriv |l#0@@7|)) (Tclass._System.___hFunc1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1)) $Heap@@6) ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6))) (and (=> (= (ControlFlow 0 11) (- 0 12)) (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)) (=> (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (=> (and (= |b$reqreads#1@0| (forall (($o@@2 T@U) ($f@@2 T@U) )  (=> (and (and (or (not (= $o@@2 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@2) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@2))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@2 $f@@2))))) (= |b$reqreads#1@1| |b$reqreads#1@0|)) (and (=> (= (ControlFlow 0 11) 8) anon13_Then_correct) (=> (= (ControlFlow 0 11) 10) anon13_Else_correct))))))))
-(let ((anon11_Then_correct  (=> (and ($IsBox |s#1@0| _module._default.TotalLang$S@@1) ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6)) (=> (and (and (_module.Lang.L_q |l#0@@7|) ($IsAllocBox ($Box HandleTypeType (_module.Lang.deriv |l#0@@7|)) (Tclass._System.___hFunc1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1)) $Heap@@6)) (and ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6) (= |b$reqreads#0@0| (forall (($o@@3 T@U) ($f@@3 T@U) )  (=> (and (and (or (not (= $o@@3 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@3) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@3))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@3 $f@@3))))))) (and (=> (= (ControlFlow 0 14) 11) anon12_Then_correct) (=> (= (ControlFlow 0 14) 13) anon12_Else_correct))))))
+(let ((anon12_Then_correct  (=> (and (and (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (_module.Lang.L_q |l#0@@7|)) (and ($IsAllocBox ($Box HandleTypeType (_module.Lang.deriv |l#0@@7|)) (Tclass._System.___hFunc1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1)) $Heap@@6) ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6))) (and (=> (= (ControlFlow 0 11) (- 0 12)) (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|)) (=> (Requires1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) (=> (and (= |b$reqreads#1@0| (forall (($o@@2 T@U) ($f@@2 T@U) ) (!  (=> (and (and (or (not (= $o@@2 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@2) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@2))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@2 $f@@2)))
+ :qid |ExpandedGuardednessdfy.144:49|
+ :skolemid |663|
+))) (= |b$reqreads#1@1| |b$reqreads#1@0|)) (and (=> (= (ControlFlow 0 11) 8) anon13_Then_correct) (=> (= (ControlFlow 0 11) 10) anon13_Else_correct))))))))
+(let ((anon11_Then_correct  (=> (and ($IsBox |s#1@0| _module._default.TotalLang$S@@1) ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6)) (=> (and (and (_module.Lang.L_q |l#0@@7|) ($IsAllocBox ($Box HandleTypeType (_module.Lang.deriv |l#0@@7|)) (Tclass._System.___hFunc1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1)) $Heap@@6)) (and ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6) (= |b$reqreads#0@0| (forall (($o@@3 T@U) ($f@@3 T@U) ) (!  (=> (and (and (or (not (= $o@@3 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@@6 $o@@3) alloc)))) (|Set#IsMember| (Reads1 _module._default.TotalLang$S@@1 (Tclass._module.Lang _module._default.TotalLang$S@@1) $Heap@@6 (_module.Lang.deriv |l#0@@7|) |s#1@0|) ($Box refType $o@@3))) (U_2_bool (MapType0Select refType FieldType boolType $_ReadsFrame@0 $o@@3 $f@@3)))
+ :qid |ExpandedGuardednessdfy.144:26|
+ :skolemid |662|
+))))) (and (=> (= (ControlFlow 0 14) 11) anon12_Then_correct) (=> (= (ControlFlow 0 14) 13) anon12_Else_correct))))))
 (let ((anon11_Else_correct  (=> (and (not (and ($IsBox |s#1@0| _module._default.TotalLang$S@@1) ($IsAllocBox |s#1@0| _module._default.TotalLang$S@@1 $Heap@@6))) (= |b$reqreads#0@1| true)) (=> (and (and (= |b$reqreads#1@2| true) (= |b$reqreads#2@1| true)) (and (= |b$reqreads#3@1| true) (= (ControlFlow 0 7) 3))) anon8_correct))))
 (let ((anon10_Then_correct true))
 (let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#16| null $Heap@@6 alloc $Heap@@6 alloc)) (and (and (=> (= (ControlFlow 0 15) 1) anon10_Then_correct) (=> (= (ControlFlow 0 15) 14) anon11_Then_correct)) (=> (= (ControlFlow 0 15) 7) anon11_Else_correct)))))

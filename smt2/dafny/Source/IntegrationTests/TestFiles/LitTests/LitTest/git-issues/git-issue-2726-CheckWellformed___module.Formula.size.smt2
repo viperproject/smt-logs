@@ -81,25 +81,35 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._System.nat |##_module.Formula.And| Tagclass._module.Formula |##_module.Formula.Not| |##_module.Formula.True| tytagFamily$nat tytagFamily$Formula)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|a#14#0#0| T@U) (|a#14#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Formula.And| |a#14#0#0| |a#14#1#0|) Tclass._module.Formula)  (and ($Is DatatypeTypeType |a#14#0#0| Tclass._module.Formula) ($Is DatatypeTypeType |a#14#1#0| Tclass._module.Formula)))
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |484|
  :pattern ( ($Is DatatypeTypeType (|#_module.Formula.And| |a#14#0#0| |a#14#1#0|) Tclass._module.Formula))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (this T@U) ) (!  (=> (or (|_module.Formula.size#canCall| this) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType this Tclass._module.Formula))) (and (and (=> (_module.Formula.And_q this) (let ((|r#1| (_module.Formula.right this)))
@@ -109,44 +119,76 @@
 (let ((|l#0| (_module.Formula.left this)))
 (+ (_module.Formula.size $ly |l#0|) (_module.Formula.size $ly |r#0|)))) (ite (_module.Formula.Not_q this) (let ((|u#0| (_module.Formula.underlying this)))
 (+ (_module.Formula.size $ly |u#0|) 1)) 1)))))
+ :qid |gitissue2726dfy.9:12|
+ :skolemid |514|
  :pattern ( (_module.Formula.size ($LS $ly) this))
 ))))
 (assert (= (DatatypeCtorId |#_module.Formula.True|) |##_module.Formula.True|))
 (assert ($Is DatatypeTypeType |#_module.Formula.True| Tclass._module.Formula))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d T@U) ) (! (= (_module.Formula.And_q d) (= (DatatypeCtorId d) |##_module.Formula.And|))
+ :qid |unknown.0:0|
+ :skolemid |480|
  :pattern ( (_module.Formula.And_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Formula.Not_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Formula.Not|))
+ :qid |unknown.0:0|
+ :skolemid |493|
  :pattern ( (_module.Formula.Not_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Formula.True_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Formula.True|))
+ :qid |unknown.0:0|
+ :skolemid |501|
  :pattern ( (_module.Formula.True_q d@@1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Formula.And_q d@@2) (exists ((|a#13#0#0| T@U) (|a#13#1#0| T@U) ) (= d@@2 (|#_module.Formula.And| |a#13#0#0| |a#13#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Formula.And_q d@@2) (exists ((|a#13#0#0| T@U) (|a#13#1#0| T@U) ) (! (= d@@2 (|#_module.Formula.And| |a#13#0#0| |a#13#1#0|))
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |481|
+)))
+ :qid |unknown.0:0|
+ :skolemid |482|
  :pattern ( (_module.Formula.And_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (_module.Formula.True_q d@@3) (= d@@3 |#_module.Formula.True|))
+ :qid |unknown.0:0|
+ :skolemid |502|
  :pattern ( (_module.Formula.True_q d@@3))
 )))
-(assert (forall ((d@@4 T@U) ) (!  (=> (_module.Formula.Not_q d@@4) (exists ((|a#21#0#0| T@U) ) (= d@@4 (|#_module.Formula.Not| |a#21#0#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (_module.Formula.Not_q d@@4) (exists ((|a#21#0#0| T@U) ) (! (= d@@4 (|#_module.Formula.Not| |a#21#0#0|))
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |494|
+)))
+ :qid |unknown.0:0|
+ :skolemid |495|
  :pattern ( (_module.Formula.Not_q d@@4))
 )))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((|a#22#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Formula.Not| |a#22#0#0|) Tclass._module.Formula) ($Is DatatypeTypeType |a#22#0#0| Tclass._module.Formula))
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |496|
  :pattern ( ($Is DatatypeTypeType (|#_module.Formula.Not| |a#22#0#0|) Tclass._module.Formula))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (this@@0 T@U) ) (!  (=> (or (|_module.Formula.size#canCall| (Lit DatatypeTypeType this@@0)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType this@@0 Tclass._module.Formula))) (and (and (=> (U_2_bool (Lit boolType (bool_2_U (_module.Formula.And_q (Lit DatatypeTypeType this@@0))))) (let ((|r#3| (Lit DatatypeTypeType (_module.Formula.right (Lit DatatypeTypeType this@@0)))))
@@ -156,66 +198,105 @@
 (let ((|l#2| (Lit DatatypeTypeType (_module.Formula.left (Lit DatatypeTypeType this@@0)))))
 (LitInt (+ (_module.Formula.size ($LS $ly@@0) |l#2|) (_module.Formula.size ($LS $ly@@0) |r#2|))))) (ite (_module.Formula.Not_q (Lit DatatypeTypeType this@@0)) (let ((|u#2| (Lit DatatypeTypeType (_module.Formula.underlying (Lit DatatypeTypeType this@@0)))))
 (LitInt (+ (_module.Formula.size ($LS $ly@@0) |u#2|) 1))) 1)))))
+ :qid |gitissue2726dfy.9:12|
  :weight 3
+ :skolemid |515|
  :pattern ( (_module.Formula.size ($LS $ly@@0) (Lit DatatypeTypeType this@@0)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) (this@@1 T@U) ) (!  (=> (or (|_module.Formula.size#canCall| this@@1) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType this@@1 Tclass._module.Formula))) (<= (LitInt 0) (_module.Formula.size $ly@@1 this@@1)))
+ :qid |gitissue2726dfy.9:12|
+ :skolemid |512|
  :pattern ( (_module.Formula.size $ly@@1 this@@1))
 ))))
 (assert (forall ((|a#12#0#0| T@U) (|a#12#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Formula.And| |a#12#0#0| |a#12#1#0|)) |##_module.Formula.And|)
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |479|
  :pattern ( (|#_module.Formula.And| |a#12#0#0| |a#12#1#0|))
 )))
 (assert (forall ((|a#16#0#0| T@U) (|a#16#1#0| T@U) ) (! (= (_module.Formula.left (|#_module.Formula.And| |a#16#0#0| |a#16#1#0|)) |a#16#0#0|)
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |488|
  :pattern ( (|#_module.Formula.And| |a#16#0#0| |a#16#1#0|))
 )))
 (assert (forall ((|a#18#0#0| T@U) (|a#18#1#0| T@U) ) (! (= (_module.Formula.right (|#_module.Formula.And| |a#18#0#0| |a#18#1#0|)) |a#18#1#0|)
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |490|
  :pattern ( (|#_module.Formula.And| |a#18#0#0| |a#18#1#0|))
 )))
 (assert (forall ((|a#20#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Formula.Not| |a#20#0#0|)) |##_module.Formula.Not|)
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |492|
  :pattern ( (|#_module.Formula.Not| |a#20#0#0|))
 )))
 (assert (forall ((|a#24#0#0| T@U) ) (! (= (_module.Formula.underlying (|#_module.Formula.Not| |a#24#0#0|)) |a#24#0#0|)
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |499|
  :pattern ( (|#_module.Formula.Not| |a#24#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall ((|a#17#0#0| T@U) (|a#17#1#0| T@U) ) (! (< (DtRank |a#17#0#0|) (DtRank (|#_module.Formula.And| |a#17#0#0| |a#17#1#0|)))
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |489|
  :pattern ( (|#_module.Formula.And| |a#17#0#0| |a#17#1#0|))
 )))
 (assert (forall ((|a#19#0#0| T@U) (|a#19#1#0| T@U) ) (! (< (DtRank |a#19#1#0|) (DtRank (|#_module.Formula.And| |a#19#0#0| |a#19#1#0|)))
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |491|
  :pattern ( (|#_module.Formula.And| |a#19#0#0| |a#19#1#0|))
 )))
 (assert (forall (($ly@@2 T@U) (this@@2 T@U) ) (! (= (_module.Formula.size ($LS $ly@@2) this@@2) (_module.Formula.size $ly@@2 this@@2))
+ :qid |gitissue2726dfy.9:12|
+ :skolemid |510|
  :pattern ( (_module.Formula.size ($LS $ly@@2) this@@2))
 )))
 (assert (forall ((|a#25#0#0| T@U) ) (! (< (DtRank |a#25#0#0|) (DtRank (|#_module.Formula.Not| |a#25#0#0|)))
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |500|
  :pattern ( (|#_module.Formula.Not| |a#25#0#0|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3@@0|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |519|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3@@0|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ) (!  (=> ($Is DatatypeTypeType d@@5 Tclass._module.Formula) (or (or (_module.Formula.And_q d@@5) (_module.Formula.Not_q d@@5)) (_module.Formula.True_q d@@5)))
+ :qid |unknown.0:0|
+ :skolemid |505|
  :pattern ( (_module.Formula.True_q d@@5) ($Is DatatypeTypeType d@@5 Tclass._module.Formula))
  :pattern ( (_module.Formula.Not_q d@@5) ($Is DatatypeTypeType d@@5 Tclass._module.Formula))
  :pattern ( (_module.Formula.And_q d@@5) ($Is DatatypeTypeType d@@5 Tclass._module.Formula))
 )))
 (assert (forall ((d@@6 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@6 Tclass._module.Formula)) ($IsAlloc DatatypeTypeType d@@6 Tclass._module.Formula $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |503|
  :pattern ( ($IsAlloc DatatypeTypeType d@@6 Tclass._module.Formula $h@@0))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
@@ -224,24 +305,38 @@
 (assert (= (TagFamily Tclass._module.Formula) tytagFamily$Formula))
 (assert (= |#_module.Formula.True| (Lit DatatypeTypeType |#_module.Formula.True|)))
 (assert (forall ((d@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Formula.And_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass._module.Formula $h@@1))) ($IsAlloc DatatypeTypeType (_module.Formula.left d@@7) Tclass._module.Formula $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |485|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Formula.left d@@7) Tclass._module.Formula $h@@1))
 )))
 (assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.Formula.And_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass._module.Formula $h@@2))) ($IsAlloc DatatypeTypeType (_module.Formula.right d@@8) Tclass._module.Formula $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |486|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Formula.right d@@8) Tclass._module.Formula $h@@2))
 )))
 (assert (forall ((d@@9 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.Formula.Not_q d@@9) ($IsAlloc DatatypeTypeType d@@9 Tclass._module.Formula $h@@3))) ($IsAlloc DatatypeTypeType (_module.Formula.underlying d@@9) Tclass._module.Formula $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |497|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Formula.underlying d@@9) Tclass._module.Formula $h@@3))
 )))
 (assert (forall ((|a#15#0#0| T@U) (|a#15#1#0| T@U) ) (! (= (|#_module.Formula.And| (Lit DatatypeTypeType |a#15#0#0|) (Lit DatatypeTypeType |a#15#1#0|)) (Lit DatatypeTypeType (|#_module.Formula.And| |a#15#0#0| |a#15#1#0|)))
+ :qid |gitissue2726dfy.5:9|
+ :skolemid |487|
  :pattern ( (|#_module.Formula.And| (Lit DatatypeTypeType |a#15#0#0|) (Lit DatatypeTypeType |a#15#1#0|)))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#23#0#0| T@U) ) (! (= (|#_module.Formula.Not| (Lit DatatypeTypeType |a#23#0#0|)) (Lit DatatypeTypeType (|#_module.Formula.Not| |a#23#0#0|)))
+ :qid |gitissue2726dfy.6:9|
+ :skolemid |498|
  :pattern ( (|#_module.Formula.Not| (Lit DatatypeTypeType |a#23#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (push 1)
@@ -261,6 +356,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.Formula.size)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

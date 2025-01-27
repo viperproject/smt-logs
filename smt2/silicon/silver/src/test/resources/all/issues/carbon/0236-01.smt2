@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:48
+; Started: 2025-01-26 23:06:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -742,7 +742,7 @@
       (= (inv@6@01 (loc<Ref> a@1@01 i@4@01)) i@4@01)
       (img@7@01 (loc<Ref> a@1@01 i@4@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first $t@3@01)) (loc<Ref> a@1@01 i@4@01)) (loc<Ref> a@1@01 i@4@01)))
-  :qid |quant-u-11686|)))
+  :qid |quant-u-11633|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -782,7 +782,7 @@
     (and (<= 0 (inv@6@01 r)) (< (inv@6@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@8@01  $FVF<val>) r) r))
   :pattern ((inv@6@01 r))
-  :qid |quant-u-11687|)))
+  :qid |quant-u-11634|)))
 ; [eval] (forall i: Int :: { loc(a, i).val } 0 <= i && i < len(a) ==> loc(a, i).val == i)
 (declare-const i@9@01 Int)
 (push) ; 4
@@ -948,7 +948,7 @@
         (= (inv@6@01 (loc<Ref> a@1@01 i@4@01)) i@4@01)
         (img@7@01 (loc<Ref> a@1@01 i@4@01))))
     :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first $t@3@01)) (loc<Ref> a@1@01 i@4@01)) (loc<Ref> a@1@01 i@4@01)))
-    :qid |quant-u-11686|))
+    :qid |quant-u-11633|))
   (forall ((i@4@01 Int)) (!
     (=>
       (and (<= 0 i@4@01) (< i@4@01 (len<Int> a@1@01)))
@@ -960,7 +960,7 @@
       (and (<= 0 (inv@6@01 r)) (< (inv@6@01 r) (len<Int> a@1@01)))
       ($FVF.loc_val ($FVF.lookup_val (as sm@8@01  $FVF<val>) r) r))
     :pattern ((inv@6@01 r))
-    :qid |quant-u-11687|))
+    :qid |quant-u-11634|))
   (forall ((i@9@01 Int)) (!
     (and
       (or (<= 0 i@9@01) (not (<= 0 i@9@01)))
@@ -1103,7 +1103,7 @@
       (= (inv@14@01 (loc<Ref> a@1@01 i@12@01)) i@12@01)
       (img@15@01 (loc<Ref> a@1@01 i@12@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@11@01 (loc<Ref> a@1@01 i@12@01)) (loc<Ref> a@1@01 i@12@01)))
-  :qid |quant-u-11689|)))
+  :qid |quant-u-11636|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1141,7 +1141,7 @@
     (and (<= 0 (inv@14@01 r)) (< (inv@14@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@16@01  $FVF<val>) r) r))
   :pattern ((inv@14@01 r))
-  :qid |quant-u-11690|)))
+  :qid |quant-u-11637|)))
 ; State saturation: after unfold
 (set-option :timeout 40)
 (check-sat)
@@ -1186,7 +1186,7 @@
       (pTaken@17@01 r))
     $Perm.No)
   
-  :qid |quant-u-11692|))))
+  :qid |quant-u-11639|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -1198,7 +1198,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@17@01 r) $Perm.No)
   
-  :qid |quant-u-11693|))))
+  :qid |quant-u-11640|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -1211,7 +1211,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (loc<Ref> a@1@01 0)) (= (- $Perm.Write (pTaken@17@01 r)) $Perm.No))
   
-  :qid |quant-u-11694|))))
+  :qid |quant-u-11641|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1390,7 +1390,7 @@
     (and (<= 0 (inv@21@01 r)) (< (inv@21@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@23@01  $FVF<val>) r) r))
   :pattern ((inv@21@01 r))
-  :qid |quant-u-11696|)))
+  :qid |quant-u-11643|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@24@01 ((r $Ref)) $Perm
   (ite
@@ -1438,7 +1438,7 @@
       (pTaken@24@01 r))
     $Perm.No)
   
-  :qid |quant-u-11698|))))
+  :qid |quant-u-11645|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1456,7 +1456,7 @@
       (= r (loc<Ref> a@1@01 (inv@21@01 r))))
     (= (- $Perm.Write (pTaken@24@01 r)) $Perm.No))
   
-  :qid |quant-u-11699|))))
+  :qid |quant-u-11646|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -1488,7 +1488,7 @@
       (= r (loc<Ref> a@1@01 (inv@21@01 r))))
     (= (- (- $Perm.Write (pTaken@24@01 r)) (pTaken@25@01 r)) $Perm.No))
   
-  :qid |quant-u-11701|))))
+  :qid |quant-u-11648|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1646,7 +1646,7 @@
       (= (inv@29@01 (loc<Ref> a@1@01 i@27@01)) i@27@01)
       (img@30@01 (loc<Ref> a@1@01 i@27@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@11@01 (loc<Ref> a@1@01 i@27@01)) (loc<Ref> a@1@01 i@27@01)))
-  :qid |quant-u-11703|)))
+  :qid |quant-u-11650|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1684,7 +1684,7 @@
     (and (<= 0 (inv@29@01 r)) (< (inv@29@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@31@01  $FVF<val>) r) r))
   :pattern ((inv@29@01 r))
-  :qid |quant-u-11704|)))
+  :qid |quant-u-11651|)))
 ; [eval] (forall i: Int :: { loc(a, i).val } 0 <= i && i < len(a) ==> loc(a, i).val == i)
 (declare-const i@32@01 Int)
 (push) ; 7
@@ -1844,7 +1844,7 @@
         (= (inv@29@01 (loc<Ref> a@1@01 i@27@01)) i@27@01)
         (img@30@01 (loc<Ref> a@1@01 i@27@01))))
     :pattern (($FVF.loc_val ($FVF.lookup_val $t@11@01 (loc<Ref> a@1@01 i@27@01)) (loc<Ref> a@1@01 i@27@01)))
-    :qid |quant-u-11703|))
+    :qid |quant-u-11650|))
   (forall ((i@27@01 Int)) (!
     (=>
       (and (<= 0 i@27@01) (< i@27@01 (len<Int> a@1@01)))
@@ -1856,7 +1856,7 @@
       (and (<= 0 (inv@29@01 r)) (< (inv@29@01 r) (len<Int> a@1@01)))
       ($FVF.loc_val ($FVF.lookup_val (as sm@31@01  $FVF<val>) r) r))
     :pattern ((inv@29@01 r))
-    :qid |quant-u-11704|))
+    :qid |quant-u-11651|))
   (forall ((i@32@01 Int)) (!
     (and
       (or (<= 0 i@32@01) (not (<= 0 i@32@01)))

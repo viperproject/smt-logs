@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:28:49
+; Started: 2025-01-26 23:00:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -127,11 +127,11 @@
 (assert (forall ((s@$ $Snap) (n_pkg_V0@0@00 Int)) (!
   (= (foo_pkg_F%limited s@$ n_pkg_V0@0@00) (foo_pkg_F s@$ n_pkg_V0@0@00))
   :pattern ((foo_pkg_F s@$ n_pkg_V0@0@00))
-  :qid |quant-u-4982|)))
+  :qid |quant-u-4928|)))
 (assert (forall ((s@$ $Snap) (n_pkg_V0@0@00 Int)) (!
   (foo_pkg_F%stateless n_pkg_V0@0@00)
   :pattern ((foo_pkg_F%limited s@$ n_pkg_V0@0@00))
-  :qid |quant-u-4983|)))
+  :qid |quant-u-4929|)))
 ; ---------- FUNCTION bar_pkg_F----------
 (declare-fun n_pkg_V1@2@00 () Int)
 (declare-fun result@3@00 () Bool)
@@ -142,8 +142,8 @@
 (assert (forall ((s@$ $Snap) (n_pkg_V1@2@00 Int)) (!
   (= (bar_pkg_F%limited s@$ n_pkg_V1@2@00) (bar_pkg_F s@$ n_pkg_V1@2@00))
   :pattern ((bar_pkg_F s@$ n_pkg_V1@2@00))
-  :qid |quant-u-4984|)))
+  :qid |quant-u-4930|)))
 (assert (forall ((s@$ $Snap) (n_pkg_V1@2@00 Int)) (!
   (bar_pkg_F%stateless n_pkg_V1@2@00)
   :pattern ((bar_pkg_F%limited s@$ n_pkg_V1@2@00))
-  :qid |quant-u-4985|)))
+  :qid |quant-u-4931|)))

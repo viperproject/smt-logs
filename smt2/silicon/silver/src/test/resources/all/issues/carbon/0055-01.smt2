@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:59
+; Started: 2025-01-26 23:07:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -136,11 +136,11 @@
     (Nodecontains$%limited s@$ this$_4@0@00 i@1@00)
     (Nodecontains$ s@$ this$_4@0@00 i@1@00))
   :pattern ((Nodecontains$ s@$ this$_4@0@00 i@1@00))
-  :qid |quant-u-12005|)))
+  :qid |quant-u-11952|)))
 (assert (forall ((s@$ $Snap) (this$_4@0@00 $Ref) (i@1@00 Int)) (!
   (Nodecontains$%stateless this$_4@0@00 i@1@00)
   :pattern ((Nodecontains$%limited s@$ this$_4@0@00 i@1@00))
-  :qid |quant-u-12006|)))
+  :qid |quant-u-11953|)))
 (assert (forall ((s@$ $Snap) (this$_4@0@00 $Ref) (i@1@00 Int)) (!
   (and
     ($Perm.isReadVar $k@5@00)
@@ -172,7 +172,7 @@
               ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))))))
   :pattern ((Nodecontains$ s@$ this$_4@0@00 i@1@00))
   :pattern ((Nodecontains$%stateless this$_4@0@00 i@1@00) (Nodevalid$%trigger ($Snap.second s@$) this$_4@0@00))
-  :qid |quant-u-12009|)))
+  :qid |quant-u-11956|)))
 (assert (forall ((s@$ $Snap) (this$_4@0@00 $Ref) (i@1@00 Int)) (!
   (=>
     (and
@@ -194,25 +194,25 @@
       ($Snap.combine $Snap.unit ($Snap.second ($Snap.second ($Snap.second s@$))))
       ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))
   :pattern ((Nodecontains$ s@$ this$_4@0@00 i@1@00))
-  :qid |quant-u-12010|)))
+  :qid |quant-u-11957|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (= (Nodesize$%limited s@$ this$_3@3@00) (Nodesize$ s@$ this$_3@3@00))
   :pattern ((Nodesize$ s@$ this$_3@3@00))
-  :qid |quant-u-12007|)))
+  :qid |quant-u-11954|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (Nodesize$%stateless this$_3@3@00)
   :pattern ((Nodesize$%limited s@$ this$_3@3@00))
-  :qid |quant-u-12008|)))
+  :qid |quant-u-11955|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (let ((result@4@00 (Nodesize$%limited s@$ this$_3@3@00))) (and
     ($Perm.isReadVar $k@11@00)
     (=> (Nodesize$%precondition s@$ this$_3@3@00) (> result@4@00 0))))
   :pattern ((Nodesize$%limited s@$ this$_3@3@00))
-  :qid |quant-u-12011|)))
+  :qid |quant-u-11958|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (let ((result@4@00 (Nodesize$%limited s@$ this$_3@3@00))) true)
   :pattern ((Nodesize$%limited s@$ this$_3@3@00))
-  :qid |quant-u-12012|)))
+  :qid |quant-u-11959|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@11@00)
@@ -236,7 +236,7 @@
           1))))
   :pattern ((Nodesize$ s@$ this$_3@3@00))
   :pattern ((Nodesize$%stateless this$_3@3@00) (Nodevalid$%trigger ($Snap.second s@$) this$_3@3@00))
-  :qid |quant-u-12013|)))
+  :qid |quant-u-11960|)))
 (assert (forall ((s@$ $Snap) (this$_3@3@00 $Ref)) (!
   (=>
     (Nodesize$%precondition s@$ this$_3@3@00)
@@ -250,7 +250,7 @@
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))
       true))
   :pattern ((Nodesize$ s@$ this$_3@3@00))
-  :qid |quant-u-12014|)))
+  :qid |quant-u-11961|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Nodeinit$ ----------

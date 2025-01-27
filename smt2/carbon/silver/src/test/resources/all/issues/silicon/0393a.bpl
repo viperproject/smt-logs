@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:41
+// Date:         2025-01-26 23:14:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0393a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0393a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -597,8 +597,8 @@ procedure peek_neighbors#definedness(graph: (Seq Ref), i: int) returns (Result: 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -629,8 +629,8 @@ procedure peek_neighbors#definedness(graph: (Seq Ref), i: int) returns (Result: 
       UnfoldingMask := Mask;
       assume Node#trigger(UnfoldingHeap, Node(Seq#Index(graph, i)));
       assume UnfoldingHeap[null, Node(Seq#Index(graph, i))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(graph, i), id_2]), FrameFragment(UnfoldingHeap[Seq#Index(graph, i), neighbors]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node(graph[i]) (0393a.vpr@20.1--26.1) [68833]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node(Seq#Index(graph, i))];

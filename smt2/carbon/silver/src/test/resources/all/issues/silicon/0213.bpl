@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:55
+// Date:         2025-01-26 23:15:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0213.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0213-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -330,20 +330,20 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -351,8 +351,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -401,8 +401,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -426,8 +426,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
         
         // -- Translating statement: label lhs1 -- 0213.vpr@23.13--23.29
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -440,8 +440,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
           UnfoldingMask := WandDefRHSMask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0213.vpr@23.13--23.29) [76926]"}
             perm >= NoPerm;
@@ -481,8 +481,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
           UnfoldingMask := oldMask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0213.vpr@23.13--23.29) [76932]"}
             perm >= NoPerm;
@@ -532,8 +532,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
   // -- Translating statement: unfold acc(Foo(x), write) -- 0213.vpr@25.5--25.30
     assume Foo#trigger(Heap, Foo(x));
     assume Heap[null, Foo(x)] == CombineFrames(FrameFragment(Heap[x, f1_2]), CombineFrames(FrameFragment(Heap[Heap[x, f1_2], val]), FrameFragment(Heap[x, val])));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Foo(x) might fail. There might be insufficient permission to access Foo(x) (0213.vpr@25.5--25.30) [76940]"}
@@ -592,15 +592,15 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
     
     // -- Translating statement: label lhs2 -- 0213.vpr@27.13--27.31
       lhs2:
-      Labellhs2Heap := Ops_1Heap;
       Labellhs2Mask := Ops_1Mask;
+      Labellhs2Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(Foo(x), write) -- 0213.vpr@28.9--28.25
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -889,8 +889,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
           UnfoldingMask := Result_3Mask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (0213.vpr@27.5--29.6) [76956]"}
             perm >= NoPerm;
@@ -930,8 +930,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
           UnfoldingMask := oldMask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (0213.vpr@27.5--29.6) [76962]"}
             perm >= NoPerm;
@@ -977,8 +977,8 @@ procedure silicon_fail(x: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of silicon_fail might not hold. There might be insufficient permission to access res.val (0213.vpr@22.13--22.25) [76969]"}
@@ -1003,20 +1003,20 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -1024,8 +1024,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_8: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -1074,8 +1074,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1099,8 +1099,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
         
         // -- Translating statement: label lhs4 -- 0213.vpr@42.13--42.29
           lhs4:
-          Labellhs4Heap := WandDefLHSHeap;
           Labellhs4Mask := WandDefLHSMask;
+          Labellhs4Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1113,8 +1113,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
           UnfoldingMask := WandDefRHSMask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0213.vpr@42.13--42.29) [76971]"}
             perm >= NoPerm;
@@ -1170,8 +1170,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
   // -- Translating statement: unfold acc(Foo(x), write) -- 0213.vpr@44.5--44.30
     assume Foo#trigger(Heap, Foo(x));
     assume Heap[null, Foo(x)] == CombineFrames(FrameFragment(Heap[x, f1_2]), CombineFrames(FrameFragment(Heap[Heap[x, f1_2], val]), FrameFragment(Heap[x, val])));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Foo(x) might fail. There might be insufficient permission to access Foo(x) (0213.vpr@44.5--44.30) [76979]"}
@@ -1234,15 +1234,15 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
     
     // -- Translating statement: label lhs5 -- 0213.vpr@47.13--47.31
       lhs5:
-      Labellhs5Heap := Ops_3Heap;
       Labellhs5Mask := Ops_3Mask;
+      Labellhs5Heap := Ops_3Heap;
       b_9 := b_9 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_9) {
       
       // -- Translating statement: fold acc(Foo(x), write) -- 0213.vpr@48.9--48.25
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_10 := b_10 && state(Used_4Heap, Used_4Mask);
@@ -1531,8 +1531,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
           UnfoldingMask := Result_7Mask;
           assume Foo#trigger(UnfoldingHeap, Foo(x));
           assume UnfoldingHeap[null, Foo(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f1_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[x, f1_2], val]), FrameFragment(UnfoldingHeap[x, val])));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := 1 / 2;
           assert {:msg "  Packaging wand might fail. Fraction 1 / 2 might be negative. (0213.vpr@47.5--49.6) [76996]"}
             perm >= NoPerm;
@@ -1584,8 +1584,8 @@ procedure silicon_ok1(x: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of silicon_ok1 might not hold. There might be insufficient permission to access res.val (0213.vpr@41.13--41.25) [77003]"}
@@ -1610,14 +1610,14 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var Ops_5Heap: HeapType;
@@ -1626,8 +1626,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_16: bool;
-  var Labellhs8Heap: HeapType;
   var Labellhs8Mask: MaskType;
+  var Labellhs8Heap: HeapType;
   var boolCur_2: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
@@ -1641,8 +1641,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
   var b_19: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1677,8 +1677,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1702,8 +1702,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
         
         // -- Translating statement: label lhs7 -- 0213.vpr@61.13--61.29
           lhs7:
-          Labellhs7Heap := WandDefLHSHeap;
           Labellhs7Mask := WandDefLHSMask;
+          Labellhs7Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1755,8 +1755,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
     
     // -- Translating statement: label lhs8 -- 0213.vpr@64.13--64.29
       lhs8:
-      Labellhs8Heap := Ops_5Heap;
       Labellhs8Mask := Ops_5Mask;
+      Labellhs8Heap := Ops_5Heap;
       b_17 := b_17 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(x.val, write) && x.val == old(x.val)
@@ -1839,8 +1839,8 @@ procedure silicon_ok2(x: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of silicon_ok2 might not hold. There might be insufficient permission to access res.val (0213.vpr@60.13--60.25) [77014]"}

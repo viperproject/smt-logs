@@ -72,16 +72,22 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc |##Members.DM.A| Tagclass.Members.DM |##Members.DM.B| |##Members.DM.C| tytagFamily$DM)
@@ -89,109 +95,185 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|a#19#0#0| Int) (|a#19#1#0| Int) ) (! (= ($Is DatatypeTypeType (|#Members.DM.B| |a#19#0#0| |a#19#1#0|) Tclass.Members.DM)  (and ($Is intType (int_2_U |a#19#0#0|) TInt) ($Is intType (int_2_U |a#19#1#0|) TInt)))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:37|
+ :skolemid |2160|
  :pattern ( ($Is DatatypeTypeType (|#Members.DM.B| |a#19#0#0| |a#19#1#0|) Tclass.Members.DM))
 )))
 (assert (forall ((|a#25#0#0| Int) (|a#25#1#0| Int) ) (! (= ($Is DatatypeTypeType (|#Members.DM.C| |a#25#0#0| |a#25#1#0|) Tclass.Members.DM)  (and ($Is intType (int_2_U |a#25#0#0|) TInt) ($Is intType (int_2_U |a#25#1#0|) TInt)))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:57|
+ :skolemid |2170|
  :pattern ( ($Is DatatypeTypeType (|#Members.DM.C| |a#25#0#0| |a#25#1#0|) Tclass.Members.DM))
 )))
 (assert (forall ((d T@U) ) (! (= (Members.DM.A_q d) (= (DatatypeCtorId d) |##Members.DM.A|))
+ :qid |unknown.0:0|
+ :skolemid |2148|
  :pattern ( (Members.DM.A_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (Members.DM.B_q d@@0) (= (DatatypeCtorId d@@0) |##Members.DM.B|))
+ :qid |unknown.0:0|
+ :skolemid |2157|
  :pattern ( (Members.DM.B_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (Members.DM.C_q d@@1) (= (DatatypeCtorId d@@1) |##Members.DM.C|))
+ :qid |unknown.0:0|
+ :skolemid |2167|
  :pattern ( (Members.DM.C_q d@@1))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1694|
  :pattern ( ($Unbox T x@@2))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (Members.DM.B_q d@@2) (exists ((|a#18#0#0| Int) (|a#18#1#0| Int) ) (= d@@2 (|#Members.DM.B| |a#18#0#0| |a#18#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (Members.DM.B_q d@@2) (exists ((|a#18#0#0| Int) (|a#18#1#0| Int) ) (! (= d@@2 (|#Members.DM.B| |a#18#0#0| |a#18#1#0|))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:37|
+ :skolemid |2158|
+)))
+ :qid |unknown.0:0|
+ :skolemid |2159|
  :pattern ( (Members.DM.B_q d@@2))
 )))
-(assert (forall ((d@@3 T@U) ) (!  (=> (Members.DM.C_q d@@3) (exists ((|a#24#0#0| Int) (|a#24#1#0| Int) ) (= d@@3 (|#Members.DM.C| |a#24#0#0| |a#24#1#0|))))
+(assert (forall ((d@@3 T@U) ) (!  (=> (Members.DM.C_q d@@3) (exists ((|a#24#0#0| Int) (|a#24#1#0| Int) ) (! (= d@@3 (|#Members.DM.C| |a#24#0#0| |a#24#1#0|))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:57|
+ :skolemid |2168|
+)))
+ :qid |unknown.0:0|
+ :skolemid |2169|
  :pattern ( (Members.DM.C_q d@@3))
 )))
-(assert (forall ((d@@4 T@U) ) (!  (=> (Members.DM.A_q d@@4) (exists ((|a#13#0#0| Int) ) (= d@@4 (|#Members.DM.A| |a#13#0#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (Members.DM.A_q d@@4) (exists ((|a#13#0#0| Int) ) (! (= d@@4 (|#Members.DM.A| |a#13#0#0|))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:25|
+ :skolemid |2149|
+)))
+ :qid |unknown.0:0|
+ :skolemid |2150|
  :pattern ( (Members.DM.A_q d@@4))
 )))
 (assert (forall ((|a#17#0#0| Int) (|a#17#1#0| Int) ) (! (= (DatatypeCtorId (|#Members.DM.B| |a#17#0#0| |a#17#1#0|)) |##Members.DM.B|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:37|
+ :skolemid |2156|
  :pattern ( (|#Members.DM.B| |a#17#0#0| |a#17#1#0|))
 )))
 (assert (forall ((|a#21#0#0| Int) (|a#21#1#0| Int) ) (! (= (Members.DM.x (|#Members.DM.B| |a#21#0#0| |a#21#1#0|)) |a#21#0#0|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:37|
+ :skolemid |2164|
  :pattern ( (|#Members.DM.B| |a#21#0#0| |a#21#1#0|))
 )))
 (assert (forall ((|a#22#0#0| Int) (|a#22#1#0| Int) ) (! (= (Members.DM.y (|#Members.DM.B| |a#22#0#0| |a#22#1#0|)) |a#22#1#0|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:37|
+ :skolemid |2165|
  :pattern ( (|#Members.DM.B| |a#22#0#0| |a#22#1#0|))
 )))
 (assert (forall ((|a#23#0#0| Int) (|a#23#1#0| Int) ) (! (= (DatatypeCtorId (|#Members.DM.C| |a#23#0#0| |a#23#1#0|)) |##Members.DM.C|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:57|
+ :skolemid |2166|
  :pattern ( (|#Members.DM.C| |a#23#0#0| |a#23#1#0|))
 )))
 (assert (forall ((|a#27#0#0| Int) (|a#27#1#0| Int) ) (! (= (Members.DM.y (|#Members.DM.C| |a#27#0#0| |a#27#1#0|)) |a#27#0#0|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:57|
+ :skolemid |2174|
  :pattern ( (|#Members.DM.C| |a#27#0#0| |a#27#1#0|))
 )))
 (assert (forall ((|a#28#0#0| Int) (|a#28#1#0| Int) ) (! (= (Members.DM.z (|#Members.DM.C| |a#28#0#0| |a#28#1#0|)) |a#28#1#0|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:57|
+ :skolemid |2175|
  :pattern ( (|#Members.DM.C| |a#28#0#0| |a#28#1#0|))
 )))
 (assert (forall ((|a#12#0#0| Int) ) (! (= (DatatypeCtorId (|#Members.DM.A| |a#12#0#0|)) |##Members.DM.A|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:25|
+ :skolemid |2147|
  :pattern ( (|#Members.DM.A| |a#12#0#0|))
 )))
 (assert (forall ((|a#16#0#0| Int) ) (! (= (Members.DM.x (|#Members.DM.A| |a#16#0#0|)) |a#16#0#0|)
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:25|
+ :skolemid |2155|
  :pattern ( (|#Members.DM.A| |a#16#0#0|))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Unbox T@@0 ($Box T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1693|
  :pattern ( ($Box T@@0 x@@3))
 )))
 (assert (forall ((|a#14#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#Members.DM.A| |a#14#0#0|) Tclass.Members.DM) ($Is intType (int_2_U |a#14#0#0|) TInt))
+ :qid |GhostDatatypeConstructorsVerificationdfy.127:25|
+ :skolemid |2152|
  :pattern ( ($Is DatatypeTypeType (|#Members.DM.A| |a#14#0#0|) Tclass.Members.DM))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2774|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (Members.DM.A_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.Members.DM $h))) ($IsAlloc intType (int_2_U (Members.DM.x d@@5)) TInt $h))
+ :qid |unknown.0:0|
+ :skolemid |2153|
  :pattern ( ($IsAlloc intType (int_2_U (Members.DM.x d@@5)) TInt $h))
 )))
 (assert (forall ((d@@6 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (Members.DM.B_q d@@6) ($IsAlloc DatatypeTypeType d@@6 Tclass.Members.DM $h@@0))) ($IsAlloc intType (int_2_U (Members.DM.x d@@6)) TInt $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |2161|
  :pattern ( ($IsAlloc intType (int_2_U (Members.DM.x d@@6)) TInt $h@@0))
 )))
 (assert (forall ((d@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (Members.DM.B_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass.Members.DM $h@@1))) ($IsAlloc intType (int_2_U (Members.DM.y d@@7)) TInt $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |2162|
  :pattern ( ($IsAlloc intType (int_2_U (Members.DM.y d@@7)) TInt $h@@1))
 )))
 (assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (Members.DM.C_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass.Members.DM $h@@2))) ($IsAlloc intType (int_2_U (Members.DM.y d@@8)) TInt $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |2171|
  :pattern ( ($IsAlloc intType (int_2_U (Members.DM.y d@@8)) TInt $h@@2))
 )))
 (assert (forall ((d@@9 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (Members.DM.C_q d@@9) ($IsAlloc DatatypeTypeType d@@9 Tclass.Members.DM $h@@3))) ($IsAlloc intType (int_2_U (Members.DM.z d@@9)) TInt $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |2172|
  :pattern ( ($IsAlloc intType (int_2_U (Members.DM.z d@@9)) TInt $h@@3))
 )))
 (assert (forall ((d@@10 T@U) ) (!  (=> ($Is DatatypeTypeType d@@10 Tclass.Members.DM) (or (or (Members.DM.A_q d@@10) (Members.DM.B_q d@@10)) (Members.DM.C_q d@@10)))
+ :qid |unknown.0:0|
+ :skolemid |2178|
  :pattern ( (Members.DM.C_q d@@10) ($Is DatatypeTypeType d@@10 Tclass.Members.DM))
  :pattern ( (Members.DM.B_q d@@10) ($Is DatatypeTypeType d@@10 Tclass.Members.DM))
  :pattern ( (Members.DM.A_q d@@10) ($Is DatatypeTypeType d@@10 Tclass.Members.DM))
 )))
 (assert (forall ((d@@11 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) ($Is DatatypeTypeType d@@11 Tclass.Members.DM)) ($IsAlloc DatatypeTypeType d@@11 Tclass.Members.DM $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |2176|
  :pattern ( ($IsAlloc DatatypeTypeType d@@11 Tclass.Members.DM $h@@4))
 )))
 (assert (= (Tag Tclass.Members.DM) Tagclass.Members.DM))
 (assert (= (TagFamily Tclass.Members.DM) tytagFamily$DM))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |1729|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |1708|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -202,6 +284,7 @@
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$Members.DM.Bad)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

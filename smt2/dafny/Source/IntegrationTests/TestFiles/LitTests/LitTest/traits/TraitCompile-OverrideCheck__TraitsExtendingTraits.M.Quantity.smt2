@@ -71,99 +71,155 @@
 (declare-fun dtype (T@U) T@U)
 (declare-fun implements$TraitsExtendingTraits.M (T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._System.object? Tagclass._System.object Tagclass.TraitsExtendingTraits.M Tagclass.TraitsExtendingTraits.B Tagclass.TraitsExtendingTraits.B? Tagclass.TraitsExtendingTraits.M? tytagFamily$object tytagFamily$M tytagFamily$B)
 )
 (assert (= (Ctor refType) 3))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._System.object $h) ($IsAlloc refType |c#0| Tclass._System.object? $h))
+ :qid |unknown.0:0|
+ :skolemid |2923|
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass.TraitsExtendingTraits.B $h@@0) ($IsAlloc refType |c#0@@0| Tclass.TraitsExtendingTraits.B? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3163|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass.TraitsExtendingTraits.B $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass.TraitsExtendingTraits.B? $h@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass.TraitsExtendingTraits.M $h@@1) ($IsAlloc refType |c#0@@1| Tclass.TraitsExtendingTraits.M? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |3198|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass.TraitsExtendingTraits.M $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass.TraitsExtendingTraits.M? $h@@1))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o Tclass._System.object? $h@@2)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2920|
  :pattern ( ($IsAlloc refType $o Tclass._System.object? $h@@2))
 )))
 (assert (forall (($o@@0 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass.TraitsExtendingTraits.B? $h@@3)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3155|
  :pattern ( ($IsAlloc refType $o@@0 Tclass.TraitsExtendingTraits.B? $h@@3))
 )))
 (assert (forall (($o@@1 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@1 Tclass.TraitsExtendingTraits.M? $h@@4)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3190|
  :pattern ( ($IsAlloc refType $o@@1 Tclass.TraitsExtendingTraits.M? $h@@4))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |2674|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |2675|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2573|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2571|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2582|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |2666|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass._System.object)  (and ($Is refType |c#0@@2| Tclass._System.object?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2922|
  :pattern ( ($Is refType |c#0@@2| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@2| Tclass._System.object?))
 )))
 (assert (forall ((|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| Tclass.TraitsExtendingTraits.B)  (and ($Is refType |c#0@@3| Tclass.TraitsExtendingTraits.B?) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3162|
  :pattern ( ($Is refType |c#0@@3| Tclass.TraitsExtendingTraits.B))
  :pattern ( ($Is refType |c#0@@3| Tclass.TraitsExtendingTraits.B?))
 )))
 (assert (forall ((|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| Tclass.TraitsExtendingTraits.M)  (and ($Is refType |c#0@@4| Tclass.TraitsExtendingTraits.M?) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3197|
  :pattern ( ($Is refType |c#0@@4| Tclass.TraitsExtendingTraits.M))
  :pattern ( ($Is refType |c#0@@4| Tclass.TraitsExtendingTraits.M?))
 )))
 (assert (forall (($o@@2 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@2 Tclass.TraitsExtendingTraits.M? $heap) ($IsAlloc refType $o@@2 Tclass.TraitsExtendingTraits.B? $heap))
+ :qid |unknown.0:0|
+ :skolemid |3238|
  :pattern ( ($IsAlloc refType $o@@2 Tclass.TraitsExtendingTraits.M? $heap))
 )))
 (assert (forall (($o@@3 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@3 Tclass.TraitsExtendingTraits.M? $heap@@0) ($IsAlloc refType $o@@3 Tclass._System.object? $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |3242|
  :pattern ( ($IsAlloc refType $o@@3 Tclass.TraitsExtendingTraits.M? $heap@@0))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |2673|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall (($o@@4 T@U) ) (! ($Is refType $o@@4 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |2919|
  :pattern ( ($Is refType $o@@4 Tclass._System.object?))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2581|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall (($o@@5 T@U) ) (!  (=> ($Is refType $o@@5 Tclass.TraitsExtendingTraits.M?) ($Is refType $o@@5 Tclass.TraitsExtendingTraits.B?))
+ :qid |unknown.0:0|
+ :skolemid |3237|
  :pattern ( ($Is refType $o@@5 Tclass.TraitsExtendingTraits.M?))
 )))
 (assert (forall (($o@@6 T@U) ) (!  (=> ($Is refType $o@@6 Tclass.TraitsExtendingTraits.M?) ($Is refType $o@@6 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |3241|
  :pattern ( ($Is refType $o@@6 Tclass.TraitsExtendingTraits.M?))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -179,15 +235,23 @@
 (assert (= (Tag Tclass.TraitsExtendingTraits.M?) Tagclass.TraitsExtendingTraits.M?))
 (assert (= (TagFamily Tclass.TraitsExtendingTraits.M?) tytagFamily$M))
 (assert (forall (($o@@7 T@U) ) (! (= ($Is refType $o@@7 Tclass.TraitsExtendingTraits.B?)  (or (= $o@@7 null) (implements$TraitsExtendingTraits.B (dtype $o@@7))))
+ :qid |unknown.0:0|
+ :skolemid |3154|
  :pattern ( ($Is refType $o@@7 Tclass.TraitsExtendingTraits.B?))
 )))
 (assert (forall (($o@@8 T@U) ) (! (= ($Is refType $o@@8 Tclass.TraitsExtendingTraits.M?)  (or (= $o@@8 null) (implements$TraitsExtendingTraits.M (dtype $o@@8))))
+ :qid |unknown.0:0|
+ :skolemid |3189|
  :pattern ( ($Is refType $o@@8 Tclass.TraitsExtendingTraits.M?))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2574|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2572|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (push 1)
@@ -197,6 +261,7 @@
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun this () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id OverrideCheck$$TraitsExtendingTraits.M.Quantity)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -212,7 +277,16 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (and (=> (= (ControlFlow 0 2) (- 0 4)) true) (and (=> (= (ControlFlow 0 2) (- 0 3)) (forall (($o@@9 T@U) ($f T@U) ) true)) (=> (forall (($o@@10 T@U) ($f@@0 T@U) ) true) (=> (= (ControlFlow 0 2) (- 0 1)) (forall (($o@@11 T@U) ($f@@1 T@U) ) true)))))))
+ (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (and (=> (= (ControlFlow 0 2) (- 0 4)) true) (and (=> (= (ControlFlow 0 2) (- 0 3)) (forall (($o@@9 T@U) ($f T@U) ) (! true
+ :qid |TraitCompiledfy.432:12|
+ :skolemid |3192|
+))) (=> (forall (($o@@10 T@U) ($f@@0 T@U) ) (! true
+ :qid |TraitCompiledfy.432:12|
+ :skolemid |3192|
+)) (=> (= (ControlFlow 0 2) (- 0 1)) (forall (($o@@11 T@U) ($f@@1 T@U) ) (! true
+ :qid |TraitCompiledfy.432:12|
+ :skolemid |3193|
+))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass.TraitsExtendingTraits.M) ($IsAlloc refType this Tclass.TraitsExtendingTraits.M $Heap))) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 5) 2))) anon0_correct))))
 PreconditionGeneratedEntry_correct)))
 ))

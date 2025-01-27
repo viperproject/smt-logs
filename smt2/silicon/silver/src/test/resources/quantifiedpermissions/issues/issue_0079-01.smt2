@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:38:35
+; Started: 2025-01-26 23:10:39
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -809,11 +809,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (= (getField01%limited s@$ xs@0@00 y@1@00) (getField01 s@$ xs@0@00 y@1@00))
   :pattern ((getField01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19370|)))
+  :qid |quant-u-19343|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (getField01%stateless xs@0@00 y@1@00)
   :pattern ((getField01%limited s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19371|)))
+  :qid |quant-u-19344|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (and
     (forall ((x@5@00 $Ref)) (!
@@ -825,7 +825,7 @@
       :pattern ((Set_in x@5@00 xs@0@00))
       :pattern ((inv@6@00 s@$ xs@0@00 y@1@00 x@5@00))
       :pattern ((img@7@00 s@$ xs@0@00 y@1@00 x@5@00))
-      :qid |quant-u-19375|))
+      :qid |quant-u-19348|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -840,19 +840,19 @@
         (getField01 s@$ xs@0@00 y@1@00)
         ($FVF.lookup_fld ($SortWrappers.$SnapTo$FVF<fld> ($Snap.first s@$)) y@1@00))))
   :pattern ((getField01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19376|)))
+  :qid |quant-u-19349|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   true
   :pattern ((getField01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-19377|)))
+  :qid |quant-u-19350|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref)) (!
   (= (getField%limited s@$ this@3@00) (getField s@$ this@3@00))
   :pattern ((getField s@$ this@3@00))
-  :qid |quant-u-19372|)))
+  :qid |quant-u-19345|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref)) (!
   (getField%stateless this@3@00)
   :pattern ((getField%limited s@$ this@3@00))
-  :qid |quant-u-19373|)))
+  :qid |quant-u-19346|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref)) (!
   (and
     (forall ((x@8@00 $Ref)) (!
@@ -864,7 +864,7 @@
       :pattern ((Set_in x@8@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@9@00 s@$ this@3@00 x@8@00))
       :pattern ((img@10@00 s@$ this@3@00 x@8@00))
-      :qid |quant-u-19379|))
+      :qid |quant-u-19352|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -879,11 +879,11 @@
         (getField s@$ this@3@00)
         ($FVF.lookup_fld ($SortWrappers.$SnapTo$FVF<fld> ($Snap.first ($Snap.second s@$))) this@3@00))))
   :pattern ((getField s@$ this@3@00))
-  :qid |quant-u-19380|)))
+  :qid |quant-u-19353|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref)) (!
   true
   :pattern ((getField s@$ this@3@00))
-  :qid |quant-u-19381|)))
+  :qid |quant-u-19354|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- foo ----------
@@ -968,7 +968,7 @@
   :pattern ((Set_in x@3@01 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first $t@2@01))))
   :pattern ((inv@4@01 x@3@01))
   :pattern ((img@5@01 x@3@01))
-  :qid |quant-u-19385|)))
+  :qid |quant-u-19358|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1061,7 +1061,7 @@
   :pattern ((Set_in y@11@01 xs@9@01))
   :pattern ((inv@12@01 y@11@01))
   :pattern ((img@13@01 y@11@01))
-  :qid |quant-u-19387|)))
+  :qid |quant-u-19360|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@13@01 r) (Set_in (inv@12@01 r) xs@9@01)) (= (inv@12@01 r) r))
   :pattern ((inv@12@01 r))
@@ -1173,7 +1173,7 @@
       (pTaken@17@01 r))
     $Perm.No)
   
-  :qid |quant-u-19390|))))
+  :qid |quant-u-19363|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1188,7 +1188,7 @@
     (and (Set_in (inv@15@01 r) xs@9@01) (img@16@01 r) (= r (inv@15@01 r)))
     (= (- $Perm.Write (pTaken@17@01 r)) $Perm.No))
   
-  :qid |quant-u-19391|))))
+  :qid |quant-u-19364|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1257,7 +1257,7 @@
   :pattern ((Set_in x@19@01 xs@9@01))
   :pattern ((inv@20@01 x@19@01))
   :pattern ((img@21@01 x@19@01))
-  :qid |quant-u-19393|)))
+  :qid |quant-u-19366|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@21@01 r) (Set_in (inv@20@01 r) xs@9@01)) (= (inv@20@01 r) r))
   :pattern ((inv@20@01 r))
@@ -1367,7 +1367,7 @@
   :pattern ((Set_in x@27@01 xs@24@01))
   :pattern ((inv@28@01 x@27@01))
   :pattern ((img@29@01 x@27@01))
-  :qid |quant-u-19395|)))
+  :qid |quant-u-19368|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@29@01 r) (Set_in (inv@28@01 r) xs@24@01)) (= (inv@28@01 r) r))
   :pattern ((inv@28@01 r))

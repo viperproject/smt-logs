@@ -177,16 +177,22 @@
 (declare-fun |MultiSet#Subset| (T@U T@U) Bool)
 (declare-fun |lambda#17| (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TChar TInt TagChar TagInt TagSet TagMultiSet TagSeq TagMap alloc Tagclass._System.object? Tagclass._System.object Tagclass._System.___hFunc1 |##_System._tuple#2._#Make2| Tagclass._System.Tuple2 tytagFamily$object |tytagFamily$_#Func1| |tytagFamily$_tuple#2|)
@@ -194,637 +200,1088 @@
 (assert (= (Tag TChar) TagChar))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 3))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 3)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (= (Ctor SetType) 7)))
 (assert (forall ((t0@@1 T@U) (t1@@1 T@U) (heap T@U) (h T@U) (r T@U) (rd T@U) (bx0 T@U) (bx T@U) ) (! (= (|Set#IsMember| (Reads1 t0@@1 t1@@1 heap (Handle1 h r rd) bx0) bx) (|Set#IsMember| (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType rd heap bx0) bx))
+ :qid |unknown.0:0|
+ :skolemid |408|
  :pattern ( (|Set#IsMember| (Reads1 t0@@1 t1@@1 heap (Handle1 h r rd) bx0) bx))
 )))
 (assert (forall ((a@@0 T@U) (b T@U) ) (!  (and (= (+ (+ (|MultiSet#Card| (|MultiSet#Difference| a@@0 b)) (|MultiSet#Card| (|MultiSet#Difference| b a@@0))) (* 2 (|MultiSet#Card| (|MultiSet#Intersection| a@@0 b)))) (|MultiSet#Card| (|MultiSet#Union| a@@0 b))) (= (|MultiSet#Card| (|MultiSet#Difference| a@@0 b)) (- (|MultiSet#Card| a@@0) (|MultiSet#Card| (|MultiSet#Intersection| a@@0 b)))))
+ :qid |DafnyPreludebpl.1027:15|
+ :skolemid |204|
  :pattern ( (|MultiSet#Card| (|MultiSet#Difference| a@@0 b)))
 )))
 (assert (forall ((|l#0| T@U) (|$l#1#heap#0| T@U) (|$l#1#i#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#15| |l#0|) |$l#1#heap#0| |$l#1#i#0|)) ($IsBox |$l#1#i#0| |l#0|))
+ :qid |DafnyPreludebpl.27:1|
+ :skolemid |600|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#15| |l#0|) |$l#1#heap#0| |$l#1#i#0|))
 )))
 (assert (forall ((a@@1 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@1 y) (|Set#IsMember| (|Set#UnionOne| a@@1 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@1 x@@3) (|Set#IsMember| a@@1 y))
 )))
 (assert (forall ((a@@2 T@U) (b@@0 T@U) (y@@0 T@U) ) (!  (=> (|Set#IsMember| a@@2 y@@0) (|Set#IsMember| (|Set#Union| a@@2 b@@0) y@@0))
+ :qid |DafnyPreludebpl.708:15|
+ :skolemid |134|
  :pattern ( (|Set#Union| a@@2 b@@0) (|Set#IsMember| a@@2 y@@0))
 )))
 (assert (forall ((a@@3 T@U) (b@@1 T@U) (y@@1 T@U) ) (!  (=> (|Set#IsMember| b@@1 y@@1) (|Set#IsMember| (|Set#Union| a@@3 b@@1) y@@1))
+ :qid |DafnyPreludebpl.712:15|
+ :skolemid |135|
  :pattern ( (|Set#Union| a@@3 b@@1) (|Set#IsMember| b@@1 y@@1))
 )))
 (assert (forall ((a@@4 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@4 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@4 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@4 x@@4) o))
 )))
 (assert (forall ((a@@5 T@U) (b@@2 T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a@@5 b@@2 t)) a@@5)
+ :qid |DafnyPreludebpl.1443:15|
+ :skolemid |286|
  :pattern ( (|Map#Domain| (|Map#Glue| a@@5 b@@2 t)))
 )))
 (assert (forall ((a@@6 T@U) (b@@3 T@U) (t@@0 T@U) ) (! (= (|Map#Elements| (|Map#Glue| a@@6 b@@3 t@@0)) b@@3)
+ :qid |DafnyPreludebpl.1446:15|
+ :skolemid |287|
  :pattern ( (|Map#Elements| (|Map#Glue| a@@6 b@@3 t@@0)))
 )))
 (assert (forall ((a@@7 T@U) (b@@4 T@U) (y@@2 T@U) ) (!  (=> (|Set#IsMember| b@@4 y@@2) (not (|Set#IsMember| (|Set#Difference| a@@7 b@@4) y@@2)))
+ :qid |DafnyPreludebpl.757:15|
+ :skolemid |144|
  :pattern ( (|Set#Difference| a@@7 b@@4) (|Set#IsMember| b@@4 y@@2))
 )))
 (assert (forall ((a@@8 Int) (b@@5 Int) ) (!  (or (= (|Math#min| a@@8 b@@5) a@@8) (= (|Math#min| a@@8 b@@5) b@@5))
+ :qid |DafnyPreludebpl.889:15|
+ :skolemid |179|
  :pattern ( (|Math#min| a@@8 b@@5))
 )))
 (assert (= (Ctor DatatypeTypeType) 8))
 (assert (forall ((|_System._tuple#2$T0| T@U) (|_System._tuple#2$T1| T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)) (_System.Tuple2.___hMake2_q d))
+ :qid |unknown.0:0|
+ :skolemid |504|
  :pattern ( (_System.Tuple2.___hMake2_q d) ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall ((a@@9 T@U) (b@@6 T@U) (o@@1 T@U) ) (! (= (|Set#IsMember| (|Set#Intersection| a@@9 b@@6) o@@1)  (and (|Set#IsMember| a@@9 o@@1) (|Set#IsMember| b@@6 o@@1)))
+ :qid |DafnyPreludebpl.724:15|
+ :skolemid |137|
  :pattern ( (|Set#IsMember| (|Set#Intersection| a@@9 b@@6) o@@1))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((s T@U) (v T@U) (n Int) ) (!  (=> (and (<= 0 n) (<= n (|Seq#Length| s))) (= (|Seq#Drop| (|Seq#Build| s v) n) (|Seq#Build| (|Seq#Drop| s n) v)))
+ :qid |DafnyPreludebpl.1288:15|
+ :skolemid |254|
  :pattern ( (|Seq#Drop| (|Seq#Build| s v) n))
 )))
 (assert (= (Ctor MultiSetType) 9))
 (assert (forall ((v@@0 T@U) (t0@@2 T@U) ) (!  (=> ($Is MultiSetType v@@0 (TMultiSet t0@@2)) ($IsGoodMultiSet v@@0))
+ :qid |DafnyPreludebpl.250:15|
+ :skolemid |52|
  :pattern ( ($Is MultiSetType v@@0 (TMultiSet t0@@2)))
 )))
 (assert (forall ((s@@0 T@U) ) (! ($IsGoodMultiSet (|MultiSet#FromSeq| s@@0))
+ :qid |DafnyPreludebpl.1083:15|
+ :skolemid |214|
  :pattern ( (|MultiSet#FromSeq| s@@0))
 )))
 (assert (forall ((s@@1 T@U) (i Int) (v@@1 T@U) (n@@0 Int) ) (!  (=> (and (<= 0 n@@0) (< n@@0 (|Seq#Length| s@@1))) (and (=> (= i n@@0) (= (|Seq#Index| (|Seq#Update| s@@1 i v@@1) n@@0) v@@1)) (=> (or (not (= i n@@0)) (not true)) (= (|Seq#Index| (|Seq#Update| s@@1 i v@@1) n@@0) (|Seq#Index| s@@1 n@@0)))))
+ :qid |DafnyPreludebpl.1171:15|
+ :skolemid |229|
  :pattern ( (|Seq#Index| (|Seq#Update| s@@1 i v@@1) n@@0))
 )))
 (assert (forall ((a@@10 T@U) (b@@7 T@U) (y@@3 T@U) ) (!  (=> (<= (|MultiSet#Multiplicity| a@@10 y@@3) (|MultiSet#Multiplicity| b@@7 y@@3)) (= (|MultiSet#Multiplicity| (|MultiSet#Difference| a@@10 b@@7) y@@3) 0))
+ :qid |DafnyPreludebpl.1022:15|
+ :skolemid |203|
  :pattern ( (|MultiSet#Difference| a@@10 b@@7) (|MultiSet#Multiplicity| b@@7 y@@3) (|MultiSet#Multiplicity| a@@10 y@@3))
 )))
 (assert (forall ((a@@11 T@U) (b@@8 T@U) ) (! (= (|Set#Union| (|Set#Union| a@@11 b@@8) b@@8) (|Set#Union| a@@11 b@@8))
+ :qid |DafnyPreludebpl.729:15|
+ :skolemid |138|
  :pattern ( (|Set#Union| (|Set#Union| a@@11 b@@8) b@@8))
 )))
 (assert (forall ((a@@12 T@U) (b@@9 T@U) ) (! (= (|Set#Intersection| (|Set#Intersection| a@@12 b@@9) b@@9) (|Set#Intersection| a@@12 b@@9))
+ :qid |DafnyPreludebpl.737:15|
+ :skolemid |140|
  :pattern ( (|Set#Intersection| (|Set#Intersection| a@@12 b@@9) b@@9))
 )))
 (assert (forall ((a@@13 T@U) (b@@10 T@U) ) (! (= (|MultiSet#Intersection| (|MultiSet#Intersection| a@@13 b@@10) b@@10) (|MultiSet#Intersection| a@@13 b@@10))
+ :qid |DafnyPreludebpl.1005:15|
+ :skolemid |200|
  :pattern ( (|MultiSet#Intersection| (|MultiSet#Intersection| a@@13 b@@10) b@@10))
 )))
 (assert (forall ((a@@14 T@U) (b@@11 T@U) (o@@2 T@U) ) (! (= (|Set#IsMember| (|Set#Difference| a@@14 b@@11) o@@2)  (and (|Set#IsMember| a@@14 o@@2) (not (|Set#IsMember| b@@11 o@@2))))
+ :qid |DafnyPreludebpl.752:15|
+ :skolemid |143|
  :pattern ( (|Set#IsMember| (|Set#Difference| a@@14 b@@11) o@@2))
 )))
 (assert (= (Ctor HandleTypeType) 10))
 (assert (forall ((f T@U) (t0@@3 T@U) (t1@@2 T@U) (u0@@2 T@U) (u1@@2 T@U) ) (!  (=> (and (and ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@3 t1@@2)) (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 u0@@2) ($IsBox bx@@0 t0@@3))
+ :qid |unknown.0:0|
+ :skolemid |425|
  :pattern ( ($IsBox bx@@0 u0@@2))
  :pattern ( ($IsBox bx@@0 t0@@3))
 ))) (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 t1@@2) ($IsBox bx@@1 u1@@2))
+ :qid |unknown.0:0|
+ :skolemid |426|
  :pattern ( ($IsBox bx@@1 t1@@2))
  :pattern ( ($IsBox bx@@1 u1@@2))
 ))) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@2 u1@@2)))
+ :qid |unknown.0:0|
+ :skolemid |427|
  :pattern ( ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@3 t1@@2)) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@2 u1@@2)))
 )))
 (assert (forall ((|l#0@@0| Int) (|l#1| Int) (|l#2| Int) (|l#3| Int) (|$y#0| T@U) ) (! (= (U_2_bool (MapType1Select BoxType boolType (|lambda#13| |l#0@@0| |l#1| |l#2| |l#3|) |$y#0|)) (exists ((|k#2| Int) ) (!  (and (and (<= |l#0@@0| |k#2|) (< |k#2| |l#1|)) (= |$y#0| ($Box intType (int_2_U (Mul |l#2| |k#2|)))))
+ :qid |operatorsdfy.263:17|
+ :skolemid |563|
  :pattern ( (Mul |l#3| |k#2|))
 )))
+ :qid |unknown.0:0|
+ :skolemid |598|
  :pattern ( (MapType1Select BoxType boolType (|lambda#13| |l#0@@0| |l#1| |l#2| |l#3|) |$y#0|))
 )))
 (assert (forall ((s@@2 T@U) (t@@1 T@U) (n@@1 Int) ) (!  (=> (= n@@1 (|Seq#Length| s@@2)) (and (= (|Seq#Take| (|Seq#Append| s@@2 t@@1) n@@1) s@@2) (= (|Seq#Drop| (|Seq#Append| s@@2 t@@1) n@@1) t@@1)))
+ :qid |DafnyPreludebpl.1263:15|
+ :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@2 t@@1) n@@1))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@2 t@@1) n@@1))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._System.object $h) ($IsAlloc refType |c#0| Tclass._System.object? $h))
+ :qid |unknown.0:0|
+ :skolemid |387|
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object? $h))
 )))
 (assert (forall ((|_System._tuple#2$T0@@0| T@U) (|_System._tuple#2$T1@@0| T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|))  (and ($IsBox |a#2#0#0| |_System._tuple#2$T0@@0|) ($IsBox |a#2#1#0| |_System._tuple#2$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |492|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|)))
 )))
 (assert (forall ((s@@3 T@U) ) (!  (and (= (= (|Set#Card| s@@3) 0) (= s@@3 |Set#Empty|)) (=> (or (not (= (|Set#Card| s@@3) 0)) (not true)) (exists ((x@@5 T@U) ) (! (|Set#IsMember| s@@3 x@@5)
+ :qid |DafnyPreludebpl.678:20|
+ :skolemid |126|
  :pattern ( (|Set#IsMember| s@@3 x@@5))
 ))))
+ :qid |DafnyPreludebpl.674:15|
+ :skolemid |127|
  :pattern ( (|Set#Card| s@@3))
 )))
 (assert (forall ((s@@4 T@U) (i@@0 Int) (v@@2 T@U) (x@@6 T@U) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| s@@4))) (= (|MultiSet#Multiplicity| (|MultiSet#FromSeq| (|Seq#Update| s@@4 i@@0 v@@2)) x@@6) (|MultiSet#Multiplicity| (|MultiSet#Union| (|MultiSet#Difference| (|MultiSet#FromSeq| s@@4) (|MultiSet#Singleton| (|Seq#Index| s@@4 i@@0))) (|MultiSet#Singleton| v@@2)) x@@6)))
+ :qid |DafnyPreludebpl.1098:15|
+ :skolemid |218|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#FromSeq| (|Seq#Update| s@@4 i@@0 v@@2)) x@@6))
 )))
 (assert (forall (($o T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o Tclass._System.object? $h@@0)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $h@@0 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |384|
  :pattern ( ($IsAlloc refType $o Tclass._System.object? $h@@0))
 )))
 (assert (forall ((a@@15 T@U) (b@@12 T@U) ) (! (= (+ (|Set#Card| (|Set#Union| a@@15 b@@12)) (|Set#Card| (|Set#Intersection| a@@15 b@@12))) (+ (|Set#Card| a@@15) (|Set#Card| b@@12)))
+ :qid |DafnyPreludebpl.745:15|
+ :skolemid |142|
  :pattern ( (|Set#Card| (|Set#Union| a@@15 b@@12)))
  :pattern ( (|Set#Card| (|Set#Intersection| a@@15 b@@12)))
 )))
 (assert (forall ((s@@5 T@U) (i@@1 Int) (v@@3 T@U) (n@@2 Int) ) (!  (=> (and (and (<= 0 n@@2) (<= n@@2 i@@1)) (< i@@1 (|Seq#Length| s@@5))) (= (|Seq#Drop| (|Seq#Update| s@@5 i@@1 v@@3) n@@2) (|Seq#Update| (|Seq#Drop| s@@5 n@@2) (- i@@1 n@@2) v@@3)))
+ :qid |DafnyPreludebpl.1278:15|
+ :skolemid |252|
  :pattern ( (|Seq#Drop| (|Seq#Update| s@@5 i@@1 v@@3) n@@2))
 )))
 (assert (forall ((h@@0 T@U) (k T@U) ) (!  (=> ($HeapSucc h@@0 k) (forall ((o@@3 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@0 o@@3) alloc))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) k o@@3) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) k o@@3) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h@@0 k))
 )))
 (assert (forall ((s@@6 T@U) (n@@3 Int) ) (!  (=> (= n@@3 0) (= (|Seq#Drop| s@@6 n@@3) s@@6))
+ :qid |DafnyPreludebpl.1293:15|
+ :skolemid |255|
  :pattern ( (|Seq#Drop| s@@6 n@@3))
 )))
 (assert (forall ((a@@16 Int) ) (!  (=> (<= 0 a@@16) (= (|Math#clip| a@@16) a@@16))
+ :qid |DafnyPreludebpl.895:15|
+ :skolemid |180|
  :pattern ( (|Math#clip| a@@16))
 )))
 (assert (forall ((x@@7 Int) ) (! (= (LitInt x@@7) x@@7)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@7))
 )))
 (assert (forall ((x@@8 T@U) (T T@T) ) (! (= (Lit T x@@8) x@@8)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@8))
 )))
 (assert (forall ((a@@17 T@U) (b@@13 T@U) (o@@4 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#Intersection| a@@17 b@@13) o@@4) (|Math#min| (|MultiSet#Multiplicity| a@@17 o@@4) (|MultiSet#Multiplicity| b@@13 o@@4)))
+ :qid |DafnyPreludebpl.1000:15|
+ :skolemid |199|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Intersection| a@@17 b@@13) o@@4))
 )))
 (assert (= (Ctor SeqType) 11))
 (assert (forall ((s@@7 T@U) (bx@@2 T@U) (t@@2 T@U) ) (!  (=> (and ($Is SeqType s@@7 (TSeq t@@2)) ($IsBox bx@@2 t@@2)) ($Is SeqType (|Seq#Build| s@@7 bx@@2) (TSeq t@@2)))
+ :qid |DafnyPreludebpl.1309:15|
+ :skolemid |258|
  :pattern ( ($Is SeqType (|Seq#Build| s@@7 bx@@2) (TSeq t@@2)))
 )))
 (assert (forall ((t0@@4 T@U) (t1@@3 T@U) (heap@@0 T@U) (f@@0 T@U) (bx0@@0 T@U) ) (!  (=> (and ($IsGoodHeap heap@@0) (and ($IsBox bx0@@0 t0@@4) ($Is HandleTypeType f@@0 (Tclass._System.___hFunc1 t0@@4 t1@@3)))) (= (|Set#Equal| (Reads1 t0@@4 t1@@3 $OneHeap f@@0 bx0@@0) |Set#Empty|) (|Set#Equal| (Reads1 t0@@4 t1@@3 heap@@0 f@@0 bx0@@0) |Set#Empty|)))
+ :qid |unknown.0:0|
+ :skolemid |421|
  :pattern ( (Reads1 t0@@4 t1@@3 $OneHeap f@@0 bx0@@0) ($IsGoodHeap heap@@0))
  :pattern ( (Reads1 t0@@4 t1@@3 heap@@0 f@@0 bx0@@0))
 )))
 (assert (forall ((m@@4 T@U) (u T@U) (v@@4 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| m@@4) u) (= (|Map#Card| (|Map#Build| m@@4 u v@@4)) (|Map#Card| m@@4)))
+ :qid |DafnyPreludebpl.1469:15|
+ :skolemid |291|
  :pattern ( (|Map#Card| (|Map#Build| m@@4 u v@@4)))
 )))
 (assert (= (Ctor MapType) 12))
-(assert (forall ((a@@18 T@U) (b@@14 T@U) (t0@@5 T@U) (t1@@4 T@U) ) (!  (=> (forall ((bx@@3 T@U) )  (=> (|Set#IsMember| a@@18 bx@@3) (and ($IsBox bx@@3 t0@@5) ($IsBox (MapType1Select BoxType BoxType b@@14 bx@@3) t1@@4)))) ($Is MapType (|Map#Glue| a@@18 b@@14 (TMap t0@@5 t1@@4)) (TMap t0@@5 t1@@4)))
+(assert (forall ((a@@18 T@U) (b@@14 T@U) (t0@@5 T@U) (t1@@4 T@U) ) (!  (=> (forall ((bx@@3 T@U) ) (!  (=> (|Set#IsMember| a@@18 bx@@3) (and ($IsBox bx@@3 t0@@5) ($IsBox (MapType1Select BoxType BoxType b@@14 bx@@3) t1@@4)))
+ :qid |DafnyPreludebpl.1452:11|
+ :skolemid |288|
+)) ($Is MapType (|Map#Glue| a@@18 b@@14 (TMap t0@@5 t1@@4)) (TMap t0@@5 t1@@4)))
+ :qid |DafnyPreludebpl.1449:15|
+ :skolemid |289|
  :pattern ( (|Map#Glue| a@@18 b@@14 (TMap t0@@5 t1@@4)))
 )))
 (assert (forall ((a@@19 T@U) (b@@15 T@U) ) (! (= (|Set#Subset| a@@19 b@@15) (forall ((o@@5 T@U) ) (!  (=> (|Set#IsMember| a@@19 o@@5) (|Set#IsMember| b@@15 o@@5))
+ :qid |DafnyPreludebpl.774:19|
+ :skolemid |146|
  :pattern ( (|Set#IsMember| a@@19 o@@5))
  :pattern ( (|Set#IsMember| b@@15 o@@5))
 )))
+ :qid |DafnyPreludebpl.771:15|
+ :skolemid |147|
  :pattern ( (|Set#Subset| a@@19 b@@15))
 )))
 (assert (forall ((s@@8 T@U) (n@@4 Int) (j Int) ) (!  (=> (and (and (<= 0 j) (< j n@@4)) (< j (|Seq#Length| s@@8))) (= (|Seq#Index| (|Seq#Take| s@@8 n@@4) j) (|Seq#Index| s@@8 j)))
+ :qid |DafnyPreludebpl.1242:15|
  :weight 25
+ :skolemid |245|
  :pattern ( (|Seq#Index| (|Seq#Take| s@@8 n@@4) j))
  :pattern ( (|Seq#Index| s@@8 j) (|Seq#Take| s@@8 n@@4))
 )))
 (assert (forall ((|_System._tuple#2$T0@@1| T@U) (|_System._tuple#2$T1@@1| T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@1)  (and ($IsAllocBox |a#2#0#0@@0| |_System._tuple#2$T0@@1| $h@@1) ($IsAllocBox |a#2#1#0@@0| |_System._tuple#2$T1@@1| $h@@1))))
+ :qid |unknown.0:0|
+ :skolemid |493|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@1))
 )))
 (assert (forall ((s@@9 T@U) (n@@5 Int) ) (!  (=> (and (<= 0 n@@5) (<= n@@5 (|Seq#Length| s@@9))) (= (|Seq#Length| (|Seq#Drop| s@@9 n@@5)) (- (|Seq#Length| s@@9) n@@5)))
+ :qid |DafnyPreludebpl.1249:15|
+ :skolemid |246|
  :pattern ( (|Seq#Length| (|Seq#Drop| s@@9 n@@5)))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_System.Tuple2.___hMake2_q d@@0) (= (DatatypeCtorId d@@0) |##_System._tuple#2._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |485|
  :pattern ( (_System.Tuple2.___hMake2_q d@@0))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j@@0 Int) ) (!  (=> (and (<= 0 j@@0) (< j@@0 (|Seq#Length| s0))) (= (|Seq#Index| s0 j@@0) (|Seq#Index| s1 j@@0)))
+ :qid |DafnyPreludebpl.1221:19|
+ :skolemid |239|
  :pattern ( (|Seq#Index| s0 j@@0))
  :pattern ( (|Seq#Index| s1 j@@0))
 ))))
+ :qid |DafnyPreludebpl.1217:15|
+ :skolemid |240|
  :pattern ( (|Seq#Equal| s0 s1))
 )))
 (assert (forall ((x@@9 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@9))
 )))
 (assert (forall ((m@@5 T@U) (s@@10 T@U) (u@@0 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| (|Map#Subtract| m@@5 s@@10)) u@@0) (= (MapType1Select BoxType BoxType (|Map#Elements| (|Map#Subtract| m@@5 s@@10)) u@@0) (MapType1Select BoxType BoxType (|Map#Elements| m@@5) u@@0)))
+ :qid |DafnyPreludebpl.1489:15|
+ :skolemid |296|
  :pattern ( (MapType1Select BoxType BoxType (|Map#Elements| (|Map#Subtract| m@@5 s@@10)) u@@0))
 )))
 (assert (forall ((s@@11 T@U) (i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| s@@11))) (< (|Seq#Rank| (|Seq#Take| s@@11 i@@2)) (|Seq#Rank| s@@11)))
+ :qid |DafnyPreludebpl.1359:15|
+ :skolemid |269|
  :pattern ( (|Seq#Rank| (|Seq#Take| s@@11 i@@2)))
 )))
 (assert (forall ((a@@20 T@U) (b@@16 T@U) ) (! (= (|Set#Disjoint| a@@20 b@@16) (forall ((o@@6 T@U) ) (!  (or (not (|Set#IsMember| a@@20 o@@6)) (not (|Set#IsMember| b@@16 o@@6)))
+ :qid |DafnyPreludebpl.794:19|
+ :skolemid |151|
  :pattern ( (|Set#IsMember| a@@20 o@@6))
  :pattern ( (|Set#IsMember| b@@16 o@@6))
 )))
+ :qid |DafnyPreludebpl.791:15|
+ :skolemid |152|
  :pattern ( (|Set#Disjoint| a@@20 b@@16))
 )))
 (assert (forall ((a@@21 T@U) (x@@10 T@U) (y@@4 T@U) ) (!  (=> (or (not (= x@@10 y@@4)) (not true)) (= (|MultiSet#Multiplicity| a@@21 y@@4) (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@21 x@@10) y@@4)))
+ :qid |DafnyPreludebpl.978:15|
+ :skolemid |195|
  :pattern ( (|MultiSet#UnionOne| a@@21 x@@10) (|MultiSet#Multiplicity| a@@21 y@@4))
 )))
 (assert (forall ((m@@6 T@U) (bx@@4 T@U) ) (! (= (|Set#IsMember| (|Set#FromBoogieMap| m@@6) bx@@4) (U_2_bool (MapType1Select BoxType boolType m@@6 bx@@4)))
+ :qid |DafnyPreludebpl.805:15|
+ :skolemid |153|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@6) bx@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))
+ :qid |unknown.0:0|
+ :skolemid |486|
+)))
+ :qid |unknown.0:0|
+ :skolemid |487|
  :pattern ( (_System.Tuple2.___hMake2_q d@@1))
 )))
-(assert (forall ((t0@@6 T@U) (t1@@5 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@1 t0@@6) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@6 t1@@5)))) (forall ((o@@7 T@U) (fld T@U) )  (=> (and (or (not (= o@@7 null)) (not true)) (|Set#IsMember| (Reads1 t0@@6 t1@@5 h0 f@@1 bx0@@1) ($Box refType o@@7))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0 o@@7) fld) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1 o@@7) fld))))) (= (Requires1 t0@@6 t1@@5 h0 f@@1 bx0@@1) (Requires1 t0@@6 t1@@5 h1 f@@1 bx0@@1)))
+(assert (forall ((t0@@6 T@U) (t1@@5 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@1 t0@@6) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@6 t1@@5)))) (forall ((o@@7 T@U) (fld T@U) ) (!  (=> (and (or (not (= o@@7 null)) (not true)) (|Set#IsMember| (Reads1 t0@@6 t1@@5 h0 f@@1 bx0@@1) ($Box refType o@@7))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0 o@@7) fld) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1 o@@7) fld)))
+ :qid |unknown.0:0|
+ :skolemid |413|
+))) (= (Requires1 t0@@6 t1@@5 h0 f@@1 bx0@@1) (Requires1 t0@@6 t1@@5 h1 f@@1 bx0@@1)))
+ :qid |unknown.0:0|
+ :skolemid |414|
  :pattern ( ($HeapSucc h0 h1) (Requires1 t0@@6 t1@@5 h1 f@@1 bx0@@1))
 )))
-(assert (forall ((t0@@7 T@U) (t1@@6 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@2 t0@@7) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@7 t1@@6)))) (forall ((o@@8 T@U) (fld@@0 T@U) )  (=> (and (or (not (= o@@8 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@6 h1@@0 f@@2 bx0@@2) ($Box refType o@@8))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@0 o@@8) fld@@0) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@0 o@@8) fld@@0))))) (= (Requires1 t0@@7 t1@@6 h0@@0 f@@2 bx0@@2) (Requires1 t0@@7 t1@@6 h1@@0 f@@2 bx0@@2)))
+(assert (forall ((t0@@7 T@U) (t1@@6 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@2 t0@@7) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@7 t1@@6)))) (forall ((o@@8 T@U) (fld@@0 T@U) ) (!  (=> (and (or (not (= o@@8 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@6 h1@@0 f@@2 bx0@@2) ($Box refType o@@8))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@0 o@@8) fld@@0) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@0 o@@8) fld@@0)))
+ :qid |unknown.0:0|
+ :skolemid |415|
+))) (= (Requires1 t0@@7 t1@@6 h0@@0 f@@2 bx0@@2) (Requires1 t0@@7 t1@@6 h1@@0 f@@2 bx0@@2)))
+ :qid |unknown.0:0|
+ :skolemid |416|
  :pattern ( ($HeapSucc h0@@0 h1@@0) (Requires1 t0@@7 t1@@6 h1@@0 f@@2 bx0@@2))
 )))
 (assert (forall ((v@@5 T@U) (t0@@8 T@U) ) (! (= ($Is SetType v@@5 (TSet t0@@8)) (forall ((bx@@5 T@U) ) (!  (=> (|Set#IsMember| v@@5 bx@@5) ($IsBox bx@@5 t0@@8))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v@@5 bx@@5))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v@@5 (TSet t0@@8)))
 )))
 (assert (forall ((a@@22 T@U) (x@@11 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#UnionOne| a@@22 x@@11)) (+ (|MultiSet#Card| a@@22) 1))
+ :qid |DafnyPreludebpl.983:15|
+ :skolemid |196|
  :pattern ( (|MultiSet#Card| (|MultiSet#UnionOne| a@@22 x@@11)))
 )))
 (assert (forall ((s@@12 T@U) (i@@3 Int) ) (!  (=> (and (< 0 i@@3) (<= i@@3 (|Seq#Length| s@@12))) (< (|Seq#Rank| (|Seq#Drop| s@@12 i@@3)) (|Seq#Rank| s@@12)))
+ :qid |DafnyPreludebpl.1356:15|
+ :skolemid |268|
  :pattern ( (|Seq#Rank| (|Seq#Drop| s@@12 i@@3)))
 )))
 (assert (= (Ctor LayerTypeType) 13))
 (assert (forall ((f@@3 T@U) (ly T@U) (A T@T) ) (! (= (AtLayer A f@@3 ly) (MapType1Select LayerTypeType A f@@3 ly))
+ :qid |DafnyPreludebpl.501:18|
+ :skolemid |101|
  :pattern ( (AtLayer A f@@3 ly))
 )))
 (assert ($IsGoodHeap $OneHeap))
 (assert (forall ((s@@13 T@U) (v@@6 T@U) ) (! (= (|Seq#Length| (|Seq#Build| s@@13 v@@6)) (+ 1 (|Seq#Length| s@@13)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |224|
  :pattern ( (|Seq#Build| s@@13 v@@6))
 )))
 (assert (forall ((ty T@U) (heap@@1 T@U) (len Int) (init T@U) (i@@4 Int) ) (!  (=> (and (and ($IsGoodHeap heap@@1) (<= 0 i@@4)) (< i@@4 len)) (= (|Seq#Index| (|Seq#Create| ty heap@@1 len init) i@@4) (Apply1 TInt ty heap@@1 init ($Box intType (int_2_U i@@4)))))
+ :qid |DafnyPreludebpl.1317:15|
+ :skolemid |260|
  :pattern ( (|Seq#Index| (|Seq#Create| ty heap@@1 len init) i@@4))
 )))
 (assert (forall ((m@@7 T@U) (u@@1 T@U) (v@@7 T@U) ) (!  (=> (not (|Set#IsMember| (|Map#Domain| m@@7) u@@1)) (= (|Map#Card| (|Map#Build| m@@7 u@@1 v@@7)) (+ (|Map#Card| m@@7) 1)))
+ :qid |DafnyPreludebpl.1471:15|
+ :skolemid |292|
  :pattern ( (|Map#Card| (|Map#Build| m@@7 u@@1 v@@7)))
 )))
 (assert (forall ((v@@8 T@U) (t@@3 T@U) (h@@1 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@8) t@@3 h@@1) ($IsAlloc T@@1 v@@8 t@@3 h@@1))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@8) t@@3 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@0 T@U) (bx@@6 T@U) (t@@4 T@U) ) (!  (=> ($HeapSucc h@@2 k@@0) (=> ($IsAllocBox bx@@6 t@@4 h@@2) ($IsAllocBox bx@@6 t@@4 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@2 k@@0) ($IsAllocBox bx@@6 t@@4 h@@2))
 )))
 (assert (forall ((h@@3 T@U) (k@@1 T@U) (v@@9 T@U) (t@@5 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@3 k@@1) (=> ($IsAlloc T@@2 v@@9 t@@5 h@@3) ($IsAlloc T@@2 v@@9 t@@5 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@3 k@@1) ($IsAlloc T@@2 v@@9 t@@5 h@@3))
 )))
 (assert (forall ((s@@14 T@U) (n@@6 Int) (j@@1 Int) ) (!  (=> (and (and (<= 0 n@@6) (<= 0 j@@1)) (< j@@1 (- (|Seq#Length| s@@14) n@@6))) (= (|Seq#Index| (|Seq#Drop| s@@14 n@@6) j@@1) (|Seq#Index| s@@14 (+ j@@1 n@@6))))
+ :qid |DafnyPreludebpl.1253:15|
  :weight 25
+ :skolemid |247|
  :pattern ( (|Seq#Index| (|Seq#Drop| s@@14 n@@6) j@@1))
 )))
-(assert (forall ((t0@@9 T@U) (t1@@7 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@3 t0@@9) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@9 t1@@7)))) (forall ((o@@9 T@U) (fld@@1 T@U) )  (=> (and (or (not (= o@@9 null)) (not true)) (|Set#IsMember| (Reads1 t0@@9 t1@@7 h0@@1 f@@4 bx0@@3) ($Box refType o@@9))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@1 o@@9) fld@@1) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@1 o@@9) fld@@1))))) (= (Reads1 t0@@9 t1@@7 h0@@1 f@@4 bx0@@3) (Reads1 t0@@9 t1@@7 h1@@1 f@@4 bx0@@3)))
+(assert (forall ((t0@@9 T@U) (t1@@7 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@3 t0@@9) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@9 t1@@7)))) (forall ((o@@9 T@U) (fld@@1 T@U) ) (!  (=> (and (or (not (= o@@9 null)) (not true)) (|Set#IsMember| (Reads1 t0@@9 t1@@7 h0@@1 f@@4 bx0@@3) ($Box refType o@@9))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@1 o@@9) fld@@1) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@1 o@@9) fld@@1)))
+ :qid |unknown.0:0|
+ :skolemid |409|
+))) (= (Reads1 t0@@9 t1@@7 h0@@1 f@@4 bx0@@3) (Reads1 t0@@9 t1@@7 h1@@1 f@@4 bx0@@3)))
+ :qid |unknown.0:0|
+ :skolemid |410|
  :pattern ( ($HeapSucc h0@@1 h1@@1) (Reads1 t0@@9 t1@@7 h1@@1 f@@4 bx0@@3))
 )))
-(assert (forall ((t0@@10 T@U) (t1@@8 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@4 t0@@10) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@10 t1@@8)))) (forall ((o@@10 T@U) (fld@@2 T@U) )  (=> (and (or (not (= o@@10 null)) (not true)) (|Set#IsMember| (Reads1 t0@@10 t1@@8 h1@@2 f@@5 bx0@@4) ($Box refType o@@10))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@2 o@@10) fld@@2) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@2 o@@10) fld@@2))))) (= (Reads1 t0@@10 t1@@8 h0@@2 f@@5 bx0@@4) (Reads1 t0@@10 t1@@8 h1@@2 f@@5 bx0@@4)))
+(assert (forall ((t0@@10 T@U) (t1@@8 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@4 t0@@10) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@10 t1@@8)))) (forall ((o@@10 T@U) (fld@@2 T@U) ) (!  (=> (and (or (not (= o@@10 null)) (not true)) (|Set#IsMember| (Reads1 t0@@10 t1@@8 h1@@2 f@@5 bx0@@4) ($Box refType o@@10))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@2 o@@10) fld@@2) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@2 o@@10) fld@@2)))
+ :qid |unknown.0:0|
+ :skolemid |411|
+))) (= (Reads1 t0@@10 t1@@8 h0@@2 f@@5 bx0@@4) (Reads1 t0@@10 t1@@8 h1@@2 f@@5 bx0@@4)))
+ :qid |unknown.0:0|
+ :skolemid |412|
  :pattern ( ($HeapSucc h0@@2 h1@@2) (Reads1 t0@@10 t1@@8 h1@@2 f@@5 bx0@@4))
 )))
-(assert (forall ((t0@@11 T@U) (t1@@9 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@5 t0@@11) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@11 t1@@9)))) (forall ((o@@11 T@U) (fld@@3 T@U) )  (=> (and (or (not (= o@@11 null)) (not true)) (|Set#IsMember| (Reads1 t0@@11 t1@@9 h0@@3 f@@6 bx0@@5) ($Box refType o@@11))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@3 o@@11) fld@@3) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@3 o@@11) fld@@3))))) (= (Apply1 t0@@11 t1@@9 h0@@3 f@@6 bx0@@5) (Apply1 t0@@11 t1@@9 h1@@3 f@@6 bx0@@5)))
+(assert (forall ((t0@@11 T@U) (t1@@9 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@5 t0@@11) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@11 t1@@9)))) (forall ((o@@11 T@U) (fld@@3 T@U) ) (!  (=> (and (or (not (= o@@11 null)) (not true)) (|Set#IsMember| (Reads1 t0@@11 t1@@9 h0@@3 f@@6 bx0@@5) ($Box refType o@@11))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@3 o@@11) fld@@3) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@3 o@@11) fld@@3)))
+ :qid |unknown.0:0|
+ :skolemid |417|
+))) (= (Apply1 t0@@11 t1@@9 h0@@3 f@@6 bx0@@5) (Apply1 t0@@11 t1@@9 h1@@3 f@@6 bx0@@5)))
+ :qid |unknown.0:0|
+ :skolemid |418|
  :pattern ( ($HeapSucc h0@@3 h1@@3) (Apply1 t0@@11 t1@@9 h1@@3 f@@6 bx0@@5))
 )))
-(assert (forall ((t0@@12 T@U) (t1@@10 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@7 T@U) (bx0@@6 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@6 t0@@12) ($Is HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@12 t1@@10)))) (forall ((o@@12 T@U) (fld@@4 T@U) )  (=> (and (or (not (= o@@12 null)) (not true)) (|Set#IsMember| (Reads1 t0@@12 t1@@10 h1@@4 f@@7 bx0@@6) ($Box refType o@@12))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@4 o@@12) fld@@4) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@4 o@@12) fld@@4))))) (= (Apply1 t0@@12 t1@@10 h0@@4 f@@7 bx0@@6) (Apply1 t0@@12 t1@@10 h1@@4 f@@7 bx0@@6)))
+(assert (forall ((t0@@12 T@U) (t1@@10 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@7 T@U) (bx0@@6 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@6 t0@@12) ($Is HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@12 t1@@10)))) (forall ((o@@12 T@U) (fld@@4 T@U) ) (!  (=> (and (or (not (= o@@12 null)) (not true)) (|Set#IsMember| (Reads1 t0@@12 t1@@10 h1@@4 f@@7 bx0@@6) ($Box refType o@@12))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@4 o@@12) fld@@4) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@4 o@@12) fld@@4)))
+ :qid |unknown.0:0|
+ :skolemid |419|
+))) (= (Apply1 t0@@12 t1@@10 h0@@4 f@@7 bx0@@6) (Apply1 t0@@12 t1@@10 h1@@4 f@@7 bx0@@6)))
+ :qid |unknown.0:0|
+ :skolemid |420|
  :pattern ( ($HeapSucc h0@@4 h1@@4) (Apply1 t0@@12 t1@@10 h1@@4 f@@7 bx0@@6))
 )))
 (assert (forall ((a@@23 T@U) (b@@17 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#Union| a@@23 b@@17)) (+ (|MultiSet#Card| a@@23) (|MultiSet#Card| b@@17)))
+ :qid |DafnyPreludebpl.994:15|
+ :skolemid |198|
  :pattern ( (|MultiSet#Card| (|MultiSet#Union| a@@23 b@@17)))
 )))
 (assert (forall ((s0@@0 T@U) (s1@@0 T@U) ) (! (= (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)) (+ (|Seq#Length| s0@@0) (|Seq#Length| s1@@0)))
+ :qid |DafnyPreludebpl.1153:15|
+ :skolemid |226|
  :pattern ( (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)))
 )))
 (assert (forall ((s@@15 T@U) (bx@@7 T@U) ) (! (= (|Set#IsMember| (SetRef_to_SetBox s@@15) bx@@7) (U_2_bool (MapType1Select refType boolType s@@15 ($Unbox refType bx@@7))))
+ :qid |DafnyPreludebpl.370:15|
+ :skolemid |82|
  :pattern ( (|Set#IsMember| (SetRef_to_SetBox s@@15) bx@@7))
 )))
 (assert (forall ((t0@@13 T@U) (t1@@11 T@U) (heap@@2 T@U) (h@@4 T@U) (r@@0 T@U) (rd@@0 T@U) (bx0@@7 T@U) ) (! (= (Apply1 t0@@13 t1@@11 heap@@2 (Handle1 h@@4 r@@0 rd@@0) bx0@@7) (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType h@@4 heap@@2 bx0@@7))
+ :qid |unknown.0:0|
+ :skolemid |406|
  :pattern ( (Apply1 t0@@13 t1@@11 heap@@2 (Handle1 h@@4 r@@0 rd@@0) bx0@@7))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@8)) bx@@8) ($Is refType ($Unbox refType bx@@8) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |382|
  :pattern ( ($IsBox bx@@8 Tclass._System.object?))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@9)) bx@@9) ($Is refType ($Unbox refType bx@@9) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |385|
  :pattern ( ($IsBox bx@@9 Tclass._System.object))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass._System.object)  (and ($Is refType |c#0@@0| Tclass._System.object?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |386|
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object?))
 )))
 (assert (forall ((s@@16 T@U) (i@@5 Int) (v@@10 T@U) ) (!  (and (=> (= i@@5 (|Seq#Length| s@@16)) (= (|Seq#Index| (|Seq#Build| s@@16 v@@10) i@@5) v@@10)) (=> (or (not (= i@@5 (|Seq#Length| s@@16))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@16 v@@10) i@@5) (|Seq#Index| s@@16 i@@5))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@16 v@@10) i@@5))
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@0| Int) (|l#2@@0| Int) (|$w#0| T@U) ) (! (= (U_2_bool (MapType1Select BoxType boolType (|lambda#11| |l#0@@1| |l#1@@0| |l#2@@0|) |$w#0|))  (and ($IsBox |$w#0| |l#0@@1|) (and (<= |l#1@@0| (U_2_int ($Unbox intType |$w#0|))) (< (U_2_int ($Unbox intType |$w#0|)) |l#2@@0|))))
+ :qid |DafnyPreludebpl.27:1|
+ :skolemid |596|
  :pattern ( (MapType1Select BoxType boolType (|lambda#11| |l#0@@1| |l#1@@0| |l#2@@0|) |$w#0|))
 )))
 (assert (forall ((s@@17 T@U) (x@@12 T@U) ) (! (= (exists ((i@@6 Int) ) (!  (and (and (<= 0 i@@6) (< i@@6 (|Seq#Length| s@@17))) (= x@@12 (|Seq#Index| s@@17 i@@6)))
+ :qid |DafnyPreludebpl.1108:11|
+ :skolemid |219|
  :pattern ( (|Seq#Index| s@@17 i@@6))
 )) (< 0 (|MultiSet#Multiplicity| (|MultiSet#FromSeq| s@@17) x@@12)))
+ :qid |DafnyPreludebpl.1106:15|
+ :skolemid |220|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#FromSeq| s@@17) x@@12))
 )))
-(assert (forall ((m@@8 T@U) (|m'| T@U) ) (! (= (|Map#Equal| m@@8 |m'|)  (and (forall ((u@@2 T@U) ) (= (|Set#IsMember| (|Map#Domain| m@@8) u@@2) (|Set#IsMember| (|Map#Domain| |m'|) u@@2))) (forall ((u@@3 T@U) )  (=> (|Set#IsMember| (|Map#Domain| m@@8) u@@3) (= (MapType1Select BoxType BoxType (|Map#Elements| m@@8) u@@3) (MapType1Select BoxType BoxType (|Map#Elements| |m'|) u@@3))))))
+(assert (forall ((m@@8 T@U) (|m'| T@U) ) (! (= (|Map#Equal| m@@8 |m'|)  (and (forall ((u@@2 T@U) ) (! (= (|Set#IsMember| (|Map#Domain| m@@8) u@@2) (|Set#IsMember| (|Map#Domain| |m'|) u@@2))
+ :qid |DafnyPreludebpl.1498:35|
+ :skolemid |297|
+)) (forall ((u@@3 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| m@@8) u@@3) (= (MapType1Select BoxType BoxType (|Map#Elements| m@@8) u@@3) (MapType1Select BoxType BoxType (|Map#Elements| |m'|) u@@3)))
+ :qid |DafnyPreludebpl.1499:35|
+ :skolemid |298|
+))))
+ :qid |DafnyPreludebpl.1496:15|
+ :skolemid |299|
  :pattern ( (|Map#Equal| m@@8 |m'|))
 )))
 (assert (forall ((a@@24 T@U) (b@@18 T@U) (o@@13 T@U) ) (! (= (|Set#IsMember| (|Set#Union| a@@24 b@@18) o@@13)  (or (|Set#IsMember| a@@24 o@@13) (|Set#IsMember| b@@18 o@@13)))
+ :qid |DafnyPreludebpl.704:15|
+ :skolemid |133|
  :pattern ( (|Set#IsMember| (|Set#Union| a@@24 b@@18) o@@13))
 )))
 (assert (forall ((a@@25 T@U) (b@@19 T@U) ) (!  (=> (|Set#Disjoint| a@@25 b@@19) (and (= (|Set#Difference| (|Set#Union| a@@25 b@@19) a@@25) b@@19) (= (|Set#Difference| (|Set#Union| a@@25 b@@19) b@@19) a@@25)))
+ :qid |DafnyPreludebpl.716:15|
+ :skolemid |136|
  :pattern ( (|Set#Union| a@@25 b@@19))
 )))
 (assert (forall ((f@@8 T@U) (t0@@14 T@U) (t1@@12 T@U) (h@@5 T@U) ) (!  (=> (and ($IsGoodHeap h@@5) ($IsAlloc HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@14 t1@@12) h@@5)) (forall ((bx0@@8 T@U) ) (!  (=> (and ($IsAllocBox bx0@@8 t0@@14 h@@5) (Requires1 t0@@14 t1@@12 h@@5 f@@8 bx0@@8)) ($IsAllocBox (Apply1 t0@@14 t1@@12 h@@5 f@@8 bx0@@8) t1@@12 h@@5))
+ :qid |unknown.0:0|
+ :skolemid |431|
  :pattern ( (Apply1 t0@@14 t1@@12 h@@5 f@@8 bx0@@8))
 )))
+ :qid |unknown.0:0|
+ :skolemid |432|
  :pattern ( ($IsAlloc HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@14 t1@@12) h@@5))
 )))
 (assert (forall ((m@@9 T@U) ) (! (= (= (|Map#Card| m@@9) 0) (= m@@9 |Map#Empty|))
+ :qid |DafnyPreludebpl.1382:15|
+ :skolemid |272|
  :pattern ( (|Map#Card| m@@9))
 )))
 (assert (forall ((s@@18 T@U) (i@@7 Int) (v@@11 T@U) (n@@7 Int) ) (!  (=> (and (and (<= 0 i@@7) (< i@@7 n@@7)) (<= n@@7 (|Seq#Length| s@@18))) (= (|Seq#Drop| (|Seq#Update| s@@18 i@@7 v@@11) n@@7) (|Seq#Drop| s@@18 n@@7)))
+ :qid |DafnyPreludebpl.1283:15|
+ :skolemid |253|
  :pattern ( (|Seq#Drop| (|Seq#Update| s@@18 i@@7 v@@11) n@@7))
 )))
 (assert (forall ((|l#0@@2| Bool) (|$l#1#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#16| |l#0@@2|) |$l#1#o#0|)) |l#0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |601|
  :pattern ( (MapType1Select refType boolType (|lambda#16| |l#0@@2|) |$l#1#o#0|))
 )))
 (assert (forall ((|l#0@@3| T@U) (|$l#1#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#18| |l#0@@3|) |$l#1#ly#0|) |l#0@@3|)
+ :qid |operatorsdfy.276:20|
+ :skolemid |603|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#18| |l#0@@3|) |$l#1#ly#0|))
 )))
 (assert (forall ((x@@13 Int) (y@@5 Int) ) (! (= (Div x@@13 y@@5) (div x@@13 y@@5))
+ :qid |DafnyPreludebpl.1648:14|
+ :skolemid |339|
  :pattern ( (Div x@@13 y@@5))
 )))
 (assert (forall ((a@@26 T@U) (b@@20 T@U) ) (!  (=> (|Set#Equal| a@@26 b@@20) (= a@@26 b@@20))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@26 b@@20))
 )))
 (assert (forall ((a@@27 T@U) (b@@21 T@U) ) (!  (=> (|MultiSet#Equal| a@@27 b@@21) (= a@@27 b@@21))
+ :qid |DafnyPreludebpl.1054:15|
+ :skolemid |209|
  :pattern ( (|MultiSet#Equal| a@@27 b@@21))
 )))
 (assert (forall ((a@@28 T@U) (b@@22 T@U) ) (!  (=> (|Seq#Equal| a@@28 b@@22) (= a@@28 b@@22))
+ :qid |DafnyPreludebpl.1225:15|
+ :skolemid |241|
  :pattern ( (|Seq#Equal| a@@28 b@@22))
 )))
 (assert (forall ((m@@10 T@U) (|m'@@0| T@U) ) (!  (=> (|Map#Equal| m@@10 |m'@@0|) (= m@@10 |m'@@0|))
+ :qid |DafnyPreludebpl.1501:15|
+ :skolemid |300|
  :pattern ( (|Map#Equal| m@@10 |m'@@0|))
 )))
 (assert (forall ((v@@12 T@U) (t0@@15 T@U) ) (! (= ($Is MultiSetType v@@12 (TMultiSet t0@@15)) (forall ((bx@@10 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| v@@12 bx@@10)) ($IsBox bx@@10 t0@@15))
+ :qid |DafnyPreludebpl.248:11|
+ :skolemid |50|
  :pattern ( (|MultiSet#Multiplicity| v@@12 bx@@10))
 )))
+ :qid |DafnyPreludebpl.246:15|
+ :skolemid |51|
  :pattern ( ($Is MultiSetType v@@12 (TMultiSet t0@@15)))
 )))
 (assert (forall ((s@@19 T@U) (n@@8 Int) ) (!  (=> (and (<= 0 n@@8) (<= n@@8 (|Seq#Length| s@@19))) (= (|Seq#Length| (|Seq#Take| s@@19 n@@8)) n@@8))
+ :qid |DafnyPreludebpl.1238:15|
+ :skolemid |244|
  :pattern ( (|Seq#Length| (|Seq#Take| s@@19 n@@8)))
 )))
 (assert (forall ((a@@29 T@U) (b@@23 T@U) (c T@U) ) (!  (=> (or (not (= a@@29 c)) (not true)) (=> (and ($HeapSucc a@@29 b@@23) ($HeapSucc b@@23 c)) ($HeapSucc a@@29 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@29 b@@23) ($HeapSucc b@@23 c))
 )))
 (assert (forall ((f@@9 T@U) (t0@@16 T@U) (t1@@13 T@U) ) (! (= ($Is HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@16 t1@@13)) (forall ((h@@6 T@U) (bx0@@9 T@U) ) (!  (=> (and (and ($IsGoodHeap h@@6) ($IsBox bx0@@9 t0@@16)) (Requires1 t0@@16 t1@@13 h@@6 f@@9 bx0@@9)) ($IsBox (Apply1 t0@@16 t1@@13 h@@6 f@@9 bx0@@9) t1@@13))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |423|
  :pattern ( (Apply1 t0@@16 t1@@13 h@@6 f@@9 bx0@@9))
 )))
+ :qid |unknown.0:0|
+ :skolemid |424|
  :pattern ( ($Is HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@16 t1@@13)))
 )))
 (assert (forall ((bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 TInt) (and (= ($Box intType ($Unbox intType bx@@11)) bx@@11) ($Is intType ($Unbox intType bx@@11) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@11 TInt))
 )))
 (assert (= (Ctor charType) 14))
 (assert (forall ((bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 TChar) (and (= ($Box charType ($Unbox charType bx@@12)) bx@@12) ($Is charType ($Unbox charType bx@@12) TChar)))
+ :qid |DafnyPreludebpl.185:15|
+ :skolemid |30|
  :pattern ( ($IsBox bx@@12 TChar))
 )))
 (assert (forall ((a@@30 T@U) (b@@24 T@U) ) (!  (and (= (+ (+ (|Set#Card| (|Set#Difference| a@@30 b@@24)) (|Set#Card| (|Set#Difference| b@@24 a@@30))) (|Set#Card| (|Set#Intersection| a@@30 b@@24))) (|Set#Card| (|Set#Union| a@@30 b@@24))) (= (|Set#Card| (|Set#Difference| a@@30 b@@24)) (- (|Set#Card| a@@30) (|Set#Card| (|Set#Intersection| a@@30 b@@24)))))
+ :qid |DafnyPreludebpl.761:15|
+ :skolemid |145|
  :pattern ( (|Set#Card| (|Set#Difference| a@@30 b@@24)))
 )))
 (assert (forall ((v@@13 T@U) (t@@6 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@13) t@@6) ($Is T@@3 v@@13 t@@6))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@13) t@@6))
 )))
 (assert (forall ((t0@@17 T@U) (t1@@14 T@U) (heap@@3 T@U) (h@@7 T@U) (r@@1 T@U) (rd@@1 T@U) (bx0@@10 T@U) ) (!  (=> (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType r@@1 heap@@3 bx0@@10)) (Requires1 t0@@17 t1@@14 heap@@3 (Handle1 h@@7 r@@1 rd@@1) bx0@@10))
+ :qid |unknown.0:0|
+ :skolemid |407|
  :pattern ( (Requires1 t0@@17 t1@@14 heap@@3 (Handle1 h@@7 r@@1 rd@@1) bx0@@10))
 )))
 (assert (forall ((s@@20 T@U) (i@@8 Int) (v@@14 T@U) (n@@9 Int) ) (!  (=> (and (<= n@@9 i@@8) (< i@@8 (|Seq#Length| s@@20))) (= (|Seq#Take| (|Seq#Update| s@@20 i@@8 v@@14) n@@9) (|Seq#Take| s@@20 n@@9)))
+ :qid |DafnyPreludebpl.1273:15|
+ :skolemid |251|
  :pattern ( (|Seq#Take| (|Seq#Update| s@@20 i@@8 v@@14) n@@9))
 )))
 (assert (forall ((ms T@U) ) (! (= ($IsGoodMultiSet ms) (forall ((bx@@13 T@U) ) (!  (and (<= 0 (|MultiSet#Multiplicity| ms bx@@13)) (<= (|MultiSet#Multiplicity| ms bx@@13) (|MultiSet#Card| ms)))
+ :qid |DafnyPreludebpl.921:19|
+ :skolemid |183|
  :pattern ( (|MultiSet#Multiplicity| ms bx@@13))
 )))
+ :qid |DafnyPreludebpl.918:15|
+ :skolemid |184|
  :pattern ( ($IsGoodMultiSet ms))
 )))
 (assert (forall ((s@@21 T@U) ) (! (<= 0 (|Set#Card| s@@21))
+ :qid |DafnyPreludebpl.664:15|
+ :skolemid |124|
  :pattern ( (|Set#Card| s@@21))
 )))
 (assert (forall ((s@@22 T@U) ) (! (<= 0 (|MultiSet#Card| s@@22))
+ :qid |DafnyPreludebpl.928:15|
+ :skolemid |185|
  :pattern ( (|MultiSet#Card| s@@22))
 )))
 (assert (forall ((s@@23 T@U) ) (! (<= 0 (|Seq#Length| s@@23))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@23))
 )))
 (assert (forall ((m@@11 T@U) ) (! (<= 0 (|Map#Card| m@@11))
+ :qid |DafnyPreludebpl.1380:15|
+ :skolemid |271|
  :pattern ( (|Map#Card| m@@11))
 )))
 (assert (forall ((s@@24 T@U) (i@@9 Int) (j@@2 Int) ) (!  (=> (and (and (<= 0 i@@9) (< i@@9 j@@2)) (<= j@@2 (|Seq#Length| s@@24))) (< (|Seq#Rank| (|Seq#Append| (|Seq#Take| s@@24 i@@9) (|Seq#Drop| s@@24 j@@2))) (|Seq#Rank| s@@24)))
+ :qid |DafnyPreludebpl.1362:15|
+ :skolemid |270|
  :pattern ( (|Seq#Rank| (|Seq#Append| (|Seq#Take| s@@24 i@@9) (|Seq#Drop| s@@24 j@@2))))
 )))
 (assert (forall ((v@@15 T@U) (t0@@18 T@U) (h@@8 T@U) ) (! (= ($IsAlloc SetType v@@15 (TSet t0@@18) h@@8) (forall ((bx@@14 T@U) ) (!  (=> (|Set#IsMember| v@@15 bx@@14) ($IsAllocBox bx@@14 t0@@18 h@@8))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@15 bx@@14))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@15 (TSet t0@@18) h@@8))
 )))
 (assert (forall ((o@@14 T@U) ) (! (= (|MultiSet#Multiplicity| |MultiSet#Empty| o@@14) 0)
+ :qid |DafnyPreludebpl.938:15|
+ :skolemid |187|
  :pattern ( (|MultiSet#Multiplicity| |MultiSet#Empty| o@@14))
 )))
 (assert (forall ((t@@7 T@U) (u@@4 T@U) ) (! (= (Inv0_TMap (TMap t@@7 u@@4)) t@@7)
+ :qid |DafnyPreludebpl.57:15|
+ :skolemid |9|
  :pattern ( (TMap t@@7 u@@4))
 )))
 (assert (forall ((t@@8 T@U) (u@@5 T@U) ) (! (= (Inv1_TMap (TMap t@@8 u@@5)) u@@5)
+ :qid |DafnyPreludebpl.58:15|
+ :skolemid |10|
  :pattern ( (TMap t@@8 u@@5))
 )))
 (assert (forall ((t@@9 T@U) (u@@6 T@U) ) (! (= (Tag (TMap t@@9 u@@6)) TagMap)
+ :qid |DafnyPreludebpl.59:15|
+ :skolemid |11|
  :pattern ( (TMap t@@9 u@@6))
 )))
 (assert (forall ((|#$T0| T@U) (|#$R| T@U) ) (! (= (Tclass._System.___hFunc1_0 (Tclass._System.___hFunc1 |#$T0| |#$R|)) |#$T0|)
+ :qid |unknown.0:0|
+ :skolemid |403|
  :pattern ( (Tclass._System.___hFunc1 |#$T0| |#$R|))
 )))
 (assert (forall ((|#$T0@@0| T@U) (|#$R@@0| T@U) ) (! (= (Tclass._System.___hFunc1_1 (Tclass._System.___hFunc1 |#$T0@@0| |#$R@@0|)) |#$R@@0|)
+ :qid |unknown.0:0|
+ :skolemid |404|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@0| |#$R@@0|))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|)) |##_System._tuple#2._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |484|
  :pattern ( (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@2| T@U) (|_System._tuple#2$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2_0 (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|)) |_System._tuple#2$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |489|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@3| T@U) (|_System._tuple#2$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2_1 (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|)) |_System._tuple#2$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |490|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (_System.Tuple2._0 (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|)) |a#4#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |499|
  :pattern ( (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= (_System.Tuple2._1 (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|)) |a#6#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |501|
  :pattern ( (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((a@@31 T@U) (x@@14 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@31 x@@14) x@@14) (+ (|MultiSet#Multiplicity| a@@31 x@@14) 1))
+ :qid |DafnyPreludebpl.968:15|
+ :skolemid |193|
  :pattern ( (|MultiSet#UnionOne| a@@31 x@@14))
 )))
 (assert (forall (($o@@0 T@U) ) (! ($Is refType $o@@0 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |383|
  :pattern ( ($Is refType $o@@0 Tclass._System.object?))
 )))
 (assert (forall ((v@@16 T@U) (t0@@19 T@U) (h@@9 T@U) ) (! (= ($IsAlloc SeqType v@@16 (TSeq t0@@19) h@@9) (forall ((i@@10 Int) ) (!  (=> (and (<= 0 i@@10) (< i@@10 (|Seq#Length| v@@16))) ($IsAllocBox (|Seq#Index| v@@16 i@@10) t0@@19 h@@9))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@16 i@@10))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@16 (TSeq t0@@19) h@@9))
 )))
 (assert (forall ((t@@10 T@U) ) (! (= (Inv0_TSet (TSet t@@10)) t@@10)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@10))
 )))
 (assert (forall ((t@@11 T@U) ) (! (= (Tag (TSet t@@11)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@11))
 )))
 (assert (forall ((t@@12 T@U) ) (! (= (Inv0_TMultiSet (TMultiSet t@@12)) t@@12)
+ :qid |DafnyPreludebpl.49:15|
+ :skolemid |5|
  :pattern ( (TMultiSet t@@12))
 )))
 (assert (forall ((t@@13 T@U) ) (! (= (Tag (TMultiSet t@@13)) TagMultiSet)
+ :qid |DafnyPreludebpl.50:15|
+ :skolemid |6|
  :pattern ( (TMultiSet t@@13))
 )))
 (assert (forall ((t@@14 T@U) ) (! (= (Inv0_TSeq (TSeq t@@14)) t@@14)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@14))
 )))
 (assert (forall ((t@@15 T@U) ) (! (= (Tag (TSeq t@@15)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@15))
 )))
 (assert (forall ((x@@15 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@15)) x@@15)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@15))
 )))
 (assert (forall ((v@@17 T@U) (t0@@20 T@U) (t1@@15 T@U) (h@@10 T@U) ) (! (= ($IsAlloc MapType v@@17 (TMap t0@@20 t1@@15) h@@10) (forall ((bx@@15 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@17) bx@@15) (and ($IsAllocBox (MapType1Select BoxType BoxType (|Map#Elements| v@@17) bx@@15) t1@@15 h@@10) ($IsAllocBox bx@@15 t0@@20 h@@10)))
+ :qid |DafnyPreludebpl.318:19|
+ :skolemid |75|
  :pattern ( (MapType1Select BoxType BoxType (|Map#Elements| v@@17) bx@@15))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@17) bx@@15))
 )))
+ :qid |DafnyPreludebpl.315:15|
+ :skolemid |76|
  :pattern ( ($IsAlloc MapType v@@17 (TMap t0@@20 t1@@15) h@@10))
 )))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |500|
  :pattern ( (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (< (BoxRank |a#7#1#0|) (DtRank (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |502|
  :pattern ( (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|))
 )))
 (assert (forall ((a@@32 T@U) (b@@25 T@U) ) (! (= (|Set#Union| a@@32 (|Set#Union| a@@32 b@@25)) (|Set#Union| a@@32 b@@25))
+ :qid |DafnyPreludebpl.733:15|
+ :skolemid |139|
  :pattern ( (|Set#Union| a@@32 (|Set#Union| a@@32 b@@25)))
 )))
 (assert (forall ((a@@33 T@U) (b@@26 T@U) ) (! (= (|Set#Intersection| a@@33 (|Set#Intersection| a@@33 b@@26)) (|Set#Intersection| a@@33 b@@26))
+ :qid |DafnyPreludebpl.741:15|
+ :skolemid |141|
  :pattern ( (|Set#Intersection| a@@33 (|Set#Intersection| a@@33 b@@26)))
 )))
 (assert (forall ((a@@34 T@U) (b@@27 T@U) ) (! (= (|MultiSet#Intersection| a@@34 (|MultiSet#Intersection| a@@34 b@@27)) (|MultiSet#Intersection| a@@34 b@@27))
+ :qid |DafnyPreludebpl.1010:15|
+ :skolemid |201|
  :pattern ( (|MultiSet#Intersection| a@@34 (|MultiSet#Intersection| a@@34 b@@27)))
 )))
 (assert (forall ((s@@25 T@U) ) (!  (and (= (= (|MultiSet#Card| s@@25) 0) (= s@@25 |MultiSet#Empty|)) (=> (or (not (= (|MultiSet#Card| s@@25) 0)) (not true)) (exists ((x@@16 T@U) ) (! (< 0 (|MultiSet#Multiplicity| s@@25 x@@16))
+ :qid |DafnyPreludebpl.946:20|
+ :skolemid |188|
  :pattern ( (|MultiSet#Multiplicity| s@@25 x@@16))
 ))))
+ :qid |DafnyPreludebpl.942:15|
+ :skolemid |189|
  :pattern ( (|MultiSet#Card| s@@25))
 )))
 (assert (forall ((r@@2 T@U) (o@@15 T@U) ) (!  (and (= (= (|MultiSet#Multiplicity| (|MultiSet#Singleton| r@@2) o@@15) 1) (= r@@2 o@@15)) (= (= (|MultiSet#Multiplicity| (|MultiSet#Singleton| r@@2) o@@15) 0)  (or (not (= r@@2 o@@15)) (not true))))
+ :qid |DafnyPreludebpl.952:15|
+ :skolemid |190|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Singleton| r@@2) o@@15))
 )))
 (assert (forall ((u@@7 T@U) ) (!  (not (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@7))
+ :qid |DafnyPreludebpl.1438:15|
+ :skolemid |285|
  :pattern ( (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@7))
 )))
 (assert (forall ((f@@10 T@U) (ly@@0 T@U) (A@@0 T@T) ) (! (= (AtLayer A@@0 f@@10 ($LS ly@@0)) (AtLayer A@@0 f@@10 ly@@0))
+ :qid |DafnyPreludebpl.502:18|
+ :skolemid |102|
  :pattern ( (AtLayer A@@0 f@@10 ($LS ly@@0)))
 )))
 (assert (forall ((a@@35 T@U) (b@@28 T@U) (o@@16 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#Union| a@@35 b@@28) o@@16) (+ (|MultiSet#Multiplicity| a@@35 o@@16) (|MultiSet#Multiplicity| b@@28 o@@16)))
+ :qid |DafnyPreludebpl.989:15|
+ :skolemid |197|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Union| a@@35 b@@28) o@@16))
 )))
 (assert (forall ((n@@10 Int) ) (!  (=> (or (and (<= 0 n@@10) (< n@@10 55296)) (and (<= 57344 n@@10) (< n@@10 1114112))) (= (|char#ToInt| (|char#FromInt| n@@10)) n@@10))
+ :qid |DafnyPreludebpl.131:15|
+ :skolemid |21|
  :pattern ( (|char#FromInt| n@@10))
 )))
 (assert (forall ((f@@11 T@U) (t0@@21 T@U) (t1@@16 T@U) (h@@11 T@U) ) (!  (=> ($IsGoodHeap h@@11) (= ($IsAlloc HandleTypeType f@@11 (Tclass._System.___hFunc1 t0@@21 t1@@16) h@@11) (forall ((bx0@@11 T@U) ) (!  (=> (and (and ($IsBox bx0@@11 t0@@21) ($IsAllocBox bx0@@11 t0@@21 h@@11)) (Requires1 t0@@21 t1@@16 h@@11 f@@11 bx0@@11)) (forall ((r@@3 T@U) ) (!  (=> (and (or (not (= r@@3 null)) (not true)) (|Set#IsMember| (Reads1 t0@@21 t1@@16 h@@11 f@@11 bx0@@11) ($Box refType r@@3))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@11 r@@3) alloc))))
+ :qid |unknown.0:0|
+ :skolemid |428|
  :pattern ( (|Set#IsMember| (Reads1 t0@@21 t1@@16 h@@11 f@@11 bx0@@11) ($Box refType r@@3)))
 )))
+ :qid |unknown.0:0|
+ :skolemid |429|
  :pattern ( (Apply1 t0@@21 t1@@16 h@@11 f@@11 bx0@@11))
  :pattern ( (Reads1 t0@@21 t1@@16 h@@11 f@@11 bx0@@11))
 ))))
+ :qid |unknown.0:0|
+ :skolemid |430|
  :pattern ( ($IsAlloc HandleTypeType f@@11 (Tclass._System.___hFunc1 t0@@21 t1@@16) h@@11))
 )))
 (assert (forall ((bx@@16 T@U) (s@@26 T@U) (t@@16 T@U) ) (!  (=> ($IsBox bx@@16 (TMap s@@26 t@@16)) (and (= ($Box MapType ($Unbox MapType bx@@16)) bx@@16) ($Is MapType ($Unbox MapType bx@@16) (TMap s@@26 t@@16))))
+ :qid |DafnyPreludebpl.207:15|
+ :skolemid |36|
  :pattern ( ($IsBox bx@@16 (TMap s@@26 t@@16)))
 )))
 (assert (forall ((|#$T0@@1| T@U) (|#$R@@1| T@U) (bx@@17 T@U) ) (!  (=> ($IsBox bx@@17 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@17)) bx@@17) ($Is HandleTypeType ($Unbox HandleTypeType bx@@17) (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|))))
+ :qid |unknown.0:0|
+ :skolemid |405|
  :pattern ( ($IsBox bx@@17 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)))
 )))
 (assert (forall ((|_System._tuple#2$T0@@4| T@U) (|_System._tuple#2$T1@@4| T@U) (bx@@18 T@U) ) (!  (=> ($IsBox bx@@18 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@18)) bx@@18) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@18) (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |491|
  :pattern ( ($IsBox bx@@18 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)))
 )))
 (assert (forall ((|l#0@@4| T@U) (|l#1@@1| T@U) (|l#2@@1| T@U) (|l#3@@0| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@4| |l#1@@1| |l#2@@1| |l#3@@0|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0@@4|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@1| $o@@1) |l#2@@1|)))) |l#3@@0|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |595|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@4| |l#1@@1| |l#2@@1| |l#3@@0|) $o@@1 $f))
 )))
 (assert (forall ((|l#0@@5| Int) (|$l#1#heap#0@@0| T@U) (|$l#1#i#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#14| |l#0@@5|) |$l#1#heap#0@@0| |$l#1#i#0@@0|) ($Box intType (int_2_U (+ |l#0@@5| (U_2_int ($Unbox intType |$l#1#i#0@@0|))))))
+ :qid |unknown.0:0|
+ :skolemid |599|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#14| |l#0@@5|) |$l#1#heap#0@@0| |$l#1#i#0@@0|))
 )))
 (assert (forall ((s@@27 T@U) (i@@11 Int) (v@@18 T@U) ) (!  (=> (and (<= 0 i@@11) (< i@@11 (|Seq#Length| s@@27))) (= (|Seq#Length| (|Seq#Update| s@@27 i@@11 v@@18)) (|Seq#Length| s@@27)))
+ :qid |DafnyPreludebpl.1167:15|
+ :skolemid |228|
  :pattern ( (|Seq#Length| (|Seq#Update| s@@27 i@@11 v@@18)))
 )))
 (assert (forall ((x@@17 Int) (y@@6 Int) ) (! (= (Mod x@@17 y@@6) (mod x@@17 y@@6))
+ :qid |DafnyPreludebpl.1649:14|
+ :skolemid |340|
  :pattern ( (Mod x@@17 y@@6))
 )))
 (assert (forall ((s@@28 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@28 val@@4)) s@@28) (= (|Seq#Build_inv1| (|Seq#Build| s@@28 val@@4)) val@@4))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |223|
  :pattern ( (|Seq#Build| s@@28 val@@4))
 )))
 (assert (forall ((|#$T0@@2| T@U) (|#$R@@2| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) |tytagFamily$_#Func1|))
+ :qid |unknown.0:0|
+ :skolemid |402|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
+ :qid |unknown.0:0|
+ :skolemid |488|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|))
 )))
 (assert (forall ((x@@18 Int) (y@@7 Int) ) (! (= (Mul x@@18 y@@7) (* x@@18 y@@7))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@18 y@@7))
 )))
 (assert (forall ((t0@@22 T@U) (t1@@17 T@U) (heap@@4 T@U) (f@@12 T@U) (bx0@@12 T@U) ) (!  (=> (and (and ($IsGoodHeap heap@@4) (and ($IsBox bx0@@12 t0@@22) ($Is HandleTypeType f@@12 (Tclass._System.___hFunc1 t0@@22 t1@@17)))) (|Set#Equal| (Reads1 t0@@22 t1@@17 $OneHeap f@@12 bx0@@12) |Set#Empty|)) (= (Requires1 t0@@22 t1@@17 $OneHeap f@@12 bx0@@12) (Requires1 t0@@22 t1@@17 heap@@4 f@@12 bx0@@12)))
+ :qid |unknown.0:0|
+ :skolemid |422|
  :pattern ( (Requires1 t0@@22 t1@@17 $OneHeap f@@12 bx0@@12) ($IsGoodHeap heap@@4))
  :pattern ( (Requires1 t0@@22 t1@@17 heap@@4 f@@12 bx0@@12))
 )))
-(assert (forall ((m@@12 T@U) ) (!  (or (= m@@12 |Map#Empty|) (exists ((k@@2 T@U) ) (|Set#IsMember| (|Map#Domain| m@@12) k@@2)))
+(assert (forall ((m@@12 T@U) ) (!  (or (= m@@12 |Map#Empty|) (exists ((k@@2 T@U) ) (! (|Set#IsMember| (|Map#Domain| m@@12) k@@2)
+ :qid |DafnyPreludebpl.1388:31|
+ :skolemid |273|
+)))
+ :qid |DafnyPreludebpl.1386:15|
+ :skolemid |274|
  :pattern ( (|Map#Domain| m@@12))
 )))
-(assert (forall ((m@@13 T@U) ) (!  (or (= m@@13 |Map#Empty|) (exists ((v@@19 T@U) ) (|Set#IsMember| (|Map#Values| m@@13) v@@19)))
+(assert (forall ((m@@13 T@U) ) (!  (or (= m@@13 |Map#Empty|) (exists ((v@@19 T@U) ) (! (|Set#IsMember| (|Map#Values| m@@13) v@@19)
+ :qid |DafnyPreludebpl.1391:31|
+ :skolemid |275|
+)))
+ :qid |DafnyPreludebpl.1389:15|
+ :skolemid |276|
  :pattern ( (|Map#Values| m@@13))
 )))
 (assert (forall ((m@@14 T@U) (item T@U) ) (! (= (|Set#IsMember| (|Map#Items| m@@14) item)  (and (|Set#IsMember| (|Map#Domain| m@@14) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (= (MapType1Select BoxType BoxType (|Map#Elements| m@@14) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (_System.Tuple2._1 ($Unbox DatatypeTypeType item)))))
+ :qid |DafnyPreludebpl.1430:15|
+ :skolemid |284|
  :pattern ( (|Set#IsMember| (|Map#Items| m@@14) item))
 )))
 (assert (forall ((m@@15 T@U) (v@@20 T@U) ) (! (= (|Set#IsMember| (|Map#Values| m@@15) v@@20) (exists ((u@@8 T@U) ) (!  (and (|Set#IsMember| (|Map#Domain| m@@15) u@@8) (= v@@20 (MapType1Select BoxType BoxType (|Map#Elements| m@@15) u@@8)))
+ :qid |DafnyPreludebpl.1414:10|
+ :skolemid |282|
  :pattern ( (|Set#IsMember| (|Map#Domain| m@@15) u@@8))
  :pattern ( (MapType1Select BoxType BoxType (|Map#Elements| m@@15) u@@8))
 )))
+ :qid |DafnyPreludebpl.1412:15|
+ :skolemid |283|
  :pattern ( (|Set#IsMember| (|Map#Values| m@@15) v@@20))
 )))
 (assert (forall ((m@@16 T@U) (u@@9 T@U) (|u'| T@U) (v@@21 T@U) ) (!  (and (=> (= |u'| u@@9) (and (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@16 u@@9 v@@21)) |u'|) (= (MapType1Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@16 u@@9 v@@21)) |u'|) v@@21))) (=> (or (not (= |u'| u@@9)) (not true)) (and (= (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@16 u@@9 v@@21)) |u'|) (|Set#IsMember| (|Map#Domain| m@@16) |u'|)) (= (MapType1Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@16 u@@9 v@@21)) |u'|) (MapType1Select BoxType BoxType (|Map#Elements| m@@16) |u'|)))))
+ :qid |DafnyPreludebpl.1463:15|
+ :skolemid |290|
  :pattern ( (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@16 u@@9 v@@21)) |u'|))
  :pattern ( (MapType1Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@16 u@@9 v@@21)) |u'|))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@2)) (DtRank d@@2))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@2)))
 )))
 (assert (forall ((r@@4 T@U) ) (! (= (|MultiSet#Singleton| r@@4) (|MultiSet#UnionOne| |MultiSet#Empty| r@@4))
+ :qid |DafnyPreludebpl.957:15|
+ :skolemid |191|
  :pattern ( (|MultiSet#Singleton| r@@4))
 )))
 (assert (forall ((s@@29 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#FromSeq| s@@29)) (|Seq#Length| s@@29))
+ :qid |DafnyPreludebpl.1085:15|
+ :skolemid |215|
  :pattern ( (|MultiSet#Card| (|MultiSet#FromSeq| s@@29)))
 )))
 (assert (forall ((m@@17 T@U) ) (! (= (|Set#Card| (|Map#Domain| m@@17)) (|Map#Card| m@@17))
+ :qid |DafnyPreludebpl.1396:15|
+ :skolemid |279|
  :pattern ( (|Set#Card| (|Map#Domain| m@@17)))
  :pattern ( (|Map#Card| m@@17))
 )))
 (assert (forall ((m@@18 T@U) ) (! (= (|Set#Card| (|Map#Items| m@@18)) (|Map#Card| m@@18))
+ :qid |DafnyPreludebpl.1402:15|
+ :skolemid |281|
  :pattern ( (|Set#Card| (|Map#Items| m@@18)))
  :pattern ( (|Map#Card| m@@18))
 )))
 (assert (forall ((m@@19 T@U) ) (! (<= (|Set#Card| (|Map#Values| m@@19)) (|Map#Card| m@@19))
+ :qid |DafnyPreludebpl.1399:15|
+ :skolemid |280|
  :pattern ( (|Set#Card| (|Map#Values| m@@19)))
  :pattern ( (|Map#Card| m@@19))
 )))
 (assert (forall ((a@@36 Int) (b@@29 Int) ) (! (= (<= a@@36 b@@29) (= (|Math#min| a@@36 b@@29) a@@36))
+ :qid |DafnyPreludebpl.885:15|
+ :skolemid |177|
  :pattern ( (|Math#min| a@@36 b@@29))
 )))
 (assert (forall ((a@@37 Int) (b@@30 Int) ) (! (= (<= b@@30 a@@37) (= (|Math#min| a@@37 b@@30) b@@30))
+ :qid |DafnyPreludebpl.887:15|
+ :skolemid |178|
  :pattern ( (|Math#min| a@@37 b@@30))
 )))
 (assert (forall ((bx@@19 T@U) (t@@17 T@U) ) (!  (=> ($IsBox bx@@19 (TSet t@@17)) (and (= ($Box SetType ($Unbox SetType bx@@19)) bx@@19) ($Is SetType ($Unbox SetType bx@@19) (TSet t@@17))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@19 (TSet t@@17)))
 )))
 (assert (forall ((bx@@20 T@U) (t@@18 T@U) ) (!  (=> ($IsBox bx@@20 (TMultiSet t@@18)) (and (= ($Box MultiSetType ($Unbox MultiSetType bx@@20)) bx@@20) ($Is MultiSetType ($Unbox MultiSetType bx@@20) (TMultiSet t@@18))))
+ :qid |DafnyPreludebpl.201:15|
+ :skolemid |34|
  :pattern ( ($IsBox bx@@20 (TMultiSet t@@18)))
 )))
 (assert (forall ((bx@@21 T@U) (t@@19 T@U) ) (!  (=> ($IsBox bx@@21 (TSeq t@@19)) (and (= ($Box SeqType ($Unbox SeqType bx@@21)) bx@@21) ($Is SeqType ($Unbox SeqType bx@@21) (TSeq t@@19))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@21 (TSeq t@@19)))
 )))
 (assert (= (|MultiSet#FromSeq| |Seq#Empty|) |MultiSet#Empty|))
 (assert (forall ((a@@38 T@U) (x@@19 T@U) ) (!  (=> (|Set#IsMember| a@@38 x@@19) (= (|Set#Card| (|Set#UnionOne| a@@38 x@@19)) (|Set#Card| a@@38)))
+ :qid |DafnyPreludebpl.694:15|
+ :skolemid |131|
  :pattern ( (|Set#Card| (|Set#UnionOne| a@@38 x@@19)))
 )))
 (assert (forall ((s@@30 T@U) (v@@22 T@U) ) (! (= (|MultiSet#FromSeq| (|Seq#Build| s@@30 v@@22)) (|MultiSet#UnionOne| (|MultiSet#FromSeq| s@@30) v@@22))
+ :qid |DafnyPreludebpl.1089:15|
+ :skolemid |216|
  :pattern ( (|MultiSet#FromSeq| (|Seq#Build| s@@30 v@@22)))
 )))
 (assert (forall ((m@@20 T@U) (s@@31 T@U) ) (! (= (|Map#Domain| (|Map#Subtract| m@@20 s@@31)) (|Set#Difference| (|Map#Domain| m@@20) s@@31))
+ :qid |DafnyPreludebpl.1486:15|
+ :skolemid |295|
  :pattern ( (|Map#Domain| (|Map#Subtract| m@@20 s@@31)))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))
+ :qid |DafnyPreludebpl.136:15|
+ :skolemid |22|
  :pattern ( (|char#ToInt| ch))
 )))
 (assert (forall ((v@@23 T@U) (t0@@23 T@U) (t1@@18 T@U) ) (! (= ($Is MapType v@@23 (TMap t0@@23 t1@@18)) (forall ((bx@@22 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@23) bx@@22) (and ($IsBox (MapType1Select BoxType BoxType (|Map#Elements| v@@23) bx@@22) t1@@18) ($IsBox bx@@22 t0@@23)))
+ :qid |DafnyPreludebpl.261:19|
+ :skolemid |55|
  :pattern ( (MapType1Select BoxType BoxType (|Map#Elements| v@@23) bx@@22))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@23) bx@@22))
 )))
+ :qid |DafnyPreludebpl.258:15|
+ :skolemid |56|
  :pattern ( ($Is MapType v@@23 (TMap t0@@23 t1@@18)))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -832,126 +1289,213 @@
 (assert (= (Tag Tclass._System.object) Tagclass._System.object))
 (assert (= (TagFamily Tclass._System.object) tytagFamily$object))
 (assert (forall ((|l#0@@6| Int) (|$w#0@@0| T@U) ) (! (= (MapType1Select BoxType BoxType (|lambda#12| |l#0@@6|) |$w#0@@0|) ($Box intType (int_2_U (Mul |l#0@@6| (U_2_int ($Unbox intType |$w#0@@0|))))))
+ :qid |unknown.0:0|
+ :skolemid |597|
  :pattern ( (MapType1Select BoxType BoxType (|lambda#12| |l#0@@6|) |$w#0@@0|))
 )))
 (assert (forall ((ty@@0 T@U) (heap@@5 T@U) (len@@0 Int) (init@@0 T@U) ) (!  (=> (and ($IsGoodHeap heap@@5) (<= 0 len@@0)) (= (|Seq#Length| (|Seq#Create| ty@@0 heap@@5 len@@0 init@@0)) len@@0))
+ :qid |DafnyPreludebpl.1313:15|
+ :skolemid |259|
  :pattern ( (|Seq#Length| (|Seq#Create| ty@@0 heap@@5 len@@0 init@@0)))
 )))
 (assert (forall ((s@@32 T@U) (n@@11 Int) (k@@3 Int) ) (!  (=> (and (and (<= 0 n@@11) (<= n@@11 k@@3)) (< k@@3 (|Seq#Length| s@@32))) (= (|Seq#Index| (|Seq#Drop| s@@32 n@@11) (- k@@3 n@@11)) (|Seq#Index| s@@32 k@@3)))
+ :qid |DafnyPreludebpl.1258:15|
  :weight 25
+ :skolemid |248|
  :pattern ( (|Seq#Index| s@@32 k@@3) (|Seq#Drop| s@@32 n@@11))
 )))
 (assert (forall ((a@@39 T@U) (b@@31 T@U) (o@@17 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#Difference| a@@39 b@@31) o@@17) (|Math#clip| (- (|MultiSet#Multiplicity| a@@39 o@@17) (|MultiSet#Multiplicity| b@@31 o@@17))))
+ :qid |DafnyPreludebpl.1017:15|
+ :skolemid |202|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Difference| a@@39 b@@31) o@@17))
 )))
 (assert (forall ((s@@33 T@U) ) (! ($Is SetType (SetRef_to_SetBox s@@33) (TSet Tclass._System.object?))
+ :qid |DafnyPreludebpl.372:15|
+ :skolemid |83|
  :pattern ( (SetRef_to_SetBox s@@33))
 )))
 (assert (forall ((a@@40 T@U) (b@@32 T@U) ) (! (= (|Set#Equal| a@@40 b@@32) (forall ((o@@18 T@U) ) (! (= (|Set#IsMember| a@@40 o@@18) (|Set#IsMember| b@@32 o@@18))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@40 o@@18))
  :pattern ( (|Set#IsMember| b@@32 o@@18))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@40 b@@32))
 )))
 (assert (forall ((s@@34 T@U) (m@@21 Int) (n@@12 Int) ) (!  (=> (and (and (<= 0 m@@21) (<= 0 n@@12)) (<= (+ m@@21 n@@12) (|Seq#Length| s@@34))) (= (|Seq#Drop| (|Seq#Drop| s@@34 m@@21) n@@12) (|Seq#Drop| s@@34 (+ m@@21 n@@12))))
+ :qid |DafnyPreludebpl.1299:15|
+ :skolemid |257|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@34 m@@21) n@@12))
 )))
 (assert (forall ((s0@@1 T@U) (s1@@1 T@U) (n@@13 Int) ) (! (= (|Seq#SameUntil| s0@@1 s1@@1 n@@13) (forall ((j@@3 Int) ) (!  (=> (and (<= 0 j@@3) (< j@@3 n@@13)) (= (|Seq#Index| s0@@1 j@@3) (|Seq#Index| s1@@1 j@@3)))
+ :qid |DafnyPreludebpl.1232:19|
+ :skolemid |242|
  :pattern ( (|Seq#Index| s0@@1 j@@3))
  :pattern ( (|Seq#Index| s1@@1 j@@3))
 )))
+ :qid |DafnyPreludebpl.1229:15|
+ :skolemid |243|
  :pattern ( (|Seq#SameUntil| s0@@1 s1@@1 n@@13))
 )))
 (assert (forall ((d@@3 T@U) (|_System._tuple#2$T0@@6| T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_System.Tuple2.___hMake2_q d@@3) (exists ((|_System._tuple#2$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@2)
+ :qid |unknown.0:0|
+ :skolemid |494|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@2))
 )))) ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |495|
  :pattern ( ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@2))
 )))
 (assert (forall ((d@@4 T@U) (|_System._tuple#2$T1@@7| T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_System.Tuple2.___hMake2_q d@@4) (exists ((|_System._tuple#2$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@3)
+ :qid |unknown.0:0|
+ :skolemid |496|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@3))
 )))) ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |497|
  :pattern ( ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@3))
 )))
 (assert (forall ((s0@@2 T@U) (s1@@2 T@U) (n@@14 Int) ) (!  (and (=> (< n@@14 (|Seq#Length| s0@@2)) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@14) (|Seq#Index| s0@@2 n@@14))) (=> (<= (|Seq#Length| s0@@2) n@@14) (= (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@14) (|Seq#Index| s1@@2 (- n@@14 (|Seq#Length| s0@@2))))))
+ :qid |DafnyPreludebpl.1159:15|
+ :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@2 s1@@2) n@@14))
 )))
 (assert (forall ((a@@41 Int) ) (!  (=> (< a@@41 0) (= (|Math#clip| a@@41) 0))
+ :qid |DafnyPreludebpl.897:15|
+ :skolemid |181|
  :pattern ( (|Math#clip| a@@41))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0| |a#3#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |498|
  :pattern ( (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)))
 )))
 (assert (forall ((x@@20 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@20))) (Lit BoxType ($Box intType (int_2_U x@@20))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@20))))
 )))
 (assert (forall ((x@@21 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@21)) (Lit BoxType ($Box T@@5 x@@21)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@21)))
 )))
 (assert (forall ((a@@42 T@U) (x@@22 T@U) (y@@8 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| a@@42 y@@8)) (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@42 x@@22) y@@8)))
+ :qid |DafnyPreludebpl.973:15|
+ :skolemid |194|
  :pattern ( (|MultiSet#UnionOne| a@@42 x@@22) (|MultiSet#Multiplicity| a@@42 y@@8))
 )))
 (assert (forall ((a@@43 T@U) (b@@33 T@U) ) (! (= (|MultiSet#FromSeq| (|Seq#Append| a@@43 b@@33)) (|MultiSet#Union| (|MultiSet#FromSeq| a@@43) (|MultiSet#FromSeq| b@@33)))
+ :qid |DafnyPreludebpl.1093:15|
+ :skolemid |217|
  :pattern ( (|MultiSet#FromSeq| (|Seq#Append| a@@43 b@@33)))
 )))
 (assert (forall ((s@@35 T@U) ) (!  (=> (= (|Seq#Length| s@@35) 0) (= s@@35 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@35))
 )))
 (assert (forall ((s@@36 T@U) (n@@15 Int) ) (!  (=> (= n@@15 0) (= (|Seq#Take| s@@36 n@@15) |Seq#Empty|))
+ :qid |DafnyPreludebpl.1295:15|
+ :skolemid |256|
  :pattern ( (|Seq#Take| s@@36 n@@15))
 )))
 (assert (forall ((a@@44 T@U) (x@@23 T@U) (o@@19 T@U) ) (! (= (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@44 x@@23) o@@19))  (or (= o@@19 x@@23) (< 0 (|MultiSet#Multiplicity| a@@44 o@@19))))
+ :qid |DafnyPreludebpl.963:15|
+ :skolemid |192|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@44 x@@23) o@@19))
 )))
 (assert (forall ((a@@45 T@U) (b@@34 T@U) ) (! (= (|MultiSet#Equal| a@@45 b@@34) (forall ((o@@20 T@U) ) (! (= (|MultiSet#Multiplicity| a@@45 o@@20) (|MultiSet#Multiplicity| b@@34 o@@20))
+ :qid |DafnyPreludebpl.1050:19|
+ :skolemid |207|
  :pattern ( (|MultiSet#Multiplicity| a@@45 o@@20))
  :pattern ( (|MultiSet#Multiplicity| b@@34 o@@20))
 )))
+ :qid |DafnyPreludebpl.1047:15|
+ :skolemid |208|
  :pattern ( (|MultiSet#Equal| a@@45 b@@34))
 )))
 (assert (forall ((a@@46 T@U) (b@@35 T@U) ) (! (= (|MultiSet#Subset| a@@46 b@@35) (forall ((o@@21 T@U) ) (! (<= (|MultiSet#Multiplicity| a@@46 o@@21) (|MultiSet#Multiplicity| b@@35 o@@21))
+ :qid |DafnyPreludebpl.1041:19|
+ :skolemid |205|
  :pattern ( (|MultiSet#Multiplicity| a@@46 o@@21))
  :pattern ( (|MultiSet#Multiplicity| b@@35 o@@21))
 )))
+ :qid |DafnyPreludebpl.1038:15|
+ :skolemid |206|
  :pattern ( (|MultiSet#Subset| a@@46 b@@35))
 )))
 (assert (forall ((v@@24 T@U) (t0@@24 T@U) (h@@12 T@U) ) (! (= ($IsAlloc MultiSetType v@@24 (TMultiSet t0@@24) h@@12) (forall ((bx@@23 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| v@@24 bx@@23)) ($IsAllocBox bx@@23 t0@@24 h@@12))
+ :qid |DafnyPreludebpl.307:11|
+ :skolemid |71|
  :pattern ( (|MultiSet#Multiplicity| v@@24 bx@@23))
 )))
+ :qid |DafnyPreludebpl.305:15|
+ :skolemid |72|
  :pattern ( ($IsAlloc MultiSetType v@@24 (TMultiSet t0@@24) h@@12))
 )))
 (assert (forall ((h@@13 T@U) (v@@25 T@U) ) (! ($IsAlloc intType v@@25 TInt h@@13)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@25 TInt h@@13))
 )))
 (assert (forall ((h@@14 T@U) (v@@26 T@U) ) (! ($IsAlloc charType v@@26 TChar h@@14)
+ :qid |DafnyPreludebpl.292:14|
+ :skolemid |64|
  :pattern ( ($IsAlloc charType v@@26 TChar h@@14))
 )))
 (assert (forall ((s@@37 T@U) (i@@12 Int) (v@@27 T@U) (n@@16 Int) ) (!  (=> (and (and (<= 0 i@@12) (< i@@12 n@@16)) (<= n@@16 (|Seq#Length| s@@37))) (= (|Seq#Take| (|Seq#Update| s@@37 i@@12 v@@27) n@@16) (|Seq#Update| (|Seq#Take| s@@37 n@@16) i@@12 v@@27)))
+ :qid |DafnyPreludebpl.1268:15|
+ :skolemid |250|
  :pattern ( (|Seq#Take| (|Seq#Update| s@@37 i@@12 v@@27) n@@16))
 )))
 (assert (forall ((v@@28 T@U) (t0@@25 T@U) ) (! (= ($Is SeqType v@@28 (TSeq t0@@25)) (forall ((i@@13 Int) ) (!  (=> (and (<= 0 i@@13) (< i@@13 (|Seq#Length| v@@28))) ($IsBox (|Seq#Index| v@@28 i@@13) t0@@25))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@28 i@@13))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@28 (TSeq t0@@25)))
 )))
 (assert (forall ((a@@47 T@U) (x@@24 T@U) ) (!  (=> (not (|Set#IsMember| a@@47 x@@24)) (= (|Set#Card| (|Set#UnionOne| a@@47 x@@24)) (+ (|Set#Card| a@@47) 1)))
+ :qid |DafnyPreludebpl.698:15|
+ :skolemid |132|
  :pattern ( (|Set#Card| (|Set#UnionOne| a@@47 x@@24)))
 )))
 (assert (forall ((|l#0@@7| T@U) (|$l#1#heap#0@@1| T@U) (|$l#1#i#0@@1| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#17| |l#0@@7|) |$l#1#heap#0@@1| |$l#1#i#0@@1|) |l#0@@7|)
+ :qid |operatorsdfy.276:20|
+ :skolemid |602|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#17| |l#0@@7|) |$l#1#heap#0@@1| |$l#1#i#0@@1|))
 )))
-(assert (forall ((m@@22 T@U) ) (!  (or (= m@@22 |Map#Empty|) (exists ((k@@4 T@U) (v@@29 T@U) ) (|Set#IsMember| (|Map#Items| m@@22) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@4 v@@29)))))
+(assert (forall ((m@@22 T@U) ) (!  (or (= m@@22 |Map#Empty|) (exists ((k@@4 T@U) (v@@29 T@U) ) (! (|Set#IsMember| (|Map#Items| m@@22) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@4 v@@29)))
+ :qid |DafnyPreludebpl.1394:31|
+ :skolemid |277|
+)))
+ :qid |DafnyPreludebpl.1392:15|
+ :skolemid |278|
  :pattern ( (|Map#Items| m@@22))
 )))
 (assert (forall ((s@@38 T@U) (i@@14 Int) ) (!  (=> (and (<= 0 i@@14) (< i@@14 (|Seq#Length| s@@38))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@38 i@@14))) (|Seq#Rank| s@@38)))
+ :qid |DafnyPreludebpl.1353:15|
+ :skolemid |267|
  :pattern ( (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@38 i@@14))))
 )))
 (assert (forall ((v@@30 T@U) (t0@@26 T@U) (t1@@19 T@U) ) (!  (=> ($Is MapType v@@30 (TMap t0@@26 t1@@19)) (and (and ($Is SetType (|Map#Domain| v@@30) (TSet t0@@26)) ($Is SetType (|Map#Values| v@@30) (TSet t1@@19))) ($Is SetType (|Map#Items| v@@30) (TSet (Tclass._System.Tuple2 t0@@26 t1@@19)))))
+ :qid |DafnyPreludebpl.267:15|
+ :skolemid |57|
  :pattern ( ($Is MapType v@@30 (TMap t0@@26 t1@@19)))
 )))
 (assert (forall ((v@@31 T@U) ) (! ($Is intType v@@31 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@31 TInt))
 )))
 (assert (forall ((v@@32 T@U) ) (! ($Is charType v@@32 TChar)
+ :qid |DafnyPreludebpl.231:14|
+ :skolemid |43|
  :pattern ( ($Is charType v@@32 TChar))
 )))
 (push 1)
@@ -1011,6 +1555,7 @@
 (declare-fun |seq3#0| () T@U)
 (declare-fun |seq4#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.Main)
 (set-option :timeout 10000)
 (set-option :rlimit 1000000)
 (set-option :auto_config false)
@@ -1079,7 +1624,10 @@
 (let ((anon227_Then_correct true))
 (let ((anon226_Else_correct  (=> (and (<= (|Seq#Length| |s1#0@0|) (|Seq#Length| |s2#0@0|)) (|Seq#SameUntil| |s1#0@0| |s2#0@0| (|Seq#Length| |s1#0@0|))) (and (=> (= (ControlFlow 0 109) 50) anon227_Then_correct) (=> (= (ControlFlow 0 109) 108) anon227_Else_correct)))))
 (let ((anon226_Then_correct true))
-(let ((anon224_Else_correct  (and (=> (= (ControlFlow 0 110) (- 0 111)) (forall ((|seqinit#0#i0#0| Int) )  (=> (and (<= 0 |seqinit#0#i0#0|) (< |seqinit#0#i0#0| (LitInt 2))) (Requires1 TInt TInt $Heap@9 (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#18| (Handle1 (|lambda#14| 1) (|lambda#15| TInt) (|lambda#17| (SetRef_to_SetBox (|lambda#16| false))))) ($LS $LZ))) ($Box intType (int_2_U |seqinit#0#i0#0|)))))) (=> (and (= |s1#0@0| (|Seq#Create| TInt $Heap@9 (LitInt 2) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#18| (Handle1 (|lambda#14| 1) (|lambda#15| TInt) (|lambda#17| (SetRef_to_SetBox (|lambda#16| false))))) ($LS $LZ))))) (= |s2#0@0| (|Seq#Append| |s1#0@0| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 3))))))) (and (=> (= (ControlFlow 0 110) 49) anon226_Then_correct) (=> (= (ControlFlow 0 110) 109) anon226_Else_correct))))))
+(let ((anon224_Else_correct  (and (=> (= (ControlFlow 0 110) (- 0 111)) (forall ((|seqinit#0#i0#0| Int) ) (!  (=> (and (<= 0 |seqinit#0#i0#0|) (< |seqinit#0#i0#0| (LitInt 2))) (Requires1 TInt TInt $Heap@9 (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#18| (Handle1 (|lambda#14| 1) (|lambda#15| TInt) (|lambda#17| (SetRef_to_SetBox (|lambda#16| false))))) ($LS $LZ))) ($Box intType (int_2_U |seqinit#0#i0#0|))))
+ :qid |operatorsdfy.276:13|
+ :skolemid |564|
+))) (=> (and (= |s1#0@0| (|Seq#Create| TInt $Heap@9 (LitInt 2) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#18| (Handle1 (|lambda#14| 1) (|lambda#15| TInt) (|lambda#17| (SetRef_to_SetBox (|lambda#16| false))))) ($LS $LZ))))) (= |s2#0@0| (|Seq#Append| |s1#0@0| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 3))))))) (and (=> (= (ControlFlow 0 110) 49) anon226_Then_correct) (=> (= (ControlFlow 0 110) 109) anon226_Else_correct))))))
 (let ((anon223_Else_correct  (=> (|Set#Disjoint| |t2#0@0| |t3#0@0|) (and (=> (= (ControlFlow 0 115) (- 0 116)) (<= 0 (LitInt 2))) (=> (<= 0 (LitInt 2)) (and (=> (= (ControlFlow 0 115) 114) anon224_Then_correct) (=> (= (ControlFlow 0 115) 110) anon224_Else_correct)))))))
 (let ((anon223_Then_correct true))
 (let ((anon222_Else_correct  (=> (|Set#Equal| (|Set#Intersection| |t2#0@0| |t3#0@0|) |Set#Empty|) (and (=> (= (ControlFlow 0 117) 48) anon223_Then_correct) (=> (= (ControlFlow 0 117) 115) anon223_Else_correct)))))
@@ -1161,24 +1709,44 @@
 (let ((anon185_Else_correct  (=> (< (|char#ToInt| |a#0@0|) (|char#ToInt| |z#0@0|)) (and (=> (= (ControlFlow 0 161) 15) anon186_Then_correct) (=> (= (ControlFlow 0 161) 160) anon186_Else_correct)))))
 (let ((anon185_Then_correct true))
 (let ((anon184_Else_correct  (=> (= (LitInt (Mod 5 (LitInt 2))) (LitInt 1)) (=> (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (=> (and (and (and (forall (($o@@2 T@U) ) (!  (=> (and (or (not (= $o@@2 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap $o@@2) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@0 $o@@2) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap $o@@2)))
+ :qid |operatorsdfy.21:8|
+ :skolemid |521|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@0 $o@@2))
 )) ($HeapSucc $Heap $Heap@0)) (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1))) (and (and (forall (($o@@3 T@U) ) (!  (=> (and (or (not (= $o@@3 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@0 $o@@3) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@1 $o@@3) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@0 $o@@3)))
+ :qid |operatorsdfy.54:8|
+ :skolemid |527|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@1 $o@@3))
 )) ($HeapSucc $Heap@0 $Heap@1)) (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)))) (=> (and (and (and (and (and (forall (($o@@4 T@U) ) (!  (=> (and (or (not (= $o@@4 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@1 $o@@4) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@2 $o@@4) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@1 $o@@4)))
+ :qid |operatorsdfy.88:8|
+ :skolemid |533|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@2 $o@@4))
 )) ($HeapSucc $Heap@1 $Heap@2)) (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3))) (and (and (forall (($o@@5 T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@2 $o@@5) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@3 $o@@5) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@2 $o@@5)))
+ :qid |operatorsdfy.122:8|
+ :skolemid |539|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@3 $o@@5))
 )) ($HeapSucc $Heap@2 $Heap@3)) (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)))) (and (and (and (forall (($o@@6 T@U) ) (!  (=> (and (or (not (= $o@@6 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@3 $o@@6) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@4 $o@@6) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@3 $o@@6)))
+ :qid |operatorsdfy.155:8|
+ :skolemid |545|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@4 $o@@6))
 )) ($HeapSucc $Heap@3 $Heap@4)) (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5))) (and (and (forall (($o@@7 T@U) ) (!  (=> (and (or (not (= $o@@7 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@4 $o@@7) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@5 $o@@7) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@4 $o@@7)))
+ :qid |operatorsdfy.40:8|
+ :skolemid |524|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@5 $o@@7))
 )) ($HeapSucc $Heap@4 $Heap@5)) (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6))))) (and (and (and (and (forall (($o@@8 T@U) ) (!  (=> (and (or (not (= $o@@8 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@5 $o@@8) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@6 $o@@8) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@5 $o@@8)))
+ :qid |operatorsdfy.74:8|
+ :skolemid |530|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@6 $o@@8))
 )) ($HeapSucc $Heap@5 $Heap@6)) (and ($IsGoodHeap $Heap@7) ($IsHeapAnchor $Heap@7))) (and (and (forall (($o@@9 T@U) ) (!  (=> (and (or (not (= $o@@9 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@6 $o@@9) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@7 $o@@9) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@6 $o@@9)))
+ :qid |operatorsdfy.108:8|
+ :skolemid |536|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@7 $o@@9))
 )) ($HeapSucc $Heap@6 $Heap@7)) (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8)))) (and (and (and (forall (($o@@10 T@U) ) (!  (=> (and (or (not (= $o@@10 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@7 $o@@10) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@8 $o@@10) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@7 $o@@10)))
+ :qid |operatorsdfy.141:8|
+ :skolemid |542|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@8 $o@@10))
 )) ($HeapSucc $Heap@7 $Heap@8)) (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9))) (and (and (forall (($o@@11 T@U) ) (!  (=> (and (or (not (= $o@@11 null)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@8 $o@@11) alloc)))) (= (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@9 $o@@11) (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@8 $o@@11)))
+ :qid |operatorsdfy.175:8|
+ :skolemid |548|
  :pattern ( (MapType1Select refType (MapType1Type FieldType BoxType) $Heap@9 $o@@11))
 )) ($HeapSucc $Heap@8 $Heap@9)) (and (= |a#0@0| (Lit charType (|char#FromInt| 97))) (= |z#0@0| (Lit charType (|char#FromInt| 122)))))))) (and (=> (= (ControlFlow 0 162) 14) anon185_Then_correct) (=> (= (ControlFlow 0 162) 161) anon185_Else_correct))))))))
 (let ((anon184_Then_correct true))

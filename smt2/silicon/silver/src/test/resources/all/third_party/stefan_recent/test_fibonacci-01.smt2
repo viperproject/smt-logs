@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:31:13
+; Started: 2025-01-26 23:03:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -119,11 +119,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (= (Fib__fib%limited s@$ n@0@00) (Fib__fib s@$ n@0@00))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-8661|)))
+  :qid |quant-u-8607|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (Fib__fib%stateless n@0@00)
   :pattern ((Fib__fib%limited s@$ n@0@00))
-  :qid |quant-u-8662|)))
+  :qid |quant-u-8608|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (Fib__fib%precondition s@$ n@0@00)
@@ -136,7 +136,7 @@
           (Fib__fib%limited $Snap.unit (- n@0@00 1))
           (Fib__fib%limited $Snap.unit (- n@0@00 2))))))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-8663|)))
+  :qid |quant-u-8609|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (Fib__fib%precondition s@$ n@0@00)
@@ -147,7 +147,7 @@
         (Fib__fib%precondition $Snap.unit (- n@0@00 1))
         (Fib__fib%precondition $Snap.unit (- n@0@00 2)))))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-8664|)))
+  :qid |quant-u-8610|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Fib__forkOperator ----------
@@ -772,8 +772,8 @@
 (assert (not (= diz@46@01 $Ref.null)))
 (declare-const Fib__input@47@01 Int)
 (declare-const Fib__output@48@01 Int)
-(assert (not (= diz@46@01 sys__result@40@01)))
 (assert (not (= diz@46@01 diz@43@01)))
+(assert (not (= diz@46@01 sys__result@40@01)))
 ; [exec]
 ; __flatten_9 := n
 ; [exec]

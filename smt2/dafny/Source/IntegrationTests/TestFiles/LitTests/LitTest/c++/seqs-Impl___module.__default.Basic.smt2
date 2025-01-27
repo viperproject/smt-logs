@@ -51,7 +51,6 @@
 (declare-fun $Is (T@T T@U T@U) Bool)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun Tclass._module.uint32 () T@U)
-(declare-fun LitInt (Int) Int)
 (declare-fun refType () T@T)
 (declare-fun Tclass._System.array (T@U) T@U)
 (declare-fun |Seq#Length| (T@U) Int)
@@ -73,6 +72,7 @@
 (declare-fun |Seq#FromArray| (T@U T@U) T@U)
 (declare-fun IndexField (Int) T@U)
 (declare-fun $HeapSucc (T@U T@U) Bool)
+(declare-fun LitInt (Int) Int)
 (declare-fun Lit (T@T T@U) T@U)
 (declare-fun SeqType () T@T)
 (declare-fun TSeq (T@U) T@U)
@@ -94,16 +94,22 @@
 (declare-fun |Seq#Build_inv0| (T@U) T@U)
 (declare-fun |Seq#Build_inv1| (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSeq alloc Tagclass._System.array? Tagclass._System.array Tagclass._module.uint32 tytagFamily$array tytagFamily$uint32)
@@ -111,268 +117,437 @@
 (assert (= (FDim alloc) 0))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((_System.array$arg T@U) ($o T@U) ) (!  (=> (and (or (not (= $o null)) (not true)) (= (dtype $o) (Tclass._System.array? _System.array$arg))) ($Is intType (int_2_U (_System.array.Length $o)) TInt))
+ :qid |unknown.0:0|
+ :skolemid |359|
  :pattern ( (_System.array.Length $o) (Tclass._System.array? _System.array$arg))
 )))
 (assert (forall ((|i#0| T@U) ($h T@U) ) (! ($IsAlloc intType |i#0| Tclass._module.uint32 $h)
+ :qid |unknown.0:0|
+ :skolemid |534|
  :pattern ( ($IsAlloc intType |i#0| Tclass._module.uint32 $h))
-)))
-(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
- :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall ((_System.array$arg@@0 T@U) (|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h@@0) ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |365|
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h@@0))
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h@@0))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((s T@U) (v T@U) (n Int) ) (!  (=> (and (<= 0 n) (<= n (|Seq#Length| s))) (= (|Seq#Drop| (|Seq#Build| s v) n) (|Seq#Build| (|Seq#Drop| s n) v)))
+ :qid |DafnyPreludebpl.1288:15|
+ :skolemid |254|
  :pattern ( (|Seq#Drop| (|Seq#Build| s v) n))
 )))
 (assert (forall ((s@@0 T@U) (i Int) (v@@0 T@U) (n@@0 Int) ) (!  (=> (and (<= 0 n@@0) (< n@@0 (|Seq#Length| s@@0))) (and (=> (= i n@@0) (= (|Seq#Index| (|Seq#Update| s@@0 i v@@0) n@@0) v@@0)) (=> (or (not (= i n@@0)) (not true)) (= (|Seq#Index| (|Seq#Update| s@@0 i v@@0) n@@0) (|Seq#Index| s@@0 n@@0)))))
+ :qid |DafnyPreludebpl.1171:15|
+ :skolemid |229|
  :pattern ( (|Seq#Index| (|Seq#Update| s@@0 i v@@0) n@@0))
 )))
 (assert (forall ((s@@1 T@U) (t T@U) (n@@1 Int) ) (!  (=> (= n@@1 (|Seq#Length| s@@1)) (and (= (|Seq#Take| (|Seq#Append| s@@1 t) n@@1) s@@1) (= (|Seq#Drop| (|Seq#Append| s@@1 t) n@@1) t)))
+ :qid |DafnyPreludebpl.1263:15|
+ :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@1 t) n@@1))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@1 t) n@@1))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((_System.array$arg@@1 T@U) ($o@@0 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass._System.array? _System.array$arg@@1) $h@@1)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |358|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass._System.array? _System.array$arg@@1) $h@@1))
 )))
 (assert (forall ((h T@U) (a T@U) (n0 Int) (n1 Int) ) (!  (=> (and (and (= (+ n0 1) n1) (<= 0 n0)) (<= n1 (_System.array.Length a))) (= (|Seq#Take| (|Seq#FromArray| h a) n1) (|Seq#Build| (|Seq#Take| (|Seq#FromArray| h a) n0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h a) (IndexField n0)))))
+ :qid |DafnyPreludebpl.1348:15|
+ :skolemid |266|
  :pattern ( (|Seq#Take| (|Seq#FromArray| h a) n0) (|Seq#Take| (|Seq#FromArray| h a) n1))
 )))
 (assert (forall ((s@@2 T@U) (i@@0 Int) (v@@1 T@U) (n@@2 Int) ) (!  (=> (and (and (<= 0 n@@2) (<= n@@2 i@@0)) (< i@@0 (|Seq#Length| s@@2))) (= (|Seq#Drop| (|Seq#Update| s@@2 i@@0 v@@1) n@@2) (|Seq#Update| (|Seq#Drop| s@@2 n@@2) (- i@@0 n@@2) v@@1)))
+ :qid |DafnyPreludebpl.1278:15|
+ :skolemid |252|
  :pattern ( (|Seq#Drop| (|Seq#Update| s@@2 i@@0 v@@1) n@@2))
 )))
 (assert (forall ((h@@0 T@U) (k T@U) ) (!  (=> ($HeapSucc h@@0 k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@0 o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h@@0 k))
 )))
 (assert (forall ((s@@3 T@U) (n@@3 Int) ) (!  (=> (= n@@3 0) (= (|Seq#Drop| s@@3 n@@3) s@@3))
+ :qid |DafnyPreludebpl.1293:15|
+ :skolemid |255|
  :pattern ( (|Seq#Drop| s@@3 n@@3))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (= (Ctor SeqType) 7))
 (assert (forall ((s@@4 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> (and ($Is SeqType s@@4 (TSeq t@@0)) ($IsBox bx t@@0)) ($Is SeqType (|Seq#Build| s@@4 bx) (TSeq t@@0)))
+ :qid |DafnyPreludebpl.1309:15|
+ :skolemid |258|
  :pattern ( ($Is SeqType (|Seq#Build| s@@4 bx) (TSeq t@@0)))
 )))
 (assert (forall ((s@@5 T@U) (n@@4 Int) (j Int) ) (!  (=> (and (and (<= 0 j) (< j n@@4)) (< j (|Seq#Length| s@@5))) (= (|Seq#Index| (|Seq#Take| s@@5 n@@4) j) (|Seq#Index| s@@5 j)))
+ :qid |DafnyPreludebpl.1242:15|
  :weight 25
+ :skolemid |245|
  :pattern ( (|Seq#Index| (|Seq#Take| s@@5 n@@4) j))
  :pattern ( (|Seq#Index| s@@5 j) (|Seq#Take| s@@5 n@@4))
 )))
 (assert (forall ((s@@6 T@U) (n@@5 Int) ) (!  (=> (and (<= 0 n@@5) (<= n@@5 (|Seq#Length| s@@6))) (= (|Seq#Length| (|Seq#Drop| s@@6 n@@5)) (- (|Seq#Length| s@@6) n@@5)))
+ :qid |DafnyPreludebpl.1249:15|
+ :skolemid |246|
  :pattern ( (|Seq#Length| (|Seq#Drop| s@@6 n@@5)))
 )))
 (assert (forall ((_System.array$arg@@2 T@U) ($h@@2 T@U) ($o@@1 T@U) ($i0 Int) ) (!  (=> (and (and (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@1 null)) (not true)) (= (dtype $o@@1) (Tclass._System.array? _System.array$arg@@2)))) (and (<= 0 $i0) (< $i0 (_System.array.Length $o@@1)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) alloc)))) ($IsAllocBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) (IndexField $i0)) _System.array$arg@@2 $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |356|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) (IndexField $i0)) (Tclass._System.array? _System.array$arg@@2))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j@@0 Int) ) (!  (=> (and (<= 0 j@@0) (< j@@0 (|Seq#Length| s0))) (= (|Seq#Index| s0 j@@0) (|Seq#Index| s1 j@@0)))
+ :qid |DafnyPreludebpl.1221:19|
+ :skolemid |239|
  :pattern ( (|Seq#Index| s0 j@@0))
  :pattern ( (|Seq#Index| s1 j@@0))
 ))))
+ :qid |DafnyPreludebpl.1217:15|
+ :skolemid |240|
  :pattern ( (|Seq#Equal| s0 s1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((s@@7 T@U) (v@@2 T@U) ) (! (= (|Seq#Length| (|Seq#Build| s@@7 v@@2)) (+ 1 (|Seq#Length| s@@7)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |224|
  :pattern ( (|Seq#Build| s@@7 v@@2))
 )))
 (assert (forall ((_System.array$arg@@3 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3))  (and ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |364|
  :pattern ( ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3)))
  :pattern ( ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)))
 )))
 (assert (forall ((v@@3 T@U) (t@@1 T@U) (h@@1 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@3) t@@1 h@@1) ($IsAlloc T@@1 v@@3 t@@1 h@@1))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@3) t@@1 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@0 T@U) (bx@@0 T@U) (t@@2 T@U) ) (!  (=> ($HeapSucc h@@2 k@@0) (=> ($IsAllocBox bx@@0 t@@2 h@@2) ($IsAllocBox bx@@0 t@@2 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@2 k@@0) ($IsAllocBox bx@@0 t@@2 h@@2))
 )))
 (assert (forall ((h@@3 T@U) (k@@1 T@U) (v@@4 T@U) (t@@3 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@3 k@@1) (=> ($IsAlloc T@@2 v@@4 t@@3 h@@3) ($IsAlloc T@@2 v@@4 t@@3 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@3 k@@1) ($IsAlloc T@@2 v@@4 t@@3 h@@3))
 )))
 (assert (forall ((s@@8 T@U) (n@@6 Int) (j@@1 Int) ) (!  (=> (and (and (<= 0 n@@6) (<= 0 j@@1)) (< j@@1 (- (|Seq#Length| s@@8) n@@6))) (= (|Seq#Index| (|Seq#Drop| s@@8 n@@6) j@@1) (|Seq#Index| s@@8 (+ j@@1 n@@6))))
+ :qid |DafnyPreludebpl.1253:15|
  :weight 25
+ :skolemid |247|
  :pattern ( (|Seq#Index| (|Seq#Drop| s@@8 n@@6) j@@1))
 )))
 (assert (forall ((_System.array$arg@@4 T@U) ) (!  (and (= (Tag (Tclass._System.array? _System.array$arg@@4)) Tagclass._System.array?) (= (TagFamily (Tclass._System.array? _System.array$arg@@4)) tytagFamily$array))
+ :qid |unknown.0:0|
+ :skolemid |352|
  :pattern ( (Tclass._System.array? _System.array$arg@@4))
 )))
 (assert (forall ((_System.array$arg@@5 T@U) ) (!  (and (= (Tag (Tclass._System.array _System.array$arg@@5)) Tagclass._System.array) (= (TagFamily (Tclass._System.array _System.array$arg@@5)) tytagFamily$array))
+ :qid |unknown.0:0|
+ :skolemid |361|
  :pattern ( (Tclass._System.array _System.array$arg@@5))
 )))
 (assert (forall ((s0@@0 T@U) (s1@@0 T@U) ) (! (= (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)) (+ (|Seq#Length| s0@@0) (|Seq#Length| s1@@0)))
+ :qid |DafnyPreludebpl.1153:15|
+ :skolemid |226|
  :pattern ( (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.uint32) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) Tclass._module.uint32)))
+ :qid |unknown.0:0|
+ :skolemid |506|
  :pattern ( ($IsBox bx@@1 Tclass._module.uint32))
 )))
 (assert (forall ((_System.array$arg@@6 T@U) ($o@@2 T@U) ) (! (= ($Is refType $o@@2 (Tclass._System.array? _System.array$arg@@6))  (or (= $o@@2 null) (= (dtype $o@@2) (Tclass._System.array? _System.array$arg@@6))))
+ :qid |unknown.0:0|
+ :skolemid |357|
  :pattern ( ($Is refType $o@@2 (Tclass._System.array? _System.array$arg@@6)))
 )))
 (assert (forall ((s@@9 T@U) (i@@1 Int) (v@@5 T@U) ) (!  (and (=> (= i@@1 (|Seq#Length| s@@9)) (= (|Seq#Index| (|Seq#Build| s@@9 v@@5) i@@1) v@@5)) (=> (or (not (= i@@1 (|Seq#Length| s@@9))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@9 v@@5) i@@1) (|Seq#Index| s@@9 i@@1))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@9 v@@5) i@@1))
 )))
 (assert (forall ((h@@4 T@U) (a@@0 T@U) ) (! (forall ((i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| (|Seq#FromArray| h@@4 a@@0)))) (= (|Seq#Index| (|Seq#FromArray| h@@4 a@@0) i@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@4 a@@0) (IndexField i@@2))))
+ :qid |DafnyPreludebpl.1328:11|
+ :skolemid |262|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@4 a@@0) (IndexField i@@2)))
  :pattern ( (|Seq#Index| (|Seq#FromArray| h@@4 a@@0) i@@2))
 ))
+ :qid |DafnyPreludebpl.1326:15|
+ :skolemid |263|
  :pattern ( (|Seq#FromArray| h@@4 a@@0))
 )))
 (assert (forall ((s@@10 T@U) (i@@3 Int) (v@@6 T@U) (n@@7 Int) ) (!  (=> (and (and (<= 0 i@@3) (< i@@3 n@@7)) (<= n@@7 (|Seq#Length| s@@10))) (= (|Seq#Drop| (|Seq#Update| s@@10 i@@3 v@@6) n@@7) (|Seq#Drop| s@@10 n@@7)))
+ :qid |DafnyPreludebpl.1283:15|
+ :skolemid |253|
  :pattern ( (|Seq#Drop| (|Seq#Update| s@@10 i@@3 v@@6) n@@7))
 )))
 (assert (forall ((a@@1 T@U) (b T@U) ) (!  (=> (|Seq#Equal| a@@1 b) (= a@@1 b))
+ :qid |DafnyPreludebpl.1225:15|
+ :skolemid |241|
  :pattern ( (|Seq#Equal| a@@1 b))
 )))
 (assert (forall ((s@@11 T@U) (n@@8 Int) ) (!  (=> (and (<= 0 n@@8) (<= n@@8 (|Seq#Length| s@@11))) (= (|Seq#Length| (|Seq#Take| s@@11 n@@8)) n@@8))
+ :qid |DafnyPreludebpl.1238:15|
+ :skolemid |244|
  :pattern ( (|Seq#Length| (|Seq#Take| s@@11 n@@8)))
 )))
 (assert (forall ((a@@2 T@U) (b@@0 T@U) (c T@U) ) (!  (=> (or (not (= a@@2 c)) (not true)) (=> (and ($HeapSucc a@@2 b@@0) ($HeapSucc b@@0 c)) ($HeapSucc a@@2 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@2 b@@0) ($HeapSucc b@@0 c))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TInt) (and (= ($Box intType ($Unbox intType bx@@2)) bx@@2) ($Is intType ($Unbox intType bx@@2) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@2 TInt))
 )))
 (assert (forall ((v@@7 T@U) (t@@4 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@7) t@@4) ($Is T@@3 v@@7 t@@4))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@7) t@@4))
 )))
 (assert (forall ((s@@12 T@U) (i@@4 Int) (v@@8 T@U) (n@@9 Int) ) (!  (=> (and (<= n@@9 i@@4) (< i@@4 (|Seq#Length| s@@12))) (= (|Seq#Take| (|Seq#Update| s@@12 i@@4 v@@8) n@@9) (|Seq#Take| s@@12 n@@9)))
+ :qid |DafnyPreludebpl.1273:15|
+ :skolemid |251|
  :pattern ( (|Seq#Take| (|Seq#Update| s@@12 i@@4 v@@8) n@@9))
 )))
 (assert (forall ((o@@0 T@U) ) (! (<= 0 (_System.array.Length o@@0))
+ :qid |DafnyPreludebpl.571:15|
+ :skolemid |112|
  :pattern ( (_System.array.Length o@@0))
 )))
 (assert (forall ((s@@13 T@U) ) (! (<= 0 (|Seq#Length| s@@13))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@13))
 )))
 (assert (forall ((v@@9 T@U) (t0@@0 T@U) (h@@5 T@U) ) (! (= ($IsAlloc SeqType v@@9 (TSeq t0@@0) h@@5) (forall ((i@@5 Int) ) (!  (=> (and (<= 0 i@@5) (< i@@5 (|Seq#Length| v@@9))) ($IsAllocBox (|Seq#Index| v@@9 i@@5) t0@@0 h@@5))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@9 i@@5))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@9 (TSeq t0@@0) h@@5))
 )))
 (assert (forall ((t@@5 T@U) ) (! (= (Inv0_TSeq (TSeq t@@5)) t@@5)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@5))
 )))
 (assert (forall ((t@@6 T@U) ) (! (= (Tag (TSeq t@@6)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@6))
 )))
 (assert (forall ((i@@6 Int) ) (! (= (FDim (IndexField i@@6)) 1)
+ :qid |DafnyPreludebpl.515:15|
+ :skolemid |103|
  :pattern ( (IndexField i@@6))
 )))
 (assert (forall ((i@@7 Int) ) (! (= (IndexField_Inverse (IndexField i@@7)) i@@7)
+ :qid |DafnyPreludebpl.517:15|
+ :skolemid |104|
  :pattern ( (IndexField i@@7))
 )))
 (assert (forall ((_System.array$arg@@7 T@U) ) (! (= (Tclass._System.array?_0 (Tclass._System.array? _System.array$arg@@7)) _System.array$arg@@7)
+ :qid |unknown.0:0|
+ :skolemid |353|
  :pattern ( (Tclass._System.array? _System.array$arg@@7))
 )))
 (assert (forall ((_System.array$arg@@8 T@U) ) (! (= (Tclass._System.array_0 (Tclass._System.array _System.array$arg@@8)) _System.array$arg@@8)
+ :qid |unknown.0:0|
+ :skolemid |362|
  :pattern ( (Tclass._System.array _System.array$arg@@8))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert (forall ((h@@6 T@U) (i@@8 Int) (v@@10 T@U) (a@@3 T@U) ) (!  (=> (and (<= 0 i@@8) (< i@@8 (_System.array.Length a@@3))) (= (|Seq#FromArray| (MapType0Store refType (MapType0Type FieldType BoxType) h@@6 a@@3 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@6 a@@3) (IndexField i@@8) v@@10)) a@@3) (|Seq#Update| (|Seq#FromArray| h@@6 a@@3) i@@8 v@@10)))
+ :qid |DafnyPreludebpl.1343:15|
+ :skolemid |265|
  :pattern ( (|Seq#FromArray| (MapType0Store refType (MapType0Type FieldType BoxType) h@@6 a@@3 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@6 a@@3) (IndexField i@@8) v@@10)) a@@3))
 )))
 (assert (forall ((_System.array$arg@@9 T@U) ($h@@3 T@U) ($o@@3 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@3 null)) (not true)) (= (dtype $o@@3) (Tclass._System.array? _System.array$arg@@9)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) alloc)))) ($IsAlloc intType (int_2_U (_System.array.Length $o@@3)) TInt $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |360|
  :pattern ( (_System.array.Length $o@@3) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) alloc)) (Tclass._System.array? _System.array$arg@@9))
 )))
 (assert (forall ((_System.array$arg@@10 T@U) ($h@@4 T@U) ($o@@4 T@U) ($i0@@0 Int) ) (!  (=> (and (and ($IsGoodHeap $h@@4) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) (Tclass._System.array? _System.array$arg@@10)))) (and (<= 0 $i0@@0) (< $i0@@0 (_System.array.Length $o@@4)))) ($IsBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@4) (IndexField $i0@@0)) _System.array$arg@@10))
+ :qid |unknown.0:0|
+ :skolemid |355|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@4) (IndexField $i0@@0)) (Tclass._System.array? _System.array$arg@@10))
 )))
 (assert (forall ((n@@10 Int) ) (!  (=> (or (and (<= 0 n@@10) (< n@@10 55296)) (and (<= 57344 n@@10) (< n@@10 1114112))) (= (|char#ToInt| (|char#FromInt| n@@10)) n@@10))
+ :qid |DafnyPreludebpl.131:15|
+ :skolemid |21|
  :pattern ( (|char#FromInt| n@@10))
 )))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@5 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))  (=> (and (or (not (= $o@@5 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@5) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |547|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@5 $f))
 )))
 (assert (forall ((h0 T@U) (h1 T@U) (a@@4 T@U) ) (!  (=> (and (and (and ($IsGoodHeap h0) ($IsGoodHeap h1)) ($HeapSucc h0 h1)) (= (MapType0Select refType (MapType0Type FieldType BoxType) h0 a@@4) (MapType0Select refType (MapType0Type FieldType BoxType) h1 a@@4))) (= (|Seq#FromArray| h0 a@@4) (|Seq#FromArray| h1 a@@4)))
+ :qid |DafnyPreludebpl.1338:15|
+ :skolemid |264|
  :pattern ( (|Seq#FromArray| h1 a@@4) ($HeapSucc h0 h1))
 )))
 (assert (forall ((s@@14 T@U) (i@@9 Int) (v@@11 T@U) ) (!  (=> (and (<= 0 i@@9) (< i@@9 (|Seq#Length| s@@14))) (= (|Seq#Length| (|Seq#Update| s@@14 i@@9 v@@11)) (|Seq#Length| s@@14)))
+ :qid |DafnyPreludebpl.1167:15|
+ :skolemid |228|
  :pattern ( (|Seq#Length| (|Seq#Update| s@@14 i@@9 v@@11)))
 )))
 (assert (forall ((h@@7 T@U) (a@@5 T@U) ) (! (= (|Seq#Length| (|Seq#FromArray| h@@7 a@@5)) (_System.array.Length a@@5))
+ :qid |DafnyPreludebpl.1323:15|
+ :skolemid |261|
  :pattern ( (|Seq#Length| (|Seq#FromArray| h@@7 a@@5)))
 )))
 (assert (forall ((s@@15 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@15 val@@4)) s@@15) (= (|Seq#Build_inv1| (|Seq#Build| s@@15 val@@4)) val@@4))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |223|
  :pattern ( (|Seq#Build| s@@15 val@@4))
 )))
 (assert (forall ((bx@@3 T@U) (t@@7 T@U) ) (!  (=> ($IsBox bx@@3 (TSeq t@@7)) (and (= ($Box SeqType ($Unbox SeqType bx@@3)) bx@@3) ($Is SeqType ($Unbox SeqType bx@@3) (TSeq t@@7))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@3 (TSeq t@@7)))
 )))
 (assert (forall ((_System.array$arg@@11 T@U) (bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (Tclass._System.array? _System.array$arg@@11)) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) (Tclass._System.array? _System.array$arg@@11))))
+ :qid |unknown.0:0|
+ :skolemid |354|
  :pattern ( ($IsBox bx@@4 (Tclass._System.array? _System.array$arg@@11)))
 )))
 (assert (forall ((_System.array$arg@@12 T@U) (bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 (Tclass._System.array _System.array$arg@@12)) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) (Tclass._System.array _System.array$arg@@12))))
+ :qid |unknown.0:0|
+ :skolemid |363|
  :pattern ( ($IsBox bx@@5 (Tclass._System.array _System.array$arg@@12)))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))
+ :qid |DafnyPreludebpl.136:15|
+ :skolemid |22|
  :pattern ( (|char#ToInt| ch))
 )))
 (assert (forall ((h@@8 T@U) (r T@U) (f T@U) (x@@6 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@8 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@8 r) f x@@6))) ($HeapSucc h@@8 (MapType0Store refType (MapType0Type FieldType BoxType) h@@8 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@8 r) f x@@6))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |116|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@8 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@8 r) f x@@6)))
 )))
 (assert (= (Tag Tclass._module.uint32) Tagclass._module.uint32))
 (assert (= (TagFamily Tclass._module.uint32) tytagFamily$uint32))
 (assert (forall ((s@@16 T@U) (n@@11 Int) (k@@2 Int) ) (!  (=> (and (and (<= 0 n@@11) (<= n@@11 k@@2)) (< k@@2 (|Seq#Length| s@@16))) (= (|Seq#Index| (|Seq#Drop| s@@16 n@@11) (- k@@2 n@@11)) (|Seq#Index| s@@16 k@@2)))
+ :qid |DafnyPreludebpl.1258:15|
  :weight 25
+ :skolemid |248|
  :pattern ( (|Seq#Index| s@@16 k@@2) (|Seq#Drop| s@@16 n@@11))
 )))
 (assert (forall ((s@@17 T@U) (m@@4 Int) (n@@12 Int) ) (!  (=> (and (and (<= 0 m@@4) (<= 0 n@@12)) (<= (+ m@@4 n@@12) (|Seq#Length| s@@17))) (= (|Seq#Drop| (|Seq#Drop| s@@17 m@@4) n@@12) (|Seq#Drop| s@@17 (+ m@@4 n@@12))))
+ :qid |DafnyPreludebpl.1299:15|
+ :skolemid |257|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@17 m@@4) n@@12))
 )))
 (assert (forall ((s0@@1 T@U) (s1@@1 T@U) (n@@13 Int) ) (!  (and (=> (< n@@13 (|Seq#Length| s0@@1)) (= (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@13) (|Seq#Index| s0@@1 n@@13))) (=> (<= (|Seq#Length| s0@@1) n@@13) (= (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@13) (|Seq#Index| s1@@1 (- n@@13 (|Seq#Length| s0@@1))))))
+ :qid |DafnyPreludebpl.1159:15|
+ :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@13))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@8)) (Lit BoxType ($Box T@@5 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@8)))
 )))
+(assert (forall ((|i#0@@0| T@U) ) (! (= ($Is intType |i#0@@0| Tclass._module.uint32)  (and (<= (LitInt 0) (U_2_int |i#0@@0|)) (< (U_2_int |i#0@@0|) 4294967296)))
+ :qid |unknown.0:0|
+ :skolemid |533|
+ :pattern ( ($Is intType |i#0@@0| Tclass._module.uint32))
+)))
 (assert (forall ((s@@18 T@U) ) (!  (=> (= (|Seq#Length| s@@18) 0) (= s@@18 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@18))
 )))
 (assert (forall ((s@@19 T@U) (n@@14 Int) ) (!  (=> (= n@@14 0) (= (|Seq#Take| s@@19 n@@14) |Seq#Empty|))
+ :qid |DafnyPreludebpl.1295:15|
+ :skolemid |256|
  :pattern ( (|Seq#Take| s@@19 n@@14))
 )))
 (assert (forall ((h@@9 T@U) (v@@12 T@U) ) (! ($IsAlloc intType v@@12 TInt h@@9)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@12 TInt h@@9))
 )))
 (assert (forall ((s@@20 T@U) (i@@10 Int) (v@@13 T@U) (n@@15 Int) ) (!  (=> (and (and (<= 0 i@@10) (< i@@10 n@@15)) (<= n@@15 (|Seq#Length| s@@20))) (= (|Seq#Take| (|Seq#Update| s@@20 i@@10 v@@13) n@@15) (|Seq#Update| (|Seq#Take| s@@20 n@@15) i@@10 v@@13)))
+ :qid |DafnyPreludebpl.1268:15|
+ :skolemid |250|
  :pattern ( (|Seq#Take| (|Seq#Update| s@@20 i@@10 v@@13) n@@15))
 )))
 (assert (forall ((v@@14 T@U) (t0@@2 T@U) ) (! (= ($Is SeqType v@@14 (TSeq t0@@2)) (forall ((i@@11 Int) ) (!  (=> (and (<= 0 i@@11) (< i@@11 (|Seq#Length| v@@14))) ($IsBox (|Seq#Index| v@@14 i@@11) t0@@2))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@14 i@@11))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@14 (TSeq t0@@2)))
 )))
 (assert (forall ((v@@15 T@U) ) (! ($Is intType v@@15 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@15 TInt))
 )))
 (push 1)
@@ -427,6 +602,7 @@
 (declare-fun |a_seq'#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
 (assert (= (Ctor charType) 8))
+(set-info :boogie-vc-id Impl$$_module.__default.Basic)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -443,12 +619,20 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 32) (let ((anon0_correct  (=> (and (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (= |newtype$check#0@0| (LitInt 1))) (and (=> (= (ControlFlow 0 2) (- 0 31)) (and (<= (LitInt 0) |newtype$check#0@0|) (< |newtype$check#0@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#0@0|) (< |newtype$check#0@0| 4294967296)) (=> (= |newtype$check#1@0| (LitInt 2)) (and (=> (= (ControlFlow 0 2) (- 0 30)) (and (<= (LitInt 0) |newtype$check#1@0|) (< |newtype$check#1@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#1@0|) (< |newtype$check#1@0| 4294967296)) (=> (= |newtype$check#2@0| (LitInt 3)) (and (=> (= (ControlFlow 0 2) (- 0 29)) (and (<= (LitInt 0) |newtype$check#2@0|) (< |newtype$check#2@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#2@0|) (< |newtype$check#2@0| 4294967296)) (=> (= |newtype$check#3@0| (LitInt 4)) (and (=> (= (ControlFlow 0 2) (- 0 28)) (and (<= (LitInt 0) |newtype$check#3@0|) (< |newtype$check#3@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#3@0|) (< |newtype$check#3@0| 4294967296)) (=> (= |s#0@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U (LitInt 1)))) ($Box intType (int_2_U (LitInt 2)))) ($Box intType (int_2_U (LitInt 3)))) ($Box intType (int_2_U (LitInt 4)))))) (and (=> (= (ControlFlow 0 2) (- 0 27)) (and (<= 0 (LitInt 1)) (< (LitInt 1) (|Seq#Length| |s#0@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 26)) (and (<= 0 (LitInt 1)) (<= (LitInt 1) (|Seq#Length| |s#0@0|)))) (=> (and (<= 0 (LitInt 1)) (<= (LitInt 1) (|Seq#Length| |s#0@0|))) (=> (= |end#0@0| (|Seq#Drop| |s#0@0| (LitInt 1))) (and (=> (= (ControlFlow 0 2) (- 0 25)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |end#0@0|)))) (=> (and (= |name##0@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box charType (|char#FromInt| 72))) ($Box charType (|char#FromInt| 101))) ($Box charType (|char#FromInt| 97))) ($Box charType (|char#FromInt| 100))) ($Box charType (|char#FromInt| 32))) ($Box charType (|char#FromInt| 116))) ($Box charType (|char#FromInt| 114))) ($Box charType (|char#FromInt| 117))) ($Box charType (|char#FromInt| 110))) ($Box charType (|char#FromInt| 99))))) (= |b##0@0|  (not (|Seq#Equal| |end#0@0| |s#0@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 24)) |b##0@0|) (=> |b##0@0| (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (forall (($o@@6 T@U) ) (!  (=> (and (or (not (= $o@@6 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@6) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@6) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@6)))
+ :qid |seqsdfy.34:8|
+ :skolemid |494|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@6))
 )) ($HeapSucc $Heap $Heap@0))) (and (=> (= (ControlFlow 0 2) (- 0 23)) (and (<= 0 (LitInt 1)) (<= (LitInt 1) (|Seq#Length| |s#0@0|)))) (=> (and (<= 0 (LitInt 1)) (<= (LitInt 1) (|Seq#Length| |s#0@0|))) (=> (and (and (= |start#0@0| (|Seq#Take| |s#0@0| (LitInt 1))) (= |combine#0@0| (|Seq#Append| |start#0@0| |end#0@0|))) (and (= |name##1@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box charType (|char#FromInt| 67))) ($Box charType (|char#FromInt| 111))) ($Box charType (|char#FromInt| 109))) ($Box charType (|char#FromInt| 98))) ($Box charType (|char#FromInt| 105))) ($Box charType (|char#FromInt| 110))) ($Box charType (|char#FromInt| 101))))) (= |b##1@0| (|Seq#Equal| |combine#0@0| |s#0@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 22)) |b##1@0|) (=> |b##1@0| (=> (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (and (forall (($o@@7 T@U) ) (!  (=> (and (or (not (= $o@@7 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@7) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@7)))
+ :qid |seqsdfy.34:8|
+ :skolemid |494|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7))
 )) ($HeapSucc $Heap@0 $Heap@1))) (and (=> (= (ControlFlow 0 2) (- 0 21)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|)))) (=> (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|))) (=> (= |newtype$check#4@0| (LitInt 330)) (and (=> (= (ControlFlow 0 2) (- 0 20)) (and (<= (LitInt 0) |newtype$check#4@0|) (< |newtype$check#4@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#4@0|) (< |newtype$check#4@0| 4294967296)) (=> (and (= |s'#0@0| (|Seq#Update| |s#0@0| (LitInt 0) ($Box intType (int_2_U (LitInt 330))))) (= |name##2@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box charType (|char#FromInt| 82))) ($Box charType (|char#FromInt| 101))) ($Box charType (|char#FromInt| 112))) ($Box charType (|char#FromInt| 108))) ($Box charType (|char#FromInt| 97))) ($Box charType (|char#FromInt| 99))) ($Box charType (|char#FromInt| 101))) ($Box charType (|char#FromInt| 49)))))) (and (=> (= (ControlFlow 0 2) (- 0 19)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|)))) (=> (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|))) (=> (= |newtype$check#5@0| (LitInt 330)) (and (=> (= (ControlFlow 0 2) (- 0 18)) (and (<= (LitInt 0) |newtype$check#5@0|) (< |newtype$check#5@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#5@0|) (< |newtype$check#5@0| 4294967296)) (=> (= |b##2@0|  (or (not (= (U_2_int ($Unbox intType (|Seq#Index| |s#0@0| (LitInt 0)))) 330)) (not true))) (and (=> (= (ControlFlow 0 2) (- 0 17)) |b##2@0|) (=> |b##2@0| (=> (and (and (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (forall (($o@@8 T@U) ) (!  (=> (and (or (not (= $o@@8 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@8) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@8) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@8)))
+ :qid |seqsdfy.34:8|
+ :skolemid |494|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@8))
 ))) (and ($HeapSucc $Heap@1 $Heap@2) (= |name##3@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box charType (|char#FromInt| 82))) ($Box charType (|char#FromInt| 101))) ($Box charType (|char#FromInt| 112))) ($Box charType (|char#FromInt| 108))) ($Box charType (|char#FromInt| 97))) ($Box charType (|char#FromInt| 99))) ($Box charType (|char#FromInt| 101))) ($Box charType (|char#FromInt| 50))))))) (and (=> (= (ControlFlow 0 2) (- 0 16)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|)))) (=> (and (<= 0 (LitInt 0)) (< (LitInt 0) (|Seq#Length| |s#0@0|))) (=> (= |newtype$check#6@0| (LitInt 1)) (and (=> (= (ControlFlow 0 2) (- 0 15)) (and (<= (LitInt 0) |newtype$check#6@0|) (< |newtype$check#6@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#6@0|) (< |newtype$check#6@0| 4294967296)) (=> (= |b##3@0| (= (U_2_int ($Unbox intType (|Seq#Index| |s#0@0| (LitInt 0)))) (LitInt 1))) (and (=> (= (ControlFlow 0 2) (- 0 14)) |b##3@0|) (=> |b##3@0| (=> (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (and (forall (($o@@9 T@U) ) (!  (=> (and (or (not (= $o@@9 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@9) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@9) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@9)))
+ :qid |seqsdfy.34:8|
+ :skolemid |494|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@9))
 )) ($HeapSucc $Heap@2 $Heap@3))) (and (=> (= (ControlFlow 0 2) (- 0 13)) (<= 0 (LitInt 3))) (=> (<= 0 (LitInt 3)) (and (=> (= (ControlFlow 0 2) (- 0 12)) (= (LitInt 3) 3)) (=> (= (LitInt 3) 3) (=> (= |newtype$check#7@0| (LitInt 12)) (and (=> (= (ControlFlow 0 2) (- 0 11)) (and (<= (LitInt 0) |newtype$check#7@0|) (< |newtype$check#7@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#7@0|) (< |newtype$check#7@0| 4294967296)) (=> (= |newtype$check#8@0| (LitInt 13)) (and (=> (= (ControlFlow 0 2) (- 0 10)) (and (<= (LitInt 0) |newtype$check#8@0|) (< |newtype$check#8@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#8@0|) (< |newtype$check#8@0| 4294967296)) (=> (= |newtype$check#9@0| (LitInt 14)) (and (=> (= (ControlFlow 0 2) (- 0 9)) (and (<= (LitInt 0) |newtype$check#9@0|) (< |newtype$check#9@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#9@0|) (< |newtype$check#9@0| 4294967296)) (=> (and (or (not (= $nw@0 null)) (not true)) ($Is refType $nw@0 (Tclass._System.array? Tclass._module.uint32))) (=> (and (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) alloc)))) (= (_System.array.Length $nw@0) (LitInt 3))) (and (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) (IndexField 0)))) (LitInt 12)) (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) (IndexField 1)))) (LitInt 13)))) (and (and (= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) (IndexField 2)))) (LitInt 14)) (= $Heap@4 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)))) (and (=> (= (ControlFlow 0 2) (- 0 8)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (=> (= |a_seq#0@0| (|Seq#FromArray| $Heap@4 $nw@0)) (and (=> (= (ControlFlow 0 2) (- 0 7)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 6)) (and (<= 0 (LitInt 0)) (< (LitInt 0) (_System.array.Length $nw@0)))) (=> (and (<= 0 (LitInt 0)) (< (LitInt 0) (_System.array.Length $nw@0))) (and (=> (= (ControlFlow 0 2) (- 0 5)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $nw@0 (IndexField (LitInt 0))))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $nw@0 (IndexField (LitInt 0)))) (=> (= |newtype$check#10@0| (LitInt 42)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (and (<= (LitInt 0) |newtype$check#10@0|) (< |newtype$check#10@0| 4294967296))) (=> (and (<= (LitInt 0) |newtype$check#10@0|) (< |newtype$check#10@0| 4294967296)) (=> (= |$rhs#0@0| (LitInt 42)) (=> (and (= $Heap@5 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) (IndexField (LitInt 0)) ($Box intType (int_2_U |$rhs#0@0|))))) ($IsGoodHeap $Heap@5)) (and (=> (= (ControlFlow 0 2) (- 0 3)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (=> (and (and (= |a_seq'#0@0| (|Seq#FromArray| $Heap@5 $nw@0)) (= |name##4@0| (Lit SeqType (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| (|Seq#Build| |Seq#Empty| ($Box charType (|char#FromInt| 73))) ($Box charType (|char#FromInt| 109))) ($Box charType (|char#FromInt| 109))) ($Box charType (|char#FromInt| 117))) ($Box charType (|char#FromInt| 116))) ($Box charType (|char#FromInt| 97))) ($Box charType (|char#FromInt| 98))) ($Box charType (|char#FromInt| 105))) ($Box charType (|char#FromInt| 108))) ($Box charType (|char#FromInt| 105))) ($Box charType (|char#FromInt| 116))) ($Box charType (|char#FromInt| 121)))))) (and (= |b##4@0|  (not (|Seq#Equal| |a_seq#0@0| |a_seq'#0@0|))) (= (ControlFlow 0 2) (- 0 1)))) |b##4@0|))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is SeqType |s#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |s#0| (TSeq Tclass._module.uint32) $Heap)) true) (=> (and (and (and (and (and ($Is SeqType |end#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |end#0| (TSeq Tclass._module.uint32) $Heap)) true) (and (and ($Is SeqType |start#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |start#0| (TSeq Tclass._module.uint32) $Heap)) true)) (and (and (and ($Is SeqType |combine#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |combine#0| (TSeq Tclass._module.uint32) $Heap)) true) (and (and ($Is SeqType |s'#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |s'#0| (TSeq Tclass._module.uint32) $Heap)) true))) (and (and (and (and ($Is refType |a#0| (Tclass._System.array Tclass._module.uint32)) ($IsAlloc refType |a#0| (Tclass._System.array Tclass._module.uint32) $Heap)) true) (and (and ($Is SeqType |a_seq#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |a_seq#0| (TSeq Tclass._module.uint32) $Heap)) true)) (and (and (and ($Is SeqType |a_seq'#0| (TSeq Tclass._module.uint32)) ($IsAlloc SeqType |a_seq'#0| (TSeq Tclass._module.uint32) $Heap)) true) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 32) 2))))) anon0_correct)))))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:35:41
+; Started: 2025-01-26 23:07:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -139,23 +139,23 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (main%limited s@$) (main s@$))
   :pattern ((main s@$))
-  :qid |quant-u-12665|)))
+  :qid |quant-u-12612|)))
 (assert (forall ((s@$ $Snap)) (!
   (as main%stateless  Bool)
   :pattern ((main%limited s@$))
-  :qid |quant-u-12666|)))
+  :qid |quant-u-12613|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (main%limited s@$))) (=>
     (main%precondition s@$)
     (= result@0@00 (liba%limited $Snap.unit))))
   :pattern ((main%limited s@$))
-  :qid |quant-u-12671|)))
+  :qid |quant-u-12618|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (main%limited s@$))) (=>
     (main%precondition s@$)
     (liba%precondition $Snap.unit)))
   :pattern ((main%limited s@$))
-  :qid |quant-u-12672|)))
+  :qid |quant-u-12619|)))
 ; ---------- FUNCTION libb----------
 (declare-fun result@1@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -174,23 +174,23 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (libb%limited s@$) (libb s@$))
   :pattern ((libb s@$))
-  :qid |quant-u-12667|)))
+  :qid |quant-u-12614|)))
 (assert (forall ((s@$ $Snap)) (!
   (as libb%stateless  Bool)
   :pattern ((libb%limited s@$))
-  :qid |quant-u-12668|)))
+  :qid |quant-u-12615|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (libb%limited s@$))) (=>
     (libb%precondition s@$)
     (= result@1@00 (main%limited $Snap.unit))))
   :pattern ((libb%limited s@$))
-  :qid |quant-u-12673|)))
+  :qid |quant-u-12620|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (libb%limited s@$))) (=>
     (libb%precondition s@$)
     (main%precondition $Snap.unit)))
   :pattern ((libb%limited s@$))
-  :qid |quant-u-12674|)))
+  :qid |quant-u-12621|)))
 ; ---------- FUNCTION liba----------
 (declare-fun result@2@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -209,20 +209,20 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (liba%limited s@$) (liba s@$))
   :pattern ((liba s@$))
-  :qid |quant-u-12669|)))
+  :qid |quant-u-12616|)))
 (assert (forall ((s@$ $Snap)) (!
   (as liba%stateless  Bool)
   :pattern ((liba%limited s@$))
-  :qid |quant-u-12670|)))
+  :qid |quant-u-12617|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (liba%limited s@$))) (=>
     (liba%precondition s@$)
     (= result@2@00 (libb%limited $Snap.unit))))
   :pattern ((liba%limited s@$))
-  :qid |quant-u-12675|)))
+  :qid |quant-u-12622|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (liba%limited s@$))) (=>
     (liba%precondition s@$)
     (libb%precondition $Snap.unit)))
   :pattern ((liba%limited s@$))
-  :qid |quant-u-12676|)))
+  :qid |quant-u-12623|)))

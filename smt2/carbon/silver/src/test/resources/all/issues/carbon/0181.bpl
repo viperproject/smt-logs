@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:13
+// Date:         2025-01-26 23:15:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0181.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0181-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -386,11 +386,11 @@ procedure m_17(r_1: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var newVersion: FrameType;
   var i: int;
   
@@ -415,8 +415,8 @@ procedure m_17(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume outer#trigger_1(UnfoldingHeap, outer_1(r_1));
       assume UnfoldingHeap[null, outer_1(r_1)] == UnfoldingHeap[null, inner_1(r_1)];
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0181.vpr@14.14--14.52) [84724]"}
         perm >= NoPerm;
@@ -453,8 +453,8 @@ procedure m_17(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume outer#trigger_1(UnfoldingHeap, outer_1(r_1));
       assume UnfoldingHeap[null, outer_1(r_1)] == UnfoldingHeap[null, inner_1(r_1)];
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       UnfoldingMask := UnfoldingMask[null, outer_1(r_1):=UnfoldingMask[null, outer_1(r_1)] - perm];
       perm := 1 / 2;
@@ -470,14 +470,14 @@ procedure m_17(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(outer(r), 1 / 2) -- 0181.vpr@16.5--16.30
     assume outer#trigger_1(Heap, outer_1(r_1));
     assume Heap[null, outer_1(r_1)] == Heap[null, inner_1(r_1)];
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Unfolding outer(r) might fail. Fraction 1 / 2 might be negative. (0181.vpr@16.5--16.30) [84728]"}
       perm >= NoPerm;
@@ -508,8 +508,8 @@ procedure m_17(r_1: Ref) returns ()
     // -- Check definedness of actual(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function actual might not hold. Assertion req(r) might not hold. (0181.vpr@17.19--17.28) [84731]"}
           req(Heap, r_1);
         // Stop execution
@@ -529,11 +529,11 @@ procedure m2(r_1: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var newVersion: FrameType;
   var i: int;
   
@@ -558,8 +558,8 @@ procedure m2(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume outer#trigger_1(UnfoldingHeap, outer_1(r_1));
       assume UnfoldingHeap[null, outer_1(r_1)] == UnfoldingHeap[null, inner_1(r_1)];
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access outer(r) (0181.vpr@22.14--22.47) [84732]"}
@@ -592,8 +592,8 @@ procedure m2(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume outer#trigger_1(UnfoldingHeap, outer_1(r_1));
       assume UnfoldingHeap[null, outer_1(r_1)] == UnfoldingHeap[null, inner_1(r_1)];
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, outer_1(r_1):=UnfoldingMask[null, outer_1(r_1)] - perm];
       perm := FullPerm;
@@ -609,14 +609,14 @@ procedure m2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(outer(r), 1 / 2) -- 0181.vpr@24.5--24.30
     assume outer#trigger_1(Heap, outer_1(r_1));
     assume Heap[null, outer_1(r_1)] == Heap[null, inner_1(r_1)];
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Unfolding outer(r) might fail. Fraction 1 / 2 might be negative. (0181.vpr@24.5--24.30) [84734]"}
       perm >= NoPerm;
@@ -647,8 +647,8 @@ procedure m2(r_1: Ref) returns ()
     // -- Check definedness of actual(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function actual might not hold. Assertion req(r) might not hold. (0181.vpr@25.19--25.28) [84737]"}
           req(Heap, r_1);
         // Stop execution

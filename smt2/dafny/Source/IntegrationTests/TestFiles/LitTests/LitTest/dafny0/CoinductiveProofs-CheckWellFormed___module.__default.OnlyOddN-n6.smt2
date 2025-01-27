@@ -66,136 +66,221 @@
 (declare-fun Mod (Int Int) Int)
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|_k#0| T@U) (|x#0| Int) ) (!  (=> (or (|_module.__default.OnlyOddNegs_h#canCall| |_k#0| |x#0|) (< 1 $FunctionContextHeight)) (and (and (=> (< 0 (|ORD#Offset| |_k#0|)) (=> (or (not (= |x#0| (- 0 2))) (not true)) (|_module.__default.OnlyOddNegs_h#canCall| (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (+ |x#0| 2)))) (=> (=> (< 0 (|ORD#Offset| |_k#0|)) (and (or (not (= |x#0| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h $ly (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (+ |x#0| 2)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0|) (|_module.__default.OnlyOddNegs_h#canCall| |_k'#0| |x#0|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |909|
  :pattern ( (_module.__default.OnlyOddNegs_h $ly |_k'#0| |x#0|))
 ))))) (= (_module.__default.OnlyOddNegs_h ($LS $ly) |_k#0| |x#0|)  (and (=> (< 0 (|ORD#Offset| |_k#0|)) (and (or (not (= |x#0| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h $ly (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (+ |x#0| 2)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0|) (_module.__default.OnlyOddNegs_h $ly |_k'#0@@0| |x#0|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |908|
  :pattern ( (_module.__default.OnlyOddNegs_h $ly |_k'#0@@0| |x#0|))
 )))))))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |910|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly) |_k#0| |x#0|))
 ))))
 (assert (= (Ctor BoxType) 3))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|_k#0@@0| T@U) (|x#0@@0| Int) ) (!  (=> (or (|_module.__default.OnlyOddNegs_h#canCall| (Lit BoxType |_k#0@@0|) (LitInt |x#0@@0|)) (< 1 $FunctionContextHeight)) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (=> (U_2_bool (Lit boolType (bool_2_U  (or (not (= |x#0@@0| (- 0 2))) (not true))))) (|_module.__default.OnlyOddNegs_h#canCall| (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (LitInt (+ |x#0@@0| 2))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (and (or (not (= |x#0@@0| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h ($LS $ly@@0) (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (LitInt (+ |x#0@@0| 2))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#2| T@U) ) (!  (=> (|ORD#Less| |_k'#2| |_k#0@@0|) (|_module.__default.OnlyOddNegs_h#canCall| |_k'#2| |x#0@@0|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |915|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@0) |_k'#2| |x#0@@0|))
 ))))) (= (_module.__default.OnlyOddNegs_h ($LS $ly@@0) (Lit BoxType |_k#0@@0|) (LitInt |x#0@@0|))  (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (and (or (not (= |x#0@@0| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h ($LS $ly@@0) (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (LitInt (+ |x#0@@0| 2))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#2@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@0| |_k#0@@0|) (_module.__default.OnlyOddNegs_h ($LS $ly@@0) |_k'#2@@0| |x#0@@0|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |914|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@0) |_k'#2@@0| |x#0@@0|))
 )))))))
+ :qid |CoinductiveProofsdfy.280:20|
  :weight 3
+ :skolemid |916|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@0) (Lit BoxType |_k#0@@0|) (LitInt |x#0@@0|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) (|x#0@@1| Int) (|_k#0@@1| T@U) ) (!  (=> (= |_k#0@@1| (|ORD#FromNat| 0)) (_module.__default.OnlyOddNegs_h $ly@@1 |_k#0@@1| |x#0@@1|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |902|
  :pattern ( (_module.__default.OnlyOddNegs_h $ly@@1 |_k#0@@1| |x#0@@1|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) (|x#0@@2| Int) ) (!  (=> (forall ((|_k#0@@2| T@U) ) (! (_module.__default.OnlyOddNegs_h ($LS $ly@@2) |_k#0@@2| |x#0@@2|)
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |899|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@2) |_k#0@@2| |x#0@@2|))
 )) (_module.__default.OnlyOddNegs ($LS $ly@@2) |x#0@@2|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |901|
  :pattern ( (_module.__default.OnlyOddNegs ($LS $ly@@2) |x#0@@2|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@3 T@U) (|x#0@@3| Int) ) (!  (=> (_module.__default.OnlyOddNegs ($LS $ly@@3) |x#0@@3|) (forall ((|_k#0@@3| T@U) ) (! (_module.__default.OnlyOddNegs_h ($LS $ly@@3) |_k#0@@3| |x#0@@3|)
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |899|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@3) |_k#0@@3| |x#0@@3|))
 )))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |900|
  :pattern ( (_module.__default.OnlyOddNegs ($LS $ly@@3) |x#0@@3|))
 ))))
 (assert (forall (($ly@@4 T@U) (|_k#0@@4| T@U) (|x#0@@4| Int) ) (! (= (_module.__default.OnlyOddNegs_h ($LS $ly@@4) |_k#0@@4| |x#0@@4|) (_module.__default.OnlyOddNegs_h $ly@@4 |_k#0@@4| |x#0@@4|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |904|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@4) |_k#0@@4| |x#0@@4|))
 )))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($ly@@5 T@U) (|x#0@@5| Int) ) (!  (=> (or (|_module.__default.OnlyOddNegs#canCall| |x#0@@5|) (< 0 $FunctionContextHeight)) (and (=> (or (not (= |x#0@@5| (- 0 2))) (not true)) (|_module.__default.OnlyOddNegs#canCall| (+ |x#0@@5| 2))) (= (_module.__default.OnlyOddNegs ($LS $ly@@5) |x#0@@5|)  (and (or (not (= |x#0@@5| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs $ly@@5 (+ |x#0@@5| 2))))))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |898|
  :pattern ( (_module.__default.OnlyOddNegs ($LS $ly@@5) |x#0@@5|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@6 T@U) (|_k#0@@5| T@U) (|x#0@@6| Int) ) (!  (=> (or (|_module.__default.OnlyOddNegs_h#canCall| (Lit BoxType |_k#0@@5|) |x#0@@6|) (< 1 $FunctionContextHeight)) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@5|)) (=> (or (not (= |x#0@@6| (- 0 2))) (not true)) (|_module.__default.OnlyOddNegs_h#canCall| (|ORD#Minus| |_k#0@@5| (|ORD#FromNat| 1)) (+ |x#0@@6| 2)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@5|)) (and (or (not (= |x#0@@6| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h ($LS $ly@@6) (|ORD#Minus| |_k#0@@5| (|ORD#FromNat| 1)) (+ |x#0@@6| 2)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@5|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |_k#0@@5|) (|_module.__default.OnlyOddNegs_h#canCall| |_k'#1| |x#0@@6|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |912|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@6) |_k'#1| |x#0@@6|))
 ))))) (= (_module.__default.OnlyOddNegs_h ($LS $ly@@6) (Lit BoxType |_k#0@@5|) |x#0@@6|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@5|)) (and (or (not (= |x#0@@6| (- 0 2))) (not true)) (_module.__default.OnlyOddNegs_h ($LS $ly@@6) (|ORD#Minus| |_k#0@@5| (|ORD#FromNat| 1)) (+ |x#0@@6| 2)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@5|)) (forall ((|_k'#1@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@0| |_k#0@@5|) (_module.__default.OnlyOddNegs_h ($LS $ly@@6) |_k'#1@@0| |x#0@@6|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |911|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@6) |_k'#1@@0| |x#0@@6|))
 )))))))
+ :qid |CoinductiveProofsdfy.280:20|
  :weight 3
+ :skolemid |913|
  :pattern ( (_module.__default.OnlyOddNegs_h ($LS $ly@@6) (Lit BoxType |_k#0@@5|) |x#0@@6|))
 ))))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert (forall (($ly@@7 T@U) (|x#0@@7| Int) ) (! (= (_module.__default.OnlyOddNegs ($LS $ly@@7) |x#0@@7|) (_module.__default.OnlyOddNegs $ly@@7 |x#0@@7|))
+ :qid |CoinductiveProofsdfy.280:20|
+ :skolemid |894|
  :pattern ( (_module.__default.OnlyOddNegs ($LS $ly@@7) |x#0@@7|))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |992|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mod x@@6 y) (mod x@@6 y))
+ :qid |DafnyPreludebpl.1649:14|
+ :skolemid |340|
  :pattern ( (Mod x@@6 y))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@8)) (Lit BoxType ($Box T@@2 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@8)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (push 1)
@@ -206,6 +291,7 @@
 (declare-fun $Heap () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellFormed$$_module.__default.OnlyOddNegs__Correct__All)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

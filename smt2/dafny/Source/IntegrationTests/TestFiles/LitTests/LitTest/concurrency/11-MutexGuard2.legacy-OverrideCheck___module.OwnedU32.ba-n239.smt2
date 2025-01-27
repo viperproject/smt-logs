@@ -84,118 +84,184 @@
 (declare-fun |lambda#81| (T@U T@U T@U T@U T@U) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._module.Universe Tagclass._module.Universe? Tagclass._module.Object Tagclass._module.OwnedU32 Tagclass._module.Object? Tagclass._module.OwnedObject Tagclass._module.OwnedObject? Tagclass._module.OwnedU32? tytagFamily$Universe tytagFamily$Object tytagFamily$OwnedU32 tytagFamily$OwnedObject)
 )
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (implements$_module.OwnedObject Tclass._module.OwnedU32?))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.OwnedU32?)  (or (= $o null) (= (dtype $o) Tclass._module.OwnedU32?)))
+ :qid |unknown.0:0|
+ :skolemid |1631|
  :pattern ( ($Is refType $o Tclass._module.OwnedU32?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Universe $h) ($IsAlloc refType |c#0| Tclass._module.Universe? $h))
+ :qid |unknown.0:0|
+ :skolemid |1062|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Universe $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Universe? $h))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.Object $h@@0) ($IsAlloc refType |c#0@@0| Tclass._module.Object? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1202|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Object $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Object? $h@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass._module.OwnedObject $h@@1) ($IsAlloc refType |c#0@@1| Tclass._module.OwnedObject? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1629|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.OwnedObject $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.OwnedObject? $h@@1))
 )))
 (assert (forall ((|c#0@@2| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32 $h@@2) ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32? $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1890|
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32 $h@@2))
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.OwnedU32? $h@@2))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass._module.Universe? $h@@3)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |622|
  :pattern ( ($IsAlloc refType $o@@0 Tclass._module.Universe? $h@@3))
 )))
 (assert (forall (($o@@1 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@1 Tclass._module.Object? $h@@4)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1064|
  :pattern ( ($IsAlloc refType $o@@1 Tclass._module.Object? $h@@4))
 )))
 (assert (forall (($o@@2 T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass._module.OwnedObject? $h@@5)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1493|
  :pattern ( ($IsAlloc refType $o@@2 Tclass._module.OwnedObject? $h@@5))
 )))
 (assert (forall (($o@@3 T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.OwnedU32? $h@@6)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1632|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.OwnedU32? $h@@6))
 )))
 (assert (forall ((a@@2 T@U) (b T@U) ) (! (= (|Set#Subset| a@@2 b) (forall ((o@@1 T@U) ) (!  (=> (|Set#IsMember| a@@2 o@@1) (|Set#IsMember| b o@@1))
+ :qid |DafnyPreludebpl.774:19|
+ :skolemid |146|
  :pattern ( (|Set#IsMember| a@@2 o@@1))
  :pattern ( (|Set#IsMember| b o@@1))
 )))
+ :qid |DafnyPreludebpl.771:15|
+ :skolemid |147|
  :pattern ( (|Set#Subset| a@@2 b))
 )))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@5))
 )))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($h@@7 T@U) ($o@@4 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@7) (and (or (not (= $o@@4 null)) (not true)) ($Is refType $o@@4 Tclass._module.Object?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@4) alloc)))) ($IsAlloc refType (_module.Object.universe $o@@4) Tclass._module.Universe $h@@7))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |1066|
  :pattern ( (_module.Object.universe $o@@4) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@4) alloc)))
 ))))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($o@@5 T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) ($Is refType $o@@5 Tclass._module.Object?)) ($Is refType (_module.Object.universe $o@@5) Tclass._module.Universe))
+ :qid |unknown.0:0|
+ :skolemid |1065|
  :pattern ( (_module.Object.universe $o@@5))
 ))))
 (assert (forall ((|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| Tclass._module.Universe)  (and ($Is refType |c#0@@3| Tclass._module.Universe?) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1061|
  :pattern ( ($Is refType |c#0@@3| Tclass._module.Universe))
  :pattern ( ($Is refType |c#0@@3| Tclass._module.Universe?))
 )))
 (assert (forall ((|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| Tclass._module.Object)  (and ($Is refType |c#0@@4| Tclass._module.Object?) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1201|
  :pattern ( ($Is refType |c#0@@4| Tclass._module.Object))
  :pattern ( ($Is refType |c#0@@4| Tclass._module.Object?))
 )))
 (assert (forall ((|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| Tclass._module.OwnedObject)  (and ($Is refType |c#0@@5| Tclass._module.OwnedObject?) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1628|
  :pattern ( ($Is refType |c#0@@5| Tclass._module.OwnedObject))
  :pattern ( ($Is refType |c#0@@5| Tclass._module.OwnedObject?))
 )))
 (assert (forall ((|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| Tclass._module.OwnedU32)  (and ($Is refType |c#0@@6| Tclass._module.OwnedU32?) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1889|
  :pattern ( ($Is refType |c#0@@6| Tclass._module.OwnedU32))
  :pattern ( ($Is refType |c#0@@6| Tclass._module.OwnedU32?))
 )))
 (assert (forall (($o@@6 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@6 Tclass._module.OwnedObject? $heap) ($IsAlloc refType $o@@6 Tclass._module.Object? $heap))
+ :qid |unknown.0:0|
+ :skolemid |2441|
  :pattern ( ($IsAlloc refType $o@@6 Tclass._module.OwnedObject? $heap))
 )))
 (assert (forall (($o@@7 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@7 Tclass._module.OwnedU32? $heap@@0) ($IsAlloc refType $o@@7 Tclass._module.OwnedObject? $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |2445|
  :pattern ( ($IsAlloc refType $o@@7 Tclass._module.OwnedU32? $heap@@0))
 )))
 (assert (forall ((x@@6 T@U) (T@@0 T@T) ) (! (= ($Unbox T@@0 ($Box T@@0 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@0 x@@6))
 )))
 (assert (forall (($o@@8 T@U) ) (!  (=> ($Is refType $o@@8 Tclass._module.OwnedObject?) ($Is refType $o@@8 Tclass._module.Object?))
+ :qid |unknown.0:0|
+ :skolemid |2440|
  :pattern ( ($Is refType $o@@8 Tclass._module.OwnedObject?))
 )))
 (assert (forall (($o@@9 T@U) ) (!  (=> ($Is refType $o@@9 Tclass._module.OwnedU32?) ($Is refType $o@@9 Tclass._module.OwnedObject?))
+ :qid |unknown.0:0|
+ :skolemid |2444|
  :pattern ( ($Is refType $o@@9 Tclass._module.OwnedU32?))
 )))
 (assert (= (Tag Tclass._module.Universe) Tagclass._module.Universe))
@@ -215,22 +281,33 @@
 (assert (= (Tag Tclass._module.OwnedU32?) Tagclass._module.OwnedU32?))
 (assert (= (TagFamily Tclass._module.OwnedU32?) tytagFamily$OwnedU32))
 (assert (forall (($o@@10 T@U) ) (! (= ($Is refType $o@@10 Tclass._module.Universe?)  (or (= $o@@10 null) (implements$_module.Universe (dtype $o@@10))))
+ :qid |unknown.0:0|
+ :skolemid |621|
  :pattern ( ($Is refType $o@@10 Tclass._module.Universe?))
 )))
 (assert (forall (($o@@11 T@U) ) (! (= ($Is refType $o@@11 Tclass._module.Object?)  (or (= $o@@11 null) (implements$_module.Object (dtype $o@@11))))
+ :qid |unknown.0:0|
+ :skolemid |1063|
  :pattern ( ($Is refType $o@@11 Tclass._module.Object?))
 )))
 (assert (forall (($o@@12 T@U) ) (! (= ($Is refType $o@@12 Tclass._module.OwnedObject?)  (or (= $o@@12 null) (implements$_module.OwnedObject (dtype $o@@12))))
+ :qid |unknown.0:0|
+ :skolemid |1492|
  :pattern ( ($Is refType $o@@12 Tclass._module.OwnedObject?))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) ($o@@13 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#81| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@13 $f))  (=> (and (or (not (= $o@@13 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@13) |l#2|)))) (or (= $o@@13 |l#3|) (= $o@@13 |l#4|))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2460|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#81| |l#0| |l#1| |l#2| |l#3| |l#4|) $o@@13 $f))
 )))
 (push 1)
@@ -239,6 +316,7 @@
 (declare-fun OwnedU32_$_ReadsFrame@0 () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id OverrideCheck$$_module.OwnedU32.baseUserFieldsInv)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -254,7 +332,10 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 4) (let ((anon0_correct  (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Subset| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))) (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))))) (=> (|Set#Subset| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))) (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this)))) (=> (and (= OwnedU32_$_ReadsFrame@0 (|lambda#81| null $Heap alloc this (_module.Object.universe this))) (= (ControlFlow 0 2) (- 0 1))) (forall (($o@@14 T@U) ($f@@0 T@U) )  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@14) alloc)))) (or (= $o@@14 this) (= $o@@14 (_module.Object.universe this)))) (or (= $o@@14 this) (= $o@@14 (_module.Object.universe this))))))))))
+ (=> (= (ControlFlow 0 0) 4) (let ((anon0_correct  (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Subset| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))) (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))))) (=> (|Set#Subset| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this))) (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box refType this)) ($Box refType (_module.Object.universe this)))) (=> (and (= OwnedU32_$_ReadsFrame@0 (|lambda#81| null $Heap alloc this (_module.Object.universe this))) (= (ControlFlow 0 2) (- 0 1))) (forall (($o@@14 T@U) ($f@@0 T@U) ) (!  (=> (and (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@14) alloc)))) (or (= $o@@14 this) (= $o@@14 (_module.Object.universe this)))) (or (= $o@@14 this) (= $o@@14 (_module.Object.universe this))))
+ :qid |_11MutexGuard2legacydfy.440:19|
+ :skolemid |1647|
+)))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.OwnedU32) ($IsAlloc refType this Tclass._module.OwnedU32 $Heap))) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 4) 2))) anon0_correct))))
 PreconditionGeneratedEntry_correct)))
 ))

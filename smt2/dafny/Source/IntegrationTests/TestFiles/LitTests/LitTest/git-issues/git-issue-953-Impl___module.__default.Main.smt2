@@ -105,16 +105,22 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass.C1.T Tagclass.C1.C Tagclass.P.T Tagclass.C2.T Tagclass.C2.C Tagclass.P2.T |##P.T_.T| Tagclass.P.T__ |##C1.C.C| |##C1.T_.T| Tagclass.C1.T__ |##P2.T_.T| Tagclass.P2.T__ |##C2.C.C| |##C2.T_.T| Tagclass.C2.T__ tytagFamily$T tytagFamily$C tytagFamily$T_)
@@ -124,167 +130,286 @@
 (assert (= (DatatypeCtorId |#C1.T_.T|) |##C1.T_.T|))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|t#0| T@U) ($h T@U) ) (! (= ($IsAlloc DatatypeTypeType |t#0| Tclass.P.T $h) ($IsAlloc DatatypeTypeType |t#0| Tclass.P.T__ $h))
+ :qid |unknown.0:0|
+ :skolemid |3033|
  :pattern ( ($IsAlloc DatatypeTypeType |t#0| Tclass.P.T $h))
 )))
 (assert (forall ((|t#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc DatatypeTypeType |t#0@@0| Tclass.C1.T $h@@0) ($IsAlloc DatatypeTypeType |t#0@@0| Tclass.C1.T__ $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3057|
  :pattern ( ($IsAlloc DatatypeTypeType |t#0@@0| Tclass.C1.T $h@@0))
 )))
 (assert (forall ((|t#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc DatatypeTypeType |t#0@@1| Tclass.P2.T $h@@1) ($IsAlloc DatatypeTypeType |t#0@@1| Tclass.P2.T__ $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |3119|
  :pattern ( ($IsAlloc DatatypeTypeType |t#0@@1| Tclass.P2.T $h@@1))
 )))
 (assert (forall ((|t#0@@2| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc DatatypeTypeType |t#0@@2| Tclass.C2.T $h@@2) ($IsAlloc DatatypeTypeType |t#0@@2| Tclass.C2.T__ $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |3151|
  :pattern ( ($IsAlloc DatatypeTypeType |t#0@@2| Tclass.C2.T $h@@2))
 )))
 (assert (forall ((d T@U) ) (!  (=> ($Is DatatypeTypeType d Tclass.C1.C) (C1.C.C_q d))
+ :qid |unknown.0:0|
+ :skolemid |3045|
  :pattern ( (C1.C.C_q d) ($Is DatatypeTypeType d Tclass.C1.C))
 )))
 (assert (forall ((d@@0 T@U) ) (!  (=> ($Is DatatypeTypeType d@@0 Tclass.P2.T__) (P2.T__.T_q d@@0))
+ :qid |unknown.0:0|
+ :skolemid |3115|
  :pattern ( (P2.T__.T_q d@@0) ($Is DatatypeTypeType d@@0 Tclass.P2.T__))
 )))
 (assert (forall ((d@@1 T@U) ) (!  (=> ($Is DatatypeTypeType d@@1 Tclass.C2.C) (C2.C.C_q d@@1))
+ :qid |unknown.0:0|
+ :skolemid |3133|
  :pattern ( (C2.C.C_q d@@1) ($Is DatatypeTypeType d@@1 Tclass.C2.C))
 )))
 (assert (forall ((d@@2 T@U) ) (!  (=> ($Is DatatypeTypeType d@@2 Tclass.C2.T__) (C2.T__.T_q d@@2))
+ :qid |unknown.0:0|
+ :skolemid |3147|
  :pattern ( (C2.T__.T_q d@@2) ($Is DatatypeTypeType d@@2 Tclass.C2.T__))
 )))
 (assert ($Is DatatypeTypeType |#P.T_.T| Tclass.P.T__))
 (assert ($Is DatatypeTypeType |#C1.T_.T| Tclass.C1.T__))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (= (Ctor refType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (= (Ctor refType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |2653|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |2654|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2552|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2550|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (C1.C.C_q d@@3) (= (DatatypeCtorId d@@3) |##C1.C.C|))
+ :qid |unknown.0:0|
+ :skolemid |3035|
  :pattern ( (C1.C.C_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (! (= (P2.T__.T_q d@@4) (= (DatatypeCtorId d@@4) |##P2.T_.T|))
+ :qid |unknown.0:0|
+ :skolemid |3105|
  :pattern ( (P2.T__.T_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (C2.C.C_q d@@5) (= (DatatypeCtorId d@@5) |##C2.C.C|))
+ :qid |unknown.0:0|
+ :skolemid |3121|
  :pattern ( (C2.C.C_q d@@5))
 )))
 (assert (forall ((d@@6 T@U) ) (! (= (C2.T__.T_q d@@6) (= (DatatypeCtorId d@@6) |##C2.T_.T|))
+ :qid |unknown.0:0|
+ :skolemid |3137|
  :pattern ( (C2.T__.T_q d@@6))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2561|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((|a#14#0#0| T@U) (|a#14#1#0| Int) ) (! (= ($Is DatatypeTypeType (|#C2.C.C| |a#14#0#0| |a#14#1#0|) Tclass.C2.C)  (and ($Is DatatypeTypeType |a#14#0#0| Tclass.C2.T) ($Is intType (int_2_U |a#14#1#0|) TInt)))
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3124|
  :pattern ( ($Is DatatypeTypeType (|#C2.C.C| |a#14#0#0| |a#14#1#0|) Tclass.C2.C))
 )))
-(assert (forall ((d@@7 T@U) ) (!  (=> (C2.C.C_q d@@7) (exists ((|a#13#0#0| T@U) (|a#13#1#0| Int) ) (= d@@7 (|#C2.C.C| |a#13#0#0| |a#13#1#0|))))
+(assert (forall ((d@@7 T@U) ) (!  (=> (C2.C.C_q d@@7) (exists ((|a#13#0#0| T@U) (|a#13#1#0| Int) ) (! (= d@@7 (|#C2.C.C| |a#13#0#0| |a#13#1#0|))
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3122|
+)))
+ :qid |unknown.0:0|
+ :skolemid |3123|
  :pattern ( (C2.C.C_q d@@7))
 )))
-(assert (forall ((d@@8 T@U) ) (!  (=> (C1.C.C_q d@@8) (exists ((|a#5#0#0| T@U) ) (= d@@8 (|#C1.C.C| |a#5#0#0|))))
+(assert (forall ((d@@8 T@U) ) (!  (=> (C1.C.C_q d@@8) (exists ((|a#5#0#0| T@U) ) (! (= d@@8 (|#C1.C.C| |a#5#0#0|))
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3036|
+)))
+ :qid |unknown.0:0|
+ :skolemid |3037|
  :pattern ( (C1.C.C_q d@@8))
 )))
-(assert (forall ((d@@9 T@U) ) (!  (=> (P2.T__.T_q d@@9) (exists ((|a#8#0#0| Int) ) (= d@@9 (|#P2.T_.T| |a#8#0#0|))))
+(assert (forall ((d@@9 T@U) ) (!  (=> (P2.T__.T_q d@@9) (exists ((|a#8#0#0| Int) ) (! (= d@@9 (|#P2.T_.T| |a#8#0#0|))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3106|
+)))
+ :qid |unknown.0:0|
+ :skolemid |3107|
  :pattern ( (P2.T__.T_q d@@9))
 )))
-(assert (forall ((d@@10 T@U) ) (!  (=> (C2.T__.T_q d@@10) (exists ((|a#20#0#0| Int) ) (= d@@10 (|#C2.T_.T| |a#20#0#0|))))
+(assert (forall ((d@@10 T@U) ) (!  (=> (C2.T__.T_q d@@10) (exists ((|a#20#0#0| Int) ) (! (= d@@10 (|#C2.T_.T| |a#20#0#0|))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3138|
+)))
+ :qid |unknown.0:0|
+ :skolemid |3139|
  :pattern ( (C2.T__.T_q d@@10))
 )))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |2645|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
 (assert (forall ((|a#6#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#C1.C.C| |a#6#0#0|) Tclass.C1.C) ($Is DatatypeTypeType |a#6#0#0| Tclass.C1.T))
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3038|
  :pattern ( ($Is DatatypeTypeType (|#C1.C.C| |a#6#0#0|) Tclass.C1.C))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |2652|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((|a#12#0#0| T@U) (|a#12#1#0| Int) ) (! (= (DatatypeCtorId (|#C2.C.C| |a#12#0#0| |a#12#1#0|)) |##C2.C.C|)
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3120|
  :pattern ( (|#C2.C.C| |a#12#0#0| |a#12#1#0|))
 )))
 (assert (forall ((|a#16#0#0| T@U) (|a#16#1#0| Int) ) (! (= (C2.C.t (|#C2.C.C| |a#16#0#0| |a#16#1#0|)) |a#16#0#0|)
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3128|
  :pattern ( (|#C2.C.C| |a#16#0#0| |a#16#1#0|))
 )))
 (assert (forall ((|a#18#0#0| T@U) (|a#18#1#0| Int) ) (! (= (C2.C.x (|#C2.C.C| |a#18#0#0| |a#18#1#0|)) |a#18#1#0|)
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3130|
  :pattern ( (|#C2.C.C| |a#18#0#0| |a#18#1#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) ) (! (= (DatatypeCtorId (|#C1.C.C| |a#4#0#0|)) |##C1.C.C|)
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3034|
  :pattern ( (|#C1.C.C| |a#4#0#0|))
 )))
 (assert (forall ((|a#8#0#0@@0| T@U) ) (! (= (C1.C.t (|#C1.C.C| |a#8#0#0@@0|)) |a#8#0#0@@0|)
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3041|
  :pattern ( (|#C1.C.C| |a#8#0#0@@0|))
 )))
 (assert (forall ((|a#7#0#0| Int) ) (! (= (DatatypeCtorId (|#P2.T_.T| |a#7#0#0|)) |##P2.T_.T|)
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3104|
  :pattern ( (|#P2.T_.T| |a#7#0#0|))
 )))
 (assert (forall ((|a#11#0#0| Int) ) (! (= (P2.T__.y (|#P2.T_.T| |a#11#0#0|)) |a#11#0#0|)
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3112|
  :pattern ( (|#P2.T_.T| |a#11#0#0|))
 )))
 (assert (forall ((|a#19#0#0| Int) ) (! (= (DatatypeCtorId (|#C2.T_.T| |a#19#0#0|)) |##C2.T_.T|)
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3136|
  :pattern ( (|#C2.T_.T| |a#19#0#0|))
 )))
 (assert (forall ((|a#23#0#0| Int) ) (! (= (C2.T__.y (|#C2.T_.T| |a#23#0#0|)) |a#23#0#0|)
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3144|
  :pattern ( (|#C2.T_.T| |a#23#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2560|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall ((|a#17#0#0| T@U) (|a#17#1#0| Int) ) (! (< (DtRank |a#17#0#0|) (DtRank (|#C2.C.C| |a#17#0#0| |a#17#1#0|)))
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3129|
  :pattern ( (|#C2.C.C| |a#17#0#0| |a#17#1#0|))
 )))
 (assert (forall ((|a#9#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#P2.T_.T| |a#9#0#0|) Tclass.P2.T__) ($Is intType (int_2_U |a#9#0#0|) TInt))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3109|
  :pattern ( ($Is DatatypeTypeType (|#P2.T_.T| |a#9#0#0|) Tclass.P2.T__))
 )))
 (assert (forall ((|a#21#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#C2.T_.T| |a#21#0#0|) Tclass.C2.T__) ($Is intType (int_2_U |a#21#0#0|) TInt))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3141|
  :pattern ( ($Is DatatypeTypeType (|#C2.T_.T| |a#21#0#0|) Tclass.C2.T__))
 )))
 (assert (forall ((|a#9#0#0@@0| T@U) ) (! (< (DtRank |a#9#0#0@@0|) (DtRank (|#C1.C.C| |a#9#0#0@@0|)))
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3042|
  :pattern ( (|#C1.C.C| |a#9#0#0@@0|))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3159|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@11 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (P2.T__.T_q d@@11) ($IsAlloc DatatypeTypeType d@@11 Tclass.P2.T__ $h@@3))) ($IsAlloc intType (int_2_U (P2.T__.y d@@11)) TInt $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |3110|
  :pattern ( ($IsAlloc intType (int_2_U (P2.T__.y d@@11)) TInt $h@@3))
 )))
 (assert (forall ((d@@12 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (C2.C.C_q d@@12) ($IsAlloc DatatypeTypeType d@@12 Tclass.C2.C $h@@4))) ($IsAlloc intType (int_2_U (C2.C.x d@@12)) TInt $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |3126|
  :pattern ( ($IsAlloc intType (int_2_U (C2.C.x d@@12)) TInt $h@@4))
 )))
 (assert (forall ((d@@13 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (C2.T__.T_q d@@13) ($IsAlloc DatatypeTypeType d@@13 Tclass.C2.T__ $h@@5))) ($IsAlloc intType (int_2_U (C2.T__.y d@@13)) TInt $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |3142|
  :pattern ( ($IsAlloc intType (int_2_U (C2.T__.y d@@13)) TInt $h@@5))
 )))
 (assert (forall ((d@@14 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) ($Is DatatypeTypeType d@@14 Tclass.P.T__)) ($IsAlloc DatatypeTypeType d@@14 Tclass.P.T__ $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |3027|
  :pattern ( ($IsAlloc DatatypeTypeType d@@14 Tclass.P.T__ $h@@6))
 )))
 (assert (forall ((d@@15 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsGoodHeap $h@@7) ($Is DatatypeTypeType d@@15 Tclass.C1.C)) ($IsAlloc DatatypeTypeType d@@15 Tclass.C1.C $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |3043|
  :pattern ( ($IsAlloc DatatypeTypeType d@@15 Tclass.C1.C $h@@7))
 )))
 (assert (forall ((d@@16 T@U) ($h@@8 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) ($Is DatatypeTypeType d@@16 Tclass.C1.T__)) ($IsAlloc DatatypeTypeType d@@16 Tclass.C1.T__ $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |3051|
  :pattern ( ($IsAlloc DatatypeTypeType d@@16 Tclass.C1.T__ $h@@8))
 )))
 (assert (forall ((d@@17 T@U) ($h@@9 T@U) ) (!  (=> (and ($IsGoodHeap $h@@9) ($Is DatatypeTypeType d@@17 Tclass.P2.T__)) ($IsAlloc DatatypeTypeType d@@17 Tclass.P2.T__ $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |3113|
  :pattern ( ($IsAlloc DatatypeTypeType d@@17 Tclass.P2.T__ $h@@9))
 )))
 (assert (forall ((d@@18 T@U) ($h@@10 T@U) ) (!  (=> (and ($IsGoodHeap $h@@10) ($Is DatatypeTypeType d@@18 Tclass.C2.C)) ($IsAlloc DatatypeTypeType d@@18 Tclass.C2.C $h@@10))
+ :qid |unknown.0:0|
+ :skolemid |3131|
  :pattern ( ($IsAlloc DatatypeTypeType d@@18 Tclass.C2.C $h@@10))
 )))
 (assert (forall ((d@@19 T@U) ($h@@11 T@U) ) (!  (=> (and ($IsGoodHeap $h@@11) ($Is DatatypeTypeType d@@19 Tclass.C2.T__)) ($IsAlloc DatatypeTypeType d@@19 Tclass.C2.T__ $h@@11))
+ :qid |unknown.0:0|
+ :skolemid |3145|
  :pattern ( ($IsAlloc DatatypeTypeType d@@19 Tclass.C2.T__ $h@@11))
 )))
 (assert (= (Tag Tclass.C1.T) Tagclass.C1.T))
@@ -310,45 +435,73 @@
 (assert (= |#P.T_.T| (Lit DatatypeTypeType |#P.T_.T|)))
 (assert (= |#C1.T_.T| (Lit DatatypeTypeType |#C1.T_.T|)))
 (assert (forall ((d@@20 T@U) ($h@@12 T@U) ) (!  (=> (and ($IsGoodHeap $h@@12) (and (C1.C.C_q d@@20) ($IsAlloc DatatypeTypeType d@@20 Tclass.C1.C $h@@12))) ($IsAlloc DatatypeTypeType (C1.C.t d@@20) Tclass.C1.T $h@@12))
+ :qid |unknown.0:0|
+ :skolemid |3039|
  :pattern ( ($IsAlloc DatatypeTypeType (C1.C.t d@@20) Tclass.C1.T $h@@12))
 )))
 (assert (forall ((d@@21 T@U) ($h@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@13) (and (C2.C.C_q d@@21) ($IsAlloc DatatypeTypeType d@@21 Tclass.C2.C $h@@13))) ($IsAlloc DatatypeTypeType (C2.C.t d@@21) Tclass.C2.T $h@@13))
+ :qid |unknown.0:0|
+ :skolemid |3125|
  :pattern ( ($IsAlloc DatatypeTypeType (C2.C.t d@@21) Tclass.C2.T $h@@13))
 )))
 (assert (forall ((|a#15#0#0| T@U) (|a#15#1#0| Int) ) (! (= (|#C2.C.C| (Lit DatatypeTypeType |a#15#0#0|) (LitInt |a#15#1#0|)) (Lit DatatypeTypeType (|#C2.C.C| |a#15#0#0| |a#15#1#0|)))
+ :qid |gitissue953dfy.58:18|
+ :skolemid |3127|
  :pattern ( (|#C2.C.C| (Lit DatatypeTypeType |a#15#0#0|) (LitInt |a#15#1#0|)))
 )))
 (assert (forall ((|t#0@@3| T@U) ) (! (= ($Is DatatypeTypeType |t#0@@3| Tclass.P.T)  (and ($Is DatatypeTypeType |t#0@@3| Tclass.P.T__) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |unknown.0:0|
+ :skolemid |3032|
  :pattern ( ($Is DatatypeTypeType |t#0@@3| Tclass.P.T))
 )))
 (assert (forall ((|t#0@@4| T@U) ) (! (= ($Is DatatypeTypeType |t#0@@4| Tclass.C1.T)  (and ($Is DatatypeTypeType |t#0@@4| Tclass.C1.T__) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |unknown.0:0|
+ :skolemid |3056|
  :pattern ( ($Is DatatypeTypeType |t#0@@4| Tclass.C1.T))
 )))
 (assert (forall ((|t#0@@5| T@U) ) (! (= ($Is DatatypeTypeType |t#0@@5| Tclass.P2.T)  (and ($Is DatatypeTypeType |t#0@@5| Tclass.P2.T__) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |unknown.0:0|
+ :skolemid |3118|
  :pattern ( ($Is DatatypeTypeType |t#0@@5| Tclass.P2.T))
 )))
 (assert (forall ((|t#0@@6| T@U) ) (! (= ($Is DatatypeTypeType |t#0@@6| Tclass.C2.T)  (and ($Is DatatypeTypeType |t#0@@6| Tclass.C2.T__) (U_2_bool (Lit boolType (bool_2_U true)))))
+ :qid |unknown.0:0|
+ :skolemid |3150|
  :pattern ( ($Is DatatypeTypeType |t#0@@6| Tclass.C2.T))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2553|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#7#0#0@@0| T@U) ) (! (= (|#C1.C.C| (Lit DatatypeTypeType |a#7#0#0@@0|)) (Lit DatatypeTypeType (|#C1.C.C| |a#7#0#0@@0|)))
+ :qid |gitissue953dfy.9:18|
+ :skolemid |3040|
  :pattern ( (|#C1.C.C| (Lit DatatypeTypeType |a#7#0#0@@0|)))
 )))
 (assert (forall ((|a#10#0#0| Int) ) (! (= (|#P2.T_.T| (LitInt |a#10#0#0|)) (Lit DatatypeTypeType (|#P2.T_.T| |a#10#0#0|)))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3111|
  :pattern ( (|#P2.T_.T| (LitInt |a#10#0#0|)))
 )))
 (assert (forall ((|a#22#0#0| Int) ) (! (= (|#C2.T_.T| (LitInt |a#22#0#0|)) (Lit DatatypeTypeType (|#C2.T_.T| |a#22#0#0|)))
+ :qid |gitissue953dfy.53:19|
+ :skolemid |3143|
  :pattern ( (|#C2.T_.T| (LitInt |a#22#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@7)) (Lit BoxType ($Box T@@3 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2551|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@7)))
 )))
 (assert (forall ((h@@1 T@U) (v@@0 T@U) ) (! ($IsAlloc intType v@@0 TInt h@@1)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |2596|
  :pattern ( ($IsAlloc intType v@@0 TInt h@@1))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |2575|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (push 1)
@@ -370,6 +523,7 @@
 (declare-fun |c2#0| () T@U)
 (declare-fun |pt2#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.Main)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -386,6 +540,8 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 6) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 2) (- 0 5)) ($Is DatatypeTypeType (Lit DatatypeTypeType |#C1.T_.T|) Tclass.C1.T)) (=> ($Is DatatypeTypeType (Lit DatatypeTypeType |#C1.T_.T|) Tclass.C1.T) (=> (and (= |t#0@0| (Lit DatatypeTypeType |#C1.T_.T|)) (= |c#0@0| (|#C1.C.C| |t#0@0|))) (and (=> (= (ControlFlow 0 2) (- 0 4)) ($Is DatatypeTypeType (Lit DatatypeTypeType |#P.T_.T|) Tclass.P.T)) (=> ($Is DatatypeTypeType (Lit DatatypeTypeType |#P.T_.T|) Tclass.P.T) (=> (= |pt#0@0| (Lit DatatypeTypeType |#P.T_.T|)) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (forall (($o@@0 T@U) ) (!  (=> (and (or (not (= $o@@0 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@0) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@0)))
+ :qid |gitissue953dfy.20:10|
+ :skolemid |3058|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0))
 )) ($HeapSucc $Heap $Heap@0))) (and (=> (= (ControlFlow 0 2) (- 0 3)) ($Is DatatypeTypeType (Lit DatatypeTypeType (|#C2.T_.T| (LitInt 10))) Tclass.C2.T)) (=> ($Is DatatypeTypeType (Lit DatatypeTypeType (|#C2.T_.T| (LitInt 10))) Tclass.C2.T) (=> (= |t2#0@0| (Lit DatatypeTypeType (|#C2.T_.T| (LitInt 10)))) (=> (and (= |c2#0@0| (|#C2.C.C| |t2#0@0| (LitInt 11))) (= (ControlFlow 0 2) (- 0 1))) ($Is DatatypeTypeType (Lit DatatypeTypeType (|#P2.T_.T| (LitInt 9))) Tclass.P2.T)))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is DatatypeTypeType |t#0@@7| Tclass.C1.T) ($IsAlloc DatatypeTypeType |t#0@@7| Tclass.C1.T $Heap)) true) (=> (and (and (and ($Is DatatypeTypeType |c#0| Tclass.C1.C) ($IsAlloc DatatypeTypeType |c#0| Tclass.C1.C $Heap)) true) (and (and ($Is DatatypeTypeType |pt#0| Tclass.P.T) ($IsAlloc DatatypeTypeType |pt#0| Tclass.P.T $Heap)) true)) (=> (and (and (and (and ($Is DatatypeTypeType |t2#0| Tclass.C2.T) ($IsAlloc DatatypeTypeType |t2#0| Tclass.C2.T $Heap)) true) (and (and ($Is DatatypeTypeType |c2#0| Tclass.C2.C) ($IsAlloc DatatypeTypeType |c2#0| Tclass.C2.C $Heap)) true)) (and (and (and ($Is DatatypeTypeType |pt2#0| Tclass.P2.T) ($IsAlloc DatatypeTypeType |pt2#0| Tclass.P2.T $Heap)) true) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 6) 2)))) anon0_correct))))))

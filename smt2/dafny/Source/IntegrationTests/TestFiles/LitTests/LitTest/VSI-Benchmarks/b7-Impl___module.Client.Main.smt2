@@ -135,16 +135,22 @@
 (declare-fun |Seq#Build_inv0| (T@U) T@U)
 (declare-fun |Seq#Build_inv1| (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TagBool TagInt TagSet TagSeq alloc allocName Tagclass._System.object? Tagclass._System.object class._module.Queue? Tagclass._module.Queue? Tagclass._module.Queue class._module.Stream? Tagclass._module.Stream? Tagclass._module.Stream Tagclass._module.Client? Tagclass._module.Client tytagFamily$object tytagFamily$Queue tytagFamily$Stream tytagFamily$Client field$contents field$footprint field$stream field$isOpen)
@@ -155,35 +161,53 @@
 (assert (= (DeclName alloc) allocName))
 (assert (= (Ctor refType) 3))
 (assert (forall ((_module.Queue$T T@U) (|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass._module.Queue _module.Queue$T) $h) ($IsAlloc refType |c#0| (Tclass._module.Queue? _module.Queue$T) $h))
+ :qid |unknown.0:0|
+ :skolemid |508|
  :pattern ( ($IsAlloc refType |c#0| (Tclass._module.Queue _module.Queue$T) $h))
  :pattern ( ($IsAlloc refType |c#0| (Tclass._module.Queue? _module.Queue$T) $h))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((s T@U) (v T@U) (n Int) ) (!  (=> (and (<= 0 n) (<= n (|Seq#Length| s))) (= (|Seq#Drop| (|Seq#Build| s v) n) (|Seq#Build| (|Seq#Drop| s n) v)))
+ :qid |DafnyPreludebpl.1288:15|
+ :skolemid |254|
  :pattern ( (|Seq#Drop| (|Seq#Build| s v) n))
 )))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Stream?)  (or (= $o null) (= (dtype $o) Tclass._module.Stream?)))
+ :qid |unknown.0:0|
+ :skolemid |510|
  :pattern ( ($Is refType $o Tclass._module.Stream?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.Client?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.Client?)))
+ :qid |unknown.0:0|
+ :skolemid |572|
  :pattern ( ($Is refType $o@@0 Tclass._module.Client?))
 )))
 (assert (forall ((s@@0 T@U) ) (! ($IsGoodMultiSet (|MultiSet#FromSeq| s@@0))
+ :qid |DafnyPreludebpl.1083:15|
+ :skolemid |214|
  :pattern ( (|MultiSet#FromSeq| s@@0))
 )))
 (assert (forall ((s@@1 T@U) (t T@U) (n@@0 Int) ) (!  (=> (= n@@0 (|Seq#Length| s@@1)) (and (= (|Seq#Take| (|Seq#Append| s@@1 t) n@@0) s@@1) (= (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0) t)))
+ :qid |DafnyPreludebpl.1263:15|
+ :skolemid |249|
  :pattern ( (|Seq#Take| (|Seq#Append| s@@1 t) n@@0))
  :pattern ( (|Seq#Drop| (|Seq#Append| s@@1 t) n@@0))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._System.object $h@@0) ($IsAlloc refType |c#0@@0| Tclass._System.object? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |351|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._System.object $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._System.object? $h@@0))
 )))
 (assert (forall ((|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| Tclass._module.Stream $h@@1) ($IsAlloc refType |c#0@@1| Tclass._module.Stream? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |570|
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Stream $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| Tclass._module.Stream? $h@@1))
 )))
 (assert (forall ((|c#0@@2| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType |c#0@@2| Tclass._module.Client $h@@2) ($IsAlloc refType |c#0@@2| Tclass._module.Client? $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |624|
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.Client $h@@2))
  :pattern ( ($IsAlloc refType |c#0@@2| Tclass._module.Client? $h@@2))
 )))
@@ -191,15 +215,23 @@
 (assert (= (FieldOfDecl class._module.Stream? field$footprint) _module.Stream.footprint))
 (assert ($IsGhostField _module.Stream.footprint))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((_module.Queue$T@@0 T@U) ($o@@1 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@1 (Tclass._module.Queue? _module.Queue$T@@0) $h@@3)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |483|
  :pattern ( ($IsAlloc refType $o@@1 (Tclass._module.Queue? _module.Queue$T@@0) $h@@3))
 )))
 (assert (= (FDim _module.Queue.contents) 0))
@@ -213,292 +245,487 @@
 (assert  (not ($IsGhostField _module.Stream.isOpen)))
 (assert (= (Ctor SetType) 7))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) ) (!  (=> (or (|_module.Stream.Valid#canCall| $Heap this) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.Stream) ($IsAlloc refType this Tclass._module.Stream $Heap)))))) (= (_module.Stream.Valid $Heap this)  (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Stream.footprint)) ($Box refType this)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap this) _module.Stream.isOpen))))))
+ :qid |b7dfy.39:18|
+ :skolemid |523|
  :pattern ( (_module.Stream.Valid $Heap this) ($IsGoodHeap $Heap))
 ))))
 (assert (forall (($o@@2 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass._System.object? $h@@4)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |348|
  :pattern ( ($IsAlloc refType $o@@2 Tclass._System.object? $h@@4))
 )))
 (assert (forall (($o@@3 T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.Stream? $h@@5)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |511|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.Stream? $h@@5))
 )))
 (assert (forall (($o@@4 T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType $o@@4 Tclass._module.Client? $h@@6)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |573|
  :pattern ( ($IsAlloc refType $o@@4 Tclass._module.Client? $h@@6))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((s@@2 T@U) (n@@1 Int) ) (!  (=> (= n@@1 0) (= (|Seq#Drop| s@@2 n@@1) s@@2))
+ :qid |DafnyPreludebpl.1293:15|
+ :skolemid |255|
  :pattern ( (|Seq#Drop| s@@2 n@@1))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (= (Ctor SeqType) 8))
 (assert (forall ((s@@3 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> (and ($Is SeqType s@@3 (TSeq t@@0)) ($IsBox bx t@@0)) ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
+ :qid |DafnyPreludebpl.1309:15|
+ :skolemid |258|
  :pattern ( ($Is SeqType (|Seq#Build| s@@3 bx) (TSeq t@@0)))
 )))
 (assert (forall ((s@@4 T@U) (n@@2 Int) (j Int) ) (!  (=> (and (and (<= 0 j) (< j n@@2)) (< j (|Seq#Length| s@@4))) (= (|Seq#Index| (|Seq#Take| s@@4 n@@2) j) (|Seq#Index| s@@4 j)))
+ :qid |DafnyPreludebpl.1242:15|
  :weight 25
+ :skolemid |245|
  :pattern ( (|Seq#Index| (|Seq#Take| s@@4 n@@2) j))
  :pattern ( (|Seq#Index| s@@4 j) (|Seq#Take| s@@4 n@@2))
 )))
 (assert (forall ((s@@5 T@U) (n@@3 Int) ) (!  (=> (and (<= 0 n@@3) (<= n@@3 (|Seq#Length| s@@5))) (= (|Seq#Length| (|Seq#Drop| s@@5 n@@3)) (- (|Seq#Length| s@@5) n@@3)))
+ :qid |DafnyPreludebpl.1249:15|
+ :skolemid |246|
  :pattern ( (|Seq#Length| (|Seq#Drop| s@@5 n@@3)))
 )))
 (assert (forall ((s0 T@U) (s1 T@U) ) (! (= (|Seq#Equal| s0 s1)  (and (= (|Seq#Length| s0) (|Seq#Length| s1)) (forall ((j@@0 Int) ) (!  (=> (and (<= 0 j@@0) (< j@@0 (|Seq#Length| s0))) (= (|Seq#Index| s0 j@@0) (|Seq#Index| s1 j@@0)))
+ :qid |DafnyPreludebpl.1221:19|
+ :skolemid |239|
  :pattern ( (|Seq#Index| s0 j@@0))
  :pattern ( (|Seq#Index| s1 j@@0))
 ))))
+ :qid |DafnyPreludebpl.1217:15|
+ :skolemid |240|
  :pattern ( (|Seq#Equal| s0 s1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((a T@U) (x@@5 T@U) (y T@U) ) (!  (=> (or (not (= x@@5 y)) (not true)) (= (|MultiSet#Multiplicity| a y) (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a x@@5) y)))
+ :qid |DafnyPreludebpl.978:15|
+ :skolemid |195|
  :pattern ( (|MultiSet#UnionOne| a x@@5) (|MultiSet#Multiplicity| a y))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.Queue$T@@1 T@U) ($Heap@@0 T@U) (this@@0 T@U) (|i#0| Int) ) (!  (=> (or (|_module.Queue.Get#canCall| _module.Queue$T@@1 $Heap@@0 this@@0 |i#0|) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 (Tclass._module.Queue _module.Queue$T@@1)) ($IsAlloc refType this@@0 (Tclass._module.Queue _module.Queue$T@@1) $Heap@@0)))) (and (<= (LitInt 0) |i#0|) (< |i#0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) _module.Queue.contents)))))))) (= (_module.Queue.Get _module.Queue$T@@1 $Heap@@0 this@@0 |i#0|) (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@0 this@@0) _module.Queue.contents)) |i#0|)))
+ :qid |unknown.0:0|
+ :skolemid |506|
  :pattern ( (_module.Queue.Get _module.Queue$T@@1 $Heap@@0 this@@0 |i#0|) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((v@@0 T@U) (t0@@0 T@U) ) (! (= ($Is SetType v@@0 (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v@@0 bx@@0) ($IsBox bx@@0 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v@@0 bx@@0))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v@@0 (TSet t0@@0)))
 )))
 (assert (forall ((a@@0 T@U) (x@@6 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#UnionOne| a@@0 x@@6)) (+ (|MultiSet#Card| a@@0) 1))
+ :qid |DafnyPreludebpl.983:15|
+ :skolemid |196|
  :pattern ( (|MultiSet#Card| (|MultiSet#UnionOne| a@@0 x@@6)))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((s@@6 T@U) (v@@1 T@U) ) (! (= (|Seq#Length| (|Seq#Build| s@@6 v@@1)) (+ 1 (|Seq#Length| s@@6)))
+ :qid |DafnyPreludebpl.1144:15|
+ :skolemid |224|
  :pattern ( (|Seq#Build| s@@6 v@@1))
 )))
 (assert (forall (($h@@7 T@U) ($o@@5 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@7) (and (or (not (= $o@@5 null)) (not true)) (= (dtype $o@@5) Tclass._module.Stream?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@5) alloc)))) ($IsAlloc boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@5) _module.Stream.isOpen)) TBool $h@@7))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |517|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@5) _module.Stream.isOpen)))
 )))
 (assert (forall ((_module.Queue$T@@2 T@U) (|c#0@@3| T@U) ) (! (= ($Is refType |c#0@@3| (Tclass._module.Queue _module.Queue$T@@2))  (and ($Is refType |c#0@@3| (Tclass._module.Queue? _module.Queue$T@@2)) (or (not (= |c#0@@3| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |507|
  :pattern ( ($Is refType |c#0@@3| (Tclass._module.Queue _module.Queue$T@@2)))
  :pattern ( ($Is refType |c#0@@3| (Tclass._module.Queue? _module.Queue$T@@2)))
 )))
 (assert (forall ((v@@2 T@U) (t@@1 T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@2) t@@1 h@@0) ($IsAlloc T@@1 v@@2 t@@1 h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@2) t@@1 h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@1 T@U) (t@@2 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@1 t@@2 h@@1) ($IsAllocBox bx@@1 t@@2 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@1 t@@2 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@3 T@U) (t@@3 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@3 t@@3 h@@2) ($IsAlloc T@@2 v@@3 t@@3 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@3 t@@3 h@@2))
 )))
 (assert (forall ((s@@7 T@U) (n@@4 Int) (j@@1 Int) ) (!  (=> (and (and (<= 0 n@@4) (<= 0 j@@1)) (< j@@1 (- (|Seq#Length| s@@7) n@@4))) (= (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1) (|Seq#Index| s@@7 (+ j@@1 n@@4))))
+ :qid |DafnyPreludebpl.1253:15|
  :weight 25
+ :skolemid |247|
  :pattern ( (|Seq#Index| (|Seq#Drop| s@@7 n@@4) j@@1))
 )))
 (assert (forall ((_module.Queue$T@@3 T@U) ) (!  (and (= (Tag (Tclass._module.Queue? _module.Queue$T@@3)) Tagclass._module.Queue?) (= (TagFamily (Tclass._module.Queue? _module.Queue$T@@3)) tytagFamily$Queue))
+ :qid |unknown.0:0|
+ :skolemid |479|
  :pattern ( (Tclass._module.Queue? _module.Queue$T@@3))
 )))
 (assert (forall ((_module.Queue$T@@4 T@U) ) (!  (and (= (Tag (Tclass._module.Queue _module.Queue$T@@4)) Tagclass._module.Queue) (= (TagFamily (Tclass._module.Queue _module.Queue$T@@4)) tytagFamily$Queue))
+ :qid |unknown.0:0|
+ :skolemid |486|
  :pattern ( (Tclass._module.Queue _module.Queue$T@@4))
 )))
 (assert (forall ((_module.Queue$T@@5 T@U) ($h@@8 T@U) ($o@@6 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@6 null)) (not true)) (= (dtype $o@@6) (Tclass._module.Queue? _module.Queue$T@@5)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@6) alloc)))) ($IsAlloc SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@6) _module.Queue.contents)) (TSeq _module.Queue$T@@5) $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |485|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@6) _module.Queue.contents)) (Tclass._module.Queue? _module.Queue$T@@5))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.Queue$T@@6 T@U) ($Heap@@1 T@U) (this@@1 T@U) (|i#0@@0| Int) ) (!  (=> (or (|_module.Queue.Get#canCall| _module.Queue$T@@6 $Heap@@1 this@@1 |i#0@@0|) (and (< 0 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap@@1) (or (not (= this@@1 null)) (not true))) ($IsAlloc refType this@@1 (Tclass._module.Queue _module.Queue$T@@6) $Heap@@1)) (and (<= (LitInt 0) |i#0@@0|) (< |i#0@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 this@@1) _module.Queue.contents)))))))) ($IsAllocBox (_module.Queue.Get _module.Queue$T@@6 $Heap@@1 this@@1 |i#0@@0|) _module.Queue$T@@6 $Heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |504|
  :pattern ( ($IsAllocBox (_module.Queue.Get _module.Queue$T@@6 $Heap@@1 this@@1 |i#0@@0|) _module.Queue$T@@6 $Heap@@1))
 ))))
 (assert (forall ((a@@1 T@U) (b T@U) ) (! (= (|MultiSet#Card| (|MultiSet#Union| a@@1 b)) (+ (|MultiSet#Card| a@@1) (|MultiSet#Card| b)))
+ :qid |DafnyPreludebpl.994:15|
+ :skolemid |198|
  :pattern ( (|MultiSet#Card| (|MultiSet#Union| a@@1 b)))
 )))
 (assert (forall ((s0@@0 T@U) (s1@@0 T@U) ) (! (= (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)) (+ (|Seq#Length| s0@@0) (|Seq#Length| s1@@0)))
+ :qid |DafnyPreludebpl.1153:15|
+ :skolemid |226|
  :pattern ( (|Seq#Length| (|Seq#Append| s0@@0 s1@@0)))
 )))
 (assert (forall (($h@@9 T@U) ($o@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@9) (and (or (not (= $o@@7 null)) (not true)) (= (dtype $o@@7) Tclass._module.Stream?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@7) alloc)))) ($IsAlloc SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@7) _module.Stream.stream)) (TSeq TInt) $h@@9))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |515|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@7) _module.Stream.stream)))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |346|
  :pattern ( ($IsBox bx@@2 Tclass._System.object?))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |349|
  :pattern ( ($IsBox bx@@3 Tclass._System.object))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 Tclass._module.Stream?) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) Tclass._module.Stream?)))
+ :qid |unknown.0:0|
+ :skolemid |509|
  :pattern ( ($IsBox bx@@4 Tclass._module.Stream?))
 )))
 (assert (forall ((bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 Tclass._module.Stream) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) Tclass._module.Stream)))
+ :qid |unknown.0:0|
+ :skolemid |519|
  :pattern ( ($IsBox bx@@5 Tclass._module.Stream))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass._module.Client?) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass._module.Client?)))
+ :qid |unknown.0:0|
+ :skolemid |571|
  :pattern ( ($IsBox bx@@6 Tclass._module.Client?))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass._module.Client) (and (= ($Box refType ($Unbox refType bx@@7)) bx@@7) ($Is refType ($Unbox refType bx@@7) Tclass._module.Client)))
+ :qid |unknown.0:0|
+ :skolemid |574|
  :pattern ( ($IsBox bx@@7 Tclass._module.Client))
 )))
 (assert (forall ((_module.Queue$T@@7 T@U) ($o@@8 T@U) ) (! (= ($Is refType $o@@8 (Tclass._module.Queue? _module.Queue$T@@7))  (or (= $o@@8 null) (= (dtype $o@@8) (Tclass._module.Queue? _module.Queue$T@@7))))
+ :qid |unknown.0:0|
+ :skolemid |482|
  :pattern ( ($Is refType $o@@8 (Tclass._module.Queue? _module.Queue$T@@7)))
 )))
 (assert (forall ((|c#0@@4| T@U) ) (! (= ($Is refType |c#0@@4| Tclass._System.object)  (and ($Is refType |c#0@@4| Tclass._System.object?) (or (not (= |c#0@@4| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |350|
  :pattern ( ($Is refType |c#0@@4| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@4| Tclass._System.object?))
 )))
 (assert (forall ((|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| Tclass._module.Stream)  (and ($Is refType |c#0@@5| Tclass._module.Stream?) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |569|
  :pattern ( ($Is refType |c#0@@5| Tclass._module.Stream))
  :pattern ( ($Is refType |c#0@@5| Tclass._module.Stream?))
 )))
 (assert (forall ((|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| Tclass._module.Client)  (and ($Is refType |c#0@@6| Tclass._module.Client?) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |623|
  :pattern ( ($Is refType |c#0@@6| Tclass._module.Client))
  :pattern ( ($Is refType |c#0@@6| Tclass._module.Client?))
 )))
 (assert (forall ((s@@8 T@U) (i Int) (v@@4 T@U) ) (!  (and (=> (= i (|Seq#Length| s@@8)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@4) i) v@@4)) (=> (or (not (= i (|Seq#Length| s@@8))) (not true)) (= (|Seq#Index| (|Seq#Build| s@@8 v@@4) i) (|Seq#Index| s@@8 i))))
+ :qid |DafnyPreludebpl.1148:15|
+ :skolemid |225|
  :pattern ( (|Seq#Index| (|Seq#Build| s@@8 v@@4) i))
 )))
-(assert (forall ((_module.Queue$T@@8 T@U) ($h0 T@U) ($h1 T@U) (this@@2 T@U) (|i#0@@1| Int) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 (Tclass._module.Queue _module.Queue$T@@8)))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@9 T@U) ($f T@U) )  (=> (and (or (not (= $o@@9 null)) (not true)) (= $o@@9 this@@2)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@9) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@9) $f)))) (= (_module.Queue.Get _module.Queue$T@@8 $h0 this@@2 |i#0@@1|) (_module.Queue.Get _module.Queue$T@@8 $h1 this@@2 |i#0@@1|))))
+(assert (forall ((_module.Queue$T@@8 T@U) ($h0 T@U) ($h1 T@U) (this@@2 T@U) (|i#0@@1| Int) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 (Tclass._module.Queue _module.Queue$T@@8)))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o@@9 T@U) ($f T@U) ) (!  (=> (and (or (not (= $o@@9 null)) (not true)) (= $o@@9 this@@2)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o@@9) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o@@9) $f)))
+ :qid |unknown.0:0|
+ :skolemid |501|
+)) (= (_module.Queue.Get _module.Queue$T@@8 $h0 this@@2 |i#0@@1|) (_module.Queue.Get _module.Queue$T@@8 $h1 this@@2 |i#0@@1|))))
+ :qid |unknown.0:0|
+ :skolemid |502|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (_module.Queue.Get _module.Queue$T@@8 $h1 this@@2 |i#0@@1|))
 )))
 (assert (forall ((s@@9 T@U) (x@@7 T@U) ) (! (= (exists ((i@@0 Int) ) (!  (and (and (<= 0 i@@0) (< i@@0 (|Seq#Length| s@@9))) (= x@@7 (|Seq#Index| s@@9 i@@0)))
+ :qid |DafnyPreludebpl.1108:11|
+ :skolemid |219|
  :pattern ( (|Seq#Index| s@@9 i@@0))
 )) (< 0 (|MultiSet#Multiplicity| (|MultiSet#FromSeq| s@@9) x@@7)))
+ :qid |DafnyPreludebpl.1106:15|
+ :skolemid |220|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#FromSeq| s@@9) x@@7))
 )))
 (assert (forall (($h@@10 T@U) ($o@@10 T@U) ) (!  (=> (and ($IsGoodHeap $h@@10) (and (or (not (= $o@@10 null)) (not true)) (= (dtype $o@@10) Tclass._module.Stream?))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@10) _module.Stream.footprint)) (TSet Tclass._System.object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |512|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@10) _module.Stream.footprint)))
 )))
 (assert (forall (($h@@11 T@U) ($o@@11 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@11) (and (or (not (= $o@@11 null)) (not true)) (= (dtype $o@@11) Tclass._module.Stream?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@11) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@11) _module.Stream.footprint)) (TSet Tclass._System.object) $h@@11))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |513|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@11 $o@@11) _module.Stream.footprint)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.Queue$T@@9 T@U) ($Heap@@2 T@U) (this@@3 T@U) (|i#0@@2| Int) ) (!  (=> (or (|_module.Queue.Get#canCall| _module.Queue$T@@9 $Heap@@2 this@@3 |i#0@@2|) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@2) (and (or (not (= this@@3 null)) (not true)) (and ($Is refType this@@3 (Tclass._module.Queue _module.Queue$T@@9)) ($IsAlloc refType this@@3 (Tclass._module.Queue _module.Queue$T@@9) $Heap@@2)))) (and (<= (LitInt 0) |i#0@@2|) (< |i#0@@2| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 this@@3) _module.Queue.contents)))))))) ($IsBox (_module.Queue.Get _module.Queue$T@@9 $Heap@@2 this@@3 |i#0@@2|) _module.Queue$T@@9))
+ :qid |unknown.0:0|
+ :skolemid |503|
  :pattern ( (_module.Queue.Get _module.Queue$T@@9 $Heap@@2 this@@3 |i#0@@2|))
 ))))
 (assert (forall ((a@@2 T@U) (b@@0 T@U) ) (!  (=> (|MultiSet#Equal| a@@2 b@@0) (= a@@2 b@@0))
+ :qid |DafnyPreludebpl.1054:15|
+ :skolemid |209|
  :pattern ( (|MultiSet#Equal| a@@2 b@@0))
 )))
 (assert (forall ((a@@3 T@U) (b@@1 T@U) ) (!  (=> (|Seq#Equal| a@@3 b@@1) (= a@@3 b@@1))
+ :qid |DafnyPreludebpl.1225:15|
+ :skolemid |241|
  :pattern ( (|Seq#Equal| a@@3 b@@1))
 )))
 (assert (forall ((s@@10 T@U) (n@@5 Int) ) (!  (=> (and (<= 0 n@@5) (<= n@@5 (|Seq#Length| s@@10))) (= (|Seq#Length| (|Seq#Take| s@@10 n@@5)) n@@5))
+ :qid |DafnyPreludebpl.1238:15|
+ :skolemid |244|
  :pattern ( (|Seq#Length| (|Seq#Take| s@@10 n@@5)))
 )))
 (assert (forall ((a@@4 T@U) (b@@2 T@U) (c T@U) ) (!  (=> (or (not (= a@@4 c)) (not true)) (=> (and ($HeapSucc a@@4 b@@2) ($HeapSucc b@@2 c)) ($HeapSucc a@@4 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@4 b@@2) ($HeapSucc b@@2 c))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 TInt) (and (= ($Box intType ($Unbox intType bx@@8)) bx@@8) ($Is intType ($Unbox intType bx@@8) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@8 TInt))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 TBool) (and (= ($Box boolType ($Unbox boolType bx@@9)) bx@@9) ($Is boolType ($Unbox boolType bx@@9) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@9 TBool))
 )))
 (assert (forall ((v@@5 T@U) (t@@4 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@5) t@@4) ($Is T@@3 v@@5 t@@4))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@5) t@@4))
 )))
 (assert (forall ((ms T@U) ) (! (= ($IsGoodMultiSet ms) (forall ((bx@@10 T@U) ) (!  (and (<= 0 (|MultiSet#Multiplicity| ms bx@@10)) (<= (|MultiSet#Multiplicity| ms bx@@10) (|MultiSet#Card| ms)))
+ :qid |DafnyPreludebpl.921:19|
+ :skolemid |183|
  :pattern ( (|MultiSet#Multiplicity| ms bx@@10))
 )))
+ :qid |DafnyPreludebpl.918:15|
+ :skolemid |184|
  :pattern ( ($IsGoodMultiSet ms))
 )))
 (assert (forall ((s@@11 T@U) ) (! (<= 0 (|MultiSet#Card| s@@11))
+ :qid |DafnyPreludebpl.928:15|
+ :skolemid |185|
  :pattern ( (|MultiSet#Card| s@@11))
 )))
 (assert (forall ((s@@12 T@U) ) (! (<= 0 (|Seq#Length| s@@12))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@12))
 )))
 (assert (forall ((v@@6 T@U) (t0@@1 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SetType v@@6 (TSet t0@@1) h@@3) (forall ((bx@@11 T@U) ) (!  (=> (|Set#IsMember| v@@6 bx@@11) ($IsAllocBox bx@@11 t0@@1 h@@3))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@6 bx@@11))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@6 (TSet t0@@1) h@@3))
 )))
 (assert (forall ((o@@0 T@U) ) (! (= (|MultiSet#Multiplicity| |MultiSet#Empty| o@@0) 0)
+ :qid |DafnyPreludebpl.938:15|
+ :skolemid |187|
  :pattern ( (|MultiSet#Multiplicity| |MultiSet#Empty| o@@0))
 )))
 (assert (forall ((a@@5 T@U) (x@@8 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@5 x@@8) x@@8) (+ (|MultiSet#Multiplicity| a@@5 x@@8) 1))
+ :qid |DafnyPreludebpl.968:15|
+ :skolemid |193|
  :pattern ( (|MultiSet#UnionOne| a@@5 x@@8))
 )))
 (assert (forall (($o@@12 T@U) ) (! ($Is refType $o@@12 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |347|
  :pattern ( ($Is refType $o@@12 Tclass._System.object?))
 )))
 (assert (forall ((v@@7 T@U) (t0@@2 T@U) (h@@4 T@U) ) (! (= ($IsAlloc SeqType v@@7 (TSeq t0@@2) h@@4) (forall ((i@@1 Int) ) (!  (=> (and (<= 0 i@@1) (< i@@1 (|Seq#Length| v@@7))) ($IsAllocBox (|Seq#Index| v@@7 i@@1) t0@@2 h@@4))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@7 i@@1))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@7 (TSeq t0@@2) h@@4))
 )))
 (assert (forall ((t@@5 T@U) ) (! (= (Inv0_TSet (TSet t@@5)) t@@5)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@5))
 )))
 (assert (forall ((t@@6 T@U) ) (! (= (Tag (TSet t@@6)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@6))
 )))
 (assert (forall ((t@@7 T@U) ) (! (= (Inv0_TSeq (TSeq t@@7)) t@@7)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@7))
 )))
 (assert (forall ((t@@8 T@U) ) (! (= (Tag (TSeq t@@8)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@8))
 )))
 (assert (forall ((_module.Queue$T@@10 T@U) ) (! (= (Tclass._module.Queue?_0 (Tclass._module.Queue? _module.Queue$T@@10)) _module.Queue$T@@10)
+ :qid |unknown.0:0|
+ :skolemid |480|
  :pattern ( (Tclass._module.Queue? _module.Queue$T@@10))
 )))
 (assert (forall ((_module.Queue$T@@11 T@U) ) (! (= (Tclass._module.Queue_0 (Tclass._module.Queue _module.Queue$T@@11)) _module.Queue$T@@11)
+ :qid |unknown.0:0|
+ :skolemid |487|
  :pattern ( (Tclass._module.Queue _module.Queue$T@@11))
 )))
 (assert (forall ((x@@9 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@9))
 )))
 (assert (forall (($h@@12 T@U) ($o@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@12) (and (or (not (= $o@@13 null)) (not true)) (= (dtype $o@@13) Tclass._module.Stream?))) ($Is boolType ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@13) _module.Stream.isOpen)) TBool))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |516|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@12 $o@@13) _module.Stream.isOpen)))
 )))
-(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (this@@4 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 Tclass._module.Stream))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@14 T@U) ($f@@0 T@U) )  (=> (and (or (not (= $o@@14 null)) (not true)) (or (= $o@@14 this@@4) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 this@@4) _module.Stream.footprint)) ($Box refType $o@@14)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@14) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@14) $f@@0)))) (= (_module.Stream.Valid $h0@@0 this@@4) (_module.Stream.Valid $h1@@0 this@@4))))
+(assert (forall (($h0@@0 T@U) ($h1@@0 T@U) (this@@4 T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0@@0) ($IsGoodHeap $h1@@0)) (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 Tclass._module.Stream))) (and ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0))) (=> (forall (($o@@14 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@14 null)) (not true)) (or (= $o@@14 this@@4) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 this@@4) _module.Stream.footprint)) ($Box refType $o@@14)))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0@@0 $o@@14) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1@@0 $o@@14) $f@@0)))
+ :qid |unknown.0:0|
+ :skolemid |518|
+)) (= (_module.Stream.Valid $h0@@0 this@@4) (_module.Stream.Valid $h1@@0 this@@4))))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |520|
  :pattern ( ($IsHeapAnchor $h0@@0) ($HeapSucc $h0@@0 $h1@@0) (_module.Stream.Valid $h1@@0 this@@4))
 )))
 (assert (forall ((s@@13 T@U) ) (!  (and (= (= (|MultiSet#Card| s@@13) 0) (= s@@13 |MultiSet#Empty|)) (=> (or (not (= (|MultiSet#Card| s@@13) 0)) (not true)) (exists ((x@@10 T@U) ) (! (< 0 (|MultiSet#Multiplicity| s@@13 x@@10))
+ :qid |DafnyPreludebpl.946:20|
+ :skolemid |188|
  :pattern ( (|MultiSet#Multiplicity| s@@13 x@@10))
 ))))
+ :qid |DafnyPreludebpl.942:15|
+ :skolemid |189|
  :pattern ( (|MultiSet#Card| s@@13))
 )))
 (assert (forall ((a@@6 T@U) (b@@3 T@U) (o@@1 T@U) ) (! (= (|MultiSet#Multiplicity| (|MultiSet#Union| a@@6 b@@3) o@@1) (+ (|MultiSet#Multiplicity| a@@6 o@@1) (|MultiSet#Multiplicity| b@@3 o@@1)))
+ :qid |DafnyPreludebpl.989:15|
+ :skolemid |197|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#Union| a@@6 b@@3) o@@1))
 )))
 (assert  (and (forall ((t0@@3 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@3 t1@@0 t2 (MapType1Store t0@@3 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@15 T@U) ($f@@1 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#5| |l#0| |l#1| |l#2| |l#3|) $o@@15 $f@@1))  (=> (and (or (not (= $o@@15 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@15) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |627|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#5| |l#0| |l#1| |l#2| |l#3|) $o@@15 $f@@1))
 )))
 (assert (forall ((s@@14 T@U) (val@@4 T@U) ) (!  (and (= (|Seq#Build_inv0| (|Seq#Build| s@@14 val@@4)) s@@14) (= (|Seq#Build_inv1| (|Seq#Build| s@@14 val@@4)) val@@4))
+ :qid |DafnyPreludebpl.1139:15|
+ :skolemid |223|
  :pattern ( (|Seq#Build| s@@14 val@@4))
 )))
 (assert (forall ((_module.Queue$T@@12 T@U) ($h@@13 T@U) ($o@@16 T@U) ) (!  (=> (and ($IsGoodHeap $h@@13) (and (or (not (= $o@@16 null)) (not true)) (= (dtype $o@@16) (Tclass._module.Queue? _module.Queue$T@@12)))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@16) _module.Queue.contents)) (TSeq _module.Queue$T@@12)))
+ :qid |unknown.0:0|
+ :skolemid |484|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@13 $o@@16) _module.Queue.contents)) (Tclass._module.Queue? _module.Queue$T@@12))
 )))
 (assert (forall ((s@@15 T@U) ) (! (= (|MultiSet#Card| (|MultiSet#FromSeq| s@@15)) (|Seq#Length| s@@15))
+ :qid |DafnyPreludebpl.1085:15|
+ :skolemid |215|
  :pattern ( (|MultiSet#Card| (|MultiSet#FromSeq| s@@15)))
 )))
 (assert (forall ((bx@@12 T@U) (t@@9 T@U) ) (!  (=> ($IsBox bx@@12 (TSet t@@9)) (and (= ($Box SetType ($Unbox SetType bx@@12)) bx@@12) ($Is SetType ($Unbox SetType bx@@12) (TSet t@@9))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@12 (TSet t@@9)))
 )))
 (assert (forall ((bx@@13 T@U) (t@@10 T@U) ) (!  (=> ($IsBox bx@@13 (TSeq t@@10)) (and (= ($Box SeqType ($Unbox SeqType bx@@13)) bx@@13) ($Is SeqType ($Unbox SeqType bx@@13) (TSeq t@@10))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@13 (TSeq t@@10)))
 )))
 (assert (forall ((_module.Queue$T@@13 T@U) (bx@@14 T@U) ) (!  (=> ($IsBox bx@@14 (Tclass._module.Queue? _module.Queue$T@@13)) (and (= ($Box refType ($Unbox refType bx@@14)) bx@@14) ($Is refType ($Unbox refType bx@@14) (Tclass._module.Queue? _module.Queue$T@@13))))
+ :qid |unknown.0:0|
+ :skolemid |481|
  :pattern ( ($IsBox bx@@14 (Tclass._module.Queue? _module.Queue$T@@13)))
 )))
 (assert (forall ((_module.Queue$T@@14 T@U) (bx@@15 T@U) ) (!  (=> ($IsBox bx@@15 (Tclass._module.Queue _module.Queue$T@@14)) (and (= ($Box refType ($Unbox refType bx@@15)) bx@@15) ($Is refType ($Unbox refType bx@@15) (Tclass._module.Queue _module.Queue$T@@14))))
+ :qid |unknown.0:0|
+ :skolemid |488|
  :pattern ( ($IsBox bx@@15 (Tclass._module.Queue _module.Queue$T@@14)))
 )))
 (assert (= (|MultiSet#FromSeq| |Seq#Empty|) |MultiSet#Empty|))
 (assert (forall ((s@@16 T@U) (v@@8 T@U) ) (! (= (|MultiSet#FromSeq| (|Seq#Build| s@@16 v@@8)) (|MultiSet#UnionOne| (|MultiSet#FromSeq| s@@16) v@@8))
+ :qid |DafnyPreludebpl.1089:15|
+ :skolemid |216|
  :pattern ( (|MultiSet#FromSeq| (|Seq#Build| s@@16 v@@8)))
 )))
 (assert (forall (($h@@14 T@U) ($o@@17 T@U) ) (!  (=> (and ($IsGoodHeap $h@@14) (and (or (not (= $o@@17 null)) (not true)) (= (dtype $o@@17) Tclass._module.Stream?))) ($Is SeqType ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@17) _module.Stream.stream)) (TSeq TInt)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |514|
  :pattern ( ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@14 $o@@17) _module.Stream.stream)))
 )))
 (assert (forall ((h@@5 T@U) (r T@U) (f T@U) (x@@11 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@5 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@5 r) f x@@11))) ($HeapSucc h@@5 (MapType0Store refType (MapType0Type FieldType BoxType) h@@5 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@5 r) f x@@11))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |116|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@5 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@5 r) f x@@11)))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -514,57 +741,93 @@
 (assert (= (Tag Tclass._module.Client) Tagclass._module.Client))
 (assert (= (TagFamily Tclass._module.Client) tytagFamily$Client))
 (assert (forall ((s@@17 T@U) (n@@6 Int) (k@@2 Int) ) (!  (=> (and (and (<= 0 n@@6) (<= n@@6 k@@2)) (< k@@2 (|Seq#Length| s@@17))) (= (|Seq#Index| (|Seq#Drop| s@@17 n@@6) (- k@@2 n@@6)) (|Seq#Index| s@@17 k@@2)))
+ :qid |DafnyPreludebpl.1258:15|
  :weight 25
+ :skolemid |248|
  :pattern ( (|Seq#Index| s@@17 k@@2) (|Seq#Drop| s@@17 n@@6))
 )))
 (assert (forall ((s@@18 T@U) (m@@4 Int) (n@@7 Int) ) (!  (=> (and (and (<= 0 m@@4) (<= 0 n@@7)) (<= (+ m@@4 n@@7) (|Seq#Length| s@@18))) (= (|Seq#Drop| (|Seq#Drop| s@@18 m@@4) n@@7) (|Seq#Drop| s@@18 (+ m@@4 n@@7))))
+ :qid |DafnyPreludebpl.1299:15|
+ :skolemid |257|
  :pattern ( (|Seq#Drop| (|Seq#Drop| s@@18 m@@4) n@@7))
 )))
 (assert (forall ((s0@@1 T@U) (s1@@1 T@U) (n@@8 Int) ) (!  (and (=> (< n@@8 (|Seq#Length| s0@@1)) (= (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@8) (|Seq#Index| s0@@1 n@@8))) (=> (<= (|Seq#Length| s0@@1) n@@8) (= (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@8) (|Seq#Index| s1@@1 (- n@@8 (|Seq#Length| s0@@1))))))
+ :qid |DafnyPreludebpl.1159:15|
+ :skolemid |227|
  :pattern ( (|Seq#Index| (|Seq#Append| s0@@1 s1@@1) n@@8))
 )))
 (assert (forall ((x@@12 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@12))) (Lit BoxType ($Box intType (int_2_U x@@12))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@12))))
 )))
 (assert (forall ((x@@13 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@13)) (Lit BoxType ($Box T@@5 x@@13)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@13)))
 )))
 (assert (forall ((a@@7 T@U) (x@@14 T@U) (y@@0 T@U) ) (!  (=> (< 0 (|MultiSet#Multiplicity| a@@7 y@@0)) (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@7 x@@14) y@@0)))
+ :qid |DafnyPreludebpl.973:15|
+ :skolemid |194|
  :pattern ( (|MultiSet#UnionOne| a@@7 x@@14) (|MultiSet#Multiplicity| a@@7 y@@0))
 )))
 (assert (forall ((a@@8 T@U) (b@@4 T@U) ) (! (= (|MultiSet#FromSeq| (|Seq#Append| a@@8 b@@4)) (|MultiSet#Union| (|MultiSet#FromSeq| a@@8) (|MultiSet#FromSeq| b@@4)))
+ :qid |DafnyPreludebpl.1093:15|
+ :skolemid |217|
  :pattern ( (|MultiSet#FromSeq| (|Seq#Append| a@@8 b@@4)))
 )))
 (assert (forall ((s@@19 T@U) ) (!  (=> (= (|Seq#Length| s@@19) 0) (= s@@19 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@19))
 )))
 (assert (forall ((s@@20 T@U) (n@@9 Int) ) (!  (=> (= n@@9 0) (= (|Seq#Take| s@@20 n@@9) |Seq#Empty|))
+ :qid |DafnyPreludebpl.1295:15|
+ :skolemid |256|
  :pattern ( (|Seq#Take| s@@20 n@@9))
 )))
 (assert (forall ((a@@9 T@U) (x@@15 T@U) (o@@2 T@U) ) (! (= (< 0 (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@9 x@@15) o@@2))  (or (= o@@2 x@@15) (< 0 (|MultiSet#Multiplicity| a@@9 o@@2))))
+ :qid |DafnyPreludebpl.963:15|
+ :skolemid |192|
  :pattern ( (|MultiSet#Multiplicity| (|MultiSet#UnionOne| a@@9 x@@15) o@@2))
 )))
 (assert (forall ((a@@10 T@U) (b@@5 T@U) ) (! (= (|MultiSet#Equal| a@@10 b@@5) (forall ((o@@3 T@U) ) (! (= (|MultiSet#Multiplicity| a@@10 o@@3) (|MultiSet#Multiplicity| b@@5 o@@3))
+ :qid |DafnyPreludebpl.1050:19|
+ :skolemid |207|
  :pattern ( (|MultiSet#Multiplicity| a@@10 o@@3))
  :pattern ( (|MultiSet#Multiplicity| b@@5 o@@3))
 )))
+ :qid |DafnyPreludebpl.1047:15|
+ :skolemid |208|
  :pattern ( (|MultiSet#Equal| a@@10 b@@5))
 )))
 (assert (forall ((h@@6 T@U) (v@@9 T@U) ) (! ($IsAlloc intType v@@9 TInt h@@6)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@9 TInt h@@6))
 )))
 (assert (forall ((h@@7 T@U) (v@@10 T@U) ) (! ($IsAlloc boolType v@@10 TBool h@@7)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@10 TBool h@@7))
 )))
 (assert (forall ((v@@11 T@U) (t0@@4 T@U) ) (! (= ($Is SeqType v@@11 (TSeq t0@@4)) (forall ((i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| v@@11))) ($IsBox (|Seq#Index| v@@11 i@@2) t0@@4))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@11 i@@2))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@11 (TSeq t0@@4)))
 )))
 (assert (forall ((v@@12 T@U) ) (! ($Is intType v@@12 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@12 TInt))
 )))
 (assert (forall ((v@@13 T@U) ) (! ($Is boolType v@@13 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@13 TBool))
 )))
 (push 1)
@@ -611,6 +874,7 @@
 (declare-fun |q#0| () T@U)
 (declare-fun |defass#wr#0| () Bool)
 (declare-fun |wr#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.Client.Main)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -627,151 +891,323 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 112) (let ((anon6_correct  (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (=> (and (and (_module.Stream.Valid $Heap@3 $nw@0) (and (forall (($o@@18 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@18)) (or (not (= $o@@18 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |588|
  :pattern (  (or (not (= $o@@18 null)) (not true)))
 )) (forall (($o@@19 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@19)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@19) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |589|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@19)))
 )))) (and (or (not (= $nw@1 null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@1) alloc)))))) (and (=> (= (ControlFlow 0 90) (- 0 91)) true) (=> (= (ControlFlow 0 90) (- 0 89)) (or (not (= $nw@0 null)) (not true))))))))
 (let ((anon29_Else_correct  (=> (and (not (and (_module.Stream.Valid $Heap@3 $nw@0) (and (forall (($o@@20 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@20)) (or (not (= $o@@20 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |584|
  :pattern (  (or (not (= $o@@20 null)) (not true)))
 )) (forall (($o@@21 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@21)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@21) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |585|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@21)))
 ))))) (= (ControlFlow 0 94) 90)) anon6_correct)))
 (let ((anon29_Then_correct  (=> (and (_module.Stream.Valid $Heap@3 $nw@0) (and (forall (($o@@22 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@22)) (or (not (= $o@@22 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |584|
  :pattern (  (or (not (= $o@@22 null)) (not true)))
 )) (forall (($o@@23 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@23)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@23) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |585|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@23)))
 )))) (and (=> (= (ControlFlow 0 92) (- 0 93)) true) (=> (= (ControlFlow 0 92) 90) anon6_correct)))))
 (let ((anon28_Else_correct  (=> (not (_module.Stream.Valid $Heap@3 $nw@0)) (and (=> (= (ControlFlow 0 98) 92) anon29_Then_correct) (=> (= (ControlFlow 0 98) 94) anon29_Else_correct)))))
 (let ((anon28_Then_correct  (=> (_module.Stream.Valid $Heap@3 $nw@0) (and (=> (= (ControlFlow 0 95) (- 0 97)) true) (and (=> (= (ControlFlow 0 95) (- 0 96)) (or (not (= $nw@0 null)) (not true))) (and (=> (= (ControlFlow 0 95) 92) anon29_Then_correct) (=> (= (ControlFlow 0 95) 94) anon29_Else_correct)))))))
 (let ((anon27_Then_correct  (=> (not |$w$loop#0@0|) (and (=> (= (ControlFlow 0 99) (- 0 101)) true) (and (=> (= (ControlFlow 0 99) (- 0 100)) (or (not (= $nw@0 null)) (not true))) (=> (and ($IsAllocBox ($Box refType $nw@0) Tclass._module.Stream? $Heap@3) (|_module.Stream.Valid#canCall| $Heap@3 $nw@0)) (and (=> (= (ControlFlow 0 99) 95) anon28_Then_correct) (=> (= (ControlFlow 0 99) 98) anon28_Else_correct))))))))
 (let ((anon21_correct  (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (=> (and (and (and (_module.Stream.Valid $Heap@12 $nw@2) (and (forall (($o@@24 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@24)) (or (not (= $o@@24 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |610|
  :pattern (  (or (not (= $o@@24 null)) (not true)))
 )) (forall (($o@@25 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@25)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@25) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |611|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@25)))
 )))) (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc)))))) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType |call3formal@r#0@0|)))) (and (=> (= (ControlFlow 0 46) (- 0 47)) true) (=> (= (ControlFlow 0 46) (- 0 45)) (or (not (= |call3formal@r#0@0| null)) (not true))))))))
 (let ((anon36_Else_correct  (=> (and (not (and (and (_module.Stream.Valid $Heap@12 $nw@2) (and (forall (($o@@26 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@26)) (or (not (= $o@@26 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |606|
  :pattern (  (or (not (= $o@@26 null)) (not true)))
 )) (forall (($o@@27 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@27)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@27) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |607|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@27)))
 )))) (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc))))))) (= (ControlFlow 0 52) 46)) anon21_correct)))
 (let ((anon36_Then_correct  (=> (and (and (_module.Stream.Valid $Heap@12 $nw@2) (and (forall (($o@@28 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@28)) (or (not (= $o@@28 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |606|
  :pattern (  (or (not (= $o@@28 null)) (not true)))
 )) (forall (($o@@29 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@29)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@29) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |607|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@29)))
 )))) (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc)))))) (and (=> (= (ControlFlow 0 48) (- 0 51)) true) (and (=> (= (ControlFlow 0 48) (- 0 50)) true) (and (=> (= (ControlFlow 0 48) (- 0 49)) (or (not (= $nw@2 null)) (not true))) (=> (= (ControlFlow 0 48) 46) anon21_correct)))))))
 (let ((anon35_Else_correct  (=> (not (and (_module.Stream.Valid $Heap@12 $nw@2) (and (forall (($o@@30 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@30)) (or (not (= $o@@30 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |604|
  :pattern (  (or (not (= $o@@30 null)) (not true)))
 )) (forall (($o@@31 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@31)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@31) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |605|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@31)))
 ))))) (and (=> (= (ControlFlow 0 55) 48) anon36_Then_correct) (=> (= (ControlFlow 0 55) 52) anon36_Else_correct)))))
 (let ((anon35_Then_correct  (=> (and (_module.Stream.Valid $Heap@12 $nw@2) (and (forall (($o@@32 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@32)) (or (not (= $o@@32 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |604|
  :pattern (  (or (not (= $o@@32 null)) (not true)))
 )) (forall (($o@@33 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@33)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@33) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |605|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@33)))
 )))) (and (=> (= (ControlFlow 0 53) (- 0 54)) true) (and (=> (= (ControlFlow 0 53) 48) anon36_Then_correct) (=> (= (ControlFlow 0 53) 52) anon36_Else_correct))))))
 (let ((anon34_Else_correct  (=> (not (_module.Stream.Valid $Heap@12 $nw@2)) (and (=> (= (ControlFlow 0 59) 53) anon35_Then_correct) (=> (= (ControlFlow 0 59) 55) anon35_Else_correct)))))
 (let ((anon34_Then_correct  (=> (_module.Stream.Valid $Heap@12 $nw@2) (and (=> (= (ControlFlow 0 56) (- 0 58)) true) (and (=> (= (ControlFlow 0 56) (- 0 57)) (or (not (= $nw@2 null)) (not true))) (and (=> (= (ControlFlow 0 56) 53) anon35_Then_correct) (=> (= (ControlFlow 0 56) 55) anon35_Else_correct)))))))
 (let ((anon33_Then_correct  (=> (not |$w$loop#1@0|) (and (=> (= (ControlFlow 0 60) (- 0 62)) true) (and (=> (= (ControlFlow 0 60) (- 0 61)) (or (not (= $nw@2 null)) (not true))) (=> (and ($IsAllocBox ($Box refType $nw@2) Tclass._module.Stream? $Heap@12) (|_module.Stream.Valid#canCall| $Heap@12 $nw@2)) (and (=> (= (ControlFlow 0 60) 56) anon34_Then_correct) (=> (= (ControlFlow 0 60) 59) anon34_Else_correct))))))))
-(let ((anon37_Else_correct  (=> (and (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)))) (= |$decr$loop#10@1| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))) 0))) (and (=> (= (ControlFlow 0 26) (- 0 41)) true) (and (=> (= (ControlFlow 0 26) (- 0 40)) (or (not (= |call3formal@r#0@0| null)) (not true))) (=> (or (not (= |call3formal@r#0@0| null)) (not true)) (and (=> (= (ControlFlow 0 26) (- 0 39)) (forall (($o@@34 T@U) ($f@@2 T@U) )  (=> (and (and (or (not (= $o@@34 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@34) alloc)))) (= $o@@34 |call3formal@r#0@0|)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@34 $f@@2))))) (=> (forall (($o@@35 T@U) ($f@@3 T@U) )  (=> (and (and (or (not (= $o@@35 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@35) alloc)))) (= $o@@35 |call3formal@r#0@0|)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@35 $f@@3)))) (=> (and ($IsBox |call3formal@x#0| call0formal@_module.Queue$T) ($IsAllocBox |call3formal@x#0| call0formal@_module.Queue$T $Heap@@3)) (and (=> (= (ControlFlow 0 26) (- 0 38)) (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))))) (=> (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)))) (=> (and ($IsGoodHeap $Heap@14) ($IsHeapAnchor $Heap@14)) (=> (and (and (and ($IsBox |call3formal@x#0@0| TInt) ($IsAllocBox |call3formal@x#0@0| TInt $Heap@14)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 |call3formal@r#0@0|) _module.Queue.contents)) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)) (LitInt 1)))) (and (and (= |call3formal@x#0@0| (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)) (LitInt 0))) (forall (($o@@36 T@U) ) (!  (=> (and (or (not (= $o@@36 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@36) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@36) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@36)) (= $o@@36 |call3formal@r#0@0|)))
+(let ((anon37_Else_correct  (=> (and (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)))) (= |$decr$loop#10@1| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))) 0))) (and (=> (= (ControlFlow 0 26) (- 0 41)) true) (and (=> (= (ControlFlow 0 26) (- 0 40)) (or (not (= |call3formal@r#0@0| null)) (not true))) (=> (or (not (= |call3formal@r#0@0| null)) (not true)) (and (=> (= (ControlFlow 0 26) (- 0 39)) (forall (($o@@34 T@U) ($f@@2 T@U) ) (!  (=> (and (and (or (not (= $o@@34 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@34) alloc)))) (= $o@@34 |call3formal@r#0@0|)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@34 $f@@2)))
+ :qid |b7dfy.142:26|
+ :skolemid |618|
+))) (=> (forall (($o@@35 T@U) ($f@@3 T@U) ) (!  (=> (and (and (or (not (= $o@@35 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@35) alloc)))) (= $o@@35 |call3formal@r#0@0|)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@35 $f@@3)))
+ :qid |b7dfy.142:26|
+ :skolemid |618|
+)) (=> (and ($IsBox |call3formal@x#0| call0formal@_module.Queue$T) ($IsAllocBox |call3formal@x#0| call0formal@_module.Queue$T $Heap@@3)) (and (=> (= (ControlFlow 0 26) (- 0 38)) (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))))) (=> (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)))) (=> (and ($IsGoodHeap $Heap@14) ($IsHeapAnchor $Heap@14)) (=> (and (and (and ($IsBox |call3formal@x#0@0| TInt) ($IsAllocBox |call3formal@x#0@0| TInt $Heap@14)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 |call3formal@r#0@0|) _module.Queue.contents)) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)) (LitInt 1)))) (and (and (= |call3formal@x#0@0| (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents)) (LitInt 0))) (forall (($o@@36 T@U) ) (!  (=> (and (or (not (= $o@@36 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@36) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@36) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@36)) (= $o@@36 |call3formal@r#0@0|)))
+ :qid |b7dfy.20:10|
+ :skolemid |494|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@36))
-))) (and ($HeapSucc $Heap@12 $Heap@14) (= |$rhs##1_0@1| (U_2_int ($Unbox intType |call3formal@x#0@0|)))))) (and (=> (= (ControlFlow 0 26) (- 0 37)) true) (and (=> (= (ControlFlow 0 26) (- 0 36)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 26) (- 0 35)) (forall (($o@@37 T@U) ($f@@4 T@U) )  (=> (and (and (or (not (= $o@@37 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@37) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@37))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@37 $f@@4))))) (=> (forall (($o@@38 T@U) ($f@@5 T@U) )  (=> (and (and (or (not (= $o@@38 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@38) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@38))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@38 $f@@5)))) (and (=> (= (ControlFlow 0 26) (- 0 34)) (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))) (and (=> (= (ControlFlow 0 26) (- 0 33)) (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.isOpen))))) (=> (and (and (and (and ($IsGoodHeap $Heap@15) ($IsHeapAnchor $Heap@15)) (|_module.Stream.Valid#canCall| $Heap@15 $nw@2)) (and (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (and (_module.Stream.Valid $Heap@15 $nw@2) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.isOpen))))))) (and (and (and (forall (($o@@39 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@39)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@39)))) (or (not (= $o@@39 null)) (not true)))
+))) (and ($HeapSucc $Heap@12 $Heap@14) (= |$rhs##1_0@1| (U_2_int ($Unbox intType |call3formal@x#0@0|)))))) (and (=> (= (ControlFlow 0 26) (- 0 37)) true) (and (=> (= (ControlFlow 0 26) (- 0 36)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 26) (- 0 35)) (forall (($o@@37 T@U) ($f@@4 T@U) ) (!  (=> (and (and (or (not (= $o@@37 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@37) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@37))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@37 $f@@4)))
+ :qid |b7dfy.143:17|
+ :skolemid |619|
+))) (=> (forall (($o@@38 T@U) ($f@@5 T@U) ) (!  (=> (and (and (or (not (= $o@@38 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@38) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@38))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@38 $f@@5)))
+ :qid |b7dfy.143:17|
+ :skolemid |619|
+)) (and (=> (= (ControlFlow 0 26) (- 0 34)) (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))) (and (=> (= (ControlFlow 0 26) (- 0 33)) (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@14 $nw@2) (or (_module.Stream.Valid $Heap@14 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.isOpen))))) (=> (and (and (and (and ($IsGoodHeap $Heap@15) ($IsHeapAnchor $Heap@15)) (|_module.Stream.Valid#canCall| $Heap@15 $nw@2)) (and (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (and (_module.Stream.Valid $Heap@15 $nw@2) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.isOpen))))))) (and (and (and (forall (($o@@39 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@39)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@39)))) (or (not (= $o@@39 null)) (not true)))
+ :qid |b7dfy.73:24|
+ :skolemid |548|
  :pattern (  (or (not (= $o@@39 null)) (not true)))
 )) (forall (($o@@40 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@40)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@40)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@40) alloc)))))
+ :qid |b7dfy.73:24|
+ :skolemid |549|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@40) alloc)))
 ))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.stream)) (|Seq#Append| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.stream)) (|Seq#Build| |Seq#Empty| ($Box intType (int_2_U |$rhs##1_0@1|)))))) (and (forall (($o@@41 T@U) ) (!  (=> (and (or (not (= $o@@41 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@41) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $o@@41) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@41)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $nw@2) _module.Stream.footprint)) ($Box refType $o@@41))))
+ :qid |b7dfy.70:10|
+ :skolemid |550|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $o@@41))
 )) ($HeapSucc $Heap@14 $Heap@15)))) (and (=> (= (ControlFlow 0 26) (- 0 32)) (or (<= 0 |$decr$loop#10@1|) (= (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 |call3formal@r#0@0|) _module.Queue.contents))) 0) |$decr$loop#10@1|))) (=> (or (<= 0 |$decr$loop#10@1|) (= (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 |call3formal@r#0@0|) _module.Queue.contents))) 0) |$decr$loop#10@1|)) (and (=> (= (ControlFlow 0 26) (- 0 31)) (< (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 |call3formal@r#0@0|) _module.Queue.contents))) 0) |$decr$loop#10@1|)) (=> (< (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 |call3formal@r#0@0|) _module.Queue.contents))) 0) |$decr$loop#10@1|) (=> (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (and (=> (= (ControlFlow 0 26) (- 0 30)) (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (or (_module.Stream.Valid $Heap@15 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))))) (=> (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (or (_module.Stream.Valid $Heap@15 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (and (=> (= (ControlFlow 0 26) (- 0 29)) (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (or (_module.Stream.Valid $Heap@15 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.isOpen))))))) (=> (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@15 $nw@2) (or (_module.Stream.Valid $Heap@15 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.isOpen)))))) (and (=> (= (ControlFlow 0 26) (- 0 28)) (=> |$w$loop#1@0| (and (forall (($o@@42 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@42)) (or (not (= $o@@42 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |614|
  :pattern (  (or (not (= $o@@42 null)) (not true)))
 )) (forall (($o@@43 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@43)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@43) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |615|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@43)))
 ))))) (=> (=> |$w$loop#1@0| (and (forall (($o@@44 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@44)) (or (not (= $o@@44 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |614|
  :pattern (  (or (not (= $o@@44 null)) (not true)))
 )) (forall (($o@@45 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@45)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@45) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |615|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType $o@@45)))
 )))) (and (=> (= (ControlFlow 0 26) (- 0 27)) (=> |$w$loop#1@0| (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc))))))) (=> (=> |$w$loop#1@0| (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc)))))) (=> (= (ControlFlow 0 26) (- 0 25)) (=> |$w$loop#1@0| (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@2) _module.Stream.footprint)) ($Box refType |call3formal@r#0@0|)))))))))))))))))))))))))))))))))))))))))
-(let ((anon37_Then_correct  (=> (<= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))) 0) (and (=> (= (ControlFlow 0 20) (- 0 24)) true) (and (=> (= (ControlFlow 0 20) (- 0 23)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 20) (- 0 22)) (forall (($o@@46 T@U) ($f@@6 T@U) )  (=> (and (and (or (not (= $o@@46 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@46) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@46))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@46 $f@@6))))) (=> (forall (($o@@47 T@U) ($f@@7 T@U) )  (=> (and (and (or (not (= $o@@47 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@47) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@47))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@47 $f@@7)))) (and (=> (= (ControlFlow 0 20) (- 0 21)) (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))) (=> (= (ControlFlow 0 20) (- 0 19)) (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.isOpen))))))))))))))))
+(let ((anon37_Then_correct  (=> (<= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))) 0) (and (=> (= (ControlFlow 0 20) (- 0 24)) true) (and (=> (= (ControlFlow 0 20) (- 0 23)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 20) (- 0 22)) (forall (($o@@46 T@U) ($f@@6 T@U) ) (!  (=> (and (and (or (not (= $o@@46 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@46) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@46))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@46 $f@@6)))
+ :qid |b7dfy.145:13|
+ :skolemid |622|
+))) (=> (forall (($o@@47 T@U) ($f@@7 T@U) ) (!  (=> (and (and (or (not (= $o@@47 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@47) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@47))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@47 $f@@7)))
+ :qid |b7dfy.145:13|
+ :skolemid |622|
+)) (and (=> (= (ControlFlow 0 20) (- 0 21)) (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))) (=> (= (ControlFlow 0 20) (- 0 19)) (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.isOpen))))))))))))))))
 (let ((anon33_Else_correct  (=> |$w$loop#1@0| (and (=> (= (ControlFlow 0 42) (- 0 44)) true) (and (=> (= (ControlFlow 0 42) (- 0 43)) (or (not (= |call3formal@r#0@0| null)) (not true))) (=> (or (not (= |call3formal@r#0@0| null)) (not true)) (and (=> (= (ControlFlow 0 42) 20) anon37_Then_correct) (=> (= (ControlFlow 0 42) 26) anon37_Else_correct))))))))
 (let ((anon32_LoopBody_correct  (and (=> (= (ControlFlow 0 63) 60) anon33_Then_correct) (=> (= (ControlFlow 0 63) 42) anon33_Else_correct))))
 (let ((anon32_LoopDone_correct true))
 (let ((anon32_LoopHead_correct  (=> (and ($IsGoodHeap $Heap@12) ($IsHeapAnchor $Heap@12)) (=> (and (and (and (and (and (and (and (not false) true) true) |$w$loop#0@0|) true) (=> |$w$loop#1@0| (|_module.Stream.Valid#canCall| $Heap@12 $nw@2))) (and (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (or (_module.Stream.Valid $Heap@12 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.isOpen)))))))) (and (and (and (=> |$w$loop#1@0| (and (|_module.Stream.Valid#canCall| $Heap@12 $nw@2) (and (_module.Stream.Valid $Heap@12 $nw@2) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.isOpen))))))) (=> |$w$loop#1@0| (and (forall (($o@@48 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@48)) (or (not (= $o@@48 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |614|
  :pattern (  (or (not (= $o@@48 null)) (not true)))
 )) (forall (($o@@49 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@49)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@49) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |615|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType $o@@49)))
 ))))) (and (=> |$w$loop#1@0| (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc)))))) (=> |$w$loop#1@0| (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $nw@2) _module.Stream.footprint)) ($Box refType |call3formal@r#0@0|)))))) (and (and (forall (($o@@50 T@U) ) (!  (=> (and (or (not (= $o@@50 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@50) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@50) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@50)))
+ :qid |b7dfy.139:5|
+ :skolemid |616|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@50))
 )) ($HeapSucc $Heap@11 $Heap@12)) (and (forall (($o@@51 T@U) ($f@@8 T@U) ) (!  (=> (and (or (not (= $o@@51 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@51) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@51) $f@@8) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@51) $f@@8)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@51 $f@@8))))
+ :qid |b7dfy.139:5|
+ :skolemid |617|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@51) $f@@8))
 )) (<= (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 |call3formal@r#0@0|) _module.Queue.contents))) 0) |$decr_init$loop#10@0|))))) (and (=> (= (ControlFlow 0 64) 18) anon32_LoopDone_correct) (=> (= (ControlFlow 0 64) 63) anon32_LoopBody_correct))))))
-(let ((after_0_correct  (and (=> (= (ControlFlow 0 65) (- 0 80)) true) (and (=> (= (ControlFlow 0 65) (- 0 79)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 65) (- 0 78)) (forall (($o@@52 T@U) ($f@@9 T@U) )  (=> (and (and (or (not (= $o@@52 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@52) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@52))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@52 $f@@9))))) (=> (forall (($o@@53 T@U) ($f@@10 T@U) )  (=> (and (and (or (not (= $o@@53 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@53) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@53))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@53 $f@@10)))) (and (=> (= (ControlFlow 0 65) (- 0 77)) (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))) (and (=> (= (ControlFlow 0 65) (- 0 76)) (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.isOpen))))) (=> (and (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8)) (and (forall (($o@@54 T@U) ) (!  (=> (and (or (not (= $o@@54 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@54) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@54) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@54)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@54))))
+(let ((after_0_correct  (and (=> (= (ControlFlow 0 65) (- 0 80)) true) (and (=> (= (ControlFlow 0 65) (- 0 79)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 65) (- 0 78)) (forall (($o@@52 T@U) ($f@@9 T@U) ) (!  (=> (and (and (or (not (= $o@@52 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@52) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@52))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@52 $f@@9)))
+ :qid |b7dfy.134:13|
+ :skolemid |601|
+))) (=> (forall (($o@@53 T@U) ($f@@10 T@U) ) (!  (=> (and (and (or (not (= $o@@53 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@53) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@53))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@53 $f@@10)))
+ :qid |b7dfy.134:13|
+ :skolemid |601|
+)) (and (=> (= (ControlFlow 0 65) (- 0 77)) (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))) (and (=> (= (ControlFlow 0 65) (- 0 76)) (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@7 $nw@0) (or (_module.Stream.Valid $Heap@7 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.isOpen))))) (=> (and (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8)) (and (forall (($o@@54 T@U) ) (!  (=> (and (or (not (= $o@@54 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@54) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@54) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@54)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $nw@0) _module.Stream.footprint)) ($Box refType $o@@54))))
+ :qid |b7dfy.97:10|
+ :skolemid |567|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@54))
-)) ($HeapSucc $Heap@7 $Heap@8))) (and (=> (= (ControlFlow 0 65) (- 0 75)) true) (and (=> (= (ControlFlow 0 65) (- 0 74)) (forall (($o@@55 T@U) ($f@@11 T@U) )  (=> (and (and (or (not (= $o@@55 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@55) alloc)))) (= $o@@55 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@55 $f@@11))))) (=> (forall (($o@@56 T@U) ($f@@12 T@U) )  (=> (and (and (or (not (= $o@@56 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@56) alloc)))) (= $o@@56 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@56 $f@@12)))) (=> (and (and ($Is refType |call3formal@r#0| (Tclass._module.Queue TInt)) ($IsAlloc refType |call3formal@r#0| (Tclass._module.Queue TInt) $Heap@@3)) (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9))) (=> (and (and (and (and ($Is refType |call3formal@r#0@0| (Tclass._module.Queue TInt)) ($IsAlloc refType |call3formal@r#0@0| (Tclass._module.Queue TInt) $Heap@9)) (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 |call3formal@r#0@0|) alloc)))))) (and (and (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))) (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $nw@1) _module.Queue.contents)))) (forall ((|i#1| Int) (|j#1| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#1|) (< |i#1| |j#1|)) (< |j#1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))))) (and (|_module.Queue.Get#canCall| TInt $Heap@9 |call3formal@r#0@0| |i#1|) (|_module.Queue.Get#canCall| TInt $Heap@9 |call3formal@r#0@0| |j#1|)))
+)) ($HeapSucc $Heap@7 $Heap@8))) (and (=> (= (ControlFlow 0 65) (- 0 75)) true) (and (=> (= (ControlFlow 0 65) (- 0 74)) (forall (($o@@55 T@U) ($f@@11 T@U) ) (!  (=> (and (and (or (not (= $o@@55 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@55) alloc)))) (= $o@@55 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@55 $f@@11)))
+ :qid |b7dfy.135:14|
+ :skolemid |602|
+))) (=> (forall (($o@@56 T@U) ($f@@12 T@U) ) (!  (=> (and (and (or (not (= $o@@56 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@56) alloc)))) (= $o@@56 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@56 $f@@12)))
+ :qid |b7dfy.135:14|
+ :skolemid |602|
+)) (=> (and (and ($Is refType |call3formal@r#0| (Tclass._module.Queue TInt)) ($IsAlloc refType |call3formal@r#0| (Tclass._module.Queue TInt) $Heap@@3)) (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9))) (=> (and (and (and (and ($Is refType |call3formal@r#0@0| (Tclass._module.Queue TInt)) ($IsAlloc refType |call3formal@r#0@0| (Tclass._module.Queue TInt) $Heap@9)) (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 |call3formal@r#0@0|) alloc)))))) (and (and (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))) (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $nw@1) _module.Queue.contents)))) (forall ((|i#1| Int) (|j#1| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#1|) (< |i#1| |j#1|)) (< |j#1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))))) (and (|_module.Queue.Get#canCall| TInt $Heap@9 |call3formal@r#0@0| |i#1|) (|_module.Queue.Get#canCall| TInt $Heap@9 |call3formal@r#0@0| |j#1|)))
+ :qid |b7dfy.111:20|
+ :skolemid |577|
  :pattern ( ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |j#1|)) ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |i#1|)))
 ))) (and (forall ((|i#1@@0| Int) (|j#1@@0| Int) ) (!  (=> (and (and (<= (LitInt 0) |i#1@@0|) (< |i#1@@0| |j#1@@0|)) (< |j#1@@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))))) (<= (U_2_int ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |i#1@@0|))) (U_2_int ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |j#1@@0|)))))
+ :qid |b7dfy.111:20|
+ :skolemid |578|
  :pattern ( ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |j#1@@0|)) ($Unbox intType (_module.Queue.Get TInt $Heap@9 |call3formal@r#0@0| |i#1@@0|)))
 )) (|MultiSet#Equal| (|MultiSet#FromSeq| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 |call3formal@r#0@0|) _module.Queue.contents))) (|MultiSet#FromSeq| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $nw@1) _module.Queue.contents))))))) (and (and (and (forall (($o@@57 T@U) ) (!  (=> (and (or (not (= $o@@57 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@57) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@57) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@57)) (= $o@@57 $nw@1)))
+ :qid |b7dfy.107:10|
+ :skolemid |579|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@57))
-)) ($HeapSucc $Heap@8 $Heap@9)) (and (or (not (= $nw@2 null)) (not true)) ($Is refType $nw@2 Tclass._module.Stream?))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2) alloc)))) (= $Heap@10 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@10) ($IsHeapAnchor $Heap@10))))) (and (=> (= (ControlFlow 0 65) (- 0 73)) true) (and (=> (= (ControlFlow 0 65) (- 0 72)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 65) (- 0 71)) (forall (($o@@58 T@U) ($f@@13 T@U) )  (=> (and (and (or (not (= $o@@58 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@58) alloc)))) (= $o@@58 $nw@2)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@58 $f@@13))))) (=> (forall (($o@@59 T@U) ($f@@14 T@U) )  (=> (and (and (or (not (= $o@@59 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@59) alloc)))) (= $o@@59 $nw@2)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@59 $f@@14)))) (=> (and (and ($IsGoodHeap $Heap@11) ($IsHeapAnchor $Heap@11)) (|_module.Stream.Valid#canCall| $Heap@11 $nw@2)) (=> (and (and (and (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (and (_module.Stream.Valid $Heap@11 $nw@2) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.isOpen)))))) (and (forall (($o@@60 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@60)) (or (not (= $o@@60 $nw@2)) (not true))) (or (not (= $o@@60 null)) (not true)))
+)) ($HeapSucc $Heap@8 $Heap@9)) (and (or (not (= $nw@2 null)) (not true)) ($Is refType $nw@2 Tclass._module.Stream?))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2) alloc)))) (= $Heap@10 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $nw@2) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@10) ($IsHeapAnchor $Heap@10))))) (and (=> (= (ControlFlow 0 65) (- 0 73)) true) (and (=> (= (ControlFlow 0 65) (- 0 72)) (or (not (= $nw@2 null)) (not true))) (=> (or (not (= $nw@2 null)) (not true)) (and (=> (= (ControlFlow 0 65) (- 0 71)) (forall (($o@@58 T@U) ($f@@13 T@U) ) (!  (=> (and (and (or (not (= $o@@58 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@58) alloc)))) (= $o@@58 $nw@2)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@58 $f@@13)))
+ :qid |b7dfy.138:14|
+ :skolemid |603|
+))) (=> (forall (($o@@59 T@U) ($f@@14 T@U) ) (!  (=> (and (and (or (not (= $o@@59 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@59) alloc)))) (= $o@@59 $nw@2)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@59 $f@@14)))
+ :qid |b7dfy.138:14|
+ :skolemid |603|
+)) (=> (and (and ($IsGoodHeap $Heap@11) ($IsHeapAnchor $Heap@11)) (|_module.Stream.Valid#canCall| $Heap@11 $nw@2)) (=> (and (and (and (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (and (_module.Stream.Valid $Heap@11 $nw@2) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.isOpen)))))) (and (forall (($o@@60 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@60)) (or (not (= $o@@60 $nw@2)) (not true))) (or (not (= $o@@60 null)) (not true)))
+ :qid |b7dfy.54:24|
+ :skolemid |530|
  :pattern (  (or (not (= $o@@60 null)) (not true)))
 )) (forall (($o@@61 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@61)) (or (not (= $o@@61 $nw@2)) (not true))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@61) alloc)))))
+ :qid |b7dfy.54:24|
+ :skolemid |531|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@61) alloc)))
 )))) (and (and (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.stream)) |Seq#Empty|) (forall (($o@@62 T@U) ) (!  (=> (and (or (not (= $o@@62 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@62) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@62) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@62)) (= $o@@62 $nw@2)))
+ :qid |b7dfy.52:10|
+ :skolemid |532|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@62))
 ))) (and ($HeapSucc $Heap@10 $Heap@11) (= |$decr_init$loop#10@0| (- (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 |call3formal@r#0@0|) _module.Queue.contents))) 0))))) (and (=> (= (ControlFlow 0 65) (- 0 70)) (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (or (_module.Stream.Valid $Heap@11 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2)))))) (=> (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (or (_module.Stream.Valid $Heap@11 $nw@2) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $nw@2))))) (and (=> (= (ControlFlow 0 65) (- 0 69)) (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (or (_module.Stream.Valid $Heap@11 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.isOpen))))))) (=> (=> |$w$loop#1@0| (=> (|_module.Stream.Valid#canCall| $Heap@11 $nw@2) (or (_module.Stream.Valid $Heap@11 $nw@2) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.isOpen)))))) (and (=> (= (ControlFlow 0 65) (- 0 68)) (=> |$w$loop#1@0| (and (forall (($o@@63 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@63)) (or (not (= $o@@63 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |614|
  :pattern (  (or (not (= $o@@63 null)) (not true)))
 )) (forall (($o@@64 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@64)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@64) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |615|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@64)))
 ))))) (=> (=> |$w$loop#1@0| (and (forall (($o@@65 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@65)) (or (not (= $o@@65 null)) (not true)))
+ :qid |b7dfy.140:31|
+ :skolemid |614|
  :pattern (  (or (not (= $o@@65 null)) (not true)))
 )) (forall (($o@@66 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@66)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@66) alloc)))))
+ :qid |b7dfy.140:31|
+ :skolemid |615|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType $o@@66)))
 )))) (and (=> (= (ControlFlow 0 65) (- 0 67)) (=> |$w$loop#1@0| (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc))))))) (=> (=> |$w$loop#1@0| (and (or (not (= |call3formal@r#0@0| null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 |call3formal@r#0@0|) alloc)))))) (and (=> (= (ControlFlow 0 65) (- 0 66)) (=> |$w$loop#1@0| (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType |call3formal@r#0@0|))))) (=> (=> |$w$loop#1@0| (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $nw@2) _module.Stream.footprint)) ($Box refType |call3formal@r#0@0|)))) (=> (= (ControlFlow 0 65) 64) anon32_LoopHead_correct)))))))))))))))))))))))))))))))))))
 (let ((anon31_Then_correct  (=> |call2formal@eos#0@0| (=> (and (= $Heap@7 $Heap@4) (= (ControlFlow 0 82) 65)) after_0_correct))))
 (let ((anon30_Then_correct  (=> (not (U_2_bool (Lit boolType (bool_2_U true)))) (=> (and (= $Heap@7 $Heap@3) (= (ControlFlow 0 81) 65)) after_0_correct))))
-(let ((anon31_Else_correct  (=> (not |call2formal@eos#0@0|) (and (=> (= (ControlFlow 0 3) (- 0 17)) true) (and (=> (= (ControlFlow 0 3) (- 0 16)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 3) (- 0 15)) (forall (($o@@67 T@U) ($f@@15 T@U) )  (=> (and (and (or (not (= $o@@67 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@67) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@67))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@67 $f@@15))))) (=> (forall (($o@@68 T@U) ($f@@16 T@U) )  (=> (and (and (or (not (= $o@@68 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@68) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@68))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@68 $f@@16)))) (and (=> (= (ControlFlow 0 3) (- 0 14)) (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))) (and (=> (= (ControlFlow 0 3) (- 0 13)) (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.isOpen))))) (and (=> (= (ControlFlow 0 3) (- 0 12)) (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream))))) (=> (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream)))) (=> (and (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)) (|_module.Stream.Valid#canCall| $Heap@5 $nw@0)) (=> (and (and (and (|_module.Stream.Valid#canCall| $Heap@5 $nw@0) (and (_module.Stream.Valid $Heap@5 $nw@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.isOpen)))))) (and (forall (($o@@69 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.footprint)) ($Box refType $o@@69)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@69)))) (or (not (= $o@@69 null)) (not true)))
+(let ((anon31_Else_correct  (=> (not |call2formal@eos#0@0|) (and (=> (= (ControlFlow 0 3) (- 0 17)) true) (and (=> (= (ControlFlow 0 3) (- 0 16)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 3) (- 0 15)) (forall (($o@@67 T@U) ($f@@15 T@U) ) (!  (=> (and (and (or (not (= $o@@67 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@67) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@67))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@67 $f@@15)))
+ :qid |b7dfy.130:27|
+ :skolemid |597|
+))) (=> (forall (($o@@68 T@U) ($f@@16 T@U) ) (!  (=> (and (and (or (not (= $o@@68 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@68) alloc)))) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@68))) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@68 $f@@16)))
+ :qid |b7dfy.130:27|
+ :skolemid |597|
+)) (and (=> (= (ControlFlow 0 3) (- 0 14)) (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))) (and (=> (= (ControlFlow 0 3) (- 0 13)) (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@4 $nw@0) (or (_module.Stream.Valid $Heap@4 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.isOpen))))) (and (=> (= (ControlFlow 0 3) (- 0 12)) (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream))))) (=> (< 0 (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream)))) (=> (and (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)) (|_module.Stream.Valid#canCall| $Heap@5 $nw@0)) (=> (and (and (and (|_module.Stream.Valid#canCall| $Heap@5 $nw@0) (and (_module.Stream.Valid $Heap@5 $nw@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.isOpen)))))) (and (forall (($o@@69 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.footprint)) ($Box refType $o@@69)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@69)))) (or (not (= $o@@69 null)) (not true)))
+ :qid |b7dfy.82:24|
+ :skolemid |557|
  :pattern (  (or (not (= $o@@69 null)) (not true)))
 )) (forall (($o@@70 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.footprint)) ($Box refType $o@@70)) (not (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@70)))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@70) alloc)))))
+ :qid |b7dfy.82:24|
+ :skolemid |558|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@70) alloc)))
 )))) (and (and (= |call2formal@x#0@0| (U_2_int ($Unbox intType (|Seq#Index| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream)) (LitInt 0))))) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@0) _module.Stream.stream)) (|Seq#Drop| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream)) (LitInt 1)))) (and (forall (($o@@71 T@U) ) (!  (=> (and (or (not (= $o@@71 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@71) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@71) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@71)) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.footprint)) ($Box refType $o@@71))))
+ :qid |b7dfy.79:10|
+ :skolemid |559|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@71))
-)) ($HeapSucc $Heap@4 $Heap@5)))) (and (=> (= (ControlFlow 0 3) (- 0 11)) true) (and (=> (= (ControlFlow 0 3) (- 0 10)) (or (not (= $nw@1 null)) (not true))) (=> (or (not (= $nw@1 null)) (not true)) (and (=> (= (ControlFlow 0 3) (- 0 9)) (forall (($o@@72 T@U) ($f@@17 T@U) )  (=> (and (and (or (not (= $o@@72 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@72) alloc)))) (= $o@@72 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@72 $f@@17))))) (=> (forall (($o@@73 T@U) ($f@@18 T@U) )  (=> (and (and (or (not (= $o@@73 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@73) alloc)))) (= $o@@73 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@73 $f@@18)))) (=> (= |call2formal@x#0@0@@0| ($Box intType (int_2_U |call2formal@x#0@0|))) (=> (and (and (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@1) _module.Queue.contents)) (|Seq#Append| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@1) _module.Queue.contents)) (|Seq#Build| |Seq#Empty| |call2formal@x#0@0@@0|)))) (and (forall (($o@@74 T@U) ) (!  (=> (and (or (not (= $o@@74 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@74) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@74) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@74)) (= $o@@74 $nw@1)))
+)) ($HeapSucc $Heap@4 $Heap@5)))) (and (=> (= (ControlFlow 0 3) (- 0 11)) true) (and (=> (= (ControlFlow 0 3) (- 0 10)) (or (not (= $nw@1 null)) (not true))) (=> (or (not (= $nw@1 null)) (not true)) (and (=> (= (ControlFlow 0 3) (- 0 9)) (forall (($o@@72 T@U) ($f@@17 T@U) ) (!  (=> (and (and (or (not (= $o@@72 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@72) alloc)))) (= $o@@72 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@72 $f@@17)))
+ :qid |b7dfy.131:16|
+ :skolemid |598|
+))) (=> (forall (($o@@73 T@U) ($f@@18 T@U) ) (!  (=> (and (and (or (not (= $o@@73 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@73) alloc)))) (= $o@@73 $nw@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@73 $f@@18)))
+ :qid |b7dfy.131:16|
+ :skolemid |598|
+)) (=> (= |call2formal@x#0@0@@0| ($Box intType (int_2_U |call2formal@x#0@0|))) (=> (and (and (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6)) (|Seq#Equal| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@1) _module.Queue.contents)) (|Seq#Append| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $nw@1) _module.Queue.contents)) (|Seq#Build| |Seq#Empty| |call2formal@x#0@0@@0|)))) (and (forall (($o@@74 T@U) ) (!  (=> (and (or (not (= $o@@74 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@74) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@74) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@74)) (= $o@@74 $nw@1)))
+ :qid |b7dfy.17:10|
+ :skolemid |492|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@74))
 )) ($HeapSucc $Heap@5 $Heap@6))) (and (=> (= (ControlFlow 0 3) (- 0 8)) (or (<= 0 |$decr$loop#00@1|) (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.stream))) |$decr$loop#00@1|))) (=> (or (<= 0 |$decr$loop#00@1|) (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.stream))) |$decr$loop#00@1|)) (and (=> (= (ControlFlow 0 3) (- 0 7)) (< (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.stream))) |$decr$loop#00@1|)) (=> (< (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.stream))) |$decr$loop#00@1|) (=> (|_module.Stream.Valid#canCall| $Heap@6 $nw@0) (and (=> (= (ControlFlow 0 3) (- 0 6)) (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@6 $nw@0) (or (_module.Stream.Valid $Heap@6 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))))) (=> (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@6 $nw@0) (or (_module.Stream.Valid $Heap@6 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (and (=> (= (ControlFlow 0 3) (- 0 5)) (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@6 $nw@0) (or (_module.Stream.Valid $Heap@6 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.isOpen))))))) (=> (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@6 $nw@0) (or (_module.Stream.Valid $Heap@6 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.isOpen)))))) (and (=> (= (ControlFlow 0 3) (- 0 4)) (=> |$w$loop#0@0| (and (forall (($o@@75 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@75)) (or (not (= $o@@75 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |592|
  :pattern (  (or (not (= $o@@75 null)) (not true)))
 )) (forall (($o@@76 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@76)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@76) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |593|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@76)))
 ))))) (=> (=> |$w$loop#0@0| (and (forall (($o@@77 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@77)) (or (not (= $o@@77 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |592|
  :pattern (  (or (not (= $o@@77 null)) (not true)))
 )) (forall (($o@@78 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@78)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@78) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |593|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $nw@0) _module.Stream.footprint)) ($Box refType $o@@78)))
 )))) (=> (= (ControlFlow 0 3) (- 0 2)) (=> |$w$loop#0@0| (and (or (not (= $nw@1 null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@1) alloc)))))))))))))))))))))))))))))))))))))))))
 (let ((anon30_Else_correct  (=> (and (U_2_bool (Lit boolType (bool_2_U true))) (= |$decr$loop#00@1| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.stream))))) (and (=> (= (ControlFlow 0 83) (- 0 87)) true) (and (=> (= (ControlFlow 0 83) (- 0 86)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 83) (- 0 85)) (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))) (and (=> (= (ControlFlow 0 83) (- 0 84)) (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.isOpen)))))) (=> (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.isOpen))))) (=> (and (and (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (= |call2formal@eos#0@0| (= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@0) _module.Stream.stream))) (LitInt 0)))) (and (forall (($o@@79 T@U) ) (!  (=> (and (or (not (= $o@@79 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@79) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@79) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@79)))
+ :qid |b7dfy.90:10|
+ :skolemid |564|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@79))
 )) ($HeapSucc $Heap@3 $Heap@4))) (and (=> (= (ControlFlow 0 83) 82) anon31_Then_correct) (=> (= (ControlFlow 0 83) 3) anon31_Else_correct)))))))))))))
 (let ((anon27_Else_correct  (=> |$w$loop#0@0| (and (=> (= (ControlFlow 0 88) 81) anon30_Then_correct) (=> (= (ControlFlow 0 88) 83) anon30_Else_correct)))))
 (let ((anon26_LoopBody_correct  (and (=> (= (ControlFlow 0 102) 99) anon27_Then_correct) (=> (= (ControlFlow 0 102) 88) anon27_Else_correct))))
 (let ((anon26_LoopDone_correct true))
 (let ((anon26_LoopHead_correct  (=> (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (=> (and (and (and (and (not false) true) true) (and (=> |$w$loop#0@0| (|_module.Stream.Valid#canCall| $Heap@3 $nw@0)) (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))))) (and (and (and (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (or (_module.Stream.Valid $Heap@3 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.isOpen)))))) (=> |$w$loop#0@0| (and (|_module.Stream.Valid#canCall| $Heap@3 $nw@0) (and (_module.Stream.Valid $Heap@3 $nw@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.isOpen)))))))) (and (=> |$w$loop#0@0| (and (forall (($o@@80 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@80)) (or (not (= $o@@80 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |592|
  :pattern (  (or (not (= $o@@80 null)) (not true)))
 )) (forall (($o@@81 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@81)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@81) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |593|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.footprint)) ($Box refType $o@@81)))
 )))) (=> |$w$loop#0@0| (and (or (not (= $nw@1 null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@1) alloc)))))))) (and (and (forall (($o@@82 T@U) ) (!  (=> (and (or (not (= $o@@82 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@82) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@82) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@82)))
+ :qid |b7dfy.121:5|
+ :skolemid |594|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@82))
 )) ($HeapSucc $Heap@2 $Heap@3)) (and (forall (($o@@83 T@U) ($f@@19 T@U) ) (!  (=> (and (or (not (= $o@@83 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@83) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@83) $f@@19) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@83) $f@@19)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@83 $f@@19))))
+ :qid |b7dfy.121:5|
+ :skolemid |595|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@83) $f@@19))
 )) (<= (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@0) _module.Stream.stream))) |$decr_init$loop#00@0|))))) (and (=> (= (ControlFlow 0 103) 1) anon26_LoopDone_correct) (=> (= (ControlFlow 0 103) 102) anon26_LoopBody_correct))))))
-(let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#5| null $Heap@@3 alloc false)) (=> (and (or (not (= $nw@0 null)) (not true)) ($Is refType $nw@0 Tclass._module.Stream?)) (=> (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0) alloc)))) (= $Heap@0 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))) (and (=> (= (ControlFlow 0 104) (- 0 111)) true) (and (=> (= (ControlFlow 0 104) (- 0 110)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 104) (- 0 109)) (forall (($o@@84 T@U) ($f@@20 T@U) )  (=> (and (and (or (not (= $o@@84 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@84) alloc)))) (= $o@@84 $nw@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@84 $f@@20))))) (=> (forall (($o@@85 T@U) ($f@@21 T@U) )  (=> (and (and (or (not (= $o@@85 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@85) alloc)))) (= $o@@85 $nw@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@85 $f@@21)))) (=> (and (and (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (|_module.Stream.Valid#canCall| $Heap@1 $nw@0)) (and (|_module.Stream.Valid#canCall| $Heap@1 $nw@0) (and (_module.Stream.Valid $Heap@1 $nw@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.isOpen))))))) (and (and (forall (($o@@86 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.footprint)) ($Box refType $o@@86)) (or (not (= $o@@86 $nw@0)) (not true))) (or (not (= $o@@86 null)) (not true)))
+(let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#5| null $Heap@@3 alloc false)) (=> (and (or (not (= $nw@0 null)) (not true)) ($Is refType $nw@0 Tclass._module.Stream?)) (=> (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0) alloc)))) (= $Heap@0 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@0) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))) (and (=> (= (ControlFlow 0 104) (- 0 111)) true) (and (=> (= (ControlFlow 0 104) (- 0 110)) (or (not (= $nw@0 null)) (not true))) (=> (or (not (= $nw@0 null)) (not true)) (and (=> (= (ControlFlow 0 104) (- 0 109)) (forall (($o@@84 T@U) ($f@@20 T@U) ) (!  (=> (and (and (or (not (= $o@@84 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@84) alloc)))) (= $o@@84 $nw@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@84 $f@@20)))
+ :qid |b7dfy.118:12|
+ :skolemid |583|
+))) (=> (forall (($o@@85 T@U) ($f@@21 T@U) ) (!  (=> (and (and (or (not (= $o@@85 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@85) alloc)))) (= $o@@85 $nw@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@85 $f@@21)))
+ :qid |b7dfy.118:12|
+ :skolemid |583|
+)) (=> (and (and (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (|_module.Stream.Valid#canCall| $Heap@1 $nw@0)) (and (|_module.Stream.Valid#canCall| $Heap@1 $nw@0) (and (_module.Stream.Valid $Heap@1 $nw@0) (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.isOpen))))))) (and (and (forall (($o@@86 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.footprint)) ($Box refType $o@@86)) (or (not (= $o@@86 $nw@0)) (not true))) (or (not (= $o@@86 null)) (not true)))
+ :qid |b7dfy.64:24|
+ :skolemid |539|
  :pattern (  (or (not (= $o@@86 null)) (not true)))
 )) (forall (($o@@87 T@U) ) (!  (=> (and (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@0) _module.Stream.footprint)) ($Box refType $o@@87)) (or (not (= $o@@87 $nw@0)) (not true))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@87) alloc)))))
+ :qid |b7dfy.64:24|
+ :skolemid |540|
  :pattern ( ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@87) alloc)))
 ))) (and (forall (($o@@88 T@U) ) (!  (=> (and (or (not (= $o@@88 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@88) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@88) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@88)) (= $o@@88 $nw@0)))
+ :qid |b7dfy.62:10|
+ :skolemid |541|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@88))
 )) ($HeapSucc $Heap@0 $Heap@1)))) (and (and (and (or (not (= $nw@1 null)) (not true)) ($Is refType $nw@1 (Tclass._module.Queue? TInt))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@1) alloc))))) (and (and (= $Heap@2 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@1 $nw@1 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@1) alloc ($Box boolType (bool_2_U true))))) ($IsGoodHeap $Heap@2)) (and ($IsHeapAnchor $Heap@2) (= |$decr_init$loop#00@0| (|Seq#Length| ($Unbox SeqType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.stream)))))))) (and (=> (= (ControlFlow 0 104) (- 0 108)) (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@2 $nw@0) (or (_module.Stream.Valid $Heap@2 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0)))))) (=> (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@2 $nw@0) (or (_module.Stream.Valid $Heap@2 $nw@0) (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $nw@0))))) (and (=> (= (ControlFlow 0 104) (- 0 107)) (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@2 $nw@0) (or (_module.Stream.Valid $Heap@2 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.isOpen))))))) (=> (=> |$w$loop#0@0| (=> (|_module.Stream.Valid#canCall| $Heap@2 $nw@0) (or (_module.Stream.Valid $Heap@2 $nw@0) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.isOpen)))))) (and (=> (= (ControlFlow 0 104) (- 0 106)) (=> |$w$loop#0@0| (and (forall (($o@@89 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@89)) (or (not (= $o@@89 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |592|
  :pattern (  (or (not (= $o@@89 null)) (not true)))
 )) (forall (($o@@90 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@90)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@90) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |593|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@90)))
 ))))) (=> (=> |$w$loop#0@0| (and (forall (($o@@91 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@91)) (or (not (= $o@@91 null)) (not true)))
+ :qid |b7dfy.122:31|
+ :skolemid |592|
  :pattern (  (or (not (= $o@@91 null)) (not true)))
 )) (forall (($o@@92 T@U) ) (!  (=> (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@92)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@92) alloc)))))
+ :qid |b7dfy.122:31|
+ :skolemid |593|
  :pattern ( (|Set#IsMember| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@0) _module.Stream.footprint)) ($Box refType $o@@92)))
 )))) (and (=> (= (ControlFlow 0 104) (- 0 105)) (=> |$w$loop#0@0| (and (or (not (= $nw@1 null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@1) alloc))))))) (=> (=> |$w$loop#0@0| (and (or (not (= $nw@1 null)) (not true)) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $nw@1) alloc)))))) (=> (= (ControlFlow 0 104) 103) anon26_LoopHead_correct))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap@@3) ($IsHeapAnchor $Heap@@3)) (and (or (not (= this@@5 null)) (not true)) (and ($Is refType this@@5 Tclass._module.Client) ($IsAlloc refType this@@5 Tclass._module.Client $Heap@@3)))) (=> (and (and (and (=> |defass#rd#0| (and ($Is refType |rd#0| Tclass._module.Stream) ($IsAlloc refType |rd#0| Tclass._module.Stream $Heap@@3))) true) (and (=> |defass#q#0| (and ($Is refType |q#0| (Tclass._module.Queue TInt)) ($IsAlloc refType |q#0| (Tclass._module.Queue TInt) $Heap@@3))) true)) (and (and (=> |defass#wr#0| (and ($Is refType |wr#0| Tclass._module.Stream) ($IsAlloc refType |wr#0| Tclass._module.Stream $Heap@@3))) true) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 112) 104)))) anon0_correct))))

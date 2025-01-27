@@ -130,327 +130,558 @@
 (declare-fun |lambda#893| (T@U T@U T@U T@U T@U T@U T@U T@U T@U) T@U)
 (declare-fun |lambda#7| (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSet alloc Tagclass._System.object? Tagclass._System.object Tagclass._System.___hFunc1 Tagclass._System.___hPartialFunc1 Tagclass._System.___hTotalFunc1 Tagclass._module.Pos Tagclass._module.Index tytagFamily$object |tytagFamily$_#Func1| |tytagFamily$_#PartialFunc1| |tytagFamily$_#TotalFunc1| tytagFamily$Pos tytagFamily$Index)
 )
 (assert (= (Tag TInt) TagInt))
 (assert  (and (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 3))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 3)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (= (Ctor SetType) 7)))
 (assert (forall ((t0@@1 T@U) (t1@@1 T@U) (heap T@U) (h T@U) (r T@U) (rd T@U) (bx0 T@U) (bx T@U) ) (! (= (|Set#IsMember| (Reads1 t0@@1 t1@@1 heap (Handle1 h r rd) bx0) bx) (|Set#IsMember| (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType rd heap bx0) bx))
+ :qid |unknown.0:0|
+ :skolemid |372|
  :pattern ( (|Set#IsMember| (Reads1 t0@@1 t1@@1 heap (Handle1 h r rd) bx0) bx))
 )))
 (assert (= (Ctor HandleTypeType) 8))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|l#6| T@U) (|l#7| T@U) (|l#8| T@U) (|l#9| T@U) (|l#10| T@U) (|l#11| T@U) (|l#12| T@U) (|l#13| T@U) (|l#14| T@U) (|l#15| T@U) (|l#16| T@U) (|l#17| T@U) (|l#18| T@U) (|l#19| T@U) (|$l#58#heap#0| T@U) (|$l#58#k1#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1698| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9| |l#10| |l#11| |l#12| |l#13| |l#14| |l#15| |l#16| |l#17| |l#18| |l#19|) |$l#58#heap#0| |$l#58#k1#0|) ($Box HandleTypeType (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9| |l#10| ($Box intType ($Unbox intType |$l#58#k1#0|)) |l#11| |l#12| |l#13| |l#14| |l#15| ($Box intType ($Unbox intType |$l#58#k1#0|)) |l#16|) |l#17| |l#18|)) |l#19|))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |771|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1698| |l#0| |l#1| |l#2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9| |l#10| |l#11| |l#12| |l#13| |l#14| |l#15| |l#16| |l#17| |l#18| |l#19|) |$l#58#heap#0| |$l#58#k1#0|))
 )))
 (assert (forall ((|l#0@@0| T@U) (|$l#6#heap#0| T@U) (|$l#6#k#0| T@U) ) (! (= (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#5| |l#0@@0|) |$l#6#heap#0| |$l#6#k#0|)) ($IsBox |$l#6#k#0| |l#0@@0|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |743|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType (|lambda#5| |l#0@@0|) |$l#6#heap#0| |$l#6#k#0|))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._module.Pos $h)
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( ($IsAlloc intType |x#0| Tclass._module.Pos $h))
 )))
 (assert (forall ((|x#0@@0| T@U) ($h@@0 T@U) ) (! ($IsAlloc intType |x#0@@0| Tclass._module.Index $h@@0)
+ :qid |unknown.0:0|
+ :skolemid |740|
  :pattern ( ($IsAlloc intType |x#0@@0| Tclass._module.Index $h@@0))
 )))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3@@0| T@U) (|l#4@@0| T@U) (|l#5@@0| T@U) (|l#6@@0| T@U) (|l#7@@0| T@U) (|$l#33#heap#0| T@U) (|$l#33#k#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#874| |l#0@@1| |l#1@@0| |l#2@@0| |l#3@@0| |l#4@@0| |l#5@@0| |l#6@@0| |l#7@@0|) |$l#33#heap#0| |$l#33#k#0|) ($Box intType (int_2_U (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| |l#0@@1| |l#1@@0| |l#2@@0| |l#3@@0| |l#4@@0| ($Box intType ($Unbox intType |$l#33#k#0|))) |l#5@@0| |l#6@@0|)) |l#7@@0|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |761|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#874| |l#0@@1| |l#1@@0| |l#2@@0| |l#3@@0| |l#4@@0| |l#5@@0| |l#6@@0| |l#7@@0|) |$l#33#heap#0| |$l#33#k#0|))
 )))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@1| T@U) (|l#2@@1| T@U) (|l#3@@1| T@U) (|l#4@@1| T@U) (|l#5@@1| T@U) (|l#6@@1| T@U) (|l#7@@1| T@U) (|$l#38#heap#0| T@U) (|$l#38#l#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#889| |l#0@@2| |l#1@@1| |l#2@@1| |l#3@@1| |l#4@@1| |l#5@@1| |l#6@@1| |l#7@@1|) |$l#38#heap#0| |$l#38#l#0|) ($Box intType (int_2_U (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| |l#0@@2| |l#1@@1| |l#2@@1| |l#3@@1| |l#4@@1| ($Box intType ($Unbox intType |$l#38#l#0|))) |l#5@@1| |l#6@@1|)) |l#7@@1|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |763|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#889| |l#0@@2| |l#1@@1| |l#2@@1| |l#3@@1| |l#4@@1| |l#5@@1| |l#6@@1| |l#7@@1|) |$l#38#heap#0| |$l#38#l#0|))
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@2| T@U) (|l#2@@2| T@U) (|l#3@@2| T@U) (|l#4@@2| T@U) (|l#5@@2| T@U) (|$l#23#heap#0| T@U) (|$l#23#k#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#172| |l#0@@3| |l#1@@2| |l#2@@2| |l#3@@2| |l#4@@2| |l#5@@2|) |$l#23#heap#0| |$l#23#k#0|) ($Box intType ($Unbox intType (Apply1 |l#0@@3| |l#1@@2| |$l#23#heap#0| ($Unbox HandleTypeType (Apply1 |l#2@@2| |l#3@@2| |$l#23#heap#0| |l#4@@2| ($Box intType ($Unbox intType |$l#23#k#0|)))) |l#5@@2|))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |756|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#172| |l#0@@3| |l#1@@2| |l#2@@2| |l#3@@2| |l#4@@2| |l#5@@2|) |$l#23#heap#0| |$l#23#k#0|))
 )))
 (assert (forall ((f T@U) (t0@@2 T@U) (t1@@2 T@U) (u0@@2 T@U) (u1@@2 T@U) ) (!  (=> (and (and ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@2 t1@@2)) (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 u0@@2) ($IsBox bx@@0 t0@@2))
+ :qid |unknown.0:0|
+ :skolemid |389|
  :pattern ( ($IsBox bx@@0 u0@@2))
  :pattern ( ($IsBox bx@@0 t0@@2))
 ))) (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 t1@@2) ($IsBox bx@@1 u1@@2))
+ :qid |unknown.0:0|
+ :skolemid |390|
  :pattern ( ($IsBox bx@@1 t1@@2))
  :pattern ( ($IsBox bx@@1 u1@@2))
 ))) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@2 u1@@2)))
+ :qid |unknown.0:0|
+ :skolemid |391|
  :pattern ( ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@2 t1@@2)) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@2 u1@@2)))
 )))
 (assert (forall ((|c#0| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._System.object $h@@1) ($IsAlloc refType |c#0| Tclass._System.object? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |351|
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object $h@@1))
  :pattern ( ($IsAlloc refType |c#0| Tclass._System.object? $h@@1))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly T@U) ($Heap T@U) (|f#0| T@U) (|n#0| Int) ) (!  (=> (or (|_module.__default.Sum__n#canCall| (Lit HandleTypeType |f#0|) (LitInt |n#0|)) (and (< 3 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap) ($Is HandleTypeType |f#0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt))) (<= (LitInt 0) |n#0|)) (<= (LitInt |n#0|) _module.__default.N)))) (and (=> (or (not (= (LitInt |n#0|) (LitInt 0))) (not true)) (|_module.__default.Sum__n#canCall| (Lit HandleTypeType |f#0|) (LitInt (- |n#0| 1)))) (= (_module.__default.Sum__n ($LS $ly) (Lit HandleTypeType |f#0|) (LitInt |n#0|)) (ite (= (LitInt |n#0|) (LitInt 0)) 0 (+ (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap (Lit HandleTypeType |f#0|) ($Box intType (int_2_U (LitInt (- |n#0| 1))))))) (_module.__default.Sum__n ($LS $ly) (Lit HandleTypeType |f#0|) (LitInt (- |n#0| 1))))))))
+ :qid |MatrixAssocdfy.35:10|
  :weight 3
+ :skolemid |546|
  :pattern ( (_module.__default.Sum__n ($LS $ly) (Lit HandleTypeType |f#0|) (LitInt |n#0|)) ($IsGoodHeap $Heap))
 ))))
 (assert (forall (($o T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o Tclass._System.object? $h@@2)  (or (= $o null) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) $h@@2 $o) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |348|
  :pattern ( ($IsAlloc refType $o Tclass._System.object? $h@@2))
 )))
 (assert (forall ((h@@0 T@U) (k T@U) ) (!  (=> ($HeapSucc h@@0 k) (forall ((o@@0 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@0 o@@0) alloc))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) k o@@0) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) k o@@0) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h@@0 k))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@0 T@U) ($Heap@@0 T@U) (|f#0@@0| T@U) (|n#0@@0| Int) ) (!  (=> (or (|_module.__default.Sum__n#canCall| |f#0@@0| |n#0@@0|) (and (< 3 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap@@0) ($Is HandleTypeType |f#0@@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt))) (<= (LitInt 0) |n#0@@0|)) (<= |n#0@@0| _module.__default.N)))) (and (=> (or (not (= |n#0@@0| (LitInt 0))) (not true)) (|_module.__default.Sum__n#canCall| |f#0@@0| (- |n#0@@0| 1))) (= (_module.__default.Sum__n ($LS $ly@@0) |f#0@@0| |n#0@@0|) (ite (= |n#0@@0| (LitInt 0)) 0 (+ (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@0 |f#0@@0| ($Box intType (int_2_U (- |n#0@@0| 1)))))) (_module.__default.Sum__n $ly@@0 |f#0@@0| (- |n#0@@0| 1)))))))
+ :qid |MatrixAssocdfy.35:10|
+ :skolemid |544|
  :pattern ( (_module.__default.Sum__n ($LS $ly@@0) |f#0@@0| |n#0@@0|) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((|x#0@@1| T@U) ) (! (= ($Is intType |x#0@@1| Tclass._module.Pos) (< 0 (U_2_int |x#0@@1|)))
+ :qid |unknown.0:0|
+ :skolemid |737|
  :pattern ( ($Is intType |x#0@@1| Tclass._module.Pos))
 )))
 (assert (forall ((|l#0@@4| T@U) (|l#1@@3| T@U) (|l#2@@3| T@U) (|l#3@@3| T@U) (|l#4@@3| T@U) (|l#5@@3| T@U) (|l#6@@2| T@U) (|l#7@@2| T@U) (|l#8@@0| T@U) (|l#9@@0| T@U) (|l#10@@0| T@U) (|l#11@@0| T@U) (|l#12@@0| T@U) (|l#13@@0| T@U) (|l#14@@0| T@U) (|l#15@@0| T@U) (|l#16@@0| T@U) (|l#17@@0| T@U) (|l#18@@0| T@U) (|l#19@@0| T@U) (|$l#33#heap#0@@0| T@U) (|$l#33#k#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1602| |l#0@@4| |l#1@@3| |l#2@@3| |l#3@@3| |l#4@@3| |l#5@@3| |l#6@@2| |l#7@@2| |l#8@@0| |l#9@@0| |l#10@@0| |l#11@@0| |l#12@@0| |l#13@@0| |l#14@@0| |l#15@@0| |l#16@@0| |l#17@@0| |l#18@@0| |l#19@@0|) |$l#33#heap#0@@0| |$l#33#k#0@@0|) ($Box intType (int_2_U (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| |l#0@@4| |l#1@@3| |l#2@@3| |l#3@@3| |l#4@@3| |l#5@@3| |l#6@@2| |l#7@@2| |l#8@@0| |l#9@@0| |l#10@@0| ($Box intType ($Unbox intType |$l#33#k#0@@0|)) |l#11@@0| |l#12@@0| |l#13@@0| |l#14@@0| |l#15@@0| ($Box intType ($Unbox intType |$l#33#k#0@@0|)) |l#16@@0|) |l#17@@0| |l#18@@0|)) |l#19@@0|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |766|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1602| |l#0@@4| |l#1@@3| |l#2@@3| |l#3@@3| |l#4@@3| |l#5@@3| |l#6@@2| |l#7@@2| |l#8@@0| |l#9@@0| |l#10@@0| |l#11@@0| |l#12@@0| |l#13@@0| |l#14@@0| |l#15@@0| |l#16@@0| |l#17@@0| |l#18@@0| |l#19@@0|) |$l#33#heap#0@@0| |$l#33#k#0@@0|))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((t0@@3 T@U) (t1@@3 T@U) (heap@@0 T@U) (f@@0 T@U) (bx0@@0 T@U) ) (!  (=> (and ($IsGoodHeap heap@@0) (and ($IsBox bx0@@0 t0@@3) ($Is HandleTypeType f@@0 (Tclass._System.___hFunc1 t0@@3 t1@@3)))) (= (|Set#Equal| (Reads1 t0@@3 t1@@3 $OneHeap f@@0 bx0@@0) |Set#Empty|) (|Set#Equal| (Reads1 t0@@3 t1@@3 heap@@0 f@@0 bx0@@0) |Set#Empty|)))
+ :qid |unknown.0:0|
+ :skolemid |385|
  :pattern ( (Reads1 t0@@3 t1@@3 $OneHeap f@@0 bx0@@0) ($IsGoodHeap heap@@0))
  :pattern ( (Reads1 t0@@3 t1@@3 heap@@0 f@@0 bx0@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((t0@@4 T@U) (t1@@4 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@1 t0@@4) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@4 t1@@4)))) (forall ((o@@1 T@U) (fld T@U) )  (=> (and (or (not (= o@@1 null)) (not true)) (|Set#IsMember| (Reads1 t0@@4 t1@@4 h0 f@@1 bx0@@1) ($Box refType o@@1))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0 o@@1) fld) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1 o@@1) fld))))) (= (Requires1 t0@@4 t1@@4 h0 f@@1 bx0@@1) (Requires1 t0@@4 t1@@4 h1 f@@1 bx0@@1)))
+(assert (forall ((t0@@4 T@U) (t1@@4 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@1 t0@@4) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@4 t1@@4)))) (forall ((o@@1 T@U) (fld T@U) ) (!  (=> (and (or (not (= o@@1 null)) (not true)) (|Set#IsMember| (Reads1 t0@@4 t1@@4 h0 f@@1 bx0@@1) ($Box refType o@@1))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0 o@@1) fld) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1 o@@1) fld)))
+ :qid |unknown.0:0|
+ :skolemid |377|
+))) (= (Requires1 t0@@4 t1@@4 h0 f@@1 bx0@@1) (Requires1 t0@@4 t1@@4 h1 f@@1 bx0@@1)))
+ :qid |unknown.0:0|
+ :skolemid |378|
  :pattern ( ($HeapSucc h0 h1) (Requires1 t0@@4 t1@@4 h1 f@@1 bx0@@1))
 )))
-(assert (forall ((t0@@5 T@U) (t1@@5 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@2 t0@@5) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@5 t1@@5)))) (forall ((o@@2 T@U) (fld@@0 T@U) )  (=> (and (or (not (= o@@2 null)) (not true)) (|Set#IsMember| (Reads1 t0@@5 t1@@5 h1@@0 f@@2 bx0@@2) ($Box refType o@@2))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@0 o@@2) fld@@0) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@0 o@@2) fld@@0))))) (= (Requires1 t0@@5 t1@@5 h0@@0 f@@2 bx0@@2) (Requires1 t0@@5 t1@@5 h1@@0 f@@2 bx0@@2)))
+(assert (forall ((t0@@5 T@U) (t1@@5 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@2 t0@@5) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@5 t1@@5)))) (forall ((o@@2 T@U) (fld@@0 T@U) ) (!  (=> (and (or (not (= o@@2 null)) (not true)) (|Set#IsMember| (Reads1 t0@@5 t1@@5 h1@@0 f@@2 bx0@@2) ($Box refType o@@2))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@0 o@@2) fld@@0) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@0 o@@2) fld@@0)))
+ :qid |unknown.0:0|
+ :skolemid |379|
+))) (= (Requires1 t0@@5 t1@@5 h0@@0 f@@2 bx0@@2) (Requires1 t0@@5 t1@@5 h1@@0 f@@2 bx0@@2)))
+ :qid |unknown.0:0|
+ :skolemid |380|
  :pattern ( ($HeapSucc h0@@0 h1@@0) (Requires1 t0@@5 t1@@5 h1@@0 f@@2 bx0@@2))
 )))
 (assert (forall ((v T@U) (t0@@6 T@U) ) (! (= ($Is SetType v (TSet t0@@6)) (forall ((bx@@2 T@U) ) (!  (=> (|Set#IsMember| v bx@@2) ($IsBox bx@@2 t0@@6))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@2))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@6)))
 )))
 (assert (= (Ctor LayerTypeType) 9))
 (assert (forall ((f@@3 T@U) (ly T@U) (A T@T) ) (! (= (AtLayer A f@@3 ly) (MapType1Select LayerTypeType A f@@3 ly))
+ :qid |DafnyPreludebpl.501:18|
+ :skolemid |101|
  :pattern ( (AtLayer A f@@3 ly))
 )))
 (assert ($IsGoodHeap $OneHeap))
 (assert (forall ((v@@0 T@U) (t T@U) (h@@1 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h@@1) ($IsAlloc T@@1 v@@0 t h@@1))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@0 T@U) (bx@@3 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@2 k@@0) (=> ($IsAllocBox bx@@3 t@@0 h@@2) ($IsAllocBox bx@@3 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@2 k@@0) ($IsAllocBox bx@@3 t@@0 h@@2))
 )))
 (assert (forall ((h@@3 T@U) (k@@1 T@U) (v@@1 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@3 k@@1) (=> ($IsAlloc T@@2 v@@1 t@@1 h@@3) ($IsAlloc T@@2 v@@1 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@3 k@@1) ($IsAlloc T@@2 v@@1 t@@1 h@@3))
 )))
 (assert  (=> (< 1 $FunctionContextHeight) ($Is intType (int_2_U _module.__default.N) Tclass._module.Pos)))
-(assert (forall ((t0@@7 T@U) (t1@@6 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@3 t0@@7) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@7 t1@@6)))) (forall ((o@@3 T@U) (fld@@1 T@U) )  (=> (and (or (not (= o@@3 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@6 h0@@1 f@@4 bx0@@3) ($Box refType o@@3))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@1 o@@3) fld@@1) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@1 o@@3) fld@@1))))) (= (Reads1 t0@@7 t1@@6 h0@@1 f@@4 bx0@@3) (Reads1 t0@@7 t1@@6 h1@@1 f@@4 bx0@@3)))
+(assert (forall ((t0@@7 T@U) (t1@@6 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@3 t0@@7) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@7 t1@@6)))) (forall ((o@@3 T@U) (fld@@1 T@U) ) (!  (=> (and (or (not (= o@@3 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@6 h0@@1 f@@4 bx0@@3) ($Box refType o@@3))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@1 o@@3) fld@@1) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@1 o@@3) fld@@1)))
+ :qid |unknown.0:0|
+ :skolemid |373|
+))) (= (Reads1 t0@@7 t1@@6 h0@@1 f@@4 bx0@@3) (Reads1 t0@@7 t1@@6 h1@@1 f@@4 bx0@@3)))
+ :qid |unknown.0:0|
+ :skolemid |374|
  :pattern ( ($HeapSucc h0@@1 h1@@1) (Reads1 t0@@7 t1@@6 h1@@1 f@@4 bx0@@3))
 )))
-(assert (forall ((t0@@8 T@U) (t1@@7 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@4 t0@@8) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@8 t1@@7)))) (forall ((o@@4 T@U) (fld@@2 T@U) )  (=> (and (or (not (= o@@4 null)) (not true)) (|Set#IsMember| (Reads1 t0@@8 t1@@7 h1@@2 f@@5 bx0@@4) ($Box refType o@@4))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@2 o@@4) fld@@2) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@2 o@@4) fld@@2))))) (= (Reads1 t0@@8 t1@@7 h0@@2 f@@5 bx0@@4) (Reads1 t0@@8 t1@@7 h1@@2 f@@5 bx0@@4)))
+(assert (forall ((t0@@8 T@U) (t1@@7 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@4 t0@@8) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@8 t1@@7)))) (forall ((o@@4 T@U) (fld@@2 T@U) ) (!  (=> (and (or (not (= o@@4 null)) (not true)) (|Set#IsMember| (Reads1 t0@@8 t1@@7 h1@@2 f@@5 bx0@@4) ($Box refType o@@4))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@2 o@@4) fld@@2) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@2 o@@4) fld@@2)))
+ :qid |unknown.0:0|
+ :skolemid |375|
+))) (= (Reads1 t0@@8 t1@@7 h0@@2 f@@5 bx0@@4) (Reads1 t0@@8 t1@@7 h1@@2 f@@5 bx0@@4)))
+ :qid |unknown.0:0|
+ :skolemid |376|
  :pattern ( ($HeapSucc h0@@2 h1@@2) (Reads1 t0@@8 t1@@7 h1@@2 f@@5 bx0@@4))
 )))
-(assert (forall ((t0@@9 T@U) (t1@@8 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@5 t0@@9) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@9 t1@@8)))) (forall ((o@@5 T@U) (fld@@3 T@U) )  (=> (and (or (not (= o@@5 null)) (not true)) (|Set#IsMember| (Reads1 t0@@9 t1@@8 h0@@3 f@@6 bx0@@5) ($Box refType o@@5))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@3 o@@5) fld@@3) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@3 o@@5) fld@@3))))) (= (Apply1 t0@@9 t1@@8 h0@@3 f@@6 bx0@@5) (Apply1 t0@@9 t1@@8 h1@@3 f@@6 bx0@@5)))
+(assert (forall ((t0@@9 T@U) (t1@@8 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@5 t0@@9) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@9 t1@@8)))) (forall ((o@@5 T@U) (fld@@3 T@U) ) (!  (=> (and (or (not (= o@@5 null)) (not true)) (|Set#IsMember| (Reads1 t0@@9 t1@@8 h0@@3 f@@6 bx0@@5) ($Box refType o@@5))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@3 o@@5) fld@@3) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@3 o@@5) fld@@3)))
+ :qid |unknown.0:0|
+ :skolemid |381|
+))) (= (Apply1 t0@@9 t1@@8 h0@@3 f@@6 bx0@@5) (Apply1 t0@@9 t1@@8 h1@@3 f@@6 bx0@@5)))
+ :qid |unknown.0:0|
+ :skolemid |382|
  :pattern ( ($HeapSucc h0@@3 h1@@3) (Apply1 t0@@9 t1@@8 h1@@3 f@@6 bx0@@5))
 )))
-(assert (forall ((t0@@10 T@U) (t1@@9 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@7 T@U) (bx0@@6 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@6 t0@@10) ($Is HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@10 t1@@9)))) (forall ((o@@6 T@U) (fld@@4 T@U) )  (=> (and (or (not (= o@@6 null)) (not true)) (|Set#IsMember| (Reads1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6) ($Box refType o@@6))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@4 o@@6) fld@@4) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@4 o@@6) fld@@4))))) (= (Apply1 t0@@10 t1@@9 h0@@4 f@@7 bx0@@6) (Apply1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6)))
+(assert (forall ((t0@@10 T@U) (t1@@9 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@7 T@U) (bx0@@6 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@6 t0@@10) ($Is HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@10 t1@@9)))) (forall ((o@@6 T@U) (fld@@4 T@U) ) (!  (=> (and (or (not (= o@@6 null)) (not true)) (|Set#IsMember| (Reads1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6) ($Box refType o@@6))) (= (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h0@@4 o@@6) fld@@4) (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h1@@4 o@@6) fld@@4)))
+ :qid |unknown.0:0|
+ :skolemid |383|
+))) (= (Apply1 t0@@10 t1@@9 h0@@4 f@@7 bx0@@6) (Apply1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6)))
+ :qid |unknown.0:0|
+ :skolemid |384|
  :pattern ( ($HeapSucc h0@@4 h1@@4) (Apply1 t0@@10 t1@@9 h1@@4 f@@7 bx0@@6))
 )))
 (assert  (=> (< 1 $FunctionContextHeight) (forall (($h@@3 T@U) ) (!  (=> ($IsGoodHeap $h@@3) ($IsAlloc intType (int_2_U _module.__default.N) Tclass._module.Pos $h@@3))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |529|
  :pattern ( ($IsAlloc intType (int_2_U _module.__default.N) Tclass._module.Pos $h@@3))
 ))))
 (assert (forall ((|l#0@@5| T@U) (|l#1@@4| T@U) (|l#2@@4| T@U) (|l#3@@4| T@U) (|l#4@@4| T@U) (|l#5@@4| T@U) (|l#6@@3| T@U) (|l#7@@3| T@U) (|l#8@@1| T@U) (|l#9@@1| T@U) (|l#10@@1| T@U) (|l#11@@1| T@U) (|l#12@@1| T@U) (|l#13@@1| T@U) (|l#14@@1| T@U) (|l#15@@1| T@U) (|l#16@@1| T@U) (|l#17@@1| T@U) (|l#18@@1| T@U) (|$l#37#heap#0| T@U) (|$l#37#k#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1607| |l#0@@5| |l#1@@4| |l#2@@4| |l#3@@4| |l#4@@4| |l#5@@4| |l#6@@3| |l#7@@3| |l#8@@1| |l#9@@1| |l#10@@1| |l#11@@1| |l#12@@1| |l#13@@1| |l#14@@1| |l#15@@1| |l#16@@1| |l#17@@1| |l#18@@1|) |$l#37#heap#0| |$l#37#k#0|) ($Box intType (int_2_U (Mul (Mul (U_2_int ($Unbox intType (Apply1 |l#0@@5| |l#1@@4| |$l#37#heap#0| ($Unbox HandleTypeType (Apply1 |l#2@@4| |l#3@@4| |$l#37#heap#0| |l#4@@4| |l#5@@4|)) |l#6@@3|))) (U_2_int ($Unbox intType (Apply1 |l#7@@3| |l#8@@1| |$l#37#heap#0| ($Unbox HandleTypeType (Apply1 |l#9@@1| |l#10@@1| |$l#37#heap#0| |l#11@@1| |l#12@@1|)) ($Box intType ($Unbox intType |$l#37#k#0|)))))) (U_2_int ($Unbox intType (Apply1 |l#13@@1| |l#14@@1| |$l#37#heap#0| ($Unbox HandleTypeType (Apply1 |l#15@@1| |l#16@@1| |$l#37#heap#0| |l#17@@1| ($Box intType ($Unbox intType |$l#37#k#0|)))) |l#18@@1|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |768|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1607| |l#0@@5| |l#1@@4| |l#2@@4| |l#3@@4| |l#4@@4| |l#5@@4| |l#6@@3| |l#7@@3| |l#8@@1| |l#9@@1| |l#10@@1| |l#11@@1| |l#12@@1| |l#13@@1| |l#14@@1| |l#15@@1| |l#16@@1| |l#17@@1| |l#18@@1|) |$l#37#heap#0| |$l#37#k#0|))
 )))
 (assert (forall ((s T@U) (bx@@4 T@U) ) (! (= (|Set#IsMember| (SetRef_to_SetBox s) bx@@4) (U_2_bool (MapType1Select refType boolType s ($Unbox refType bx@@4))))
+ :qid |DafnyPreludebpl.370:15|
+ :skolemid |82|
  :pattern ( (|Set#IsMember| (SetRef_to_SetBox s) bx@@4))
 )))
 (assert (forall ((|#$T0| T@U) (|#$R| T@U) (|f#0@@1| T@U) ($h@@4 T@U) ) (! (= ($IsAlloc HandleTypeType |f#0@@1| (Tclass._System.___hPartialFunc1 |#$T0| |#$R|) $h@@4) ($IsAlloc HandleTypeType |f#0@@1| (Tclass._System.___hFunc1 |#$T0| |#$R|) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |403|
  :pattern ( ($IsAlloc HandleTypeType |f#0@@1| (Tclass._System.___hPartialFunc1 |#$T0| |#$R|) $h@@4))
 )))
 (assert (forall ((|#$T0@@0| T@U) (|#$R@@0| T@U) (|f#0@@2| T@U) ($h@@5 T@U) ) (! (= ($IsAlloc HandleTypeType |f#0@@2| (Tclass._System.___hTotalFunc1 |#$T0@@0| |#$R@@0|) $h@@5) ($IsAlloc HandleTypeType |f#0@@2| (Tclass._System.___hPartialFunc1 |#$T0@@0| |#$R@@0|) $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |410|
  :pattern ( ($IsAlloc HandleTypeType |f#0@@2| (Tclass._System.___hTotalFunc1 |#$T0@@0| |#$R@@0|) $h@@5))
 )))
 (assert (forall ((t0@@11 T@U) (t1@@10 T@U) (heap@@1 T@U) (h@@4 T@U) (r@@0 T@U) (rd@@0 T@U) (bx0@@7 T@U) ) (! (= (Apply1 t0@@11 t1@@10 heap@@1 (Handle1 h@@4 r@@0 rd@@0) bx0@@7) (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType h@@4 heap@@1 bx0@@7))
+ :qid |unknown.0:0|
+ :skolemid |370|
  :pattern ( (Apply1 t0@@11 t1@@10 heap@@1 (Handle1 h@@4 r@@0 rd@@0) bx0@@7))
 )))
 (assert (forall ((bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |346|
  :pattern ( ($IsBox bx@@5 Tclass._System.object?))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |349|
  :pattern ( ($IsBox bx@@6 Tclass._System.object))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass._module.Pos) (and (= ($Box intType ($Unbox intType bx@@7)) bx@@7) ($Is intType ($Unbox intType bx@@7) Tclass._module.Pos)))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( ($IsBox bx@@7 Tclass._module.Pos))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 Tclass._module.Index) (and (= ($Box intType ($Unbox intType bx@@8)) bx@@8) ($Is intType ($Unbox intType bx@@8) Tclass._module.Index)))
+ :qid |unknown.0:0|
+ :skolemid |533|
  :pattern ( ($IsBox bx@@8 Tclass._module.Index))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass._System.object)  (and ($Is refType |c#0@@0| Tclass._System.object?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |350|
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@0| Tclass._System.object?))
 )))
 (assert (forall (($ly@@1 T@U) (|f#0@@3| T@U) (|n#0@@1| Int) ) (! (= (_module.__default.Sum__n ($LS $ly@@1) |f#0@@3| |n#0@@1|) (_module.__default.Sum__n $ly@@1 |f#0@@3| |n#0@@1|))
+ :qid |MatrixAssocdfy.35:10|
+ :skolemid |540|
  :pattern ( (_module.__default.Sum__n ($LS $ly@@1) |f#0@@3| |n#0@@1|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|f#0@@4| T@U) ) (!  (=> (or (|_module.__default.Sum#canCall| |f#0@@4|) (and (< 4 $FunctionContextHeight) ($Is HandleTypeType |f#0@@4| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt)))) (and (|_module.__default.Sum__n#canCall| |f#0@@4| _module.__default.N) (= (_module.__default.Sum |f#0@@4|) (_module.__default.Sum__n ($LS $LZ) |f#0@@4| _module.__default.N))))
+ :qid |MatrixAssocdfy.42:14|
+ :skolemid |550|
  :pattern ( (_module.__default.Sum |f#0@@4|))
 ))))
 (assert (forall ((f@@8 T@U) (t0@@12 T@U) (t1@@11 T@U) (h@@5 T@U) ) (!  (=> (and ($IsGoodHeap h@@5) ($IsAlloc HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@12 t1@@11) h@@5)) (forall ((bx0@@8 T@U) ) (!  (=> (and ($IsAllocBox bx0@@8 t0@@12 h@@5) (Requires1 t0@@12 t1@@11 h@@5 f@@8 bx0@@8)) ($IsAllocBox (Apply1 t0@@12 t1@@11 h@@5 f@@8 bx0@@8) t1@@11 h@@5))
+ :qid |unknown.0:0|
+ :skolemid |395|
  :pattern ( (Apply1 t0@@12 t1@@11 h@@5 f@@8 bx0@@8))
 )))
+ :qid |unknown.0:0|
+ :skolemid |396|
  :pattern ( ($IsAlloc HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@12 t1@@11) h@@5))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($ly@@2 T@U) ($Heap@@1 T@U) (|f#0@@5| T@U) (|n#0@@2| Int) ) (!  (=> (or (|_module.__default.Sum__n#canCall| |f#0@@5| (LitInt |n#0@@2|)) (and (< 3 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap@@1) ($Is HandleTypeType |f#0@@5| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt))) (<= (LitInt 0) |n#0@@2|)) (<= (LitInt |n#0@@2|) _module.__default.N)))) (and (=> (or (not (= (LitInt |n#0@@2|) (LitInt 0))) (not true)) (|_module.__default.Sum__n#canCall| |f#0@@5| (LitInt (- |n#0@@2| 1)))) (= (_module.__default.Sum__n ($LS $ly@@2) |f#0@@5| (LitInt |n#0@@2|)) (ite (= (LitInt |n#0@@2|) (LitInt 0)) 0 (+ (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@1 |f#0@@5| ($Box intType (int_2_U (LitInt (- |n#0@@2| 1))))))) (_module.__default.Sum__n ($LS $ly@@2) |f#0@@5| (LitInt (- |n#0@@2| 1))))))))
+ :qid |MatrixAssocdfy.35:10|
  :weight 3
+ :skolemid |545|
  :pattern ( (_module.__default.Sum__n ($LS $ly@@2) |f#0@@5| (LitInt |n#0@@2|)) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((|l#0@@6| Bool) (|$l#6#o#0| T@U) ) (! (= (U_2_bool (MapType1Select refType boolType (|lambda#6| |l#0@@6|) |$l#6#o#0|)) |l#0@@6|)
+ :qid |unknown.0:0|
+ :skolemid |744|
  :pattern ( (MapType1Select refType boolType (|lambda#6| |l#0@@6|) |$l#6#o#0|))
 )))
 (assert (forall ((|l#0@@7| T@U) (|$l#6#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#8| |l#0@@7|) |$l#6#ly#0|) |l#0@@7|)
+ :qid |MatrixAssocdfy.50:9|
+ :skolemid |746|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#8| |l#0@@7|) |$l#6#ly#0|))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a b))
 )))
 (assert (forall ((|l#0@@8| T@U) (|l#1@@5| T@U) (|l#2@@5| T@U) (|l#3@@5| T@U) (|l#4@@5| T@U) (|l#5@@5| T@U) (|$l#10#heap#0| T@U) (|$l#10#l#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#152| |l#0@@8| |l#1@@5| |l#2@@5| |l#3@@5| |l#4@@5| |l#5@@5|) |$l#10#heap#0| |$l#10#l#0|) ($Box intType ($Unbox intType (Apply1 |l#0@@8| |l#1@@5| |$l#10#heap#0| ($Unbox HandleTypeType (Apply1 |l#2@@5| |l#3@@5| |$l#10#heap#0| |l#4@@5| |l#5@@5|)) ($Box intType ($Unbox intType |$l#10#l#0|))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |753|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#152| |l#0@@8| |l#1@@5| |l#2@@5| |l#3@@5| |l#4@@5| |l#5@@5|) |$l#10#heap#0| |$l#10#l#0|))
 )))
 (assert (forall ((|x#0@@2| T@U) ) (! (= ($Is intType |x#0@@2| Tclass._module.Index)  (and (<= (LitInt 0) (U_2_int |x#0@@2|)) (< (U_2_int |x#0@@2|) _module.__default.N)))
+ :qid |unknown.0:0|
+ :skolemid |739|
  :pattern ( ($Is intType |x#0@@2| Tclass._module.Index))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) (c T@U) ) (!  (=> (or (not (= a@@0 c)) (not true)) (=> (and ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c)) ($HeapSucc a@@0 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c))
 )))
 (assert (forall ((f@@9 T@U) (t0@@13 T@U) (t1@@12 T@U) ) (! (= ($Is HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@13 t1@@12)) (forall ((h@@6 T@U) (bx0@@9 T@U) ) (!  (=> (and (and ($IsGoodHeap h@@6) ($IsBox bx0@@9 t0@@13)) (Requires1 t0@@13 t1@@12 h@@6 f@@9 bx0@@9)) ($IsBox (Apply1 t0@@13 t1@@12 h@@6 f@@9 bx0@@9) t1@@12))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |387|
  :pattern ( (Apply1 t0@@13 t1@@12 h@@6 f@@9 bx0@@9))
 )))
+ :qid |unknown.0:0|
+ :skolemid |388|
  :pattern ( ($Is HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@13 t1@@12)))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 TInt) (and (= ($Box intType ($Unbox intType bx@@9)) bx@@9) ($Is intType ($Unbox intType bx@@9) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@9 TInt))
 )))
 (assert (forall ((v@@2 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@2) t@@2) ($Is T@@3 v@@2 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@2) t@@2))
 )))
 (assert (forall ((t0@@14 T@U) (t1@@13 T@U) (heap@@2 T@U) (h@@7 T@U) (r@@1 T@U) (rd@@1 T@U) (bx0@@10 T@U) ) (!  (=> (U_2_bool (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType boolType r@@1 heap@@2 bx0@@10)) (Requires1 t0@@14 t1@@13 heap@@2 (Handle1 h@@7 r@@1 rd@@1) bx0@@10))
+ :qid |unknown.0:0|
+ :skolemid |371|
  :pattern ( (Requires1 t0@@14 t1@@13 heap@@2 (Handle1 h@@7 r@@1 rd@@1) bx0@@10))
 )))
 (assert (forall ((v@@3 T@U) (t0@@15 T@U) (h@@8 T@U) ) (! (= ($IsAlloc SetType v@@3 (TSet t0@@15) h@@8) (forall ((bx@@10 T@U) ) (!  (=> (|Set#IsMember| v@@3 bx@@10) ($IsAllocBox bx@@10 t0@@15 h@@8))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@3 bx@@10))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@3 (TSet t0@@15) h@@8))
 )))
 (assert (forall ((|#$T0@@1| T@U) (|#$R@@1| T@U) ) (! (= (Tclass._System.___hFunc1_0 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)) |#$T0@@1|)
+ :qid |unknown.0:0|
+ :skolemid |367|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|))
 )))
 (assert (forall ((|#$T0@@2| T@U) (|#$R@@2| T@U) ) (! (= (Tclass._System.___hFunc1_1 (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) |#$R@@2|)
+ :qid |unknown.0:0|
+ :skolemid |368|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|))
 )))
 (assert (forall ((|#$T0@@3| T@U) (|#$R@@3| T@U) ) (! (= (Tclass._System.___hPartialFunc1_0 (Tclass._System.___hPartialFunc1 |#$T0@@3| |#$R@@3|)) |#$T0@@3|)
+ :qid |unknown.0:0|
+ :skolemid |398|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@3| |#$R@@3|))
 )))
 (assert (forall ((|#$T0@@4| T@U) (|#$R@@4| T@U) ) (! (= (Tclass._System.___hPartialFunc1_1 (Tclass._System.___hPartialFunc1 |#$T0@@4| |#$R@@4|)) |#$R@@4|)
+ :qid |unknown.0:0|
+ :skolemid |399|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@4| |#$R@@4|))
 )))
 (assert (forall ((|#$T0@@5| T@U) (|#$R@@5| T@U) ) (! (= (Tclass._System.___hTotalFunc1_0 (Tclass._System.___hTotalFunc1 |#$T0@@5| |#$R@@5|)) |#$T0@@5|)
+ :qid |unknown.0:0|
+ :skolemid |405|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@5| |#$R@@5|))
 )))
 (assert (forall ((|#$T0@@6| T@U) (|#$R@@6| T@U) ) (! (= (Tclass._System.___hTotalFunc1_1 (Tclass._System.___hTotalFunc1 |#$T0@@6| |#$R@@6|)) |#$R@@6|)
+ :qid |unknown.0:0|
+ :skolemid |406|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@6| |#$R@@6|))
 )))
 (assert (forall (($o@@0 T@U) ) (! ($Is refType $o@@0 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |347|
  :pattern ( ($Is refType $o@@0 Tclass._System.object?))
 )))
 (assert (forall ((t@@3 T@U) ) (! (= (Inv0_TSet (TSet t@@3)) t@@3)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@3))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Tag (TSet t@@4)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@4))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert (forall ((|l#0@@9| T@U) (|l#1@@6| T@U) (|l#2@@6| T@U) (|l#3@@6| T@U) (|l#4@@6| T@U) (|l#5@@6| T@U) (|l#6@@4| T@U) (|l#7@@4| T@U) (|l#8@@2| T@U) (|l#9@@2| T@U) (|l#10@@2| T@U) (|l#11@@2| T@U) (|l#12@@2| T@U) (|l#13@@2| T@U) (|l#14@@2| T@U) (|l#15@@2| T@U) (|l#16@@2| T@U) (|l#17@@2| T@U) (|l#18@@2| T@U) (|$l#32#heap#0| T@U) (|$l#32#l#0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1592| |l#0@@9| |l#1@@6| |l#2@@6| |l#3@@6| |l#4@@6| |l#5@@6| |l#6@@4| |l#7@@4| |l#8@@2| |l#9@@2| |l#10@@2| |l#11@@2| |l#12@@2| |l#13@@2| |l#14@@2| |l#15@@2| |l#16@@2| |l#17@@2| |l#18@@2|) |$l#32#heap#0| |$l#32#l#0|) ($Box intType (int_2_U (Mul (Mul (U_2_int ($Unbox intType (Apply1 |l#0@@9| |l#1@@6| |$l#32#heap#0| ($Unbox HandleTypeType (Apply1 |l#2@@6| |l#3@@6| |$l#32#heap#0| |l#4@@6| |l#5@@6|)) ($Box intType ($Unbox intType |$l#32#l#0|))))) (U_2_int ($Unbox intType (Apply1 |l#6@@4| |l#7@@4| |$l#32#heap#0| ($Unbox HandleTypeType (Apply1 |l#8@@2| |l#9@@2| |$l#32#heap#0| |l#10@@2| ($Box intType ($Unbox intType |$l#32#l#0|)))) |l#11@@2|)))) (U_2_int ($Unbox intType (Apply1 |l#12@@2| |l#13@@2| |$l#32#heap#0| ($Unbox HandleTypeType (Apply1 |l#14@@2| |l#15@@2| |$l#32#heap#0| |l#16@@2| |l#17@@2|)) |l#18@@2|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |765|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1592| |l#0@@9| |l#1@@6| |l#2@@6| |l#3@@6| |l#4@@6| |l#5@@6| |l#6@@4| |l#7@@4| |l#8@@2| |l#9@@2| |l#10@@2| |l#11@@2| |l#12@@2| |l#13@@2| |l#14@@2| |l#15@@2| |l#16@@2| |l#17@@2| |l#18@@2|) |$l#32#heap#0| |$l#32#l#0|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|f#0@@6| T@U) ) (!  (=> (or (|_module.__default.Sum#canCall| (Lit HandleTypeType |f#0@@6|)) (and (< 4 $FunctionContextHeight) ($Is HandleTypeType |f#0@@6| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt)))) (and (|_module.__default.Sum__n#canCall| (Lit HandleTypeType |f#0@@6|) _module.__default.N) (= (_module.__default.Sum (Lit HandleTypeType |f#0@@6|)) (_module.__default.Sum__n ($LS $LZ) (Lit HandleTypeType |f#0@@6|) _module.__default.N))))
+ :qid |MatrixAssocdfy.42:14|
  :weight 3
+ :skolemid |551|
  :pattern ( (_module.__default.Sum (Lit HandleTypeType |f#0@@6|)))
 ))))
-(assert (forall ((|#$T0@@7| T@U) (|#$R@@7| T@U) (|f#0@@7| T@U) ) (! (= ($Is HandleTypeType |f#0@@7| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|))  (and ($Is HandleTypeType |f#0@@7| (Tclass._System.___hPartialFunc1 |#$T0@@7| |#$R@@7|)) (forall ((|x0#0| T@U) )  (=> ($IsBox |x0#0| |#$T0@@7|) (Requires1 |#$T0@@7| |#$R@@7| $OneHeap |f#0@@7| |x0#0|)))))
+(assert (forall ((|#$T0@@7| T@U) (|#$R@@7| T@U) (|f#0@@7| T@U) ) (! (= ($Is HandleTypeType |f#0@@7| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|))  (and ($Is HandleTypeType |f#0@@7| (Tclass._System.___hPartialFunc1 |#$T0@@7| |#$R@@7|)) (forall ((|x0#0| T@U) ) (!  (=> ($IsBox |x0#0| |#$T0@@7|) (Requires1 |#$T0@@7| |#$R@@7| $OneHeap |f#0@@7| |x0#0|))
+ :qid |unknown.0:0|
+ :skolemid |408|
+))))
+ :qid |unknown.0:0|
+ :skolemid |409|
  :pattern ( ($Is HandleTypeType |f#0@@7| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|)))
 )))
 (assert (forall ((|l#0@@10| T@U) (|l#1@@7| T@U) (|l#2@@7| T@U) (|l#3@@7| T@U) (|l#4@@7| T@U) (|l#5@@7| T@U) (|l#6@@5| T@U) (|l#7@@5| T@U) (|l#8@@3| T@U) (|l#9@@3| T@U) (|l#10@@3| T@U) (|l#11@@3| T@U) (|l#12@@3| T@U) (|l#13@@3| T@U) (|l#14@@3| T@U) (|l#15@@3| T@U) (|l#16@@3| T@U) (|l#17@@3| T@U) (|l#18@@3| T@U) (|l#19@@1| T@U) (|l#20| T@U) (|$l#33#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#1606| |l#0@@10| |l#1@@7| |l#2@@7| |l#3@@7| |l#4@@7| |l#5@@7| |l#6@@5| |l#7@@5| |l#8@@3| |l#9@@3| |l#10@@3| |l#11@@3| |l#12@@3| |l#13@@3| |l#14@@3| |l#15@@3| |l#16@@3| |l#17@@3| |l#18@@3| |l#19@@1| |l#20|) |$l#33#ly#0|) (Handle1 (|lambda#1602| |l#0@@10| |l#1@@7| |l#2@@7| |l#3@@7| |l#4@@7| |l#5@@7| |l#6@@5| |l#7@@5| |l#8@@3| |l#9@@3| |l#10@@3| |l#11@@3| |l#12@@3| |l#13@@3| |l#14@@3| |l#15@@3| |l#16@@3| |l#17@@3| |l#18@@3| |$l#33#ly#0|) |l#19@@1| |l#20|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |767|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#1606| |l#0@@10| |l#1@@7| |l#2@@7| |l#3@@7| |l#4@@7| |l#5@@7| |l#6@@5| |l#7@@5| |l#8@@3| |l#9@@3| |l#10@@3| |l#11@@3| |l#12@@3| |l#13@@3| |l#14@@3| |l#15@@3| |l#16@@3| |l#17@@3| |l#18@@3| |l#19@@1| |l#20|) |$l#33#ly#0|))
 )))
 (assert (forall ((|l#0@@11| T@U) (|l#1@@8| T@U) (|l#2@@8| T@U) (|l#3@@8| T@U) (|l#4@@8| T@U) (|l#5@@8| T@U) (|l#6@@6| T@U) (|l#7@@6| T@U) (|l#8@@4| T@U) (|l#9@@4| T@U) (|l#10@@4| T@U) (|l#11@@4| T@U) (|l#12@@4| T@U) (|l#13@@4| T@U) (|l#14@@4| T@U) (|l#15@@4| T@U) (|l#16@@4| T@U) (|l#17@@4| T@U) (|l#18@@4| T@U) (|l#19@@2| T@U) (|l#20@@0| T@U) (|$l#38#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#1621| |l#0@@11| |l#1@@8| |l#2@@8| |l#3@@8| |l#4@@8| |l#5@@8| |l#6@@6| |l#7@@6| |l#8@@4| |l#9@@4| |l#10@@4| |l#11@@4| |l#12@@4| |l#13@@4| |l#14@@4| |l#15@@4| |l#16@@4| |l#17@@4| |l#18@@4| |l#19@@2| |l#20@@0|) |$l#38#ly#0|) (Handle1 (|lambda#1617| |l#0@@11| |l#1@@8| |l#2@@8| |l#3@@8| |l#4@@8| |l#5@@8| |l#6@@6| |l#7@@6| |l#8@@4| |l#9@@4| |l#10@@4| |l#11@@4| |l#12@@4| |l#13@@4| |l#14@@4| |l#15@@4| |l#16@@4| |l#17@@4| |l#18@@4| |$l#38#ly#0|) |l#19@@2| |l#20@@0|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |770|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#1621| |l#0@@11| |l#1@@8| |l#2@@8| |l#3@@8| |l#4@@8| |l#5@@8| |l#6@@6| |l#7@@6| |l#8@@4| |l#9@@4| |l#10@@4| |l#11@@4| |l#12@@4| |l#13@@4| |l#14@@4| |l#15@@4| |l#16@@4| |l#17@@4| |l#18@@4| |l#19@@2| |l#20@@0|) |$l#38#ly#0|))
 )))
 (assert (forall ((|l#0@@12| T@U) (|l#1@@9| T@U) (|l#2@@9| T@U) (|l#3@@9| T@U) (|l#4@@9| T@U) (|l#5@@9| T@U) (|l#6@@7| T@U) (|l#7@@7| T@U) (|l#8@@5| T@U) (|l#9@@5| T@U) (|l#10@@5| T@U) (|l#11@@5| T@U) (|l#12@@5| T@U) (|l#13@@5| T@U) (|l#14@@5| T@U) (|l#15@@5| T@U) (|l#16@@5| T@U) (|l#17@@5| T@U) (|l#18@@5| T@U) (|l#19@@3| T@U) (|l#20@@1| T@U) (|$l#58#ly#0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#1702| |l#0@@12| |l#1@@9| |l#2@@9| |l#3@@9| |l#4@@9| |l#5@@9| |l#6@@7| |l#7@@7| |l#8@@5| |l#9@@5| |l#10@@5| |l#11@@5| |l#12@@5| |l#13@@5| |l#14@@5| |l#15@@5| |l#16@@5| |l#17@@5| |l#18@@5| |l#19@@3| |l#20@@1|) |$l#58#ly#0|) (Handle1 (|lambda#1698| |l#0@@12| |l#1@@9| |l#2@@9| |l#3@@9| |l#4@@9| |l#5@@9| |l#6@@7| |l#7@@7| |l#8@@5| |l#9@@5| |l#10@@5| |l#11@@5| |l#12@@5| |l#13@@5| |l#14@@5| |l#15@@5| |l#16@@5| |l#17@@5| |l#18@@5| |$l#58#ly#0|) |l#19@@3| |l#20@@1|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |772|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#1702| |l#0@@12| |l#1@@9| |l#2@@9| |l#3@@9| |l#4@@9| |l#5@@9| |l#6@@7| |l#7@@7| |l#8@@5| |l#9@@5| |l#10@@5| |l#11@@5| |l#12@@5| |l#13@@5| |l#14@@5| |l#15@@5| |l#16@@5| |l#17@@5| |l#18@@5| |l#19@@3| |l#20@@1|) |$l#58#ly#0|))
 )))
-(assert (forall ((|#$T0@@8| T@U) (|#$R@@8| T@U) (|f#0@@8| T@U) ) (! (= ($Is HandleTypeType |f#0@@8| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|))  (and ($Is HandleTypeType |f#0@@8| (Tclass._System.___hFunc1 |#$T0@@8| |#$R@@8|)) (forall ((|x0#0@@0| T@U) )  (=> ($IsBox |x0#0@@0| |#$T0@@8|) (|Set#Equal| (Reads1 |#$T0@@8| |#$R@@8| $OneHeap |f#0@@8| |x0#0@@0|) |Set#Empty|)))))
+(assert (forall ((|#$T0@@8| T@U) (|#$R@@8| T@U) (|f#0@@8| T@U) ) (! (= ($Is HandleTypeType |f#0@@8| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|))  (and ($Is HandleTypeType |f#0@@8| (Tclass._System.___hFunc1 |#$T0@@8| |#$R@@8|)) (forall ((|x0#0@@0| T@U) ) (!  (=> ($IsBox |x0#0@@0| |#$T0@@8|) (|Set#Equal| (Reads1 |#$T0@@8| |#$R@@8| $OneHeap |f#0@@8| |x0#0@@0|) |Set#Empty|))
+ :qid |unknown.0:0|
+ :skolemid |401|
+))))
+ :qid |unknown.0:0|
+ :skolemid |402|
  :pattern ( ($Is HandleTypeType |f#0@@8| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|)))
 )))
 (assert (forall ((f@@10 T@U) (ly@@0 T@U) (A@@0 T@T) ) (! (= (AtLayer A@@0 f@@10 ($LS ly@@0)) (AtLayer A@@0 f@@10 ly@@0))
+ :qid |DafnyPreludebpl.502:18|
+ :skolemid |102|
  :pattern ( (AtLayer A@@0 f@@10 ($LS ly@@0)))
 )))
 (assert (forall ((f@@11 T@U) (t0@@16 T@U) (t1@@14 T@U) (h@@9 T@U) ) (!  (=> ($IsGoodHeap h@@9) (= ($IsAlloc HandleTypeType f@@11 (Tclass._System.___hFunc1 t0@@16 t1@@14) h@@9) (forall ((bx0@@11 T@U) ) (!  (=> (and (and ($IsBox bx0@@11 t0@@16) ($IsAllocBox bx0@@11 t0@@16 h@@9)) (Requires1 t0@@16 t1@@14 h@@9 f@@11 bx0@@11)) (forall ((r@@2 T@U) ) (!  (=> (and (or (not (= r@@2 null)) (not true)) (|Set#IsMember| (Reads1 t0@@16 t1@@14 h@@9 f@@11 bx0@@11) ($Box refType r@@2))) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) h@@9 r@@2) alloc))))
+ :qid |unknown.0:0|
+ :skolemid |392|
  :pattern ( (|Set#IsMember| (Reads1 t0@@16 t1@@14 h@@9 f@@11 bx0@@11) ($Box refType r@@2)))
 )))
+ :qid |unknown.0:0|
+ :skolemid |393|
  :pattern ( (Apply1 t0@@16 t1@@14 h@@9 f@@11 bx0@@11))
  :pattern ( (Reads1 t0@@16 t1@@14 h@@9 f@@11 bx0@@11))
 ))))
+ :qid |unknown.0:0|
+ :skolemid |394|
  :pattern ( ($IsAlloc HandleTypeType f@@11 (Tclass._System.___hFunc1 t0@@16 t1@@14) h@@9))
 )))
 (assert (forall ((|#$T0@@9| T@U) (|#$R@@9| T@U) (bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@11)) bx@@11) ($Is HandleTypeType ($Unbox HandleTypeType bx@@11) (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|))))
+ :qid |unknown.0:0|
+ :skolemid |369|
  :pattern ( ($IsBox bx@@11 (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|)))
 )))
 (assert (forall ((|#$T0@@10| T@U) (|#$R@@10| T@U) (bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@12)) bx@@12) ($Is HandleTypeType ($Unbox HandleTypeType bx@@12) (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|))))
+ :qid |unknown.0:0|
+ :skolemid |400|
  :pattern ( ($IsBox bx@@12 (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|)))
 )))
 (assert (forall ((|#$T0@@11| T@U) (|#$R@@11| T@U) (bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@13)) bx@@13) ($Is HandleTypeType ($Unbox HandleTypeType bx@@13) (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|))))
+ :qid |unknown.0:0|
+ :skolemid |407|
  :pattern ( ($IsBox bx@@13 (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|)))
 )))
 (assert (forall ((|l#0@@13| T@U) (|l#1@@10| T@U) (|l#2@@10| T@U) (|l#3@@10| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@13| |l#1@@10| |l#2@@10| |l#3@@10|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0@@13|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1@@10| $o@@1) |l#2@@10|)))) |l#3@@10|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |741|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0@@13| |l#1@@10| |l#2@@10| |l#3@@10|) $o@@1 $f))
 )))
 (assert (forall ((|#$T0@@12| T@U) (|#$R@@12| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) |tytagFamily$_#Func1|))
+ :qid |unknown.0:0|
+ :skolemid |366|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|))
 )))
 (assert (forall ((|#$T0@@13| T@U) (|#$R@@13| T@U) ) (!  (and (= (Tag (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|)) Tagclass._System.___hPartialFunc1) (= (TagFamily (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|)) |tytagFamily$_#PartialFunc1|))
+ :qid |unknown.0:0|
+ :skolemid |397|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|))
 )))
 (assert (forall ((|#$T0@@14| T@U) (|#$R@@14| T@U) ) (!  (and (= (Tag (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|)) Tagclass._System.___hTotalFunc1) (= (TagFamily (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|)) |tytagFamily$_#TotalFunc1|))
+ :qid |unknown.0:0|
+ :skolemid |404|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@6 y))
 )))
 (assert (forall ((t0@@17 T@U) (t1@@15 T@U) (heap@@3 T@U) (f@@12 T@U) (bx0@@12 T@U) ) (!  (=> (and (and ($IsGoodHeap heap@@3) (and ($IsBox bx0@@12 t0@@17) ($Is HandleTypeType f@@12 (Tclass._System.___hFunc1 t0@@17 t1@@15)))) (|Set#Equal| (Reads1 t0@@17 t1@@15 $OneHeap f@@12 bx0@@12) |Set#Empty|)) (= (Requires1 t0@@17 t1@@15 $OneHeap f@@12 bx0@@12) (Requires1 t0@@17 t1@@15 heap@@3 f@@12 bx0@@12)))
+ :qid |unknown.0:0|
+ :skolemid |386|
  :pattern ( (Requires1 t0@@17 t1@@15 $OneHeap f@@12 bx0@@12) ($IsGoodHeap heap@@3))
  :pattern ( (Requires1 t0@@17 t1@@15 heap@@3 f@@12 bx0@@12))
 )))
 (assert (forall ((bx@@14 T@U) (t@@5 T@U) ) (!  (=> ($IsBox bx@@14 (TSet t@@5)) (and (= ($Box SetType ($Unbox SetType bx@@14)) bx@@14) ($Is SetType ($Unbox SetType bx@@14) (TSet t@@5))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@14 (TSet t@@5)))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -462,36 +693,58 @@
 (assert (= (Tag Tclass._module.Index) Tagclass._module.Index))
 (assert (= (TagFamily Tclass._module.Index) tytagFamily$Index))
 (assert (forall ((|l#0@@14| T@U) (|l#1@@11| T@U) (|l#2@@11| T@U) (|l#3@@11| T@U) (|l#4@@10| T@U) (|l#5@@10| T@U) (|l#6@@8| T@U) (|l#7@@8| T@U) (|l#8@@6| T@U) (|l#9@@6| T@U) (|l#10@@6| T@U) (|l#11@@6| T@U) (|l#12@@6| T@U) (|l#13@@6| T@U) (|l#14@@6| T@U) (|l#15@@6| T@U) (|l#16@@6| T@U) (|l#17@@6| T@U) (|l#18@@6| T@U) (|l#19@@4| T@U) (|$l#38#heap#0@@0| T@U) (|$l#38#l#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1617| |l#0@@14| |l#1@@11| |l#2@@11| |l#3@@11| |l#4@@10| |l#5@@10| |l#6@@8| |l#7@@8| |l#8@@6| |l#9@@6| |l#10@@6| |l#11@@6| |l#12@@6| |l#13@@6| |l#14@@6| |l#15@@6| |l#16@@6| |l#17@@6| |l#18@@6| |l#19@@4|) |$l#38#heap#0@@0| |$l#38#l#0@@0|) ($Box intType (int_2_U (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| |l#0@@14| |l#1@@11| |l#2@@11| |l#3@@11| |l#4@@10| |l#5@@10| ($Box intType ($Unbox intType |$l#38#l#0@@0|)) |l#6@@8| |l#7@@8| |l#8@@6| |l#9@@6| |l#10@@6| ($Box intType ($Unbox intType |$l#38#l#0@@0|)) |l#11@@6| |l#12@@6| |l#13@@6| |l#14@@6| |l#15@@6| |l#16@@6|) |l#17@@6| |l#18@@6|)) |l#19@@4|)))))))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |769|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType BoxType (|lambda#1617| |l#0@@14| |l#1@@11| |l#2@@11| |l#3@@11| |l#4@@10| |l#5@@10| |l#6@@8| |l#7@@8| |l#8@@6| |l#9@@6| |l#10@@6| |l#11@@6| |l#12@@6| |l#13@@6| |l#14@@6| |l#15@@6| |l#16@@6| |l#17@@6| |l#18@@6| |l#19@@4|) |$l#38#heap#0@@0| |$l#38#l#0@@0|))
 )))
 (assert (forall ((s@@0 T@U) ) (! ($Is SetType (SetRef_to_SetBox s@@0) (TSet Tclass._System.object?))
+ :qid |DafnyPreludebpl.372:15|
+ :skolemid |83|
  :pattern ( (SetRef_to_SetBox s@@0))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (! (= (|Set#Equal| a@@1 b@@1) (forall ((o@@7 T@U) ) (! (= (|Set#IsMember| a@@1 o@@7) (|Set#IsMember| b@@1 o@@7))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@1 o@@7))
  :pattern ( (|Set#IsMember| b@@1 o@@7))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@1 b@@1))
 )))
 (assert (forall ((|l#0@@15| T@U) (|l#1@@12| T@U) (|l#2@@12| T@U) (|l#3@@12| T@U) (|l#4@@11| T@U) (|l#5@@11| T@U) (|l#6@@9| T@U) (|l#7@@9| T@U) (|l#8@@7| T@U) (|$l#33#ly#0@@0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#878| |l#0@@15| |l#1@@12| |l#2@@12| |l#3@@12| |l#4@@11| |l#5@@11| |l#6@@9| |l#7@@9| |l#8@@7|) |$l#33#ly#0@@0|) (Handle1 (|lambda#874| |l#0@@15| |l#1@@12| |l#2@@12| |l#3@@12| |l#4@@11| |l#5@@11| |l#6@@9| |$l#33#ly#0@@0|) |l#7@@9| |l#8@@7|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |762|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#878| |l#0@@15| |l#1@@12| |l#2@@12| |l#3@@12| |l#4@@11| |l#5@@11| |l#6@@9| |l#7@@9| |l#8@@7|) |$l#33#ly#0@@0|))
 )))
 (assert (forall ((|l#0@@16| T@U) (|l#1@@13| T@U) (|l#2@@13| T@U) (|l#3@@13| T@U) (|l#4@@12| T@U) (|l#5@@12| T@U) (|l#6@@10| T@U) (|l#7@@10| T@U) (|l#8@@8| T@U) (|$l#38#ly#0@@0| T@U) ) (! (= (MapType1Select LayerTypeType HandleTypeType (|lambda#893| |l#0@@16| |l#1@@13| |l#2@@13| |l#3@@13| |l#4@@12| |l#5@@12| |l#6@@10| |l#7@@10| |l#8@@8|) |$l#38#ly#0@@0|) (Handle1 (|lambda#889| |l#0@@16| |l#1@@13| |l#2@@13| |l#3@@13| |l#4@@12| |l#5@@12| |l#6@@10| |$l#38#ly#0@@0|) |l#7@@10| |l#8@@8|))
+ :qid |MatrixAssocdfy.10:6|
+ :skolemid |764|
  :pattern ( (MapType1Select LayerTypeType HandleTypeType (|lambda#893| |l#0@@16| |l#1@@13| |l#2@@13| |l#3@@13| |l#4@@12| |l#5@@12| |l#6@@10| |l#7@@10| |l#8@@8|) |$l#38#ly#0@@0|))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@8)) (Lit BoxType ($Box T@@5 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@8)))
 )))
 (assert (forall ((h@@10 T@U) (v@@4 T@U) ) (! ($IsAlloc intType v@@4 TInt h@@10)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@4 TInt h@@10))
 )))
 (assert (forall ((|l#0@@17| T@U) (|$l#6#heap#0@@0| T@U) (|$l#6#k#0@@0| T@U) ) (! (= (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#7| |l#0@@17|) |$l#6#heap#0@@0| |$l#6#k#0@@0|) |l#0@@17|)
+ :qid |MatrixAssocdfy.50:9|
+ :skolemid |745|
  :pattern ( (MapType0Select (MapType1Type refType (MapType1Type FieldType BoxType)) BoxType SetType (|lambda#7| |l#0@@17|) |$l#6#heap#0@@0| |$l#6#k#0@@0|))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@5 TInt))
 )))
 (push 1)
@@ -670,6 +923,7 @@
 (declare-fun |$_Frame#l0_0@0| () T@U)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun |m#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.sum__assoc__mult)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -714,9 +968,13 @@
 (let ((anon203_Then_correct  (=> (and (<= (LitInt 0) |k#0_0_0_3@0|) (< |k#0_0_0_3@0| _module.__default.N)) (=> (and (and (= |$_Frame#l0_0_0_3@0| (|lambda#0| null |$lambdaHeap#0_0_0_3@0| alloc false)) (= |lambdaResult#0_0_0_3| (Mul (Mul (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@2 ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |a#0| ($Box intType (int_2_U |i#0|)))) ($Box intType (int_2_U |l#0_0_0_0@0|))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@2 ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |b#0| ($Box intType (int_2_U |l#0_0_0_0@0|)))) ($Box intType (int_2_U |k#0_0_0_3@0|)))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@2 ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |c#0@@1| ($Box intType (int_2_U |k#0_0_0_3@0|)))) ($Box intType (int_2_U |j#0|)))))))) (and ($Is intType (int_2_U |lambdaResult#0_0_0_3|) TInt) (= (ControlFlow 0 144) 143))) anon115_correct))))
 (let ((anon202_Then_correct  (=> (and ($IsGoodHeap |$lambdaHeap#0_0_0_3@0|) (or (= $Heap@@2 |$lambdaHeap#0_0_0_3@0|) ($HeapSucc $Heap@@2 |$lambdaHeap#0_0_0_3@0|))) (and (=> (= (ControlFlow 0 146) 144) anon203_Then_correct) (=> (= (ControlFlow 0 146) 145) anon203_Else_correct)))))
 (let ((anon202_Else_correct  (=> (and (= |g##0_0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType (int_2_U |l#0_0_0_0@0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType (int_2_U |l#0_0_0_0@0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0 Tclass._module.Index)) (and (=> (= (ControlFlow 0 141) (- 0 142)) (forall ((|x#1| T@U) ) (!  (=> (and ($IsBox |x#1| call0formal@_module._default.FunEq$X@0) ($IsAllocBox |x#1| call0formal@_module._default.FunEq$X@0 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |f##0_0_0_0@0| |x#1|) (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |g##0_0_0_0@0| |x#1|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |g##0_0_0_0@0| |x#1|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |f##0_0_0_0@0| |x#1|))
 ))) (=> (forall ((|x#1@@0| T@U) ) (!  (=> (and ($IsBox |x#1@@0| call0formal@_module._default.FunEq$X@0) ($IsAllocBox |x#1@@0| call0formal@_module._default.FunEq$X@0 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |f##0_0_0_0@0| |x#1@@0|) (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |g##0_0_0_0@0| |x#1@@0|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |g##0_0_0_0@0| |x#1@@0|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0 TInt $Heap@@2 |f##0_0_0_0@0| |x#1@@0|))
 )) (=> (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (= |f##0_0_0_0@0| |g##0_0_0_0@0|)) (and (= $Heap@@2 $Heap@1) (= (ControlFlow 0 141) (- 0 140)))) (= (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType (int_2_U |l#0_0_0_0@0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType (int_2_U |l#0_0_0_0@0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType (int_2_U |l#0_0_0_0@0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))))))))))
@@ -759,20 +1017,38 @@
 (let ((anon213_Then_correct  (=> (and (and (<= (LitInt 0) |l#0_0_3@0|) (< |l#0_0_3@0| _module.__default.N)) (= |$_Frame#l0_0_6@0| (|lambda#0| null |$lambdaHeap#0_0_6@0| alloc false))) (and (=> (= (ControlFlow 0 107) 106) anon214_Then_correct) (=> (= (ControlFlow 0 107) 102) anon214_Else_correct)))))
 (let ((anon213_Else_correct  (=> (and (not (and (<= (LitInt 0) |l#0_0_3@0|) (< |l#0_0_3@0| _module.__default.N))) (= (ControlFlow 0 101) 100)) anon141_correct)))
 (let ((anon212_Then_correct  (=> (and ($IsGoodHeap |$lambdaHeap#0_0_6@0|) (or (= $Heap@0 |$lambdaHeap#0_0_6@0|) ($HeapSucc $Heap@0 |$lambdaHeap#0_0_6@0|))) (and (=> (= (ControlFlow 0 108) 107) anon213_Then_correct) (=> (= (ControlFlow 0 108) 101) anon213_Else_correct)))))
-(let ((anon212_Else_correct  (=> (= |##f#0_0_4@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_0_4@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@0) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_0_55#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_55#l#0|)) (< (U_2_int |$l#0_0_55#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType |$l#0_0_55#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_0_55#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 99) (- 0 98))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
-(let ((anon208_Else_correct  (=> (forall ((|$l#0_0_37#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_37#l#0|)) (< (U_2_int |$l#0_0_37#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType |$l#0_0_37#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_0_37#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (=> (and (= |g##0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0@@0 Tclass._module.Index)) (and (=> (= (ControlFlow 0 109) (- 0 110)) (forall ((|x#1@@1| T@U) ) (!  (=> (and ($IsBox |x#1@@1| call0formal@_module._default.FunEq$X@0@@0) ($IsAllocBox |x#1@@1| call0formal@_module._default.FunEq$X@0@@0 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |f##0_0_0@0| |x#1@@1|) (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |g##0_0_0@0| |x#1@@1|)))
+(let ((anon212_Else_correct  (=> (= |##f#0_0_4@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_0_4@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@0) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_0_55#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_55#l#0|)) (< (U_2_int |$l#0_0_55#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType |$l#0_0_55#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_0_55#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |643|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 99) (- 0 98))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
+(let ((anon208_Else_correct  (=> (forall ((|$l#0_0_37#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_37#l#0|)) (< (U_2_int |$l#0_0_37#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType |$l#0_0_37#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_0_37#l#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |640|
+)) (=> (and (= |g##0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1621| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0@@0 Tclass._module.Index)) (and (=> (= (ControlFlow 0 109) (- 0 110)) (forall ((|x#1@@1| T@U) ) (!  (=> (and ($IsBox |x#1@@1| call0formal@_module._default.FunEq$X@0@@0) ($IsAllocBox |x#1@@1| call0formal@_module._default.FunEq$X@0@@0 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |f##0_0_0@0| |x#1@@1|) (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |g##0_0_0@0| |x#1@@1|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |g##0_0_0@0| |x#1@@1|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |f##0_0_0@0| |x#1@@1|))
 ))) (=> (forall ((|x#1@@2| T@U) ) (!  (=> (and ($IsBox |x#1@@2| call0formal@_module._default.FunEq$X@0@@0) ($IsAllocBox |x#1@@2| call0formal@_module._default.FunEq$X@0@@0 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |f##0_0_0@0| |x#1@@2|) (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |g##0_0_0@0| |x#1@@2|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |g##0_0_0@0| |x#1@@2|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@0 TInt $Heap@@2 |f##0_0_0@0| |x#1@@2|))
 )) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= |f##0_0_0@0| |g##0_0_0@0|) (= $Heap@@2 $Heap@0))) (and (=> (= (ControlFlow 0 109) 108) anon212_Then_correct) (=> (= (ControlFlow 0 109) 99) anon212_Else_correct)))))))))
-(let ((anon204_Else_correct  (=> (and (forall ((|$l#0_0_25#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_25#l#0|)) (< (U_2_int |$l#0_0_25#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_0_25#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (= |f##0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (=> (= (ControlFlow 0 120) 119) anon208_Then_correct) (=> (= (ControlFlow 0 120) 109) anon208_Else_correct)))))
+(let ((anon204_Else_correct  (=> (and (forall ((|$l#0_0_25#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_25#l#0|)) (< (U_2_int |$l#0_0_25#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_0_25#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |638|
+)) (= |f##0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (=> (= (ControlFlow 0 120) 119) anon208_Then_correct) (=> (= (ControlFlow 0 120) 109) anon208_Else_correct)))))
 (let ((anon194_Else_correct  (=> (forall ((|l#0_0_0_1| T@U) ) (!  (=> (and (and (<= (LitInt 0) (U_2_int |l#0_0_0_1|)) (< (U_2_int |l#0_0_0_1|) _module.__default.N)) (U_2_bool (Lit boolType (bool_2_U true)))) (= (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |l#0_0_0_1|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1607| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) ($Box intType |l#0_0_0_1|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |l#0_0_0_1|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |MatrixAssocdfy.157:18|
+ :skolemid |636|
  :pattern ( ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |b#0| ($Box intType |l#0_0_0_1|))))
  :pattern ( ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@2 ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |a#0| ($Box intType (int_2_U |i#0|)))) ($Box intType |l#0_0_0_1|))))
 )) (and (=> (= (ControlFlow 0 130) 129) anon204_Then_correct) (=> (= (ControlFlow 0 130) 120) anon204_Else_correct)))))
-(let ((anon190_Else_correct  (=> (= |##f#0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and (and ($IsAlloc HandleTypeType |##f#0_0_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#0_0_13#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_13#l#0|)) (< (U_2_int |$l#0_0_13#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_0_13#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (=> (= (ControlFlow 0 154) 153) anon194_Then_correct) (=> (= (ControlFlow 0 154) 130) anon194_Else_correct))))))
+(let ((anon190_Else_correct  (=> (= |##f#0_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and (and ($IsAlloc HandleTypeType |##f#0_0_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#0_0_13#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_0_13#l#0|)) (< (U_2_int |$l#0_0_13#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_0_13#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |634|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (=> (= (ControlFlow 0 154) 153) anon194_Then_correct) (=> (= (ControlFlow 0 154) 130) anon194_Else_correct))))))
 (let ((anon77_correct true))
 (let ((anon184_Else_correct  (=> (and (not (and (<= (LitInt 0) |l#0_1_0@0|) (< |l#0_1_0@0| _module.__default.N))) (= (ControlFlow 0 94) 92)) anon77_correct)))
 (let ((anon184_Then_correct  (=> (and (<= (LitInt 0) |l#0_1_0@0|) (< |l#0_1_0@0| _module.__default.N)) (=> (and (and (= |$_Frame#l0_1_1@0| (|lambda#0| null |$lambdaHeap#0_1_1@0| alloc false)) (= |lambdaResult#0_1_1| (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_1_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_1_0@0| |m#0@0| ($Box intType (int_2_U |k#0_1_0@0|)))) ($Box intType (int_2_U |l#0_1_0@0|))))))) (and ($Is intType (int_2_U |lambdaResult#0_1_1|) TInt) (= (ControlFlow 0 93) 92))) anon77_correct))))
@@ -791,8 +1067,20 @@
 (let ((anon186_Then_correct  (=> (and (and (<= (LitInt 0) |l#0_1_1@0|) (< |l#0_1_1@0| _module.__default.N)) (= |$_Frame#l0_1_2@0| (|lambda#0| null |$lambdaHeap#0_1_2@0| alloc false))) (and (=> (= (ControlFlow 0 86) 85) anon187_Then_correct) (=> (= (ControlFlow 0 86) 81) anon187_Else_correct)))))
 (let ((anon186_Else_correct  (=> (and (not (and (<= (LitInt 0) |l#0_1_1@0|) (< |l#0_1_1@0| _module.__default.N))) (= (ControlFlow 0 80) 79)) anon87_correct)))
 (let ((anon185_Then_correct  (=> (and ($IsGoodHeap |$lambdaHeap#0_1_2@0|) (or (= $Heap@2 |$lambdaHeap#0_1_2@0|) ($HeapSucc $Heap@2 |$lambdaHeap#0_1_2@0|))) (and (=> (= (ControlFlow 0 87) 86) anon186_Then_correct) (=> (= (ControlFlow 0 87) 80) anon186_Else_correct)))))
-(let ((anon185_Else_correct  (=> (= |##f#0_1_2@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_1_2@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_1_31#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_1_31#l#0|)) (< (U_2_int |$l#0_1_31#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_1_31#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 78) (- 0 77))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
-(let ((anon181_Else_correct  (=> (= |##f#0_1_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_1_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_1_13#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_1_13#k#0|)) (< (U_2_int |$l#0_1_13#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_1_13#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2))) (=> (and (and (and (forall ((|$l#30#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#30#k#0|)) (< (U_2_int |$l#30#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#30#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#35#l#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#35#l#0|)) (< (U_2_int |$l#35#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#35#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (= $Heap@@2 $Heap@2))) (and (=> (= (ControlFlow 0 88) 87) anon185_Then_correct) (=> (= (ControlFlow 0 88) 78) anon185_Else_correct))))))))
+(let ((anon185_Else_correct  (=> (= |##f#0_1_2@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_1_2@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_1_31#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_1_31#l#0|)) (< (U_2_int |$l#0_1_31#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_1_31#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |648|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 78) (- 0 77))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
+(let ((anon181_Else_correct  (=> (= |##f#0_1_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_1_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_1_13#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_1_13#k#0|)) (< (U_2_int |$l#0_1_13#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_1_13#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |645|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2))) (=> (and (and (and (forall ((|$l#30#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#30#k#0|)) (< (U_2_int |$l#30#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#30#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |598|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#35#l#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#35#l#0|)) (< (U_2_int |$l#35#l#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#172| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#35#l#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |599|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#893| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (= $Heap@@2 $Heap@2))) (and (=> (= (ControlFlow 0 88) 87) anon185_Then_correct) (=> (= (ControlFlow 0 88) 78) anon185_Else_correct))))))))
 (let ((anon23_correct true))
 (let ((anon157_Else_correct  (=> (and (not (and (<= (LitInt 0) |l#0_2_0@0|) (< |l#0_2_0@0| _module.__default.N))) (= (ControlFlow 0 73) 71)) anon23_correct)))
 (let ((anon157_Then_correct  (=> (and (<= (LitInt 0) |l#0_2_0@0|) (< |l#0_2_0@0| _module.__default.N)) (=> (and (and (= |$_Frame#l0_2_1@0| (|lambda#0| null |$lambdaHeap#0_2_1@0| alloc false)) (= |lambdaResult#0_2_1| (Mul (Mul (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_2_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_2_0@0| |a#0| ($Box intType (int_2_U |i#0|)))) ($Box intType (int_2_U |l#0_2_0@0|))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_2_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_2_0@0| |b#0| ($Box intType (int_2_U |l#0_2_0@0|)))) ($Box intType (int_2_U |k#0_2_0@0|)))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_2_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_2_0@0| |c#0@@1| ($Box intType (int_2_U |k#0_2_0@0|)))) ($Box intType (int_2_U |j#0|)))))))) (and ($Is intType (int_2_U |lambdaResult#0_2_1|) TInt) (= (ControlFlow 0 72) 71))) anon23_correct))))
@@ -811,9 +1099,13 @@
 (let ((anon167_Then_correct  (=> (and (<= (LitInt 0) |l#0_2_0_3@0|) (< |l#0_2_0_3@0| _module.__default.N)) (=> (and (and (= |$_Frame#l0_2_0_3@0| (|lambda#0| null |$lambdaHeap#0_2_0_3@0| alloc false)) (= |lambdaResult#0_2_0_3| (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt $Heap@@2 ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |m#0@0| ($Box intType (int_2_U |k#0_2_0_0@0|)))) ($Box intType (int_2_U |l#0_2_0_3@0|))))))) (and ($Is intType (int_2_U |lambdaResult#0_2_0_3|) TInt) (= (ControlFlow 0 57) 56))) anon44_correct))))
 (let ((anon166_Then_correct  (=> (and ($IsGoodHeap |$lambdaHeap#0_2_0_3@0|) (or (= $Heap@@2 |$lambdaHeap#0_2_0_3@0|) ($HeapSucc $Heap@@2 |$lambdaHeap#0_2_0_3@0|))) (and (=> (= (ControlFlow 0 59) 57) anon167_Then_correct) (=> (= (ControlFlow 0 59) 58) anon167_Else_correct)))))
 (let ((anon166_Else_correct  (=> (and (= |g##0_2_0_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType (int_2_U |k#0_2_0_0@0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0@@1 Tclass._module.Index)) (and (=> (= (ControlFlow 0 54) (- 0 55)) (forall ((|x#1@@3| T@U) ) (!  (=> (and ($IsBox |x#1@@3| call0formal@_module._default.FunEq$X@0@@1) ($IsAllocBox |x#1@@3| call0formal@_module._default.FunEq$X@0@@1 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |f##0_2_0_0@0| |x#1@@3|) (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |g##0_2_0_0@0| |x#1@@3|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |g##0_2_0_0@0| |x#1@@3|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |f##0_2_0_0@0| |x#1@@3|))
 ))) (=> (forall ((|x#1@@4| T@U) ) (!  (=> (and ($IsBox |x#1@@4| call0formal@_module._default.FunEq$X@0@@1) ($IsAllocBox |x#1@@4| call0formal@_module._default.FunEq$X@0@@1 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |f##0_2_0_0@0| |x#1@@4|) (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |g##0_2_0_0@0| |x#1@@4|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |g##0_2_0_0@0| |x#1@@4|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@1 TInt $Heap@@2 |f##0_2_0_0@0| |x#1@@4|))
 )) (=> (and (and (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (= |f##0_2_0_0@0| |g##0_2_0_0@0|)) (and (= $Heap@@2 $Heap@4) (= (ControlFlow 0 54) (- 0 53)))) (= (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType (int_2_U |k#0_2_0_0@0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |k#0_2_0_0@0|)) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType (int_2_U |k#0_2_0_0@0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))))))))))
@@ -856,20 +1148,38 @@
 (let ((anon177_Then_correct  (=> (and (and (<= (LitInt 0) |k#0_2_3@0|) (< |k#0_2_3@0| _module.__default.N)) (= |$_Frame#l0_2_6@0| (|lambda#0| null |$lambdaHeap#0_2_6@0| alloc false))) (and (=> (= (ControlFlow 0 20) 19) anon178_Then_correct) (=> (= (ControlFlow 0 20) 15) anon178_Else_correct)))))
 (let ((anon177_Else_correct  (=> (and (not (and (<= (LitInt 0) |k#0_2_3@0|) (< |k#0_2_3@0| _module.__default.N))) (= (ControlFlow 0 14) 13)) anon70_correct)))
 (let ((anon176_Then_correct  (=> (and ($IsGoodHeap |$lambdaHeap#0_2_6@0|) (or (= $Heap@3 |$lambdaHeap#0_2_6@0|) ($HeapSucc $Heap@3 |$lambdaHeap#0_2_6@0|))) (and (=> (= (ControlFlow 0 21) 20) anon177_Then_correct) (=> (= (ControlFlow 0 21) 14) anon177_Else_correct)))))
-(let ((anon176_Else_correct  (=> (= |##f#0_2_4@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_2_4@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@3) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_2_55#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_55#k#0|)) (< (U_2_int |$l#0_2_55#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_2_55#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 12) (- 0 11))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
-(let ((anon172_Else_correct  (=> (forall ((|$l#0_2_37#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_37#k#0|)) (< (U_2_int |$l#0_2_37#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_2_37#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (=> (and (= |g##0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0@@2 Tclass._module.Index)) (and (=> (= (ControlFlow 0 22) (- 0 23)) (forall ((|x#1@@5| T@U) ) (!  (=> (and ($IsBox |x#1@@5| call0formal@_module._default.FunEq$X@0@@2) ($IsAllocBox |x#1@@5| call0formal@_module._default.FunEq$X@0@@2 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |f##0_2_0@0| |x#1@@5|) (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |g##0_2_0@0| |x#1@@5|)))
+(let ((anon176_Else_correct  (=> (= |##f#0_2_4@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and ($IsAlloc HandleTypeType |##f#0_2_4@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@3) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (=> (and (and (forall ((|$l#0_2_55#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_55#k#0|)) (< (U_2_int |$l#0_2_55#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_2_55#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |659|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (= (ControlFlow 0 12) (- 0 11))) (= (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (LitInt (_module.__default.Sum (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))))))))
+(let ((anon172_Else_correct  (=> (forall ((|$l#0_2_37#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_37#k#0|)) (< (U_2_int |$l#0_2_37#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |$l#0_2_37#k#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |656|
+)) (=> (and (= |g##0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#878| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (= call0formal@_module._default.FunEq$X@0@@2 Tclass._module.Index)) (and (=> (= (ControlFlow 0 22) (- 0 23)) (forall ((|x#1@@5| T@U) ) (!  (=> (and ($IsBox |x#1@@5| call0formal@_module._default.FunEq$X@0@@2) ($IsAllocBox |x#1@@5| call0formal@_module._default.FunEq$X@0@@2 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |f##0_2_0@0| |x#1@@5|) (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |g##0_2_0@0| |x#1@@5|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |g##0_2_0@0| |x#1@@5|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |f##0_2_0@0| |x#1@@5|))
 ))) (=> (forall ((|x#1@@6| T@U) ) (!  (=> (and ($IsBox |x#1@@6| call0formal@_module._default.FunEq$X@0@@2) ($IsAllocBox |x#1@@6| call0formal@_module._default.FunEq$X@0@@2 $Heap@@2)) (= (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |f##0_2_0@0| |x#1@@6|) (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |g##0_2_0@0| |x#1@@6|)))
+ :qid |MatrixAssocdfy.16:19|
+ :skolemid |531|
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |g##0_2_0@0| |x#1@@6|))
  :pattern ( (Apply1 call0formal@_module._default.FunEq$X@0@@2 TInt $Heap@@2 |f##0_2_0@0| |x#1@@6|))
 )) (=> (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (and (= |f##0_2_0@0| |g##0_2_0@0|) (= $Heap@@2 $Heap@3))) (and (=> (= (ControlFlow 0 22) 21) anon176_Then_correct) (=> (= (ControlFlow 0 22) 12) anon176_Else_correct)))))))))
-(let ((anon168_Else_correct  (=> (and (forall ((|$l#0_2_25#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_25#k#0|)) (< (U_2_int |$l#0_2_25#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_2_25#k#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType |$l#0_2_25#k#0|) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (= |f##0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (=> (= (ControlFlow 0 33) 32) anon172_Then_correct) (=> (= (ControlFlow 0 33) 22) anon172_Else_correct)))))
+(let ((anon168_Else_correct  (=> (and (forall ((|$l#0_2_25#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_25#k#0|)) (< (U_2_int |$l#0_2_25#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_2_25#k#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType |$l#0_2_25#k#0|) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |654|
+)) (= |f##0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (=> (= (ControlFlow 0 33) 32) anon172_Then_correct) (=> (= (ControlFlow 0 33) 22) anon172_Else_correct)))))
 (let ((anon158_Else_correct  (=> (forall ((|k#0_2_0_1| T@U) ) (!  (=> (and (and (<= (LitInt 0) (U_2_int |k#0_2_0_1|)) (< (U_2_int |k#0_2_0_1|) _module.__default.N)) (U_2_bool (Lit boolType (bool_2_U true)))) (= (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |k#0_2_0_1|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType |k#0_2_0_1|) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ))) (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#152| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |m#0@0| ($Box intType |k#0_2_0_1|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |MatrixAssocdfy.145:14|
+ :skolemid |652|
  :pattern ( ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |m#0@0| ($Box intType |k#0_2_0_1|))))
  :pattern ( ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2 |c#0@@1| ($Box intType |k#0_2_0_1|))))
 )) (and (=> (= (ControlFlow 0 43) 42) anon168_Then_correct) (=> (= (ControlFlow 0 43) 33) anon168_Else_correct)))))
-(let ((anon154_Else_correct  (=> (= |##f#0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and (and ($IsAlloc HandleTypeType |##f#0_2_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#0_2_13#k#0| T@U) )  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_13#k#0|)) (< (U_2_int |$l#0_2_13#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_2_13#k#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType |$l#0_2_13#k#0|) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (=> (= (ControlFlow 0 67) 66) anon158_Then_correct) (=> (= (ControlFlow 0 67) 43) anon158_Else_correct))))))
+(let ((anon154_Else_correct  (=> (= |##f#0_2_0@0| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))) (=> (and (and ($IsAlloc HandleTypeType |##f#0_2_0@0| (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) $Heap@@2) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ))))) (and (forall ((|$l#0_2_13#k#0| T@U) ) (!  (=> (and (<= (LitInt 0) (U_2_int |$l#0_2_13#k#0|)) (< (U_2_int |$l#0_2_13#k#0|) _module.__default.N)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#8| (Handle1 (|lambda#1592| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| ($Box intType |$l#0_2_13#k#0|) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType |$l#0_2_13#k#0|) ($Box intType (int_2_U |j#0|))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))))) ($LS $LZ)))))
+ :qid |unknown.0:0|
+ :skolemid |650|
+)) (|_module.__default.Sum#canCall| (Lit HandleTypeType (AtLayer HandleTypeType (|lambda#1606| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |a#0| ($Box intType (int_2_U |i#0|)) Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |b#0| Tclass._module.Index TInt Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |c#0@@1| ($Box intType (int_2_U |j#0|)) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false))) (|lambda#5| Tclass._module.Index) (|lambda#7| (SetRef_to_SetBox (|lambda#6| false)))) ($LS $LZ)))))) (and (=> (= (ControlFlow 0 67) 66) anon158_Then_correct) (=> (= (ControlFlow 0 67) 43) anon158_Else_correct))))))
 (let ((anon14_correct true))
 (let ((anon152_Else_correct  (=> (and (not (and (<= (LitInt 0) |l#0_0@0|) (< |l#0_0@0| _module.__default.N))) (= (ControlFlow 0 7) 5)) anon14_correct)))
 (let ((anon152_Then_correct  (=> (and (<= (LitInt 0) |l#0_0@0|) (< |l#0_0@0| _module.__default.N)) (=> (and (and (= |$_Frame#l0_1@0| (|lambda#0| null |$lambdaHeap#0_1@0| alloc false)) (= |lambdaResult#0_1| (Mul (Mul (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_0@0| |a#0| ($Box intType (int_2_U |i#0|)))) ($Box intType (int_2_U |l#0_0@0|))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_0@0| |b#0| ($Box intType (int_2_U |l#0_0@0|)))) ($Box intType (int_2_U |k#0_0@0|)))))) (U_2_int ($Unbox intType (Apply1 Tclass._module.Index TInt |$lambdaHeap#0_0@0| ($Unbox HandleTypeType (Apply1 Tclass._module.Index (Tclass._System.___hTotalFunc1 Tclass._module.Index TInt) |$lambdaHeap#0_0@0| |c#0@@1| ($Box intType (int_2_U |k#0_0@0|)))) ($Box intType (int_2_U |j#0|)))))))) (and ($Is intType (int_2_U |lambdaResult#0_1|) TInt) (= (ControlFlow 0 6) 5))) anon14_correct))))

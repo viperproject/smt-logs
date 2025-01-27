@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:27:07
+; Started: 2025-01-26 22:59:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2534,75 +2534,75 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (str___val__%limited s@$ self@0@00) (str___val__ s@$ self@0@00))
   :pattern ((str___val__ s@$ self@0@00))
-  :qid |quant-u-3360|)))
+  :qid |quant-u-3306|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (str___val__%stateless self@0@00)
   :pattern ((str___val__%limited s@$ self@0@00))
-  :qid |quant-u-3361|)))
+  :qid |quant-u-3307|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___len__%limited s@$ self@2@00) (str___len__ s@$ self@2@00))
   :pattern ((str___len__ s@$ self@2@00))
-  :qid |quant-u-3362|)))
+  :qid |quant-u-3308|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___len__%stateless self@2@00)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3363|)))
+  :qid |quant-u-3309|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) (=>
     (str___len__%precondition s@$ self@2@00)
     (>= result@3@00 0)))
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3402|)))
+  :qid |quant-u-3348|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) true)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3403|)))
+  :qid |quant-u-3349|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (= (PSeq___sil_seq__%limited s@$ box@4@00) (PSeq___sil_seq__ s@$ box@4@00))
   :pattern ((PSeq___sil_seq__ s@$ box@4@00))
-  :qid |quant-u-3364|)))
+  :qid |quant-u-3310|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (PSeq___sil_seq__%stateless box@4@00)
   :pattern ((PSeq___sil_seq__%limited s@$ box@4@00))
-  :qid |quant-u-3365|)))
+  :qid |quant-u-3311|)))
 (assert (forall ((s@$ $Snap) (id@6@00 Int)) (!
   (= (_isDefined%limited s@$ id@6@00) (_isDefined s@$ id@6@00))
   :pattern ((_isDefined s@$ id@6@00))
-  :qid |quant-u-3366|)))
+  :qid |quant-u-3312|)))
 (assert (forall ((s@$ $Snap) (id@6@00 Int)) (!
   (_isDefined%stateless id@6@00)
   :pattern ((_isDefined%limited s@$ id@6@00))
-  :qid |quant-u-3367|)))
+  :qid |quant-u-3313|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@8@00) (bool___unbox__ s@$ box@8@00))
   :pattern ((bool___unbox__ s@$ box@8@00))
-  :qid |quant-u-3368|)))
+  :qid |quant-u-3314|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (bool___unbox__%stateless box@8@00)
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3369|)))
+  :qid |quant-u-3315|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (bool___unbox__%limited s@$ box@8@00))) (=>
     (bool___unbox__%precondition s@$ box@8@00)
     (= (__prim__bool___box__%limited $Snap.unit result@9@00) box@8@00)))
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3404|)))
+  :qid |quant-u-3350|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (bool___unbox__%limited s@$ box@8@00))) (=>
     (bool___unbox__%precondition s@$ box@8@00)
     (__prim__bool___box__%precondition $Snap.unit result@9@00)))
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3405|)))
+  :qid |quant-u-3351|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@10@00)
     (__prim__bool___box__ s@$ prim@10@00))
   :pattern ((__prim__bool___box__ s@$ prim@10@00))
-  :qid |quant-u-3370|)))
+  :qid |quant-u-3316|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (__prim__bool___box__%stateless prim@10@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3371|)))
+  :qid |quant-u-3317|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
@@ -2611,31 +2611,31 @@
       (= (bool___unbox__%limited $Snap.unit result@11@00) prim@10@00)
       (= (int___unbox__%limited $Snap.unit result@11@00) (ite prim@10@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3406|)))
+  :qid |quant-u-3352|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3407|)))
+  :qid |quant-u-3353|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
     (bool___unbox__%precondition $Snap.unit result@11@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3408|)))
+  :qid |quant-u-3354|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
     (int___unbox__%precondition $Snap.unit result@11@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3409|)))
+  :qid |quant-u-3355|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@12@00) (int___unbox__ s@$ box@12@00))
   :pattern ((int___unbox__ s@$ box@12@00))
-  :qid |quant-u-3372|)))
+  :qid |quant-u-3318|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (int___unbox__%stateless box@12@00)
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3373|)))
+  :qid |quant-u-3319|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (int___unbox__%precondition s@$ box@12@00)
@@ -2650,7 +2650,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@13@00 0)))
           box@12@00)))))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3410|)))
+  :qid |quant-u-3356|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (and
@@ -2659,7 +2659,7 @@
         (issubtype<Bool> (typeof<PyType> box@12@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@13@00)))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3411|)))
+  :qid |quant-u-3357|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (and
@@ -2667,17 +2667,17 @@
       (issubtype<Bool> (typeof<PyType> box@12@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@13@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3412|)))
+  :qid |quant-u-3358|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@14@00)
     (__prim__int___box__ s@$ prim@14@00))
   :pattern ((__prim__int___box__ s@$ prim@14@00))
-  :qid |quant-u-3374|)))
+  :qid |quant-u-3320|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (__prim__int___box__%stateless prim@14@00)
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3375|)))
+  :qid |quant-u-3321|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) (=>
     (__prim__int___box__%precondition s@$ prim@14@00)
@@ -2685,33 +2685,33 @@
       (= (typeof<PyType> result@15@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@15@00) prim@14@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3413|)))
+  :qid |quant-u-3359|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3414|)))
+  :qid |quant-u-3360|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) (=>
     (__prim__int___box__%precondition s@$ prim@14@00)
     (int___unbox__%precondition $Snap.unit result@15@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3415|)))
+  :qid |quant-u-3361|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (= (Level%limited s@$ r@16@00) (Level s@$ r@16@00))
   :pattern ((Level s@$ r@16@00))
-  :qid |quant-u-3376|)))
+  :qid |quant-u-3322|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (Level%stateless r@16@00)
   :pattern ((Level%limited s@$ r@16@00))
-  :qid |quant-u-3377|)))
+  :qid |quant-u-3323|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (= (list___sil_seq__%limited s@$ self@18@00) (list___sil_seq__ s@$ self@18@00))
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3378|)))
+  :qid |quant-u-3324|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (list___sil_seq__%stateless self@18@00)
   :pattern ((list___sil_seq__%limited s@$ self@18@00))
-  :qid |quant-u-3379|)))
+  :qid |quant-u-3325|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@52@00)
@@ -2719,21 +2719,21 @@
       (list___sil_seq__%precondition s@$ self@18@00)
       (= (list___sil_seq__ s@$ self@18@00) ($SortWrappers.$SnapToSeq<$Ref> s@$))))
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3416|)))
+  :qid |quant-u-3362|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   true
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3417|)))
+  :qid |quant-u-3363|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (=
     (str___create__%limited s@$ len@20@00 value@21@00)
     (str___create__ s@$ len@20@00 value@21@00))
   :pattern ((str___create__ s@$ len@20@00 value@21@00))
-  :qid |quant-u-3380|)))
+  :qid |quant-u-3326|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (str___create__%stateless len@20@00 value@21@00)
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3381|)))
+  :qid |quant-u-3327|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
@@ -2742,33 +2742,33 @@
       (= (str___val__ $Snap.unit result@22@00) value@21@00)
       (= (typeof<PyType> result@22@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3418|)))
+  :qid |quant-u-3364|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
     (str___len__%precondition $Snap.unit result@22@00)))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3419|)))
+  :qid |quant-u-3365|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
     (str___val__%precondition $Snap.unit result@22@00)))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3420|)))
+  :qid |quant-u-3366|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) true)
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3421|)))
+  :qid |quant-u-3367|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (=
     (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00)
     (PSeq___create__ s@$ prim@23@00 cont_type@24@00))
   :pattern ((PSeq___create__ s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3382|)))
+  :qid |quant-u-3328|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (PSeq___create__%stateless prim@23@00 cont_type@24@00)
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3383|)))
+  :qid |quant-u-3329|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) (=>
     (PSeq___create__%precondition s@$ prim@23@00 cont_type@24@00)
@@ -2776,27 +2776,27 @@
       (= (typeof<PyType> result@25@00) (PSeq<PyType> cont_type@24@00))
       (Seq_equal (PSeq___sil_seq__ $Snap.unit result@25@00) prim@23@00))))
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3422|)))
+  :qid |quant-u-3368|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) true)
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3423|)))
+  :qid |quant-u-3369|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) (=>
     (PSeq___create__%precondition s@$ prim@23@00 cont_type@24@00)
     (PSeq___sil_seq__%precondition $Snap.unit result@25@00)))
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3424|)))
+  :qid |quant-u-3370|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (=
     (Measure$check%limited s@$ map@26@00 key@27@00 value@28@00)
     (Measure$check s@$ map@26@00 key@27@00 value@28@00))
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3384|)))
+  :qid |quant-u-3330|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (Measure$check%stateless map@26@00 key@27@00 value@28@00)
   :pattern ((Measure$check%limited s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3385|)))
+  :qid |quant-u-3331|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (=>
     (Measure$check%precondition s@$ map@26@00 key@27@00 value@28@00)
@@ -2813,21 +2813,21 @@
         :pattern ((Seq_contains_trigger map@26@00 m))
         ))))
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3425|)))
+  :qid |quant-u-3371|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   true
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3426|)))
+  :qid |quant-u-3372|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@30@00 other@31@00)
     (str___eq__ s@$ self@30@00 other@31@00))
   :pattern ((str___eq__ s@$ self@30@00 other@31@00))
-  :qid |quant-u-3386|)))
+  :qid |quant-u-3332|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (str___eq__%stateless self@30@00 other@31@00)
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3387|)))
+  :qid |quant-u-3333|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (str___eq__%precondition s@$ self@30@00 other@31@00)
@@ -2843,7 +2843,7 @@
           (str___len__ $Snap.unit self@30@00)
           (str___len__ $Snap.unit other@31@00))))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3427|)))
+  :qid |quant-u-3373|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (str___eq__%precondition s@$ self@30@00 other@31@00)
@@ -2851,7 +2851,7 @@
       (str___val__%precondition $Snap.unit self@30@00)
       (str___val__%precondition $Snap.unit other@31@00))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3428|)))
+  :qid |quant-u-3374|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (and (str___eq__%precondition s@$ self@30@00 other@31@00) result@32@00)
@@ -2859,15 +2859,15 @@
       (str___len__%precondition $Snap.unit self@30@00)
       (str___len__%precondition $Snap.unit other@31@00))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3429|)))
+  :qid |quant-u-3375|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (= (set___sil_seq__%limited s@$ self@33@00) (set___sil_seq__ s@$ self@33@00))
   :pattern ((set___sil_seq__ s@$ self@33@00))
-  :qid |quant-u-3388|)))
+  :qid |quant-u-3334|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (set___sil_seq__%stateless self@33@00)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3389|)))
+  :qid |quant-u-3335|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) (and
     ($Perm.isReadVar $k@57@00)
@@ -2901,39 +2901,39 @@
           :pattern ((Seq_contains_trigger result@34@00 r))
           ))))))
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3430|)))
+  :qid |quant-u-3376|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3431|)))
+  :qid |quant-u-3377|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3432|)))
+  :qid |quant-u-3378|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3433|)))
+  :qid |quant-u-3379|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3434|)))
+  :qid |quant-u-3380|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-3390|)))
+  :qid |quant-u-3336|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-3391|)))
+  :qid |quant-u-3337|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (= (list___len__%limited s@$ self@36@00) (list___len__ s@$ self@36@00))
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3392|)))
+  :qid |quant-u-3338|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (list___len__%stateless self@36@00)
   :pattern ((list___len__%limited s@$ self@36@00))
-  :qid |quant-u-3393|)))
+  :qid |quant-u-3339|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@62@00)
@@ -2943,61 +2943,61 @@
         (list___len__ s@$ self@36@00)
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.second s@$))))))
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3435|)))
+  :qid |quant-u-3381|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   true
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3436|)))
+  :qid |quant-u-3382|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (= (PSeq___len__%limited s@$ self@38@00) (PSeq___len__ s@$ self@38@00))
   :pattern ((PSeq___len__ s@$ self@38@00))
-  :qid |quant-u-3394|)))
+  :qid |quant-u-3340|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (PSeq___len__%stateless self@38@00)
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3395|)))
+  :qid |quant-u-3341|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (let ((result@39@00 (PSeq___len__%limited s@$ self@38@00))) (=>
     (PSeq___len__%precondition s@$ self@38@00)
     (= result@39@00 (Seq_length (PSeq___sil_seq__ $Snap.unit self@38@00)))))
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3437|)))
+  :qid |quant-u-3383|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (let ((result@39@00 (PSeq___len__%limited s@$ self@38@00))) (=>
     (PSeq___len__%precondition s@$ self@38@00)
     (PSeq___sil_seq__%precondition $Snap.unit self@38@00)))
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3438|)))
+  :qid |quant-u-3384|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@40@00 id@41@00)
     (_checkDefined s@$ val@40@00 id@41@00))
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3396|)))
+  :qid |quant-u-3342|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (_checkDefined%stateless val@40@00 id@41@00)
   :pattern ((_checkDefined%limited s@$ val@40@00 id@41@00))
-  :qid |quant-u-3397|)))
+  :qid |quant-u-3343|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@40@00 id@41@00)
     (= (_checkDefined s@$ val@40@00 id@41@00) val@40@00))
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3439|)))
+  :qid |quant-u-3385|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3440|)))
+  :qid |quant-u-3386|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@43@00 other@44@00)
     (int___eq__ s@$ self@43@00 other@44@00))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3398|)))
+  :qid |quant-u-3344|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (int___eq__%stateless self@43@00 other@44@00)
   :pattern ((int___eq__%limited s@$ self@43@00 other@44@00))
-  :qid |quant-u-3399|)))
+  :qid |quant-u-3345|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@43@00 other@44@00)
@@ -3007,7 +3007,7 @@
         (int___unbox__ $Snap.unit self@43@00)
         (int___unbox__ $Snap.unit other@44@00))))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3441|)))
+  :qid |quant-u-3387|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@43@00 other@44@00)
@@ -3015,15 +3015,15 @@
       (int___unbox__%precondition $Snap.unit self@43@00)
       (int___unbox__%precondition $Snap.unit other@44@00)))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3442|)))
+  :qid |quant-u-3388|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-3400|)))
+  :qid |quant-u-3346|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-3401|)))
+  :qid |quant-u-3347|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- set_loop ----------
@@ -3342,7 +3342,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@31@01) (= (- $Perm.Write (pTaken@35@01 r)) $Perm.No))
   
-  :qid |quant-u-3445|))))
+  :qid |quant-u-3391|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3772,7 +3772,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@46@01) (= (- $Perm.Write (pTaken@52@01 r)) $Perm.No))
   
-  :qid |quant-u-3448|))))
+  :qid |quant-u-3394|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3845,7 +3845,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@39@01) (= (- $Perm.Write (pTaken@56@01 r)) $Perm.No))
   
-  :qid |quant-u-3451|))))
+  :qid |quant-u-3397|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3965,7 +3965,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@62@01 r) $Perm.No)
   
-  :qid |quant-u-3454|))))
+  :qid |quant-u-3400|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3980,7 +3980,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@62@01 r)) $Perm.No))
   
-  :qid |quant-u-3455|))))
+  :qid |quant-u-3401|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4061,7 +4061,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@59@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@68@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@69@01 r))
-  :qid |quant-u-3456|)))
+  :qid |quant-u-3402|)))
 (assert (not (= iterable@61@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@67@01))))))
@@ -4124,7 +4124,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3457|))))
+  :qid |quant-u-3403|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5754,7 +5754,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3458|))))
+  :qid |quant-u-3404|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5846,7 +5846,7 @@
     (and (= r iterable@61@01) (> $k@89@01 $Perm.No))
     (> (ite (= r iterable@61@01) (/ (to_real 1) (to_real 20)) $Perm.No) $Perm.No))
   
-  :qid |quant-u-3459|))))
+  :qid |quant-u-3405|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -5900,7 +5900,7 @@
     (and (= r iterable@61@01) (> $k@91@01 $Perm.No))
     (> (ite (= r iterable@61@01) (/ (to_real 1) (to_real 20)) $Perm.No) $Perm.No))
   
-  :qid |quant-u-3460|))))
+  :qid |quant-u-3406|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6679,7 +6679,7 @@
     (issubtype<Bool> (typeof<PyType> lambda12_28$l@92@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@39@01 97))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3462|)))
+  :qid |quant-u-3408|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6697,7 +6697,7 @@
       (= (inv@93@01 lambda12_28$l@92@01) lambda12_28$l@92@01)
       (img@94@01 lambda12_28$l@92@01)))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3462|)))
+  :qid |quant-u-3408|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6808,7 +6808,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@95@01 r) $Perm.No)
   
-  :qid |quant-u-3465|))))
+  :qid |quant-u-3411|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -6823,7 +6823,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@95@01 r)) $Perm.No))
   
-  :qid |quant-u-3466|))))
+  :qid |quant-u-3412|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -6884,7 +6884,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3467|))))
+  :qid |quant-u-3413|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6947,7 +6947,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3468|))))
+  :qid |quant-u-3414|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -7734,7 +7734,7 @@
       (= r (inv@101@01 r)))
     (= (- $Perm.Write (pTaken@103@01 r)) $Perm.No))
   
-  :qid |quant-u-3472|))))
+  :qid |quant-u-3418|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -7764,7 +7764,7 @@
       (= r (inv@101@01 r)))
     (= (- (- $Perm.Write (pTaken@103@01 r)) (pTaken@104@01 r)) $Perm.No))
   
-  :qid |quant-u-3474|))))
+  :qid |quant-u-3420|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -7917,7 +7917,7 @@
     (issubtype<Bool> (typeof<PyType> lambda12_28$l@92@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@39@01 97))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3462|)))
+  :qid |quant-u-3408|)))
 (assert (forall ((lambda12_28$l@92@01 $Ref)) (!
   (=>
     (and
@@ -7927,7 +7927,7 @@
       (= (inv@93@01 lambda12_28$l@92@01) lambda12_28$l@92@01)
       (img@94@01 lambda12_28$l@92@01)))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3462|)))
+  :qid |quant-u-3408|)))
 (assert (forall ((lambda12_28$l@92@01 $Ref)) (!
   (=>
     (and
@@ -8412,7 +8412,7 @@
       (pTaken@106@01 r))
     $Perm.No)
   
-  :qid |quant-u-3476|))))
+  :qid |quant-u-3422|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -8424,7 +8424,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@106@01 r) $Perm.No)
   
-  :qid |quant-u-3477|))))
+  :qid |quant-u-3423|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -8439,7 +8439,7 @@
     (= r (_checkDefined $Snap.unit c@85@01 99))
     (= (- $Perm.Write (pTaken@106@01 r)) $Perm.No))
   
-  :qid |quant-u-3478|))))
+  :qid |quant-u-3424|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -8787,7 +8787,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 51 | _err@117@01 == Null | live]
 ; [else-branch: 51 | _err@117@01 != Null | live]
@@ -8831,7 +8831,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -8974,7 +8974,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -8983,7 +8983,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 55 | _err@117@01 != Null | live]
 ; [else-branch: 55 | _err@117@01 == Null | live]
@@ -10190,7 +10190,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@121@01 r)) $Perm.No))
   
-  :qid |quant-u-3481|))))
+  :qid |quant-u-3427|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -10228,7 +10228,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3482|))))
+  :qid |quant-u-3428|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -10331,7 +10331,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3483|))))
+  :qid |quant-u-3429|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -11091,7 +11091,7 @@
       (pTaken@129@01 r))
     $Perm.No)
   
-  :qid |quant-u-3486|))))
+  :qid |quant-u-3432|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11111,7 +11111,7 @@
       (= r (inv@127@01 r)))
     (= (- $Perm.Write (pTaken@129@01 r)) $Perm.No))
   
-  :qid |quant-u-3487|))))
+  :qid |quant-u-3433|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -11150,7 +11150,7 @@
       (= r (inv@127@01 r)))
     (= (- (- $Perm.Write (pTaken@129@01 r)) (pTaken@130@01 r)) $Perm.No))
   
-  :qid |quant-u-3489|))))
+  :qid |quant-u-3435|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11328,7 +11328,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@131@01 r)) $Perm.No))
   
-  :qid |quant-u-3492|))))
+  :qid |quant-u-3438|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11366,7 +11366,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3493|))))
+  :qid |quant-u-3439|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -11469,7 +11469,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3494|))))
+  :qid |quant-u-3440|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -12201,7 +12201,7 @@
       (pTaken@139@01 r))
     $Perm.No)
   
-  :qid |quant-u-3497|))))
+  :qid |quant-u-3443|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12221,7 +12221,7 @@
       (= r (inv@137@01 r)))
     (= (- $Perm.Write (pTaken@139@01 r)) $Perm.No))
   
-  :qid |quant-u-3498|))))
+  :qid |quant-u-3444|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -12260,7 +12260,7 @@
       (= r (inv@137@01 r)))
     (= (- (- $Perm.Write (pTaken@139@01 r)) (pTaken@140@01 r)) $Perm.No))
   
-  :qid |quant-u-3500|))))
+  :qid |quant-u-3446|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12379,7 +12379,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@88@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@69@01 r))
   :pattern (($FVF.lookup_set_acc $t@141@01 r))
-  :qid |quant-u-3501|)))
+  :qid |quant-u-3447|)))
 ; [eval] !(iter_err == null)
 ; [eval] iter_err == null
 (set-option :timeout 0)
@@ -12599,7 +12599,7 @@
   :pattern (($FVF.lookup_set_acc $t@141@01 r))
   :pattern (($FVF.lookup_set_acc (as sm@144@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@145@01 r))
-  :qid |quant-u-3502|)))
+  :qid |quant-u-3448|)))
 (assert (<=
   $Perm.No
   (ite
@@ -12878,7 +12878,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@147@01) (= (- $Perm.Write (pTaken@153@01 r)) $Perm.No))
   
-  :qid |quant-u-3505|))))
+  :qid |quant-u-3451|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -13005,7 +13005,7 @@
     (= r (_checkDefined $Snap.unit res@39@01 97))
     (= (- $Perm.Write (pTaken@157@01 r)) $Perm.No))
   
-  :qid |quant-u-3508|))))
+  :qid |quant-u-3454|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -13599,7 +13599,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@198@01) (= (- $Perm.Write (pTaken@202@01 r)) $Perm.No))
   
-  :qid |quant-u-3511|))))
+  :qid |quant-u-3457|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14029,7 +14029,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@213@01) (= (- $Perm.Write (pTaken@219@01 r)) $Perm.No))
   
-  :qid |quant-u-3514|))))
+  :qid |quant-u-3460|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14102,7 +14102,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@206@01) (= (- $Perm.Write (pTaken@223@01 r)) $Perm.No))
   
-  :qid |quant-u-3517|))))
+  :qid |quant-u-3463|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14222,7 +14222,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@229@01 r) $Perm.No)
   
-  :qid |quant-u-3520|))))
+  :qid |quant-u-3466|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -14237,7 +14237,7 @@
     (= r iterable_0@228@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@229@01 r)) $Perm.No))
   
-  :qid |quant-u-3521|))))
+  :qid |quant-u-3467|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14318,7 +14318,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@226@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@235@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@236@01 r))
-  :qid |quant-u-3522|)))
+  :qid |quant-u-3468|)))
 (assert (not (= iterable_0@228@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@234@01))))))
@@ -14381,7 +14381,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3523|))))
+  :qid |quant-u-3469|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -15004,7 +15004,7 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 120 | |First:(Second:(Second:(Second:(Second:($t@234@01)))))| > 0 | live]
 ; [else-branch: 120 | !(|First:(Second:(Second:(Second:(Second:($t@234@01)))))| > 0) | dead]
@@ -16011,7 +16011,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3524|))))
+  :qid |quant-u-3470|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -16105,7 +16105,7 @@
       (ite (= r iterable_0@228@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3525|))))
+  :qid |quant-u-3471|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -16161,7 +16161,7 @@
       (ite (= r iterable_0@228@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3526|))))
+  :qid |quant-u-3472|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -16258,7 +16258,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -16267,7 +16267,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 129 | iter_err_0@251@01 != Null | live]
 ; [else-branch: 129 | iter_err_0@251@01 == Null | live]
@@ -16722,7 +16722,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -16731,7 +16731,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 138 | iter_err_0@251@01 != Null | live]
 ; [else-branch: 138 | iter_err_0@251@01 == Null | live]
@@ -16944,7 +16944,7 @@
     (issubtype<Bool> (typeof<PyType> lambda21_28$l@259@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@206@01 3170145))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3528|)))
+  :qid |quant-u-3474|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -16962,7 +16962,7 @@
       (= (inv@260@01 lambda21_28$l@259@01) lambda21_28$l@259@01)
       (img@261@01 lambda21_28$l@259@01)))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3528|)))
+  :qid |quant-u-3474|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -17073,7 +17073,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@262@01 r) $Perm.No)
   
-  :qid |quant-u-3531|))))
+  :qid |quant-u-3477|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -17088,7 +17088,7 @@
     (= r iterable_0@228@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@262@01 r)) $Perm.No))
   
-  :qid |quant-u-3532|))))
+  :qid |quant-u-3478|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -17149,7 +17149,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3533|))))
+  :qid |quant-u-3479|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -17212,7 +17212,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3534|))))
+  :qid |quant-u-3480|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -18001,7 +18001,7 @@
       (= r (inv@268@01 r)))
     (= (- $Perm.Write (pTaken@270@01 r)) $Perm.No))
   
-  :qid |quant-u-3538|))))
+  :qid |quant-u-3484|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -18031,7 +18031,7 @@
       (= r (inv@268@01 r)))
     (= (- (- $Perm.Write (pTaken@270@01 r)) (pTaken@271@01 r)) $Perm.No))
   
-  :qid |quant-u-3540|))))
+  :qid |quant-u-3486|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -18184,7 +18184,7 @@
     (issubtype<Bool> (typeof<PyType> lambda21_28$l@259@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@206@01 3170145))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3528|)))
+  :qid |quant-u-3474|)))
 (assert (forall ((lambda21_28$l@259@01 $Ref)) (!
   (=>
     (and
@@ -18194,7 +18194,7 @@
       (= (inv@260@01 lambda21_28$l@259@01) lambda21_28$l@259@01)
       (img@261@01 lambda21_28$l@259@01)))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3528|)))
+  :qid |quant-u-3474|)))
 (assert (forall ((lambda21_28$l@259@01 $Ref)) (!
   (=>
     (and
@@ -18968,7 +18968,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@306@01) (= (- $Perm.Write (pTaken@310@01 r)) $Perm.No))
   
-  :qid |quant-u-3543|))))
+  :qid |quant-u-3489|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19398,7 +19398,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@321@01) (= (- $Perm.Write (pTaken@327@01 r)) $Perm.No))
   
-  :qid |quant-u-3546|))))
+  :qid |quant-u-3492|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19471,7 +19471,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@314@01) (= (- $Perm.Write (pTaken@331@01 r)) $Perm.No))
   
-  :qid |quant-u-3549|))))
+  :qid |quant-u-3495|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19591,7 +19591,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@337@01 r) $Perm.No)
   
-  :qid |quant-u-3552|))))
+  :qid |quant-u-3498|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -19606,7 +19606,7 @@
     (= r iterable_1@336@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@337@01 r)) $Perm.No))
   
-  :qid |quant-u-3553|))))
+  :qid |quant-u-3499|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19687,7 +19687,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@334@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@343@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@344@01 r))
-  :qid |quant-u-3554|)))
+  :qid |quant-u-3500|)))
 (assert (not (= iterable_1@336@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
@@ -19750,7 +19750,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3555|))))
+  :qid |quant-u-3501|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -21380,7 +21380,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3556|))))
+  :qid |quant-u-3502|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -21475,7 +21475,7 @@
       (ite (= r iterable_1@336@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3557|))))
+  :qid |quant-u-3503|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21531,7 +21531,7 @@
       (ite (= r iterable_1@336@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3558|))))
+  :qid |quant-u-3504|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21891,7 +21891,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 184 | |First:(Second:(Second:(Second:(Second:($t@363@01)))))| > 0 | live]
 ; [else-branch: 184 | !(|First:(Second:(Second:(Second:(Second:($t@363@01)))))| > 0) | dead]
@@ -22314,7 +22314,7 @@
     (issubtype<Bool> (typeof<PyType> lambda32_28$l@368@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@314@01 3235681))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3560|)))
+  :qid |quant-u-3506|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -22332,7 +22332,7 @@
       (= (inv@369@01 lambda32_28$l@368@01) lambda32_28$l@368@01)
       (img@370@01 lambda32_28$l@368@01)))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3560|)))
+  :qid |quant-u-3506|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -22443,7 +22443,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@371@01 r) $Perm.No)
   
-  :qid |quant-u-3563|))))
+  :qid |quant-u-3509|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -22458,7 +22458,7 @@
     (= r iterable_1@336@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@371@01 r)) $Perm.No))
   
-  :qid |quant-u-3564|))))
+  :qid |quant-u-3510|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -22519,7 +22519,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3565|))))
+  :qid |quant-u-3511|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -22582,7 +22582,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3566|))))
+  :qid |quant-u-3512|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -23371,7 +23371,7 @@
       (= r (inv@377@01 r)))
     (= (- $Perm.Write (pTaken@379@01 r)) $Perm.No))
   
-  :qid |quant-u-3570|))))
+  :qid |quant-u-3516|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -23401,7 +23401,7 @@
       (= r (inv@377@01 r)))
     (= (- (- $Perm.Write (pTaken@379@01 r)) (pTaken@380@01 r)) $Perm.No))
   
-  :qid |quant-u-3572|))))
+  :qid |quant-u-3518|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -23554,7 +23554,7 @@
     (issubtype<Bool> (typeof<PyType> lambda32_28$l@368@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@314@01 3235681))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3560|)))
+  :qid |quant-u-3506|)))
 (assert (forall ((lambda32_28$l@368@01 $Ref)) (!
   (=>
     (and
@@ -23564,7 +23564,7 @@
       (= (inv@369@01 lambda32_28$l@368@01) lambda32_28$l@368@01)
       (img@370@01 lambda32_28$l@368@01)))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3560|)))
+  :qid |quant-u-3506|)))
 (assert (forall ((lambda32_28$l@368@01 $Ref)) (!
   (=>
     (and
@@ -24051,11 +24051,11 @@
       (pTaken@382@01 r))
     $Perm.No)
   
-  :qid |quant-u-3574|))))
+  :qid |quant-u-3520|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -24063,7 +24063,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@382@01 r) $Perm.No)
   
-  :qid |quant-u-3575|))))
+  :qid |quant-u-3521|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24078,7 +24078,7 @@
     (= r (_checkDefined $Snap.unit c_1@361@01 3235683))
     (= (- $Perm.Write (pTaken@382@01 r)) $Perm.No))
   
-  :qid |quant-u-3576|))))
+  :qid |quant-u-3522|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24555,7 +24555,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@392@01) (= (- $Perm.Write (pTaken@398@01 r)) $Perm.No))
   
-  :qid |quant-u-3579|))))
+  :qid |quant-u-3525|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24684,7 +24684,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- $Perm.Write (pTaken@403@01 r)) $Perm.No))
   
-  :qid |quant-u-3582|))))
+  :qid |quant-u-3528|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24706,7 +24706,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@404@01 r) $Perm.No)
   
-  :qid |quant-u-3584|))))
+  :qid |quant-u-3530|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24721,7 +24721,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- (- $Perm.Write (pTaken@403@01 r)) (pTaken@404@01 r)) $Perm.No))
   
-  :qid |quant-u-3585|))))
+  :qid |quant-u-3531|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24752,7 +24752,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@405@01 r) $Perm.No)
   
-  :qid |quant-u-3587|))))
+  :qid |quant-u-3533|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24771,7 +24771,7 @@
         (pTaken@405@01 r))
       $Perm.No))
   
-  :qid |quant-u-3588|))))
+  :qid |quant-u-3534|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24795,7 +24795,7 @@
       (pTaken@406@01 r))
     $Perm.No)
   
-  :qid |quant-u-3589|))))
+  :qid |quant-u-3535|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24807,7 +24807,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@406@01 r) $Perm.No)
   
-  :qid |quant-u-3590|))))
+  :qid |quant-u-3536|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24828,7 +24828,7 @@
         (pTaken@406@01 r))
       $Perm.No))
   
-  :qid |quant-u-3591|))))
+  :qid |quant-u-3537|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24848,7 +24848,7 @@
         (pTaken@406@01 r))
       $Perm.No))
   
-  :qid |quant-u-3591|))))
+  :qid |quant-u-3537|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25201,7 +25201,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- $Perm.Write (pTaken@409@01 r)) $Perm.No))
   
-  :qid |quant-u-3594|))))
+  :qid |quant-u-3540|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25225,7 +25225,7 @@
       (pTaken@410@01 r))
     $Perm.No)
   
-  :qid |quant-u-3595|))))
+  :qid |quant-u-3541|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25237,7 +25237,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@410@01 r) $Perm.No)
   
-  :qid |quant-u-3596|))))
+  :qid |quant-u-3542|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25252,7 +25252,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- (- $Perm.Write (pTaken@409@01 r)) (pTaken@410@01 r)) $Perm.No))
   
-  :qid |quant-u-3597|))))
+  :qid |quant-u-3543|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25283,7 +25283,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@411@01 r) $Perm.No)
   
-  :qid |quant-u-3599|))))
+  :qid |quant-u-3545|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25302,11 +25302,11 @@
         (pTaken@411@01 r))
       $Perm.No))
   
-  :qid |quant-u-3600|))))
+  :qid |quant-u-3546|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -25324,7 +25324,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@412@01 r) $Perm.No)
   
-  :qid |quant-u-3602|))))
+  :qid |quant-u-3548|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25345,7 +25345,7 @@
         (pTaken@412@01 r))
       $Perm.No))
   
-  :qid |quant-u-3603|))))
+  :qid |quant-u-3549|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25365,7 +25365,7 @@
         (pTaken@412@01 r))
       $Perm.No))
   
-  :qid |quant-u-3603|))))
+  :qid |quant-u-3549|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25696,7 +25696,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@445@01) (= (- $Perm.Write (pTaken@449@01 r)) $Perm.No))
   
-  :qid |quant-u-3606|))))
+  :qid |quant-u-3552|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26126,7 +26126,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@460@01) (= (- $Perm.Write (pTaken@466@01 r)) $Perm.No))
   
-  :qid |quant-u-3609|))))
+  :qid |quant-u-3555|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26199,7 +26199,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@453@01) (= (- $Perm.Write (pTaken@470@01 r)) $Perm.No))
   
-  :qid |quant-u-3612|))))
+  :qid |quant-u-3558|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26431,7 +26431,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@481@01 r) $Perm.No)
   
-  :qid |quant-u-3615|))))
+  :qid |quant-u-3561|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -26446,7 +26446,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@481@01 r)) $Perm.No))
   
-  :qid |quant-u-3616|))))
+  :qid |quant-u-3562|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26536,7 +26536,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@473@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@487@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@488@01 r))
-  :qid |quant-u-3617|)))
+  :qid |quant-u-3563|)))
 (assert (not (= iterable_2@480@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01))))))
@@ -26599,7 +26599,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3618|))))
+  :qid |quant-u-3564|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -28229,7 +28229,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3619|))))
+  :qid |quant-u-3565|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28323,7 +28323,7 @@
       (ite (= r iterable_2@480@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3620|))))
+  :qid |quant-u-3566|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -28379,7 +28379,7 @@
       (ite (= r iterable_2@480@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3621|))))
+  :qid |quant-u-3567|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -29162,7 +29162,7 @@
     (issubtype<Bool> (typeof<PyType> lambda43_28$l@511@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@453@01 3301217))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3623|)))
+  :qid |quant-u-3569|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -29180,7 +29180,7 @@
       (= (inv@512@01 lambda43_28$l@511@01) lambda43_28$l@511@01)
       (img@513@01 lambda43_28$l@511@01)))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3623|)))
+  :qid |quant-u-3569|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -29458,7 +29458,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@515@01 r) $Perm.No)
   
-  :qid |quant-u-3626|))))
+  :qid |quant-u-3572|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -29473,7 +29473,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@515@01 r)) $Perm.No))
   
-  :qid |quant-u-3627|))))
+  :qid |quant-u-3573|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29534,7 +29534,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3628|))))
+  :qid |quant-u-3574|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -29597,7 +29597,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3629|))))
+  :qid |quant-u-3575|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -30386,7 +30386,7 @@
       (= r (inv@521@01 r)))
     (= (- $Perm.Write (pTaken@523@01 r)) $Perm.No))
   
-  :qid |quant-u-3633|))))
+  :qid |quant-u-3579|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -30416,7 +30416,7 @@
       (= r (inv@521@01 r)))
     (= (- (- $Perm.Write (pTaken@523@01 r)) (pTaken@524@01 r)) $Perm.No))
   
-  :qid |quant-u-3635|))))
+  :qid |quant-u-3581|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -30750,7 +30750,7 @@
     (issubtype<Bool> (typeof<PyType> lambda43_28$l@511@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@453@01 3301217))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3623|)))
+  :qid |quant-u-3569|)))
 (assert (forall ((lambda43_28$l@511@01 $Ref)) (!
   (=>
     (and
@@ -30760,7 +30760,7 @@
       (= (inv@512@01 lambda43_28$l@511@01) lambda43_28$l@511@01)
       (img@513@01 lambda43_28$l@511@01)))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3623|)))
+  :qid |quant-u-3569|)))
 (assert (forall ((lambda43_28$l@511@01 $Ref)) (!
   (=>
     (and
@@ -31178,7 +31178,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 264 | iter_err_2@503@01 == Null | live]
 ; [else-branch: 264 | iter_err_2@503@01 != Null | live]
@@ -31281,7 +31281,7 @@
       (pTaken@527@01 r))
     $Perm.No)
   
-  :qid |quant-u-3637|))))
+  :qid |quant-u-3583|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -31293,7 +31293,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@527@01 r) $Perm.No)
   
-  :qid |quant-u-3638|))))
+  :qid |quant-u-3584|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -31308,7 +31308,7 @@
     (= r (_checkDefined $Snap.unit c_2@504@01 3301219))
     (= (- $Perm.Write (pTaken@527@01 r)) $Perm.No))
   
-  :qid |quant-u-3639|))))
+  :qid |quant-u-3585|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -31373,7 +31373,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (<=
   $Perm.No
@@ -31604,7 +31604,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@537@01))))
@@ -33168,7 +33168,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@544@01 r)) $Perm.No))
   
-  :qid |quant-u-3642|))))
+  :qid |quant-u-3588|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -33209,7 +33209,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3643|))))
+  :qid |quant-u-3589|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -33315,7 +33315,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3644|))))
+  :qid |quant-u-3590|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -34080,7 +34080,7 @@
       (pTaken@552@01 r))
     $Perm.No)
   
-  :qid |quant-u-3647|))))
+  :qid |quant-u-3593|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34100,7 +34100,7 @@
       (= r (inv@550@01 r)))
     (= (- $Perm.Write (pTaken@552@01 r)) $Perm.No))
   
-  :qid |quant-u-3648|))))
+  :qid |quant-u-3594|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -34139,7 +34139,7 @@
       (= r (inv@550@01 r)))
     (= (- (- $Perm.Write (pTaken@552@01 r)) (pTaken@553@01 r)) $Perm.No))
   
-  :qid |quant-u-3650|))))
+  :qid |quant-u-3596|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34461,7 +34461,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@555@01 r)) $Perm.No))
   
-  :qid |quant-u-3653|))))
+  :qid |quant-u-3599|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34502,7 +34502,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3654|))))
+  :qid |quant-u-3600|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -34608,7 +34608,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3655|))))
+  :qid |quant-u-3601|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -35345,7 +35345,7 @@
       (pTaken@563@01 r))
     $Perm.No)
   
-  :qid |quant-u-3658|))))
+  :qid |quant-u-3604|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -35365,7 +35365,7 @@
       (= r (inv@561@01 r)))
     (= (- $Perm.Write (pTaken@563@01 r)) $Perm.No))
   
-  :qid |quant-u-3659|))))
+  :qid |quant-u-3605|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -35404,7 +35404,7 @@
       (= r (inv@561@01 r)))
     (= (- (- $Perm.Write (pTaken@563@01 r)) (pTaken@564@01 r)) $Perm.No))
   
-  :qid |quant-u-3661|))))
+  :qid |quant-u-3607|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -35664,7 +35664,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@507@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@488@01 r))
   :pattern (($FVF.lookup_set_acc $t@566@01 r))
-  :qid |quant-u-3662|)))
+  :qid |quant-u-3608|)))
 ; [eval] !(iter_err_2 == null)
 ; [eval] iter_err_2 == null
 (set-option :timeout 0)
@@ -35718,7 +35718,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] Measure$check(_caller_measures_150, _cthread_150, 1)
 (set-option :timeout 0)
@@ -35779,7 +35779,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 322 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0))) | live]
 ; [else-branch: 322 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))) | live]
@@ -35897,12 +35897,72 @@
 (assert (not (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 1))))))
 (check-sat)
-; unsat
+; unknown
 (pop) ; 9
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 9
+(set-option :timeout 10)
+(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 1)))))
+(check-sat)
+; unknown
+(pop) ; 9
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 325 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1))) | live]
+; [else-branch: 325 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1)))) | live]
+(set-option :timeout 0)
+(push) ; 9
+; [then-branch: 325 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1)))]
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 1))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@568@01))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@568@01)))))))
+    ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@568@01))))))))))
+(assert (not
+  (=
+    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))
+    $Ref.null)))
+; [eval] issubtype(typeof(self.__container), set(set_arg(typeof(self.__container), 0)))
+; [eval] typeof(self.__container)
+; [eval] set(set_arg(typeof(self.__container), 0))
+; [eval] set_arg(typeof(self.__container), 0)
+; [eval] typeof(self.__container)
+(push) ; 10
+(set-option :timeout 10)
+(assert (not (not
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0))))))
+(check-sat)
+; unsat
+(pop) ; 10
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 325 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1))) | dead]
-; [else-branch: 325 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1)))) | live]
+; [then-branch: 326 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0))) | dead]
+; [else-branch: 326 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))) | live]
+(set-option :timeout 0)
+(push) ; 10
+; [else-branch: 326 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0))))]
+(assert (not
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0)))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@568@01))))))
+  $Snap.unit))
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unsat
+; [exec]
+; label post_loop_2
+; [exec]
+; label __end
+; [eval] (forperm _r_17: Ref [MustInvokeBounded(_r_17)] :: false)
+; [eval] (forperm _r_17: Ref [MustInvokeUnbounded(_r_17)] :: false)
+; [eval] (forperm _r_17: Ref [_r_17.MustReleaseBounded] :: false)
+; [eval] (forperm _r_17: Ref [_r_17.MustReleaseUnbounded] :: false)
+(pop) ; 10
+(pop) ; 9
 (set-option :timeout 0)
 (push) ; 9
 ; [else-branch: 325 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 1))))]
@@ -35934,11 +35994,11 @@
 (pop) ; 10
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 326 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0))) | live]
-; [else-branch: 326 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))) | dead]
+; [then-branch: 327 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0))) | live]
+; [else-branch: 327 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))) | dead]
 (set-option :timeout 0)
 (push) ; 10
-; [then-branch: 326 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))]
+; [then-branch: 327 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@486@01))))))))), 0)))]
 (assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01)))))))))) 0))))
 (declare-const sm@569@01 $FVF<set_acc>)
 ; Definitional axioms for singleton-SM's value
@@ -35982,7 +36042,7 @@
   :pattern (($FVF.lookup_set_acc $t@566@01 r))
   :pattern (($FVF.lookup_set_acc (as sm@569@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@570@01 r))
-  :qid |quant-u-3663|)))
+  :qid |quant-u-3609|)))
 (assert (<=
   $Perm.No
   (ite
@@ -36042,11 +36102,11 @@
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 327 | _err@493@01 != Null | dead]
-; [else-branch: 327 | _err@493@01 == Null | live]
+; [then-branch: 328 | _err@493@01 != Null | dead]
+; [else-branch: 328 | _err@493@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 3
-; [else-branch: 327 | _err@493@01 == Null]
+; [else-branch: 328 | _err@493@01 == Null]
 (assert (= _err@493@01 $Ref.null))
 (pop) ; 3
 (pop) ; 2
@@ -36369,7 +36429,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@603@01) (= (- $Perm.Write (pTaken@607@01 r)) $Perm.No))
   
-  :qid |quant-u-3666|))))
+  :qid |quant-u-3612|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -36799,7 +36859,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@618@01) (= (- $Perm.Write (pTaken@624@01 r)) $Perm.No))
   
-  :qid |quant-u-3669|))))
+  :qid |quant-u-3615|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -36872,7 +36932,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@611@01) (= (- $Perm.Write (pTaken@628@01 r)) $Perm.No))
   
-  :qid |quant-u-3672|))))
+  :qid |quant-u-3618|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -37104,7 +37164,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@639@01 r) $Perm.No)
   
-  :qid |quant-u-3675|))))
+  :qid |quant-u-3621|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -37119,7 +37179,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@639@01 r)) $Perm.No))
   
-  :qid |quant-u-3676|))))
+  :qid |quant-u-3622|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -37209,7 +37269,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@631@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@645@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@646@01 r))
-  :qid |quant-u-3677|)))
+  :qid |quant-u-3623|)))
 (assert (not (= iterable_3@638@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@644@01))))))
@@ -37272,7 +37332,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3678|))))
+  :qid |quant-u-3624|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -37544,11 +37604,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 328 | _err@651@01 == Null | live]
-; [else-branch: 328 | _err@651@01 != Null | dead]
+; [then-branch: 329 | _err@651@01 == Null | live]
+; [else-branch: 329 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 328 | _err@651@01 == Null]
+; [then-branch: 329 | _err@651@01 == Null]
 (assert (= _err@651@01 $Ref.null))
 ; [eval] self.__iter_index == old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index) + 1
@@ -37583,11 +37643,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 329 | _err@651@01 == Null | live]
-; [else-branch: 329 | _err@651@01 != Null | dead]
+; [then-branch: 330 | _err@651@01 == Null | live]
+; [else-branch: 330 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 329 | _err@651@01 == Null]
+; [then-branch: 330 | _err@651@01 == Null]
 ; [eval] self.__iter_index > 0
 (pop) ; 4
 (pop) ; 3
@@ -37616,11 +37676,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 330 | _err@651@01 == Null | live]
-; [else-branch: 330 | _err@651@01 != Null | dead]
+; [then-branch: 331 | _err@651@01 == Null | live]
+; [else-branch: 331 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 330 | _err@651@01 == Null]
+; [then-branch: 331 | _err@651@01 == Null]
 ; [eval] self.__previous == self.list_acc[..self.__iter_index - 1]
 ; [eval] self.list_acc[..self.__iter_index - 1]
 ; [eval] self.__iter_index - 1
@@ -37672,11 +37732,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 331 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 331 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 332 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 332 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 331 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 332 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 (assert (>
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@644@01)))))))
@@ -37708,10 +37768,10 @@
 ; [eval] _err != null ==> self.__previous == self.list_acc
 ; [eval] _err != null
 (push) ; 3
-; [then-branch: 332 | _err@651@01 != Null | dead]
-; [else-branch: 332 | _err@651@01 == Null | live]
+; [then-branch: 333 | _err@651@01 != Null | dead]
+; [else-branch: 333 | _err@651@01 == Null | live]
 (push) ; 4
-; [else-branch: 332 | _err@651@01 == Null]
+; [else-branch: 333 | _err@651@01 == Null]
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
@@ -37726,10 +37786,10 @@
 ; [eval] _err != null ==> self.__iter_index == |self.list_acc|
 ; [eval] _err != null
 (push) ; 3
-; [then-branch: 333 | _err@651@01 != Null | dead]
-; [else-branch: 333 | _err@651@01 == Null | live]
+; [then-branch: 334 | _err@651@01 != Null | dead]
+; [else-branch: 334 | _err@651@01 == Null | live]
 (push) ; 4
-; [else-branch: 333 | _err@651@01 == Null]
+; [else-branch: 334 | _err@651@01 == Null]
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
@@ -37757,11 +37817,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 334 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 334 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 335 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 335 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 334 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 335 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] _res == self.list_acc[self.__iter_index - 1] && (_res in self.list_acc)
 ; [eval] _res == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
@@ -37790,10 +37850,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 5
-; [then-branch: 335 | _res@650@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1] | live]
-; [else-branch: 335 | _res@650@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1] | live]
+; [then-branch: 336 | _res@650@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1] | live]
+; [else-branch: 336 | _res@650@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1] | live]
 (push) ; 6
-; [then-branch: 335 | _res@650@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1]]
+; [then-branch: 336 | _res@650@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1]]
 (assert (not
   (=
     _res@650@01
@@ -37804,7 +37864,7 @@
         1)))))
 (pop) ; 6
 (push) ; 6
-; [else-branch: 335 | _res@650@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1]]
+; [else-branch: 336 | _res@650@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 1]]
 (assert (=
   _res@650@01
   (Seq_index
@@ -37895,13 +37955,13 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 336 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 336 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 337 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 337 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 336 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 337 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] issubtype(typeof(_res), Iterator_arg(typeof(self), 0))
 ; [eval] typeof(_res)
 ; [eval] Iterator_arg(typeof(self), 0)
@@ -37927,16 +37987,16 @@
 ; [eval] (r in old(self.__previous))
 ; [eval] old(self.__previous)
 (push) ; 4
-; [then-branch: 337 | r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01)))))))))))) | live]
-; [else-branch: 337 | !(r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01))))))))))))) | live]
+; [then-branch: 338 | r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01)))))))))))) | live]
+; [else-branch: 338 | !(r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01))))))))))))) | live]
 (push) ; 5
-; [then-branch: 337 | r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01))))))))))))]
+; [then-branch: 338 | r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01))))))))))))]
 (assert (Seq_contains
   ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@644@01)))))))))))))
   r@653@01))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 337 | !(r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01)))))))))))))]
+; [else-branch: 338 | !(r@653@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@644@01)))))))))))))]
 (assert (not
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@644@01)))))))))))))
@@ -37944,17 +38004,17 @@
 ; [eval] self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null)
 ; [eval] self.__iter_index > 1
 (push) ; 6
-; [then-branch: 338 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1) | live]
-; [else-branch: 338 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 | live]
+; [then-branch: 339 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1) | live]
+; [else-branch: 339 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 | live]
 (push) ; 7
-; [then-branch: 338 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1)]
+; [then-branch: 339 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
     1)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 338 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1]
+; [else-branch: 339 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
   1))
@@ -37985,10 +38045,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 8
-; [then-branch: 339 | r@653@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] | live]
-; [else-branch: 339 | r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] | live]
+; [then-branch: 340 | r@653@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] | live]
+; [else-branch: 340 | r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] | live]
 (push) ; 9
-; [then-branch: 339 | r@653@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2]]
+; [then-branch: 340 | r@653@01 != First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2]]
 (assert (not
   (=
     r@653@01
@@ -37999,7 +38059,7 @@
         2)))))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 339 | r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2]]
+; [else-branch: 340 | r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2]]
 (assert (=
   r@653@01
   (Seq_index
@@ -38065,10 +38125,10 @@
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
       1))))
 (push) ; 6
-; [then-branch: 340 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null | live]
-; [else-branch: 340 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null) | live]
+; [then-branch: 341 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null | live]
+; [else-branch: 341 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null) | live]
 (push) ; 7
-; [then-branch: 340 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null]
+; [then-branch: 341 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null]
 (assert (and
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
@@ -38084,7 +38144,7 @@
     (= _err@651@01 $Ref.null))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 340 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null)]
+; [else-branch: 341 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 1 && r@653@01 == First:(Second:(Second:(Second:(Second:($t@644@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) - 2] && _err@651@01 == Null)]
 (assert (not
   (and
     (>
@@ -38102,30 +38162,30 @@
 ; [eval] self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1])
 ; [eval] self.__iter_index > 0
 (push) ; 8
-; [then-branch: 341 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0) | live]
-; [else-branch: 341 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0 | live]
+; [then-branch: 342 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0) | live]
+; [else-branch: 342 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0 | live]
 (push) ; 9
-; [then-branch: 341 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0)]
+; [then-branch: 342 | !(First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
     0)))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 341 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0]
+; [else-branch: 342 | First:(Second:(Second:(Second:(Second:(Second:($t@652@01)))))) > 0]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@652@01)))))))
   0))
 ; [eval] _err != null
 (push) ; 10
-; [then-branch: 342 | _err@651@01 == Null | live]
-; [else-branch: 342 | _err@651@01 != Null | live]
+; [then-branch: 343 | _err@651@01 == Null | live]
+; [else-branch: 343 | _err@651@01 != Null | live]
 (push) ; 11
-; [then-branch: 342 | _err@651@01 == Null]
+; [then-branch: 343 | _err@651@01 == Null]
 (assert (= _err@651@01 $Ref.null))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 342 | _err@651@01 != Null]
+; [else-branch: 343 | _err@651@01 != Null]
 (assert (not (= _err@651@01 $Ref.null)))
 ; [eval] r == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
@@ -38825,11 +38885,11 @@
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 343 | _err@651@01 == Null | live]
-; [else-branch: 343 | _err@651@01 != Null | dead]
+; [then-branch: 344 | _err@651@01 == Null | live]
+; [else-branch: 344 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 3
-; [then-branch: 343 | _err@651@01 == Null]
+; [then-branch: 344 | _err@651@01 == Null]
 (assert (= _err@651@01 $Ref.null))
 ; [exec]
 ; c_3 := loop_target_3
@@ -38902,7 +38962,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3679|))))
+  :qid |quant-u-3625|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -38996,7 +39056,7 @@
       (ite (= r iterable_3@638@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3680|))))
+  :qid |quant-u-3626|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -39052,7 +39112,7 @@
       (ite (= r iterable_3@638@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3681|))))
+  :qid |quant-u-3627|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -39106,18 +39166,18 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 344 | iter_err_3@661@01 == Null | live]
-; [else-branch: 344 | iter_err_3@661@01 != Null | live]
+; [then-branch: 345 | iter_err_3@661@01 == Null | live]
+; [else-branch: 345 | iter_err_3@661@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 344 | iter_err_3@661@01 == Null]
+; [then-branch: 345 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 ; [eval] iter_3.__iter_index - 1 == |iter_3.__previous|
 ; [eval] iter_3.__iter_index - 1
 ; [eval] |iter_3.__previous|
 (pop) ; 6
 (push) ; 6
-; [else-branch: 344 | iter_err_3@661@01 != Null]
+; [else-branch: 345 | iter_err_3@661@01 != Null]
 (assert (not (= iter_err_3@661@01 $Ref.null)))
 (pop) ; 6
 (pop) ; 5
@@ -39160,17 +39220,17 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 345 | iter_err_3@661@01 != Null | live]
-; [else-branch: 345 | iter_err_3@661@01 == Null | live]
+; [then-branch: 346 | iter_err_3@661@01 != Null | live]
+; [else-branch: 346 | iter_err_3@661@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 345 | iter_err_3@661@01 != Null]
+; [then-branch: 346 | iter_err_3@661@01 != Null]
 (assert (not (= iter_err_3@661@01 $Ref.null)))
 ; [eval] iter_3.__iter_index == |iter_3.__previous|
 ; [eval] |iter_3.__previous|
 (pop) ; 6
 (push) ; 6
-; [else-branch: 345 | iter_err_3@661@01 == Null]
+; [else-branch: 346 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 (pop) ; 6
 (pop) ; 5
@@ -39211,17 +39271,17 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 346 | iter_err_3@661@01 == Null | live]
-; [else-branch: 346 | iter_err_3@661@01 != Null | live]
+; [then-branch: 347 | iter_err_3@661@01 == Null | live]
+; [else-branch: 347 | iter_err_3@661@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 346 | iter_err_3@661@01 == Null]
+; [then-branch: 347 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 ; [eval] |iter_3.list_acc| > 0
 ; [eval] |iter_3.list_acc|
 (pop) ; 6
 (push) ; 6
-; [else-branch: 346 | iter_err_3@661@01 != Null]
+; [else-branch: 347 | iter_err_3@661@01 != Null]
 (assert (not (= iter_err_3@661@01 $Ref.null)))
 (pop) ; 6
 (pop) ; 5
@@ -39295,11 +39355,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 347 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 347 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 348 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 348 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 347 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 348 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 (assert (>
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@664@01)))))))
@@ -39344,11 +39404,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 348 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 348 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 349 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 349 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 348 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 349 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] loop_target_3 == iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
@@ -39414,11 +39474,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 349 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 349 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 350 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 350 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 349 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 350 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] (loop_target_3 in iter_3.list_acc)
 (pop) ; 6
 (pop) ; 5
@@ -39448,7 +39508,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -39457,20 +39517,20 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 350 | iter_err_3@661@01 == Null | live]
-; [else-branch: 350 | iter_err_3@661@01 != Null | live]
+; [then-branch: 351 | iter_err_3@661@01 == Null | live]
+; [else-branch: 351 | iter_err_3@661@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 350 | iter_err_3@661@01 == Null]
+; [then-branch: 351 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 ; [eval] iter_3.__previous == iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
 (pop) ; 6
 (push) ; 6
-; [else-branch: 350 | iter_err_3@661@01 != Null]
+; [else-branch: 351 | iter_err_3@661@01 != Null]
 (assert (not (= iter_err_3@661@01 $Ref.null)))
 (pop) ; 6
 (pop) ; 5
@@ -39507,13 +39567,13 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 351 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 351 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 352 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 352 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 351 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 352 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] issubtype(typeof(loop_target_3), set(int()))
 ; [eval] typeof(loop_target_3)
 ; [eval] set(int())
@@ -39549,24 +39609,24 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 352 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 352 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 353 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 353 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 352 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 353 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] c_3 == loop_target_3 && _isDefined(3366755)
 ; [eval] c_3 == loop_target_3
 (push) ; 7
-; [then-branch: 353 | c_3@662@01 != loop_target_3@660@01 | live]
-; [else-branch: 353 | c_3@662@01 == loop_target_3@660@01 | live]
+; [then-branch: 354 | c_3@662@01 != loop_target_3@660@01 | live]
+; [else-branch: 354 | c_3@662@01 == loop_target_3@660@01 | live]
 (push) ; 8
-; [then-branch: 353 | c_3@662@01 != loop_target_3@660@01]
+; [then-branch: 354 | c_3@662@01 != loop_target_3@660@01]
 (assert (not (= c_3@662@01 loop_target_3@660@01)))
 (pop) ; 8
 (push) ; 8
-; [else-branch: 353 | c_3@662@01 == loop_target_3@660@01]
+; [else-branch: 354 | c_3@662@01 == loop_target_3@660@01]
 (assert (= c_3@662@01 loop_target_3@660@01))
 ; [eval] _isDefined(3366755)
 (push) ; 9
@@ -39624,16 +39684,16 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 354 | iter_err_3@661@01 != Null | live]
-; [else-branch: 354 | iter_err_3@661@01 == Null | live]
+; [then-branch: 355 | iter_err_3@661@01 != Null | live]
+; [else-branch: 355 | iter_err_3@661@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 354 | iter_err_3@661@01 != Null]
+; [then-branch: 355 | iter_err_3@661@01 != Null]
 (assert (not (= iter_err_3@661@01 $Ref.null)))
 ; [eval] iter_3.__previous == iter_3.list_acc
 (pop) ; 6
 (push) ; 6
-; [else-branch: 354 | iter_err_3@661@01 == Null]
+; [else-branch: 355 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 (pop) ; 6
 (pop) ; 5
@@ -39668,11 +39728,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 355 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| == 0 | dead]
-; [else-branch: 355 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0 | live]
+; [then-branch: 356 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| == 0 | dead]
+; [else-branch: 356 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0 | live]
 (set-option :timeout 0)
 (push) ; 6
-; [else-branch: 355 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0]
+; [else-branch: 356 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0]
 (assert (not
   (=
     (Seq_length
@@ -39715,15 +39775,15 @@
 ; [eval] set(int())
 ; [eval] int()
 (push) ; 6
-; [then-branch: 356 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType]))) | live]
-; [else-branch: 356 | issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType])) | live]
+; [then-branch: 357 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType]))) | live]
+; [else-branch: 357 | issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType])) | live]
 (push) ; 7
-; [then-branch: 356 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType])))]
+; [then-branch: 357 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType])))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType)))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 356 | issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType]))]
+; [else-branch: 357 | issubtype[Bool](typeof[PyType](lambda55_28$l@669@01), set[PyType](int[PyType]))]
 (assert (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType))))
 ; [eval] (lambda55_28$l in _checkDefined(a_3, 3366753).set_acc)
 ; [eval] _checkDefined(a_3, 3366753)
@@ -39835,7 +39895,7 @@
     (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@611@01 3366753))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3683|)))
+  :qid |quant-u-3629|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -39853,7 +39913,7 @@
       (= (inv@670@01 lambda55_28$l@669@01) lambda55_28$l@669@01)
       (img@671@01 lambda55_28$l@669@01)))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3683|)))
+  :qid |quant-u-3629|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -40131,7 +40191,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@673@01 r) $Perm.No)
   
-  :qid |quant-u-3686|))))
+  :qid |quant-u-3632|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -40146,7 +40206,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@673@01 r)) $Perm.No))
   
-  :qid |quant-u-3687|))))
+  :qid |quant-u-3633|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -40207,7 +40267,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3688|))))
+  :qid |quant-u-3634|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -40270,7 +40330,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3689|))))
+  :qid |quant-u-3635|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -40308,11 +40368,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 357 | _err@651@01 == Null | live]
-; [else-branch: 357 | _err@651@01 != Null | dead]
+; [then-branch: 358 | _err@651@01 == Null | live]
+; [else-branch: 358 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 357 | _err@651@01 == Null]
+; [then-branch: 358 | _err@651@01 == Null]
 ; [eval] iter_3.__iter_index - 1 == |iter_3.__previous|
 ; [eval] iter_3.__iter_index - 1
 ; [eval] |iter_3.__previous|
@@ -40344,10 +40404,10 @@
 ; [eval] iter_err_3 != null ==> iter_3.__iter_index == |iter_3.__previous|
 ; [eval] iter_err_3 != null
 (push) ; 5
-; [then-branch: 358 | _err@651@01 != Null | dead]
-; [else-branch: 358 | _err@651@01 == Null | live]
+; [then-branch: 359 | _err@651@01 != Null | dead]
+; [else-branch: 359 | _err@651@01 == Null | live]
 (push) ; 6
-; [else-branch: 358 | _err@651@01 == Null]
+; [else-branch: 359 | _err@651@01 == Null]
 (pop) ; 6
 (pop) ; 5
 ; Joined path conditions
@@ -40362,11 +40422,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 359 | _err@651@01 == Null | live]
-; [else-branch: 359 | _err@651@01 != Null | dead]
+; [then-branch: 360 | _err@651@01 == Null | live]
+; [else-branch: 360 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 359 | _err@651@01 == Null]
+; [then-branch: 360 | _err@651@01 == Null]
 ; [eval] |iter_3.list_acc| > 0
 ; [eval] |iter_3.list_acc|
 (pop) ; 6
@@ -40435,11 +40495,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 360 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 360 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 361 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 361 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 360 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 361 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] iter_3.__iter_index > 0
 (pop) ; 6
 (pop) ; 5
@@ -40460,11 +40520,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 361 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 361 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 362 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 362 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 361 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 362 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] loop_target_3 == iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
@@ -40540,11 +40600,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 362 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 362 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 363 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 363 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 362 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 363 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] (loop_target_3 in iter_3.list_acc)
 (pop) ; 6
 (pop) ; 5
@@ -40582,11 +40642,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 363 | _err@651@01 == Null | live]
-; [else-branch: 363 | _err@651@01 != Null | dead]
+; [then-branch: 364 | _err@651@01 == Null | live]
+; [else-branch: 364 | _err@651@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 363 | _err@651@01 == Null]
+; [then-branch: 364 | _err@651@01 == Null]
 ; [eval] iter_3.__previous == iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
@@ -40609,11 +40669,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 364 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 364 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 365 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 365 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 364 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 365 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] issubtype(typeof(loop_target_3), set(int()))
 ; [eval] typeof(loop_target_3)
 ; [eval] set(int())
@@ -40655,22 +40715,22 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 365 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
-; [else-branch: 365 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
+; [then-branch: 366 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0 | live]
+; [else-branch: 366 | !(|First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 365 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
+; [then-branch: 366 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| > 0]
 ; [eval] c_3 == loop_target_3 && _isDefined(3366755)
 ; [eval] c_3 == loop_target_3
 (push) ; 7
-; [then-branch: 366 | False | live]
-; [else-branch: 366 | True | live]
+; [then-branch: 367 | False | live]
+; [else-branch: 367 | True | live]
 (push) ; 8
-; [then-branch: 366 | False]
+; [then-branch: 367 | False]
 (assert false)
 (pop) ; 8
 (push) ; 8
-; [else-branch: 366 | True]
+; [else-branch: 367 | True]
 ; [eval] _isDefined(3366755)
 (push) ; 9
 (pop) ; 9
@@ -40703,10 +40763,10 @@
 ; [eval] iter_err_3 != null ==> iter_3.__previous == iter_3.list_acc
 ; [eval] iter_err_3 != null
 (push) ; 5
-; [then-branch: 367 | _err@651@01 != Null | dead]
-; [else-branch: 367 | _err@651@01 == Null | live]
+; [then-branch: 368 | _err@651@01 != Null | dead]
+; [else-branch: 368 | _err@651@01 == Null | live]
 (push) ; 6
-; [else-branch: 367 | _err@651@01 == Null]
+; [else-branch: 368 | _err@651@01 == Null]
 (pop) ; 6
 (pop) ; 5
 ; Joined path conditions
@@ -40726,11 +40786,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 368 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| == 0 | dead]
-; [else-branch: 368 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| != 0 | live]
+; [then-branch: 369 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| == 0 | dead]
+; [else-branch: 369 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| != 0 | live]
 (set-option :timeout 0)
 (push) ; 6
-; [else-branch: 368 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| != 0]
+; [else-branch: 369 | |First:(Second:(Second:(Second:(Second:($t@644@01)))))| != 0]
 (assert (not
   (=
     (Seq_length
@@ -40752,15 +40812,15 @@
 ; [eval] set(int())
 ; [eval] int()
 (push) ; 6
-; [then-branch: 369 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType]))) | live]
-; [else-branch: 369 | issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType])) | live]
+; [then-branch: 370 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType]))) | live]
+; [else-branch: 370 | issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType])) | live]
 (push) ; 7
-; [then-branch: 369 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType])))]
+; [then-branch: 370 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType])))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> lambda55_28$l@678@01) (set<PyType> (as int<PyType>  PyType)))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 369 | issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType]))]
+; [else-branch: 370 | issubtype[Bool](typeof[PyType](lambda55_28$l@678@01), set[PyType](int[PyType]))]
 (assert (issubtype<Bool> (typeof<PyType> lambda55_28$l@678@01) (set<PyType> (as int<PyType>  PyType))))
 ; [eval] (lambda55_28$l in _checkDefined(a_3, 3366753).set_acc)
 ; [eval] _checkDefined(a_3, 3366753)
@@ -41059,7 +41119,7 @@
       (= r (inv@679@01 r)))
     (= (- $Perm.Write (pTaken@681@01 r)) $Perm.No))
   
-  :qid |quant-u-3693|))))
+  :qid |quant-u-3639|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -41089,7 +41149,7 @@
       (= r (inv@679@01 r)))
     (= (- (- $Perm.Write (pTaken@681@01 r)) (pTaken@682@01 r)) $Perm.No))
   
-  :qid |quant-u-3695|))))
+  :qid |quant-u-3641|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -41288,74 +41348,74 @@
 (pop) ; 6
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 370 | True | live]
-; [else-branch: 370 | False | dead]
+; [then-branch: 371 | True | live]
+; [else-branch: 371 | False | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 370 | True]
+; [then-branch: 371 | True]
 ; [eval] _loop_termination_flag_3 || (!(iter_err_3 == null) || perm(MustTerminate(_cthread_160)) == none && ((forperm _r_20: Ref [MustInvokeBounded(_r_20)] :: false) && ((forperm _r_20: Ref [MustInvokeUnbounded(_r_20)] :: false) && ((forperm _r_20: Ref [_r_20.MustReleaseBounded] :: false) && (forperm _r_20: Ref [_r_20.MustReleaseUnbounded] :: false)))))
 (push) ; 7
-; [then-branch: 371 | False | live]
-; [else-branch: 371 | True | live]
+; [then-branch: 372 | False | live]
+; [else-branch: 372 | True | live]
 (push) ; 8
-; [then-branch: 371 | False]
+; [then-branch: 372 | False]
 (assert false)
 (pop) ; 8
 (push) ; 8
-; [else-branch: 371 | True]
+; [else-branch: 372 | True]
 ; [eval] !(iter_err_3 == null)
 ; [eval] iter_err_3 == null
 (push) ; 9
-; [then-branch: 372 | _err@651@01 != Null | live]
-; [else-branch: 372 | _err@651@01 == Null | live]
+; [then-branch: 373 | _err@651@01 != Null | live]
+; [else-branch: 373 | _err@651@01 == Null | live]
 (push) ; 10
-; [then-branch: 372 | _err@651@01 != Null]
+; [then-branch: 373 | _err@651@01 != Null]
 (assert (not (= _err@651@01 $Ref.null)))
 (pop) ; 10
 (push) ; 10
-; [else-branch: 372 | _err@651@01 == Null]
+; [else-branch: 373 | _err@651@01 == Null]
 ; [eval] perm(MustTerminate(_cthread_160)) == none && ((forperm _r_20: Ref [MustInvokeBounded(_r_20)] :: false) && ((forperm _r_20: Ref [MustInvokeUnbounded(_r_20)] :: false) && ((forperm _r_20: Ref [_r_20.MustReleaseBounded] :: false) && (forperm _r_20: Ref [_r_20.MustReleaseUnbounded] :: false))))
 ; [eval] perm(MustTerminate(_cthread_160)) == none
 ; [eval] perm(MustTerminate(_cthread_160))
 (push) ; 11
-; [then-branch: 373 | False | live]
-; [else-branch: 373 | True | live]
+; [then-branch: 374 | False | live]
+; [else-branch: 374 | True | live]
 (push) ; 12
-; [then-branch: 373 | False]
+; [then-branch: 374 | False]
 (assert false)
 (pop) ; 12
 (push) ; 12
-; [else-branch: 373 | True]
+; [else-branch: 374 | True]
 ; [eval] (forperm _r_20: Ref [MustInvokeBounded(_r_20)] :: false)
 (push) ; 13
-; [then-branch: 374 | False | live]
-; [else-branch: 374 | True | live]
+; [then-branch: 375 | False | live]
+; [else-branch: 375 | True | live]
 (push) ; 14
-; [then-branch: 374 | False]
+; [then-branch: 375 | False]
 (assert false)
 (pop) ; 14
 (push) ; 14
-; [else-branch: 374 | True]
+; [else-branch: 375 | True]
 ; [eval] (forperm _r_20: Ref [MustInvokeUnbounded(_r_20)] :: false)
 (push) ; 15
-; [then-branch: 375 | False | live]
-; [else-branch: 375 | True | live]
+; [then-branch: 376 | False | live]
+; [else-branch: 376 | True | live]
 (push) ; 16
-; [then-branch: 375 | False]
+; [then-branch: 376 | False]
 (assert false)
 (pop) ; 16
 (push) ; 16
-; [else-branch: 375 | True]
+; [else-branch: 376 | True]
 ; [eval] (forperm _r_20: Ref [_r_20.MustReleaseBounded] :: false)
 (push) ; 17
-; [then-branch: 376 | False | live]
-; [else-branch: 376 | True | live]
+; [then-branch: 377 | False | live]
+; [else-branch: 377 | True | live]
 (push) ; 18
-; [then-branch: 376 | False]
+; [then-branch: 377 | False]
 (assert false)
 (pop) ; 18
 (push) ; 18
-; [else-branch: 376 | True]
+; [else-branch: 377 | True]
 ; [eval] (forperm _r_20: Ref [_r_20.MustReleaseUnbounded] :: false)
 (pop) ; 18
 (pop) ; 17
@@ -41390,10 +41450,10 @@
 ; [eval] !_loop_check_before_3 ==> (forperm _r_20: Ref [MustInvokeBounded(_r_20)] :: false) && ((forperm _r_20: Ref [MustInvokeUnbounded(_r_20)] :: false) && ((forperm _r_20: Ref [_r_20.MustReleaseBounded] :: false) && (forperm _r_20: Ref [_r_20.MustReleaseUnbounded] :: false)))
 ; [eval] !_loop_check_before_3
 (push) ; 5
-; [then-branch: 377 | False | dead]
-; [else-branch: 377 | True | live]
+; [then-branch: 378 | False | dead]
+; [else-branch: 378 | True | live]
 (push) ; 6
-; [else-branch: 377 | True]
+; [else-branch: 378 | True]
 (pop) ; 6
 (pop) ; 5
 ; Joined path conditions
@@ -41423,7 +41483,7 @@
     (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@611@01 3366753))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3683|)))
+  :qid |quant-u-3629|)))
 (assert (forall ((lambda55_28$l@669@01 $Ref)) (!
   (=>
     (and
@@ -41433,7 +41493,7 @@
       (= (inv@670@01 lambda55_28$l@669@01) lambda55_28$l@669@01)
       (img@671@01 lambda55_28$l@669@01)))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3683|)))
+  :qid |quant-u-3629|)))
 (assert (forall ((lambda55_28$l@669@01 $Ref)) (!
   (=>
     (and
@@ -41853,11 +41913,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 378 | iter_err_3@661@01 == Null | live]
-; [else-branch: 378 | iter_err_3@661@01 != Null | live]
+; [then-branch: 379 | iter_err_3@661@01 == Null | live]
+; [else-branch: 379 | iter_err_3@661@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 378 | iter_err_3@661@01 == Null]
+; [then-branch: 379 | iter_err_3@661@01 == Null]
 (assert (= iter_err_3@661@01 $Ref.null))
 ; [exec]
 ; _loop_measures_3 := Seq[Measure$]()
@@ -41954,7 +42014,7 @@
       (pTaken@685@01 r))
     $Perm.No)
   
-  :qid |quant-u-3697|))))
+  :qid |quant-u-3643|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -41966,11 +42026,11 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@685@01 r) $Perm.No)
   
-  :qid |quant-u-3698|))))
+  :qid |quant-u-3644|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -41981,7 +42041,7 @@
     (= r (_checkDefined $Snap.unit c_3@662@01 3366755))
     (= (- $Perm.Write (pTaken@685@01 r)) $Perm.No))
   
-  :qid |quant-u-3699|))))
+  :qid |quant-u-3645|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -42046,7 +42106,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (<=
   $Perm.No
@@ -42527,18 +42587,18 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 379 | _err@700@01 == Null | live]
-; [else-branch: 379 | _err@700@01 != Null | live]
+; [then-branch: 380 | _err@700@01 == Null | live]
+; [else-branch: 380 | _err@700@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 379 | _err@700@01 == Null]
+; [then-branch: 380 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 ; [eval] self.__iter_index == old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index)
 (pop) ; 8
 (push) ; 8
-; [else-branch: 379 | _err@700@01 != Null]
+; [else-branch: 380 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 (pop) ; 8
 (pop) ; 7
@@ -42580,16 +42640,16 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 380 | _err@700@01 == Null | live]
-; [else-branch: 380 | _err@700@01 != Null | live]
+; [then-branch: 381 | _err@700@01 == Null | live]
+; [else-branch: 381 | _err@700@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 380 | _err@700@01 == Null]
+; [then-branch: 381 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 ; [eval] self.__iter_index > 0
 (pop) ; 8
 (push) ; 8
-; [else-branch: 380 | _err@700@01 != Null]
+; [else-branch: 381 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 (pop) ; 8
 (pop) ; 7
@@ -42628,18 +42688,18 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 381 | _err@700@01 == Null | live]
-; [else-branch: 381 | _err@700@01 != Null | live]
+; [then-branch: 382 | _err@700@01 == Null | live]
+; [else-branch: 382 | _err@700@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 381 | _err@700@01 == Null]
+; [then-branch: 382 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 ; [eval] self.__previous == self.list_acc[..self.__iter_index - 1]
 ; [eval] self.list_acc[..self.__iter_index - 1]
 ; [eval] self.__iter_index - 1
 (pop) ; 8
 (push) ; 8
-; [else-branch: 381 | _err@700@01 != Null]
+; [else-branch: 382 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 (pop) ; 8
 (pop) ; 7
@@ -42678,11 +42738,11 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 382 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 382 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 383 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 383 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 382 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 383 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] self.__iter_index > 0
 (pop) ; 8
 (pop) ; 7
@@ -42723,16 +42783,16 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 383 | _err@700@01 != Null | live]
-; [else-branch: 383 | _err@700@01 == Null | live]
+; [then-branch: 384 | _err@700@01 != Null | live]
+; [else-branch: 384 | _err@700@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 383 | _err@700@01 != Null]
+; [then-branch: 384 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 ; [eval] self.__previous == self.list_acc
 (pop) ; 8
 (push) ; 8
-; [else-branch: 383 | _err@700@01 == Null]
+; [else-branch: 384 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 (pop) ; 8
 (pop) ; 7
@@ -42772,17 +42832,17 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 384 | _err@700@01 != Null | live]
-; [else-branch: 384 | _err@700@01 == Null | live]
+; [then-branch: 385 | _err@700@01 != Null | live]
+; [else-branch: 385 | _err@700@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 384 | _err@700@01 != Null]
+; [then-branch: 385 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 ; [eval] self.__iter_index == |self.list_acc|
 ; [eval] |self.list_acc|
 (pop) ; 8
 (push) ; 8
-; [else-branch: 384 | _err@700@01 == Null]
+; [else-branch: 385 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 (pop) ; 8
 (pop) ; 7
@@ -42818,11 +42878,11 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 385 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 385 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 386 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 386 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 385 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 386 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] _res == self.list_acc[self.__iter_index - 1] && (_res in self.list_acc)
 ; [eval] _res == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
@@ -42851,10 +42911,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 9
-; [then-branch: 386 | _res@699@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1] | live]
-; [else-branch: 386 | _res@699@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1] | live]
+; [then-branch: 387 | _res@699@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1] | live]
+; [else-branch: 387 | _res@699@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1] | live]
 (push) ; 10
-; [then-branch: 386 | _res@699@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1]]
+; [then-branch: 387 | _res@699@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1]]
 (assert (not
   (=
     _res@699@01
@@ -42865,7 +42925,7 @@
         1)))))
 (pop) ; 10
 (push) ; 10
-; [else-branch: 386 | _res@699@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1]]
+; [else-branch: 387 | _res@699@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 1]]
 (assert (=
   _res@699@01
   (Seq_index
@@ -42958,11 +43018,11 @@
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 387 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 387 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 388 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 388 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 387 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 388 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] issubtype(typeof(_res), Iterator_arg(typeof(self), 0))
 ; [eval] typeof(_res)
 ; [eval] Iterator_arg(typeof(self), 0)
@@ -42988,16 +43048,16 @@
 ; [eval] (r in old(self.__previous))
 ; [eval] old(self.__previous)
 (push) ; 8
-; [then-branch: 388 | r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01))))))))) | live]
-; [else-branch: 388 | !(r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01)))))))))) | live]
+; [then-branch: 389 | r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01))))))))) | live]
+; [else-branch: 389 | !(r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01)))))))))) | live]
 (push) ; 9
-; [then-branch: 388 | r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01)))))))))]
+; [then-branch: 389 | r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01)))))))))]
 (assert (Seq_contains
   ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@664@01))))))))))
   r@702@01))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 388 | !(r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01))))))))))]
+; [else-branch: 389 | !(r@702@01 in First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@664@01))))))))))]
 (assert (not
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@664@01))))))))))
@@ -43005,17 +43065,17 @@
 ; [eval] self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null)
 ; [eval] self.__iter_index > 1
 (push) ; 10
-; [then-branch: 389 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1) | live]
-; [else-branch: 389 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 | live]
+; [then-branch: 390 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1) | live]
+; [else-branch: 390 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 | live]
 (push) ; 11
-; [then-branch: 389 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1)]
+; [then-branch: 390 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
     1)))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 389 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1]
+; [else-branch: 390 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
   1))
@@ -43046,10 +43106,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 12
-; [then-branch: 390 | r@702@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] | live]
-; [else-branch: 390 | r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] | live]
+; [then-branch: 391 | r@702@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] | live]
+; [else-branch: 391 | r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] | live]
 (push) ; 13
-; [then-branch: 390 | r@702@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2]]
+; [then-branch: 391 | r@702@01 != First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2]]
 (assert (not
   (=
     r@702@01
@@ -43060,7 +43120,7 @@
         2)))))
 (pop) ; 13
 (push) ; 13
-; [else-branch: 390 | r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2]]
+; [else-branch: 391 | r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2]]
 (assert (=
   r@702@01
   (Seq_index
@@ -43126,10 +43186,10 @@
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
       1))))
 (push) ; 10
-; [then-branch: 391 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null | live]
-; [else-branch: 391 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null) | live]
+; [then-branch: 392 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null | live]
+; [else-branch: 392 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null) | live]
 (push) ; 11
-; [then-branch: 391 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null]
+; [then-branch: 392 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null]
 (assert (and
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
@@ -43145,7 +43205,7 @@
     (= _err@700@01 $Ref.null))))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 391 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null)]
+; [else-branch: 392 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 1 && r@702@01 == First:(Second:(Second:(Second:(Second:($t@664@01)))))[First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) - 2] && _err@700@01 == Null)]
 (assert (not
   (and
     (>
@@ -43163,30 +43223,30 @@
 ; [eval] self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1])
 ; [eval] self.__iter_index > 0
 (push) ; 12
-; [then-branch: 392 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0) | live]
-; [else-branch: 392 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0 | live]
+; [then-branch: 393 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0) | live]
+; [else-branch: 393 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0 | live]
 (push) ; 13
-; [then-branch: 392 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0)]
+; [then-branch: 393 | !(First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
     0)))
 (pop) ; 13
 (push) ; 13
-; [else-branch: 392 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0]
+; [else-branch: 393 | First:(Second:(Second:(Second:(Second:(Second:($t@701@01)))))) > 0]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@701@01)))))))
   0))
 ; [eval] _err != null
 (push) ; 14
-; [then-branch: 393 | _err@700@01 == Null | live]
-; [else-branch: 393 | _err@700@01 != Null | live]
+; [then-branch: 394 | _err@700@01 == Null | live]
+; [else-branch: 394 | _err@700@01 != Null | live]
 (push) ; 15
-; [then-branch: 393 | _err@700@01 == Null]
+; [then-branch: 394 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 (pop) ; 15
 (push) ; 15
-; [else-branch: 393 | _err@700@01 != Null]
+; [else-branch: 394 | _err@700@01 != Null]
 (assert (not (= _err@700@01 $Ref.null)))
 ; [eval] r == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
@@ -43840,11 +43900,11 @@
 (pop) ; 7
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 394 | _err@700@01 == Null | live]
-; [else-branch: 394 | _err@700@01 != Null | live]
+; [then-branch: 395 | _err@700@01 == Null | live]
+; [else-branch: 395 | _err@700@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 7
-; [then-branch: 394 | _err@700@01 == Null]
+; [then-branch: 395 | _err@700@01 == Null]
 (assert (= _err@700@01 $Ref.null))
 ; [exec]
 ; c_3 := loop_target_3
@@ -43867,10 +43927,10 @@
 ; [eval] _loop_termination_flag_3 ==> !(iter_err_3 == null)
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 395 | False | dead]
-; [else-branch: 395 | True | live]
+; [then-branch: 396 | False | dead]
+; [else-branch: 396 | True | live]
 (push) ; 9
-; [else-branch: 395 | True]
+; [else-branch: 396 | True]
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -43931,7 +43991,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@704@01 r)) $Perm.No))
   
-  :qid |quant-u-3702|))))
+  :qid |quant-u-3648|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -43972,7 +44032,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3703|))))
+  :qid |quant-u-3649|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -44078,7 +44138,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3704|))))
+  :qid |quant-u-3650|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -44116,11 +44176,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 396 | _err@700@01 == Null | live]
-; [else-branch: 396 | _err@700@01 != Null | dead]
+; [then-branch: 397 | _err@700@01 == Null | live]
+; [else-branch: 397 | _err@700@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 396 | _err@700@01 == Null]
+; [then-branch: 397 | _err@700@01 == Null]
 ; [eval] iter_3.__iter_index - 1 == |iter_3.__previous|
 ; [eval] iter_3.__iter_index - 1
 ; [eval] |iter_3.__previous|
@@ -44152,10 +44212,10 @@
 ; [eval] iter_err_3 != null ==> iter_3.__iter_index == |iter_3.__previous|
 ; [eval] iter_err_3 != null
 (push) ; 8
-; [then-branch: 397 | _err@700@01 != Null | dead]
-; [else-branch: 397 | _err@700@01 == Null | live]
+; [then-branch: 398 | _err@700@01 != Null | dead]
+; [else-branch: 398 | _err@700@01 == Null | live]
 (push) ; 9
-; [else-branch: 397 | _err@700@01 == Null]
+; [else-branch: 398 | _err@700@01 == Null]
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -44170,11 +44230,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 398 | _err@700@01 == Null | live]
-; [else-branch: 398 | _err@700@01 != Null | dead]
+; [then-branch: 399 | _err@700@01 == Null | live]
+; [else-branch: 399 | _err@700@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 398 | _err@700@01 == Null]
+; [then-branch: 399 | _err@700@01 == Null]
 ; [eval] |iter_3.list_acc| > 0
 ; [eval] |iter_3.list_acc|
 (pop) ; 9
@@ -44243,11 +44303,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 399 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 399 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 400 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 400 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 399 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 400 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] iter_3.__iter_index > 0
 (pop) ; 9
 (pop) ; 8
@@ -44268,11 +44328,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 400 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 400 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 401 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 401 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 400 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 401 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] loop_target_3 == iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
@@ -44348,11 +44408,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 401 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 401 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 402 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 402 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 401 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 402 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] (loop_target_3 in iter_3.list_acc)
 (pop) ; 9
 (pop) ; 8
@@ -44390,11 +44450,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 402 | _err@700@01 == Null | live]
-; [else-branch: 402 | _err@700@01 != Null | dead]
+; [then-branch: 403 | _err@700@01 == Null | live]
+; [else-branch: 403 | _err@700@01 != Null | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 402 | _err@700@01 == Null]
+; [then-branch: 403 | _err@700@01 == Null]
 ; [eval] iter_3.__previous == iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.list_acc[..iter_3.__iter_index - 1]
 ; [eval] iter_3.__iter_index - 1
@@ -44417,11 +44477,11 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 403 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 403 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 404 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 404 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 403 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 404 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] issubtype(typeof(loop_target_3), set(int()))
 ; [eval] typeof(loop_target_3)
 ; [eval] set(int())
@@ -44463,22 +44523,22 @@
 (pop) ; 9
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 404 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
-; [else-branch: 404 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
+; [then-branch: 405 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
+; [else-branch: 405 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
 (set-option :timeout 0)
 (push) ; 9
-; [then-branch: 404 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
+; [then-branch: 405 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0]
 ; [eval] c_3 == loop_target_3 && _isDefined(3366755)
 ; [eval] c_3 == loop_target_3
 (push) ; 10
-; [then-branch: 405 | False | live]
-; [else-branch: 405 | True | live]
+; [then-branch: 406 | False | live]
+; [else-branch: 406 | True | live]
 (push) ; 11
-; [then-branch: 405 | False]
+; [then-branch: 406 | False]
 (assert false)
 (pop) ; 11
 (push) ; 11
-; [else-branch: 405 | True]
+; [else-branch: 406 | True]
 ; [eval] _isDefined(3366755)
 (push) ; 12
 (pop) ; 12
@@ -44511,10 +44571,10 @@
 ; [eval] iter_err_3 != null ==> iter_3.__previous == iter_3.list_acc
 ; [eval] iter_err_3 != null
 (push) ; 8
-; [then-branch: 406 | _err@700@01 != Null | dead]
-; [else-branch: 406 | _err@700@01 == Null | live]
+; [then-branch: 407 | _err@700@01 != Null | dead]
+; [else-branch: 407 | _err@700@01 == Null | live]
 (push) ; 9
-; [else-branch: 406 | _err@700@01 == Null]
+; [else-branch: 407 | _err@700@01 == Null]
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -44522,10 +44582,10 @@
 ; [eval] |iter_3.list_acc| == 0
 ; [eval] |iter_3.list_acc|
 (push) ; 8
-; [then-branch: 407 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| == 0 | dead]
-; [else-branch: 407 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0 | live]
+; [then-branch: 408 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| == 0 | dead]
+; [else-branch: 408 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0 | live]
 (push) ; 9
-; [else-branch: 407 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0]
+; [else-branch: 408 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| != 0]
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -44537,15 +44597,15 @@
 ; [eval] set(int())
 ; [eval] int()
 (push) ; 9
-; [then-branch: 408 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType]))) | live]
-; [else-branch: 408 | issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType])) | live]
+; [then-branch: 409 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType]))) | live]
+; [else-branch: 409 | issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType])) | live]
 (push) ; 10
-; [then-branch: 408 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType])))]
+; [then-branch: 409 | !(issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType])))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> lambda55_28$l@709@01) (set<PyType> (as int<PyType>  PyType)))))
 (pop) ; 10
 (push) ; 10
-; [else-branch: 408 | issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType]))]
+; [else-branch: 409 | issubtype[Bool](typeof[PyType](lambda55_28$l@709@01), set[PyType](int[PyType]))]
 (assert (issubtype<Bool> (typeof<PyType> lambda55_28$l@709@01) (set<PyType> (as int<PyType>  PyType))))
 ; [eval] (lambda55_28$l in _checkDefined(a_3, 3366753).set_acc)
 ; [eval] _checkDefined(a_3, 3366753)
@@ -44843,7 +44903,7 @@
       (pTaken@712@01 r))
     $Perm.No)
   
-  :qid |quant-u-3707|))))
+  :qid |quant-u-3653|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -44863,7 +44923,7 @@
       (= r (inv@710@01 r)))
     (= (- $Perm.Write (pTaken@712@01 r)) $Perm.No))
   
-  :qid |quant-u-3708|))))
+  :qid |quant-u-3654|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -44902,7 +44962,7 @@
       (= r (inv@710@01 r)))
     (= (- (- $Perm.Write (pTaken@712@01 r)) (pTaken@713@01 r)) $Perm.No))
   
-  :qid |quant-u-3710|))))
+  :qid |quant-u-3656|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -46020,18 +46080,18 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 409 | _err@756@01 == Null | live]
-; [else-branch: 409 | _err@756@01 != Null | live]
+; [then-branch: 410 | _err@756@01 == Null | live]
+; [else-branch: 410 | _err@756@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 409 | _err@756@01 == Null]
+; [then-branch: 410 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 ; [eval] self.__iter_index == old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index)
 (pop) ; 4
 (push) ; 4
-; [else-branch: 409 | _err@756@01 != Null]
+; [else-branch: 410 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
@@ -46073,16 +46133,16 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 410 | _err@756@01 == Null | live]
-; [else-branch: 410 | _err@756@01 != Null | live]
+; [then-branch: 411 | _err@756@01 == Null | live]
+; [else-branch: 411 | _err@756@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 410 | _err@756@01 == Null]
+; [then-branch: 411 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 ; [eval] self.__iter_index > 0
 (pop) ; 4
 (push) ; 4
-; [else-branch: 410 | _err@756@01 != Null]
+; [else-branch: 411 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
@@ -46121,18 +46181,18 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 411 | _err@756@01 == Null | live]
-; [else-branch: 411 | _err@756@01 != Null | live]
+; [then-branch: 412 | _err@756@01 == Null | live]
+; [else-branch: 412 | _err@756@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 411 | _err@756@01 == Null]
+; [then-branch: 412 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 ; [eval] self.__previous == self.list_acc[..self.__iter_index - 1]
 ; [eval] self.list_acc[..self.__iter_index - 1]
 ; [eval] self.__iter_index - 1
 (pop) ; 4
 (push) ; 4
-; [else-branch: 411 | _err@756@01 != Null]
+; [else-branch: 412 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
@@ -46183,11 +46243,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 412 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
-; [else-branch: 412 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
+; [then-branch: 413 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
+; [else-branch: 413 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 412 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
+; [then-branch: 413 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
 (assert (>
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@758@01))))))
@@ -46195,7 +46255,7 @@
 ; [eval] self.__iter_index > 0
 (pop) ; 4
 (push) ; 4
-; [else-branch: 412 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
+; [else-branch: 413 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
@@ -46251,16 +46311,16 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 413 | _err@756@01 != Null | live]
-; [else-branch: 413 | _err@756@01 == Null | live]
+; [then-branch: 414 | _err@756@01 != Null | live]
+; [else-branch: 414 | _err@756@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 413 | _err@756@01 != Null]
+; [then-branch: 414 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 ; [eval] self.__previous == self.list_acc
 (pop) ; 4
 (push) ; 4
-; [else-branch: 413 | _err@756@01 == Null]
+; [else-branch: 414 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 (pop) ; 4
 (pop) ; 3
@@ -46300,17 +46360,17 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 414 | _err@756@01 != Null | live]
-; [else-branch: 414 | _err@756@01 == Null | live]
+; [then-branch: 415 | _err@756@01 != Null | live]
+; [else-branch: 415 | _err@756@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 414 | _err@756@01 != Null]
+; [then-branch: 415 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 ; [eval] self.__iter_index == |self.list_acc|
 ; [eval] |self.list_acc|
 (pop) ; 4
 (push) ; 4
-; [else-branch: 414 | _err@756@01 == Null]
+; [else-branch: 415 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 (pop) ; 4
 (pop) ; 3
@@ -46358,11 +46418,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 415 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
-; [else-branch: 415 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
+; [then-branch: 416 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
+; [else-branch: 416 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 415 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
+; [then-branch: 416 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
 (assert (>
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@758@01))))))
@@ -46395,10 +46455,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 5
-; [then-branch: 416 | _res@755@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1] | live]
-; [else-branch: 416 | _res@755@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1] | live]
+; [then-branch: 417 | _res@755@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1] | live]
+; [else-branch: 417 | _res@755@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1] | live]
 (push) ; 6
-; [then-branch: 416 | _res@755@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1]]
+; [then-branch: 417 | _res@755@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1]]
 (assert (not
   (=
     _res@755@01
@@ -46409,7 +46469,7 @@
         1)))))
 (pop) ; 6
 (push) ; 6
-; [else-branch: 416 | _res@755@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1]]
+; [else-branch: 417 | _res@755@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 1]]
 (assert (=
   _res@755@01
   (Seq_index
@@ -46440,7 +46500,7 @@
           1))))))
 (pop) ; 4
 (push) ; 4
-; [else-branch: 415 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
+; [else-branch: 416 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
@@ -46528,11 +46588,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 417 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
-; [else-branch: 417 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
+; [then-branch: 418 | |First:(Second:(Second:(Second:($t@758@01))))| > 0 | live]
+; [else-branch: 418 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 417 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
+; [then-branch: 418 | |First:(Second:(Second:(Second:($t@758@01))))| > 0]
 (assert (>
   (Seq_length
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@758@01))))))
@@ -46543,7 +46603,7 @@
 ; [eval] typeof(self)
 (pop) ; 4
 (push) ; 4
-; [else-branch: 417 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
+; [else-branch: 418 | !(|First:(Second:(Second:(Second:($t@758@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
@@ -46571,16 +46631,16 @@
 ; [eval] (r in old(self.__previous))
 ; [eval] old(self.__previous)
 (push) ; 4
-; [then-branch: 418 | r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01)))))) | live]
-; [else-branch: 418 | !(r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01))))))) | live]
+; [then-branch: 419 | r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01)))))) | live]
+; [else-branch: 419 | !(r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01))))))) | live]
 (push) ; 5
-; [then-branch: 418 | r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01))))))]
+; [then-branch: 419 | r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01))))))]
 (assert (Seq_contains
   ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@757@01)))))))
   r@759@01))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 418 | !(r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01)))))))]
+; [else-branch: 419 | !(r@759@01 in First:(Second:(Second:(Second:(Second:(Second:($t@757@01)))))))]
 (assert (not
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@757@01)))))))
@@ -46588,17 +46648,17 @@
 ; [eval] self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null)
 ; [eval] self.__iter_index > 1
 (push) ; 6
-; [then-branch: 419 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1) | live]
-; [else-branch: 419 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 | live]
+; [then-branch: 420 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1) | live]
+; [else-branch: 420 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 | live]
 (push) ; 7
-; [then-branch: 419 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1)]
+; [then-branch: 420 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
     1)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 419 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1]
+; [else-branch: 420 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
   1))
@@ -46629,10 +46689,10 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 8
-; [then-branch: 420 | r@759@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] | live]
-; [else-branch: 420 | r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] | live]
+; [then-branch: 421 | r@759@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] | live]
+; [else-branch: 421 | r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] | live]
 (push) ; 9
-; [then-branch: 420 | r@759@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2]]
+; [then-branch: 421 | r@759@01 != First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2]]
 (assert (not
   (=
     r@759@01
@@ -46643,7 +46703,7 @@
         2)))))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 420 | r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2]]
+; [else-branch: 421 | r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2]]
 (assert (=
   r@759@01
   (Seq_index
@@ -46709,10 +46769,10 @@
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
       1))))
 (push) ; 6
-; [then-branch: 421 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null | live]
-; [else-branch: 421 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null) | live]
+; [then-branch: 422 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null | live]
+; [else-branch: 422 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null) | live]
 (push) ; 7
-; [then-branch: 421 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null]
+; [then-branch: 422 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null]
 (assert (and
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
@@ -46728,7 +46788,7 @@
     (= _err@756@01 $Ref.null))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 421 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null)]
+; [else-branch: 422 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 1 && r@759@01 == First:(Second:(Second:(Second:($t@758@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) - 2] && _err@756@01 == Null)]
 (assert (not
   (and
     (>
@@ -46746,30 +46806,30 @@
 ; [eval] self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1])
 ; [eval] self.__iter_index > 0
 (push) ; 8
-; [then-branch: 422 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0) | live]
-; [else-branch: 422 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0 | live]
+; [then-branch: 423 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0) | live]
+; [else-branch: 423 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0 | live]
 (push) ; 9
-; [then-branch: 422 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0)]
+; [then-branch: 423 | !(First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0)]
 (assert (not
   (>
     ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
     0)))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 422 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0]
+; [else-branch: 423 | First:(Second:(Second:(Second:(Second:(Second:($t@758@01)))))) > 0]
 (assert (>
   ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@758@01)))))))
   0))
 ; [eval] _err != null
 (push) ; 10
-; [then-branch: 423 | _err@756@01 == Null | live]
-; [else-branch: 423 | _err@756@01 != Null | live]
+; [then-branch: 424 | _err@756@01 == Null | live]
+; [else-branch: 424 | _err@756@01 != Null | live]
 (push) ; 11
-; [then-branch: 423 | _err@756@01 == Null]
+; [then-branch: 424 | _err@756@01 == Null]
 (assert (= _err@756@01 $Ref.null))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 423 | _err@756@01 != Null]
+; [else-branch: 424 | _err@756@01 != Null]
 (assert (not (= _err@756@01 $Ref.null)))
 ; [eval] r == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
@@ -47521,11 +47581,11 @@
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 424 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | live]
-; [else-branch: 424 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
+; [then-branch: 425 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | live]
+; [else-branch: 425 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 3
-; [then-branch: 424 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))]
+; [then-branch: 425 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))]
 (assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0))))
 (assert (not
   (=
@@ -47552,11 +47612,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 425 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))) | dead]
-; [else-branch: 425 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))) | live]
+; [then-branch: 426 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))) | dead]
+; [else-branch: 426 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [else-branch: 425 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))))]
+; [else-branch: 426 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 1)))))
 (assert (=
@@ -47574,13 +47634,13 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 426 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | dead]
-; [else-branch: 426 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
+; [then-branch: 427 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | dead]
+; [else-branch: 427 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [else-branch: 426 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
+; [else-branch: 427 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0)))))
 (assert (=
@@ -47590,7 +47650,7 @@
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
-; [else-branch: 424 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
+; [else-branch: 425 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0)))))
 (assert (=
@@ -47626,11 +47686,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 427 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))) | live]
-; [else-branch: 427 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))) | live]
+; [then-branch: 428 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))) | live]
+; [else-branch: 428 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 427 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))]
+; [then-branch: 428 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1)))]
 (assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 1))))
 (assert (=
   ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@772@01))))))
@@ -47655,11 +47715,11 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 428 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | dead]
-; [else-branch: 428 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
+; [then-branch: 429 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | dead]
+; [else-branch: 429 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [else-branch: 428 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
+; [else-branch: 429 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0)))))
 (assert (=
@@ -47668,7 +47728,7 @@
 (pop) ; 5
 (pop) ; 4
 (push) ; 4
-; [else-branch: 427 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))))]
+; [else-branch: 428 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 1))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 1)))))
 (assert (=
@@ -47697,11 +47757,11 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 429 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | live]
-; [else-branch: 429 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
+; [then-branch: 430 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | live]
+; [else-branch: 430 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [then-branch: 429 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))]
+; [then-branch: 430 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))]
 (assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0))))
 (assert (not
   (=
@@ -47709,7 +47769,7 @@
     $Ref.null)))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 429 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
+; [else-branch: 430 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))))]
 (assert (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@772@01)))))) 0)))))
 (assert (=

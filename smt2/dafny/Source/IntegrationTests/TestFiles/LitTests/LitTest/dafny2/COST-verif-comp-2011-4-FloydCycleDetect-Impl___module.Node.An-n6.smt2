@@ -117,269 +117,443 @@
 (declare-fun |Map#Items| (T@U) T@U)
 (declare-fun |Map#Build| (T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSet TagMap alloc allocName |##_System._tuple#2._#Make2| Tagclass._System.Tuple2 class._module.Node? Tagclass._module.Node? Tagclass._module.Node |tytagFamily$_tuple#2| tytagFamily$Node field$next)
 )
 (assert  (and (= (Ctor refType) 3) (= (Ctor SetType) 4)))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) ($Heap T@U) (this T@U) (|k#0| Int) (|S#0| T@U) ) (!  (=> (or (|_module.Node.Nexxxt#canCall| $Heap this |k#0| |S#0|) (and (< 1 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.Node) ($IsAlloc refType this Tclass._module.Node $Heap)))) (and ($Is SetType |S#0| (TSet Tclass._module.Node?)) ($IsAlloc SetType |S#0| (TSet Tclass._module.Node?) $Heap))) (and (_module.Node.IsClosed $Heap this |S#0|) (<= (LitInt 0) |k#0|))))) (and (|Set#IsMember| |S#0| ($Box refType (_module.Node.Nexxxt $ly $Heap this |k#0| |S#0|))) ($Is refType (_module.Node.Nexxxt $ly $Heap this |k#0| |S#0|) Tclass._module.Node?)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.136:18|
+ :skolemid |546|
  :pattern ( (_module.Node.Nexxxt $ly $Heap this |k#0| |S#0|))
 ))))
 (assert (= (FDim alloc) 0))
 (assert (= (Tag TInt) TagInt))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (b T@U) (y@@0 T@U) ) (!  (=> (|Set#IsMember| a@@1 y@@0) (|Set#IsMember| (|Set#Union| a@@1 b) y@@0))
+ :qid |DafnyPreludebpl.708:15|
+ :skolemid |134|
  :pattern ( (|Set#Union| a@@1 b) (|Set#IsMember| a@@1 y@@0))
 )))
 (assert (forall ((a@@2 T@U) (b@@0 T@U) (y@@1 T@U) ) (!  (=> (|Set#IsMember| b@@0 y@@1) (|Set#IsMember| (|Set#Union| a@@2 b@@0) y@@1))
+ :qid |DafnyPreludebpl.712:15|
+ :skolemid |135|
  :pattern ( (|Set#Union| a@@2 b@@0) (|Set#IsMember| b@@0 y@@1))
 )))
 (assert (forall ((a@@3 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@3 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@3 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@3 x@@4) o))
 )))
 (assert (forall ((a@@4 T@U) (b@@1 T@U) (y@@2 T@U) ) (!  (=> (|Set#IsMember| b@@1 y@@2) (not (|Set#IsMember| (|Set#Difference| a@@4 b@@1) y@@2)))
+ :qid |DafnyPreludebpl.757:15|
+ :skolemid |144|
  :pattern ( (|Set#Difference| a@@4 b@@1) (|Set#IsMember| b@@1 y@@2))
 )))
 (assert (= (Ctor DatatypeTypeType) 5))
 (assert (forall ((|_System._tuple#2$T0| T@U) (|_System._tuple#2$T1| T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)) (_System.Tuple2.___hMake2_q d))
+ :qid |unknown.0:0|
+ :skolemid |468|
  :pattern ( (_System.Tuple2.___hMake2_q d) ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall (($ly@@0 T@U) ($Heap@@0 T@U) (this@@0 T@U) (|k#0@@0| Int) (|S#0@@0| T@U) ) (! (= (_module.Node.Nexxxt ($LS $ly@@0) $Heap@@0 this@@0 |k#0@@0| |S#0@@0|) (_module.Node.Nexxxt $ly@@0 $Heap@@0 this@@0 |k#0@@0| |S#0@@0|))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.136:18|
+ :skolemid |542|
  :pattern ( (_module.Node.Nexxxt ($LS $ly@@0) $Heap@@0 this@@0 |k#0@@0| |S#0@@0|))
 )))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.Node?)  (or (= $o null) (= (dtype $o) Tclass._module.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |529|
  :pattern ( ($Is refType $o Tclass._module.Node?))
 )))
 (assert (forall ((a@@5 T@U) (b@@2 T@U) ) (! (= (|Set#Union| (|Set#Union| a@@5 b@@2) b@@2) (|Set#Union| a@@5 b@@2))
+ :qid |DafnyPreludebpl.729:15|
+ :skolemid |138|
  :pattern ( (|Set#Union| (|Set#Union| a@@5 b@@2) b@@2))
 )))
 (assert (forall ((a@@6 T@U) (b@@3 T@U) (o@@1 T@U) ) (! (= (|Set#IsMember| (|Set#Difference| a@@6 b@@3) o@@1)  (and (|Set#IsMember| a@@6 o@@1) (not (|Set#IsMember| b@@3 o@@1))))
+ :qid |DafnyPreludebpl.752:15|
+ :skolemid |143|
  :pattern ( (|Set#IsMember| (|Set#Difference| a@@6 b@@3) o@@1))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Node $h) ($IsAlloc refType |c#0| Tclass._module.Node? $h))
+ :qid |unknown.0:0|
+ :skolemid |1103|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Node $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Node? $h))
 )))
 (assert (forall ((|_System._tuple#2$T0@@0| T@U) (|_System._tuple#2$T1@@0| T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|))  (and ($IsBox |a#2#0#0| |_System._tuple#2$T0@@0|) ($IsBox |a#2#1#0| |_System._tuple#2$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |456|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0| |a#2#1#0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|)))
 )))
 (assert (= (FDim _module.Node.next) 0))
 (assert (= (FieldOfDecl class._module.Node? field$next) _module.Node.next))
 (assert  (not ($IsGhostField _module.Node.next)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 6)) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 6)) (= (Ctor BoxType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass._module.Node? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |530|
  :pattern ( ($IsAlloc refType $o@@0 Tclass._module.Node? $h@@0))
 )))
 (assert (forall ((x@@5 Int) ) (! (= (LitInt x@@5) x@@5)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@5))
 )))
 (assert (forall ((x@@6 T@U) (T T@T) ) (! (= (Lit T x@@6) x@@6)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@6))
 )))
 (assert (forall ((a@@7 T@U) (b@@4 T@U) ) (! (= (|Set#Subset| a@@7 b@@4) (forall ((o@@2 T@U) ) (!  (=> (|Set#IsMember| a@@7 o@@2) (|Set#IsMember| b@@4 o@@2))
+ :qid |DafnyPreludebpl.774:19|
+ :skolemid |146|
  :pattern ( (|Set#IsMember| a@@7 o@@2))
  :pattern ( (|Set#IsMember| b@@4 o@@2))
 )))
+ :qid |DafnyPreludebpl.771:15|
+ :skolemid |147|
  :pattern ( (|Set#Subset| a@@7 b@@4))
 )))
 (assert (forall ((|_System._tuple#2$T0@@1| T@U) (|_System._tuple#2$T1@@1| T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@1)  (and ($IsAllocBox |a#2#0#0@@0| |_System._tuple#2$T0@@1| $h@@1) ($IsAllocBox |a#2#1#0@@0| |_System._tuple#2$T1@@1| $h@@1))))
+ :qid |unknown.0:0|
+ :skolemid |457|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@1))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_System.Tuple2.___hMake2_q d@@0) (= (DatatypeCtorId d@@0) |##_System._tuple#2._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |449|
  :pattern ( (_System.Tuple2.___hMake2_q d@@0))
 )))
 (assert (forall ((x@@7 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@7)) x@@7)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@7))
 )))
 (assert (forall ((a@@8 T@U) (b@@5 T@U) ) (! (= (|Set#Disjoint| a@@8 b@@5) (forall ((o@@3 T@U) ) (!  (or (not (|Set#IsMember| a@@8 o@@3)) (not (|Set#IsMember| b@@5 o@@3)))
+ :qid |DafnyPreludebpl.794:19|
+ :skolemid |151|
  :pattern ( (|Set#IsMember| a@@8 o@@3))
  :pattern ( (|Set#IsMember| b@@5 o@@3))
 )))
+ :qid |DafnyPreludebpl.791:15|
+ :skolemid |152|
  :pattern ( (|Set#Disjoint| a@@8 b@@5))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#_System._tuple#2._#Make2| |a#1#0#0| |a#1#1#0|))
+ :qid |unknown.0:0|
+ :skolemid |450|
+)))
+ :qid |unknown.0:0|
+ :skolemid |451|
  :pattern ( (_System.Tuple2.___hMake2_q d@@1))
 )))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert (forall (($h@@2 T@U) ($o@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@1 null)) (not true)) (= (dtype $o@@1) Tclass._module.Node?))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) _module.Node.next)) Tclass._module.Node?))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |531|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@1) _module.Node.next)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@1 T@U) (this@@1 T@U) (|S#0@@1| T@U) ) (!  (=> (or (|_module.Node.IsClosed#canCall| $Heap@@1 this@@1 |S#0@@1|) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@1 null)) (not true)) (and ($Is refType this@@1 Tclass._module.Node) ($IsAlloc refType this@@1 Tclass._module.Node $Heap@@1)))) ($Is SetType |S#0@@1| (TSet Tclass._module.Node?))))) (= (_module.Node.IsClosed $Heap@@1 this@@1 |S#0@@1|)  (and (and (|Set#IsMember| |S#0@@1| ($Box refType this@@1)) (|Set#IsMember| |S#0@@1| ($Box refType null))) (forall ((|n#0| T@U) ) (!  (=> ($Is refType |n#0| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@1| ($Box refType |n#0|)) (or (not (= |n#0| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 |n#0|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@1| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 |n#0|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |538|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 |n#0|) _module.Node.next)))
 )))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.129:19|
+ :skolemid |539|
  :pattern ( (_module.Node.IsClosed $Heap@@1 this@@1 |S#0@@1|) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._module.Node?) (and (= ($Box refType ($Unbox refType bx@@0)) bx@@0) ($Is refType ($Unbox refType bx@@0) Tclass._module.Node?)))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( ($IsBox bx@@0 Tclass._module.Node?))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.Node) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) Tclass._module.Node)))
+ :qid |unknown.0:0|
+ :skolemid |534|
  :pattern ( ($IsBox bx@@1 Tclass._module.Node))
 )))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass._module.Node)  (and ($Is refType |c#0@@0| Tclass._module.Node?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1102|
  :pattern ( ($Is refType |c#0@@0| Tclass._module.Node))
  :pattern ( ($Is refType |c#0@@0| Tclass._module.Node?))
 )))
 (assert (forall (($h@@3 T@U) ($o@@2 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@2 null)) (not true)) (= (dtype $o@@2) Tclass._module.Node?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) _module.Node.next)) Tclass._module.Node? $h@@3))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |532|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@2) _module.Node.next)))
 )))
 (assert (forall ((a@@9 T@U) (b@@6 T@U) (o@@4 T@U) ) (! (= (|Set#IsMember| (|Set#Union| a@@9 b@@6) o@@4)  (or (|Set#IsMember| a@@9 o@@4) (|Set#IsMember| b@@6 o@@4)))
+ :qid |DafnyPreludebpl.704:15|
+ :skolemid |133|
  :pattern ( (|Set#IsMember| (|Set#Union| a@@9 b@@6) o@@4))
 )))
 (assert (forall ((a@@10 T@U) (b@@7 T@U) ) (!  (=> (|Set#Disjoint| a@@10 b@@7) (and (= (|Set#Difference| (|Set#Union| a@@10 b@@7) a@@10) b@@7) (= (|Set#Difference| (|Set#Union| a@@10 b@@7) b@@7) a@@10)))
+ :qid |DafnyPreludebpl.716:15|
+ :skolemid |136|
  :pattern ( (|Set#Union| a@@10 b@@7))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TInt) (and (= ($Box intType ($Unbox intType bx@@2)) bx@@2) ($Is intType ($Unbox intType bx@@2) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@2 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@3 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@3) ($IsAllocBox bx@@3 t0@@1 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@3))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0))
 )))
 (assert (forall ((t@@1 T@U) (u T@U) ) (! (= (Inv0_TMap (TMap t@@1 u)) t@@1)
+ :qid |DafnyPreludebpl.57:15|
+ :skolemid |9|
  :pattern ( (TMap t@@1 u))
 )))
 (assert (forall ((t@@2 T@U) (u@@0 T@U) ) (! (= (Inv1_TMap (TMap t@@2 u@@0)) u@@0)
+ :qid |DafnyPreludebpl.58:15|
+ :skolemid |10|
  :pattern ( (TMap t@@2 u@@0))
 )))
 (assert (forall ((t@@3 T@U) (u@@1 T@U) ) (! (= (Tag (TMap t@@3 u@@1)) TagMap)
+ :qid |DafnyPreludebpl.59:15|
+ :skolemid |11|
  :pattern ( (TMap t@@3 u@@1))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|)) |##_System._tuple#2._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |448|
  :pattern ( (|#_System._tuple#2._#Make2| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@2| T@U) (|_System._tuple#2$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2_0 (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|)) |_System._tuple#2$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |453|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@3| T@U) (|_System._tuple#2$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2_1 (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|)) |_System._tuple#2$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |454|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (_System.Tuple2._0 (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|)) |a#4#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |463|
  :pattern ( (|#_System._tuple#2._#Make2| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= (_System.Tuple2._1 (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|)) |a#6#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |465|
  :pattern ( (|#_System._tuple#2._#Make2| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Inv0_TSet (TSet t@@4)) t@@4)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@4))
 )))
 (assert (forall ((t@@5 T@U) ) (! (= (Tag (TSet t@@5)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@5))
 )))
 (assert (forall ((x@@8 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@8)) x@@8)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@8))
 )))
 (assert (= (Ctor MapType) 9))
 (assert (forall ((v@@3 T@U) (t0@@2 T@U) (t1@@0 T@U) (h@@1 T@U) ) (! (= ($IsAlloc MapType v@@3 (TMap t0@@2 t1@@0) h@@1) (forall ((bx@@4 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@3) bx@@4) (and ($IsAllocBox (MapType0Select BoxType BoxType (|Map#Elements| v@@3) bx@@4) t1@@0 h@@1) ($IsAllocBox bx@@4 t0@@2 h@@1)))
+ :qid |DafnyPreludebpl.318:19|
+ :skolemid |75|
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| v@@3) bx@@4))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@3) bx@@4))
 )))
+ :qid |DafnyPreludebpl.315:15|
+ :skolemid |76|
  :pattern ( ($IsAlloc MapType v@@3 (TMap t0@@2 t1@@0) h@@1))
 )))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |464|
  :pattern ( (|#_System._tuple#2._#Make2| |a#5#0#0| |a#5#1#0|))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (< (BoxRank |a#7#1#0|) (DtRank (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |466|
  :pattern ( (|#_System._tuple#2._#Make2| |a#7#0#0| |a#7#1#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) ($Heap@@2 T@U) (this@@2 T@U) (|k#0@@1| Int) (|S#0@@2| T@U) ) (!  (=> (or (|_module.Node.Nexxxt#canCall| $Heap@@2 this@@2 |k#0@@1| |S#0@@2|) (and (< 1 $FunctionContextHeight) (and (and (and (and ($IsGoodHeap $Heap@@2) (or (not (= this@@2 null)) (not true))) ($IsAlloc refType this@@2 Tclass._module.Node $Heap@@2)) (and ($Is SetType |S#0@@2| (TSet Tclass._module.Node?)) ($IsAlloc SetType |S#0@@2| (TSet Tclass._module.Node?) $Heap@@2))) (and (_module.Node.IsClosed $Heap@@2 this@@2 |S#0@@2|) (<= (LitInt 0) |k#0@@1|))))) ($IsAlloc refType (_module.Node.Nexxxt $ly@@1 $Heap@@2 this@@2 |k#0@@1| |S#0@@2|) Tclass._module.Node? $Heap@@2))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.136:18|
+ :skolemid |547|
  :pattern ( ($IsAlloc refType (_module.Node.Nexxxt $ly@@1 $Heap@@2 this@@2 |k#0@@1| |S#0@@2|) Tclass._module.Node? $Heap@@2))
 ))))
 (assert (forall ((a@@11 T@U) (b@@8 T@U) ) (! (= (|Set#Union| a@@11 (|Set#Union| a@@11 b@@8)) (|Set#Union| a@@11 b@@8))
+ :qid |DafnyPreludebpl.733:15|
+ :skolemid |139|
  :pattern ( (|Set#Union| a@@11 (|Set#Union| a@@11 b@@8)))
 )))
 (assert (forall ((u@@2 T@U) ) (!  (not (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@2))
+ :qid |DafnyPreludebpl.1438:15|
+ :skolemid |285|
  :pattern ( (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@2))
 )))
 (assert (forall ((bx@@5 T@U) (s T@U) (t@@6 T@U) ) (!  (=> ($IsBox bx@@5 (TMap s t@@6)) (and (= ($Box MapType ($Unbox MapType bx@@5)) bx@@5) ($Is MapType ($Unbox MapType bx@@5) (TMap s t@@6))))
+ :qid |DafnyPreludebpl.207:15|
+ :skolemid |36|
  :pattern ( ($IsBox bx@@5 (TMap s t@@6)))
 )))
 (assert (forall ((|_System._tuple#2$T0@@4| T@U) (|_System._tuple#2$T1@@4| T@U) (bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@6)) bx@@6) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@6) (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |455|
  :pattern ( ($IsBox bx@@6 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)))
 )))
 (assert  (and (forall ((t0@@3 T@T) (t1@@1 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@3 t1@@1 t2 (MapType1Store t0@@3 t1@@1 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@3 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#3| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1105|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#3| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
+ :qid |unknown.0:0|
+ :skolemid |452|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|))
 )))
-(assert (forall ((m@@4 T@U) ) (!  (or (= m@@4 |Map#Empty|) (exists ((k T@U) ) (|Set#IsMember| (|Map#Domain| m@@4) k)))
+(assert (forall ((m@@4 T@U) ) (!  (or (= m@@4 |Map#Empty|) (exists ((k T@U) ) (! (|Set#IsMember| (|Map#Domain| m@@4) k)
+ :qid |DafnyPreludebpl.1388:31|
+ :skolemid |273|
+)))
+ :qid |DafnyPreludebpl.1386:15|
+ :skolemid |274|
  :pattern ( (|Map#Domain| m@@4))
 )))
-(assert (forall ((m@@5 T@U) ) (!  (or (= m@@5 |Map#Empty|) (exists ((v@@4 T@U) ) (|Set#IsMember| (|Map#Values| m@@5) v@@4)))
+(assert (forall ((m@@5 T@U) ) (!  (or (= m@@5 |Map#Empty|) (exists ((v@@4 T@U) ) (! (|Set#IsMember| (|Map#Values| m@@5) v@@4)
+ :qid |DafnyPreludebpl.1391:31|
+ :skolemid |275|
+)))
+ :qid |DafnyPreludebpl.1389:15|
+ :skolemid |276|
  :pattern ( (|Map#Values| m@@5))
 )))
 (assert (forall ((m@@6 T@U) (item T@U) ) (! (= (|Set#IsMember| (|Map#Items| m@@6) item)  (and (|Set#IsMember| (|Map#Domain| m@@6) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (= (MapType0Select BoxType BoxType (|Map#Elements| m@@6) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (_System.Tuple2._1 ($Unbox DatatypeTypeType item)))))
+ :qid |DafnyPreludebpl.1430:15|
+ :skolemid |284|
  :pattern ( (|Set#IsMember| (|Map#Items| m@@6) item))
 )))
 (assert (forall ((m@@7 T@U) (v@@5 T@U) ) (! (= (|Set#IsMember| (|Map#Values| m@@7) v@@5) (exists ((u@@3 T@U) ) (!  (and (|Set#IsMember| (|Map#Domain| m@@7) u@@3) (= v@@5 (MapType0Select BoxType BoxType (|Map#Elements| m@@7) u@@3)))
+ :qid |DafnyPreludebpl.1414:10|
+ :skolemid |282|
  :pattern ( (|Set#IsMember| (|Map#Domain| m@@7) u@@3))
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| m@@7) u@@3))
 )))
+ :qid |DafnyPreludebpl.1412:15|
+ :skolemid |283|
  :pattern ( (|Set#IsMember| (|Map#Values| m@@7) v@@5))
 )))
 (assert (forall ((m@@8 T@U) (u@@4 T@U) (|u'| T@U) (v@@6 T@U) ) (!  (and (=> (= |u'| u@@4) (and (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@8 u@@4 v@@6)) |u'|) (= (MapType0Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@8 u@@4 v@@6)) |u'|) v@@6))) (=> (or (not (= |u'| u@@4)) (not true)) (and (= (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@8 u@@4 v@@6)) |u'|) (|Set#IsMember| (|Map#Domain| m@@8) |u'|)) (= (MapType0Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@8 u@@4 v@@6)) |u'|) (MapType0Select BoxType BoxType (|Map#Elements| m@@8) |u'|)))))
+ :qid |DafnyPreludebpl.1463:15|
+ :skolemid |290|
  :pattern ( (|Set#IsMember| (|Map#Domain| (|Map#Build| m@@8 u@@4 v@@6)) |u'|))
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| (|Map#Build| m@@8 u@@4 v@@6)) |u'|))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@2)) (DtRank d@@2))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@2)))
 )))
 (assert (forall ((bx@@7 T@U) (t@@7 T@U) ) (!  (=> ($IsBox bx@@7 (TSet t@@7)) (and (= ($Box SetType ($Unbox SetType bx@@7)) bx@@7) ($Is SetType ($Unbox SetType bx@@7) (TSet t@@7))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@7 (TSet t@@7)))
 )))
 (assert (forall ((v@@7 T@U) (t0@@4 T@U) (t1@@2 T@U) ) (! (= ($Is MapType v@@7 (TMap t0@@4 t1@@2)) (forall ((bx@@8 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@7) bx@@8) (and ($IsBox (MapType0Select BoxType BoxType (|Map#Elements| v@@7) bx@@8) t1@@2) ($IsBox bx@@8 t0@@4)))
+ :qid |DafnyPreludebpl.261:19|
+ :skolemid |55|
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| v@@7) bx@@8))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@7) bx@@8))
 )))
+ :qid |DafnyPreludebpl.258:15|
+ :skolemid |56|
  :pattern ( ($Is MapType v@@7 (TMap t0@@4 t1@@2)))
 )))
 (assert (= (Tag Tclass._module.Node?) Tagclass._module.Node?))
@@ -387,37 +561,64 @@
 (assert (= (Tag Tclass._module.Node) Tagclass._module.Node))
 (assert (= (TagFamily Tclass._module.Node) tytagFamily$Node))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) ($Heap@@3 T@U) (this@@3 T@U) (|k#0@@2| Int) (|S#0@@3| T@U) ) (!  (=> (or (|_module.Node.Nexxxt#canCall| $Heap@@3 this@@3 |k#0@@2| |S#0@@3|) (and (< 1 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap@@3) (and (or (not (= this@@3 null)) (not true)) (and ($Is refType this@@3 Tclass._module.Node) ($IsAlloc refType this@@3 Tclass._module.Node $Heap@@3)))) ($Is SetType |S#0@@3| (TSet Tclass._module.Node?))) (and (_module.Node.IsClosed $Heap@@3 this@@3 |S#0@@3|) (<= (LitInt 0) |k#0@@2|))))) (and (=> (or (not (= |k#0@@2| (LitInt 0))) (not true)) (and (|_module.Node.Nexxxt#canCall| $Heap@@3 this@@3 (- |k#0@@2| 1) |S#0@@3|) (=> (or (not (= (_module.Node.Nexxxt $ly@@2 $Heap@@3 this@@3 (- |k#0@@2| 1) |S#0@@3|) null)) (not true)) (|_module.Node.Nexxxt#canCall| $Heap@@3 this@@3 (- |k#0@@2| 1) |S#0@@3|)))) (= (_module.Node.Nexxxt ($LS $ly@@2) $Heap@@3 this@@3 |k#0@@2| |S#0@@3|) (ite (= |k#0@@2| (LitInt 0)) this@@3 (ite (= (_module.Node.Nexxxt $ly@@2 $Heap@@3 this@@3 (- |k#0@@2| 1) |S#0@@3|) null) null ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 (_module.Node.Nexxxt $ly@@2 $Heap@@3 this@@3 (- |k#0@@2| 1) |S#0@@3|)) _module.Node.next)))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.136:18|
+ :skolemid |549|
  :pattern ( (_module.Node.Nexxxt ($LS $ly@@2) $Heap@@3 this@@3 |k#0@@2| |S#0@@3|) ($IsGoodHeap $Heap@@3))
 ))))
 (assert (forall ((d@@3 T@U) (|_System._tuple#2$T0@@6| T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (_System.Tuple2.___hMake2_q d@@3) (exists ((|_System._tuple#2$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@4)
+ :qid |unknown.0:0|
+ :skolemid |458|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@4))
 )))) ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |459|
  :pattern ( ($IsAllocBox (_System.Tuple2._0 d@@3) |_System._tuple#2$T0@@6| $h@@4))
 )))
 (assert (forall ((d@@4 T@U) (|_System._tuple#2$T1@@7| T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (_System.Tuple2.___hMake2_q d@@4) (exists ((|_System._tuple#2$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@5)
+ :qid |unknown.0:0|
+ :skolemid |460|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@5))
 )))) ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |461|
  :pattern ( ($IsAllocBox (_System.Tuple2._1 d@@4) |_System._tuple#2$T1@@7| $h@@5))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0| |a#3#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |462|
  :pattern ( (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)))
 )))
 (assert (forall ((x@@9 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@9))) (Lit BoxType ($Box intType (int_2_U x@@9))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@9))))
 )))
 (assert (forall ((x@@10 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@10)) (Lit BoxType ($Box T@@4 x@@10)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@10)))
 )))
 (assert (forall ((h@@2 T@U) (v@@8 T@U) ) (! ($IsAlloc intType v@@8 TInt h@@2)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@8 TInt h@@2))
 )))
-(assert (forall ((m@@9 T@U) ) (!  (or (= m@@9 |Map#Empty|) (exists ((k@@0 T@U) (v@@9 T@U) ) (|Set#IsMember| (|Map#Items| m@@9) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@0 v@@9)))))
+(assert (forall ((m@@9 T@U) ) (!  (or (= m@@9 |Map#Empty|) (exists ((k@@0 T@U) (v@@9 T@U) ) (! (|Set#IsMember| (|Map#Items| m@@9) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@0 v@@9)))
+ :qid |DafnyPreludebpl.1394:31|
+ :skolemid |277|
+)))
+ :qid |DafnyPreludebpl.1392:15|
+ :skolemid |278|
  :pattern ( (|Map#Items| m@@9))
 )))
 (assert (forall ((v@@10 T@U) (t0@@5 T@U) (t1@@3 T@U) ) (!  (=> ($Is MapType v@@10 (TMap t0@@5 t1@@3)) (and (and ($Is SetType (|Map#Domain| v@@10) (TSet t0@@5)) ($Is SetType (|Map#Values| v@@10) (TSet t1@@3))) ($Is SetType (|Map#Items| v@@10) (TSet (Tclass._System.Tuple2 t0@@5 t1@@3)))))
+ :qid |DafnyPreludebpl.267:15|
+ :skolemid |57|
  :pattern ( ($Is MapType v@@10 (TMap t0@@5 t1@@3)))
 )))
 (assert (forall ((v@@11 T@U) ) (! ($Is intType v@@11 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@11 TInt))
 )))
 (push 1)
@@ -455,6 +656,7 @@
 (declare-fun |p#0| () T@U)
 (declare-fun |Visited#0| () T@U)
 (declare-fun |NexxxtInverse#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.Node.AnalyzeList)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -473,6 +675,8 @@
  (=> (= (ControlFlow 0 0) 95) (let ((anon27_correct true))
 (let ((anon50_Else_correct  (=> (and (not (and (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|))))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)))) |steps#0@0|)))) (= (ControlFlow 0 37) 28)) anon27_correct)))
 (let ((anon50_Then_correct  (=> (and (and (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)) (and (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|))))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)))) |steps#0@0|))) ($IsAllocBox ($Box refType this@@4) Tclass._module.Node? $Heap@@4)) (and (=> (= (ControlFlow 0 31) (- 0 36)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#0@0|))) (=> (= |##k#10@0| (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|))))) (=> (and ($IsAlloc intType (int_2_U |##k#10@0|) TInt $Heap@@4) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4)) (and (=> (= (ControlFlow 0 31) (- 0 35)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (and (=> (= (ControlFlow 0 31) (- 0 34)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (and (=> (= (ControlFlow 0 31) (- 0 33)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#12| T@U) ) (!  (=> ($Is refType |n#12| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#12|)) (or (not (= |n#12| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#12|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#12|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |670|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#12|) _module.Node.next)))
 ))))) (and (=> (= (ControlFlow 0 31) (- 0 32)) (<= (LitInt 0) |##k#10@0|)) (=> (and (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)))) |S#0@@4|) (= (ControlFlow 0 31) 28)) anon27_correct)))))))))))
 (let ((anon49_Else_correct  (=> (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#0@0|)))) (LitInt 0)) (and (=> (= (ControlFlow 0 41) 31) anon50_Then_correct) (=> (= (ControlFlow 0 41) 37) anon50_Else_correct)))))
@@ -486,19 +690,29 @@
 (let ((anon45_Then_correct  (=> (and ($Is refType |q#0@0| Tclass._module.Node?) ($IsAlloc refType |q#0@0| Tclass._module.Node? $Heap@@4)) (and (=> (= (ControlFlow 0 47) 45) anon46_Then_correct) (=> (= (ControlFlow 0 47) 46) anon46_Else_correct)))))
 (let ((anon45_Else_correct  (=> (and (not (and ($Is refType |q#0@0| Tclass._module.Node?) ($IsAlloc refType |q#0@0| Tclass._module.Node? $Heap@@4))) (= (ControlFlow 0 29) 28)) anon27_correct)))
 (let ((anon18_correct  (=> (and (forall ((|t#1| Int) ) (!  (and (=> (and (<= (LitInt 0) |t#1|) (< |t#1| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1|) (< |t#1| |steps#0@0|)) (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1| |S#0@@4|)))) (and (=> (and (<= (LitInt 0) |t#1|) (< |t#1| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1|) (< |t#1| |steps#0@0|)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1|) (< |t#1| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1| |S#0@@4|))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |665|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1| |S#0@@4|))
 )) (forall ((|t#1@@0| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@0|) (< |t#1@@0| |steps#0@0|)) (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@0| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@0|) (< |t#1@@0| |steps#0@0|)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@0| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@0|) (< |t#1@@0| |steps#0@0|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@0| |S#0@@4|))))) |t#1@@0|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |666|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@0| |S#0@@4|))
 ))) (and (=> (= (ControlFlow 0 48) 47) anon45_Then_correct) (=> (= (ControlFlow 0 48) 29) anon45_Else_correct)))))
 (let ((anon44_Else_correct  (=> (and (not (and (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|))) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|))))) (= (ControlFlow 0 56) 48)) anon18_correct)))
 (let ((anon44_Then_correct  (=> (and (and (and (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|))) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|)))) ($IsAllocBox ($Box refType this@@4) Tclass._module.Node? $Heap@@4)) (and ($IsAlloc intType (int_2_U |t#0@0|) TInt $Heap@@4) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4))) (and (=> (= (ControlFlow 0 50) (- 0 55)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (and (=> (= (ControlFlow 0 50) (- 0 54)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (and (=> (= (ControlFlow 0 50) (- 0 53)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#11| T@U) ) (!  (=> ($Is refType |n#11| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#11|)) (or (not (= |n#11| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#11|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#11|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |663|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#11|) _module.Node.next)))
 ))))) (and (=> (= (ControlFlow 0 50) (- 0 52)) (<= (LitInt 0) |t#0@0|)) (=> (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#0@0| |S#0@@4|) (and (=> (= (ControlFlow 0 50) (- 0 51)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|)))) (=> (= (ControlFlow 0 50) 48) anon18_correct))))))))))
 (let ((anon43_Else_correct  (=> (not (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|)))) (and (=> (= (ControlFlow 0 62) 50) anon44_Then_correct) (=> (= (ControlFlow 0 62) 56) anon44_Else_correct)))))
 (let ((anon43_Then_correct  (=> (and (and (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#0@0| |S#0@@4|))) ($IsAllocBox ($Box refType this@@4) Tclass._module.Node? $Heap@@4)) (and ($IsAlloc intType (int_2_U |t#0@0|) TInt $Heap@@4) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4))) (and (=> (= (ControlFlow 0 57) (- 0 61)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (and (=> (= (ControlFlow 0 57) (- 0 60)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (and (=> (= (ControlFlow 0 57) (- 0 59)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#10| T@U) ) (!  (=> ($Is refType |n#10| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#10|)) (or (not (= |n#10| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#10|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#10|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |661|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#10|) _module.Node.next)))
 ))))) (and (=> (= (ControlFlow 0 57) (- 0 58)) (<= (LitInt 0) |t#0@0|)) (=> (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#0@0| |S#0@@4|) (and (=> (= (ControlFlow 0 57) 50) anon44_Then_correct) (=> (= (ControlFlow 0 57) 56) anon44_Else_correct))))))))))
 (let ((anon42_Then_correct  (=> (and (and (and (<= (LitInt 0) |t#0@0|) (< |t#0@0| |steps#0@0|)) ($IsAllocBox ($Box refType this@@4) Tclass._module.Node? $Heap@@4)) (and ($IsAlloc intType (int_2_U |t#0@0|) TInt $Heap@@4) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4))) (and (=> (= (ControlFlow 0 63) (- 0 67)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (and (=> (= (ControlFlow 0 63) (- 0 66)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (and (=> (= (ControlFlow 0 63) (- 0 65)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#9| T@U) ) (!  (=> ($Is refType |n#9| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#9|)) (or (not (= |n#9| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#9|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#9|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |659|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#9|) _module.Node.next)))
 ))))) (and (=> (= (ControlFlow 0 63) (- 0 64)) (<= (LitInt 0) |t#0@0|)) (=> (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#0@0| |S#0@@4|) (and (=> (= (ControlFlow 0 63) 57) anon43_Then_correct) (=> (= (ControlFlow 0 63) 62) anon43_Else_correct))))))))))
 (let ((anon42_Else_correct  (=> (and (not (and (<= (LitInt 0) |t#0@0|) (< |t#0@0| |steps#0@0|))) (= (ControlFlow 0 49) 48)) anon18_correct)))
@@ -515,32 +729,52 @@
 (let ((anon37_Then_correct  (=> (and (<= (LitInt 0) |steps#0@0|) (= |p#0@0| (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |steps#0@0| |S#0@@4|))) (and (=> (= (ControlFlow 0 76) 74) anon38_Then_correct) (=> (= (ControlFlow 0 76) 75) anon38_Else_correct)))))
 (let ((anon36_Else_correct  (=> (< |steps#0@0| (LitInt 0)) (and (=> (= (ControlFlow 0 83) 76) anon37_Then_correct) (=> (= (ControlFlow 0 83) 77) anon37_Else_correct)))))
 (let ((anon36_Then_correct  (=> (and (and (<= (LitInt 0) |steps#0@0|) ($IsAllocBox ($Box refType this@@4) Tclass._module.Node? $Heap@@4)) (and ($IsAlloc intType (int_2_U |steps#0@0|) TInt $Heap@@4) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4))) (and (=> (= (ControlFlow 0 78) (- 0 82)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (and (=> (= (ControlFlow 0 78) (- 0 81)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (and (=> (= (ControlFlow 0 78) (- 0 80)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#8| T@U) ) (!  (=> ($Is refType |n#8| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#8|)) (or (not (= |n#8| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#8|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#8|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |657|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#8|) _module.Node.next)))
 ))))) (and (=> (= (ControlFlow 0 78) (- 0 79)) (<= (LitInt 0) |steps#0@0|)) (=> (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |steps#0@0| |S#0@@4|) (and (=> (= (ControlFlow 0 78) 76) anon37_Then_correct) (=> (= (ControlFlow 0 78) 77) anon37_Else_correct))))))))))
 (let ((anon35_Then_correct  (=> (not |$w$loop#0@0|) (and (=> (= (ControlFlow 0 84) 78) anon36_Then_correct) (=> (= (ControlFlow 0 84) 83) anon36_Else_correct)))))
 (let ((GeneratedUnifiedExit_correct  (and (=> (= (ControlFlow 0 13) (- 0 16)) (<= (LitInt 0) |A#0@1|)) (=> (<= (LitInt 0) |A#0@1|) (and (=> (= (ControlFlow 0 13) (- 0 15)) (<= (LitInt 1) |B#0@1|)) (=> (<= (LitInt 1) |B#0@1|) (and (=> (= (ControlFlow 0 13) (- 0 14)) (=> (or (not (= (_module.Node.Nexxxt ($LS $LZ) $Heap@1 this@@4 |A#0@1| |S#0@@4|) null)) (not true)) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |A#0@1| |S#0@@4|) (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |A#0@1| |S#0@@4|) |B#0@1| |S#0@@4|)))) (=> (=> (or (not (= (_module.Node.Nexxxt ($LS $LZ) $Heap@1 this@@4 |A#0@1| |S#0@@4|) null)) (not true)) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |A#0@1| |S#0@@4|) (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |A#0@1| |S#0@@4|) |B#0@1| |S#0@@4|))) (=> (= (ControlFlow 0 13) (- 0 12)) (forall ((|k#1| Int) (|l#1@@0| Int) ) (!  (=> (and (and (<= (LitInt 0) |k#1|) (< |k#1| |l#1@@0|)) (< |l#1@@0| |A#0@1|)) (or (not (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |k#1| |S#0@@4|) (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |l#1@@0| |S#0@@4|))) (not true)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.198:20|
+ :skolemid |655|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |l#1@@0| |S#0@@4|) (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@1 this@@4 |k#1| |S#0@@4|))
 )))))))))))
 (let ((anon52_Else_correct  (=> (or (not (= |p#0@0| null)) (not true)) (and (=> (= (ControlFlow 0 18) (- 0 24)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |p#0@0|))) (=> (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |p#0@0|)) (=> (and (= |A#0@0| (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |p#0@0|))))) (= |B#0@0| (- |steps#0@0| |A#0@0|))) (and (=> (= (ControlFlow 0 18) (- 0 23)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4))))) (=> (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType this@@4)))) (and (=> (= (ControlFlow 0 18) (- 0 22)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null))))) (=> (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (|Set#IsMember| |S#0@@4| ($Box refType null)))) (and (=> (= (ControlFlow 0 18) (- 0 21)) (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#4| T@U) ) (!  (=> ($Is refType |n#4| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#4|)) (or (not (= |n#4| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |785|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4|) _module.Node.next)))
 ))))) (=> (=> (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (or (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (forall ((|n#4@@0| T@U) ) (!  (=> ($Is refType |n#4@@0| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#4@@0|)) (or (not (= |n#4@@0| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4@@0|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4@@0|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |785|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#4@@0|) _module.Node.next)))
 )))) (and (=> (= (ControlFlow 0 18) (- 0 20)) (<= (LitInt 0) |A#0@0|)) (=> (<= (LitInt 0) |A#0@0|) (and (=> (= (ControlFlow 0 18) (- 0 19)) (<= (LitInt 0) |B#0@0|)) (=> (<= (LitInt 0) |B#0@0|) (=> (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (=> (and (and (and (|_module.Node.Nexxxt#canCall| $Heap@0 this@@4 |A#0@0| |S#0@@4|) (=> (or (not (= (_module.Node.Nexxxt ($LS $LZ) $Heap@0 this@@4 |A#0@0| |S#0@@4|) null)) (not true)) (and (and (|_module.Node.Nexxxt#canCall| $Heap@0 this@@4 |A#0@0| |S#0@@4|) (|_module.Node.Nexxxt#canCall| $Heap@0 (_module.Node.Nexxxt ($LS $LZ) $Heap@0 this@@4 |A#0@0| |S#0@@4|) |B#0@0| |S#0@@4|)) (|_module.Node.Nexxxt#canCall| $Heap@0 this@@4 (+ |A#0@0| |B#0@0|) |S#0@@4|)))) (and (=> (or (not (= (_module.Node.Nexxxt ($LS $LZ) $Heap@0 this@@4 |A#0@0| |S#0@@4|) null)) (not true)) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@0 (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@0 this@@4 |A#0@0| |S#0@@4|) |B#0@0| |S#0@@4|) (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@0 this@@4 (+ |A#0@0| |B#0@0|) |S#0@@4|))) (= $Heap@@4 $Heap@0))) (and (and (= |A#0@1| |A#0@0|) (= |B#0@1| |B#0@0|)) (and (= $Heap@1 $Heap@0) (= (ControlFlow 0 18) 13)))) GeneratedUnifiedExit_correct))))))))))))))))))
 (let ((anon52_Then_correct  (=> (and (= |p#0@0| null) (= |$rhs#1_1@0| (LitInt 1))) (=> (and (and (= |A#0@1| |steps#0@0|) (= |B#0@1| |$rhs#1_1@0|)) (and (= $Heap@1 $Heap@@4) (= (ControlFlow 0 17) 13))) GeneratedUnifiedExit_correct))))
 (let ((anon51_Then_correct  (=> (|Set#IsMember| |Visited#0@0| ($Box refType |p#0@0|)) (and (=> (= (ControlFlow 0 25) 17) anon52_Then_correct) (=> (= (ControlFlow 0 25) 18) anon52_Else_correct)))))
 (let ((anon51_Else_correct  (=> (and (not (|Set#IsMember| |Visited#0@0| ($Box refType |p#0@0|))) (= |$decr$loop#00@1| (|Set#Difference| |S#0@@4| |Visited#0@0|))) (and (=> (= (ControlFlow 0 3) (- 0 11)) (or (not (= |p#0@0| null)) (not true))) (=> (or (not (= |p#0@0| null)) (not true)) (=> (and (and (= |$rhs#0_0@1| ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |p#0@0|) _module.Node.next))) (= |$rhs#0_1@1| (+ |steps#0@0| 1))) (and (= |$rhs#0_2@1| (|Set#Union| |Visited#0@0| (|Set#UnionOne| |Set#Empty| ($Box refType |p#0@0|)))) (= |$rhs#0_3@1| (|Map#Build| |NexxxtInverse#0@0| ($Box refType |p#0@0|) ($Box intType (int_2_U |steps#0@0|)))))) (and (=> (= (ControlFlow 0 3) (- 0 10)) (and (|Set#Subset| (|Set#Difference| |S#0@@4| |$rhs#0_2@1|) |$decr$loop#00@1|) (not (|Set#Subset| |$decr$loop#00@1| (|Set#Difference| |S#0@@4| |$rhs#0_2@1|))))) (=> (and (|Set#Subset| (|Set#Difference| |S#0@@4| |$rhs#0_2@1|) |$decr$loop#00@1|) (not (|Set#Subset| |$decr$loop#00@1| (|Set#Difference| |S#0@@4| |$rhs#0_2@1|)))) (=> (=> (<= (LitInt 0) |$rhs#0_1@1|) (and (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |$rhs#0_1@1| |S#0@@4|) (=> (= |$rhs#0_0@1| (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |$rhs#0_1@1| |S#0@@4|)) (=> (|Set#IsMember| |S#0@@4| ($Box refType |$rhs#0_0@1|)) (=> (|Set#IsMember| |$rhs#0_2@1| ($Box refType null)) (=> (|Set#Subset| |$rhs#0_2@1| |S#0@@4|) (and (forall ((|t#1@@1| Int) ) (!  (and (=> (and (<= (LitInt 0) |t#1@@1|) (< |t#1@@1| |$rhs#0_1@1|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@1| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1@@1|) (< |t#1@@1| |$rhs#0_1@1|)) (|Set#IsMember| |$rhs#0_2@1| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@1| |S#0@@4|)))) (and (=> (and (<= (LitInt 0) |t#1@@1|) (< |t#1@@1| |$rhs#0_1@1|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@1| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1@@1|) (< |t#1@@1| |$rhs#0_1@1|)) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@1| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@1|) (< |t#1@@1| |$rhs#0_1@1|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@1| |S#0@@4|))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |678|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@1| |S#0@@4|))
 )) (=> (forall ((|t#1@@2| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@2|) (< |t#1@@2| |$rhs#0_1@1|)) (|Set#IsMember| |$rhs#0_2@1| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@2| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@2|) (< |t#1@@2| |$rhs#0_1@1|)) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@2| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@2|) (< |t#1@@2| |$rhs#0_1@1|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@2| |S#0@@4|))))) |t#1@@2|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |680|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@2| |S#0@@4|))
 )) (forall ((|q#1| T@U) ) (!  (=> ($Is refType |q#1| Tclass._module.Node?) (=> (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1|)) (or (not (= |q#1| null)) (not true))) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType |q#1|))) (=> (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1|)) (or (not (= |q#1| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1|)))))) (=> (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1|)) (or (not (= |q#1| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1|)))) |$rhs#0_1@1|)) (=> (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1|)) (=> (or (not (= |q#1| null)) (not true)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1|)))) |S#0@@4|)))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |679|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType |q#1|)))
  :pattern ( (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1|)))
 )))))))))) (and (=> (= (ControlFlow 0 3) (- 0 9)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#0_1@1|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#0_1@1|)) (and (=> (= (ControlFlow 0 3) (- 0 8)) (=> |$w$loop#0@0| (= |$rhs#0_0@1| (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |$rhs#0_1@1| |S#0@@4|)))) (=> (=> |$w$loop#0@0| (= |$rhs#0_0@1| (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |$rhs#0_1@1| |S#0@@4|))) (and (=> (= (ControlFlow 0 3) (- 0 7)) (=> |$w$loop#0@0| (|Set#IsMember| |S#0@@4| ($Box refType |$rhs#0_0@1|)))) (=> (=> |$w$loop#0@0| (|Set#IsMember| |S#0@@4| ($Box refType |$rhs#0_0@1|))) (and (=> (= (ControlFlow 0 3) (- 0 6)) (=> |$w$loop#0@0| (|Set#IsMember| |$rhs#0_2@1| ($Box refType null)))) (=> (=> |$w$loop#0@0| (|Set#IsMember| |$rhs#0_2@1| ($Box refType null))) (and (=> (= (ControlFlow 0 3) (- 0 5)) (=> |$w$loop#0@0| (|Set#Subset| |$rhs#0_2@1| |S#0@@4|))) (=> (=> |$w$loop#0@0| (|Set#Subset| |$rhs#0_2@1| |S#0@@4|)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (=> |$w$loop#0@0| (forall ((|t#1@@3| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@3|) (< |t#1@@3| |$rhs#0_1@1|)) (|Set#IsMember| |$rhs#0_2@1| ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@3| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@3|) (< |t#1@@3| |$rhs#0_1@1|)) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@3| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@3|) (< |t#1@@3| |$rhs#0_1@1|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@3| |S#0@@4|))))) |t#1@@3|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |668|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@3| |S#0@@4|))
 )))) (=> (=> |$w$loop#0@0| (forall ((|t#1@@4| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@4|) (< |t#1@@4| |$rhs#0_1@1|)) (|Set#IsMember| |$rhs#0_2@1| ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@4| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@4|) (< |t#1@@4| |$rhs#0_1@1|)) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@4| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@4|) (< |t#1@@4| |$rhs#0_1@1|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@4| |S#0@@4|))))) |t#1@@4|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |668|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@4| |S#0@@4|))
 ))) (=> (= (ControlFlow 0 3) (- 0 2)) (=> |$w$loop#0@0| (forall ((|q#1@@0| T@U) ) (!  (=> ($Is refType |q#1@@0| Tclass._module.Node?) (and (and (and (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1@@0|)) (or (not (= |q#1@@0| null)) (not true))) (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType |q#1@@0|))) (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1@@0|)) (or (not (= |q#1@@0| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1@@0|))))))) (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1@@0|)) (or (not (= |q#1@@0| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1@@0|)))) |$rhs#0_1@1|))) (=> (and (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1@@0|)) (or (not (= |q#1@@0| null)) (not true))) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1@@0|)))) |S#0@@4|) |q#1@@0|))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |675|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#0_3@1|) ($Box refType |q#1@@0|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |$rhs#0_3@1|) ($Box refType |q#1@@0|)))
  :pattern ( (|Set#IsMember| |$rhs#0_2@1| ($Box refType |q#1@@0|)))
@@ -549,40 +783,64 @@
 (let ((anon34_LoopBody_correct  (and (=> (= (ControlFlow 0 85) 84) anon35_Then_correct) (=> (= (ControlFlow 0 85) 26) anon35_Else_correct))))
 (let ((anon34_LoopDone_correct true))
 (let ((anon34_LoopHead_correct  (=> (and ($Is refType |p#0@0| Tclass._module.Node?) ($IsAlloc refType |p#0@0| Tclass._module.Node? $Heap@@4)) (=> (and (and ($Is SetType |Visited#0@0| (TSet Tclass._module.Node?)) ($IsAlloc SetType |Visited#0@0| (TSet Tclass._module.Node?) $Heap@@4)) (and ($Is MapType |NexxxtInverse#0@0| (TMap Tclass._module.Node? TInt)) ($IsAlloc MapType |NexxxtInverse#0@0| (TMap Tclass._module.Node? TInt) $Heap@@4))) (=> (and (and (and (and (and (and (not false) (<= 0 |steps#0@0|)) (= |$rhs#1@0| 0)) (=> |$w$loop#0@0| (=> (<= (LitInt 0) |steps#0@0|) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |steps#0@0| |S#0@@4|)))) (and (=> |$w$loop#0@0| (<= (LitInt 0) |steps#0@0|)) (=> |$w$loop#0@0| (= |p#0@0| (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |steps#0@0| |S#0@@4|))))) (and (and (=> |$w$loop#0@0| (|Set#IsMember| |S#0@@4| ($Box refType |p#0@0|))) (=> |$w$loop#0@0| (|Set#IsMember| |Visited#0@0| ($Box refType null)))) (and (=> |$w$loop#0@0| (|Set#Subset| |Visited#0@0| |S#0@@4|)) (=> |$w$loop#0@0| (forall ((|t#1@@5| Int) ) (!  (and (=> (and (<= (LitInt 0) |t#1@@5|) (< |t#1@@5| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@5| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1@@5|) (< |t#1@@5| |steps#0@0|)) (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@5| |S#0@@4|)))) (and (=> (and (<= (LitInt 0) |t#1@@5|) (< |t#1@@5| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@5| |S#0@@4|)) (=> (=> (and (<= (LitInt 0) |t#1@@5|) (< |t#1@@5| |steps#0@0|)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@5| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@5|) (< |t#1@@5| |steps#0@0|)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 |t#1@@5| |S#0@@4|))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |667|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@5| |S#0@@4|))
 )))))) (and (and (and (=> |$w$loop#0@0| (forall ((|t#1@@6| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@6|) (< |t#1@@6| |steps#0@0|)) (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@6| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@6|) (< |t#1@@6| |steps#0@0|)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@6| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@6|) (< |t#1@@6| |steps#0@0|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@6| |S#0@@4|))))) |t#1@@6|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |668|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@6| |S#0@@4|))
 ))) (=> |$w$loop#0@0| (forall ((|t#1@@7| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@7|) (< |t#1@@7| |steps#0@0|)) (|Set#IsMember| |Visited#0@0| ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@7| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@7|) (< |t#1@@7| |steps#0@0|)) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@7| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@7|) (< |t#1@@7| |steps#0@0|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@7| |S#0@@4|))))) |t#1@@7|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |669|
  :pattern ( (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 |t#1@@7| |S#0@@4|))
 )))) (and (=> |$w$loop#0@0| (forall ((|q#1@@1| T@U) ) (!  (=> ($Is refType |q#1@@1| Tclass._module.Node?) (=> (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@1|)) (or (not (= |q#1@@1| null)) (not true))) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|))) (=> (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@1|)) (or (not (= |q#1@@1| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|)))))) (=> (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@1|)) (or (not (= |q#1@@1| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|)))) |steps#0@0|)) (=> (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@1|)) (=> (or (not (= |q#1@@1| null)) (not true)) (|_module.Node.Nexxxt#canCall| $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|)))) |S#0@@4|)))))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |674|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@1|)))
  :pattern ( (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@1|)))
 ))) (=> |$w$loop#0@0| (forall ((|q#1@@2| T@U) ) (!  (=> ($Is refType |q#1@@2| Tclass._module.Node?) (and (and (and (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@2|)) (or (not (= |q#1@@2| null)) (not true))) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@2|)) (or (not (= |q#1@@2| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|))))))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@2|)) (or (not (= |q#1@@2| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|)))) |steps#0@0|))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@2|)) (or (not (= |q#1@@2| null)) (not true))) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|)))) |S#0@@4|) |q#1@@2|))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |675|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@2|)))
  :pattern ( (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@2|)))
 ))))) (and (and (=> |$w$loop#0@0| (forall ((|q#1@@3| T@U) ) (!  (=> ($Is refType |q#1@@3| Tclass._module.Node?) (and (and (and (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@3|)) (or (not (= |q#1@@3| null)) (not true))) (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@3|)) (or (not (= |q#1@@3| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|))))))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@3|)) (or (not (= |q#1@@3| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|)))) |steps#0@0|))) (=> (and (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@3|)) (or (not (= |q#1@@3| null)) (not true))) (= (_module.Node.Nexxxt ($LS $LZ) $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|)))) |S#0@@4|) |q#1@@3|))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |676|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |NexxxtInverse#0@0|) ($Box refType |q#1@@3|)))
  :pattern ( (|Set#IsMember| |Visited#0@0| ($Box refType |q#1@@3|)))
 ))) (= $Heap@@4 $Heap@@4)) (and (forall (($o@@4 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@4 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 $o@@4) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 $o@@4) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 $o@@4) $f@@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@4 $f@@0))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.202:5|
+ :skolemid |677|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 $o@@4) $f@@0))
 )) (|Set#Subset| (|Set#Difference| |S#0@@4| |Visited#0@0|) |$decr_init$loop#00@0|))))) (and (=> (= (ControlFlow 0 86) 1) anon34_LoopDone_correct) (=> (= (ControlFlow 0 86) 85) anon34_LoopBody_correct)))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#3| null $Heap@@4 alloc false)) (=> (and (and (= |$rhs#1@0| (LitInt 0)) (= |$rhs#2@0| (|Set#UnionOne| |Set#Empty| ($Box refType null)))) (and (= |$rhs#3@0| (Lit MapType |Map#Empty|)) (= |$decr_init$loop#00@0| (|Set#Difference| |S#0@@4| |$rhs#2@0|)))) (and (=> (= (ControlFlow 0 87) (- 0 94)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#1@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#1@0|)) (and (=> (= (ControlFlow 0 87) (- 0 93)) (=> |$w$loop#0@0| (= this@@4 (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |$rhs#1@0| |S#0@@4|)))) (=> (=> |$w$loop#0@0| (= this@@4 (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |$rhs#1@0| |S#0@@4|))) (and (=> (= (ControlFlow 0 87) (- 0 92)) (=> |$w$loop#0@0| (|Set#IsMember| |S#0@@4| ($Box refType this@@4)))) (=> (=> |$w$loop#0@0| (|Set#IsMember| |S#0@@4| ($Box refType this@@4))) (and (=> (= (ControlFlow 0 87) (- 0 91)) (=> |$w$loop#0@0| (|Set#IsMember| |$rhs#2@0| ($Box refType null)))) (=> (=> |$w$loop#0@0| (|Set#IsMember| |$rhs#2@0| ($Box refType null))) (and (=> (= (ControlFlow 0 87) (- 0 90)) (=> |$w$loop#0@0| (|Set#Subset| |$rhs#2@0| |S#0@@4|))) (=> (=> |$w$loop#0@0| (|Set#Subset| |$rhs#2@0| |S#0@@4|)) (and (=> (= (ControlFlow 0 87) (- 0 89)) (=> |$w$loop#0@0| (forall ((|t#1@@8| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@8|) (< |t#1@@8| |$rhs#1@0|)) (|Set#IsMember| |$rhs#2@0| ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@8| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@8|) (< |t#1@@8| |$rhs#1@0|)) (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@8| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@8|) (< |t#1@@8| |$rhs#1@0|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@8| |S#0@@4|))))) |t#1@@8|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |668|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@8| |S#0@@4|))
 )))) (=> (=> |$w$loop#0@0| (forall ((|t#1@@9| Int) ) (!  (and (and (=> (and (<= (LitInt 0) |t#1@@9|) (< |t#1@@9| |$rhs#1@0|)) (|Set#IsMember| |$rhs#2@0| ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@9| |S#0@@4|)))) (=> (and (<= (LitInt 0) |t#1@@9|) (< |t#1@@9| |$rhs#1@0|)) (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@9| |S#0@@4|))))) (=> (and (<= (LitInt 0) |t#1@@9|) (< |t#1@@9| |$rhs#1@0|)) (= (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@9| |S#0@@4|))))) |t#1@@9|)))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.204:24|
+ :skolemid |668|
  :pattern ( (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 |t#1@@9| |S#0@@4|))
 ))) (and (=> (= (ControlFlow 0 87) (- 0 88)) (=> |$w$loop#0@0| (forall ((|q#1@@4| T@U) ) (!  (=> ($Is refType |q#1@@4| Tclass._module.Node?) (and (and (and (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@4|)) (or (not (= |q#1@@4| null)) (not true))) (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType |q#1@@4|))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@4|)) (or (not (= |q#1@@4| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@4|))))))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@4|)) (or (not (= |q#1@@4| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@4|)))) |$rhs#1@0|))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@4|)) (or (not (= |q#1@@4| null)) (not true))) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@4|)))) |S#0@@4|) |q#1@@4|))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |675|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@4|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType |q#1@@4|)))
  :pattern ( (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@4|)))
 )))) (=> (=> |$w$loop#0@0| (forall ((|q#1@@5| T@U) ) (!  (=> ($Is refType |q#1@@5| Tclass._module.Node?) (and (and (and (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@5|)) (or (not (= |q#1@@5| null)) (not true))) (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType |q#1@@5|))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@5|)) (or (not (= |q#1@@5| null)) (not true))) (<= (LitInt 0) (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@5|))))))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@5|)) (or (not (= |q#1@@5| null)) (not true))) (< (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@5|)))) |$rhs#1@0|))) (=> (and (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@5|)) (or (not (= |q#1@@5| null)) (not true))) (= (_module.Node.Nexxxt ($LS ($LS $LZ)) $Heap@@4 this@@4 (U_2_int ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@5|)))) |S#0@@4|) |q#1@@5|))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.207:24|
+ :skolemid |675|
  :pattern ( ($Unbox intType (MapType0Select BoxType BoxType (|Map#Elements| |$rhs#3@0|) ($Box refType |q#1@@5|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |$rhs#3@0|) ($Box refType |q#1@@5|)))
  :pattern ( (|Set#IsMember| |$rhs#2@0| ($Box refType |q#1@@5|)))
 ))) (=> (= (ControlFlow 0 87) 86) anon34_LoopHead_correct)))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@4) ($IsHeapAnchor $Heap@@4)) (=> (and (and (or (not (= this@@4 null)) (not true)) (and ($Is refType this@@4 Tclass._module.Node) ($IsAlloc refType this@@4 Tclass._module.Node $Heap@@4))) (and ($Is SetType |S#0@@4| (TSet Tclass._module.Node?)) ($IsAlloc SetType |S#0@@4| (TSet Tclass._module.Node?) $Heap@@4))) (=> (and (and (and ($Is refType |p#0| Tclass._module.Node?) ($IsAlloc refType |p#0| Tclass._module.Node? $Heap@@4)) true) (and (and ($Is SetType |Visited#0| (TSet Tclass._module.Node?)) ($IsAlloc SetType |Visited#0| (TSet Tclass._module.Node?) $Heap@@4)) true)) (=> (and (and (and (and ($Is MapType |NexxxtInverse#0| (TMap Tclass._module.Node? TInt)) ($IsAlloc MapType |NexxxtInverse#0| (TMap Tclass._module.Node? TInt) $Heap@@4)) true) (= 3 $FunctionContextHeight)) (and (and (|_module.Node.IsClosed#canCall| $Heap@@4 this@@4 |S#0@@4|) (and (_module.Node.IsClosed $Heap@@4 this@@4 |S#0@@4|) (and (and (|Set#IsMember| |S#0@@4| ($Box refType this@@4)) (|Set#IsMember| |S#0@@4| ($Box refType null))) (forall ((|n#7| T@U) ) (!  (=> ($Is refType |n#7| Tclass._module.Node?) (=> (and (and (|Set#IsMember| |S#0@@4| ($Box refType |n#7|)) (or (not (= |n#7| null)) (not true))) (or (not (= ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#7|) _module.Node.next)) null)) (not true))) (|Set#IsMember| |S#0@@4| (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#7|) _module.Node.next))))
+ :qid |COSTverifcomp20114FloydCycleDetectdfy.133:12|
+ :skolemid |653|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@4 |n#7|) _module.Node.next)))
 ))))) (= (ControlFlow 0 95) 87))) anon0_correct))))))
 PreconditionGeneratedEntry_correct))))))))))))))))))))))))))))))))))))))))))))))

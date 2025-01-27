@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:21:41
+; Started: 2025-01-26 22:53:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -48699,3 +48699,34 @@
 ; label l137
 ; [exec]
 ; _23 := builtin$havoc_ref()
+(declare-const ret@1059@01 $Ref)
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+; [exec]
+; inhale acc(tuple0$(_23), write)
+(declare-const $t@1060@01 $Snap)
+(set-option :timeout 0)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (= ret@1004@01 ret@1059@01)))
+(check-sat)
+; unknown
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (= ret@990@01 ret@1059@01)))
+(check-sat)
+; unknown
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (= ret@899@01 ret@1059@01)))
+(check-sat)

@@ -132,16 +132,22 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TChar TInt TReal TagChar TagInt TagReal alloc |##_System._tuple#0._#Make0| Tagclass._System.Tuple0 |##_System._tuple#2GO._#Make2| Tagclass._System.Tuple2GO |##_System._tuple#4GOGG._#Make4| Tagclass._System.Tuple4GOGG |##_System._tuple#2OG._#Make2| Tagclass._System.Tuple2OG |##_System._tuple#4GGOG._#Make4| Tagclass._System.Tuple4GGOG |tytagFamily$_tuple#0| |tytagFamily$_tuple#2GO| |tytagFamily$_tuple#4GOGG| |tytagFamily$_tuple#2OG| |tytagFamily$_tuple#4GGOG|)
@@ -150,216 +156,364 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Tag TReal) TagReal))
 (assert (forall ((|a#96#0#0| T@U) (|a#96#1#0| T@U) (|a#96#2#0| T@U) (|a#96#3#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#4GOGG._#Make4| |a#96#0#0| |a#96#1#0| |a#96#2#0| |a#96#3#0|)) |##_System._tuple#4GOGG._#Make4|)
+ :qid |unknown.0:0|
+ :skolemid |714|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#96#0#0| |a#96#1#0| |a#96#2#0| |a#96#3#0|))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0| T@U) (|_System._tuple#4GOGG$T1| T@U) (|_System._tuple#4GOGG$T2| T@U) (|_System._tuple#4GOGG$T3| T@U) ) (! (= (Tclass._System.Tuple4GOGG_0 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0| |_System._tuple#4GOGG$T1| |_System._tuple#4GOGG$T2| |_System._tuple#4GOGG$T3|)) |_System._tuple#4GOGG$T0|)
+ :qid |unknown.0:0|
+ :skolemid |719|
  :pattern ( (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0| |_System._tuple#4GOGG$T1| |_System._tuple#4GOGG$T2| |_System._tuple#4GOGG$T3|))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@0| T@U) (|_System._tuple#4GOGG$T1@@0| T@U) (|_System._tuple#4GOGG$T2@@0| T@U) (|_System._tuple#4GOGG$T3@@0| T@U) ) (! (= (Tclass._System.Tuple4GOGG_1 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@0| |_System._tuple#4GOGG$T1@@0| |_System._tuple#4GOGG$T2@@0| |_System._tuple#4GOGG$T3@@0|)) |_System._tuple#4GOGG$T1@@0|)
+ :qid |unknown.0:0|
+ :skolemid |720|
  :pattern ( (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@0| |_System._tuple#4GOGG$T1@@0| |_System._tuple#4GOGG$T2@@0| |_System._tuple#4GOGG$T3@@0|))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@1| T@U) (|_System._tuple#4GOGG$T1@@1| T@U) (|_System._tuple#4GOGG$T2@@1| T@U) (|_System._tuple#4GOGG$T3@@1| T@U) ) (! (= (Tclass._System.Tuple4GOGG_2 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@1| |_System._tuple#4GOGG$T1@@1| |_System._tuple#4GOGG$T2@@1| |_System._tuple#4GOGG$T3@@1|)) |_System._tuple#4GOGG$T2@@1|)
+ :qid |unknown.0:0|
+ :skolemid |721|
  :pattern ( (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@1| |_System._tuple#4GOGG$T1@@1| |_System._tuple#4GOGG$T2@@1| |_System._tuple#4GOGG$T3@@1|))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@2| T@U) (|_System._tuple#4GOGG$T1@@2| T@U) (|_System._tuple#4GOGG$T2@@2| T@U) (|_System._tuple#4GOGG$T3@@2| T@U) ) (! (= (Tclass._System.Tuple4GOGG_3 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@2| |_System._tuple#4GOGG$T1@@2| |_System._tuple#4GOGG$T2@@2| |_System._tuple#4GOGG$T3@@2|)) |_System._tuple#4GOGG$T3@@2|)
+ :qid |unknown.0:0|
+ :skolemid |722|
  :pattern ( (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@2| |_System._tuple#4GOGG$T1@@2| |_System._tuple#4GOGG$T2@@2| |_System._tuple#4GOGG$T3@@2|))
 )))
 (assert (forall ((|a#100#0#0| T@U) (|a#100#1#0| T@U) (|a#100#2#0| T@U) (|a#100#3#0| T@U) ) (! (= (_System.Tuple4GOGG._0 (|#_System._tuple#4GOGG._#Make4| |a#100#0#0| |a#100#1#0| |a#100#2#0| |a#100#3#0|)) |a#100#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |735|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#100#0#0| |a#100#1#0| |a#100#2#0| |a#100#3#0|))
 )))
 (assert (forall ((|a#102#0#0| T@U) (|a#102#1#0| T@U) (|a#102#2#0| T@U) (|a#102#3#0| T@U) ) (! (= (_System.Tuple4GOGG._1 (|#_System._tuple#4GOGG._#Make4| |a#102#0#0| |a#102#1#0| |a#102#2#0| |a#102#3#0|)) |a#102#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |737|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#102#0#0| |a#102#1#0| |a#102#2#0| |a#102#3#0|))
 )))
 (assert (forall ((|a#104#0#0| T@U) (|a#104#1#0| T@U) (|a#104#2#0| T@U) (|a#104#3#0| T@U) ) (! (= (_System.Tuple4GOGG._2 (|#_System._tuple#4GOGG._#Make4| |a#104#0#0| |a#104#1#0| |a#104#2#0| |a#104#3#0|)) |a#104#2#0|)
+ :qid |unknown.0:0|
+ :skolemid |739|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#104#0#0| |a#104#1#0| |a#104#2#0| |a#104#3#0|))
 )))
 (assert (forall ((|a#106#0#0| T@U) (|a#106#1#0| T@U) (|a#106#2#0| T@U) (|a#106#3#0| T@U) ) (! (= (_System.Tuple4GOGG._3 (|#_System._tuple#4GOGG._#Make4| |a#106#0#0| |a#106#1#0| |a#106#2#0| |a#106#3#0|)) |a#106#3#0|)
+ :qid |unknown.0:0|
+ :skolemid |741|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#106#0#0| |a#106#1#0| |a#106#2#0| |a#106#3#0|))
 )))
 (assert (forall ((|a#116#0#0| T@U) (|a#116#1#0| T@U) (|a#116#2#0| T@U) (|a#116#3#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#4GGOG._#Make4| |a#116#0#0| |a#116#1#0| |a#116#2#0| |a#116#3#0|)) |##_System._tuple#4GGOG._#Make4|)
+ :qid |unknown.0:0|
+ :skolemid |770|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#116#0#0| |a#116#1#0| |a#116#2#0| |a#116#3#0|))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0| T@U) (|_System._tuple#4GGOG$T1| T@U) (|_System._tuple#4GGOG$T2| T@U) (|_System._tuple#4GGOG$T3| T@U) ) (! (= (Tclass._System.Tuple4GGOG_0 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0| |_System._tuple#4GGOG$T1| |_System._tuple#4GGOG$T2| |_System._tuple#4GGOG$T3|)) |_System._tuple#4GGOG$T0|)
+ :qid |unknown.0:0|
+ :skolemid |775|
  :pattern ( (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0| |_System._tuple#4GGOG$T1| |_System._tuple#4GGOG$T2| |_System._tuple#4GGOG$T3|))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@0| T@U) (|_System._tuple#4GGOG$T1@@0| T@U) (|_System._tuple#4GGOG$T2@@0| T@U) (|_System._tuple#4GGOG$T3@@0| T@U) ) (! (= (Tclass._System.Tuple4GGOG_1 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@0| |_System._tuple#4GGOG$T1@@0| |_System._tuple#4GGOG$T2@@0| |_System._tuple#4GGOG$T3@@0|)) |_System._tuple#4GGOG$T1@@0|)
+ :qid |unknown.0:0|
+ :skolemid |776|
  :pattern ( (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@0| |_System._tuple#4GGOG$T1@@0| |_System._tuple#4GGOG$T2@@0| |_System._tuple#4GGOG$T3@@0|))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@1| T@U) (|_System._tuple#4GGOG$T1@@1| T@U) (|_System._tuple#4GGOG$T2@@1| T@U) (|_System._tuple#4GGOG$T3@@1| T@U) ) (! (= (Tclass._System.Tuple4GGOG_2 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@1| |_System._tuple#4GGOG$T1@@1| |_System._tuple#4GGOG$T2@@1| |_System._tuple#4GGOG$T3@@1|)) |_System._tuple#4GGOG$T2@@1|)
+ :qid |unknown.0:0|
+ :skolemid |777|
  :pattern ( (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@1| |_System._tuple#4GGOG$T1@@1| |_System._tuple#4GGOG$T2@@1| |_System._tuple#4GGOG$T3@@1|))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@2| T@U) (|_System._tuple#4GGOG$T1@@2| T@U) (|_System._tuple#4GGOG$T2@@2| T@U) (|_System._tuple#4GGOG$T3@@2| T@U) ) (! (= (Tclass._System.Tuple4GGOG_3 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@2| |_System._tuple#4GGOG$T1@@2| |_System._tuple#4GGOG$T2@@2| |_System._tuple#4GGOG$T3@@2|)) |_System._tuple#4GGOG$T3@@2|)
+ :qid |unknown.0:0|
+ :skolemid |778|
  :pattern ( (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@2| |_System._tuple#4GGOG$T1@@2| |_System._tuple#4GGOG$T2@@2| |_System._tuple#4GGOG$T3@@2|))
 )))
 (assert (forall ((|a#120#0#0| T@U) (|a#120#1#0| T@U) (|a#120#2#0| T@U) (|a#120#3#0| T@U) ) (! (= (_System.Tuple4GGOG._0 (|#_System._tuple#4GGOG._#Make4| |a#120#0#0| |a#120#1#0| |a#120#2#0| |a#120#3#0|)) |a#120#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |791|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#120#0#0| |a#120#1#0| |a#120#2#0| |a#120#3#0|))
 )))
 (assert (forall ((|a#122#0#0| T@U) (|a#122#1#0| T@U) (|a#122#2#0| T@U) (|a#122#3#0| T@U) ) (! (= (_System.Tuple4GGOG._1 (|#_System._tuple#4GGOG._#Make4| |a#122#0#0| |a#122#1#0| |a#122#2#0| |a#122#3#0|)) |a#122#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |793|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#122#0#0| |a#122#1#0| |a#122#2#0| |a#122#3#0|))
 )))
 (assert (forall ((|a#124#0#0| T@U) (|a#124#1#0| T@U) (|a#124#2#0| T@U) (|a#124#3#0| T@U) ) (! (= (_System.Tuple4GGOG._2 (|#_System._tuple#4GGOG._#Make4| |a#124#0#0| |a#124#1#0| |a#124#2#0| |a#124#3#0|)) |a#124#2#0|)
+ :qid |unknown.0:0|
+ :skolemid |795|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#124#0#0| |a#124#1#0| |a#124#2#0| |a#124#3#0|))
 )))
 (assert (forall ((|a#126#0#0| T@U) (|a#126#1#0| T@U) (|a#126#2#0| T@U) (|a#126#3#0| T@U) ) (! (= (_System.Tuple4GGOG._3 (|#_System._tuple#4GGOG._#Make4| |a#126#0#0| |a#126#1#0| |a#126#2#0| |a#126#3#0|)) |a#126#3#0|)
+ :qid |unknown.0:0|
+ :skolemid |797|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#126#0#0| |a#126#1#0| |a#126#2#0| |a#126#3#0|))
 )))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((d T@U) (|_System._tuple#4GOGG$T0@@3| T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (_System.Tuple4GOGG.___hMake4_q d) (exists ((|_System._tuple#4GOGG$T1@@3| T@U) (|_System._tuple#4GOGG$T2@@3| T@U) (|_System._tuple#4GOGG$T3@@3| T@U) ) (! ($IsAlloc DatatypeTypeType d (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@3| |_System._tuple#4GOGG$T1@@3| |_System._tuple#4GOGG$T2@@3| |_System._tuple#4GOGG$T3@@3|) $h)
+ :qid |unknown.0:0|
+ :skolemid |726|
  :pattern ( ($IsAlloc DatatypeTypeType d (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@3| |_System._tuple#4GOGG$T1@@3| |_System._tuple#4GOGG$T2@@3| |_System._tuple#4GOGG$T3@@3|) $h))
 )))) ($IsAllocBox (_System.Tuple4GOGG._0 d) |_System._tuple#4GOGG$T0@@3| $h))
+ :qid |unknown.0:0|
+ :skolemid |727|
  :pattern ( ($IsAllocBox (_System.Tuple4GOGG._0 d) |_System._tuple#4GOGG$T0@@3| $h))
 )))
 (assert (forall ((d@@0 T@U) (|_System._tuple#4GOGG$T1@@4| T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_System.Tuple4GOGG.___hMake4_q d@@0) (exists ((|_System._tuple#4GOGG$T0@@4| T@U) (|_System._tuple#4GOGG$T2@@4| T@U) (|_System._tuple#4GOGG$T3@@4| T@U) ) (! ($IsAlloc DatatypeTypeType d@@0 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@4| |_System._tuple#4GOGG$T1@@4| |_System._tuple#4GOGG$T2@@4| |_System._tuple#4GOGG$T3@@4|) $h@@0)
+ :qid |unknown.0:0|
+ :skolemid |728|
  :pattern ( ($IsAlloc DatatypeTypeType d@@0 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@4| |_System._tuple#4GOGG$T1@@4| |_System._tuple#4GOGG$T2@@4| |_System._tuple#4GOGG$T3@@4|) $h@@0))
 )))) ($IsAllocBox (_System.Tuple4GOGG._1 d@@0) |_System._tuple#4GOGG$T1@@4| $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |729|
  :pattern ( ($IsAllocBox (_System.Tuple4GOGG._1 d@@0) |_System._tuple#4GOGG$T1@@4| $h@@0))
 )))
 (assert (forall ((d@@1 T@U) (|_System._tuple#4GOGG$T2@@5| T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_System.Tuple4GOGG.___hMake4_q d@@1) (exists ((|_System._tuple#4GOGG$T0@@5| T@U) (|_System._tuple#4GOGG$T1@@5| T@U) (|_System._tuple#4GOGG$T3@@5| T@U) ) (! ($IsAlloc DatatypeTypeType d@@1 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@5| |_System._tuple#4GOGG$T1@@5| |_System._tuple#4GOGG$T2@@5| |_System._tuple#4GOGG$T3@@5|) $h@@1)
+ :qid |unknown.0:0|
+ :skolemid |730|
  :pattern ( ($IsAlloc DatatypeTypeType d@@1 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@5| |_System._tuple#4GOGG$T1@@5| |_System._tuple#4GOGG$T2@@5| |_System._tuple#4GOGG$T3@@5|) $h@@1))
 )))) ($IsAllocBox (_System.Tuple4GOGG._2 d@@1) |_System._tuple#4GOGG$T2@@5| $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |731|
  :pattern ( ($IsAllocBox (_System.Tuple4GOGG._2 d@@1) |_System._tuple#4GOGG$T2@@5| $h@@1))
 )))
 (assert (forall ((d@@2 T@U) (|_System._tuple#4GOGG$T3@@6| T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_System.Tuple4GOGG.___hMake4_q d@@2) (exists ((|_System._tuple#4GOGG$T0@@6| T@U) (|_System._tuple#4GOGG$T1@@6| T@U) (|_System._tuple#4GOGG$T2@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@2 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@6| |_System._tuple#4GOGG$T1@@6| |_System._tuple#4GOGG$T2@@6| |_System._tuple#4GOGG$T3@@6|) $h@@2)
+ :qid |unknown.0:0|
+ :skolemid |732|
  :pattern ( ($IsAlloc DatatypeTypeType d@@2 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@6| |_System._tuple#4GOGG$T1@@6| |_System._tuple#4GOGG$T2@@6| |_System._tuple#4GOGG$T3@@6|) $h@@2))
 )))) ($IsAllocBox (_System.Tuple4GOGG._3 d@@2) |_System._tuple#4GOGG$T3@@6| $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |733|
  :pattern ( ($IsAllocBox (_System.Tuple4GOGG._3 d@@2) |_System._tuple#4GOGG$T3@@6| $h@@2))
 )))
 (assert (forall ((d@@3 T@U) (|_System._tuple#4GGOG$T0@@3| T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_System.Tuple4GGOG.___hMake4_q d@@3) (exists ((|_System._tuple#4GGOG$T1@@3| T@U) (|_System._tuple#4GGOG$T2@@3| T@U) (|_System._tuple#4GGOG$T3@@3| T@U) ) (! ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@3| |_System._tuple#4GGOG$T1@@3| |_System._tuple#4GGOG$T2@@3| |_System._tuple#4GGOG$T3@@3|) $h@@3)
+ :qid |unknown.0:0|
+ :skolemid |782|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@3| |_System._tuple#4GGOG$T1@@3| |_System._tuple#4GGOG$T2@@3| |_System._tuple#4GGOG$T3@@3|) $h@@3))
 )))) ($IsAllocBox (_System.Tuple4GGOG._0 d@@3) |_System._tuple#4GGOG$T0@@3| $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |783|
  :pattern ( ($IsAllocBox (_System.Tuple4GGOG._0 d@@3) |_System._tuple#4GGOG$T0@@3| $h@@3))
 )))
 (assert (forall ((d@@4 T@U) (|_System._tuple#4GGOG$T1@@4| T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (_System.Tuple4GGOG.___hMake4_q d@@4) (exists ((|_System._tuple#4GGOG$T0@@4| T@U) (|_System._tuple#4GGOG$T2@@4| T@U) (|_System._tuple#4GGOG$T3@@4| T@U) ) (! ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@4| |_System._tuple#4GGOG$T1@@4| |_System._tuple#4GGOG$T2@@4| |_System._tuple#4GGOG$T3@@4|) $h@@4)
+ :qid |unknown.0:0|
+ :skolemid |784|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@4| |_System._tuple#4GGOG$T1@@4| |_System._tuple#4GGOG$T2@@4| |_System._tuple#4GGOG$T3@@4|) $h@@4))
 )))) ($IsAllocBox (_System.Tuple4GGOG._1 d@@4) |_System._tuple#4GGOG$T1@@4| $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |785|
  :pattern ( ($IsAllocBox (_System.Tuple4GGOG._1 d@@4) |_System._tuple#4GGOG$T1@@4| $h@@4))
 )))
 (assert (forall ((d@@5 T@U) (|_System._tuple#4GGOG$T2@@5| T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (_System.Tuple4GGOG.___hMake4_q d@@5) (exists ((|_System._tuple#4GGOG$T0@@5| T@U) (|_System._tuple#4GGOG$T1@@5| T@U) (|_System._tuple#4GGOG$T3@@5| T@U) ) (! ($IsAlloc DatatypeTypeType d@@5 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@5| |_System._tuple#4GGOG$T1@@5| |_System._tuple#4GGOG$T2@@5| |_System._tuple#4GGOG$T3@@5|) $h@@5)
+ :qid |unknown.0:0|
+ :skolemid |786|
  :pattern ( ($IsAlloc DatatypeTypeType d@@5 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@5| |_System._tuple#4GGOG$T1@@5| |_System._tuple#4GGOG$T2@@5| |_System._tuple#4GGOG$T3@@5|) $h@@5))
 )))) ($IsAllocBox (_System.Tuple4GGOG._2 d@@5) |_System._tuple#4GGOG$T2@@5| $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |787|
  :pattern ( ($IsAllocBox (_System.Tuple4GGOG._2 d@@5) |_System._tuple#4GGOG$T2@@5| $h@@5))
 )))
 (assert (forall ((d@@6 T@U) (|_System._tuple#4GGOG$T3@@6| T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (_System.Tuple4GGOG.___hMake4_q d@@6) (exists ((|_System._tuple#4GGOG$T0@@6| T@U) (|_System._tuple#4GGOG$T1@@6| T@U) (|_System._tuple#4GGOG$T2@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@6 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@6| |_System._tuple#4GGOG$T1@@6| |_System._tuple#4GGOG$T2@@6| |_System._tuple#4GGOG$T3@@6|) $h@@6)
+ :qid |unknown.0:0|
+ :skolemid |788|
  :pattern ( ($IsAlloc DatatypeTypeType d@@6 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@6| |_System._tuple#4GGOG$T1@@6| |_System._tuple#4GGOG$T2@@6| |_System._tuple#4GGOG$T3@@6|) $h@@6))
 )))) ($IsAllocBox (_System.Tuple4GGOG._3 d@@6) |_System._tuple#4GGOG$T3@@6| $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |789|
  :pattern ( ($IsAllocBox (_System.Tuple4GGOG._3 d@@6) |_System._tuple#4GGOG$T3@@6| $h@@6))
 )))
 (assert (= (Ctor charType) 4))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton2#canCall| (< 0 $FunctionContextHeight)) (= _module.__default.Singleton2 (Lit DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| ($Box realType (real_2_U (LitReal 5.0))) ($Box DatatypeTypeType (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)) ($Box intType (int_2_U (LitInt 100))) ($Box charType (Lit charType (|char#FromInt| 68)))))))))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton2#canCall| (< 0 $FunctionContextHeight)) (= _module.__default.Singleton2 (Lit DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| ($Box realType (real_2_U (LitReal 5.0))) ($Box DatatypeTypeType (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)) ($Box intType (int_2_U (LitInt 100))) ($Box charType (Lit charType (|char#FromInt| 68)))))))))
 (assert (forall ((|_System._tuple#2GO$T0| T@U) (|_System._tuple#2GO$T1| T@U) (d@@7 T@U) ) (!  (=> ($Is DatatypeTypeType d@@7 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0| |_System._tuple#2GO$T1|)) (_System.Tuple2GO.___hMake2_q d@@7))
+ :qid |unknown.0:0|
+ :skolemid |516|
  :pattern ( (_System.Tuple2GO.___hMake2_q d@@7) ($Is DatatypeTypeType d@@7 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0| |_System._tuple#2GO$T1|)))
 )))
 (assert (forall ((|_System._tuple#2OG$T0| T@U) (|_System._tuple#2OG$T1| T@U) (d@@8 T@U) ) (!  (=> ($Is DatatypeTypeType d@@8 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0| |_System._tuple#2OG$T1|)) (_System.Tuple2OG.___hMake2_q d@@8))
+ :qid |unknown.0:0|
+ :skolemid |767|
  :pattern ( (_System.Tuple2OG.___hMake2_q d@@8) ($Is DatatypeTypeType d@@8 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0| |_System._tuple#2OG$T1|)))
 )))
 (assert (forall ((|a#101#0#0| T@U) (|a#101#1#0| T@U) (|a#101#2#0| T@U) (|a#101#3#0| T@U) ) (! (< (BoxRank |a#101#0#0|) (DtRank (|#_System._tuple#4GOGG._#Make4| |a#101#0#0| |a#101#1#0| |a#101#2#0| |a#101#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |736|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#101#0#0| |a#101#1#0| |a#101#2#0| |a#101#3#0|))
 )))
 (assert (forall ((|a#103#0#0| T@U) (|a#103#1#0| T@U) (|a#103#2#0| T@U) (|a#103#3#0| T@U) ) (! (< (BoxRank |a#103#1#0|) (DtRank (|#_System._tuple#4GOGG._#Make4| |a#103#0#0| |a#103#1#0| |a#103#2#0| |a#103#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#103#0#0| |a#103#1#0| |a#103#2#0| |a#103#3#0|))
 )))
 (assert (forall ((|a#105#0#0| T@U) (|a#105#1#0| T@U) (|a#105#2#0| T@U) (|a#105#3#0| T@U) ) (! (< (BoxRank |a#105#2#0|) (DtRank (|#_System._tuple#4GOGG._#Make4| |a#105#0#0| |a#105#1#0| |a#105#2#0| |a#105#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |740|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#105#0#0| |a#105#1#0| |a#105#2#0| |a#105#3#0|))
 )))
 (assert (forall ((|a#107#0#0| T@U) (|a#107#1#0| T@U) (|a#107#2#0| T@U) (|a#107#3#0| T@U) ) (! (< (BoxRank |a#107#3#0|) (DtRank (|#_System._tuple#4GOGG._#Make4| |a#107#0#0| |a#107#1#0| |a#107#2#0| |a#107#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |742|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| |a#107#0#0| |a#107#1#0| |a#107#2#0| |a#107#3#0|))
 )))
 (assert (forall ((|a#121#0#0| T@U) (|a#121#1#0| T@U) (|a#121#2#0| T@U) (|a#121#3#0| T@U) ) (! (< (BoxRank |a#121#0#0|) (DtRank (|#_System._tuple#4GGOG._#Make4| |a#121#0#0| |a#121#1#0| |a#121#2#0| |a#121#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |792|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#121#0#0| |a#121#1#0| |a#121#2#0| |a#121#3#0|))
 )))
 (assert (forall ((|a#123#0#0| T@U) (|a#123#1#0| T@U) (|a#123#2#0| T@U) (|a#123#3#0| T@U) ) (! (< (BoxRank |a#123#1#0|) (DtRank (|#_System._tuple#4GGOG._#Make4| |a#123#0#0| |a#123#1#0| |a#123#2#0| |a#123#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |794|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#123#0#0| |a#123#1#0| |a#123#2#0| |a#123#3#0|))
 )))
 (assert (forall ((|a#125#0#0| T@U) (|a#125#1#0| T@U) (|a#125#2#0| T@U) (|a#125#3#0| T@U) ) (! (< (BoxRank |a#125#2#0|) (DtRank (|#_System._tuple#4GGOG._#Make4| |a#125#0#0| |a#125#1#0| |a#125#2#0| |a#125#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |796|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#125#0#0| |a#125#1#0| |a#125#2#0| |a#125#3#0|))
 )))
 (assert (forall ((|a#127#0#0| T@U) (|a#127#1#0| T@U) (|a#127#2#0| T@U) (|a#127#3#0| T@U) ) (! (< (BoxRank |a#127#3#0|) (DtRank (|#_System._tuple#4GGOG._#Make4| |a#127#0#0| |a#127#1#0| |a#127#2#0| |a#127#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |798|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| |a#127#0#0| |a#127#1#0| |a#127#2#0| |a#127#3#0|))
 )))
 (assert (= (DatatypeCtorId |#_System._tuple#0._#Make0|) |##_System._tuple#0._#Make0|))
 (assert (= _module.__default.SingletonConst (Lit DatatypeTypeType (|#_System._tuple#2OG._#Make2| ($Box intType (int_2_U (LitInt 12))) ($Box intType (int_2_U (LitInt 13)))))))
 (assert (forall ((|_System._tuple#2GO$T0@@0| T@U) (|_System._tuple#2GO$T1@@0| T@U) (|a#20#0#0| T@U) (|a#20#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2GO._#Make2| |a#20#0#0| |a#20#1#0|) (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@0| |_System._tuple#2GO$T1@@0|))  (and ($IsBox |a#20#0#0| |_System._tuple#2GO$T0@@0|) ($IsBox |a#20#1#0| |_System._tuple#2GO$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |504|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2GO._#Make2| |a#20#0#0| |a#20#1#0|) (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@0| |_System._tuple#2GO$T1@@0|)))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@0| T@U) (|_System._tuple#2OG$T1@@0| T@U) (|a#110#0#0| T@U) (|a#110#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2OG._#Make2| |a#110#0#0| |a#110#1#0|) (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@0| |_System._tuple#2OG$T1@@0|))  (and ($IsBox |a#110#0#0| |_System._tuple#2OG$T0@@0|) ($IsBox |a#110#1#0| |_System._tuple#2OG$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |755|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2OG._#Make2| |a#110#0#0| |a#110#1#0|) (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@0| |_System._tuple#2OG$T1@@0|)))
 )))
 (assert ($Is DatatypeTypeType |#_System._tuple#0._#Make0| Tclass._System.Tuple0))
 (assert (forall ((|_System._tuple#4GOGG$T0@@7| T@U) (|_System._tuple#4GOGG$T1@@7| T@U) (|_System._tuple#4GOGG$T2@@7| T@U) (|_System._tuple#4GOGG$T3@@7| T@U) (|a#98#0#0| T@U) (|a#98#1#0| T@U) (|a#98#2#0| T@U) (|a#98#3#0| T@U) ($h@@7 T@U) ) (!  (=> ($IsGoodHeap $h@@7) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#4GOGG._#Make4| |a#98#0#0| |a#98#1#0| |a#98#2#0| |a#98#3#0|) (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@7| |_System._tuple#4GOGG$T1@@7| |_System._tuple#4GOGG$T2@@7| |_System._tuple#4GOGG$T3@@7|) $h@@7)  (and (and (and ($IsAllocBox |a#98#0#0| |_System._tuple#4GOGG$T0@@7| $h@@7) ($IsAllocBox |a#98#1#0| |_System._tuple#4GOGG$T1@@7| $h@@7)) ($IsAllocBox |a#98#2#0| |_System._tuple#4GOGG$T2@@7| $h@@7)) ($IsAllocBox |a#98#3#0| |_System._tuple#4GOGG$T3@@7| $h@@7))))
+ :qid |unknown.0:0|
+ :skolemid |725|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#4GOGG._#Make4| |a#98#0#0| |a#98#1#0| |a#98#2#0| |a#98#3#0|) (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@7| |_System._tuple#4GOGG$T1@@7| |_System._tuple#4GOGG$T2@@7| |_System._tuple#4GOGG$T3@@7|) $h@@7))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@7| T@U) (|_System._tuple#4GGOG$T1@@7| T@U) (|_System._tuple#4GGOG$T2@@7| T@U) (|_System._tuple#4GGOG$T3@@7| T@U) (|a#118#0#0| T@U) (|a#118#1#0| T@U) (|a#118#2#0| T@U) (|a#118#3#0| T@U) ($h@@8 T@U) ) (!  (=> ($IsGoodHeap $h@@8) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| |a#118#0#0| |a#118#1#0| |a#118#2#0| |a#118#3#0|) (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@7| |_System._tuple#4GGOG$T1@@7| |_System._tuple#4GGOG$T2@@7| |_System._tuple#4GGOG$T3@@7|) $h@@8)  (and (and (and ($IsAllocBox |a#118#0#0| |_System._tuple#4GGOG$T0@@7| $h@@8) ($IsAllocBox |a#118#1#0| |_System._tuple#4GGOG$T1@@7| $h@@8)) ($IsAllocBox |a#118#2#0| |_System._tuple#4GGOG$T2@@7| $h@@8)) ($IsAllocBox |a#118#3#0| |_System._tuple#4GGOG$T3@@7| $h@@8))))
+ :qid |unknown.0:0|
+ :skolemid |781|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| |a#118#0#0| |a#118#1#0| |a#118#2#0| |a#118#3#0|) (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@7| |_System._tuple#4GGOG$T1@@7| |_System._tuple#4GGOG$T2@@7| |_System._tuple#4GGOG$T3@@7|) $h@@8))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 Real) ) (! (= (LitReal x@@3) x@@3)
+ :qid |DafnyPreludebpl.111:30|
+ :skolemid |19|
  :pattern ( (LitReal x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T T@T) ) (! (= (Lit T x@@4) x@@4)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@4))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@8| T@U) (|_System._tuple#4GOGG$T1@@8| T@U) (|_System._tuple#4GOGG$T2@@8| T@U) (|_System._tuple#4GOGG$T3@@8| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@8| |_System._tuple#4GOGG$T1@@8| |_System._tuple#4GOGG$T2@@8| |_System._tuple#4GOGG$T3@@8|)) Tagclass._System.Tuple4GOGG) (= (TagFamily (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@8| |_System._tuple#4GOGG$T1@@8| |_System._tuple#4GOGG$T2@@8| |_System._tuple#4GOGG$T3@@8|)) |tytagFamily$_tuple#4GOGG|))
+ :qid |unknown.0:0|
+ :skolemid |718|
  :pattern ( (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@8| |_System._tuple#4GOGG$T1@@8| |_System._tuple#4GOGG$T2@@8| |_System._tuple#4GOGG$T3@@8|))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@8| T@U) (|_System._tuple#4GGOG$T1@@8| T@U) (|_System._tuple#4GGOG$T2@@8| T@U) (|_System._tuple#4GGOG$T3@@8| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@8| |_System._tuple#4GGOG$T1@@8| |_System._tuple#4GGOG$T2@@8| |_System._tuple#4GGOG$T3@@8|)) Tagclass._System.Tuple4GGOG) (= (TagFamily (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@8| |_System._tuple#4GGOG$T1@@8| |_System._tuple#4GGOG$T2@@8| |_System._tuple#4GGOG$T3@@8|)) |tytagFamily$_tuple#4GGOG|))
+ :qid |unknown.0:0|
+ :skolemid |774|
  :pattern ( (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@8| |_System._tuple#4GGOG$T1@@8| |_System._tuple#4GGOG$T2@@8| |_System._tuple#4GGOG$T3@@8|))
 )))
 (assert (forall ((|_System._tuple#2GO$T0@@1| T@U) (|_System._tuple#2GO$T1@@1| T@U) (|a#20#0#0@@0| T@U) (|a#20#1#0@@0| T@U) ($h@@9 T@U) ) (!  (=> ($IsGoodHeap $h@@9) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2GO._#Make2| |a#20#0#0@@0| |a#20#1#0@@0|) (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@1| |_System._tuple#2GO$T1@@1|) $h@@9)  (and ($IsAllocBox |a#20#0#0@@0| |_System._tuple#2GO$T0@@1| $h@@9) ($IsAllocBox |a#20#1#0@@0| |_System._tuple#2GO$T1@@1| $h@@9))))
+ :qid |unknown.0:0|
+ :skolemid |505|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2GO._#Make2| |a#20#0#0@@0| |a#20#1#0@@0|) (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@1| |_System._tuple#2GO$T1@@1|) $h@@9))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@1| T@U) (|_System._tuple#2OG$T1@@1| T@U) (|a#110#0#0@@0| T@U) (|a#110#1#0@@0| T@U) ($h@@10 T@U) ) (!  (=> ($IsGoodHeap $h@@10) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2OG._#Make2| |a#110#0#0@@0| |a#110#1#0@@0|) (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@1| |_System._tuple#2OG$T1@@1|) $h@@10)  (and ($IsAllocBox |a#110#0#0@@0| |_System._tuple#2OG$T0@@1| $h@@10) ($IsAllocBox |a#110#1#0@@0| |_System._tuple#2OG$T1@@1| $h@@10))))
+ :qid |unknown.0:0|
+ :skolemid |756|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2OG._#Make2| |a#110#0#0@@0| |a#110#1#0@@0|) (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@1| |_System._tuple#2OG$T1@@1|) $h@@10))
 )))
 (assert (forall ((d@@9 T@U) ) (! (= (_System.Tuple2GO.___hMake2_q d@@9) (= (DatatypeCtorId d@@9) |##_System._tuple#2GO._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |497|
  :pattern ( (_System.Tuple2GO.___hMake2_q d@@9))
 )))
 (assert (forall ((d@@10 T@U) ) (! (= (_System.Tuple4GOGG.___hMake4_q d@@10) (= (DatatypeCtorId d@@10) |##_System._tuple#4GOGG._#Make4|))
+ :qid |unknown.0:0|
+ :skolemid |715|
  :pattern ( (_System.Tuple4GOGG.___hMake4_q d@@10))
 )))
 (assert (forall ((d@@11 T@U) ) (! (= (_System.Tuple2OG.___hMake2_q d@@11) (= (DatatypeCtorId d@@11) |##_System._tuple#2OG._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |748|
  :pattern ( (_System.Tuple2OG.___hMake2_q d@@11))
 )))
 (assert (forall ((d@@12 T@U) ) (! (= (_System.Tuple4GGOG.___hMake4_q d@@12) (= (DatatypeCtorId d@@12) |##_System._tuple#4GGOG._#Make4|))
+ :qid |unknown.0:0|
+ :skolemid |771|
  :pattern ( (_System.Tuple4GGOG.___hMake4_q d@@12))
 )))
 (assert (forall ((x@@5 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@5))
 )))
-(assert (forall ((d@@13 T@U) ) (!  (=> (_System.Tuple2GO.___hMake2_q d@@13) (exists ((|a#19#0#0| T@U) (|a#19#1#0| T@U) ) (= d@@13 (|#_System._tuple#2GO._#Make2| |a#19#0#0| |a#19#1#0|))))
+(assert (forall ((d@@13 T@U) ) (!  (=> (_System.Tuple2GO.___hMake2_q d@@13) (exists ((|a#19#0#0| T@U) (|a#19#1#0| T@U) ) (! (= d@@13 (|#_System._tuple#2GO._#Make2| |a#19#0#0| |a#19#1#0|))
+ :qid |unknown.0:0|
+ :skolemid |498|
+)))
+ :qid |unknown.0:0|
+ :skolemid |499|
  :pattern ( (_System.Tuple2GO.___hMake2_q d@@13))
 )))
-(assert (forall ((d@@14 T@U) ) (!  (=> (_System.Tuple2OG.___hMake2_q d@@14) (exists ((|a#109#0#0| T@U) (|a#109#1#0| T@U) ) (= d@@14 (|#_System._tuple#2OG._#Make2| |a#109#0#0| |a#109#1#0|))))
+(assert (forall ((d@@14 T@U) ) (!  (=> (_System.Tuple2OG.___hMake2_q d@@14) (exists ((|a#109#0#0| T@U) (|a#109#1#0| T@U) ) (! (= d@@14 (|#_System._tuple#2OG._#Make2| |a#109#0#0| |a#109#1#0|))
+ :qid |unknown.0:0|
+ :skolemid |749|
+)))
+ :qid |unknown.0:0|
+ :skolemid |750|
  :pattern ( (_System.Tuple2OG.___hMake2_q d@@14))
 )))
 (assert  (=> (< 0 $FunctionContextHeight) (forall (($h@@11 T@U) ) (!  (=> ($IsGoodHeap $h@@11) ($IsAlloc DatatypeTypeType _module.__default.SingletonConst (Tclass._System.Tuple2OG TInt TInt) $h@@11))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |870|
  :pattern ( ($IsAlloc DatatypeTypeType _module.__default.SingletonConst (Tclass._System.Tuple2OG TInt TInt) $h@@11))
 ))))
 (assert (= (Ctor BoxType) 5))
 (assert (forall ((|a#99#0#0| T@U) (|a#99#1#0| T@U) (|a#99#2#0| T@U) (|a#99#3#0| T@U) ) (! (= (|#_System._tuple#4GOGG._#Make4| (Lit BoxType |a#99#0#0|) (Lit BoxType |a#99#1#0|) (Lit BoxType |a#99#2#0|) (Lit BoxType |a#99#3#0|)) (Lit DatatypeTypeType (|#_System._tuple#4GOGG._#Make4| |a#99#0#0| |a#99#1#0| |a#99#2#0| |a#99#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |734|
  :pattern ( (|#_System._tuple#4GOGG._#Make4| (Lit BoxType |a#99#0#0|) (Lit BoxType |a#99#1#0|) (Lit BoxType |a#99#2#0|) (Lit BoxType |a#99#3#0|)))
 )))
 (assert (forall ((|a#119#0#0| T@U) (|a#119#1#0| T@U) (|a#119#2#0| T@U) (|a#119#3#0| T@U) ) (! (= (|#_System._tuple#4GGOG._#Make4| (Lit BoxType |a#119#0#0|) (Lit BoxType |a#119#1#0|) (Lit BoxType |a#119#2#0|) (Lit BoxType |a#119#3#0|)) (Lit DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| |a#119#0#0| |a#119#1#0| |a#119#2#0| |a#119#3#0|)))
+ :qid |unknown.0:0|
+ :skolemid |790|
  :pattern ( (|#_System._tuple#4GGOG._#Make4| (Lit BoxType |a#119#0#0|) (Lit BoxType |a#119#1#0|) (Lit BoxType |a#119#2#0|) (Lit BoxType |a#119#3#0|)))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@9| T@U) (|_System._tuple#4GOGG$T1@@9| T@U) (|_System._tuple#4GOGG$T2@@9| T@U) (|_System._tuple#4GOGG$T3@@9| T@U) (d@@15 T@U) ) (!  (=> ($Is DatatypeTypeType d@@15 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@9| |_System._tuple#4GOGG$T1@@9| |_System._tuple#4GOGG$T2@@9| |_System._tuple#4GOGG$T3@@9|)) (_System.Tuple4GOGG.___hMake4_q d@@15))
+ :qid |unknown.0:0|
+ :skolemid |744|
  :pattern ( (_System.Tuple4GOGG.___hMake4_q d@@15) ($Is DatatypeTypeType d@@15 (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@9| |_System._tuple#4GOGG$T1@@9| |_System._tuple#4GOGG$T2@@9| |_System._tuple#4GOGG$T3@@9|)))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@9| T@U) (|_System._tuple#4GGOG$T1@@9| T@U) (|_System._tuple#4GGOG$T2@@9| T@U) (|_System._tuple#4GGOG$T3@@9| T@U) (d@@16 T@U) ) (!  (=> ($Is DatatypeTypeType d@@16 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@9| |_System._tuple#4GGOG$T1@@9| |_System._tuple#4GGOG$T2@@9| |_System._tuple#4GGOG$T3@@9|)) (_System.Tuple4GGOG.___hMake4_q d@@16))
+ :qid |unknown.0:0|
+ :skolemid |800|
  :pattern ( (_System.Tuple4GGOG.___hMake4_q d@@16) ($Is DatatypeTypeType d@@16 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@9| |_System._tuple#4GGOG$T1@@9| |_System._tuple#4GGOG$T2@@9| |_System._tuple#4GGOG$T3@@9|)))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@10| T@U) (|_System._tuple#4GOGG$T1@@10| T@U) (|_System._tuple#4GOGG$T2@@10| T@U) (|_System._tuple#4GOGG$T3@@10| T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@10| |_System._tuple#4GOGG$T1@@10| |_System._tuple#4GOGG$T2@@10| |_System._tuple#4GOGG$T3@@10|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@10| |_System._tuple#4GOGG$T1@@10| |_System._tuple#4GOGG$T2@@10| |_System._tuple#4GOGG$T3@@10|))))
+ :qid |unknown.0:0|
+ :skolemid |723|
  :pattern ( ($IsBox bx (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@10| |_System._tuple#4GOGG$T1@@10| |_System._tuple#4GOGG$T2@@10| |_System._tuple#4GOGG$T3@@10|)))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@10| T@U) (|_System._tuple#4GGOG$T1@@10| T@U) (|_System._tuple#4GGOG$T2@@10| T@U) (|_System._tuple#4GGOG$T3@@10| T@U) (bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@10| |_System._tuple#4GGOG$T1@@10| |_System._tuple#4GGOG$T2@@10| |_System._tuple#4GGOG$T3@@10|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@10| |_System._tuple#4GGOG$T1@@10| |_System._tuple#4GGOG$T2@@10| |_System._tuple#4GGOG$T3@@10|))))
+ :qid |unknown.0:0|
+ :skolemid |779|
  :pattern ( ($IsBox bx@@0 (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@10| |_System._tuple#4GGOG$T1@@10| |_System._tuple#4GGOG$T2@@10| |_System._tuple#4GGOG$T3@@10|)))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._System.Tuple0) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) Tclass._System.Tuple0)))
+ :qid |unknown.0:0|
+ :skolemid |473|
  :pattern ( ($IsBox bx@@1 Tclass._System.Tuple0))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton0#canCall| (< 0 $FunctionContextHeight)) ($Is DatatypeTypeType _module.__default.Singleton0 (Tclass._System.Tuple2GO TInt TReal)))))
@@ -369,172 +523,289 @@
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton1#canCall| (< 0 $FunctionContextHeight)) (= _module.__default.Singleton1 (Lit DatatypeTypeType (|#_System._tuple#2OG._#Make2| ($Box realType (real_2_U (LitReal 3.2))) ($Box intType (int_2_U (LitInt 2)))))))))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton1#canCall| (< 0 $FunctionContextHeight)) (= _module.__default.Singleton1 (Lit DatatypeTypeType (|#_System._tuple#2OG._#Make2| ($Box realType (real_2_U (LitReal 3.2))) ($Box intType (int_2_U (LitInt 2)))))))))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TInt) (and (= ($Box intType ($Unbox intType bx@@2)) bx@@2) ($Is intType ($Unbox intType bx@@2) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@2 TInt))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 TReal) (and (= ($Box realType ($Unbox realType bx@@3)) bx@@3) ($Is realType ($Unbox realType bx@@3) TReal)))
+ :qid |DafnyPreludebpl.179:15|
+ :skolemid |28|
  :pattern ( ($IsBox bx@@3 TReal))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 TChar) (and (= ($Box charType ($Unbox charType bx@@4)) bx@@4) ($Is charType ($Unbox charType bx@@4) TChar)))
+ :qid |DafnyPreludebpl.185:15|
+ :skolemid |30|
  :pattern ( ($IsBox bx@@4 TChar))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((|a#18#0#0| T@U) (|a#18#1#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2GO._#Make2| |a#18#0#0| |a#18#1#0|)) |##_System._tuple#2GO._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |496|
  :pattern ( (|#_System._tuple#2GO._#Make2| |a#18#0#0| |a#18#1#0|))
 )))
 (assert (forall ((|_System._tuple#2GO$T0@@2| T@U) (|_System._tuple#2GO$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2GO_0 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@2| |_System._tuple#2GO$T1@@2|)) |_System._tuple#2GO$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |501|
  :pattern ( (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@2| |_System._tuple#2GO$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2GO$T0@@3| T@U) (|_System._tuple#2GO$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2GO_1 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@3| |_System._tuple#2GO$T1@@3|)) |_System._tuple#2GO$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |502|
  :pattern ( (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@3| |_System._tuple#2GO$T1@@3|))
 )))
 (assert (forall ((|a#22#0#0| T@U) (|a#22#1#0| T@U) ) (! (= (_System.Tuple2GO._0 (|#_System._tuple#2GO._#Make2| |a#22#0#0| |a#22#1#0|)) |a#22#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |511|
  :pattern ( (|#_System._tuple#2GO._#Make2| |a#22#0#0| |a#22#1#0|))
 )))
 (assert (forall ((|a#24#0#0| T@U) (|a#24#1#0| T@U) ) (! (= (_System.Tuple2GO._1 (|#_System._tuple#2GO._#Make2| |a#24#0#0| |a#24#1#0|)) |a#24#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |513|
  :pattern ( (|#_System._tuple#2GO._#Make2| |a#24#0#0| |a#24#1#0|))
 )))
 (assert (forall ((|a#108#0#0| T@U) (|a#108#1#0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2OG._#Make2| |a#108#0#0| |a#108#1#0|)) |##_System._tuple#2OG._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |747|
  :pattern ( (|#_System._tuple#2OG._#Make2| |a#108#0#0| |a#108#1#0|))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@2| T@U) (|_System._tuple#2OG$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2OG_0 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@2| |_System._tuple#2OG$T1@@2|)) |_System._tuple#2OG$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |752|
  :pattern ( (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@2| |_System._tuple#2OG$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@3| T@U) (|_System._tuple#2OG$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2OG_1 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@3| |_System._tuple#2OG$T1@@3|)) |_System._tuple#2OG$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |753|
  :pattern ( (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@3| |_System._tuple#2OG$T1@@3|))
 )))
 (assert (forall ((|a#112#0#0| T@U) (|a#112#1#0| T@U) ) (! (= (_System.Tuple2OG._0 (|#_System._tuple#2OG._#Make2| |a#112#0#0| |a#112#1#0|)) |a#112#0#0|)
+ :qid |unknown.0:0|
+ :skolemid |762|
  :pattern ( (|#_System._tuple#2OG._#Make2| |a#112#0#0| |a#112#1#0|))
 )))
 (assert (forall ((|a#114#0#0| T@U) (|a#114#1#0| T@U) ) (! (= (_System.Tuple2OG._1 (|#_System._tuple#2OG._#Make2| |a#114#0#0| |a#114#1#0|)) |a#114#1#0|)
+ :qid |unknown.0:0|
+ :skolemid |764|
  :pattern ( (|#_System._tuple#2OG._#Make2| |a#114#0#0| |a#114#1#0|))
 )))
-(assert (forall ((d@@17 T@U) ) (!  (=> (_System.Tuple4GOGG.___hMake4_q d@@17) (exists ((|a#97#0#0| T@U) (|a#97#1#0| T@U) (|a#97#2#0| T@U) (|a#97#3#0| T@U) ) (= d@@17 (|#_System._tuple#4GOGG._#Make4| |a#97#0#0| |a#97#1#0| |a#97#2#0| |a#97#3#0|))))
+(assert (forall ((d@@17 T@U) ) (!  (=> (_System.Tuple4GOGG.___hMake4_q d@@17) (exists ((|a#97#0#0| T@U) (|a#97#1#0| T@U) (|a#97#2#0| T@U) (|a#97#3#0| T@U) ) (! (= d@@17 (|#_System._tuple#4GOGG._#Make4| |a#97#0#0| |a#97#1#0| |a#97#2#0| |a#97#3#0|))
+ :qid |unknown.0:0|
+ :skolemid |716|
+)))
+ :qid |unknown.0:0|
+ :skolemid |717|
  :pattern ( (_System.Tuple4GOGG.___hMake4_q d@@17))
 )))
-(assert (forall ((d@@18 T@U) ) (!  (=> (_System.Tuple4GGOG.___hMake4_q d@@18) (exists ((|a#117#0#0| T@U) (|a#117#1#0| T@U) (|a#117#2#0| T@U) (|a#117#3#0| T@U) ) (= d@@18 (|#_System._tuple#4GGOG._#Make4| |a#117#0#0| |a#117#1#0| |a#117#2#0| |a#117#3#0|))))
+(assert (forall ((d@@18 T@U) ) (!  (=> (_System.Tuple4GGOG.___hMake4_q d@@18) (exists ((|a#117#0#0| T@U) (|a#117#1#0| T@U) (|a#117#2#0| T@U) (|a#117#3#0| T@U) ) (! (= d@@18 (|#_System._tuple#4GGOG._#Make4| |a#117#0#0| |a#117#1#0| |a#117#2#0| |a#117#3#0|))
+ :qid |unknown.0:0|
+ :skolemid |772|
+)))
+ :qid |unknown.0:0|
+ :skolemid |773|
  :pattern ( (_System.Tuple4GGOG.___hMake4_q d@@18))
 )))
 (assert (forall ((x@@6 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@6))
 )))
 (assert (forall ((|a#23#0#0| T@U) (|a#23#1#0| T@U) ) (! (< (BoxRank |a#23#0#0|) (DtRank (|#_System._tuple#2GO._#Make2| |a#23#0#0| |a#23#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |512|
  :pattern ( (|#_System._tuple#2GO._#Make2| |a#23#0#0| |a#23#1#0|))
 )))
 (assert (forall ((|a#25#0#0| T@U) (|a#25#1#0| T@U) ) (! (< (BoxRank |a#25#1#0|) (DtRank (|#_System._tuple#2GO._#Make2| |a#25#0#0| |a#25#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |514|
  :pattern ( (|#_System._tuple#2GO._#Make2| |a#25#0#0| |a#25#1#0|))
 )))
 (assert (forall ((|a#113#0#0| T@U) (|a#113#1#0| T@U) ) (! (< (BoxRank |a#113#0#0|) (DtRank (|#_System._tuple#2OG._#Make2| |a#113#0#0| |a#113#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |763|
  :pattern ( (|#_System._tuple#2OG._#Make2| |a#113#0#0| |a#113#1#0|))
 )))
 (assert (forall ((|a#115#0#0| T@U) (|a#115#1#0| T@U) ) (! (< (BoxRank |a#115#1#0|) (DtRank (|#_System._tuple#2OG._#Make2| |a#115#0#0| |a#115#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |765|
  :pattern ( (|#_System._tuple#2OG._#Make2| |a#115#0#0| |a#115#1#0|))
 )))
 (assert (forall ((n Int) ) (!  (=> (or (and (<= 0 n) (< n 55296)) (and (<= 57344 n) (< n 1114112))) (= (|char#ToInt| (|char#FromInt| n)) n))
+ :qid |DafnyPreludebpl.131:15|
+ :skolemid |21|
  :pattern ( (|char#FromInt| n))
 )))
 (assert (forall ((|_System._tuple#2GO$T0@@4| T@U) (|_System._tuple#2GO$T1@@4| T@U) (bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@4| |_System._tuple#2GO$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@5)) bx@@5) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@5) (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@4| |_System._tuple#2GO$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |503|
  :pattern ( ($IsBox bx@@5 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@4| |_System._tuple#2GO$T1@@4|)))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@4| T@U) (|_System._tuple#2OG$T1@@4| T@U) (bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@4| |_System._tuple#2OG$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@6)) bx@@6) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@6) (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@4| |_System._tuple#2OG$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |754|
  :pattern ( ($IsBox bx@@6 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@4| |_System._tuple#2OG$T1@@4|)))
 )))
 (assert  (=> (< 0 $FunctionContextHeight) ($Is DatatypeTypeType _module.__default.SingletonConst (Tclass._System.Tuple2OG TInt TInt))))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |919|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((|_System._tuple#4GOGG$T0@@11| T@U) (|_System._tuple#4GOGG$T1@@11| T@U) (|_System._tuple#4GOGG$T2@@11| T@U) (|_System._tuple#4GOGG$T3@@11| T@U) (|a#98#0#0@@0| T@U) (|a#98#1#0@@0| T@U) (|a#98#2#0@@0| T@U) (|a#98#3#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#4GOGG._#Make4| |a#98#0#0@@0| |a#98#1#0@@0| |a#98#2#0@@0| |a#98#3#0@@0|) (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@11| |_System._tuple#4GOGG$T1@@11| |_System._tuple#4GOGG$T2@@11| |_System._tuple#4GOGG$T3@@11|))  (and (and (and ($IsBox |a#98#0#0@@0| |_System._tuple#4GOGG$T0@@11|) ($IsBox |a#98#1#0@@0| |_System._tuple#4GOGG$T1@@11|)) ($IsBox |a#98#2#0@@0| |_System._tuple#4GOGG$T2@@11|)) ($IsBox |a#98#3#0@@0| |_System._tuple#4GOGG$T3@@11|)))
+ :qid |unknown.0:0|
+ :skolemid |724|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#4GOGG._#Make4| |a#98#0#0@@0| |a#98#1#0@@0| |a#98#2#0@@0| |a#98#3#0@@0|) (Tclass._System.Tuple4GOGG |_System._tuple#4GOGG$T0@@11| |_System._tuple#4GOGG$T1@@11| |_System._tuple#4GOGG$T2@@11| |_System._tuple#4GOGG$T3@@11|)))
 )))
 (assert (forall ((|_System._tuple#4GGOG$T0@@11| T@U) (|_System._tuple#4GGOG$T1@@11| T@U) (|_System._tuple#4GGOG$T2@@11| T@U) (|_System._tuple#4GGOG$T3@@11| T@U) (|a#118#0#0@@0| T@U) (|a#118#1#0@@0| T@U) (|a#118#2#0@@0| T@U) (|a#118#3#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| |a#118#0#0@@0| |a#118#1#0@@0| |a#118#2#0@@0| |a#118#3#0@@0|) (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@11| |_System._tuple#4GGOG$T1@@11| |_System._tuple#4GGOG$T2@@11| |_System._tuple#4GGOG$T3@@11|))  (and (and (and ($IsBox |a#118#0#0@@0| |_System._tuple#4GGOG$T0@@11|) ($IsBox |a#118#1#0@@0| |_System._tuple#4GGOG$T1@@11|)) ($IsBox |a#118#2#0@@0| |_System._tuple#4GGOG$T2@@11|)) ($IsBox |a#118#3#0@@0| |_System._tuple#4GGOG$T3@@11|)))
+ :qid |unknown.0:0|
+ :skolemid |780|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#4GGOG._#Make4| |a#118#0#0@@0| |a#118#1#0@@0| |a#118#2#0@@0| |a#118#3#0@@0|) (Tclass._System.Tuple4GGOG |_System._tuple#4GGOG$T0@@11| |_System._tuple#4GGOG$T1@@11| |_System._tuple#4GGOG$T2@@11| |_System._tuple#4GGOG$T3@@11|)))
 )))
 (assert (forall ((|_System._tuple#2GO$T0@@5| T@U) (|_System._tuple#2GO$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@5| |_System._tuple#2GO$T1@@5|)) Tagclass._System.Tuple2GO) (= (TagFamily (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@5| |_System._tuple#2GO$T1@@5|)) |tytagFamily$_tuple#2GO|))
+ :qid |unknown.0:0|
+ :skolemid |500|
  :pattern ( (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@5| |_System._tuple#2GO$T1@@5|))
 )))
 (assert (forall ((|_System._tuple#2OG$T0@@5| T@U) (|_System._tuple#2OG$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@5| |_System._tuple#2OG$T1@@5|)) Tagclass._System.Tuple2OG) (= (TagFamily (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@5| |_System._tuple#2OG$T1@@5|)) |tytagFamily$_tuple#2OG|))
+ :qid |unknown.0:0|
+ :skolemid |751|
  :pattern ( (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@5| |_System._tuple#2OG$T1@@5|))
 )))
 (assert (forall ((d@@19 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@19)) (DtRank d@@19))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@19)))
 )))
 (assert (forall ((ch T@U) ) (!  (and (= (|char#FromInt| (|char#ToInt| ch)) ch) (or (and (<= 0 (|char#ToInt| ch)) (< (|char#ToInt| ch) 55296)) (and (<= 57344 (|char#ToInt| ch)) (< (|char#ToInt| ch) 1114112))))
+ :qid |DafnyPreludebpl.136:15|
+ :skolemid |22|
  :pattern ( (|char#ToInt| ch))
 )))
 (assert (forall ((d@@20 T@U) ($h@@12 T@U) ) (!  (=> (and ($IsGoodHeap $h@@12) ($Is DatatypeTypeType d@@20 Tclass._System.Tuple0)) ($IsAlloc DatatypeTypeType d@@20 Tclass._System.Tuple0 $h@@12))
+ :qid |unknown.0:0|
+ :skolemid |474|
  :pattern ( ($IsAlloc DatatypeTypeType d@@20 Tclass._System.Tuple0 $h@@12))
 )))
 (assert (= (Tag Tclass._System.Tuple0) Tagclass._System.Tuple0))
 (assert (= (TagFamily Tclass._System.Tuple0) |tytagFamily$_tuple#0|))
 (assert (= |#_System._tuple#0._#Make0| (Lit DatatypeTypeType |#_System._tuple#0._#Make0|)))
 (assert (forall ((d@@21 T@U) (|_System._tuple#2GO$T0@@6| T@U) ($h@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@13) (and (_System.Tuple2GO.___hMake2_q d@@21) (exists ((|_System._tuple#2GO$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@21 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@6| |_System._tuple#2GO$T1@@6|) $h@@13)
+ :qid |unknown.0:0|
+ :skolemid |506|
  :pattern ( ($IsAlloc DatatypeTypeType d@@21 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@6| |_System._tuple#2GO$T1@@6|) $h@@13))
 )))) ($IsAllocBox (_System.Tuple2GO._0 d@@21) |_System._tuple#2GO$T0@@6| $h@@13))
+ :qid |unknown.0:0|
+ :skolemid |507|
  :pattern ( ($IsAllocBox (_System.Tuple2GO._0 d@@21) |_System._tuple#2GO$T0@@6| $h@@13))
 )))
 (assert (forall ((d@@22 T@U) (|_System._tuple#2GO$T1@@7| T@U) ($h@@14 T@U) ) (!  (=> (and ($IsGoodHeap $h@@14) (and (_System.Tuple2GO.___hMake2_q d@@22) (exists ((|_System._tuple#2GO$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@22 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@7| |_System._tuple#2GO$T1@@7|) $h@@14)
+ :qid |unknown.0:0|
+ :skolemid |508|
  :pattern ( ($IsAlloc DatatypeTypeType d@@22 (Tclass._System.Tuple2GO |_System._tuple#2GO$T0@@7| |_System._tuple#2GO$T1@@7|) $h@@14))
 )))) ($IsAllocBox (_System.Tuple2GO._1 d@@22) |_System._tuple#2GO$T1@@7| $h@@14))
+ :qid |unknown.0:0|
+ :skolemid |509|
  :pattern ( ($IsAllocBox (_System.Tuple2GO._1 d@@22) |_System._tuple#2GO$T1@@7| $h@@14))
 )))
 (assert (forall ((d@@23 T@U) (|_System._tuple#2OG$T0@@6| T@U) ($h@@15 T@U) ) (!  (=> (and ($IsGoodHeap $h@@15) (and (_System.Tuple2OG.___hMake2_q d@@23) (exists ((|_System._tuple#2OG$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@23 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@6| |_System._tuple#2OG$T1@@6|) $h@@15)
+ :qid |unknown.0:0|
+ :skolemid |757|
  :pattern ( ($IsAlloc DatatypeTypeType d@@23 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@6| |_System._tuple#2OG$T1@@6|) $h@@15))
 )))) ($IsAllocBox (_System.Tuple2OG._0 d@@23) |_System._tuple#2OG$T0@@6| $h@@15))
+ :qid |unknown.0:0|
+ :skolemid |758|
  :pattern ( ($IsAllocBox (_System.Tuple2OG._0 d@@23) |_System._tuple#2OG$T0@@6| $h@@15))
 )))
 (assert (forall ((d@@24 T@U) (|_System._tuple#2OG$T1@@7| T@U) ($h@@16 T@U) ) (!  (=> (and ($IsGoodHeap $h@@16) (and (_System.Tuple2OG.___hMake2_q d@@24) (exists ((|_System._tuple#2OG$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@24 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@7| |_System._tuple#2OG$T1@@7|) $h@@16)
+ :qid |unknown.0:0|
+ :skolemid |759|
  :pattern ( ($IsAlloc DatatypeTypeType d@@24 (Tclass._System.Tuple2OG |_System._tuple#2OG$T0@@7| |_System._tuple#2OG$T1@@7|) $h@@16))
 )))) ($IsAllocBox (_System.Tuple2OG._1 d@@24) |_System._tuple#2OG$T1@@7| $h@@16))
+ :qid |unknown.0:0|
+ :skolemid |760|
  :pattern ( ($IsAllocBox (_System.Tuple2OG._1 d@@24) |_System._tuple#2OG$T1@@7| $h@@16))
 )))
 (assert (forall ((|a#21#0#0| T@U) (|a#21#1#0| T@U) ) (! (= (|#_System._tuple#2GO._#Make2| (Lit BoxType |a#21#0#0|) (Lit BoxType |a#21#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2GO._#Make2| |a#21#0#0| |a#21#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |510|
  :pattern ( (|#_System._tuple#2GO._#Make2| (Lit BoxType |a#21#0#0|) (Lit BoxType |a#21#1#0|)))
 )))
 (assert (forall ((|a#111#0#0| T@U) (|a#111#1#0| T@U) ) (! (= (|#_System._tuple#2OG._#Make2| (Lit BoxType |a#111#0#0|) (Lit BoxType |a#111#1#0|)) (Lit DatatypeTypeType (|#_System._tuple#2OG._#Make2| |a#111#0#0| |a#111#1#0|)))
+ :qid |unknown.0:0|
+ :skolemid |761|
  :pattern ( (|#_System._tuple#2OG._#Make2| (Lit BoxType |a#111#0#0|) (Lit BoxType |a#111#1#0|)))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 Real) ) (! (= ($Box realType (real_2_U (LitReal x@@8))) (Lit BoxType ($Box realType (real_2_U x@@8))))
+ :qid |DafnyPreludebpl.112:15|
+ :skolemid |20|
  :pattern ( ($Box realType (real_2_U (LitReal x@@8))))
 )))
 (assert (forall ((x@@9 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@9)) (Lit BoxType ($Box T@@4 x@@9)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@9)))
 )))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc intType v@@1 TInt h@@0)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@1 TInt h@@0))
 )))
 (assert (forall ((h@@1 T@U) (v@@2 T@U) ) (! ($IsAlloc realType v@@2 TReal h@@1)
+ :qid |DafnyPreludebpl.290:14|
+ :skolemid |62|
  :pattern ( ($IsAlloc realType v@@2 TReal h@@1))
 )))
 (assert (forall ((h@@2 T@U) (v@@3 T@U) ) (! ($IsAlloc charType v@@3 TChar h@@2)
+ :qid |DafnyPreludebpl.292:14|
+ :skolemid |64|
  :pattern ( ($IsAlloc charType v@@3 TChar h@@2))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (=> (or |_module.__default.Singleton2#canCall| (< 0 $FunctionContextHeight)) ($Is DatatypeTypeType _module.__default.Singleton2 (Tclass._System.Tuple4GGOG TReal Tclass._System.Tuple0 TInt TChar)))))
 (assert (forall ((v@@4 T@U) ) (! ($Is intType v@@4 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@4 TInt))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is realType v@@5 TReal)
+ :qid |DafnyPreludebpl.229:14|
+ :skolemid |41|
  :pattern ( ($Is realType v@@5 TReal))
 )))
 (assert (forall ((v@@6 T@U) ) (! ($Is charType v@@6 TChar)
+ :qid |DafnyPreludebpl.231:14|
+ :skolemid |43|
  :pattern ( ($Is charType v@@6 TChar))
 )))
 (push 1)
@@ -579,6 +850,7 @@
 (declare-fun |s1#0| () T@U)
 (declare-fun |s2#0| () T@U)
 (declare-fun |c#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.TestSingletons)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

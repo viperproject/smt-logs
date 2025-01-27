@@ -79,167 +79,267 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._System.nat Tagclass.CoRecursionNotUsed.Stream |##CoRecursionNotUsed.Stream.More| tytagFamily$nat tytagFamily$Stream)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.F$_T0 T@U) ($ly T@U) (|s#0| T@U) (|n#0| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.F$_T0 |s#0| |n#0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0)) (<= (LitInt 0) |n#0|)))) (and (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.F$_T0 |s#0| |n#0|) (= (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0 ($LS $ly) |s#0| |n#0|) (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.F$_T0 $ly |s#0| |n#0|))))
+ :qid |unknown.0:0|
+ :skolemid |1145|
  :pattern ( (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0 ($LS $ly) |s#0| |n#0|))
 ))))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |954|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.F$_T0@@0 T@U) ($ly@@0 T@U) (|s#0@@0| T@U) (|n#0@@0| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.F$_T0@@0 (Lit DatatypeTypeType |s#0@@0|) (LitInt |n#0@@0|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@0| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@0)) (<= (LitInt 0) |n#0@@0|)))) (and (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.F$_T0@@0 (Lit DatatypeTypeType |s#0@@0|) (LitInt |n#0@@0|)) (= (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@0 ($LS $ly@@0) (Lit DatatypeTypeType |s#0@@0|) (LitInt |n#0@@0|)) (Lit DatatypeTypeType (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.F$_T0@@0 ($LS $ly@@0) (Lit DatatypeTypeType |s#0@@0|) (LitInt |n#0@@0|))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1147|
  :pattern ( (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@0 ($LS $ly@@0) (Lit DatatypeTypeType |s#0@@0|) (LitInt |n#0@@0|)))
 ))))
 (assert (forall ((CoRecursionNotUsed.Stream$T T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T)) (CoRecursionNotUsed.Stream.More_q d))
+ :qid |unknown.0:0|
+ :skolemid |1182|
  :pattern ( (CoRecursionNotUsed.Stream.More_q d) ($Is DatatypeTypeType d (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.Tail$_T0 T@U) (|s#0@@1| T@U) ) (!  (=> (or (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.Tail$_T0 |s#0@@1|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |s#0@@1| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0)))) (and (and (CoRecursionNotUsed.Stream.More_q |s#0@@1|) (CoRecursionNotUsed.Stream.More_q |s#0@@1|)) (= (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0 |s#0@@1|) (let ((|tl#0| (CoRecursionNotUsed.Stream._h3 |s#0@@1|)))
 |tl#0|))))
+ :qid |unknown.0:0|
+ :skolemid |1162|
  :pattern ( (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0 |s#0@@1|))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |626|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |624|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.F$_T0@@1 T@U) ($ly@@1 T@U) (|s#0@@2| T@U) (|n#0@@1| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.F$_T0@@1 |s#0@@2| |n#0@@1|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@2| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@1)) (<= (LitInt 0) |n#0@@1|)))) ($Is DatatypeTypeType (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@1 $ly@@1 |s#0@@2| |n#0@@1|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@1)))
+ :qid |unknown.0:0|
+ :skolemid |1142|
  :pattern ( (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@1 $ly@@1 |s#0@@2| |n#0@@1|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.G$_T0 T@U) ($ly@@2 T@U) (|s#0@@3| T@U) (|n#0@@2| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.G$_T0 |s#0@@3| |n#0@@2|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@3| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0)) (<= (LitInt 0) |n#0@@2|)))) ($Is DatatypeTypeType (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0 $ly@@2 |s#0@@3| |n#0@@2|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0)))
+ :qid |unknown.0:0|
+ :skolemid |1151|
  :pattern ( (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0 $ly@@2 |s#0@@3| |n#0@@2|))
 ))))
 (assert (forall ((CoRecursionNotUsed.Stream$T@@0 T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#CoRecursionNotUsed.Stream.More| |a#2#0#0| |a#2#1#0|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@0))  (and ($IsBox |a#2#0#0| CoRecursionNotUsed.Stream$T@@0) ($Is DatatypeTypeType |a#2#1#0| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@0))))
+ :qid |unknown.0:0|
+ :skolemid |1175|
  :pattern ( ($Is DatatypeTypeType (|#CoRecursionNotUsed.Stream.More| |a#2#0#0| |a#2#1#0|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@0)))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (CoRecursionNotUsed.Stream.More_q d@@0) (= (DatatypeCtorId d@@0) |##CoRecursionNotUsed.Stream.More|))
+ :qid |unknown.0:0|
+ :skolemid |1172|
  :pattern ( (CoRecursionNotUsed.Stream.More_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |635|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (CoRecursionNotUsed.Stream.More_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#CoRecursionNotUsed.Stream.More| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (CoRecursionNotUsed.Stream.More_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#CoRecursionNotUsed.Stream.More| |a#1#0#0| |a#1#1#0|))
+ :qid |Corecursiondfy.38:31|
+ :skolemid |1173|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1174|
  :pattern ( (CoRecursionNotUsed.Stream.More_q d@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.Tail$_T0@@0 T@U) (|s#0@@4| T@U) ) (!  (=> (or (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.Tail$_T0@@0 |s#0@@4|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |s#0@@4| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@0)))) ($Is DatatypeTypeType (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@0 |s#0@@4|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@0)))
+ :qid |unknown.0:0|
+ :skolemid |1159|
  :pattern ( (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@0 |s#0@@4|))
 ))))
 (assert (forall ((|x#0@@0| T@U) ) (! (= ($Is intType |x#0@@0| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |953|
  :pattern ( ($Is intType |x#0@@0| Tclass._System.nat))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.F$_T0@@2 T@U) ($ly@@3 T@U) (|s#0@@5| T@U) (|n#0@@3| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.F$_T0@@2 |s#0@@5| (LitInt |n#0@@3|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@5| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@2)) (<= (LitInt 0) |n#0@@3|)))) (and (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.F$_T0@@2 |s#0@@5| (LitInt |n#0@@3|)) (= (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@2 ($LS $ly@@3) |s#0@@5| (LitInt |n#0@@3|)) (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.F$_T0@@2 ($LS $ly@@3) |s#0@@5| (LitInt |n#0@@3|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1146|
  :pattern ( (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@2 ($LS $ly@@3) |s#0@@5| (LitInt |n#0@@3|)))
 ))))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |648|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((CoRecursionNotUsed.Stream$T@@1 T@U) ) (!  (and (= (Tag (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@1)) Tagclass.CoRecursionNotUsed.Stream) (= (TagFamily (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@1)) tytagFamily$Stream))
+ :qid |unknown.0:0|
+ :skolemid |1139|
  :pattern ( (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@1))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.G$_T0@@0 T@U) ($ly@@4 T@U) (|s#0@@6| T@U) (|n#0@@4| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.G$_T0@@0 |s#0@@6| (LitInt |n#0@@4|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@6| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@0)) (<= (LitInt 0) |n#0@@4|)))) (and (=> (or (not (= (LitInt |n#0@@4|) (LitInt 0))) (not true)) (and (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.G$_T0@@0 |s#0@@6| (LitInt (- |n#0@@4| 1))) (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.G$_T0@@0 (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@0 ($LS $ly@@4) |s#0@@6| (LitInt (- |n#0@@4| 1)))))) (= (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@0 ($LS $ly@@4) |s#0@@6| (LitInt |n#0@@4|)) (ite (= (LitInt |n#0@@4|) (LitInt 0)) |s#0@@6| (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.G$_T0@@0 (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@0 ($LS $ly@@4) |s#0@@6| (LitInt (- |n#0@@4| 1))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1155|
  :pattern ( (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@0 ($LS $ly@@4) |s#0@@6| (LitInt |n#0@@4|)))
 ))))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._System.nat) (and (= ($Box intType ($Unbox intType bx)) bx) ($Is intType ($Unbox intType bx) Tclass._System.nat)))
+ :qid |unknown.0:0|
+ :skolemid |952|
  :pattern ( ($IsBox bx Tclass._System.nat))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap T@U) (CoRecursionNotUsed._default.F$_T0@@3 T@U) ($ly@@5 T@U) (|s#0@@7| T@U) (|n#0@@5| Int) ) (!  (=> (and (or (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.F$_T0@@3 |s#0@@7| |n#0@@5|) (and (< 2 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |s#0@@7| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@3)) ($IsAlloc DatatypeTypeType |s#0@@7| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@3) $Heap)) (<= (LitInt 0) |n#0@@5|)))) ($IsGoodHeap $Heap)) ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@3 $ly@@5 |s#0@@7| |n#0@@5|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@3) $Heap))
+ :qid |Corecursiondfy.40:18|
+ :skolemid |1143|
  :pattern ( ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@3 $ly@@5 |s#0@@7| |n#0@@5|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.F$_T0@@3) $Heap))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@0 T@U) (CoRecursionNotUsed._default.G$_T0@@1 T@U) ($ly@@6 T@U) (|s#0@@8| T@U) (|n#0@@6| Int) ) (!  (=> (and (or (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.G$_T0@@1 |s#0@@8| |n#0@@6|) (and (< 2 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |s#0@@8| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@1)) ($IsAlloc DatatypeTypeType |s#0@@8| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@1) $Heap@@0)) (<= (LitInt 0) |n#0@@6|)))) ($IsGoodHeap $Heap@@0)) ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@1 $ly@@6 |s#0@@8| |n#0@@6|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@1) $Heap@@0))
+ :qid |Corecursiondfy.45:18|
+ :skolemid |1152|
  :pattern ( ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@1 $ly@@6 |s#0@@8| |n#0@@6|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@1) $Heap@@0))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.G$_T0@@2 T@U) ($ly@@7 T@U) (|s#0@@9| T@U) (|n#0@@7| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.G$_T0@@2 (Lit DatatypeTypeType |s#0@@9|) (LitInt |n#0@@7|)) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@9| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@2)) (<= (LitInt 0) |n#0@@7|)))) (and (=> (or (not (= (LitInt |n#0@@7|) (LitInt 0))) (not true)) (and (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.G$_T0@@2 (Lit DatatypeTypeType |s#0@@9|) (LitInt (- |n#0@@7| 1))) (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.G$_T0@@2 (Lit DatatypeTypeType (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@2 ($LS $ly@@7) (Lit DatatypeTypeType |s#0@@9|) (LitInt (- |n#0@@7| 1))))))) (= (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@2 ($LS $ly@@7) (Lit DatatypeTypeType |s#0@@9|) (LitInt |n#0@@7|)) (ite (= (LitInt |n#0@@7|) (LitInt 0)) |s#0@@9| (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.G$_T0@@2 (Lit DatatypeTypeType (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@2 ($LS $ly@@7) (Lit DatatypeTypeType |s#0@@9|) (LitInt (- |n#0@@7| 1)))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1156|
  :pattern ( (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@2 ($LS $ly@@7) (Lit DatatypeTypeType |s#0@@9|) (LitInt |n#0@@7|)))
 ))))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |647|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#CoRecursionNotUsed.Stream.More| |a#0#0#0| |a#0#1#0|)) |##CoRecursionNotUsed.Stream.More|)
+ :qid |Corecursiondfy.38:31|
+ :skolemid |1171|
  :pattern ( (|#CoRecursionNotUsed.Stream.More| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (CoRecursionNotUsed.Stream._h2 (|#CoRecursionNotUsed.Stream.More| |a#3#0#0| |a#3#1#0|)) |a#3#0#0|)
+ :qid |Corecursiondfy.38:31|
+ :skolemid |1179|
  :pattern ( (|#CoRecursionNotUsed.Stream.More| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (CoRecursionNotUsed.Stream._h3 (|#CoRecursionNotUsed.Stream.More| |a#4#0#0| |a#4#1#0|)) |a#4#1#0|)
+ :qid |Corecursiondfy.38:31|
+ :skolemid |1180|
  :pattern ( (|#CoRecursionNotUsed.Stream.More| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((CoRecursionNotUsed.Stream$T@@2 T@U) ) (! (= (Tclass.CoRecursionNotUsed.Stream_0 (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@2)) CoRecursionNotUsed.Stream$T@@2)
+ :qid |unknown.0:0|
+ :skolemid |1140|
  :pattern ( (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |634|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.Tail$_T0@@1 T@U) (|s#0@@10| T@U) ) (!  (=> (or (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.Tail$_T0@@1 (Lit DatatypeTypeType |s#0@@10|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |s#0@@10| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@1)))) (and (and (CoRecursionNotUsed.Stream.More_q (Lit DatatypeTypeType |s#0@@10|)) (CoRecursionNotUsed.Stream.More_q (Lit DatatypeTypeType |s#0@@10|))) (= (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@1 (Lit DatatypeTypeType |s#0@@10|)) (let ((|tl#2| (Lit DatatypeTypeType (CoRecursionNotUsed.Stream._h3 (Lit DatatypeTypeType |s#0@@10|)))))
 |tl#2|))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |1163|
  :pattern ( (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@1 (Lit DatatypeTypeType |s#0@@10|)))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((CoRecursionNotUsed._default.G$_T0@@3 T@U) ($ly@@8 T@U) (|s#0@@11| T@U) (|n#0@@8| Int) ) (!  (=> (or (|CoRecursionNotUsed.__default.G#canCall| CoRecursionNotUsed._default.G$_T0@@3 |s#0@@11| |n#0@@8|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@11| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.G$_T0@@3)) (<= (LitInt 0) |n#0@@8|)))) (and (=> (or (not (= |n#0@@8| (LitInt 0))) (not true)) (and (|CoRecursionNotUsed.__default.F#canCall| CoRecursionNotUsed._default.G$_T0@@3 |s#0@@11| (- |n#0@@8| 1)) (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.G$_T0@@3 (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@3 $ly@@8 |s#0@@11| (- |n#0@@8| 1))))) (= (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@3 ($LS $ly@@8) |s#0@@11| |n#0@@8|) (ite (= |n#0@@8| (LitInt 0)) |s#0@@11| (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.G$_T0@@3 (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.G$_T0@@3 $ly@@8 |s#0@@11| (- |n#0@@8| 1)))))))
+ :qid |unknown.0:0|
+ :skolemid |1154|
  :pattern ( (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@3 ($LS $ly@@8) |s#0@@11| |n#0@@8|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@1 T@U) (CoRecursionNotUsed._default.Tail$_T0@@2 T@U) (|s#0@@12| T@U) ) (!  (=> (and (or (|CoRecursionNotUsed.__default.Tail#canCall| CoRecursionNotUsed._default.Tail$_T0@@2 |s#0@@12|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |s#0@@12| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@2)) ($IsAlloc DatatypeTypeType |s#0@@12| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@2) $Heap@@1)))) ($IsGoodHeap $Heap@@1)) ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@2 |s#0@@12|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@2) $Heap@@1))
+ :qid |Corecursiondfy.51:18|
+ :skolemid |1160|
  :pattern ( ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.__default.Tail CoRecursionNotUsed._default.Tail$_T0@@2 |s#0@@12|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed._default.Tail$_T0@@2) $Heap@@1))
 ))))
 (assert (forall ((d@@2 T@U) (CoRecursionNotUsed.Stream$T@@3 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (CoRecursionNotUsed.Stream.More_q d@@2) ($IsAlloc DatatypeTypeType d@@2 (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@3) $h@@0))) ($IsAllocBox (CoRecursionNotUsed.Stream._h2 d@@2) CoRecursionNotUsed.Stream$T@@3 $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1177|
  :pattern ( ($IsAllocBox (CoRecursionNotUsed.Stream._h2 d@@2) CoRecursionNotUsed.Stream$T@@3 $h@@0))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3510|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((CoRecursionNotUsed._default.F$_T0@@4 T@U) ($ly@@9 T@U) (|s#0@@13| T@U) (|n#0@@9| Int) ) (! (= (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@4 ($LS $ly@@9) |s#0@@13| |n#0@@9|) (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@4 $ly@@9 |s#0@@13| |n#0@@9|))
+ :qid |unknown.0:0|
+ :skolemid |1137|
  :pattern ( (CoRecursionNotUsed.__default.F CoRecursionNotUsed._default.F$_T0@@4 ($LS $ly@@9) |s#0@@13| |n#0@@9|))
 )))
 (assert (forall ((CoRecursionNotUsed._default.G$_T0@@4 T@U) ($ly@@10 T@U) (|s#0@@14| T@U) (|n#0@@10| Int) ) (! (= (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@4 ($LS $ly@@10) |s#0@@14| |n#0@@10|) (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@4 $ly@@10 |s#0@@14| |n#0@@10|))
+ :qid |unknown.0:0|
+ :skolemid |1149|
  :pattern ( (CoRecursionNotUsed.__default.G CoRecursionNotUsed._default.G$_T0@@4 ($LS $ly@@10) |s#0@@14| |n#0@@10|))
 )))
 (assert (forall ((CoRecursionNotUsed.Stream$T@@4 T@U) (bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@4)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@4))))
+ :qid |unknown.0:0|
+ :skolemid |1141|
  :pattern ( ($IsBox bx@@0 (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@4)))
 )))
 (assert (forall ((d@@3 T@U) (CoRecursionNotUsed.Stream$T@@5 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (CoRecursionNotUsed.Stream.More_q d@@3) ($IsAlloc DatatypeTypeType d@@3 (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@5) $h@@1))) ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.Stream._h3 d@@3) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@5) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1178|
  :pattern ( ($IsAlloc DatatypeTypeType (CoRecursionNotUsed.Stream._h3 d@@3) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@5) $h@@1))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |627|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |625|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((CoRecursionNotUsed.Stream$T@@6 T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@2 T@U) ) (!  (=> ($IsGoodHeap $h@@2) (= ($IsAlloc DatatypeTypeType (|#CoRecursionNotUsed.Stream.More| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@6) $h@@2)  (and ($IsAllocBox |a#2#0#0@@0| CoRecursionNotUsed.Stream$T@@6 $h@@2) ($IsAlloc DatatypeTypeType |a#2#1#0@@0| (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@6) $h@@2))))
+ :qid |unknown.0:0|
+ :skolemid |1176|
  :pattern ( ($IsAlloc DatatypeTypeType (|#CoRecursionNotUsed.Stream.More| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass.CoRecursionNotUsed.Stream CoRecursionNotUsed.Stream$T@@6) $h@@2))
 )))
 (push 1)
@@ -252,6 +352,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$CoRecursionNotUsed.__default.G)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

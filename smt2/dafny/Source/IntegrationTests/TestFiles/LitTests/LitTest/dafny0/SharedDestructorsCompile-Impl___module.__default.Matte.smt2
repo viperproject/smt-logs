@@ -104,16 +104,22 @@
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun |$IsA#_module.Datte| (T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TReal TagBool TagInt TagReal TagSet alloc Tagclass._module.Datte |##_module.Datte.AA| |##_module.Datte.BB| |##_module.Datte.CC| |##_module.Datte.DD| tytagFamily$Datte)
@@ -122,307 +128,522 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Tag TReal) TagReal))
 (assert (forall ((|a#66#0#0| Int) (|a#66#1#0| T@U) (|a#66#2#0| (_ BitVec 27)) (|a#66#3#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Datte.DD| |a#66#0#0| |a#66#1#0| |a#66#2#0| |a#66#3#0|)) |##_module.Datte.DD|)
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |644|
  :pattern ( (|#_module.Datte.DD| |a#66#0#0| |a#66#1#0| |a#66#2#0| |a#66#3#0|))
 )))
 (assert (forall ((|a#70#0#0| Int) (|a#70#1#0| T@U) (|a#70#2#0| (_ BitVec 27)) (|a#70#3#0| T@U) ) (! (= (_module.Datte.x (|#_module.Datte.DD| |a#70#0#0| |a#70#1#0| |a#70#2#0| |a#70#3#0|)) |a#70#0#0|)
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |658|
  :pattern ( (|#_module.Datte.DD| |a#70#0#0| |a#70#1#0| |a#70#2#0| |a#70#3#0|))
 )))
 (assert (forall ((|a#71#0#0| Int) (|a#71#1#0| T@U) (|a#71#2#0| (_ BitVec 27)) (|a#71#3#0| T@U) ) (! (= (_module.Datte.o (|#_module.Datte.DD| |a#71#0#0| |a#71#1#0| |a#71#2#0| |a#71#3#0|)) |a#71#1#0|)
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |659|
  :pattern ( (|#_module.Datte.DD| |a#71#0#0| |a#71#1#0| |a#71#2#0| |a#71#3#0|))
 )))
 (assert (forall ((|a#73#0#0| Int) (|a#73#1#0| T@U) (|a#73#2#0| (_ BitVec 27)) (|a#73#3#0| T@U) ) (! (= (_module.Datte.p (|#_module.Datte.DD| |a#73#0#0| |a#73#1#0| |a#73#2#0| |a#73#3#0|)) |a#73#2#0|)
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |661|
  :pattern ( (|#_module.Datte.DD| |a#73#0#0| |a#73#1#0| |a#73#2#0| |a#73#3#0|))
 )))
 (assert (forall ((|a#74#0#0| Int) (|a#74#1#0| T@U) (|a#74#2#0| (_ BitVec 27)) (|a#74#3#0| T@U) ) (! (= (_module.Datte.q (|#_module.Datte.DD| |a#74#0#0| |a#74#1#0| |a#74#2#0| |a#74#3#0|)) |a#74#3#0|)
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |662|
  :pattern ( (|#_module.Datte.DD| |a#74#0#0| |a#74#1#0| |a#74#2#0| |a#74#3#0|))
 )))
 (assert (forall ((v T@U) (h T@U) ) (! ($IsAlloc intType v (TBitvector 0) h)
+ :qid |DafnyPreludebpl.295:15|
+ :skolemid |66|
  :pattern ( ($IsAlloc intType v (TBitvector 0) h))
 )))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert  (and (and (= (Ctor bv27Type) 3) (forall ((arg0@@2 (_ BitVec 27)) ) (! (= (U_2_bv27 (bv27_2_U arg0@@2)) arg0@@2)
+ :qid |typeInv:U_2_bv27|
  :pattern ( (bv27_2_U arg0@@2))
 ))) (forall ((x@@3 T@U) ) (! (= (bv27_2_U (U_2_bv27 x@@3)) x@@3)
+ :qid |cast:U_2_bv27|
  :pattern ( (U_2_bv27 x@@3))
 ))))
 (assert (forall ((v@@0 T@U) (heap T@U) ) (! ($IsAlloc bv27Type v@@0 (TBitvector 27) heap)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc bv27Type v@@0 (TBitvector 27) heap))
 )))
 (assert (forall ((a@@0 T@U) (x@@4 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@4) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@4) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@5 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@5) o)  (or (= o x@@5) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@5) o))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 (TBitvector 0))
+ :qid |DafnyPreludebpl.236:15|
+ :skolemid |45|
  :pattern ( ($Is intType v@@1 (TBitvector 0)))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is bv27Type v@@2 (TBitvector 27))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is bv27Type v@@2 (TBitvector 27)))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall ((|a#75#0#0| Int) (|a#75#1#0| T@U) (|a#75#2#0| (_ BitVec 27)) (|a#75#3#0| T@U) ) (! (< (BoxRank |a#75#3#0|) (DtRank (|#_module.Datte.DD| |a#75#0#0| |a#75#1#0| |a#75#2#0| |a#75#3#0|)))
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |663|
  :pattern ( (|#_module.Datte.DD| |a#75#0#0| |a#75#1#0| |a#75#2#0| |a#75#3#0|))
 )))
 (assert (= (Ctor DatatypeTypeType) 4))
 (assert (forall ((_module.Datte$T T@U) (|a#51#0#0| Int) (|a#51#1#0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.Datte.AA| |a#51#0#0| |a#51#1#0|) (Tclass._module.Datte _module.Datte$T))  (and ($Is intType (int_2_U |a#51#0#0|) TInt) ($Is intType (int_2_U |a#51#1#0|) TInt)))
+ :qid |unknown.0:0|
+ :skolemid |612|
  :pattern ( ($Is DatatypeTypeType (|#_module.Datte.AA| |a#51#0#0| |a#51#1#0|) (Tclass._module.Datte _module.Datte$T)))
 )))
 (assert (forall ((_module.Datte$T@@0 T@U) (|a#57#0#0| Bool) (|a#57#1#0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.Datte.BB| |a#57#0#0| |a#57#1#0|) (Tclass._module.Datte _module.Datte$T@@0))  (and ($Is boolType (bool_2_U |a#57#0#0|) TBool) ($Is intType (int_2_U |a#57#1#0|) TInt)))
+ :qid |unknown.0:0|
+ :skolemid |625|
  :pattern ( ($Is DatatypeTypeType (|#_module.Datte.BB| |a#57#0#0| |a#57#1#0|) (Tclass._module.Datte _module.Datte$T@@0)))
 )))
 (assert (= (Ctor SetType) 5))
 (assert (forall ((_module.Datte$T@@1 T@U) (|a#68#0#0| Int) (|a#68#1#0| T@U) (|a#68#2#0| (_ BitVec 27)) (|a#68#3#0| T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) (= ($IsAlloc DatatypeTypeType (|#_module.Datte.DD| |a#68#0#0| |a#68#1#0| |a#68#2#0| |a#68#3#0|) (Tclass._module.Datte _module.Datte$T@@1) $h)  (and (and (and ($IsAlloc intType (int_2_U |a#68#0#0|) TInt $h) ($IsAlloc SetType |a#68#1#0| (TSet TInt) $h)) ($IsAlloc bv27Type (bv27_2_U |a#68#2#0|) (TBitvector 27) $h)) ($IsAllocBox |a#68#3#0| _module.Datte$T@@1 $h))))
+ :qid |unknown.0:0|
+ :skolemid |649|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Datte.DD| |a#68#0#0| |a#68#1#0| |a#68#2#0| |a#68#3#0|) (Tclass._module.Datte _module.Datte$T@@1) $h))
 )))
 (assert (forall ((|a#72#0#0| Int) (|a#72#1#0| T@U) (|a#72#2#0| (_ BitVec 27)) (|a#72#3#0| T@U) (d T@U) ) (!  (=> (|Set#IsMember| |a#72#1#0| ($Box DatatypeTypeType d)) (< (DtRank d) (DtRank (|#_module.Datte.DD| |a#72#0#0| |a#72#1#0| |a#72#2#0| |a#72#3#0|))))
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |660|
  :pattern ( (|Set#IsMember| |a#72#1#0| ($Box DatatypeTypeType d)) (|#_module.Datte.DD| |a#72#0#0| |a#72#1#0| |a#72#2#0| |a#72#3#0|))
 )))
 (assert (forall ((x@@6 Int) ) (! (= (LitInt x@@6) x@@6)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@6))
 )))
 (assert (forall ((x@@7 Real) ) (! (= (LitReal x@@7) x@@7)
+ :qid |DafnyPreludebpl.111:30|
+ :skolemid |19|
  :pattern ( (LitReal x@@7))
 )))
 (assert (forall ((x@@8 T@U) (T T@T) ) (! (= (Lit T x@@8) x@@8)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@8))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Datte.AA_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Datte.AA|))
+ :qid |unknown.0:0|
+ :skolemid |609|
  :pattern ( (_module.Datte.AA_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Datte.BB_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Datte.BB|))
+ :qid |unknown.0:0|
+ :skolemid |622|
  :pattern ( (_module.Datte.BB_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.Datte.CC_q d@@2) (= (DatatypeCtorId d@@2) |##_module.Datte.CC|))
+ :qid |unknown.0:0|
+ :skolemid |635|
  :pattern ( (_module.Datte.CC_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.Datte.DD_q d@@3) (= (DatatypeCtorId d@@3) |##_module.Datte.DD|))
+ :qid |unknown.0:0|
+ :skolemid |645|
  :pattern ( (_module.Datte.DD_q d@@3))
 )))
 (assert (forall ((x@@9 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@9))
 )))
-(assert (forall ((d@@4 T@U) ) (!  (=> (_module.Datte.AA_q d@@4) (exists ((|a#50#0#0| Int) (|a#50#1#0| Int) ) (= d@@4 (|#_module.Datte.AA| |a#50#0#0| |a#50#1#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (_module.Datte.AA_q d@@4) (exists ((|a#50#0#0| Int) (|a#50#1#0| Int) ) (! (= d@@4 (|#_module.Datte.AA| |a#50#0#0| |a#50#1#0|))
+ :qid |SharedDestructorsCompiledfy.53:24|
+ :skolemid |610|
+)))
+ :qid |unknown.0:0|
+ :skolemid |611|
  :pattern ( (_module.Datte.AA_q d@@4))
 )))
-(assert (forall ((d@@5 T@U) ) (!  (=> (_module.Datte.BB_q d@@5) (exists ((|a#56#0#0| Bool) (|a#56#1#0| Int) ) (= d@@5 (|#_module.Datte.BB| |a#56#0#0| |a#56#1#0|))))
+(assert (forall ((d@@5 T@U) ) (!  (=> (_module.Datte.BB_q d@@5) (exists ((|a#56#0#0| Bool) (|a#56#1#0| Int) ) (! (= d@@5 (|#_module.Datte.BB| |a#56#0#0| |a#56#1#0|))
+ :qid |SharedDestructorsCompiledfy.53:45|
+ :skolemid |623|
+)))
+ :qid |unknown.0:0|
+ :skolemid |624|
  :pattern ( (_module.Datte.BB_q d@@5))
 )))
 (assert (forall ((v@@3 T@U) (t0 T@U) ) (! (= ($Is SetType v@@3 (TSet t0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v@@3 bx) ($IsBox bx t0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v@@3 bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v@@3 (TSet t0)))
 )))
-(assert (forall ((d@@6 T@U) ) (!  (=> (_module.Datte.CC_q d@@6) (exists ((|a#62#0#0| Real) ) (= d@@6 (|#_module.Datte.CC| |a#62#0#0|))))
+(assert (forall ((d@@6 T@U) ) (!  (=> (_module.Datte.CC_q d@@6) (exists ((|a#62#0#0| Real) ) (! (= d@@6 (|#_module.Datte.CC| |a#62#0#0|))
+ :qid |SharedDestructorsCompiledfy.53:67|
+ :skolemid |636|
+)))
+ :qid |unknown.0:0|
+ :skolemid |637|
  :pattern ( (_module.Datte.CC_q d@@6))
 )))
 (assert (= (Ctor BoxType) 6))
 (assert (forall ((|a#69#0#0| Int) (|a#69#1#0| T@U) (|a#69#2#0| T@U) (|a#69#3#0| T@U) ) (! (= (|#_module.Datte.DD| (LitInt |a#69#0#0|) (Lit SetType |a#69#1#0|) (U_2_bv27 (Lit bv27Type |a#69#2#0|)) (Lit BoxType |a#69#3#0|)) (Lit DatatypeTypeType (|#_module.Datte.DD| |a#69#0#0| |a#69#1#0| (U_2_bv27 |a#69#2#0|) |a#69#3#0|)))
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |657|
  :pattern ( (|#_module.Datte.DD| (LitInt |a#69#0#0|) (Lit SetType |a#69#1#0|) (U_2_bv27 (Lit bv27Type |a#69#2#0|)) (Lit BoxType |a#69#3#0|)))
 )))
 (assert (forall ((v@@4 T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@4) t h@@0) ($IsAlloc T@@1 v@@4 t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@4) t h@@0))
 )))
 (assert (forall ((_module.Datte$T@@2 T@U) ) (!  (and (= (Tag (Tclass._module.Datte _module.Datte$T@@2)) Tagclass._module.Datte) (= (TagFamily (Tclass._module.Datte _module.Datte$T@@2)) tytagFamily$Datte))
+ :qid |unknown.0:0|
+ :skolemid |497|
  :pattern ( (Tclass._module.Datte _module.Datte$T@@2))
 )))
 (assert (forall ((d@@7 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.Datte.AA_q d@@7) (exists ((_module.Datte$T@@3 T@U) ) (! ($IsAlloc DatatypeTypeType d@@7 (Tclass._module.Datte _module.Datte$T@@3) $h@@0)
+ :qid |unknown.0:0|
+ :skolemid |614|
  :pattern ( ($IsAlloc DatatypeTypeType d@@7 (Tclass._module.Datte _module.Datte$T@@3) $h@@0))
 )))) ($IsAlloc intType (int_2_U (_module.Datte.a d@@7)) TInt $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |615|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Datte.a d@@7)) TInt $h@@0))
 )))
 (assert (forall ((d@@8 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Datte.AA_q d@@8) (exists ((_module.Datte$T@@4 T@U) ) (! ($IsAlloc DatatypeTypeType d@@8 (Tclass._module.Datte _module.Datte$T@@4) $h@@1)
+ :qid |unknown.0:0|
+ :skolemid |616|
  :pattern ( ($IsAlloc DatatypeTypeType d@@8 (Tclass._module.Datte _module.Datte$T@@4) $h@@1))
 )))) ($IsAlloc intType (int_2_U (_module.Datte.x d@@8)) TInt $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |617|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Datte.x d@@8)) TInt $h@@1))
 )))
 (assert (forall ((d@@9 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.Datte.BB_q d@@9) (exists ((_module.Datte$T@@5 T@U) ) (! ($IsAlloc DatatypeTypeType d@@9 (Tclass._module.Datte _module.Datte$T@@5) $h@@2)
+ :qid |unknown.0:0|
+ :skolemid |627|
  :pattern ( ($IsAlloc DatatypeTypeType d@@9 (Tclass._module.Datte _module.Datte$T@@5) $h@@2))
 )))) ($IsAlloc boolType (bool_2_U (_module.Datte.b d@@9)) TBool $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |628|
  :pattern ( ($IsAlloc boolType (bool_2_U (_module.Datte.b d@@9)) TBool $h@@2))
 )))
 (assert (forall ((d@@10 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.Datte.BB_q d@@10) (exists ((_module.Datte$T@@6 T@U) ) (! ($IsAlloc DatatypeTypeType d@@10 (Tclass._module.Datte _module.Datte$T@@6) $h@@3)
+ :qid |unknown.0:0|
+ :skolemid |629|
  :pattern ( ($IsAlloc DatatypeTypeType d@@10 (Tclass._module.Datte _module.Datte$T@@6) $h@@3))
 )))) ($IsAlloc intType (int_2_U (_module.Datte.x d@@10)) TInt $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |630|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Datte.x d@@10)) TInt $h@@3))
 )))
 (assert (forall ((d@@11 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) (and (_module.Datte.CC_q d@@11) (exists ((_module.Datte$T@@7 T@U) ) (! ($IsAlloc DatatypeTypeType d@@11 (Tclass._module.Datte _module.Datte$T@@7) $h@@4)
+ :qid |unknown.0:0|
+ :skolemid |640|
  :pattern ( ($IsAlloc DatatypeTypeType d@@11 (Tclass._module.Datte _module.Datte$T@@7) $h@@4))
 )))) ($IsAlloc realType (real_2_U (_module.Datte.c d@@11)) TReal $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |641|
  :pattern ( ($IsAlloc realType (real_2_U (_module.Datte.c d@@11)) TReal $h@@4))
 )))
 (assert (forall ((d@@12 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (_module.Datte.DD_q d@@12) (exists ((_module.Datte$T@@8 T@U) ) (! ($IsAlloc DatatypeTypeType d@@12 (Tclass._module.Datte _module.Datte$T@@8) $h@@5)
+ :qid |unknown.0:0|
+ :skolemid |650|
  :pattern ( ($IsAlloc DatatypeTypeType d@@12 (Tclass._module.Datte _module.Datte$T@@8) $h@@5))
 )))) ($IsAlloc intType (int_2_U (_module.Datte.x d@@12)) TInt $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |651|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Datte.x d@@12)) TInt $h@@5))
 )))
 (assert (forall ((_module.Datte$T@@9 T@U) (|a#63#0#0| Real) ($h@@6 T@U) ) (!  (=> ($IsGoodHeap $h@@6) (= ($IsAlloc DatatypeTypeType (|#_module.Datte.CC| |a#63#0#0|) (Tclass._module.Datte _module.Datte$T@@9) $h@@6) ($IsAlloc realType (real_2_U |a#63#0#0|) TReal $h@@6)))
+ :qid |unknown.0:0|
+ :skolemid |639|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Datte.CC| |a#63#0#0|) (Tclass._module.Datte _module.Datte$T@@9) $h@@6))
 )))
 (assert (forall ((d@@13 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsGoodHeap $h@@7) (and (_module.Datte.DD_q d@@13) (exists ((_module.Datte$T@@10 T@U) ) (! ($IsAlloc DatatypeTypeType d@@13 (Tclass._module.Datte _module.Datte$T@@10) $h@@7)
+ :qid |unknown.0:0|
+ :skolemid |652|
  :pattern ( ($IsAlloc DatatypeTypeType d@@13 (Tclass._module.Datte _module.Datte$T@@10) $h@@7))
 )))) ($IsAlloc SetType (_module.Datte.o d@@13) (TSet TInt) $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |653|
  :pattern ( ($IsAlloc SetType (_module.Datte.o d@@13) (TSet TInt) $h@@7))
 )))
 (assert (forall ((d@@14 T@U) ($h@@8 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (_module.Datte.DD_q d@@14) (exists ((_module.Datte$T@@11 T@U) ) (! ($IsAlloc DatatypeTypeType d@@14 (Tclass._module.Datte _module.Datte$T@@11) $h@@8)
+ :qid |unknown.0:0|
+ :skolemid |654|
  :pattern ( ($IsAlloc DatatypeTypeType d@@14 (Tclass._module.Datte _module.Datte$T@@11) $h@@8))
 )))) ($IsAlloc bv27Type (bv27_2_U (_module.Datte.p d@@14)) (TBitvector 27) $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |655|
  :pattern ( ($IsAlloc bv27Type (bv27_2_U (_module.Datte.p d@@14)) (TBitvector 27) $h@@8))
 )))
 (assert (forall ((_module.Datte$T@@12 T@U) (|a#68#0#0@@0| Int) (|a#68#1#0@@0| T@U) (|a#68#2#0@@0| (_ BitVec 27)) (|a#68#3#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Datte.DD| |a#68#0#0@@0| |a#68#1#0@@0| |a#68#2#0@@0| |a#68#3#0@@0|) (Tclass._module.Datte _module.Datte$T@@12))  (and (and (and ($Is intType (int_2_U |a#68#0#0@@0|) TInt) ($Is SetType |a#68#1#0@@0| (TSet TInt))) ($Is bv27Type (bv27_2_U |a#68#2#0@@0|) (TBitvector 27))) ($IsBox |a#68#3#0@@0| _module.Datte$T@@12)))
+ :qid |unknown.0:0|
+ :skolemid |648|
  :pattern ( ($Is DatatypeTypeType (|#_module.Datte.DD| |a#68#0#0@@0| |a#68#1#0@@0| |a#68#2#0@@0| |a#68#3#0@@0|) (Tclass._module.Datte _module.Datte$T@@12)))
 )))
 (assert (forall ((|a#59#0#0| Bool) (|a#59#1#0| Int) ) (! (= (_module.Datte.b (|#_module.Datte.BB| |a#59#0#0| |a#59#1#0|)) |a#59#0#0|)
+ :qid |SharedDestructorsCompiledfy.53:45|
+ :skolemid |632|
  :pattern ( (|#_module.Datte.BB| |a#59#0#0| |a#59#1#0|))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TInt) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@0 TInt))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TReal) (and (= ($Box realType ($Unbox realType bx@@1)) bx@@1) ($Is realType ($Unbox realType bx@@1) TReal)))
+ :qid |DafnyPreludebpl.179:15|
+ :skolemid |28|
  :pattern ( ($IsBox bx@@1 TReal))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TBool) (and (= ($Box boolType ($Unbox boolType bx@@2)) bx@@2) ($Is boolType ($Unbox boolType bx@@2) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@2 TBool))
 )))
 (assert (forall ((v@@5 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@5) t@@0) ($Is T@@2 v@@5 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@5) t@@0))
 )))
 (assert (forall ((v@@6 T@U) (t0@@0 T@U) (h@@1 T@U) ) (! (= ($IsAlloc SetType v@@6 (TSet t0@@0) h@@1) (forall ((bx@@3 T@U) ) (!  (=> (|Set#IsMember| v@@6 bx@@3) ($IsAllocBox bx@@3 t0@@0 h@@1))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@6 bx@@3))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@6 (TSet t0@@0) h@@1))
 )))
 (assert (forall ((|a#49#0#0| Int) (|a#49#1#0| Int) ) (! (= (DatatypeCtorId (|#_module.Datte.AA| |a#49#0#0| |a#49#1#0|)) |##_module.Datte.AA|)
+ :qid |SharedDestructorsCompiledfy.53:24|
+ :skolemid |608|
  :pattern ( (|#_module.Datte.AA| |a#49#0#0| |a#49#1#0|))
 )))
 (assert (forall ((|a#53#0#0| Int) (|a#53#1#0| Int) ) (! (= (_module.Datte.a (|#_module.Datte.AA| |a#53#0#0| |a#53#1#0|)) |a#53#0#0|)
+ :qid |SharedDestructorsCompiledfy.53:24|
+ :skolemid |619|
  :pattern ( (|#_module.Datte.AA| |a#53#0#0| |a#53#1#0|))
 )))
 (assert (forall ((|a#54#0#0| Int) (|a#54#1#0| Int) ) (! (= (_module.Datte.x (|#_module.Datte.AA| |a#54#0#0| |a#54#1#0|)) |a#54#1#0|)
+ :qid |SharedDestructorsCompiledfy.53:24|
+ :skolemid |620|
  :pattern ( (|#_module.Datte.AA| |a#54#0#0| |a#54#1#0|))
 )))
 (assert (forall ((|a#55#0#0| Bool) (|a#55#1#0| Int) ) (! (= (DatatypeCtorId (|#_module.Datte.BB| |a#55#0#0| |a#55#1#0|)) |##_module.Datte.BB|)
+ :qid |SharedDestructorsCompiledfy.53:45|
+ :skolemid |621|
  :pattern ( (|#_module.Datte.BB| |a#55#0#0| |a#55#1#0|))
 )))
 (assert (forall ((|a#60#0#0| Bool) (|a#60#1#0| Int) ) (! (= (_module.Datte.x (|#_module.Datte.BB| |a#60#0#0| |a#60#1#0|)) |a#60#1#0|)
+ :qid |SharedDestructorsCompiledfy.53:45|
+ :skolemid |633|
  :pattern ( (|#_module.Datte.BB| |a#60#0#0| |a#60#1#0|))
 )))
-(assert (forall ((d@@15 T@U) ) (!  (=> (_module.Datte.DD_q d@@15) (exists ((|a#67#0#0| Int) (|a#67#1#0| T@U) (|a#67#2#0| (_ BitVec 27)) (|a#67#3#0| T@U) ) (= d@@15 (|#_module.Datte.DD| |a#67#0#0| |a#67#1#0| |a#67#2#0| |a#67#3#0|))))
+(assert (forall ((d@@15 T@U) ) (!  (=> (_module.Datte.DD_q d@@15) (exists ((|a#67#0#0| Int) (|a#67#1#0| T@U) (|a#67#2#0| (_ BitVec 27)) (|a#67#3#0| T@U) ) (! (= d@@15 (|#_module.Datte.DD| |a#67#0#0| |a#67#1#0| |a#67#2#0| |a#67#3#0|))
+ :qid |SharedDestructorsCompiledfy.53:81|
+ :skolemid |646|
+)))
+ :qid |unknown.0:0|
+ :skolemid |647|
  :pattern ( (_module.Datte.DD_q d@@15))
 )))
 (assert (forall ((w Int) ) (! (= (Inv0_TBitvector (TBitvector w)) w)
+ :qid |DafnyPreludebpl.38:15|
+ :skolemid |0|
  :pattern ( (TBitvector w))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((_module.Datte$T@@13 T@U) ) (! (= (Tclass._module.Datte_0 (Tclass._module.Datte _module.Datte$T@@13)) _module.Datte$T@@13)
+ :qid |unknown.0:0|
+ :skolemid |498|
  :pattern ( (Tclass._module.Datte _module.Datte$T@@13))
 )))
 (assert (forall ((|a#61#0#0| Real) ) (! (= (DatatypeCtorId (|#_module.Datte.CC| |a#61#0#0|)) |##_module.Datte.CC|)
+ :qid |SharedDestructorsCompiledfy.53:67|
+ :skolemid |634|
  :pattern ( (|#_module.Datte.CC| |a#61#0#0|))
 )))
 (assert (forall ((|a#65#0#0| Real) ) (! (= (_module.Datte.c (|#_module.Datte.CC| |a#65#0#0|)) |a#65#0#0|)
+ :qid |SharedDestructorsCompiledfy.53:67|
+ :skolemid |643|
  :pattern ( (|#_module.Datte.CC| |a#65#0#0|))
 )))
 (assert (forall ((x@@10 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@10)) x@@10)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@10))
 )))
 (assert (forall ((_module.Datte$T@@14 T@U) (|a#63#0#0@@0| Real) ) (! (= ($Is DatatypeTypeType (|#_module.Datte.CC| |a#63#0#0@@0|) (Tclass._module.Datte _module.Datte$T@@14)) ($Is realType (real_2_U |a#63#0#0@@0|) TReal))
+ :qid |unknown.0:0|
+ :skolemid |638|
  :pattern ( ($Is DatatypeTypeType (|#_module.Datte.CC| |a#63#0#0@@0|) (Tclass._module.Datte _module.Datte$T@@14)))
 )))
 (assert (forall ((d@@16 T@U) (_module.Datte$T@@15 T@U) ($h@@9 T@U) ) (!  (=> (and ($IsGoodHeap $h@@9) (and (_module.Datte.DD_q d@@16) ($IsAlloc DatatypeTypeType d@@16 (Tclass._module.Datte _module.Datte$T@@15) $h@@9))) ($IsAllocBox (_module.Datte.q d@@16) _module.Datte$T@@15 $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |656|
  :pattern ( ($IsAllocBox (_module.Datte.q d@@16) _module.Datte$T@@15 $h@@9))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0@@1 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@1 t1 t2 (MapType0Store t0@@1 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 7)) (= (Ctor FieldType) 8)) (forall ((t0@@2 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 (MapType1Store t0@@2 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@3 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@3 arg1)) 9))) (forall ((arg0@@4 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@4 arg1@@0)) arg0@@4)
+))) (forall ((arg0@@3 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@3 arg1)) 9)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@4 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@4 arg1@@0)) arg0@@4)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@4 arg1@@0))
 ))) (forall ((arg0@@5 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@5 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@5 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |671|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@17 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@17)) (DtRank d@@17))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@17)))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (TBitvector 0)) (and (= ($Box intType ($Unbox intType bx@@4)) bx@@4) ($Is intType ($Unbox intType bx@@4) (TBitvector 0))))
+ :qid |DafnyPreludebpl.191:15|
+ :skolemid |31|
  :pattern ( ($IsBox bx@@4 (TBitvector 0)))
 )))
 (assert (forall ((bx@@5 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@5 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@5)) bx@@5) ($Is SetType ($Unbox SetType bx@@5) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@5 (TSet t@@3)))
 )))
 (assert (forall ((_module.Datte$T@@16 T@U) (bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 (Tclass._module.Datte _module.Datte$T@@16)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@6)) bx@@6) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@6) (Tclass._module.Datte _module.Datte$T@@16))))
+ :qid |unknown.0:0|
+ :skolemid |499|
  :pattern ( ($IsBox bx@@6 (Tclass._module.Datte _module.Datte$T@@16)))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 (TBitvector 27)) (and (= ($Box bv27Type ($Unbox bv27Type bx@@7)) bx@@7) ($Is bv27Type ($Unbox bv27Type bx@@7) (TBitvector 27))))
+ :qid |unknown.0:0|
+ :skolemid |343|
  :pattern ( ($IsBox bx@@7 (TBitvector 27)))
 )))
 (assert (forall ((d@@18 T@U) ) (!  (=> (|$IsA#_module.Datte| d@@18) (or (or (or (_module.Datte.AA_q d@@18) (_module.Datte.BB_q d@@18)) (_module.Datte.CC_q d@@18)) (_module.Datte.DD_q d@@18)))
+ :qid |unknown.0:0|
+ :skolemid |664|
  :pattern ( (|$IsA#_module.Datte| d@@18))
 )))
 (assert (forall ((_module.Datte$T@@17 T@U) (|a#51#0#0@@0| Int) (|a#51#1#0@@0| Int) ($h@@10 T@U) ) (!  (=> ($IsGoodHeap $h@@10) (= ($IsAlloc DatatypeTypeType (|#_module.Datte.AA| |a#51#0#0@@0| |a#51#1#0@@0|) (Tclass._module.Datte _module.Datte$T@@17) $h@@10)  (and ($IsAlloc intType (int_2_U |a#51#0#0@@0|) TInt $h@@10) ($IsAlloc intType (int_2_U |a#51#1#0@@0|) TInt $h@@10))))
+ :qid |unknown.0:0|
+ :skolemid |613|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Datte.AA| |a#51#0#0@@0| |a#51#1#0@@0|) (Tclass._module.Datte _module.Datte$T@@17) $h@@10))
 )))
 (assert (forall ((_module.Datte$T@@18 T@U) (|a#57#0#0@@0| Bool) (|a#57#1#0@@0| Int) ($h@@11 T@U) ) (!  (=> ($IsGoodHeap $h@@11) (= ($IsAlloc DatatypeTypeType (|#_module.Datte.BB| |a#57#0#0@@0| |a#57#1#0@@0|) (Tclass._module.Datte _module.Datte$T@@18) $h@@11)  (and ($IsAlloc boolType (bool_2_U |a#57#0#0@@0|) TBool $h@@11) ($IsAlloc intType (int_2_U |a#57#1#0@@0|) TInt $h@@11))))
+ :qid |unknown.0:0|
+ :skolemid |626|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Datte.BB| |a#57#0#0@@0| |a#57#1#0@@0|) (Tclass._module.Datte _module.Datte$T@@18) $h@@11))
 )))
 (assert (forall ((|a#52#0#0| Int) (|a#52#1#0| Int) ) (! (= (|#_module.Datte.AA| (LitInt |a#52#0#0|) (LitInt |a#52#1#0|)) (Lit DatatypeTypeType (|#_module.Datte.AA| |a#52#0#0| |a#52#1#0|)))
+ :qid |SharedDestructorsCompiledfy.53:24|
+ :skolemid |618|
  :pattern ( (|#_module.Datte.AA| (LitInt |a#52#0#0|) (LitInt |a#52#1#0|)))
 )))
 (assert (forall ((|a#58#0#0| T@U) (|a#58#1#0| Int) ) (! (= (|#_module.Datte.BB| (U_2_bool (Lit boolType |a#58#0#0|)) (LitInt |a#58#1#0|)) (Lit DatatypeTypeType (|#_module.Datte.BB| (U_2_bool |a#58#0#0|) |a#58#1#0|)))
+ :qid |SharedDestructorsCompiledfy.53:45|
+ :skolemid |631|
  :pattern ( (|#_module.Datte.BB| (U_2_bool (Lit boolType |a#58#0#0|)) (LitInt |a#58#1#0|)))
 )))
 (assert (forall ((x@@11 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@11))) (Lit BoxType ($Box intType (int_2_U x@@11))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@11))))
 )))
 (assert (forall ((x@@12 Real) ) (! (= ($Box realType (real_2_U (LitReal x@@12))) (Lit BoxType ($Box realType (real_2_U x@@12))))
+ :qid |DafnyPreludebpl.112:15|
+ :skolemid |20|
  :pattern ( ($Box realType (real_2_U (LitReal x@@12))))
 )))
 (assert (forall ((|a#64#0#0| Real) ) (! (= (|#_module.Datte.CC| (LitReal |a#64#0#0|)) (Lit DatatypeTypeType (|#_module.Datte.CC| |a#64#0#0|)))
+ :qid |SharedDestructorsCompiledfy.53:67|
+ :skolemid |642|
  :pattern ( (|#_module.Datte.CC| (LitReal |a#64#0#0|)))
 )))
 (assert (forall ((x@@13 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@13)) (Lit BoxType ($Box T@@4 x@@13)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@13)))
 )))
 (assert (forall ((_module.Datte$T@@19 T@U) (d@@19 T@U) ) (!  (=> ($Is DatatypeTypeType d@@19 (Tclass._module.Datte _module.Datte$T@@19)) (or (or (or (_module.Datte.AA_q d@@19) (_module.Datte.BB_q d@@19)) (_module.Datte.CC_q d@@19)) (_module.Datte.DD_q d@@19)))
+ :qid |unknown.0:0|
+ :skolemid |665|
  :pattern ( (_module.Datte.DD_q d@@19) ($Is DatatypeTypeType d@@19 (Tclass._module.Datte _module.Datte$T@@19)))
  :pattern ( (_module.Datte.CC_q d@@19) ($Is DatatypeTypeType d@@19 (Tclass._module.Datte _module.Datte$T@@19)))
  :pattern ( (_module.Datte.BB_q d@@19) ($Is DatatypeTypeType d@@19 (Tclass._module.Datte _module.Datte$T@@19)))
  :pattern ( (_module.Datte.AA_q d@@19) ($Is DatatypeTypeType d@@19 (Tclass._module.Datte _module.Datte$T@@19)))
 )))
 (assert (forall ((h@@2 T@U) (v@@7 T@U) ) (! ($IsAlloc intType v@@7 TInt h@@2)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@7 TInt h@@2))
 )))
 (assert (forall ((h@@3 T@U) (v@@8 T@U) ) (! ($IsAlloc realType v@@8 TReal h@@3)
+ :qid |DafnyPreludebpl.290:14|
+ :skolemid |62|
  :pattern ( ($IsAlloc realType v@@8 TReal h@@3))
 )))
 (assert (forall ((h@@4 T@U) (v@@9 T@U) ) (! ($IsAlloc boolType v@@9 TBool h@@4)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@9 TBool h@@4))
 )))
 (assert (forall ((v@@10 T@U) ) (! ($Is intType v@@10 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@10 TInt))
 )))
 (assert (forall ((v@@11 T@U) ) (! ($Is realType v@@11 TReal)
+ :qid |DafnyPreludebpl.229:14|
+ :skolemid |41|
  :pattern ( ($Is realType v@@11 TReal))
 )))
 (assert (forall ((v@@12 T@U) ) (! ($Is boolType v@@12 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@12 TBool))
 )))
 (push 1)
@@ -464,6 +685,7 @@
 (declare-fun |d#1| () T@U)
 (declare-fun |s#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.Matte)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

@@ -93,181 +93,295 @@
 (declare-fun _module.__default.getOriginalSet (Bool) T@U)
 (declare-fun |_module.__default.getOriginalSet#canCall| () Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSet alloc Tagclass._module.CompilableOrdinalCell Tagclass._module.Cell |##_module.Cell.Cell| Tagclass._module.CompilableNaturalCell tytagFamily$CompilableOrdinalCell tytagFamily$Cell tytagFamily$CompilableNaturalCell)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert  (and (= (Ctor SetType) 3) (= (Ctor DatatypeTypeType) 4)))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|s#0| T@U) ) (!  (=> (or (|_module.__default.isSetOfCompilableOrdinalCells#canCall| |s#0|) (and (< 4 $FunctionContextHeight) ($Is SetType |s#0| (TSet Tclass._module.CompilableOrdinalCell)))) (and (forall ((|c#0| T@U) ) (!  (=> ($Is DatatypeTypeType |c#0| Tclass._module.CompilableOrdinalCell) (=> (|Set#IsMember| |s#0| ($Box DatatypeTypeType |c#0|)) (|_module.__default.returnsOneIfCompilableOrdinalCell#canCall| |c#0|)))
+ :qid |gitissue1604bdfy.28:10|
+ :skolemid |493|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell |c#0|))
  :pattern ( (|Set#IsMember| |s#0| ($Box DatatypeTypeType |c#0|)))
 )) (= (_module.__default.isSetOfCompilableOrdinalCells |s#0|) (forall ((|c#0@@0| T@U) ) (!  (=> ($Is DatatypeTypeType |c#0@@0| Tclass._module.CompilableOrdinalCell) (=> (|Set#IsMember| |s#0| ($Box DatatypeTypeType |c#0@@0|)) (= (_module.__default.returnsOneIfCompilableOrdinalCell |c#0@@0|) (LitInt 1))))
+ :qid |gitissue1604bdfy.28:10|
+ :skolemid |492|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell |c#0@@0|))
  :pattern ( (|Set#IsMember| |s#0| ($Box DatatypeTypeType |c#0@@0|)))
 )))))
+ :qid |gitissue1604bdfy.27:41|
+ :skolemid |494|
  :pattern ( (_module.__default.isSetOfCompilableOrdinalCells |s#0|))
 ))))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall ((|cn#0| T@U) ($h T@U) ) (! (= ($IsAlloc DatatypeTypeType |cn#0| Tclass._module.CompilableNaturalCell $h) ($IsAlloc DatatypeTypeType |cn#0| Tclass._module.Cell $h))
+ :qid |unknown.0:0|
+ :skolemid |526|
  :pattern ( ($IsAlloc DatatypeTypeType |cn#0| Tclass._module.CompilableNaturalCell $h))
 )))
 (assert (forall ((|coc#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc DatatypeTypeType |coc#0| Tclass._module.CompilableOrdinalCell $h@@0) ($IsAlloc DatatypeTypeType |coc#0| Tclass._module.CompilableNaturalCell $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( ($IsAlloc DatatypeTypeType |coc#0| Tclass._module.CompilableOrdinalCell $h@@0))
 )))
 (assert (forall ((d T@U) ) (!  (=> ($Is DatatypeTypeType d Tclass._module.Cell) (_module.Cell.Cell_q d))
+ :qid |unknown.0:0|
+ :skolemid |521|
  :pattern ( (_module.Cell.Cell_q d) ($Is DatatypeTypeType d Tclass._module.Cell))
 )))
 (assert (forall ((x@@5 Int) ) (! (= (LitInt x@@5) x@@5)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@5))
 )))
 (assert (forall ((x@@6 T@U) (T T@T) ) (! (= (Lit T x@@6) x@@6)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@6))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Cell.Cell_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Cell.Cell|))
+ :qid |unknown.0:0|
+ :skolemid |512|
  :pattern ( (_module.Cell.Cell_q d@@0))
 )))
 (assert (forall ((x@@7 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@7)) x@@7)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@7))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|c#0@@1| T@U) ) (!  (=> (or (|_module.__default.returnsOneIfCompilableOrdinalCell#canCall| |c#0@@1|) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |c#0@@1| Tclass._module.CompilableOrdinalCell))) (and (_module.Cell.Cell_q |c#0@@1|) (= (_module.__default.returnsOneIfCompilableOrdinalCell |c#0@@1|) (ite (<= (_module.Cell.x |c#0@@1|) (LitInt 0)) (Div 1 (LitInt 0)) 1))))
+ :qid |gitissue1604bdfy.18:44|
+ :skolemid |486|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell |c#0@@1|))
 ))))
 (assert  (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 ))) (= (Ctor BoxType) 5)))
 (assert (forall ((m@@1 T@U) (bx T@U) ) (! (= (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx) (U_2_bool (MapType0Select BoxType boolType m@@1 bx)))
+ :qid |DafnyPreludebpl.805:15|
+ :skolemid |153|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx))
 )))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v bx@@0) ($IsBox bx@@0 t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@0))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|c#0@@2| T@U) ) (!  (=> (or (|_module.__default.returnsOneIfCompilableOrdinalCell#canCall| (Lit DatatypeTypeType |c#0@@2|)) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |c#0@@2| Tclass._module.CompilableOrdinalCell))) (and (_module.Cell.Cell_q (Lit DatatypeTypeType |c#0@@2|)) (= (_module.__default.returnsOneIfCompilableOrdinalCell (Lit DatatypeTypeType |c#0@@2|)) (ite (<= (LitInt (_module.Cell.x (Lit DatatypeTypeType |c#0@@2|))) (LitInt 0)) (Div 1 (LitInt 0)) 1))))
+ :qid |gitissue1604bdfy.18:44|
  :weight 3
+ :skolemid |487|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell (Lit DatatypeTypeType |c#0@@2|)))
 ))))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Cell.Cell_q d@@1) (exists ((|a#1#0#0| Int) ) (= d@@1 (|#_module.Cell.Cell| |a#1#0#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.Cell.Cell_q d@@1) (exists ((|a#1#0#0| Int) ) (! (= d@@1 (|#_module.Cell.Cell| |a#1#0#0|))
+ :qid |gitissue1604bdfy.5:22|
+ :skolemid |513|
+)))
+ :qid |unknown.0:0|
+ :skolemid |514|
  :pattern ( (_module.Cell.Cell_q d@@1))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.CompilableOrdinalCell) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) Tclass._module.CompilableOrdinalCell)))
+ :qid |unknown.0:0|
+ :skolemid |479|
  :pattern ( ($IsBox bx@@1 Tclass._module.CompilableOrdinalCell))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._module.Cell) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) Tclass._module.Cell)))
+ :qid |unknown.0:0|
+ :skolemid |488|
  :pattern ( ($IsBox bx@@2 Tclass._module.Cell))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._module.CompilableNaturalCell) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@3)) bx@@3) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@3) Tclass._module.CompilableNaturalCell)))
+ :qid |unknown.0:0|
+ :skolemid |524|
  :pattern ( ($IsBox bx@@3 Tclass._module.CompilableNaturalCell))
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|$y#4| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#3| |l#0| |l#1| |l#2|) |$y#4|)) (exists ((|co#0| T@U) ) (!  (and (and ($Is DatatypeTypeType |co#0| |l#0|) (and (|Set#IsMember| |l#1| ($Box DatatypeTypeType |co#0|)) (_module.__default.compiledOrdinalCellIsOneOrMore |co#0|))) (= |$y#4| ($Box DatatypeTypeType |co#0|)))
+ :qid |gitissue1604bdfy.34:47|
+ :skolemid |510|
  :pattern ( (_module.__default.compiledOrdinalCellIsOneOrMore |co#0|))
  :pattern ( (|Set#IsMember| |l#2| ($Box DatatypeTypeType |co#0|)))
 )))
+ :qid |gitissue1604bdfy.11:6|
+ :skolemid |530|
  :pattern ( (MapType0Select BoxType boolType (|lambda#3| |l#0| |l#1| |l#2|) |$y#4|))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|c#0@@3| T@U) ) (!  (=> (or (|_module.__default.compiledOrdinalCellIsOneOrMore#canCall| |c#0@@3|) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |c#0@@3| Tclass._module.CompilableOrdinalCell))) (and (and (_module.Cell.Cell_q |c#0@@3|) (=> (< (LitInt 0) (_module.Cell.x |c#0@@3|)) (_module.Cell.Cell_q |c#0@@3|))) (= (_module.__default.compiledOrdinalCellIsOneOrMore |c#0@@3|) (> (ite (<= (_module.Cell.x |c#0@@3|) (LitInt 0)) (Div 1 (LitInt 0)) (_module.Cell.x |c#0@@3|)) 1))))
+ :qid |gitissue1604bdfy.13:42|
+ :skolemid |482|
  :pattern ( (_module.__default.compiledOrdinalCellIsOneOrMore |c#0@@3|))
 ))))
 (assert (forall ((|coc#0@@0| T@U) ) (! (= ($Is DatatypeTypeType |coc#0@@0| Tclass._module.CompilableOrdinalCell)  (and ($Is DatatypeTypeType |coc#0@@0| Tclass._module.CompilableNaturalCell) (or (not (= (_module.Cell.x |coc#0@@0|) 0)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |527|
  :pattern ( ($Is DatatypeTypeType |coc#0@@0| Tclass._module.CompilableOrdinalCell))
 )))
 (assert (forall ((x@@8 Int) (y@@0 Int) ) (! (= (Div x@@8 y@@0) (div x@@8 y@@0))
+ :qid |DafnyPreludebpl.1648:14|
+ :skolemid |339|
  :pattern ( (Div x@@8 y@@0))
 )))
 (assert (forall ((|cn#0@@0| T@U) ) (! (= ($Is DatatypeTypeType |cn#0@@0| Tclass._module.CompilableNaturalCell)  (and ($Is DatatypeTypeType |cn#0@@0| Tclass._module.Cell) (>= (_module.Cell.x |cn#0@@0|) (LitInt 0))))
+ :qid |unknown.0:0|
+ :skolemid |525|
  :pattern ( ($Is DatatypeTypeType |cn#0@@0| Tclass._module.CompilableNaturalCell))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|c#0@@4| T@U) ) (!  (=> (or (|_module.__default.compiledOrdinalCellIsOneOrMore#canCall| (Lit DatatypeTypeType |c#0@@4|)) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |c#0@@4| Tclass._module.CompilableOrdinalCell))) (and (and (_module.Cell.Cell_q (Lit DatatypeTypeType |c#0@@4|)) (=> (< (LitInt 0) (LitInt (_module.Cell.x (Lit DatatypeTypeType |c#0@@4|)))) (_module.Cell.Cell_q (Lit DatatypeTypeType |c#0@@4|)))) (= (_module.__default.compiledOrdinalCellIsOneOrMore (Lit DatatypeTypeType |c#0@@4|)) (> (ite (<= (LitInt (_module.Cell.x (Lit DatatypeTypeType |c#0@@4|))) (LitInt 0)) (Div 1 (LitInt 0)) (_module.Cell.x (Lit DatatypeTypeType |c#0@@4|))) 1))))
+ :qid |gitissue1604bdfy.13:42|
  :weight 3
+ :skolemid |483|
  :pattern ( (_module.__default.compiledOrdinalCellIsOneOrMore (Lit DatatypeTypeType |c#0@@4|)))
 ))))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 TInt) (and (= ($Box intType ($Unbox intType bx@@4)) bx@@4) ($Is intType ($Unbox intType bx@@4) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@4 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|s#0@@0| T@U) ) (!  (=> (or (|_module.__default.isSetOfCompilableOrdinalCells#canCall| (Lit SetType |s#0@@0|)) (and (< 4 $FunctionContextHeight) ($Is SetType |s#0@@0| (TSet Tclass._module.CompilableOrdinalCell)))) (and (forall ((|c#1| T@U) ) (!  (=> ($Is DatatypeTypeType |c#1| Tclass._module.CompilableOrdinalCell) (=> (|Set#IsMember| (Lit SetType |s#0@@0|) ($Box DatatypeTypeType |c#1|)) (|_module.__default.returnsOneIfCompilableOrdinalCell#canCall| |c#1|)))
+ :qid |gitissue1604bdfy.28:10|
+ :skolemid |496|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell |c#1|))
  :pattern ( (|Set#IsMember| |s#0@@0| ($Box DatatypeTypeType |c#1|)))
 )) (= (_module.__default.isSetOfCompilableOrdinalCells (Lit SetType |s#0@@0|)) (forall ((|c#1@@0| T@U) ) (!  (=> ($Is DatatypeTypeType |c#1@@0| Tclass._module.CompilableOrdinalCell) (=> (|Set#IsMember| (Lit SetType |s#0@@0|) ($Box DatatypeTypeType |c#1@@0|)) (= (_module.__default.returnsOneIfCompilableOrdinalCell |c#1@@0|) (LitInt 1))))
+ :qid |gitissue1604bdfy.28:10|
+ :skolemid |495|
  :pattern ( (_module.__default.returnsOneIfCompilableOrdinalCell |c#1@@0|))
  :pattern ( (|Set#IsMember| |s#0@@0| ($Box DatatypeTypeType |c#1@@0|)))
 )))))
+ :qid |gitissue1604bdfy.27:41|
  :weight 3
+ :skolemid |497|
  :pattern ( (_module.__default.isSetOfCompilableOrdinalCells (Lit SetType |s#0@@0|)))
 ))))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@5 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@5) ($IsAllocBox bx@@5 t0@@1 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@5))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((|a#0#0#0| Int) ) (! (= (DatatypeCtorId (|#_module.Cell.Cell| |a#0#0#0|)) |##_module.Cell.Cell|)
+ :qid |gitissue1604bdfy.5:22|
+ :skolemid |511|
  :pattern ( (|#_module.Cell.Cell| |a#0#0#0|))
 )))
 (assert (forall ((|a#4#0#0| Int) ) (! (= (_module.Cell.x (|#_module.Cell.Cell| |a#4#0#0|)) |a#4#0#0|)
+ :qid |gitissue1604bdfy.5:22|
+ :skolemid |518|
  :pattern ( (|#_module.Cell.Cell| |a#4#0#0|))
 )))
 (assert (forall ((x@@9 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@9))
 )))
 (assert (forall ((|a#2#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.Cell.Cell| |a#2#0#0|) Tclass._module.Cell) ($Is intType (int_2_U |a#2#0#0|) TInt))
+ :qid |gitissue1604bdfy.5:22|
+ :skolemid |515|
  :pattern ( ($Is DatatypeTypeType (|#_module.Cell.Cell| |a#2#0#0|) Tclass._module.Cell))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
-)))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 8))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+)))) (= (Ctor refType) 6)) (= (Ctor FieldType) 7)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 8)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|l#2@@0| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0@@0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@0| $o) |l#2@@0|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |529|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0@@0| |l#1@@0| |l#2@@0| |l#3|) $o $f))
 )))
 (assert (forall ((d@@2 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Cell.Cell_q d@@2) ($IsAlloc DatatypeTypeType d@@2 Tclass._module.Cell $h@@1))) ($IsAlloc intType (int_2_U (_module.Cell.x d@@2)) TInt $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |516|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Cell.x d@@2)) TInt $h@@1))
 )))
 (assert (forall ((bx@@6 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@6 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@6)) bx@@6) ($Is SetType ($Unbox SetType bx@@6) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@6 (TSet t@@3)))
 )))
 (assert (forall ((d@@3 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) ($Is DatatypeTypeType d@@3 Tclass._module.Cell)) ($IsAlloc DatatypeTypeType d@@3 Tclass._module.Cell $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |519|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 Tclass._module.Cell $h@@2))
 )))
 (assert (= (Tag Tclass._module.CompilableOrdinalCell) Tagclass._module.CompilableOrdinalCell))
@@ -277,23 +391,35 @@
 (assert (= (Tag Tclass._module.CompilableNaturalCell) Tagclass._module.CompilableNaturalCell))
 (assert (= (TagFamily Tclass._module.CompilableNaturalCell) tytagFamily$CompilableNaturalCell))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($reveal Bool) ) (!  (=> (or |_module.__default.getOriginalSet#canCall| (< 1 $FunctionContextHeight)) ($Is SetType (_module.__default.getOriginalSet $reveal) (TSet Tclass._module.Cell)))
+ :qid |gitissue1604bdfy.23:20|
+ :skolemid |489|
  :pattern ( (_module.__default.getOriginalSet $reveal))
 ))))
 (assert (forall ((x@@10 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@10))) (Lit BoxType ($Box intType (int_2_U x@@10))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@10))))
 )))
 (assert (forall ((|a#3#0#0| Int) ) (! (= (|#_module.Cell.Cell| (LitInt |a#3#0#0|)) (Lit DatatypeTypeType (|#_module.Cell.Cell| |a#3#0#0|)))
+ :qid |gitissue1604bdfy.5:22|
+ :skolemid |517|
  :pattern ( (|#_module.Cell.Cell| (LitInt |a#3#0#0|)))
 )))
 (assert (forall ((x@@11 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@11)) (Lit BoxType ($Box T@@4 x@@11)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@11)))
 )))
 (assert (forall ((h@@1 T@U) (v@@3 T@U) ) (! ($IsAlloc intType v@@3 TInt h@@1)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@3 TInt h@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (=> (or |_module.__default.getOriginalSet#canCall| (< 1 $FunctionContextHeight)) (= (_module.__default.getOriginalSet true) (Lit SetType (|Set#UnionOne| (|Set#UnionOne| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt (- 0 1)))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 0))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 1))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 2))))))))))
 (assert  (=> (<= 1 $FunctionContextHeight) (=> (or |_module.__default.getOriginalSet#canCall| (< 1 $FunctionContextHeight)) (= (_module.__default.getOriginalSet true) (Lit SetType (|Set#UnionOne| (|Set#UnionOne| (|Set#UnionOne| (|Set#UnionOne| |Set#Empty| ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt (- 0 1)))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 0))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 1))))) ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.Cell.Cell| (LitInt 2))))))))))
 (assert (forall ((v@@4 T@U) ) (! ($Is intType v@@4 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@4 TInt))
 )))
 (push 1)
@@ -309,6 +435,7 @@
 (declare-fun reveal__module._default.getOriginalSet () Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun |x#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.Main)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -328,6 +455,8 @@
 (let ((anon15_Else_correct  (=> (and (not |b#0@1|) (= (ControlFlow 0 3) 1)) anon10_correct)))
 (let ((anon15_Then_correct  (=> (and |b#0@1| (= (ControlFlow 0 2) 1)) anon10_correct)))
 (let ((anon7_correct  (=> (and (=> |b#0@0| (and (forall ((|co#0@@0| T@U) ) (!  (=> ($Is DatatypeTypeType |co#0@@0| Tclass._module.CompilableOrdinalCell) (=> (|Set#IsMember| |x#0@0| ($Box DatatypeTypeType |co#0@@0|)) (|_module.__default.compiledOrdinalCellIsOneOrMore#canCall| |co#0@@0|)))
+ :qid |gitissue1604bdfy.34:47|
+ :skolemid |509|
  :pattern ( (_module.__default.compiledOrdinalCellIsOneOrMore |co#0@@0|))
  :pattern ( (|Set#IsMember| |x#0@0| ($Box DatatypeTypeType |co#0@@0|)))
 )) (|_module.__default.isSetOfCompilableOrdinalCells#canCall| (|Set#FromBoogieMap| (|lambda#3| Tclass._module.CompilableOrdinalCell |x#0@0| |x#0@0|))))) (= |b#0@1|  (and |b#0@0| (_module.__default.isSetOfCompilableOrdinalCells (|Set#FromBoogieMap| (|lambda#3| Tclass._module.CompilableOrdinalCell |x#0@0| |x#0@0|)))))) (and (=> (= (ControlFlow 0 4) (- 0 5)) |b#0@1|) (=> |b#0@1| (and (=> (= (ControlFlow 0 4) 2) anon15_Then_correct) (=> (= (ControlFlow 0 4) 3) anon15_Else_correct)))))))

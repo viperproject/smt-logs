@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:33:16
+; Started: 2025-01-26 23:05:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -729,7 +729,7 @@
       (= (inv@5@00 s@$ a@0@00 (loc<Ref> a@0@00 x@4@00)) x@4@00)
       (img@6@00 s@$ a@0@00 (loc<Ref> a@0@00 x@4@00))))
   :pattern ((loc<Ref> a@0@00 x@4@00))
-  :qid |quant-u-9727|)))
+  :qid |quant-u-9673|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -752,11 +752,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Array_)) (!
   (= (g%limited s@$ a@0@00) (g s@$ a@0@00))
   :pattern ((g s@$ a@0@00))
-  :qid |quant-u-9722|)))
+  :qid |quant-u-9668|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_)) (!
   (g%stateless a@0@00)
   :pattern ((g%limited s@$ a@0@00))
-  :qid |quant-u-9723|)))
+  :qid |quant-u-9669|)))
 ; ---------- FUNCTION f----------
 (declare-fun a@2@00 () Array_)
 (declare-fun result@3@00 () Bool)
@@ -820,7 +820,7 @@
       (= (inv@8@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00)) x@7@00)
       (img@9@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00))))
   :pattern ((loc<Ref> a@2@00 x@7@00))
-  :qid |quant-u-9729|)))
+  :qid |quant-u-9675|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -843,11 +843,11 @@
 (assert (forall ((s@$ $Snap) (a@2@00 Array_)) (!
   (= (f%limited s@$ a@2@00) (f s@$ a@2@00))
   :pattern ((f s@$ a@2@00))
-  :qid |quant-u-9724|)))
+  :qid |quant-u-9670|)))
 (assert (forall ((s@$ $Snap) (a@2@00 Array_)) (!
   (f%stateless a@2@00)
   :pattern ((f%limited s@$ a@2@00))
-  :qid |quant-u-9725|)))
+  :qid |quant-u-9671|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -867,7 +867,7 @@
       (= (inv@8@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00)) x@7@00)
       (img@9@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00))))
   :pattern ((loc<Ref> a@2@00 x@7@00))
-  :qid |quant-u-9729|)))
+  :qid |quant-u-9675|)))
 (assert (forall ((x@7@00 Int)) (!
   (=>
     (and (<= 0 x@7@00) (< x@7@00 (len<Int> a@2@00)))
@@ -1005,7 +1005,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-9731|))))
+  :qid |quant-u-9677|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1271,7 +1271,7 @@
           (= (inv@8@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00)) x@7@00)
           (img@9@00 s@$ a@2@00 (loc<Ref> a@2@00 x@7@00))))
       :pattern ((loc<Ref> a@2@00 x@7@00))
-      :qid |quant-u-9729|))
+      :qid |quant-u-9675|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1346,7 +1346,7 @@
             (and (<= 0 k) (< k (len<Int> a@2@00)))
             (g ($SortWrappers.$FVF<val>To$Snap (sm@14@00 s@$ a@2@00)) a@2@00))))))
   :pattern ((f s@$ a@2@00))
-  :qid |quant-u-9732|)))
+  :qid |quant-u-9678|)))
 (assert (forall ((s@$ $Snap) (a@2@00 Array_)) (!
   (=>
     (f%precondition s@$ a@2@00)
@@ -1355,4 +1355,4 @@
         (and (<= 0 k) (< k (len<Int> a@2@00)))
         (g%precondition ($SortWrappers.$FVF<val>To$Snap (sm@14@00 s@$ a@2@00)) a@2@00))))
   :pattern ((f s@$ a@2@00))
-  :qid |quant-u-9733|)))
+  :qid |quant-u-9679|)))

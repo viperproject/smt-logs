@@ -72,16 +72,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TagBool TagInt alloc Tagclass._module.TrickySubstitution? Tagclass._module.TrickySubstitution tytagFamily$TrickySubstitution)
@@ -90,63 +96,108 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor refType) 3))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.TrickySubstitution?)  (or (= $o null) (= (dtype $o) Tclass._module.TrickySubstitution?)))
+ :qid |unknown.0:0|
+ :skolemid |2368|
  :pattern ( ($Is refType $o Tclass._module.TrickySubstitution?))
 )))
 (assert (forall ((|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.TrickySubstitution $h) ($IsAlloc refType |c#0| Tclass._module.TrickySubstitution? $h))
+ :qid |unknown.0:0|
+ :skolemid |2451|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.TrickySubstitution $h))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.TrickySubstitution? $h))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall (($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 Tclass._module.TrickySubstitution? $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |2369|
  :pattern ( ($IsAlloc refType $o@@0 Tclass._module.TrickySubstitution? $h@@0))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |1720|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1718|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1729|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((i Int) ) (!  (=> (|$let#35$canCall| i) (and (<= (|$let#35_k| i) (|$let#35_j| i)) (< (|$let#35_j| i) i)))
+ :qid |LetExprdfy.206:31|
+ :skolemid |2419|
  :pattern ( (|$let#35_k| i))
  :pattern ( (|$let#35_j| i))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) (|n#0| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| this |n#0|) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.TrickySubstitution) ($IsAlloc refType this Tclass._module.TrickySubstitution $Heap)))))) (and (forall ((|i#0| Int) )  (=> (< 0 |i#0|) (=> (< |i#0| |n#0|) (|$let#35$canCall| |i#0|)))) (= (_module.TrickySubstitution.F5 this |n#0|) (forall ((|i#0@@0| Int) )  (=> (and (< 0 |i#0@@0|) (< |i#0@@0| |n#0|)) (let ((|k#0| (|$let#35_k| |i#0@@0|)))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (this T@U) (|n#0| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| this |n#0|) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (or (not (= this null)) (not true)) (and ($Is refType this Tclass._module.TrickySubstitution) ($IsAlloc refType this Tclass._module.TrickySubstitution $Heap)))))) (and (forall ((|i#0| Int) ) (!  (=> (< 0 |i#0|) (=> (< |i#0| |n#0|) (|$let#35$canCall| |i#0|)))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2421|
+)) (= (_module.TrickySubstitution.F5 this |n#0|) (forall ((|i#0@@0| Int) ) (!  (=> (and (< 0 |i#0@@0|) (< |i#0@@0| |n#0|)) (let ((|k#0| (|$let#35_k| |i#0@@0|)))
 (let ((|j#0| (|$let#35_j| |i#0@@0|)))
- (and (<= |k#0| |j#0|) (< |j#0| |i#0@@0|)))))))))
+ (and (<= |k#0| |j#0|) (< |j#0| |i#0@@0|)))))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2420|
+)))))
+ :qid |LetExprdfy.204:19|
+ :skolemid |2422|
  :pattern ( (_module.TrickySubstitution.F5 this |n#0|) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| Tclass._module.TrickySubstitution)  (and ($Is refType |c#0@@0| Tclass._module.TrickySubstitution?) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |2450|
  :pattern ( ($Is refType |c#0@@0| Tclass._module.TrickySubstitution))
  :pattern ( ($Is refType |c#0@@0| Tclass._module.TrickySubstitution?))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@0 T@U) (this@@0 T@U) (|n#0@@0| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| this@@0 (LitInt |n#0@@0|)) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.TrickySubstitution) ($IsAlloc refType this@@0 Tclass._module.TrickySubstitution $Heap@@0)))))) (and (forall ((|i#2| Int) )  (=> (< 0 |i#2|) (=> (< |i#2| |n#0@@0|) (|$let#35$canCall| |i#2|)))) (= (_module.TrickySubstitution.F5 this@@0 (LitInt |n#0@@0|)) (forall ((|i#2@@0| Int) )  (=> (and (< 0 |i#2@@0|) (< |i#2@@0| |n#0@@0|)) (let ((|k#1| (|$let#35_k| |i#2@@0|)))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@0 T@U) (this@@0 T@U) (|n#0@@0| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| this@@0 (LitInt |n#0@@0|)) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.TrickySubstitution) ($IsAlloc refType this@@0 Tclass._module.TrickySubstitution $Heap@@0)))))) (and (forall ((|i#2| Int) ) (!  (=> (< 0 |i#2|) (=> (< |i#2| |n#0@@0|) (|$let#35$canCall| |i#2|)))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2424|
+)) (= (_module.TrickySubstitution.F5 this@@0 (LitInt |n#0@@0|)) (forall ((|i#2@@0| Int) ) (!  (=> (and (< 0 |i#2@@0|) (< |i#2@@0| |n#0@@0|)) (let ((|k#1| (|$let#35_k| |i#2@@0|)))
 (let ((|j#1| (|$let#35_j| |i#2@@0|)))
- (and (<= |k#1| |j#1|) (< |j#1| |i#2@@0|)))))))))
+ (and (<= |k#1| |j#1|) (< |j#1| |i#2@@0|)))))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2423|
+)))))
+ :qid |LetExprdfy.204:19|
  :weight 3
+ :skolemid |2425|
  :pattern ( (_module.TrickySubstitution.F5 this@@0 (LitInt |n#0@@0|)) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1728|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@1 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))  (=> (and (or (not (= $o@@1 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@1) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2615|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@1 $f))
 )))
 (assert (= (Tag Tclass._module.TrickySubstitution?) Tagclass._module.TrickySubstitution?))
@@ -154,27 +205,47 @@
 (assert (= (Tag Tclass._module.TrickySubstitution) Tagclass._module.TrickySubstitution))
 (assert (= (TagFamily Tclass._module.TrickySubstitution) tytagFamily$TrickySubstitution))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |1721|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1719|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
-(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@1 T@U) (this@@1 T@U) (|n#0@@1| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| (Lit refType this@@1) (LitInt |n#0@@1|)) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@1 null)) (not true)) (and ($Is refType this@@1 Tclass._module.TrickySubstitution) ($IsAlloc refType this@@1 Tclass._module.TrickySubstitution $Heap@@1)))))) (and (forall ((|i#3| Int) )  (=> (< 0 |i#3|) (=> (< |i#3| |n#0@@1|) (|$let#35$canCall| |i#3|)))) (= (_module.TrickySubstitution.F5 (Lit refType this@@1) (LitInt |n#0@@1|)) (forall ((|i#3@@0| Int) )  (=> (and (< 0 |i#3@@0|) (< |i#3@@0| |n#0@@1|)) (let ((|k#2| (|$let#35_k| |i#3@@0|)))
+(assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@1 T@U) (this@@1 T@U) (|n#0@@1| Int) ) (!  (=> (or (|_module.TrickySubstitution.F5#canCall| (Lit refType this@@1) (LitInt |n#0@@1|)) (and (< 0 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@1 null)) (not true)) (and ($Is refType this@@1 Tclass._module.TrickySubstitution) ($IsAlloc refType this@@1 Tclass._module.TrickySubstitution $Heap@@1)))))) (and (forall ((|i#3| Int) ) (!  (=> (< 0 |i#3|) (=> (< |i#3| |n#0@@1|) (|$let#35$canCall| |i#3|)))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2427|
+)) (= (_module.TrickySubstitution.F5 (Lit refType this@@1) (LitInt |n#0@@1|)) (forall ((|i#3@@0| Int) ) (!  (=> (and (< 0 |i#3@@0|) (< |i#3@@0| |n#0@@1|)) (let ((|k#2| (|$let#35_k| |i#3@@0|)))
 (let ((|j#2| (|$let#35_j| |i#3@@0|)))
- (and (<= |k#2| |j#2|) (< |j#2| |i#3@@0|)))))))))
+ (and (<= |k#2| |j#2|) (< |j#2| |i#3@@0|)))))
+ :qid |LetExprdfy.206:12|
+ :skolemid |2426|
+)))))
+ :qid |LetExprdfy.204:19|
  :weight 3
+ :skolemid |2428|
  :pattern ( (_module.TrickySubstitution.F5 (Lit refType this@@1) (LitInt |n#0@@1|)) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |1764|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((h@@0 T@U) (v@@0 T@U) ) (! ($IsAlloc boolType v@@0 TBool h@@0)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |1766|
  :pattern ( ($IsAlloc boolType v@@0 TBool h@@0))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |1743|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is boolType v@@2 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |1745|
  :pattern ( ($Is boolType v@@2 TBool))
 )))
 (push 1)
@@ -187,6 +258,7 @@
 (declare-fun $Heap@@2 () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun this@@2 () T@U)
+(set-info :boogie-vc-id CheckWellformed$$_module.TrickySubstitution.F5)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -207,7 +279,43 @@
 (let ((anon12_correct  (=> (and (|$let#35$canCall| |i#4@0|) (= (ControlFlow 0 6) 3)) anon13_correct)))
 (let ((anon21_Else_correct  (=> (and (< |j#3@0| |k#3@0|) (= (ControlFlow 0 8) 6)) anon12_correct)))
 (let ((anon21_Then_correct  (=> (and (<= |k#3@0| |j#3@0|) (= (ControlFlow 0 7) 6)) anon12_correct)))
-(let ((anon10_correct  (and (=> (= (ControlFlow 0 9) (- 0 10)) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (- (+ (- |i#4@0| 1) 1) 1)) TInt)) (and (<= (- (+ (- |i#4@0| 1) 1) 1) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (- (+ 0 1) 1))) TInt)) (and (<= (LitInt (- (+ 0 1) 1)) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4| Int) )  (and ($Is intType (int_2_U (- (+ |j#4| 1) 1)) TInt) (and (<= (- (+ |j#4| 1) 1) |j#4|) (< |j#4| |i#4@0|)))) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@0| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) |j#4@@0|) (< |j#4@@0| |i#4@0|)))) (or (exists ((|k#4| Int) )  (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) (and (<= |k#4| (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|)))) (or (exists ((|k#4@@0| T@U) )  (and ($Is intType |k#4@@0| TInt) (and (<= (U_2_int |k#4@@0|) (U_2_int |k#4@@0|)) (< (U_2_int |k#4@@0|) |i#4@0|)))) (or (exists ((|k#4@@1| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= |k#4@@1| (LitInt 0)) (< 0 |i#4@0|)))) (exists ((|j#4@@1| Int) (|k#4@@2| Int) )  (and (<= |k#4@@2| |j#4@@1|) (< |j#4@@1| |i#4@0|)))))))))))))) (=> (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (- (+ (- |i#4@0| 1) 1) 1)) TInt)) (and (<= (- (+ (- |i#4@0| 1) 1) 1) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (- (+ 0 1) 1))) TInt)) (and (<= (LitInt (- (+ 0 1) 1)) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@2| Int) )  (and ($Is intType (int_2_U (- (+ |j#4@@2| 1) 1)) TInt) (and (<= (- (+ |j#4@@2| 1) 1) |j#4@@2|) (< |j#4@@2| |i#4@0|)))) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@3| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) |j#4@@3|) (< |j#4@@3| |i#4@0|)))) (or (exists ((|k#4@@3| Int) )  (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) (and (<= |k#4@@3| (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|)))) (or (exists ((|k#4@@4| Int) )  (and ($Is intType (int_2_U |k#4@@4|) TInt) (and (<= |k#4@@4| |k#4@@4|) (< |k#4@@4| |i#4@0|)))) (or (exists ((|k#4@@5| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= |k#4@@5| (LitInt 0)) (< 0 |i#4@0|)))) (exists ((|j#4@@4| Int) (|k#4@@6| Int) )  (and (<= |k#4@@6| |j#4@@4|) (< |j#4@@4| |i#4@0|))))))))))))) (=> (and (<= |k#3@0| |j#3@0|) (< |j#3@0| |i#4@0|)) (and (=> (= (ControlFlow 0 9) 7) anon21_Then_correct) (=> (= (ControlFlow 0 9) 8) anon21_Else_correct)))))))
+(let ((anon10_correct  (and (=> (= (ControlFlow 0 9) (- 0 10)) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (- (+ (- |i#4@0| 1) 1) 1)) TInt)) (and (<= (- (+ (- |i#4@0| 1) 1) 1) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (- (+ 0 1) 1))) TInt)) (and (<= (LitInt (- (+ 0 1) 1)) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4| Int) ) (!  (and ($Is intType (int_2_U (- (+ |j#4| 1) 1)) TInt) (and (<= (- (+ |j#4| 1) 1) |j#4|) (< |j#4| |i#4@0|)))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2434|
+)) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@0| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) |j#4@@0|) (< |j#4@@0| |i#4@0|)))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2433|
+)) (or (exists ((|k#4| Int) ) (!  (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) (and (<= |k#4| (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2432|
+)) (or (exists ((|k#4@@0| T@U) ) (!  (and ($Is intType |k#4@@0| TInt) (and (<= (U_2_int |k#4@@0|) (U_2_int |k#4@@0|)) (< (U_2_int |k#4@@0|) |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2431|
+)) (or (exists ((|k#4@@1| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= |k#4@@1| (LitInt 0)) (< 0 |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2430|
+)) (exists ((|j#4@@1| Int) (|k#4@@2| Int) ) (!  (and (<= |k#4@@2| |j#4@@1|) (< |j#4@@1| |i#4@0|))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2429|
+))))))))))))) (=> (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (- (+ (- |i#4@0| 1) 1) 1)) TInt)) (and (<= (- (+ (- |i#4@0| 1) 1) 1) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (- (+ 0 1) 1))) TInt)) (and (<= (LitInt (- (+ 0 1) 1)) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@2| Int) ) (!  (and ($Is intType (int_2_U (- (+ |j#4@@2| 1) 1)) TInt) (and (<= (- (+ |j#4@@2| 1) 1) |j#4@@2|) (< |j#4@@2| |i#4@0|)))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2434|
+)) (or (and (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (<= (LitInt 0) (LitInt 0)) (< 0 |i#4@0|))) (or (exists ((|j#4@@3| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) |j#4@@3|) (< |j#4@@3| |i#4@0|)))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2433|
+)) (or (exists ((|k#4@@3| Int) ) (!  (and ($Is intType (int_2_U (- |i#4@0| 1)) TInt) (and (<= |k#4@@3| (- |i#4@0| 1)) (< (- |i#4@0| 1) |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2432|
+)) (or (exists ((|k#4@@4| Int) ) (!  (and ($Is intType (int_2_U |k#4@@4|) TInt) (and (<= |k#4@@4| |k#4@@4|) (< |k#4@@4| |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2431|
+)) (or (exists ((|k#4@@5| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= |k#4@@5| (LitInt 0)) (< 0 |i#4@0|)))
+ :qid |LetExprdfy.206:38|
+ :skolemid |2430|
+)) (exists ((|j#4@@4| Int) (|k#4@@6| Int) ) (!  (and (<= |k#4@@6| |j#4@@4|) (< |j#4@@4| |i#4@0|))
+ :qid |LetExprdfy.206:35|
+ :skolemid |2429|
+)))))))))))) (=> (and (<= |k#3@0| |j#3@0|) (< |j#3@0| |i#4@0|)) (and (=> (= (ControlFlow 0 9) 7) anon21_Then_correct) (=> (= (ControlFlow 0 9) 8) anon21_Else_correct)))))))
 (let ((anon20_Else_correct  (=> (and (< |j#3@0| |k#3@0|) (= (ControlFlow 0 12) 9)) anon10_correct)))
 (let ((anon20_Then_correct  (=> (and (<= |k#3@0| |j#3@0|) (= (ControlFlow 0 11) 9)) anon10_correct)))
 (let ((anon19_Then_correct  (and (=> (= (ControlFlow 0 13) 11) anon20_Then_correct) (=> (= (ControlFlow 0 13) 12) anon20_Else_correct))))

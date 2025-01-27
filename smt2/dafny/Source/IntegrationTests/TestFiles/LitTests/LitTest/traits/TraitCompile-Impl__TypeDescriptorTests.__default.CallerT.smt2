@@ -122,16 +122,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc allocName Tagclass._System.___hFunc1 Tagclass._System.___hPartialFunc1 Tagclass._System.___hTotalFunc1 Tagclass.TypeDescriptorTests.XT? Tagclass.TypeDescriptorTests.XT class.TypeDescriptorTests.XT? Tagclass.TypeDescriptorTests.YT? Tagclass.TypeDescriptorTests.YT |tytagFamily$_#Func1| |tytagFamily$_#PartialFunc1| |tytagFamily$_#TotalFunc1| tytagFamily$XT tytagFamily$YT field$u)
@@ -140,313 +146,532 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (DeclName alloc) allocName))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 3)) (= (Ctor BoxType) 4)) (= (Ctor refType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 3)) (= (Ctor BoxType) 4)) (= (Ctor refType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert  (=> (< 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U T@U) (TypeDescriptorTests.XT$W T@U) ($h T@U) ($o T@U) ) (!  (=> (and (and ($IsGoodHeap $h) (and (or (not (= $o null)) (not true)) ($Is refType $o (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U TypeDescriptorTests.XT$W)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h $o) alloc)))) ($IsAllocBox (TypeDescriptorTests.XT.c TypeDescriptorTests.XT$U TypeDescriptorTests.XT$W $o) TypeDescriptorTests.XT$U $h))
+ :qid |unknown.0:0|
+ :skolemid |3912|
  :pattern ( (TypeDescriptorTests.XT.c TypeDescriptorTests.XT$U TypeDescriptorTests.XT$W $o) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h $o) alloc)))
 ))))
 (assert  (=> (< 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@0 T@U) (TypeDescriptorTests.XT$W@@0 T@U) ($o@@0 T@U) ) (!  (=> (and (or (not (= $o@@0 null)) (not true)) ($Is refType $o@@0 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@0 TypeDescriptorTests.XT$W@@0))) ($IsBox (TypeDescriptorTests.XT.c TypeDescriptorTests.XT$U@@0 TypeDescriptorTests.XT$W@@0 $o@@0) TypeDescriptorTests.XT$U@@0))
+ :qid |unknown.0:0|
+ :skolemid |3911|
  :pattern ( (TypeDescriptorTests.XT.c TypeDescriptorTests.XT$U@@0 TypeDescriptorTests.XT$W@@0 $o@@0))
 ))))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |3400|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert (= (Ctor HandleTypeType) 7))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (TypeDescriptorTests.XT$U@@1 T@U) (TypeDescriptorTests.XT$W@@1 T@U) (this T@U) (|u#0| T@U) ) (!  (=> (and (or (|TypeDescriptorTests.XT.F_k#canCall| TypeDescriptorTests.XT$U@@1 TypeDescriptorTests.XT$W@@1 this |u#0|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this null)) (not true)) ($IsAlloc refType this (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@1 TypeDescriptorTests.XT$W@@1) $Heap)) (and ($Is HandleTypeType |u#0| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@1 TypeDescriptorTests.XT$W@@1)) ($IsAlloc HandleTypeType |u#0| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@1 TypeDescriptorTests.XT$W@@1) $Heap))))) ($IsGoodHeap $Heap)) ($IsAlloc HandleTypeType (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@1 TypeDescriptorTests.XT$W@@1 this |u#0|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@1 TypeDescriptorTests.XT$W@@1) $Heap))
+ :qid |TraitCompiledfy.528:14|
+ :skolemid |3929|
  :pattern ( ($IsAlloc HandleTypeType (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@1 TypeDescriptorTests.XT$W@@1 this |u#0|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@1 TypeDescriptorTests.XT$W@@1) $Heap))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@0 T@U) (TypeDescriptorTests.XT$U@@2 T@U) (TypeDescriptorTests.XT$W@@2 T@U) (this@@0 T@U) (|u#0@@0| T@U) ) (!  (=> (and (or (|TypeDescriptorTests.XT.G_k#canCall| TypeDescriptorTests.XT$U@@2 TypeDescriptorTests.XT$W@@2 this@@0 |u#0@@0|) (and (< 2 $FunctionContextHeight) (and (and (or (not (= this@@0 null)) (not true)) ($IsAlloc refType this@@0 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@2 TypeDescriptorTests.XT$W@@2) $Heap@@0)) (and ($Is HandleTypeType |u#0@@0| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@2 TypeDescriptorTests.XT$W@@2)) ($IsAlloc HandleTypeType |u#0@@0| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@2 TypeDescriptorTests.XT$W@@2) $Heap@@0))))) ($IsGoodHeap $Heap@@0)) ($IsAlloc HandleTypeType (TypeDescriptorTests.XT.G_k TypeDescriptorTests.XT$U@@2 TypeDescriptorTests.XT$W@@2 this@@0 |u#0@@0|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@2 TypeDescriptorTests.XT$W@@2) $Heap@@0))
+ :qid |TraitCompiledfy.529:14|
+ :skolemid |3934|
  :pattern ( ($IsAlloc HandleTypeType (TypeDescriptorTests.XT.G_k TypeDescriptorTests.XT$U@@2 TypeDescriptorTests.XT$W@@2 this@@0 |u#0@@0|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@2 TypeDescriptorTests.XT$W@@2) $Heap@@0))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@1 T@U) (|uu#0| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G#canCall| this@@1 |uu#0|) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0| (Tclass._System.___hTotalFunc1 TInt TInt))))) ($Is HandleTypeType (TypeDescriptorTests.YT.G this@@1 |uu#0|) (Tclass._System.___hTotalFunc1 TInt TInt)))
+ :qid |TraitCompiledfy.539:14|
+ :skolemid |3950|
  :pattern ( (TypeDescriptorTests.YT.G this@@1 |uu#0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@2 T@U) (|uu#0@@0| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G_k#canCall| this@@2 |uu#0@@0|) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0@@0| (Tclass._System.___hTotalFunc1 TInt TInt))))) ($Is HandleTypeType (TypeDescriptorTests.YT.G_k this@@2 |uu#0@@0|) (Tclass._System.___hTotalFunc1 TInt TInt)))
+ :qid |TraitCompiledfy.545:14|
+ :skolemid |3964|
  :pattern ( (TypeDescriptorTests.YT.G_k this@@2 |uu#0@@0|))
 ))))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass.TypeDescriptorTests.YT?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass.TypeDescriptorTests.YT?)))
+ :qid |unknown.0:0|
+ :skolemid |3944|
  :pattern ( ($Is refType $o@@1 Tclass.TypeDescriptorTests.YT?))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@3 T@U) (TypeDescriptorTests.XT$W@@3 T@U) (this@@3 T@U) (|u#0@@1| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F#canCall| TypeDescriptorTests.XT$U@@3 TypeDescriptorTests.XT$W@@3 (Lit refType this@@3) (Lit BoxType |u#0@@1|)) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@3 null)) (not true)) ($Is refType this@@3 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@3 TypeDescriptorTests.XT$W@@3))) ($IsBox |u#0@@1| TypeDescriptorTests.XT$U@@3)))) (= (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@3 TypeDescriptorTests.XT$W@@3 (Lit refType this@@3) (Lit BoxType |u#0@@1|)) (Lit BoxType |u#0@@1|)))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |3919|
  :pattern ( (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@3 TypeDescriptorTests.XT$W@@3 (Lit refType this@@3) (Lit BoxType |u#0@@1|)))
 ))))
 (assert (forall ((f T@U) (t0@@0 T@U) (t1@@0 T@U) (u0@@0 T@U) (u1@@0 T@U) ) (!  (=> (and (and ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@0 t1@@0)) (forall ((bx T@U) ) (!  (=> ($IsBox bx u0@@0) ($IsBox bx t0@@0))
+ :qid |unknown.0:0|
+ :skolemid |3680|
  :pattern ( ($IsBox bx u0@@0))
  :pattern ( ($IsBox bx t0@@0))
 ))) (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 t1@@0) ($IsBox bx@@0 u1@@0))
+ :qid |unknown.0:0|
+ :skolemid |3681|
  :pattern ( ($IsBox bx@@0 t1@@0))
  :pattern ( ($IsBox bx@@0 u1@@0))
 ))) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@0 u1@@0)))
+ :qid |unknown.0:0|
+ :skolemid |3682|
  :pattern ( ($Is HandleTypeType f (Tclass._System.___hFunc1 t0@@0 t1@@0)) ($Is HandleTypeType f (Tclass._System.___hFunc1 u0@@0 u1@@0)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@4 T@U) (|u#0@@2| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G_k#canCall| this@@4 |u#0@@2|) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@4 null)) (not true)) ($Is refType this@@4 Tclass.TypeDescriptorTests.YT)))) (= (TypeDescriptorTests.XT.G_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@4 |u#0@@2|) (TypeDescriptorTests.YT.G_k this@@4 |u#0@@2|)))
+ :qid |TraitCompiledfy.529:14|
+ :skolemid |3968|
  :pattern ( (TypeDescriptorTests.XT.G_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@4 |u#0@@2|) ($Is refType this@@4 Tclass.TypeDescriptorTests.YT))
  :pattern ( (TypeDescriptorTests.XT.G_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@4 |u#0@@2|) (TypeDescriptorTests.YT.G_k this@@4 |u#0@@2|))
 ))))
 (assert (forall ((|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass.TypeDescriptorTests.YT $h@@0) ($IsAlloc refType |c#0| Tclass.TypeDescriptorTests.YT? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |3979|
  :pattern ( ($IsAlloc refType |c#0| Tclass.TypeDescriptorTests.YT $h@@0))
  :pattern ( ($IsAlloc refType |c#0| Tclass.TypeDescriptorTests.YT? $h@@0))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@4 T@U) (TypeDescriptorTests.XT$W@@4 T@U) (this@@5 T@U) (|u#0@@3| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F_k#canCall| TypeDescriptorTests.XT$U@@4 TypeDescriptorTests.XT$W@@4 (Lit refType this@@5) (Lit HandleTypeType |u#0@@3|)) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@5 null)) (not true)) ($Is refType this@@5 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@4 TypeDescriptorTests.XT$W@@4))) ($Is HandleTypeType |u#0@@3| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@4 TypeDescriptorTests.XT$W@@4))))) (= (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@4 TypeDescriptorTests.XT$W@@4 (Lit refType this@@5) (Lit HandleTypeType |u#0@@3|)) (Lit HandleTypeType |u#0@@3|)))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |3932|
  :pattern ( (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@4 TypeDescriptorTests.XT$W@@4 (Lit refType this@@5) (Lit HandleTypeType |u#0@@3|)))
 ))))
 (assert (= (FDim TypeDescriptorTests.XT.u) 0))
 (assert (= (FieldOfDecl class.TypeDescriptorTests.XT? field$u) TypeDescriptorTests.XT.u))
 (assert  (not ($IsGhostField TypeDescriptorTests.XT.u)))
 (assert (forall (($o@@2 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@2 Tclass.TypeDescriptorTests.YT? $h@@1)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3945|
  :pattern ( ($IsAlloc refType $o@@2 Tclass.TypeDescriptorTests.YT? $h@@1))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o@@0 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o@@0) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@0) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |3393|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@0) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |3394|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall (($o@@3 T@U) ) (!  (=> ($Is refType $o@@3 Tclass.TypeDescriptorTests.YT?) ($Is refType $o@@3 (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4015|
  :pattern ( ($Is refType $o@@3 Tclass.TypeDescriptorTests.YT?))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass.TypeDescriptorTests.YT?) ($IsBox bx@@1 (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4013|
  :pattern ( ($IsBox bx@@1 Tclass.TypeDescriptorTests.YT?))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |3290|
  :pattern ( (Lit T x@@2))
 )))
 (assert (forall ((t0@@1 T@U) (t1@@1 T@U) (heap T@U) (f@@0 T@U) (bx0 T@U) ) (!  (=> (and ($IsGoodHeap heap) (and ($IsBox bx0 t0@@1) ($Is HandleTypeType f@@0 (Tclass._System.___hFunc1 t0@@1 t1@@1)))) (= (|Set#Equal| (Reads1 t0@@1 t1@@1 $OneHeap f@@0 bx0) |Set#Empty|) (|Set#Equal| (Reads1 t0@@1 t1@@1 heap f@@0 bx0) |Set#Empty|)))
+ :qid |unknown.0:0|
+ :skolemid |3676|
  :pattern ( (Reads1 t0@@1 t1@@1 $OneHeap f@@0 bx0) ($IsGoodHeap heap))
  :pattern ( (Reads1 t0@@1 t1@@1 heap f@@0 bx0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@6 T@U) (|u#0@@4| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G#canCall| this@@6 |u#0@@4|) (and (< 1 $FunctionContextHeight) (and (or (not (= this@@6 null)) (not true)) ($Is refType this@@6 Tclass.TypeDescriptorTests.YT)))) (= (TypeDescriptorTests.XT.G (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@6 ($Box HandleTypeType |u#0@@4|)) ($Box HandleTypeType (TypeDescriptorTests.YT.G this@@6 |u#0@@4|))))
+ :qid |TraitCompiledfy.524:14|
+ :skolemid |3954|
  :pattern ( (TypeDescriptorTests.XT.G (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@6 ($Box HandleTypeType |u#0@@4|)) ($Is refType this@@6 Tclass.TypeDescriptorTests.YT))
  :pattern ( (TypeDescriptorTests.XT.G (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@6 ($Box HandleTypeType |u#0@@4|)) (TypeDescriptorTests.YT.G this@@6 |u#0@@4|))
 ))))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |3301|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap@@1 T@U) (TypeDescriptorTests.XT$U@@5 T@U) (TypeDescriptorTests.XT$W@@5 T@U) (this@@7 T@U) (|u#0@@5| T@U) ) (!  (=> (and (or (|TypeDescriptorTests.XT.F#canCall| TypeDescriptorTests.XT$U@@5 TypeDescriptorTests.XT$W@@5 this@@7 |u#0@@5|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@7 null)) (not true)) ($IsAlloc refType this@@7 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@5 TypeDescriptorTests.XT$W@@5) $Heap@@1)) (and ($IsBox |u#0@@5| TypeDescriptorTests.XT$U@@5) ($IsAllocBox |u#0@@5| TypeDescriptorTests.XT$U@@5 $Heap@@1))))) ($IsGoodHeap $Heap@@1)) ($IsAllocBox (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@5 TypeDescriptorTests.XT$W@@5 this@@7 |u#0@@5|) TypeDescriptorTests.XT$U@@5 $Heap@@1))
+ :qid |TraitCompiledfy.523:14|
+ :skolemid |3916|
  :pattern ( ($IsAllocBox (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@5 TypeDescriptorTests.XT$W@@5 this@@7 |u#0@@5|) TypeDescriptorTests.XT$U@@5 $Heap@@1))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@2 T@U) (TypeDescriptorTests.XT$U@@6 T@U) (TypeDescriptorTests.XT$W@@6 T@U) (this@@8 T@U) (|u#0@@6| T@U) ) (!  (=> (and (or (|TypeDescriptorTests.XT.G#canCall| TypeDescriptorTests.XT$U@@6 TypeDescriptorTests.XT$W@@6 this@@8 |u#0@@6|) (and (< 2 $FunctionContextHeight) (and (and (or (not (= this@@8 null)) (not true)) ($IsAlloc refType this@@8 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@6 TypeDescriptorTests.XT$W@@6) $Heap@@2)) (and ($IsBox |u#0@@6| TypeDescriptorTests.XT$U@@6) ($IsAllocBox |u#0@@6| TypeDescriptorTests.XT$U@@6 $Heap@@2))))) ($IsGoodHeap $Heap@@2)) ($IsAllocBox (TypeDescriptorTests.XT.G TypeDescriptorTests.XT$U@@6 TypeDescriptorTests.XT$W@@6 this@@8 |u#0@@6|) TypeDescriptorTests.XT$U@@6 $Heap@@2))
+ :qid |TraitCompiledfy.524:14|
+ :skolemid |3921|
  :pattern ( ($IsAllocBox (TypeDescriptorTests.XT.G TypeDescriptorTests.XT$U@@6 TypeDescriptorTests.XT$W@@6 this@@8 |u#0@@6|) TypeDescriptorTests.XT$U@@6 $Heap@@2))
 ))))
-(assert (forall ((t0@@2 T@U) (t1@@2 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@0 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@0 t0@@2) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@2 t1@@2)))) (forall ((o@@1 T@U) (fld T@U) )  (=> (and (or (not (= o@@1 null)) (not true)) (|Set#IsMember| (Reads1 t0@@2 t1@@2 h0 f@@1 bx0@@0) ($Box refType o@@1))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0 o@@1) fld) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1 o@@1) fld))))) (= (Requires1 t0@@2 t1@@2 h0 f@@1 bx0@@0) (Requires1 t0@@2 t1@@2 h1 f@@1 bx0@@0)))
+(assert (forall ((t0@@2 T@U) (t1@@2 T@U) (h0 T@U) (h1 T@U) (f@@1 T@U) (bx0@@0 T@U) ) (!  (=> (and (and (and ($HeapSucc h0 h1) (and ($IsGoodHeap h0) ($IsGoodHeap h1))) (and ($IsBox bx0@@0 t0@@2) ($Is HandleTypeType f@@1 (Tclass._System.___hFunc1 t0@@2 t1@@2)))) (forall ((o@@1 T@U) (fld T@U) ) (!  (=> (and (or (not (= o@@1 null)) (not true)) (|Set#IsMember| (Reads1 t0@@2 t1@@2 h0 f@@1 bx0@@0) ($Box refType o@@1))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0 o@@1) fld) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1 o@@1) fld)))
+ :qid |unknown.0:0|
+ :skolemid |3668|
+))) (= (Requires1 t0@@2 t1@@2 h0 f@@1 bx0@@0) (Requires1 t0@@2 t1@@2 h1 f@@1 bx0@@0)))
+ :qid |unknown.0:0|
+ :skolemid |3669|
  :pattern ( ($HeapSucc h0 h1) (Requires1 t0@@2 t1@@2 h1 f@@1 bx0@@0))
 )))
-(assert (forall ((t0@@3 T@U) (t1@@3 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@1 t0@@3) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@3 t1@@3)))) (forall ((o@@2 T@U) (fld@@0 T@U) )  (=> (and (or (not (= o@@2 null)) (not true)) (|Set#IsMember| (Reads1 t0@@3 t1@@3 h1@@0 f@@2 bx0@@1) ($Box refType o@@2))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@0 o@@2) fld@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@0 o@@2) fld@@0))))) (= (Requires1 t0@@3 t1@@3 h0@@0 f@@2 bx0@@1) (Requires1 t0@@3 t1@@3 h1@@0 f@@2 bx0@@1)))
+(assert (forall ((t0@@3 T@U) (t1@@3 T@U) (h0@@0 T@U) (h1@@0 T@U) (f@@2 T@U) (bx0@@1 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@0 h1@@0) (and ($IsGoodHeap h0@@0) ($IsGoodHeap h1@@0))) (and ($IsBox bx0@@1 t0@@3) ($Is HandleTypeType f@@2 (Tclass._System.___hFunc1 t0@@3 t1@@3)))) (forall ((o@@2 T@U) (fld@@0 T@U) ) (!  (=> (and (or (not (= o@@2 null)) (not true)) (|Set#IsMember| (Reads1 t0@@3 t1@@3 h1@@0 f@@2 bx0@@1) ($Box refType o@@2))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@0 o@@2) fld@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@0 o@@2) fld@@0)))
+ :qid |unknown.0:0|
+ :skolemid |3670|
+))) (= (Requires1 t0@@3 t1@@3 h0@@0 f@@2 bx0@@1) (Requires1 t0@@3 t1@@3 h1@@0 f@@2 bx0@@1)))
+ :qid |unknown.0:0|
+ :skolemid |3671|
  :pattern ( ($HeapSucc h0@@0 h1@@0) (Requires1 t0@@3 t1@@3 h1@@0 f@@2 bx0@@1))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@7 T@U) (TypeDescriptorTests.XT$W@@7 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@7 TypeDescriptorTests.XT$W@@7))  (and ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@7 TypeDescriptorTests.XT$W@@7)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3941|
  :pattern ( ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@7 TypeDescriptorTests.XT$W@@7)))
  :pattern ( ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@7 TypeDescriptorTests.XT$W@@7)))
 )))
 (assert ($IsGhostField alloc))
 (assert ($IsGoodHeap $OneHeap))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |3314|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@2 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@2 t@@0 h@@1) ($IsAllocBox bx@@2 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |3386|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@2 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |3385|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
 )))
-(assert (forall ((t0@@4 T@U) (t1@@4 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@3 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@2 t0@@4) ($Is HandleTypeType f@@3 (Tclass._System.___hFunc1 t0@@4 t1@@4)))) (forall ((o@@3 T@U) (fld@@1 T@U) )  (=> (and (or (not (= o@@3 null)) (not true)) (|Set#IsMember| (Reads1 t0@@4 t1@@4 h0@@1 f@@3 bx0@@2) ($Box refType o@@3))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@1 o@@3) fld@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@1 o@@3) fld@@1))))) (= (Reads1 t0@@4 t1@@4 h0@@1 f@@3 bx0@@2) (Reads1 t0@@4 t1@@4 h1@@1 f@@3 bx0@@2)))
+(assert (forall ((t0@@4 T@U) (t1@@4 T@U) (h0@@1 T@U) (h1@@1 T@U) (f@@3 T@U) (bx0@@2 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@1 h1@@1) (and ($IsGoodHeap h0@@1) ($IsGoodHeap h1@@1))) (and ($IsBox bx0@@2 t0@@4) ($Is HandleTypeType f@@3 (Tclass._System.___hFunc1 t0@@4 t1@@4)))) (forall ((o@@3 T@U) (fld@@1 T@U) ) (!  (=> (and (or (not (= o@@3 null)) (not true)) (|Set#IsMember| (Reads1 t0@@4 t1@@4 h0@@1 f@@3 bx0@@2) ($Box refType o@@3))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@1 o@@3) fld@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@1 o@@3) fld@@1)))
+ :qid |unknown.0:0|
+ :skolemid |3664|
+))) (= (Reads1 t0@@4 t1@@4 h0@@1 f@@3 bx0@@2) (Reads1 t0@@4 t1@@4 h1@@1 f@@3 bx0@@2)))
+ :qid |unknown.0:0|
+ :skolemid |3665|
  :pattern ( ($HeapSucc h0@@1 h1@@1) (Reads1 t0@@4 t1@@4 h1@@1 f@@3 bx0@@2))
 )))
-(assert (forall ((t0@@5 T@U) (t1@@5 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@3 t0@@5) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@5 t1@@5)))) (forall ((o@@4 T@U) (fld@@2 T@U) )  (=> (and (or (not (= o@@4 null)) (not true)) (|Set#IsMember| (Reads1 t0@@5 t1@@5 h1@@2 f@@4 bx0@@3) ($Box refType o@@4))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@2 o@@4) fld@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@2 o@@4) fld@@2))))) (= (Reads1 t0@@5 t1@@5 h0@@2 f@@4 bx0@@3) (Reads1 t0@@5 t1@@5 h1@@2 f@@4 bx0@@3)))
+(assert (forall ((t0@@5 T@U) (t1@@5 T@U) (h0@@2 T@U) (h1@@2 T@U) (f@@4 T@U) (bx0@@3 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@2 h1@@2) (and ($IsGoodHeap h0@@2) ($IsGoodHeap h1@@2))) (and ($IsBox bx0@@3 t0@@5) ($Is HandleTypeType f@@4 (Tclass._System.___hFunc1 t0@@5 t1@@5)))) (forall ((o@@4 T@U) (fld@@2 T@U) ) (!  (=> (and (or (not (= o@@4 null)) (not true)) (|Set#IsMember| (Reads1 t0@@5 t1@@5 h1@@2 f@@4 bx0@@3) ($Box refType o@@4))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@2 o@@4) fld@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@2 o@@4) fld@@2)))
+ :qid |unknown.0:0|
+ :skolemid |3666|
+))) (= (Reads1 t0@@5 t1@@5 h0@@2 f@@4 bx0@@3) (Reads1 t0@@5 t1@@5 h1@@2 f@@4 bx0@@3)))
+ :qid |unknown.0:0|
+ :skolemid |3667|
  :pattern ( ($HeapSucc h0@@2 h1@@2) (Reads1 t0@@5 t1@@5 h1@@2 f@@4 bx0@@3))
 )))
-(assert (forall ((t0@@6 T@U) (t1@@6 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@4 t0@@6) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@6 t1@@6)))) (forall ((o@@5 T@U) (fld@@3 T@U) )  (=> (and (or (not (= o@@5 null)) (not true)) (|Set#IsMember| (Reads1 t0@@6 t1@@6 h0@@3 f@@5 bx0@@4) ($Box refType o@@5))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@3 o@@5) fld@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@3 o@@5) fld@@3))))) (= (Apply1 t0@@6 t1@@6 h0@@3 f@@5 bx0@@4) (Apply1 t0@@6 t1@@6 h1@@3 f@@5 bx0@@4)))
+(assert (forall ((t0@@6 T@U) (t1@@6 T@U) (h0@@3 T@U) (h1@@3 T@U) (f@@5 T@U) (bx0@@4 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@3 h1@@3) (and ($IsGoodHeap h0@@3) ($IsGoodHeap h1@@3))) (and ($IsBox bx0@@4 t0@@6) ($Is HandleTypeType f@@5 (Tclass._System.___hFunc1 t0@@6 t1@@6)))) (forall ((o@@5 T@U) (fld@@3 T@U) ) (!  (=> (and (or (not (= o@@5 null)) (not true)) (|Set#IsMember| (Reads1 t0@@6 t1@@6 h0@@3 f@@5 bx0@@4) ($Box refType o@@5))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@3 o@@5) fld@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@3 o@@5) fld@@3)))
+ :qid |unknown.0:0|
+ :skolemid |3672|
+))) (= (Apply1 t0@@6 t1@@6 h0@@3 f@@5 bx0@@4) (Apply1 t0@@6 t1@@6 h1@@3 f@@5 bx0@@4)))
+ :qid |unknown.0:0|
+ :skolemid |3673|
  :pattern ( ($HeapSucc h0@@3 h1@@3) (Apply1 t0@@6 t1@@6 h1@@3 f@@5 bx0@@4))
 )))
-(assert (forall ((t0@@7 T@U) (t1@@7 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@5 t0@@7) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@7 t1@@7)))) (forall ((o@@6 T@U) (fld@@4 T@U) )  (=> (and (or (not (= o@@6 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@7 h1@@4 f@@6 bx0@@5) ($Box refType o@@6))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@4 o@@6) fld@@4) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@4 o@@6) fld@@4))))) (= (Apply1 t0@@7 t1@@7 h0@@4 f@@6 bx0@@5) (Apply1 t0@@7 t1@@7 h1@@4 f@@6 bx0@@5)))
+(assert (forall ((t0@@7 T@U) (t1@@7 T@U) (h0@@4 T@U) (h1@@4 T@U) (f@@6 T@U) (bx0@@5 T@U) ) (!  (=> (and (and (and ($HeapSucc h0@@4 h1@@4) (and ($IsGoodHeap h0@@4) ($IsGoodHeap h1@@4))) (and ($IsBox bx0@@5 t0@@7) ($Is HandleTypeType f@@6 (Tclass._System.___hFunc1 t0@@7 t1@@7)))) (forall ((o@@6 T@U) (fld@@4 T@U) ) (!  (=> (and (or (not (= o@@6 null)) (not true)) (|Set#IsMember| (Reads1 t0@@7 t1@@7 h1@@4 f@@6 bx0@@5) ($Box refType o@@6))) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h0@@4 o@@6) fld@@4) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h1@@4 o@@6) fld@@4)))
+ :qid |unknown.0:0|
+ :skolemid |3674|
+))) (= (Apply1 t0@@7 t1@@7 h0@@4 f@@6 bx0@@5) (Apply1 t0@@7 t1@@7 h1@@4 f@@6 bx0@@5)))
+ :qid |unknown.0:0|
+ :skolemid |3675|
  :pattern ( ($HeapSucc h0@@4 h1@@4) (Apply1 t0@@7 t1@@7 h1@@4 f@@6 bx0@@5))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@8 T@U) (TypeDescriptorTests.XT$W@@8 T@U) ($h@@2 T@U) ($o@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@4 null)) (not true)) ($Is refType $o@@4 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@8 TypeDescriptorTests.XT$W@@8)))) ($IsBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) TypeDescriptorTests.XT.u) TypeDescriptorTests.XT$U@@8))
+ :qid |unknown.0:0|
+ :skolemid |3913|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) TypeDescriptorTests.XT.u) (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@8 TypeDescriptorTests.XT$W@@8))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@9 T@U) (TypeDescriptorTests.XT$W@@9 T@U) (this@@9 T@U) (|u#0@@7| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F#canCall| TypeDescriptorTests.XT$U@@9 TypeDescriptorTests.XT$W@@9 this@@9 |u#0@@7|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@9 null)) (not true)) ($Is refType this@@9 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@9 TypeDescriptorTests.XT$W@@9))) ($IsBox |u#0@@7| TypeDescriptorTests.XT$U@@9)))) (= (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@9 TypeDescriptorTests.XT$W@@9 this@@9 |u#0@@7|) |u#0@@7|))
+ :qid |unknown.0:0|
+ :skolemid |3918|
  :pattern ( (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@9 TypeDescriptorTests.XT$W@@9 this@@9 |u#0@@7|))
 ))))
 (assert (implements$TypeDescriptorTests.XT Tclass.TypeDescriptorTests.YT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt))
 (assert (forall ((|#$T0| T@U) (|#$R| T@U) (|f#0| T@U) ($h@@3 T@U) ) (! (= ($IsAlloc HandleTypeType |f#0| (Tclass._System.___hPartialFunc1 |#$T0| |#$R|) $h@@3) ($IsAlloc HandleTypeType |f#0| (Tclass._System.___hFunc1 |#$T0| |#$R|) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |3694|
  :pattern ( ($IsAlloc HandleTypeType |f#0| (Tclass._System.___hPartialFunc1 |#$T0| |#$R|) $h@@3))
 )))
 (assert (forall ((|#$T0@@0| T@U) (|#$R@@0| T@U) (|f#0@@0| T@U) ($h@@4 T@U) ) (! (= ($IsAlloc HandleTypeType |f#0@@0| (Tclass._System.___hTotalFunc1 |#$T0@@0| |#$R@@0|) $h@@4) ($IsAlloc HandleTypeType |f#0@@0| (Tclass._System.___hPartialFunc1 |#$T0@@0| |#$R@@0|) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |3701|
  :pattern ( ($IsAlloc HandleTypeType |f#0@@0| (Tclass._System.___hTotalFunc1 |#$T0@@0| |#$R@@0|) $h@@4))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@10 T@U) (TypeDescriptorTests.XT$W@@10 T@U) (|c#0@@1| T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType |c#0@@1| (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@10 TypeDescriptorTests.XT$W@@10) $h@@5) ($IsAlloc refType |c#0@@1| (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@10 TypeDescriptorTests.XT$W@@10) $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |3942|
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@10 TypeDescriptorTests.XT$W@@10) $h@@5))
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@10 TypeDescriptorTests.XT$W@@10) $h@@5))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass.TypeDescriptorTests.YT?) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) Tclass.TypeDescriptorTests.YT?)))
+ :qid |unknown.0:0|
+ :skolemid |3943|
  :pattern ( ($IsBox bx@@3 Tclass.TypeDescriptorTests.YT?))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 Tclass.TypeDescriptorTests.YT) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) Tclass.TypeDescriptorTests.YT)))
+ :qid |unknown.0:0|
+ :skolemid |3947|
  :pattern ( ($IsBox bx@@4 Tclass.TypeDescriptorTests.YT))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass.TypeDescriptorTests.YT)  (and ($Is refType |c#0@@2| Tclass.TypeDescriptorTests.YT?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3978|
  :pattern ( ($Is refType |c#0@@2| Tclass.TypeDescriptorTests.YT))
  :pattern ( ($Is refType |c#0@@2| Tclass.TypeDescriptorTests.YT?))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@11 T@U) (TypeDescriptorTests.XT$W@@11 T@U) (this@@10 T@U) (|u#0@@8| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F_k#canCall| TypeDescriptorTests.XT$U@@11 TypeDescriptorTests.XT$W@@11 this@@10 |u#0@@8|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@10 null)) (not true)) ($Is refType this@@10 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@11 TypeDescriptorTests.XT$W@@11))) ($Is HandleTypeType |u#0@@8| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@11 TypeDescriptorTests.XT$W@@11))))) (= (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@11 TypeDescriptorTests.XT$W@@11 this@@10 |u#0@@8|) |u#0@@8|))
+ :qid |unknown.0:0|
+ :skolemid |3931|
  :pattern ( (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@11 TypeDescriptorTests.XT$W@@11 this@@10 |u#0@@8|))
 ))))
 (assert (forall ((bx@@5 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsAllocBox bx@@5 Tclass.TypeDescriptorTests.YT? $h@@6) ($IsGoodHeap $h@@6)) ($IsAllocBox bx@@5 (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |4014|
  :pattern ( ($IsAllocBox bx@@5 Tclass.TypeDescriptorTests.YT? $h@@6))
 )))
 (assert (forall ((f@@7 T@U) (t0@@8 T@U) (t1@@8 T@U) (h@@3 T@U) ) (!  (=> (and ($IsGoodHeap h@@3) ($IsAlloc HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@8 t1@@8) h@@3)) (forall ((bx0@@6 T@U) ) (!  (=> (and ($IsAllocBox bx0@@6 t0@@8 h@@3) (Requires1 t0@@8 t1@@8 h@@3 f@@7 bx0@@6)) ($IsAllocBox (Apply1 t0@@8 t1@@8 h@@3 f@@7 bx0@@6) t1@@8 h@@3))
+ :qid |unknown.0:0|
+ :skolemid |3686|
  :pattern ( (Apply1 t0@@8 t1@@8 h@@3 f@@7 bx0@@6))
 )))
+ :qid |unknown.0:0|
+ :skolemid |3687|
  :pattern ( ($IsAlloc HandleTypeType f@@7 (Tclass._System.___hFunc1 t0@@8 t1@@8) h@@3))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@12 T@U) (TypeDescriptorTests.XT$W@@12 T@U) ($o@@5 T@U) ($h@@7 T@U) ) (! (= ($IsAlloc refType $o@@5 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@12 TypeDescriptorTests.XT$W@@12) $h@@7)  (or (= $o@@5 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@5) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3910|
  :pattern ( ($IsAlloc refType $o@@5 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@12 TypeDescriptorTests.XT$W@@12) $h@@7))
 )))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (|Set#Equal| a b) (= a b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |3425|
  :pattern ( (|Set#Equal| a b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) (c T@U) ) (!  (=> (or (not (= a@@0 c)) (not true)) (=> (and ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c)) ($HeapSucc a@@0 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |3392|
  :pattern ( ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c))
 )))
 (assert (forall ((f@@8 T@U) (t0@@9 T@U) (t1@@9 T@U) ) (! (= ($Is HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@9 t1@@9)) (forall ((h@@4 T@U) (bx0@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap h@@4) ($IsBox bx0@@7 t0@@9)) (Requires1 t0@@9 t1@@9 h@@4 f@@8 bx0@@7)) ($IsBox (Apply1 t0@@9 t1@@9 h@@4 f@@8 bx0@@7) t1@@9))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |3678|
  :pattern ( (Apply1 t0@@9 t1@@9 h@@4 f@@8 bx0@@7))
 )))
+ :qid |unknown.0:0|
+ :skolemid |3679|
  :pattern ( ($Is HandleTypeType f@@8 (Tclass._System.___hFunc1 t0@@9 t1@@9)))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |3382|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 TInt) (and (= ($Box intType ($Unbox intType bx@@6)) bx@@6) ($Is intType ($Unbox intType bx@@6) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |3302|
  :pattern ( ($IsBox bx@@6 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@1) t@@2) ($Is T@@3 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |3313|
  :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@11 T@U) (|uu#0@@1| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G#canCall| (Lit refType this@@11) (Lit HandleTypeType |uu#0@@1|)) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@11 null)) (not true)) ($Is refType this@@11 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0@@1| (Tclass._System.___hTotalFunc1 TInt TInt))))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt (Lit refType this@@11) ($Box HandleTypeType (Lit HandleTypeType |uu#0@@1|))) (= (TypeDescriptorTests.YT.G (Lit refType this@@11) (Lit HandleTypeType |uu#0@@1|)) (Lit HandleTypeType ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt (Lit refType this@@11) ($Box HandleTypeType (Lit HandleTypeType |uu#0@@1|))))))))
+ :qid |TraitCompiledfy.539:14|
  :weight 3
+ :skolemid |3953|
  :pattern ( (TypeDescriptorTests.YT.G (Lit refType this@@11) (Lit HandleTypeType |uu#0@@1|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@12 T@U) (|uu#0@@2| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G_k#canCall| (Lit refType this@@12) (Lit HandleTypeType |uu#0@@2|)) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@12 null)) (not true)) ($Is refType this@@12 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0@@2| (Tclass._System.___hTotalFunc1 TInt TInt))))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt (Lit refType this@@12) ($Box HandleTypeType (Lit HandleTypeType |uu#0@@2|))) (= (TypeDescriptorTests.YT.G_k (Lit refType this@@12) (Lit HandleTypeType |uu#0@@2|)) (Lit HandleTypeType ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt (Lit refType this@@12) ($Box HandleTypeType (Lit HandleTypeType |uu#0@@2|))))))))
+ :qid |TraitCompiledfy.545:14|
  :weight 3
+ :skolemid |3967|
  :pattern ( (TypeDescriptorTests.YT.G_k (Lit refType this@@12) (Lit HandleTypeType |uu#0@@2|)))
 ))))
 (assert (forall ((|#$T0@@1| T@U) (|#$R@@1| T@U) ) (! (= (Tclass._System.___hFunc1_0 (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|)) |#$T0@@1|)
+ :qid |unknown.0:0|
+ :skolemid |3658|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@1| |#$R@@1|))
 )))
 (assert (forall ((|#$T0@@2| T@U) (|#$R@@2| T@U) ) (! (= (Tclass._System.___hFunc1_1 (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|)) |#$R@@2|)
+ :qid |unknown.0:0|
+ :skolemid |3659|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@2| |#$R@@2|))
 )))
 (assert (forall ((|#$T0@@3| T@U) (|#$R@@3| T@U) ) (! (= (Tclass._System.___hPartialFunc1_0 (Tclass._System.___hPartialFunc1 |#$T0@@3| |#$R@@3|)) |#$T0@@3|)
+ :qid |unknown.0:0|
+ :skolemid |3689|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@3| |#$R@@3|))
 )))
 (assert (forall ((|#$T0@@4| T@U) (|#$R@@4| T@U) ) (! (= (Tclass._System.___hPartialFunc1_1 (Tclass._System.___hPartialFunc1 |#$T0@@4| |#$R@@4|)) |#$R@@4|)
+ :qid |unknown.0:0|
+ :skolemid |3690|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@4| |#$R@@4|))
 )))
 (assert (forall ((|#$T0@@5| T@U) (|#$R@@5| T@U) ) (! (= (Tclass._System.___hTotalFunc1_0 (Tclass._System.___hTotalFunc1 |#$T0@@5| |#$R@@5|)) |#$T0@@5|)
+ :qid |unknown.0:0|
+ :skolemid |3696|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@5| |#$R@@5|))
 )))
 (assert (forall ((|#$T0@@6| T@U) (|#$R@@6| T@U) ) (! (= (Tclass._System.___hTotalFunc1_1 (Tclass._System.___hTotalFunc1 |#$T0@@6| |#$R@@6|)) |#$R@@6|)
+ :qid |unknown.0:0|
+ :skolemid |3697|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@6| |#$R@@6|))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@13 T@U) (TypeDescriptorTests.XT$W@@13 T@U) ) (! (= (Tclass.TypeDescriptorTests.XT?_0 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@13 TypeDescriptorTests.XT$W@@13)) TypeDescriptorTests.XT$U@@13)
+ :qid |unknown.0:0|
+ :skolemid |3840|
  :pattern ( (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@13 TypeDescriptorTests.XT$W@@13))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@14 T@U) (TypeDescriptorTests.XT$W@@14 T@U) ) (! (= (Tclass.TypeDescriptorTests.XT?_1 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@14 TypeDescriptorTests.XT$W@@14)) TypeDescriptorTests.XT$W@@14)
+ :qid |unknown.0:0|
+ :skolemid |3841|
  :pattern ( (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@14 TypeDescriptorTests.XT$W@@14))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@15 T@U) (TypeDescriptorTests.XT$W@@15 T@U) ) (! (= (Tclass.TypeDescriptorTests.XT_0 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@15 TypeDescriptorTests.XT$W@@15)) TypeDescriptorTests.XT$U@@15)
+ :qid |unknown.0:0|
+ :skolemid |3845|
  :pattern ( (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@15 TypeDescriptorTests.XT$W@@15))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@16 T@U) (TypeDescriptorTests.XT$W@@16 T@U) ) (! (= (Tclass.TypeDescriptorTests.XT_1 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@16 TypeDescriptorTests.XT$W@@16)) TypeDescriptorTests.XT$W@@16)
+ :qid |unknown.0:0|
+ :skolemid |3846|
  :pattern ( (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@16 TypeDescriptorTests.XT$W@@16))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@13 T@U) (|uu#0@@3| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G#canCall| this@@13 |uu#0@@3|) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@13 null)) (not true)) ($Is refType this@@13 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0@@3| (Tclass._System.___hTotalFunc1 TInt TInt))))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@13 ($Box HandleTypeType |uu#0@@3|)) (= (TypeDescriptorTests.YT.G this@@13 |uu#0@@3|) ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@13 ($Box HandleTypeType |uu#0@@3|))))))
+ :qid |TraitCompiledfy.539:14|
+ :skolemid |3952|
  :pattern ( (TypeDescriptorTests.YT.G this@@13 |uu#0@@3|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((this@@14 T@U) (|uu#0@@4| T@U) ) (!  (=> (or (|TypeDescriptorTests.YT.G_k#canCall| this@@14 |uu#0@@4|) (and (< 1 $FunctionContextHeight) (and (and (or (not (= this@@14 null)) (not true)) ($Is refType this@@14 Tclass.TypeDescriptorTests.YT)) ($Is HandleTypeType |uu#0@@4| (Tclass._System.___hTotalFunc1 TInt TInt))))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@14 ($Box HandleTypeType |uu#0@@4|)) (= (TypeDescriptorTests.YT.G_k this@@14 |uu#0@@4|) ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt this@@14 ($Box HandleTypeType |uu#0@@4|))))))
+ :qid |TraitCompiledfy.545:14|
+ :skolemid |3966|
  :pattern ( (TypeDescriptorTests.YT.G_k this@@14 |uu#0@@4|))
 ))))
 (assert (forall ((TypeDescriptorTests.XT$U@@17 T@U) (TypeDescriptorTests.XT$W@@17 T@U) ($o@@6 T@U) ) (! (= ($Is refType $o@@6 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@17 TypeDescriptorTests.XT$W@@17))  (or (= $o@@6 null) (implements$TypeDescriptorTests.XT (dtype $o@@6) TypeDescriptorTests.XT$U@@17 TypeDescriptorTests.XT$W@@17)))
+ :qid |unknown.0:0|
+ :skolemid |3909|
  :pattern ( ($Is refType $o@@6 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@17 TypeDescriptorTests.XT$W@@17)))
 )))
 (assert (forall ((x@@4 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |3300|
  :pattern ( ($Box T@@4 x@@4))
 )))
-(assert (forall ((|#$T0@@7| T@U) (|#$R@@7| T@U) (|f#0@@1| T@U) ) (! (= ($Is HandleTypeType |f#0@@1| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|))  (and ($Is HandleTypeType |f#0@@1| (Tclass._System.___hPartialFunc1 |#$T0@@7| |#$R@@7|)) (forall ((|x0#0| T@U) )  (=> ($IsBox |x0#0| |#$T0@@7|) (Requires1 |#$T0@@7| |#$R@@7| $OneHeap |f#0@@1| |x0#0|)))))
+(assert (forall ((|#$T0@@7| T@U) (|#$R@@7| T@U) (|f#0@@1| T@U) ) (! (= ($Is HandleTypeType |f#0@@1| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|))  (and ($Is HandleTypeType |f#0@@1| (Tclass._System.___hPartialFunc1 |#$T0@@7| |#$R@@7|)) (forall ((|x0#0| T@U) ) (!  (=> ($IsBox |x0#0| |#$T0@@7|) (Requires1 |#$T0@@7| |#$R@@7| $OneHeap |f#0@@1| |x0#0|))
+ :qid |unknown.0:0|
+ :skolemid |3699|
+))))
+ :qid |unknown.0:0|
+ :skolemid |3700|
  :pattern ( ($Is HandleTypeType |f#0@@1| (Tclass._System.___hTotalFunc1 |#$T0@@7| |#$R@@7|)))
 )))
-(assert (forall ((|#$T0@@8| T@U) (|#$R@@8| T@U) (|f#0@@2| T@U) ) (! (= ($Is HandleTypeType |f#0@@2| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|))  (and ($Is HandleTypeType |f#0@@2| (Tclass._System.___hFunc1 |#$T0@@8| |#$R@@8|)) (forall ((|x0#0@@0| T@U) )  (=> ($IsBox |x0#0@@0| |#$T0@@8|) (|Set#Equal| (Reads1 |#$T0@@8| |#$R@@8| $OneHeap |f#0@@2| |x0#0@@0|) |Set#Empty|)))))
+(assert (forall ((|#$T0@@8| T@U) (|#$R@@8| T@U) (|f#0@@2| T@U) ) (! (= ($Is HandleTypeType |f#0@@2| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|))  (and ($Is HandleTypeType |f#0@@2| (Tclass._System.___hFunc1 |#$T0@@8| |#$R@@8|)) (forall ((|x0#0@@0| T@U) ) (!  (=> ($IsBox |x0#0@@0| |#$T0@@8|) (|Set#Equal| (Reads1 |#$T0@@8| |#$R@@8| $OneHeap |f#0@@2| |x0#0@@0|) |Set#Empty|))
+ :qid |unknown.0:0|
+ :skolemid |3692|
+))))
+ :qid |unknown.0:0|
+ :skolemid |3693|
  :pattern ( ($Is HandleTypeType |f#0@@2| (Tclass._System.___hPartialFunc1 |#$T0@@8| |#$R@@8|)))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@18 T@U) (TypeDescriptorTests.XT$W@@18 T@U) ($h@@8 T@U) ($o@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@7 null)) (not true)) ($Is refType $o@@7 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@18 TypeDescriptorTests.XT$W@@18)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@7) alloc)))) ($IsAllocBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@7) TypeDescriptorTests.XT.u) TypeDescriptorTests.XT$U@@18 $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |3914|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@7) TypeDescriptorTests.XT.u) (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@18 TypeDescriptorTests.XT$W@@18))
 )))
 (assert (forall ((f@@9 T@U) (t0@@10 T@U) (t1@@10 T@U) (h@@5 T@U) ) (!  (=> ($IsGoodHeap h@@5) (= ($IsAlloc HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@10 t1@@10) h@@5) (forall ((bx0@@8 T@U) ) (!  (=> (and (and ($IsBox bx0@@8 t0@@10) ($IsAllocBox bx0@@8 t0@@10 h@@5)) (Requires1 t0@@10 t1@@10 h@@5 f@@9 bx0@@8)) (forall ((r T@U) ) (!  (=> (and (or (not (= r null)) (not true)) (|Set#IsMember| (Reads1 t0@@10 t1@@10 h@@5 f@@9 bx0@@8) ($Box refType r))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@5 r) alloc))))
+ :qid |unknown.0:0|
+ :skolemid |3683|
  :pattern ( (|Set#IsMember| (Reads1 t0@@10 t1@@10 h@@5 f@@9 bx0@@8) ($Box refType r)))
 )))
+ :qid |unknown.0:0|
+ :skolemid |3684|
  :pattern ( (Apply1 t0@@10 t1@@10 h@@5 f@@9 bx0@@8))
  :pattern ( (Reads1 t0@@10 t1@@10 h@@5 f@@9 bx0@@8))
 ))))
+ :qid |unknown.0:0|
+ :skolemid |3685|
  :pattern ( ($IsAlloc HandleTypeType f@@9 (Tclass._System.___hFunc1 t0@@10 t1@@10) h@@5))
 )))
 (assert (forall ((|#$T0@@9| T@U) (|#$R@@9| T@U) (bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@7)) bx@@7) ($Is HandleTypeType ($Unbox HandleTypeType bx@@7) (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|))))
+ :qid |unknown.0:0|
+ :skolemid |3660|
  :pattern ( ($IsBox bx@@7 (Tclass._System.___hFunc1 |#$T0@@9| |#$R@@9|)))
 )))
 (assert (forall ((|#$T0@@10| T@U) (|#$R@@10| T@U) (bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@8)) bx@@8) ($Is HandleTypeType ($Unbox HandleTypeType bx@@8) (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|))))
+ :qid |unknown.0:0|
+ :skolemid |3691|
  :pattern ( ($IsBox bx@@8 (Tclass._System.___hPartialFunc1 |#$T0@@10| |#$R@@10|)))
 )))
 (assert (forall ((|#$T0@@11| T@U) (|#$R@@11| T@U) (bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|)) (and (= ($Box HandleTypeType ($Unbox HandleTypeType bx@@9)) bx@@9) ($Is HandleTypeType ($Unbox HandleTypeType bx@@9) (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|))))
+ :qid |unknown.0:0|
+ :skolemid |3698|
  :pattern ( ($IsBox bx@@9 (Tclass._System.___hTotalFunc1 |#$T0@@11| |#$R@@11|)))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@19 T@U) (TypeDescriptorTests.XT$W@@19 T@U) (bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@19 TypeDescriptorTests.XT$W@@19)) (and (= ($Box refType ($Unbox refType bx@@10)) bx@@10) ($Is refType ($Unbox refType bx@@10) (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@19 TypeDescriptorTests.XT$W@@19))))
+ :qid |unknown.0:0|
+ :skolemid |3842|
  :pattern ( ($IsBox bx@@10 (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@19 TypeDescriptorTests.XT$W@@19)))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@20 T@U) (TypeDescriptorTests.XT$W@@20 T@U) (bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@20 TypeDescriptorTests.XT$W@@20)) (and (= ($Box refType ($Unbox refType bx@@11)) bx@@11) ($Is refType ($Unbox refType bx@@11) (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@20 TypeDescriptorTests.XT$W@@20))))
+ :qid |unknown.0:0|
+ :skolemid |3847|
  :pattern ( ($IsBox bx@@11 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@20 TypeDescriptorTests.XT$W@@20)))
 )))
 (assert  (and (forall ((t0@@11 T@T) (t1@@11 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@11 t1@@11 t2 (MapType1Store t0@@11 t1@@11 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@1 T@T) (u1@@1 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@1 u1@@1 u2 (MapType1Store u0@@1 u1@@1 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@1 u1@@1 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@2 T@T) (u1@@2 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@2 u1@@2 u2@@0 (MapType1Store u0@@2 u1@@2 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@2 u1@@2 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@8 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@8 $f))  (=> (and (or (not (= $o@@8 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@8) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |8395|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@8 $f))
 )))
 (assert (forall ((|#$T0@@12| T@U) (|#$R@@12| T@U) ) (!  (and (= (Tag (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) Tagclass._System.___hFunc1) (= (TagFamily (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|)) |tytagFamily$_#Func1|))
+ :qid |unknown.0:0|
+ :skolemid |3657|
  :pattern ( (Tclass._System.___hFunc1 |#$T0@@12| |#$R@@12|))
 )))
 (assert (forall ((|#$T0@@13| T@U) (|#$R@@13| T@U) ) (!  (and (= (Tag (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|)) Tagclass._System.___hPartialFunc1) (= (TagFamily (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|)) |tytagFamily$_#PartialFunc1|))
+ :qid |unknown.0:0|
+ :skolemid |3688|
  :pattern ( (Tclass._System.___hPartialFunc1 |#$T0@@13| |#$R@@13|))
 )))
 (assert (forall ((|#$T0@@14| T@U) (|#$R@@14| T@U) ) (!  (and (= (Tag (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|)) Tagclass._System.___hTotalFunc1) (= (TagFamily (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|)) |tytagFamily$_#TotalFunc1|))
+ :qid |unknown.0:0|
+ :skolemid |3695|
  :pattern ( (Tclass._System.___hTotalFunc1 |#$T0@@14| |#$R@@14|))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@21 T@U) (TypeDescriptorTests.XT$W@@21 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@21 TypeDescriptorTests.XT$W@@21)) Tagclass.TypeDescriptorTests.XT?) (= (TagFamily (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@21 TypeDescriptorTests.XT$W@@21)) tytagFamily$XT))
+ :qid |unknown.0:0|
+ :skolemid |3839|
  :pattern ( (Tclass.TypeDescriptorTests.XT? TypeDescriptorTests.XT$U@@21 TypeDescriptorTests.XT$W@@21))
 )))
 (assert (forall ((TypeDescriptorTests.XT$U@@22 T@U) (TypeDescriptorTests.XT$W@@22 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@22 TypeDescriptorTests.XT$W@@22)) Tagclass.TypeDescriptorTests.XT) (= (TagFamily (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@22 TypeDescriptorTests.XT$W@@22)) tytagFamily$XT))
+ :qid |unknown.0:0|
+ :skolemid |3844|
  :pattern ( (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@22 TypeDescriptorTests.XT$W@@22))
 )))
 (assert (forall ((t0@@12 T@U) (t1@@12 T@U) (heap@@0 T@U) (f@@10 T@U) (bx0@@9 T@U) ) (!  (=> (and (and ($IsGoodHeap heap@@0) (and ($IsBox bx0@@9 t0@@12) ($Is HandleTypeType f@@10 (Tclass._System.___hFunc1 t0@@12 t1@@12)))) (|Set#Equal| (Reads1 t0@@12 t1@@12 $OneHeap f@@10 bx0@@9) |Set#Empty|)) (= (Requires1 t0@@12 t1@@12 $OneHeap f@@10 bx0@@9) (Requires1 t0@@12 t1@@12 heap@@0 f@@10 bx0@@9)))
+ :qid |unknown.0:0|
+ :skolemid |3677|
  :pattern ( (Requires1 t0@@12 t1@@12 $OneHeap f@@10 bx0@@9) ($IsGoodHeap heap@@0))
  :pattern ( (Requires1 t0@@12 t1@@12 heap@@0 f@@10 bx0@@9))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@23 T@U) (TypeDescriptorTests.XT$W@@23 T@U) (this@@15 T@U) (|u#0@@9| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F#canCall| TypeDescriptorTests.XT$U@@23 TypeDescriptorTests.XT$W@@23 this@@15 |u#0@@9|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@15 null)) (not true)) ($Is refType this@@15 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@23 TypeDescriptorTests.XT$W@@23))) ($IsBox |u#0@@9| TypeDescriptorTests.XT$U@@23)))) ($IsBox (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@23 TypeDescriptorTests.XT$W@@23 this@@15 |u#0@@9|) TypeDescriptorTests.XT$U@@23))
+ :qid |unknown.0:0|
+ :skolemid |3915|
  :pattern ( (TypeDescriptorTests.XT.F TypeDescriptorTests.XT$U@@23 TypeDescriptorTests.XT$W@@23 this@@15 |u#0@@9|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@24 T@U) (TypeDescriptorTests.XT$W@@24 T@U) (this@@16 T@U) (|u#0@@10| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.G#canCall| TypeDescriptorTests.XT$U@@24 TypeDescriptorTests.XT$W@@24 this@@16 |u#0@@10|) (and (< 2 $FunctionContextHeight) (and (and (or (not (= this@@16 null)) (not true)) ($Is refType this@@16 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@24 TypeDescriptorTests.XT$W@@24))) ($IsBox |u#0@@10| TypeDescriptorTests.XT$U@@24)))) ($IsBox (TypeDescriptorTests.XT.G TypeDescriptorTests.XT$U@@24 TypeDescriptorTests.XT$W@@24 this@@16 |u#0@@10|) TypeDescriptorTests.XT$U@@24))
+ :qid |unknown.0:0|
+ :skolemid |3920|
  :pattern ( (TypeDescriptorTests.XT.G TypeDescriptorTests.XT$U@@24 TypeDescriptorTests.XT$W@@24 this@@16 |u#0@@10|))
 ))))
 (assert (forall ((h@@6 T@U) (r@@0 T@U) (f@@11 T@U) (x@@5 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@6 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@6 r@@0) f@@11 x@@5))) ($HeapSucc h@@6 (MapType0Store refType (MapType0Type FieldType BoxType) h@@6 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@6 r@@0) f@@11 x@@5))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |3391|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@6 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@6 r@@0) f@@11 x@@5)))
 )))
 (assert (= (Tag Tclass.TypeDescriptorTests.YT?) Tagclass.TypeDescriptorTests.YT?))
@@ -454,27 +679,43 @@
 (assert (= (Tag Tclass.TypeDescriptorTests.YT) Tagclass.TypeDescriptorTests.YT))
 (assert (= (TagFamily Tclass.TypeDescriptorTests.YT) tytagFamily$YT))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (! (= (|Set#Equal| a@@1 b@@1) (forall ((o@@7 T@U) ) (! (= (|Set#IsMember| a@@1 o@@7) (|Set#IsMember| b@@1 o@@7))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |3423|
  :pattern ( (|Set#IsMember| a@@1 o@@7))
  :pattern ( (|Set#IsMember| b@@1 o@@7))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |3424|
  :pattern ( (|Set#Equal| a@@1 b@@1))
 )))
 (assert (forall ((x@@6 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@6)) (Lit BoxType ($Box T@@5 x@@6)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |3291|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@6)))
 )))
 (assert (forall (($o@@9 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@9 Tclass.TypeDescriptorTests.YT? $heap) ($IsAlloc refType $o@@9 (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $heap))
+ :qid |unknown.0:0|
+ :skolemid |4016|
  :pattern ( ($IsAlloc refType $o@@9 Tclass.TypeDescriptorTests.YT? $heap))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@25 T@U) (TypeDescriptorTests.XT$W@@25 T@U) (this@@17 T@U) (|u#0@@11| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.F_k#canCall| TypeDescriptorTests.XT$U@@25 TypeDescriptorTests.XT$W@@25 this@@17 |u#0@@11|) (and (< 0 $FunctionContextHeight) (and (and (or (not (= this@@17 null)) (not true)) ($Is refType this@@17 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@25 TypeDescriptorTests.XT$W@@25))) ($Is HandleTypeType |u#0@@11| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@25 TypeDescriptorTests.XT$W@@25))))) ($Is HandleTypeType (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@25 TypeDescriptorTests.XT$W@@25 this@@17 |u#0@@11|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@25 TypeDescriptorTests.XT$W@@25)))
+ :qid |unknown.0:0|
+ :skolemid |3928|
  :pattern ( (TypeDescriptorTests.XT.F_k TypeDescriptorTests.XT$U@@25 TypeDescriptorTests.XT$W@@25 this@@17 |u#0@@11|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((TypeDescriptorTests.XT$U@@26 T@U) (TypeDescriptorTests.XT$W@@26 T@U) (this@@18 T@U) (|u#0@@12| T@U) ) (!  (=> (or (|TypeDescriptorTests.XT.G_k#canCall| TypeDescriptorTests.XT$U@@26 TypeDescriptorTests.XT$W@@26 this@@18 |u#0@@12|) (and (< 2 $FunctionContextHeight) (and (and (or (not (= this@@18 null)) (not true)) ($Is refType this@@18 (Tclass.TypeDescriptorTests.XT TypeDescriptorTests.XT$U@@26 TypeDescriptorTests.XT$W@@26))) ($Is HandleTypeType |u#0@@12| (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@26 TypeDescriptorTests.XT$W@@26))))) ($Is HandleTypeType (TypeDescriptorTests.XT.G_k TypeDescriptorTests.XT$U@@26 TypeDescriptorTests.XT$W@@26 this@@18 |u#0@@12|) (Tclass._System.___hTotalFunc1 TypeDescriptorTests.XT$W@@26 TypeDescriptorTests.XT$W@@26)))
+ :qid |unknown.0:0|
+ :skolemid |3933|
  :pattern ( (TypeDescriptorTests.XT.G_k TypeDescriptorTests.XT$U@@26 TypeDescriptorTests.XT$W@@26 this@@18 |u#0@@12|))
 ))))
 (assert (forall ((h@@7 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@7)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |3336|
  :pattern ( ($IsAlloc intType v@@2 TInt h@@7))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |3315|
  :pattern ( ($Is intType v@@3 TInt))
 )))
 (push 1)
@@ -547,6 +788,7 @@
 (declare-fun |defass#x#0| () Bool)
 (declare-fun |x#0| () T@U)
 (declare-fun |f#0@@3| () T@U)
+(set-info :boogie-vc-id Impl$$TypeDescriptorTests.__default.CallerT)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -563,20 +805,36 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 38) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@3 alloc false)) (=> (and (and (or (not (= call1formal@this null)) (not true)) (and ($Is refType call1formal@this Tclass.TypeDescriptorTests.YT) ($IsAlloc refType call1formal@this Tclass.TypeDescriptorTests.YT $Heap@@3))) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))) (=> (and (and (and (or (not (= call1formal@this@0 null)) (not true)) (and ($Is refType call1formal@this@0 Tclass.TypeDescriptorTests.YT) ($IsAlloc refType call1formal@this@0 Tclass.TypeDescriptorTests.YT $Heap@0))) (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 call1formal@this@0) alloc))))) (and (forall (($o@@10 T@U) ) (!  (=> (and (or (not (= $o@@10 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@10) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@10) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@3 $o@@10)))
+ :qid |TraitCompiledfy.534:5|
+ :skolemid |3948|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@10))
 )) ($HeapSucc $Heap@@3 $Heap@0))) (and (=> (= (ControlFlow 0 2) (- 0 37)) ($Is refType call1formal@this@0 (Tclass.TypeDescriptorTests.XT (Tclass._System.___hTotalFunc1 TInt TInt) TInt))) (=> ($Is refType call1formal@this@0 (Tclass.TypeDescriptorTests.XT (Tclass._System.___hTotalFunc1 TInt TInt) TInt)) (=> (and ($Is HandleTypeType |f#0@0| (Tclass._System.___hTotalFunc1 TInt TInt)) ($IsAlloc HandleTypeType |f#0@0| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@0)) (and (=> (= (ControlFlow 0 2) (- 0 36)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |f#0@1| ($Unbox HandleTypeType (TypeDescriptorTests.XT.c (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0))) (and (=> (= (ControlFlow 0 2) (- 0 35)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |f#0@2| ($Unbox HandleTypeType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) TypeDescriptorTests.XT.u))) (and (=> (= (ControlFlow 0 2) (- 0 34)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 33)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 call1formal@this@0 TypeDescriptorTests.XT.u))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 call1formal@this@0 TypeDescriptorTests.XT.u)) (=> (and (= $Heap@1 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 call1formal@this@0) TypeDescriptorTests.XT.u ($Box HandleTypeType |f#0@2|)))) ($IsGoodHeap $Heap@1)) (and (=> (= (ControlFlow 0 2) (- 0 32)) true) (and (=> (= (ControlFlow 0 2) (- 0 31)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |f#0@3| ($Unbox HandleTypeType (TypeDescriptorTests.XT.c (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0))) (and (=> (= (ControlFlow 0 2) (- 0 30)) true) (and (=> (= (ControlFlow 0 2) (- 0 29)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (= |f#0@4| ($Unbox HandleTypeType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) TypeDescriptorTests.XT.u))) (and (=> (= (ControlFlow 0 2) (- 0 28)) true) (and (=> (= (ControlFlow 0 2) (- 0 27)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 26)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 call1formal@this@0 TypeDescriptorTests.XT.u))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 call1formal@this@0 TypeDescriptorTests.XT.u)) (=> (and (= $Heap@2 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 call1formal@this@0) TypeDescriptorTests.XT.u ($Box HandleTypeType |f#0@4|)))) ($IsGoodHeap $Heap@2)) (and (=> (= (ControlFlow 0 2) (- 0 25)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@2) (=> (and (and ($IsAlloc HandleTypeType |f#0@4| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@2) (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@4|))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@4|)) (= |f#0@5| ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@4|)))))) (and (=> (= (ControlFlow 0 2) (- 0 24)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@2) (=> (and (and ($IsAlloc HandleTypeType |f#0@5| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@2) (|TypeDescriptorTests.XT.G#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@5|))) (and (|TypeDescriptorTests.XT.G#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@5|)) (= |f#0@6| ($Unbox HandleTypeType (TypeDescriptorTests.XT.G (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@5|)))))) (and (=> (= (ControlFlow 0 2) (- 0 23)) true) (and (=> (= (ControlFlow 0 2) (- 0 22)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@2) (=> (and (and ($IsAlloc HandleTypeType |f#0@6| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@2) (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@6|))) (and (|TypeDescriptorTests.XT.F#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@6|)) (= |f#0@7| ($Unbox HandleTypeType (TypeDescriptorTests.XT.F (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@6|)))))) (and (=> (= (ControlFlow 0 2) (- 0 21)) true) (and (=> (= (ControlFlow 0 2) (- 0 20)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@2) (=> (and (and ($IsAlloc HandleTypeType |f#0@7| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@2) (|TypeDescriptorTests.XT.G#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@7|))) (and (|TypeDescriptorTests.XT.G#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@7|)) (= |f#0@8| ($Unbox HandleTypeType (TypeDescriptorTests.XT.G (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 ($Box HandleTypeType |f#0@7|)))))) (and (=> (= (ControlFlow 0 2) (- 0 19)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and ($IsBox |call5formal@r#0| call0formal@TypeDescriptorTests.XT$U) ($IsAllocBox |call5formal@r#0| call0formal@TypeDescriptorTests.XT$U $Heap@@3)) (=> (and (and (= call0formal@TypeDescriptorTests.XT$U@0 (Tclass._System.___hTotalFunc1 TInt TInt)) (= |call3formal@u#0@0| ($Box HandleTypeType |f#0@8|))) (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3))) (=> (and (and (and ($IsBox |call5formal@r#0@0| call0formal@TypeDescriptorTests.XT$U@0) ($IsAllocBox |call5formal@r#0@0| call0formal@TypeDescriptorTests.XT$U@0 $Heap@3)) (forall (($o@@11 T@U) ) (!  (=> (and (or (not (= $o@@11 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@11) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@11) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@11)))
+ :qid |TraitCompiledfy.525:12|
+ :skolemid |3924|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@11))
 ))) (and ($HeapSucc $Heap@2 $Heap@3) (= |$rhs##0@0| ($Unbox HandleTypeType |call5formal@r#0@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 18)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and ($IsBox |call5formal@r#0@@0| call0formal@TypeDescriptorTests.XT$U@@0) ($IsAllocBox |call5formal@r#0@@0| call0formal@TypeDescriptorTests.XT$U@@0 $Heap@@3)) (=> (and (and (= call0formal@TypeDescriptorTests.XT$U@0@@0 (Tclass._System.___hTotalFunc1 TInt TInt)) (= |call3formal@u#0@0@@0| ($Box HandleTypeType |$rhs##0@0|))) (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4))) (=> (and (and (and ($IsBox |call5formal@r#0@0@@0| call0formal@TypeDescriptorTests.XT$U@0@@0) ($IsAllocBox |call5formal@r#0@0@@0| call0formal@TypeDescriptorTests.XT$U@0@@0 $Heap@4)) (forall (($o@@12 T@U) ) (!  (=> (and (or (not (= $o@@12 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@12) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@12) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@12)))
+ :qid |TraitCompiledfy.526:12|
+ :skolemid |3927|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@12))
 ))) (and ($HeapSucc $Heap@3 $Heap@4) (= |$rhs##1@0| ($Unbox HandleTypeType |call5formal@r#0@0@@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 17)) true) (and (=> (= (ControlFlow 0 2) (- 0 16)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and ($IsBox |call5formal@r#0@@1| call0formal@TypeDescriptorTests.XT$U@@1) ($IsAllocBox |call5formal@r#0@@1| call0formal@TypeDescriptorTests.XT$U@@1 $Heap@@3)) (=> (and (and (= call0formal@TypeDescriptorTests.XT$U@0@@1 (Tclass._System.___hTotalFunc1 TInt TInt)) (= |call3formal@u#0@0@@1| ($Box HandleTypeType |$rhs##1@0|))) (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5))) (=> (and (and (and ($IsBox |call5formal@r#0@0@@1| call0formal@TypeDescriptorTests.XT$U@0@@1) ($IsAllocBox |call5formal@r#0@0@@1| call0formal@TypeDescriptorTests.XT$U@0@@1 $Heap@5)) (forall (($o@@13 T@U) ) (!  (=> (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@13) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@13) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $o@@13)))
+ :qid |TraitCompiledfy.525:12|
+ :skolemid |3924|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@13))
 ))) (and ($HeapSucc $Heap@4 $Heap@5) (= |$rhs##2@0| ($Unbox HandleTypeType |call5formal@r#0@0@@1|)))) (and (=> (= (ControlFlow 0 2) (- 0 15)) true) (and (=> (= (ControlFlow 0 2) (- 0 14)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and ($IsBox |call5formal@r#0@@2| call0formal@TypeDescriptorTests.XT$U@@2) ($IsAllocBox |call5formal@r#0@@2| call0formal@TypeDescriptorTests.XT$U@@2 $Heap@@3)) (=> (and (and (= call0formal@TypeDescriptorTests.XT$U@0@@2 (Tclass._System.___hTotalFunc1 TInt TInt)) (= |call3formal@u#0@0@@2| ($Box HandleTypeType |$rhs##2@0|))) (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6))) (=> (and (and (and ($IsBox |call5formal@r#0@0@@2| call0formal@TypeDescriptorTests.XT$U@0@@2) ($IsAllocBox |call5formal@r#0@0@@2| call0formal@TypeDescriptorTests.XT$U@0@@2 $Heap@6)) (forall (($o@@14 T@U) ) (!  (=> (and (or (not (= $o@@14 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@14) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@14) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@14)))
+ :qid |TraitCompiledfy.526:12|
+ :skolemid |3927|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@14))
 ))) (and ($HeapSucc $Heap@5 $Heap@6) (= |$rhs##3@0| ($Unbox HandleTypeType |call5formal@r#0@0@@2|)))) (and (=> (= (ControlFlow 0 2) (- 0 13)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@6) (=> (and (and ($IsAlloc HandleTypeType |$rhs##3@0| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@6) (|TypeDescriptorTests.XT.F_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |$rhs##3@0|)) (and (|TypeDescriptorTests.XT.F_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |$rhs##3@0|) (= |f#0@9| (TypeDescriptorTests.XT.F_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |$rhs##3@0|)))) (and (=> (= (ControlFlow 0 2) (- 0 12)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@6) (=> (and (and ($IsAlloc HandleTypeType |f#0@9| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@6) (|TypeDescriptorTests.XT.G_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@9|)) (and (|TypeDescriptorTests.XT.G_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@9|) (= |f#0@10| (TypeDescriptorTests.XT.G_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@9|)))) (and (=> (= (ControlFlow 0 2) (- 0 11)) true) (and (=> (= (ControlFlow 0 2) (- 0 10)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@6) (=> (and (and ($IsAlloc HandleTypeType |f#0@10| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@6) (|TypeDescriptorTests.XT.F_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@10|)) (and (|TypeDescriptorTests.XT.F_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@10|) (= |f#0@11| (TypeDescriptorTests.XT.F_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@10|)))) (and (=> (= (ControlFlow 0 2) (- 0 9)) true) (and (=> (= (ControlFlow 0 2) (- 0 8)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> ($IsAllocBox ($Box refType call1formal@this@0) (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@6) (=> (and (and ($IsAlloc HandleTypeType |f#0@11| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@6) (|TypeDescriptorTests.XT.G_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@11|)) (and (|TypeDescriptorTests.XT.G_k#canCall| (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@11|) (= |f#0@12| (TypeDescriptorTests.XT.G_k (Tclass._System.___hTotalFunc1 TInt TInt) TInt call1formal@this@0 |f#0@11|)))) (and (=> (= (ControlFlow 0 2) (- 0 7)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and (and (and (and ($Is HandleTypeType |call5formal@r#0@@3| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W call1formal@TypeDescriptorTests.XT$W)) ($IsAlloc HandleTypeType |call5formal@r#0@@3| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W call1formal@TypeDescriptorTests.XT$W) $Heap@@3)) (= call0formal@TypeDescriptorTests.XT$U@0@@3 (Tclass._System.___hTotalFunc1 TInt TInt))) (and ($IsGoodHeap $Heap@7) ($IsHeapAnchor $Heap@7))) (and (and ($Is HandleTypeType |call5formal@r#0@0@@3| (Tclass._System.___hTotalFunc1 TInt TInt)) ($IsAlloc HandleTypeType |call5formal@r#0@0@@3| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@7)) (and (forall (($o@@15 T@U) ) (!  (=> (and (or (not (= $o@@15 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@15) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@15) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@15)))
+ :qid |TraitCompiledfy.530:12|
+ :skolemid |3937|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@15))
 )) ($HeapSucc $Heap@6 $Heap@7)))) (and (=> (= (ControlFlow 0 2) (- 0 6)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and (and (and (and ($Is HandleTypeType |call5formal@r#0@@4| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W@@0 call1formal@TypeDescriptorTests.XT$W@@0)) ($IsAlloc HandleTypeType |call5formal@r#0@@4| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W@@0 call1formal@TypeDescriptorTests.XT$W@@0) $Heap@@3)) (= call0formal@TypeDescriptorTests.XT$U@0@@4 (Tclass._System.___hTotalFunc1 TInt TInt))) (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8))) (and (and ($Is HandleTypeType |call5formal@r#0@0@@4| (Tclass._System.___hTotalFunc1 TInt TInt)) ($IsAlloc HandleTypeType |call5formal@r#0@0@@4| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@8)) (and (forall (($o@@16 T@U) ) (!  (=> (and (or (not (= $o@@16 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@16) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@16) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@16)))
+ :qid |TraitCompiledfy.531:12|
+ :skolemid |3940|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@16))
 )) ($HeapSucc $Heap@7 $Heap@8)))) (and (=> (= (ControlFlow 0 2) (- 0 5)) true) (and (=> (= (ControlFlow 0 2) (- 0 4)) (or (not (= call1formal@this@0 null)) (not true))) (=> (or (not (= call1formal@this@0 null)) (not true)) (=> (and (and (and (and ($Is HandleTypeType |call5formal@r#0@@5| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W@@1 call1formal@TypeDescriptorTests.XT$W@@1)) ($IsAlloc HandleTypeType |call5formal@r#0@@5| (Tclass._System.___hTotalFunc1 call1formal@TypeDescriptorTests.XT$W@@1 call1formal@TypeDescriptorTests.XT$W@@1) $Heap@@3)) (= call0formal@TypeDescriptorTests.XT$U@0@@5 (Tclass._System.___hTotalFunc1 TInt TInt))) (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9))) (and (and ($Is HandleTypeType |call5formal@r#0@0@@5| (Tclass._System.___hTotalFunc1 TInt TInt)) ($IsAlloc HandleTypeType |call5formal@r#0@0@@5| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@9)) (and (forall (($o@@17 T@U) ) (!  (=> (and (or (not (= $o@@17 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@17) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@17) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@17)))
+ :qid |TraitCompiledfy.530:12|
+ :skolemid |3937|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@17))
 )) ($HeapSucc $Heap@8 $Heap@9)))) (and (=> (= (ControlFlow 0 2) (- 0 3)) true) (=> (= (ControlFlow 0 2) (- 0 1)) (or (not (= call1formal@this@0 null)) (not true)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@3) ($IsHeapAnchor $Heap@@3)) (=> (and (and (and (and ($Is refType |y#0| (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt)) ($IsAlloc refType |y#0| (Tclass.TypeDescriptorTests.XT? (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@@3)) true) (and (=> |defass#x#0| (and ($Is refType |x#0| (Tclass.TypeDescriptorTests.XT (Tclass._System.___hTotalFunc1 TInt TInt) TInt)) ($IsAlloc refType |x#0| (Tclass.TypeDescriptorTests.XT (Tclass._System.___hTotalFunc1 TInt TInt) TInt) $Heap@@3))) true)) (and (and (and ($Is HandleTypeType |f#0@@3| (Tclass._System.___hTotalFunc1 TInt TInt)) ($IsAlloc HandleTypeType |f#0@@3| (Tclass._System.___hTotalFunc1 TInt TInt) $Heap@@3)) true) (and (= 3 $FunctionContextHeight) (= (ControlFlow 0 38) 2)))) anon0_correct))))

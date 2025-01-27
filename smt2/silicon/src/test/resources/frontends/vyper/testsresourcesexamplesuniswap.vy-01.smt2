@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:24:49
+; Started: 2025-01-26 22:57:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2510,11 +2510,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1481|)))
+  :qid |quant-u-1493|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-1482|)))
+  :qid |quant-u-1494|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -2522,37 +2522,37 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1487|)))
+  :qid |quant-u-1499|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1488|)))
+  :qid |quant-u-1500|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1483|)))
+  :qid |quant-u-1495|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-1484|)))
+  :qid |quant-u-1496|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1489|)))
+  :qid |quant-u-1501|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1490|)))
+  :qid |quant-u-1502|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (= ($range_sum%limited s@$ $x@4@00 $y@5@00) ($range_sum s@$ $x@4@00 $y@5@00))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1485|)))
+  :qid |quant-u-1497|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   ($range_sum%stateless $x@4@00 $y@5@00)
   :pattern (($range_sum%limited s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1486|)))
+  :qid |quant-u-1498|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2572,7 +2572,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@4@00)
           (+ (- (- $y_exclusive $y@5@00) $x_exclusive) $x@4@00)))))))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1491|)))
+  :qid |quant-u-1503|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2584,7 +2584,7 @@
       (div (* (- $y@5@00 1) $y@5@00) 2)
       (div (* (- (- 0 $y@5@00) 1) (- 0 $y@5@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1492|)))
+  :qid |quant-u-1504|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------
@@ -11359,7 +11359,7 @@
             ($SortWrappers.IntTo$Snap $arg1@427@01))
           ($SortWrappers.IntTo$Snap $arg2@428@01))))))
   
-  :qid |quant-u-1493|))))
+  :qid |quant-u-1505|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11520,7 +11520,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@432@01 $arg0 $arg1 $arg2) (inv@434@01 $arg0 $arg1 $arg2) (inv@436@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1494|)))
+  :qid |quant-u-1506|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -11556,7 +11556,7 @@
         ($SortWrappers.IntTo$Snap (inv@436@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1495|))))
+  :qid |quant-u-1507|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11722,7 +11722,7 @@
             ($SortWrappers.IntTo$Snap $arg1@439@01))
           ($SortWrappers.IntTo$Snap $arg2@440@01))))))
   
-  :qid |quant-u-1496|))))
+  :qid |quant-u-1508|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11883,7 +11883,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@444@01 $arg0 $arg1 $arg2) (inv@446@01 $arg0 $arg1 $arg2) (inv@448@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1497|)))
+  :qid |quant-u-1509|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -11919,7 +11919,7 @@
         ($SortWrappers.IntTo$Snap (inv@448@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1498|))))
+  :qid |quant-u-1510|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12085,7 +12085,7 @@
             ($SortWrappers.IntTo$Snap $arg1@451@01))
           ($SortWrappers.IntTo$Snap $arg2@452@01))))))
   
-  :qid |quant-u-1499|))))
+  :qid |quant-u-1511|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12246,7 +12246,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@456@01 $arg0 $arg1 $arg2) (inv@458@01 $arg0 $arg1 $arg2) (inv@460@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1500|)))
+  :qid |quant-u-1512|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -12282,7 +12282,7 @@
         ($SortWrappers.IntTo$Snap (inv@460@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1501|))))
+  :qid |quant-u-1513|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12448,7 +12448,7 @@
             ($SortWrappers.IntTo$Snap $arg1@463@01))
           ($SortWrappers.IntTo$Snap $arg2@464@01))))))
   
-  :qid |quant-u-1502|))))
+  :qid |quant-u-1514|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12609,7 +12609,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@468@01 $arg0 $arg1 $arg2) (inv@470@01 $arg0 $arg1 $arg2) (inv@472@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1503|)))
+  :qid |quant-u-1515|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -12645,7 +12645,7 @@
         ($SortWrappers.IntTo$Snap (inv@472@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1504|))))
+  :qid |quant-u-1516|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12810,7 +12810,7 @@
             ($SortWrappers.IntTo$Snap $arg1@475@01))
           ($SortWrappers.IntTo$Snap $arg2@476@01))))))
   
-  :qid |quant-u-1505|))))
+  :qid |quant-u-1517|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12971,7 +12971,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@480@01 $arg0 $arg1 $arg2) (inv@482@01 $arg0 $arg1 $arg2) (inv@484@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1506|)))
+  :qid |quant-u-1518|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -13007,7 +13007,7 @@
         ($SortWrappers.IntTo$Snap (inv@484@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1507|))))
+  :qid |quant-u-1519|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -13172,7 +13172,7 @@
             ($SortWrappers.IntTo$Snap $arg1@487@01))
           ($SortWrappers.IntTo$Snap $arg2@488@01))))))
   
-  :qid |quant-u-1508|))))
+  :qid |quant-u-1520|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -13333,7 +13333,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@492@01 $arg0 $arg1 $arg2) (inv@494@01 $arg0 $arg1 $arg2) (inv@496@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1509|)))
+  :qid |quant-u-1521|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -13369,7 +13369,7 @@
         ($SortWrappers.IntTo$Snap (inv@496@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1510|))))
+  :qid |quant-u-1522|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -13938,7 +13938,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
@@ -15678,7 +15678,7 @@
             ($SortWrappers.IntTo$Snap $arg1@522@01))
           ($SortWrappers.IntTo$Snap $arg2@523@01))))))
   
-  :qid |quant-u-1511|))))
+  :qid |quant-u-1523|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -15839,7 +15839,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@525@01 $arg0 $arg1 $arg2) (inv@527@01 $arg0 $arg1 $arg2) (inv@529@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1512|)))
+  :qid |quant-u-1524|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -15875,7 +15875,7 @@
         ($SortWrappers.IntTo$Snap (inv@529@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1513|))))
+  :qid |quant-u-1525|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16039,7 +16039,7 @@
             ($SortWrappers.IntTo$Snap $arg1@532@01))
           ($SortWrappers.IntTo$Snap $arg2@533@01))))))
   
-  :qid |quant-u-1514|))))
+  :qid |quant-u-1526|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16200,7 +16200,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@535@01 $arg0 $arg1 $arg2) (inv@537@01 $arg0 $arg1 $arg2) (inv@539@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1515|)))
+  :qid |quant-u-1527|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -16236,7 +16236,7 @@
         ($SortWrappers.IntTo$Snap (inv@539@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1516|))))
+  :qid |quant-u-1528|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16400,7 +16400,7 @@
             ($SortWrappers.IntTo$Snap $arg1@542@01))
           ($SortWrappers.IntTo$Snap $arg2@543@01))))))
   
-  :qid |quant-u-1517|))))
+  :qid |quant-u-1529|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16561,7 +16561,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@545@01 $arg0 $arg1 $arg2) (inv@547@01 $arg0 $arg1 $arg2) (inv@549@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1518|)))
+  :qid |quant-u-1530|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -16597,7 +16597,7 @@
         ($SortWrappers.IntTo$Snap (inv@549@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1519|))))
+  :qid |quant-u-1531|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16761,7 +16761,7 @@
             ($SortWrappers.IntTo$Snap $arg1@552@01))
           ($SortWrappers.IntTo$Snap $arg2@553@01))))))
   
-  :qid |quant-u-1520|))))
+  :qid |quant-u-1532|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -16922,7 +16922,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@555@01 $arg0 $arg1 $arg2) (inv@557@01 $arg0 $arg1 $arg2) (inv@559@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1521|)))
+  :qid |quant-u-1533|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -16958,7 +16958,7 @@
         ($SortWrappers.IntTo$Snap (inv@559@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1522|))))
+  :qid |quant-u-1534|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -17121,7 +17121,7 @@
             ($SortWrappers.IntTo$Snap $arg1@562@01))
           ($SortWrappers.IntTo$Snap $arg2@563@01))))))
   
-  :qid |quant-u-1523|))))
+  :qid |quant-u-1535|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -17282,7 +17282,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@565@01 $arg0 $arg1 $arg2) (inv@567@01 $arg0 $arg1 $arg2) (inv@569@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1524|)))
+  :qid |quant-u-1536|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -17318,7 +17318,7 @@
         ($SortWrappers.IntTo$Snap (inv@569@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1525|))))
+  :qid |quant-u-1537|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -17481,7 +17481,7 @@
             ($SortWrappers.IntTo$Snap $arg1@572@01))
           ($SortWrappers.IntTo$Snap $arg2@573@01))))))
   
-  :qid |quant-u-1526|))))
+  :qid |quant-u-1538|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -17642,7 +17642,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@575@01 $arg0 $arg1 $arg2) (inv@577@01 $arg0 $arg1 $arg2) (inv@579@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1527|)))
+  :qid |quant-u-1539|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -17678,7 +17678,7 @@
         ($SortWrappers.IntTo$Snap (inv@579@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1528|))))
+  :qid |quant-u-1540|))))
 (check-sat)
 ; unsat
 (pop) ; 26
@@ -17745,7 +17745,7 @@
 (check-sat)
 ; unknown
 (pop) ; 27
-; 0.02s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 136 | True | live]
 ; [else-branch: 136 | False | dead]
@@ -17796,7 +17796,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 26
@@ -17805,7 +17805,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 138 | !(l$send_fail$1@345@01) | live]
 ; [else-branch: 138 | l$send_fail$1@345@01 | live]
@@ -19886,7 +19886,7 @@
             ($SortWrappers.IntTo$Snap $arg1@638@01))
           ($SortWrappers.IntTo$Snap $arg2@639@01))))))
   
-  :qid |quant-u-1529|))))
+  :qid |quant-u-1541|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20047,7 +20047,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@643@01 $arg0 $arg1 $arg2) (inv@645@01 $arg0 $arg1 $arg2) (inv@647@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1530|)))
+  :qid |quant-u-1542|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20083,7 +20083,7 @@
         ($SortWrappers.IntTo$Snap (inv@647@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1531|))))
+  :qid |quant-u-1543|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20249,7 +20249,7 @@
             ($SortWrappers.IntTo$Snap $arg1@650@01))
           ($SortWrappers.IntTo$Snap $arg2@651@01))))))
   
-  :qid |quant-u-1532|))))
+  :qid |quant-u-1544|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20410,7 +20410,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@655@01 $arg0 $arg1 $arg2) (inv@657@01 $arg0 $arg1 $arg2) (inv@659@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1533|)))
+  :qid |quant-u-1545|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20446,7 +20446,7 @@
         ($SortWrappers.IntTo$Snap (inv@659@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1534|))))
+  :qid |quant-u-1546|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20612,7 +20612,7 @@
             ($SortWrappers.IntTo$Snap $arg1@662@01))
           ($SortWrappers.IntTo$Snap $arg2@663@01))))))
   
-  :qid |quant-u-1535|))))
+  :qid |quant-u-1547|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20773,7 +20773,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@667@01 $arg0 $arg1 $arg2) (inv@669@01 $arg0 $arg1 $arg2) (inv@671@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1536|)))
+  :qid |quant-u-1548|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -20809,7 +20809,7 @@
         ($SortWrappers.IntTo$Snap (inv@671@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1537|))))
+  :qid |quant-u-1549|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -20975,7 +20975,7 @@
             ($SortWrappers.IntTo$Snap $arg1@674@01))
           ($SortWrappers.IntTo$Snap $arg2@675@01))))))
   
-  :qid |quant-u-1538|))))
+  :qid |quant-u-1550|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21136,7 +21136,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@679@01 $arg0 $arg1 $arg2) (inv@681@01 $arg0 $arg1 $arg2) (inv@683@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1539|)))
+  :qid |quant-u-1551|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21172,7 +21172,7 @@
         ($SortWrappers.IntTo$Snap (inv@683@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1540|))))
+  :qid |quant-u-1552|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21337,7 +21337,7 @@
             ($SortWrappers.IntTo$Snap $arg1@686@01))
           ($SortWrappers.IntTo$Snap $arg2@687@01))))))
   
-  :qid |quant-u-1541|))))
+  :qid |quant-u-1553|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21498,7 +21498,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@691@01 $arg0 $arg1 $arg2) (inv@693@01 $arg0 $arg1 $arg2) (inv@695@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1542|)))
+  :qid |quant-u-1554|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21534,7 +21534,7 @@
         ($SortWrappers.IntTo$Snap (inv@695@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1543|))))
+  :qid |quant-u-1555|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21699,7 +21699,7 @@
             ($SortWrappers.IntTo$Snap $arg1@698@01))
           ($SortWrappers.IntTo$Snap $arg2@699@01))))))
   
-  :qid |quant-u-1544|))))
+  :qid |quant-u-1556|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21860,7 +21860,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@703@01 $arg0 $arg1 $arg2) (inv@705@01 $arg0 $arg1 $arg2) (inv@707@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1545|)))
+  :qid |quant-u-1557|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -21896,7 +21896,7 @@
         ($SortWrappers.IntTo$Snap (inv@707@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1546|))))
+  :qid |quant-u-1558|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -22361,7 +22361,7 @@
             ($SortWrappers.IntTo$Snap $arg1@719@01))
           ($SortWrappers.IntTo$Snap $arg2@720@01))))))
   
-  :qid |quant-u-1547|))))
+  :qid |quant-u-1559|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22522,7 +22522,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@722@01 $arg0 $arg1 $arg2) (inv@724@01 $arg0 $arg1 $arg2) (inv@726@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1548|)))
+  :qid |quant-u-1560|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -22558,7 +22558,7 @@
         ($SortWrappers.IntTo$Snap (inv@726@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1549|))))
+  :qid |quant-u-1561|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22722,7 +22722,7 @@
             ($SortWrappers.IntTo$Snap $arg1@729@01))
           ($SortWrappers.IntTo$Snap $arg2@730@01))))))
   
-  :qid |quant-u-1550|))))
+  :qid |quant-u-1562|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -22883,7 +22883,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@732@01 $arg0 $arg1 $arg2) (inv@734@01 $arg0 $arg1 $arg2) (inv@736@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1551|)))
+  :qid |quant-u-1563|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -22919,7 +22919,7 @@
         ($SortWrappers.IntTo$Snap (inv@736@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1552|))))
+  :qid |quant-u-1564|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23083,7 +23083,7 @@
             ($SortWrappers.IntTo$Snap $arg1@739@01))
           ($SortWrappers.IntTo$Snap $arg2@740@01))))))
   
-  :qid |quant-u-1553|))))
+  :qid |quant-u-1565|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23244,7 +23244,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@742@01 $arg0 $arg1 $arg2) (inv@744@01 $arg0 $arg1 $arg2) (inv@746@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1554|)))
+  :qid |quant-u-1566|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -23280,7 +23280,7 @@
         ($SortWrappers.IntTo$Snap (inv@746@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1555|))))
+  :qid |quant-u-1567|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23444,7 +23444,7 @@
             ($SortWrappers.IntTo$Snap $arg1@749@01))
           ($SortWrappers.IntTo$Snap $arg2@750@01))))))
   
-  :qid |quant-u-1556|))))
+  :qid |quant-u-1568|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23605,7 +23605,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@752@01 $arg0 $arg1 $arg2) (inv@754@01 $arg0 $arg1 $arg2) (inv@756@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1557|)))
+  :qid |quant-u-1569|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -23641,7 +23641,7 @@
         ($SortWrappers.IntTo$Snap (inv@756@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1558|))))
+  :qid |quant-u-1570|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23804,7 +23804,7 @@
             ($SortWrappers.IntTo$Snap $arg1@759@01))
           ($SortWrappers.IntTo$Snap $arg2@760@01))))))
   
-  :qid |quant-u-1559|))))
+  :qid |quant-u-1571|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -23965,7 +23965,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@762@01 $arg0 $arg1 $arg2) (inv@764@01 $arg0 $arg1 $arg2) (inv@766@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1560|)))
+  :qid |quant-u-1572|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -24001,7 +24001,7 @@
         ($SortWrappers.IntTo$Snap (inv@766@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1561|))))
+  :qid |quant-u-1573|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -24164,7 +24164,7 @@
             ($SortWrappers.IntTo$Snap $arg1@769@01))
           ($SortWrappers.IntTo$Snap $arg2@770@01))))))
   
-  :qid |quant-u-1562|))))
+  :qid |quant-u-1574|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -24325,7 +24325,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@772@01 $arg0 $arg1 $arg2) (inv@774@01 $arg0 $arg1 $arg2) (inv@776@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1563|)))
+  :qid |quant-u-1575|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -24361,7 +24361,7 @@
         ($SortWrappers.IntTo$Snap (inv@776@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1564|))))
+  :qid |quant-u-1576|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -27893,7 +27893,7 @@
             ($SortWrappers.IntTo$Snap $arg1@940@01))
           ($SortWrappers.IntTo$Snap $arg2@941@01))))))
   
-  :qid |quant-u-1565|))))
+  :qid |quant-u-1594|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28054,7 +28054,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@945@01 $arg0 $arg1 $arg2) (inv@947@01 $arg0 $arg1 $arg2) (inv@949@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1566|)))
+  :qid |quant-u-1595|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -28090,7 +28090,7 @@
         ($SortWrappers.IntTo$Snap (inv@949@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1567|))))
+  :qid |quant-u-1596|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28256,7 +28256,7 @@
             ($SortWrappers.IntTo$Snap $arg1@952@01))
           ($SortWrappers.IntTo$Snap $arg2@953@01))))))
   
-  :qid |quant-u-1568|))))
+  :qid |quant-u-1597|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28417,7 +28417,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@957@01 $arg0 $arg1 $arg2) (inv@959@01 $arg0 $arg1 $arg2) (inv@961@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1569|)))
+  :qid |quant-u-1598|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -28453,7 +28453,7 @@
         ($SortWrappers.IntTo$Snap (inv@961@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1570|))))
+  :qid |quant-u-1599|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28619,7 +28619,7 @@
             ($SortWrappers.IntTo$Snap $arg1@964@01))
           ($SortWrappers.IntTo$Snap $arg2@965@01))))))
   
-  :qid |quant-u-1571|))))
+  :qid |quant-u-1600|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28780,7 +28780,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@969@01 $arg0 $arg1 $arg2) (inv@971@01 $arg0 $arg1 $arg2) (inv@973@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1572|)))
+  :qid |quant-u-1601|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -28816,7 +28816,7 @@
         ($SortWrappers.IntTo$Snap (inv@973@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1573|))))
+  :qid |quant-u-1602|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28982,7 +28982,7 @@
             ($SortWrappers.IntTo$Snap $arg1@976@01))
           ($SortWrappers.IntTo$Snap $arg2@977@01))))))
   
-  :qid |quant-u-1574|))))
+  :qid |quant-u-1603|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29143,7 +29143,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@981@01 $arg0 $arg1 $arg2) (inv@983@01 $arg0 $arg1 $arg2) (inv@985@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1575|)))
+  :qid |quant-u-1604|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -29179,7 +29179,7 @@
         ($SortWrappers.IntTo$Snap (inv@985@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1576|))))
+  :qid |quant-u-1605|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29344,7 +29344,7 @@
             ($SortWrappers.IntTo$Snap $arg1@988@01))
           ($SortWrappers.IntTo$Snap $arg2@989@01))))))
   
-  :qid |quant-u-1577|))))
+  :qid |quant-u-1606|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29505,7 +29505,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@993@01 $arg0 $arg1 $arg2) (inv@995@01 $arg0 $arg1 $arg2) (inv@997@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1578|)))
+  :qid |quant-u-1607|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -29541,7 +29541,7 @@
         ($SortWrappers.IntTo$Snap (inv@997@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1579|))))
+  :qid |quant-u-1608|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29706,7 +29706,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1000@01))
           ($SortWrappers.IntTo$Snap $arg2@1001@01))))))
   
-  :qid |quant-u-1580|))))
+  :qid |quant-u-1609|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29867,7 +29867,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1005@01 $arg0 $arg1 $arg2) (inv@1007@01 $arg0 $arg1 $arg2) (inv@1009@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1581|)))
+  :qid |quant-u-1610|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -29903,7 +29903,7 @@
         ($SortWrappers.IntTo$Snap (inv@1009@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1582|))))
+  :qid |quant-u-1611|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -30397,7 +30397,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -30486,7 +30486,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -30563,7 +30563,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 11
@@ -30592,7 +30592,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
@@ -30603,7 +30603,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 253 | $unwrap[Int]($w_mul[$Int](l$amount@838@01, l$token_reserve@1015@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
 ; [else-branch: 253 | !($unwrap[Int]($w_mul[$Int](l$amount@838@01, l$token_reserve@1015@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
@@ -30638,7 +30638,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 254 | True | live]
 ; [else-branch: 254 | False | dead]
@@ -30736,7 +30736,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 258 | $unwrap[Int](l$total_liquidity@936@01) != 0 | live]
 ; [else-branch: 258 | $unwrap[Int](l$total_liquidity@936@01) == 0 | dead]
@@ -30964,7 +30964,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -31088,7 +31088,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -31099,7 +31099,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 273 | $unwrap[Int](l$eth_amount@1018@01) >= $unwrap[Int](l$min_eth@839@01) && $unwrap[Int](l$token_amount@1021@01) >= $unwrap[Int](l$min_tokens@840@01) | live]
 ; [else-branch: 273 | !($unwrap[Int](l$eth_amount@1018@01) >= $unwrap[Int](l$min_eth@839@01) && $unwrap[Int](l$token_amount@1021@01) >= $unwrap[Int](l$min_tokens@840@01)) | live]
@@ -31130,7 +31130,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -31143,7 +31143,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 274 | $unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0 | live]
 ; [else-branch: 274 | !($unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0) | live]
@@ -31178,7 +31178,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 275 | True | live]
 ; [else-branch: 275 | False | dead]
@@ -31248,7 +31248,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -31262,7 +31262,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 277 | !($unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0) | live]
 ; [else-branch: 277 | $unwrap[Int]($wrap[$Int]($map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@848@01, 4)), $struct_get[Int]($struct_loc[Int](msg@844@01, 0))))) - $unwrap[Int](l$amount@838@01) < 0 | live]
@@ -31331,7 +31331,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -31397,7 +31397,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -31406,7 +31406,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 280 | $unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0 | live]
 ; [else-branch: 280 | !($unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0) | live]
@@ -31437,7 +31437,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 281 | True | live]
 ; [else-branch: 281 | False | dead]
@@ -31495,7 +31495,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -31507,7 +31507,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 283 | !($unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0) | live]
 ; [else-branch: 283 | $unwrap[Int](l$total_liquidity@936@01) - $unwrap[Int](l$amount@838@01) < 0 | live]
@@ -31556,7 +31556,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 20
@@ -31651,7 +31651,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 287 | True | live]
 ; [else-branch: 287 | False | dead]
@@ -31723,7 +31723,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 289 | !($struct_get[Int]($struct_loc[Int](self@1029@01, 8)) < $unwrap[Int](l$eth_amount@1018@01)) | live]
 ; [else-branch: 289 | $struct_get[Int]($struct_loc[Int](self@1029@01, 8)) < $unwrap[Int](l$eth_amount@1018@01) | live]
@@ -31929,7 +31929,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1035@01))
           ($SortWrappers.IntTo$Snap $arg2@1036@01))))))
   
-  :qid |quant-u-1583|))))
+  :qid |quant-u-1612|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -32090,7 +32090,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1038@01 $arg0 $arg1 $arg2) (inv@1040@01 $arg0 $arg1 $arg2) (inv@1042@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1584|)))
+  :qid |quant-u-1613|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -32126,7 +32126,7 @@
         ($SortWrappers.IntTo$Snap (inv@1042@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1585|))))
+  :qid |quant-u-1614|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -32290,7 +32290,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1045@01))
           ($SortWrappers.IntTo$Snap $arg2@1046@01))))))
   
-  :qid |quant-u-1586|))))
+  :qid |quant-u-1615|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -32451,7 +32451,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1048@01 $arg0 $arg1 $arg2) (inv@1050@01 $arg0 $arg1 $arg2) (inv@1052@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1587|)))
+  :qid |quant-u-1616|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -32487,7 +32487,7 @@
         ($SortWrappers.IntTo$Snap (inv@1052@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1588|))))
+  :qid |quant-u-1617|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -32651,7 +32651,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1055@01))
           ($SortWrappers.IntTo$Snap $arg2@1056@01))))))
   
-  :qid |quant-u-1589|))))
+  :qid |quant-u-1618|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -32812,7 +32812,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1058@01 $arg0 $arg1 $arg2) (inv@1060@01 $arg0 $arg1 $arg2) (inv@1062@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1590|)))
+  :qid |quant-u-1619|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -32848,7 +32848,7 @@
         ($SortWrappers.IntTo$Snap (inv@1062@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1591|))))
+  :qid |quant-u-1620|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33012,7 +33012,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1065@01))
           ($SortWrappers.IntTo$Snap $arg2@1066@01))))))
   
-  :qid |quant-u-1592|))))
+  :qid |quant-u-1621|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33173,7 +33173,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1068@01 $arg0 $arg1 $arg2) (inv@1070@01 $arg0 $arg1 $arg2) (inv@1072@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1593|)))
+  :qid |quant-u-1622|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33209,7 +33209,7 @@
         ($SortWrappers.IntTo$Snap (inv@1072@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1594|))))
+  :qid |quant-u-1623|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33372,7 +33372,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1075@01))
           ($SortWrappers.IntTo$Snap $arg2@1076@01))))))
   
-  :qid |quant-u-1595|))))
+  :qid |quant-u-1624|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33533,7 +33533,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1078@01 $arg0 $arg1 $arg2) (inv@1080@01 $arg0 $arg1 $arg2) (inv@1082@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1596|)))
+  :qid |quant-u-1625|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33569,7 +33569,7 @@
         ($SortWrappers.IntTo$Snap (inv@1082@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1597|))))
+  :qid |quant-u-1626|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33732,7 +33732,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1085@01))
           ($SortWrappers.IntTo$Snap $arg2@1086@01))))))
   
-  :qid |quant-u-1598|))))
+  :qid |quant-u-1627|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -33893,7 +33893,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1088@01 $arg0 $arg1 $arg2) (inv@1090@01 $arg0 $arg1 $arg2) (inv@1092@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1599|)))
+  :qid |quant-u-1628|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -33929,7 +33929,7 @@
         ($SortWrappers.IntTo$Snap (inv@1092@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1600|))))
+  :qid |quant-u-1629|))))
 (check-sat)
 ; unsat
 (pop) ; 22
@@ -34964,7 +34964,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1127@01))
           ($SortWrappers.IntTo$Snap $arg2@1128@01))))))
   
-  :qid |quant-u-1601|))))
+  :qid |quant-u-1630|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -35125,7 +35125,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1130@01 $arg0 $arg1 $arg2) (inv@1132@01 $arg0 $arg1 $arg2) (inv@1134@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1602|)))
+  :qid |quant-u-1631|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -35161,7 +35161,7 @@
         ($SortWrappers.IntTo$Snap (inv@1134@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1603|))))
+  :qid |quant-u-1632|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -35325,7 +35325,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1137@01))
           ($SortWrappers.IntTo$Snap $arg2@1138@01))))))
   
-  :qid |quant-u-1604|))))
+  :qid |quant-u-1633|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -35486,7 +35486,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1140@01 $arg0 $arg1 $arg2) (inv@1142@01 $arg0 $arg1 $arg2) (inv@1144@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1605|)))
+  :qid |quant-u-1634|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -35522,7 +35522,7 @@
         ($SortWrappers.IntTo$Snap (inv@1144@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1606|))))
+  :qid |quant-u-1635|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -35686,7 +35686,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1147@01))
           ($SortWrappers.IntTo$Snap $arg2@1148@01))))))
   
-  :qid |quant-u-1607|))))
+  :qid |quant-u-1636|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -35847,7 +35847,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1150@01 $arg0 $arg1 $arg2) (inv@1152@01 $arg0 $arg1 $arg2) (inv@1154@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1608|)))
+  :qid |quant-u-1637|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -35883,7 +35883,7 @@
         ($SortWrappers.IntTo$Snap (inv@1154@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1609|))))
+  :qid |quant-u-1638|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36047,7 +36047,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1157@01))
           ($SortWrappers.IntTo$Snap $arg2@1158@01))))))
   
-  :qid |quant-u-1610|))))
+  :qid |quant-u-1639|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36208,7 +36208,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1160@01 $arg0 $arg1 $arg2) (inv@1162@01 $arg0 $arg1 $arg2) (inv@1164@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1611|)))
+  :qid |quant-u-1640|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -36244,7 +36244,7 @@
         ($SortWrappers.IntTo$Snap (inv@1164@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1612|))))
+  :qid |quant-u-1641|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36407,7 +36407,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1167@01))
           ($SortWrappers.IntTo$Snap $arg2@1168@01))))))
   
-  :qid |quant-u-1613|))))
+  :qid |quant-u-1642|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36568,7 +36568,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1170@01 $arg0 $arg1 $arg2) (inv@1172@01 $arg0 $arg1 $arg2) (inv@1174@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1614|)))
+  :qid |quant-u-1643|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -36604,7 +36604,7 @@
         ($SortWrappers.IntTo$Snap (inv@1174@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1615|))))
+  :qid |quant-u-1644|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36767,7 +36767,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1177@01))
           ($SortWrappers.IntTo$Snap $arg2@1178@01))))))
   
-  :qid |quant-u-1616|))))
+  :qid |quant-u-1645|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -36928,7 +36928,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1180@01 $arg0 $arg1 $arg2) (inv@1182@01 $arg0 $arg1 $arg2) (inv@1184@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1617|)))
+  :qid |quant-u-1646|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -36964,7 +36964,7 @@
         ($SortWrappers.IntTo$Snap (inv@1184@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1618|))))
+  :qid |quant-u-1647|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -38865,7 +38865,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1241@01))
           ($SortWrappers.IntTo$Snap $arg2@1242@01))))))
   
-  :qid |quant-u-1619|))))
+  :qid |quant-u-1648|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39026,7 +39026,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1244@01 $arg0 $arg1 $arg2) (inv@1246@01 $arg0 $arg1 $arg2) (inv@1248@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1620|)))
+  :qid |quant-u-1649|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -39062,7 +39062,7 @@
         ($SortWrappers.IntTo$Snap (inv@1248@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1621|))))
+  :qid |quant-u-1650|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39226,7 +39226,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1251@01))
           ($SortWrappers.IntTo$Snap $arg2@1252@01))))))
   
-  :qid |quant-u-1622|))))
+  :qid |quant-u-1651|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39387,7 +39387,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1254@01 $arg0 $arg1 $arg2) (inv@1256@01 $arg0 $arg1 $arg2) (inv@1258@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1623|)))
+  :qid |quant-u-1652|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -39423,7 +39423,7 @@
         ($SortWrappers.IntTo$Snap (inv@1258@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1624|))))
+  :qid |quant-u-1653|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39587,7 +39587,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1261@01))
           ($SortWrappers.IntTo$Snap $arg2@1262@01))))))
   
-  :qid |quant-u-1625|))))
+  :qid |quant-u-1654|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39748,7 +39748,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1264@01 $arg0 $arg1 $arg2) (inv@1266@01 $arg0 $arg1 $arg2) (inv@1268@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1626|)))
+  :qid |quant-u-1655|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -39784,7 +39784,7 @@
         ($SortWrappers.IntTo$Snap (inv@1268@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1627|))))
+  :qid |quant-u-1656|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -39948,7 +39948,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1271@01))
           ($SortWrappers.IntTo$Snap $arg2@1272@01))))))
   
-  :qid |quant-u-1628|))))
+  :qid |quant-u-1657|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -40109,7 +40109,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1274@01 $arg0 $arg1 $arg2) (inv@1276@01 $arg0 $arg1 $arg2) (inv@1278@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1629|)))
+  :qid |quant-u-1658|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -40145,7 +40145,7 @@
         ($SortWrappers.IntTo$Snap (inv@1278@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1630|))))
+  :qid |quant-u-1659|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -40308,7 +40308,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1281@01))
           ($SortWrappers.IntTo$Snap $arg2@1282@01))))))
   
-  :qid |quant-u-1631|))))
+  :qid |quant-u-1660|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -40469,7 +40469,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1284@01 $arg0 $arg1 $arg2) (inv@1286@01 $arg0 $arg1 $arg2) (inv@1288@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1632|)))
+  :qid |quant-u-1661|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -40505,7 +40505,7 @@
         ($SortWrappers.IntTo$Snap (inv@1288@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1633|))))
+  :qid |quant-u-1662|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -40668,7 +40668,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1291@01))
           ($SortWrappers.IntTo$Snap $arg2@1292@01))))))
   
-  :qid |quant-u-1634|))))
+  :qid |quant-u-1663|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -40829,7 +40829,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1294@01 $arg0 $arg1 $arg2) (inv@1296@01 $arg0 $arg1 $arg2) (inv@1298@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1635|)))
+  :qid |quant-u-1664|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -40865,7 +40865,7 @@
         ($SortWrappers.IntTo$Snap (inv@1298@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1636|))))
+  :qid |quant-u-1665|))))
 (check-sat)
 ; unsat
 (pop) ; 24
@@ -44176,7 +44176,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1452@01))
           ($SortWrappers.IntTo$Snap $arg2@1453@01))))))
   
-  :qid |quant-u-1637|))))
+  :qid |quant-u-1666|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -44337,7 +44337,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1457@01 $arg0 $arg1 $arg2) (inv@1459@01 $arg0 $arg1 $arg2) (inv@1461@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1638|)))
+  :qid |quant-u-1667|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -44373,7 +44373,7 @@
         ($SortWrappers.IntTo$Snap (inv@1461@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1639|))))
+  :qid |quant-u-1668|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -44539,7 +44539,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1464@01))
           ($SortWrappers.IntTo$Snap $arg2@1465@01))))))
   
-  :qid |quant-u-1640|))))
+  :qid |quant-u-1669|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -44700,7 +44700,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1469@01 $arg0 $arg1 $arg2) (inv@1471@01 $arg0 $arg1 $arg2) (inv@1473@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1641|)))
+  :qid |quant-u-1670|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -44736,7 +44736,7 @@
         ($SortWrappers.IntTo$Snap (inv@1473@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1642|))))
+  :qid |quant-u-1671|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -44902,7 +44902,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1476@01))
           ($SortWrappers.IntTo$Snap $arg2@1477@01))))))
   
-  :qid |quant-u-1643|))))
+  :qid |quant-u-1672|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45063,7 +45063,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1481@01 $arg0 $arg1 $arg2) (inv@1483@01 $arg0 $arg1 $arg2) (inv@1485@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1644|)))
+  :qid |quant-u-1673|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -45099,7 +45099,7 @@
         ($SortWrappers.IntTo$Snap (inv@1485@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1645|))))
+  :qid |quant-u-1674|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45265,7 +45265,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1488@01))
           ($SortWrappers.IntTo$Snap $arg2@1489@01))))))
   
-  :qid |quant-u-1646|))))
+  :qid |quant-u-1675|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45426,7 +45426,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1493@01 $arg0 $arg1 $arg2) (inv@1495@01 $arg0 $arg1 $arg2) (inv@1497@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1647|)))
+  :qid |quant-u-1676|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -45462,7 +45462,7 @@
         ($SortWrappers.IntTo$Snap (inv@1497@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1648|))))
+  :qid |quant-u-1677|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45627,7 +45627,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1500@01))
           ($SortWrappers.IntTo$Snap $arg2@1501@01))))))
   
-  :qid |quant-u-1649|))))
+  :qid |quant-u-1678|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45788,7 +45788,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1505@01 $arg0 $arg1 $arg2) (inv@1507@01 $arg0 $arg1 $arg2) (inv@1509@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1650|)))
+  :qid |quant-u-1679|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -45824,7 +45824,7 @@
         ($SortWrappers.IntTo$Snap (inv@1509@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1651|))))
+  :qid |quant-u-1680|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -45989,7 +45989,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1512@01))
           ($SortWrappers.IntTo$Snap $arg2@1513@01))))))
   
-  :qid |quant-u-1652|))))
+  :qid |quant-u-1681|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -46150,7 +46150,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1517@01 $arg0 $arg1 $arg2) (inv@1519@01 $arg0 $arg1 $arg2) (inv@1521@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1653|)))
+  :qid |quant-u-1682|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -46186,7 +46186,7 @@
         ($SortWrappers.IntTo$Snap (inv@1521@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1654|))))
+  :qid |quant-u-1683|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -47553,7 +47553,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -47950,7 +47950,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1547@01))
           ($SortWrappers.IntTo$Snap $arg2@1548@01))))))
   
-  :qid |quant-u-1655|))))
+  :qid |quant-u-1684|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -48111,7 +48111,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1550@01 $arg0 $arg1 $arg2) (inv@1552@01 $arg0 $arg1 $arg2) (inv@1554@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1656|)))
+  :qid |quant-u-1685|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -48147,7 +48147,7 @@
         ($SortWrappers.IntTo$Snap (inv@1554@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1657|))))
+  :qid |quant-u-1686|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -48311,7 +48311,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1557@01))
           ($SortWrappers.IntTo$Snap $arg2@1558@01))))))
   
-  :qid |quant-u-1658|))))
+  :qid |quant-u-1687|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -48472,7 +48472,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1560@01 $arg0 $arg1 $arg2) (inv@1562@01 $arg0 $arg1 $arg2) (inv@1564@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1659|)))
+  :qid |quant-u-1688|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -48508,7 +48508,7 @@
         ($SortWrappers.IntTo$Snap (inv@1564@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1660|))))
+  :qid |quant-u-1689|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -48672,7 +48672,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1567@01))
           ($SortWrappers.IntTo$Snap $arg2@1568@01))))))
   
-  :qid |quant-u-1661|))))
+  :qid |quant-u-1690|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -48833,7 +48833,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1570@01 $arg0 $arg1 $arg2) (inv@1572@01 $arg0 $arg1 $arg2) (inv@1574@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1662|)))
+  :qid |quant-u-1691|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -48869,7 +48869,7 @@
         ($SortWrappers.IntTo$Snap (inv@1574@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1663|))))
+  :qid |quant-u-1692|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49033,7 +49033,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1577@01))
           ($SortWrappers.IntTo$Snap $arg2@1578@01))))))
   
-  :qid |quant-u-1664|))))
+  :qid |quant-u-1693|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49194,7 +49194,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1580@01 $arg0 $arg1 $arg2) (inv@1582@01 $arg0 $arg1 $arg2) (inv@1584@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1665|)))
+  :qid |quant-u-1694|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -49230,7 +49230,7 @@
         ($SortWrappers.IntTo$Snap (inv@1584@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1666|))))
+  :qid |quant-u-1695|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49393,7 +49393,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1587@01))
           ($SortWrappers.IntTo$Snap $arg2@1588@01))))))
   
-  :qid |quant-u-1667|))))
+  :qid |quant-u-1696|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49554,7 +49554,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1590@01 $arg0 $arg1 $arg2) (inv@1592@01 $arg0 $arg1 $arg2) (inv@1594@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1668|)))
+  :qid |quant-u-1697|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -49590,7 +49590,7 @@
         ($SortWrappers.IntTo$Snap (inv@1594@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1669|))))
+  :qid |quant-u-1698|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49753,7 +49753,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1597@01))
           ($SortWrappers.IntTo$Snap $arg2@1598@01))))))
   
-  :qid |quant-u-1670|))))
+  :qid |quant-u-1699|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -49914,7 +49914,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1600@01 $arg0 $arg1 $arg2) (inv@1602@01 $arg0 $arg1 $arg2) (inv@1604@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1671|)))
+  :qid |quant-u-1700|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -49950,7 +49950,7 @@
         ($SortWrappers.IntTo$Snap (inv@1604@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1672|))))
+  :qid |quant-u-1701|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -50793,7 +50793,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -51211,7 +51211,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -51220,7 +51220,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 440 | !(l$i0$raw_ret$1@1390@01) | live]
 ; [else-branch: 440 | l$i0$raw_ret$1@1390@01 | live]
@@ -51249,7 +51249,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 441 | True | live]
 ; [else-branch: 441 | False | dead]
@@ -51301,7 +51301,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 22
@@ -51310,7 +51310,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 443 | l$i0$raw_ret$1@1390@01 | live]
 ; [else-branch: 443 | !(l$i0$raw_ret$1@1390@01) | live]
@@ -51458,7 +51458,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -51467,7 +51467,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 447 | !($out_of_gas@1399@01) | live]
 ; [else-branch: 447 | $out_of_gas@1399@01 | live]
@@ -51489,7 +51489,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 449 | True | live]
 ; [else-branch: 449 | False | dead]
@@ -53188,7 +53188,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1762@01))
           ($SortWrappers.IntTo$Snap $arg2@1763@01))))))
   
-  :qid |quant-u-1673|))))
+  :qid |quant-u-1714|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -53349,7 +53349,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1767@01 $arg0 $arg1 $arg2) (inv@1769@01 $arg0 $arg1 $arg2) (inv@1771@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1674|)))
+  :qid |quant-u-1715|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -53385,7 +53385,7 @@
         ($SortWrappers.IntTo$Snap (inv@1771@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1675|))))
+  :qid |quant-u-1716|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -53551,7 +53551,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1774@01))
           ($SortWrappers.IntTo$Snap $arg2@1775@01))))))
   
-  :qid |quant-u-1676|))))
+  :qid |quant-u-1717|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -53712,7 +53712,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1779@01 $arg0 $arg1 $arg2) (inv@1781@01 $arg0 $arg1 $arg2) (inv@1783@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1677|)))
+  :qid |quant-u-1718|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -53748,7 +53748,7 @@
         ($SortWrappers.IntTo$Snap (inv@1783@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1678|))))
+  :qid |quant-u-1719|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -53914,7 +53914,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1786@01))
           ($SortWrappers.IntTo$Snap $arg2@1787@01))))))
   
-  :qid |quant-u-1679|))))
+  :qid |quant-u-1720|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -54075,7 +54075,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1791@01 $arg0 $arg1 $arg2) (inv@1793@01 $arg0 $arg1 $arg2) (inv@1795@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1680|)))
+  :qid |quant-u-1721|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -54111,7 +54111,7 @@
         ($SortWrappers.IntTo$Snap (inv@1795@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1681|))))
+  :qid |quant-u-1722|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -54277,7 +54277,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1798@01))
           ($SortWrappers.IntTo$Snap $arg2@1799@01))))))
   
-  :qid |quant-u-1682|))))
+  :qid |quant-u-1723|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -54438,7 +54438,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1803@01 $arg0 $arg1 $arg2) (inv@1805@01 $arg0 $arg1 $arg2) (inv@1807@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1683|)))
+  :qid |quant-u-1724|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -54474,7 +54474,7 @@
         ($SortWrappers.IntTo$Snap (inv@1807@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1684|))))
+  :qid |quant-u-1725|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -54639,7 +54639,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1810@01))
           ($SortWrappers.IntTo$Snap $arg2@1811@01))))))
   
-  :qid |quant-u-1685|))))
+  :qid |quant-u-1726|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -54800,7 +54800,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1815@01 $arg0 $arg1 $arg2) (inv@1817@01 $arg0 $arg1 $arg2) (inv@1819@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1686|)))
+  :qid |quant-u-1727|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -54836,7 +54836,7 @@
         ($SortWrappers.IntTo$Snap (inv@1819@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1687|))))
+  :qid |quant-u-1728|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -55001,7 +55001,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1822@01))
           ($SortWrappers.IntTo$Snap $arg2@1823@01))))))
   
-  :qid |quant-u-1688|))))
+  :qid |quant-u-1729|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -55162,7 +55162,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1827@01 $arg0 $arg1 $arg2) (inv@1829@01 $arg0 $arg1 $arg2) (inv@1831@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1689|)))
+  :qid |quant-u-1730|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -55198,7 +55198,7 @@
         ($SortWrappers.IntTo$Snap (inv@1831@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1690|))))
+  :qid |quant-u-1731|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -56547,7 +56547,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 502 | $div[Int]($unwrap[Int](l$i2$numerator@1846@01), l$i2$denominator@1851@01, $unwrap[Int](l$i2$numerator@1846@01) / l$i2$denominator@1851@01) < 0 | dead]
 ; [else-branch: 502 | !($div[Int]($unwrap[Int](l$i2$numerator@1846@01), l$i2$denominator@1851@01, $unwrap[Int](l$i2$numerator@1846@01) / l$i2$denominator@1851@01) < 0) | live]
@@ -56577,7 +56577,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -56995,7 +56995,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1857@01))
           ($SortWrappers.IntTo$Snap $arg2@1858@01))))))
   
-  :qid |quant-u-1691|))))
+  :qid |quant-u-1732|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -57156,7 +57156,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1860@01 $arg0 $arg1 $arg2) (inv@1862@01 $arg0 $arg1 $arg2) (inv@1864@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1692|)))
+  :qid |quant-u-1733|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -57192,7 +57192,7 @@
         ($SortWrappers.IntTo$Snap (inv@1864@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1693|))))
+  :qid |quant-u-1734|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -57356,7 +57356,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1867@01))
           ($SortWrappers.IntTo$Snap $arg2@1868@01))))))
   
-  :qid |quant-u-1694|))))
+  :qid |quant-u-1735|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -57517,7 +57517,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1870@01 $arg0 $arg1 $arg2) (inv@1872@01 $arg0 $arg1 $arg2) (inv@1874@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1695|)))
+  :qid |quant-u-1736|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -57553,7 +57553,7 @@
         ($SortWrappers.IntTo$Snap (inv@1874@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1696|))))
+  :qid |quant-u-1737|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -57717,7 +57717,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1877@01))
           ($SortWrappers.IntTo$Snap $arg2@1878@01))))))
   
-  :qid |quant-u-1697|))))
+  :qid |quant-u-1738|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -57878,7 +57878,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1880@01 $arg0 $arg1 $arg2) (inv@1882@01 $arg0 $arg1 $arg2) (inv@1884@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1698|)))
+  :qid |quant-u-1739|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -57914,7 +57914,7 @@
         ($SortWrappers.IntTo$Snap (inv@1884@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1699|))))
+  :qid |quant-u-1740|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58078,7 +58078,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1887@01))
           ($SortWrappers.IntTo$Snap $arg2@1888@01))))))
   
-  :qid |quant-u-1700|))))
+  :qid |quant-u-1741|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58239,7 +58239,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1890@01 $arg0 $arg1 $arg2) (inv@1892@01 $arg0 $arg1 $arg2) (inv@1894@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1701|)))
+  :qid |quant-u-1742|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -58275,7 +58275,7 @@
         ($SortWrappers.IntTo$Snap (inv@1894@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1702|))))
+  :qid |quant-u-1743|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58438,7 +58438,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1897@01))
           ($SortWrappers.IntTo$Snap $arg2@1898@01))))))
   
-  :qid |quant-u-1703|))))
+  :qid |quant-u-1744|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58599,7 +58599,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1900@01 $arg0 $arg1 $arg2) (inv@1902@01 $arg0 $arg1 $arg2) (inv@1904@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1704|)))
+  :qid |quant-u-1745|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -58635,7 +58635,7 @@
         ($SortWrappers.IntTo$Snap (inv@1904@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1705|))))
+  :qid |quant-u-1746|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58798,7 +58798,7 @@
             ($SortWrappers.IntTo$Snap $arg1@1907@01))
           ($SortWrappers.IntTo$Snap $arg2@1908@01))))))
   
-  :qid |quant-u-1706|))))
+  :qid |quant-u-1747|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -58959,7 +58959,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@1910@01 $arg0 $arg1 $arg2) (inv@1912@01 $arg0 $arg1 $arg2) (inv@1914@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1707|)))
+  :qid |quant-u-1748|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -58995,7 +58995,7 @@
         ($SortWrappers.IntTo$Snap (inv@1914@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1708|))))
+  :qid |quant-u-1749|))))
 (check-sat)
 ; unsat
 (pop) ; 20
@@ -59840,7 +59840,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -60046,7 +60046,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -60055,7 +60055,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 523 | $out_of_gas@1707@01 | live]
 ; [else-branch: 523 | !($out_of_gas@1707@01) | live]
@@ -60086,7 +60086,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 524 | True | live]
 ; [else-branch: 524 | False | dead]
@@ -60137,7 +60137,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -60146,7 +60146,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 526 | !($out_of_gas@1707@01) | live]
 ; [else-branch: 526 | $out_of_gas@1707@01 | live]
@@ -60168,7 +60168,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 528 | True | live]
 ; [else-branch: 528 | False | dead]
@@ -62434,7 +62434,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2076@01))
           ($SortWrappers.IntTo$Snap $arg2@2077@01))))))
   
-  :qid |quant-u-1709|))))
+  :qid |quant-u-1750|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -62595,7 +62595,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2081@01 $arg0 $arg1 $arg2) (inv@2083@01 $arg0 $arg1 $arg2) (inv@2085@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1710|)))
+  :qid |quant-u-1751|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -62631,7 +62631,7 @@
         ($SortWrappers.IntTo$Snap (inv@2085@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1711|))))
+  :qid |quant-u-1752|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -62797,7 +62797,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2088@01))
           ($SortWrappers.IntTo$Snap $arg2@2089@01))))))
   
-  :qid |quant-u-1712|))))
+  :qid |quant-u-1753|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -62958,7 +62958,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2093@01 $arg0 $arg1 $arg2) (inv@2095@01 $arg0 $arg1 $arg2) (inv@2097@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1713|)))
+  :qid |quant-u-1754|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -62994,7 +62994,7 @@
         ($SortWrappers.IntTo$Snap (inv@2097@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1714|))))
+  :qid |quant-u-1755|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -63160,7 +63160,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2100@01))
           ($SortWrappers.IntTo$Snap $arg2@2101@01))))))
   
-  :qid |quant-u-1715|))))
+  :qid |quant-u-1756|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -63321,7 +63321,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2105@01 $arg0 $arg1 $arg2) (inv@2107@01 $arg0 $arg1 $arg2) (inv@2109@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1716|)))
+  :qid |quant-u-1757|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -63357,7 +63357,7 @@
         ($SortWrappers.IntTo$Snap (inv@2109@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1717|))))
+  :qid |quant-u-1758|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -63523,7 +63523,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2112@01))
           ($SortWrappers.IntTo$Snap $arg2@2113@01))))))
   
-  :qid |quant-u-1718|))))
+  :qid |quant-u-1759|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -63684,7 +63684,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2117@01 $arg0 $arg1 $arg2) (inv@2119@01 $arg0 $arg1 $arg2) (inv@2121@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1719|)))
+  :qid |quant-u-1760|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -63720,7 +63720,7 @@
         ($SortWrappers.IntTo$Snap (inv@2121@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1720|))))
+  :qid |quant-u-1761|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -63885,7 +63885,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2124@01))
           ($SortWrappers.IntTo$Snap $arg2@2125@01))))))
   
-  :qid |quant-u-1721|))))
+  :qid |quant-u-1762|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -64046,7 +64046,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2129@01 $arg0 $arg1 $arg2) (inv@2131@01 $arg0 $arg1 $arg2) (inv@2133@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1722|)))
+  :qid |quant-u-1763|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -64082,7 +64082,7 @@
         ($SortWrappers.IntTo$Snap (inv@2133@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1723|))))
+  :qid |quant-u-1764|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -64247,7 +64247,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2136@01))
           ($SortWrappers.IntTo$Snap $arg2@2137@01))))))
   
-  :qid |quant-u-1724|))))
+  :qid |quant-u-1765|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -64408,7 +64408,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2141@01 $arg0 $arg1 $arg2) (inv@2143@01 $arg0 $arg1 $arg2) (inv@2145@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1725|)))
+  :qid |quant-u-1766|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -64444,7 +64444,7 @@
         ($SortWrappers.IntTo$Snap (inv@2145@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1726|))))
+  :qid |quant-u-1767|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -65837,7 +65837,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 599 | !($div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0) | live]
 ; [else-branch: 599 | $div[Int]($unwrap[Int](l$i2$numerator@2160@01), l$i2$denominator@2165@01, $unwrap[Int](l$i2$numerator@2160@01) / l$i2$denominator@2165@01) < 0 | dead]
@@ -65896,7 +65896,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -66063,7 +66063,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 20
@@ -66241,7 +66241,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2171@01))
           ($SortWrappers.IntTo$Snap $arg2@2172@01))))))
   
-  :qid |quant-u-1727|))))
+  :qid |quant-u-1768|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -66402,7 +66402,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2174@01 $arg0 $arg1 $arg2) (inv@2176@01 $arg0 $arg1 $arg2) (inv@2178@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1728|)))
+  :qid |quant-u-1769|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -66438,7 +66438,7 @@
         ($SortWrappers.IntTo$Snap (inv@2178@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1729|))))
+  :qid |quant-u-1770|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -66602,7 +66602,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2181@01))
           ($SortWrappers.IntTo$Snap $arg2@2182@01))))))
   
-  :qid |quant-u-1730|))))
+  :qid |quant-u-1771|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -66763,7 +66763,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2184@01 $arg0 $arg1 $arg2) (inv@2186@01 $arg0 $arg1 $arg2) (inv@2188@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1731|)))
+  :qid |quant-u-1772|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -66799,7 +66799,7 @@
         ($SortWrappers.IntTo$Snap (inv@2188@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1732|))))
+  :qid |quant-u-1773|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -66963,7 +66963,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2191@01))
           ($SortWrappers.IntTo$Snap $arg2@2192@01))))))
   
-  :qid |quant-u-1733|))))
+  :qid |quant-u-1774|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -67124,7 +67124,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2194@01 $arg0 $arg1 $arg2) (inv@2196@01 $arg0 $arg1 $arg2) (inv@2198@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1734|)))
+  :qid |quant-u-1775|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -67160,7 +67160,7 @@
         ($SortWrappers.IntTo$Snap (inv@2198@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1735|))))
+  :qid |quant-u-1776|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -67324,7 +67324,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2201@01))
           ($SortWrappers.IntTo$Snap $arg2@2202@01))))))
   
-  :qid |quant-u-1736|))))
+  :qid |quant-u-1777|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -67485,7 +67485,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2204@01 $arg0 $arg1 $arg2) (inv@2206@01 $arg0 $arg1 $arg2) (inv@2208@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1737|)))
+  :qid |quant-u-1778|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -67521,7 +67521,7 @@
         ($SortWrappers.IntTo$Snap (inv@2208@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1738|))))
+  :qid |quant-u-1779|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -67684,7 +67684,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2211@01))
           ($SortWrappers.IntTo$Snap $arg2@2212@01))))))
   
-  :qid |quant-u-1739|))))
+  :qid |quant-u-1780|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -67845,7 +67845,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2214@01 $arg0 $arg1 $arg2) (inv@2216@01 $arg0 $arg1 $arg2) (inv@2218@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1740|)))
+  :qid |quant-u-1781|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -67881,7 +67881,7 @@
         ($SortWrappers.IntTo$Snap (inv@2218@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1741|))))
+  :qid |quant-u-1782|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -68044,7 +68044,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2221@01))
           ($SortWrappers.IntTo$Snap $arg2@2222@01))))))
   
-  :qid |quant-u-1742|))))
+  :qid |quant-u-1783|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -68205,7 +68205,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2224@01 $arg0 $arg1 $arg2) (inv@2226@01 $arg0 $arg1 $arg2) (inv@2228@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1743|)))
+  :qid |quant-u-1784|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -68241,7 +68241,7 @@
         ($SortWrappers.IntTo$Snap (inv@2228@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1744|))))
+  :qid |quant-u-1785|))))
 (check-sat)
 ; unsat
 (pop) ; 21
@@ -68258,7 +68258,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -68359,7 +68359,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 21
@@ -69292,7 +69292,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -69301,7 +69301,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 619 | $out_of_gas@2019@01 | live]
 ; [else-branch: 619 | !($out_of_gas@2019@01) | live]
@@ -69332,7 +69332,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 620 | True | live]
 ; [else-branch: 620 | False | dead]
@@ -69383,7 +69383,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -69392,7 +69392,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 622 | !($out_of_gas@2019@01) | live]
 ; [else-branch: 622 | $out_of_gas@2019@01 | live]
@@ -69672,7 +69672,7 @@
 (check-sat)
 ; unknown
 (pop) ; 24
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 24
@@ -71540,7 +71540,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2396@01))
           ($SortWrappers.IntTo$Snap $arg2@2397@01))))))
   
-  :qid |quant-u-1745|))))
+  :qid |quant-u-1792|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -71701,7 +71701,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2401@01 $arg0 $arg1 $arg2) (inv@2403@01 $arg0 $arg1 $arg2) (inv@2405@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1746|)))
+  :qid |quant-u-1793|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -71737,7 +71737,7 @@
         ($SortWrappers.IntTo$Snap (inv@2405@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1747|))))
+  :qid |quant-u-1794|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -71903,7 +71903,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2408@01))
           ($SortWrappers.IntTo$Snap $arg2@2409@01))))))
   
-  :qid |quant-u-1748|))))
+  :qid |quant-u-1795|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72064,7 +72064,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2413@01 $arg0 $arg1 $arg2) (inv@2415@01 $arg0 $arg1 $arg2) (inv@2417@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1749|)))
+  :qid |quant-u-1796|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72100,7 +72100,7 @@
         ($SortWrappers.IntTo$Snap (inv@2417@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1750|))))
+  :qid |quant-u-1797|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72266,7 +72266,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2420@01))
           ($SortWrappers.IntTo$Snap $arg2@2421@01))))))
   
-  :qid |quant-u-1751|))))
+  :qid |quant-u-1798|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72427,7 +72427,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2425@01 $arg0 $arg1 $arg2) (inv@2427@01 $arg0 $arg1 $arg2) (inv@2429@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1752|)))
+  :qid |quant-u-1799|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72463,7 +72463,7 @@
         ($SortWrappers.IntTo$Snap (inv@2429@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1753|))))
+  :qid |quant-u-1800|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72629,7 +72629,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2432@01))
           ($SortWrappers.IntTo$Snap $arg2@2433@01))))))
   
-  :qid |quant-u-1754|))))
+  :qid |quant-u-1801|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72790,7 +72790,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2437@01 $arg0 $arg1 $arg2) (inv@2439@01 $arg0 $arg1 $arg2) (inv@2441@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1755|)))
+  :qid |quant-u-1802|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -72826,7 +72826,7 @@
         ($SortWrappers.IntTo$Snap (inv@2441@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1756|))))
+  :qid |quant-u-1803|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -72991,7 +72991,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2444@01))
           ($SortWrappers.IntTo$Snap $arg2@2445@01))))))
   
-  :qid |quant-u-1757|))))
+  :qid |quant-u-1804|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73152,7 +73152,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2449@01 $arg0 $arg1 $arg2) (inv@2451@01 $arg0 $arg1 $arg2) (inv@2453@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1758|)))
+  :qid |quant-u-1805|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -73188,7 +73188,7 @@
         ($SortWrappers.IntTo$Snap (inv@2453@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1759|))))
+  :qid |quant-u-1806|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73353,7 +73353,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2456@01))
           ($SortWrappers.IntTo$Snap $arg2@2457@01))))))
   
-  :qid |quant-u-1760|))))
+  :qid |quant-u-1807|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -73514,7 +73514,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2461@01 $arg0 $arg1 $arg2) (inv@2463@01 $arg0 $arg1 $arg2) (inv@2465@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1761|)))
+  :qid |quant-u-1808|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -73550,7 +73550,7 @@
         ($SortWrappers.IntTo$Snap (inv@2465@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1762|))))
+  :qid |quant-u-1809|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -75175,7 +75175,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -75438,7 +75438,7 @@
 (check-sat)
 ; unknown
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 20
@@ -75708,7 +75708,7 @@
 (check-sat)
 ; unknown
 (pop) ; 23
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 23
@@ -75804,7 +75804,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 25
@@ -75813,7 +75813,7 @@
 (check-sat)
 ; unknown
 (pop) ; 25
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 717 | $unwrap[Int](l$i0$eth_refund@2491@01) > 0 | live]
 ; [else-branch: 717 | !($unwrap[Int](l$i0$eth_refund@2491@01) > 0) | live]
@@ -76073,7 +76073,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2495@01))
           ($SortWrappers.IntTo$Snap $arg2@2496@01))))))
   
-  :qid |quant-u-1763|))))
+  :qid |quant-u-1816|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -76234,7 +76234,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2498@01 $arg0 $arg1 $arg2) (inv@2500@01 $arg0 $arg1 $arg2) (inv@2502@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1764|)))
+  :qid |quant-u-1817|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -76270,7 +76270,7 @@
         ($SortWrappers.IntTo$Snap (inv@2502@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1765|))))
+  :qid |quant-u-1818|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -76434,7 +76434,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2505@01))
           ($SortWrappers.IntTo$Snap $arg2@2506@01))))))
   
-  :qid |quant-u-1766|))))
+  :qid |quant-u-1819|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -76595,7 +76595,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2508@01 $arg0 $arg1 $arg2) (inv@2510@01 $arg0 $arg1 $arg2) (inv@2512@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1767|)))
+  :qid |quant-u-1820|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -76631,7 +76631,7 @@
         ($SortWrappers.IntTo$Snap (inv@2512@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1768|))))
+  :qid |quant-u-1821|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -76795,7 +76795,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2515@01))
           ($SortWrappers.IntTo$Snap $arg2@2516@01))))))
   
-  :qid |quant-u-1769|))))
+  :qid |quant-u-1822|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -76956,7 +76956,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2518@01 $arg0 $arg1 $arg2) (inv@2520@01 $arg0 $arg1 $arg2) (inv@2522@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1770|)))
+  :qid |quant-u-1823|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -76992,7 +76992,7 @@
         ($SortWrappers.IntTo$Snap (inv@2522@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1771|))))
+  :qid |quant-u-1824|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -77156,7 +77156,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2525@01))
           ($SortWrappers.IntTo$Snap $arg2@2526@01))))))
   
-  :qid |quant-u-1772|))))
+  :qid |quant-u-1825|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -77317,7 +77317,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2528@01 $arg0 $arg1 $arg2) (inv@2530@01 $arg0 $arg1 $arg2) (inv@2532@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1773|)))
+  :qid |quant-u-1826|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -77353,7 +77353,7 @@
         ($SortWrappers.IntTo$Snap (inv@2532@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1774|))))
+  :qid |quant-u-1827|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -77516,7 +77516,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2535@01))
           ($SortWrappers.IntTo$Snap $arg2@2536@01))))))
   
-  :qid |quant-u-1775|))))
+  :qid |quant-u-1828|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -77677,7 +77677,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2538@01 $arg0 $arg1 $arg2) (inv@2540@01 $arg0 $arg1 $arg2) (inv@2542@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1776|)))
+  :qid |quant-u-1829|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -77713,7 +77713,7 @@
         ($SortWrappers.IntTo$Snap (inv@2542@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1777|))))
+  :qid |quant-u-1830|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -77876,7 +77876,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2545@01))
           ($SortWrappers.IntTo$Snap $arg2@2546@01))))))
   
-  :qid |quant-u-1778|))))
+  :qid |quant-u-1831|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -78037,7 +78037,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2548@01 $arg0 $arg1 $arg2) (inv@2550@01 $arg0 $arg1 $arg2) (inv@2552@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1779|)))
+  :qid |quant-u-1832|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -78073,7 +78073,7 @@
         ($SortWrappers.IntTo$Snap (inv@2552@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1780|))))
+  :qid |quant-u-1833|))))
 (check-sat)
 ; unsat
 (pop) ; 27
@@ -79110,7 +79110,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2587@01))
           ($SortWrappers.IntTo$Snap $arg2@2588@01))))))
   
-  :qid |quant-u-1781|))))
+  :qid |quant-u-1834|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -79271,7 +79271,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2590@01 $arg0 $arg1 $arg2) (inv@2592@01 $arg0 $arg1 $arg2) (inv@2594@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1782|)))
+  :qid |quant-u-1835|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -79307,7 +79307,7 @@
         ($SortWrappers.IntTo$Snap (inv@2594@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1783|))))
+  :qid |quant-u-1836|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -79471,7 +79471,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2597@01))
           ($SortWrappers.IntTo$Snap $arg2@2598@01))))))
   
-  :qid |quant-u-1784|))))
+  :qid |quant-u-1837|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -79632,7 +79632,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2600@01 $arg0 $arg1 $arg2) (inv@2602@01 $arg0 $arg1 $arg2) (inv@2604@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1785|)))
+  :qid |quant-u-1838|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -79668,7 +79668,7 @@
         ($SortWrappers.IntTo$Snap (inv@2604@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1786|))))
+  :qid |quant-u-1839|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -79832,7 +79832,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2607@01))
           ($SortWrappers.IntTo$Snap $arg2@2608@01))))))
   
-  :qid |quant-u-1787|))))
+  :qid |quant-u-1840|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -79993,7 +79993,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2610@01 $arg0 $arg1 $arg2) (inv@2612@01 $arg0 $arg1 $arg2) (inv@2614@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1788|)))
+  :qid |quant-u-1841|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -80029,7 +80029,7 @@
         ($SortWrappers.IntTo$Snap (inv@2614@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1789|))))
+  :qid |quant-u-1842|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -80193,7 +80193,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2617@01))
           ($SortWrappers.IntTo$Snap $arg2@2618@01))))))
   
-  :qid |quant-u-1790|))))
+  :qid |quant-u-1843|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -80354,7 +80354,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2620@01 $arg0 $arg1 $arg2) (inv@2622@01 $arg0 $arg1 $arg2) (inv@2624@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1791|)))
+  :qid |quant-u-1844|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -80390,7 +80390,7 @@
         ($SortWrappers.IntTo$Snap (inv@2624@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1792|))))
+  :qid |quant-u-1845|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -80553,7 +80553,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2627@01))
           ($SortWrappers.IntTo$Snap $arg2@2628@01))))))
   
-  :qid |quant-u-1793|))))
+  :qid |quant-u-1846|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -80714,7 +80714,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2630@01 $arg0 $arg1 $arg2) (inv@2632@01 $arg0 $arg1 $arg2) (inv@2634@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1794|)))
+  :qid |quant-u-1847|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -80750,7 +80750,7 @@
         ($SortWrappers.IntTo$Snap (inv@2634@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1795|))))
+  :qid |quant-u-1848|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -80913,7 +80913,7 @@
             ($SortWrappers.IntTo$Snap $arg1@2637@01))
           ($SortWrappers.IntTo$Snap $arg2@2638@01))))))
   
-  :qid |quant-u-1796|))))
+  :qid |quant-u-1849|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -81074,7 +81074,7 @@
         ($SortWrappers.IntTo$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@2640@01 $arg0 $arg1 $arg2) (inv@2642@01 $arg0 $arg1 $arg2) (inv@2644@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1797|)))
+  :qid |quant-u-1850|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -81110,7 +81110,7 @@
         ($SortWrappers.IntTo$Snap (inv@2644@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1798|))))
+  :qid |quant-u-1851|))))
 (check-sat)
 ; unsat
 (pop) ; 29
@@ -82539,14642 +82539,4 @@
 (push) ; 32
 (set-option :timeout 10)
 (assert (not false))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 758 | True | live]
-; [else-branch: 758 | False | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 758 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2688@01 $Snap)
-(assert (= $t@2688@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2689@01 $Struct)
-(assert (=
-  self@2689@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 32
-; [then-branch: 759 | False | dead]
-; [else-branch: 759 | True | live]
-(set-option :timeout 0)
-(push) ; 32
-; [else-branch: 759 | True]
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 757 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-(pop) ; 31
-; [eval] !!l$i0$raw_ret$1
-; [eval] !l$i0$raw_ret$1
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 760 | l$i0$raw_ret$1@2332@01 | live]
-; [else-branch: 760 | !(l$i0$raw_ret$1@2332@01) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 760 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 761 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 761 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(push) ; 32
-; [else-branch: 761 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 32
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 762 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 762 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 762 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 763 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 763 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 33
-; [else-branch: 763 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 33
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 764 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 764 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 764 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [eval] $unwrap(l$i0$tokens_bought)
-(declare-const $t@2690@01 $Snap)
-(declare-const sm@2691@01 $PSF<e$TokenPurchase>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($PSF.lookup_e$TokenPurchase (as sm@2691@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
-  $t@2690@01))
-(assert (<=
-  $Perm.No
-  (ite
-    (and
-      (=
-        ($unwrap<Int> l$i0$eth_sold@2488@01)
-        ($unwrap<Int> l$i0$eth_sold@2488@01))
-      (=
-        ($unwrap<Int> l$tokens_bought@2284@01)
-        ($unwrap<Int> l$tokens_bought@2284@01)))
-    $Perm.Write
-    $Perm.No)))
-; Definitional axioms for snapshot map values
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 765 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 765 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 34
-; [else-branch: 765 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 34
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 766 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 766 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 766 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 767 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 767 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 35
-; [else-branch: 767 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 35
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 35
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 35
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 768 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 768 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 35
-; [then-branch: 768 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; i0$$res := $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $wrap($unwrap(l$i0$eth_sold) * 1)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(declare-const i0$$res@2692@01 Int)
-(assert (=
-  i0$$res@2692@01
-  ($unwrap<Int> ($wrap<$Int> ($unwrap<Int> l$i0$eth_sold@2488@01)))))
-; [exec]
-; label i0$return
-; [exec]
-; $res := $unwrap($wrap(i0$$res))
-; [eval] $unwrap($wrap(i0$$res))
-; [eval] $wrap(i0$$res)
-(declare-const $res@2693@01 Int)
-(assert (= $res@2693@01 ($unwrap<Int> ($wrap<$Int> i0$$res@2692@01))))
-; [exec]
-; label return
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 769 | $out_of_gas@2341@01 | live]
-; [else-branch: 769 | !($out_of_gas@2341@01) | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 769 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 770 | True | live]
-; [else-branch: 770 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 770 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2694@01 $Snap)
-(assert (= $t@2694@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2695@01 $Struct)
-(assert (=
-  self@2695@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-; [then-branch: 771 | False | dead]
-; [else-branch: 771 | True | live]
-(set-option :timeout 0)
-(push) ; 37
-; [else-branch: 771 | True]
-(pop) ; 37
-(pop) ; 36
-(push) ; 36
-; [else-branch: 769 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-(pop) ; 36
-; [eval] !$out_of_gas
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 772 | !($out_of_gas@2341@01) | live]
-; [else-branch: 772 | $out_of_gas@2341@01 | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 772 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-; [exec]
-; label end
-; [eval] !$succ
-; [then-branch: 773 | False | dead]
-; [else-branch: 773 | True | live]
-(push) ; 37
-; [else-branch: 773 | True]
-(pop) ; 37
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 774 | True | live]
-; [else-branch: 774 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 774 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2696@01 $Snap)
-(assert (= $t@2696@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2697@01 $Struct)
-(assert (=
-  self@2697@01
-  ($struct_set<$Struct> l$i0$havoc$8@2336@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-(pop) ; 36
-(set-option :timeout 0)
-(push) ; 36
-; [else-branch: 772 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-(pop) ; 36
-(pop) ; 35
-(pop) ; 34
-(pop) ; 33
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 760 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-(pop) ; 31
-(pop) ; 30
-(push) ; 30
-; [else-branch: 756 | l$i0$no_reentrant_call$1@2338@01]
-(assert l$i0$no_reentrant_call$1@2338@01)
-(pop) ; 30
-(pop) ; 29
-(push) ; 29
-; [else-branch: 732 | l$i0$send_fail$2@2331@01]
-(assert l$i0$send_fail$2@2331@01)
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 728 | !(l$i0$no_reentrant_call@2327@01)]
-(assert (not l$i0$no_reentrant_call@2327@01))
-(pop) ; 28
-; [eval] !l$i0$no_reentrant_call
-(push) ; 28
-(set-option :timeout 10)
-(assert (not l$i0$no_reentrant_call@2327@01))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 28
-(set-option :timeout 10)
-(assert (not (not l$i0$no_reentrant_call@2327@01)))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 775 | !(l$i0$no_reentrant_call@2327@01) | live]
-; [else-branch: 775 | l$i0$no_reentrant_call@2327@01 | live]
-(set-option :timeout 0)
-(push) ; 28
-; [then-branch: 775 | !(l$i0$no_reentrant_call@2327@01)]
-(assert (not l$i0$no_reentrant_call@2327@01))
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$4
-; [exec]
-; $old_$contracts := i3$$pre_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$5
-; [exec]
-; $old_$contracts := i3$$pre_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$TokenPurchase($arg0, $arg1, $arg2) }
-;     perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$TokenPurchase($arg0, $arg1, $arg2), perm(e$TokenPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2698@01 Int)
-(declare-const $arg1@2699@01 Int)
-(declare-const $arg2@2700@01 Int)
-(push) ; 29
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2701@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef246|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef247|)))
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2698@01)
-    ($SortWrappers.IntTo$Snap $arg1@2699@01))
-  ($SortWrappers.IntTo$Snap $arg2@2700@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2698@01)
-    ($SortWrappers.IntTo$Snap $arg1@2699@01))
-  ($SortWrappers.IntTo$Snap $arg2@2700@01))))
-(assert (>
-  ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2698@01)
-      ($SortWrappers.IntTo$Snap $arg1@2699@01))
-    ($SortWrappers.IntTo$Snap $arg2@2700@01)))
-  $Perm.No))
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2702@01 (Int Int Int) Int)
-(declare-fun img@2703@01 (Int Int Int) Bool)
-(declare-fun inv@2704@01 (Int Int Int) Int)
-(declare-fun img@2705@01 (Int Int Int) Bool)
-(declare-fun inv@2706@01 (Int Int Int) Int)
-(declare-fun img@2707@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef246|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef247|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2698@01 Int) ($arg1@2699@01 Int) ($arg2@2700@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2698@01)
-          ($SortWrappers.IntTo$Snap $arg1@2699@01))
-        ($SortWrappers.IntTo$Snap $arg2@2700@01)))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2698@01)
-        ($SortWrappers.IntTo$Snap $arg1@2699@01))
-      ($SortWrappers.IntTo$Snap $arg2@2700@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2698@01)
-        ($SortWrappers.IntTo$Snap $arg1@2699@01))
-      ($SortWrappers.IntTo$Snap $arg2@2700@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2698@01)
-      ($SortWrappers.IntTo$Snap $arg1@2699@01))
-    ($SortWrappers.IntTo$Snap $arg2@2700@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2698@01)
-      ($SortWrappers.IntTo$Snap $arg1@2699@01))
-    ($SortWrappers.IntTo$Snap $arg2@2700@01))))
-  :qid |e$TokenPurchase-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2698@01 Int) ($arg1@2699@01 Int) ($arg2@2700@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2698@01)
-          ($SortWrappers.IntTo$Snap $arg1@2699@01))
-        ($SortWrappers.IntTo$Snap $arg2@2700@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2698@01)
-            ($SortWrappers.IntTo$Snap $arg1@2699@01))
-          ($SortWrappers.IntTo$Snap $arg2@2700@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2698@01)
-            ($SortWrappers.IntTo$Snap $arg1@2699@01))
-          ($SortWrappers.IntTo$Snap $arg2@2700@01))))))
-  
-  :qid |quant-u-1799|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2698@01 Int) ($arg11@2699@01 Int) ($arg21@2700@01 Int) ($arg02@2698@01 Int) ($arg12@2699@01 Int) ($arg22@2700@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2698@01)
-                ($SortWrappers.IntTo$Snap $arg11@2699@01))
-              ($SortWrappers.IntTo$Snap $arg21@2700@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2698@01)
-              ($SortWrappers.IntTo$Snap $arg11@2699@01))
-            ($SortWrappers.IntTo$Snap $arg21@2700@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2698@01)
-              ($SortWrappers.IntTo$Snap $arg11@2699@01))
-            ($SortWrappers.IntTo$Snap $arg21@2700@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2698@01)
-              ($SortWrappers.IntTo$Snap $arg11@2699@01))
-            ($SortWrappers.IntTo$Snap $arg21@2700@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2698@01)
-                ($SortWrappers.IntTo$Snap $arg12@2699@01))
-              ($SortWrappers.IntTo$Snap $arg22@2700@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2698@01)
-              ($SortWrappers.IntTo$Snap $arg12@2699@01))
-            ($SortWrappers.IntTo$Snap $arg22@2700@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2698@01)
-              ($SortWrappers.IntTo$Snap $arg12@2699@01))
-            ($SortWrappers.IntTo$Snap $arg22@2700@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2698@01)
-              ($SortWrappers.IntTo$Snap $arg12@2699@01))
-            ($SortWrappers.IntTo$Snap $arg22@2700@01)))))
-      (and
-        (and (= $arg01@2698@01 $arg02@2698@01) (= $arg11@2699@01 $arg12@2699@01))
-        (= $arg21@2700@01 $arg22@2700@01)))
-    (and
-      (and (= $arg01@2698@01 $arg02@2698@01) (= $arg11@2699@01 $arg12@2699@01))
-      (= $arg21@2700@01 $arg22@2700@01)))
-  
-  :qid |e$TokenPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2698@01 Int) ($arg1@2699@01 Int) ($arg2@2700@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2698@01)
-            ($SortWrappers.IntTo$Snap $arg1@2699@01))
-          ($SortWrappers.IntTo$Snap $arg2@2700@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2698@01)
-            ($SortWrappers.IntTo$Snap $arg1@2699@01))
-          ($SortWrappers.IntTo$Snap $arg2@2700@01)))))
-    (and
-      (and
-        (= (inv@2702@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01) $arg0@2698@01)
-        (= (inv@2704@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01) $arg1@2699@01)
-        (= (inv@2706@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01) $arg2@2700@01))
-      (and
-        (img@2703@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01)
-        (img@2705@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01)
-        (img@2707@01 $arg0@2698@01 $arg1@2699@01 $arg2@2700@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2698@01)
-      ($SortWrappers.IntTo$Snap $arg1@2699@01))
-    ($SortWrappers.IntTo$Snap $arg2@2700@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2698@01)
-      ($SortWrappers.IntTo$Snap $arg1@2699@01))
-    ($SortWrappers.IntTo$Snap $arg2@2700@01))))
-  :qid |e$TokenPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2703@01 $arg0 $arg1 $arg2)
-        (img@2705@01 $arg0 $arg1 $arg2)
-        (img@2707@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2702@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2704@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2706@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2702@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2704@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2706@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2702@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2704@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2706@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2702@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2704@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2706@01 $arg0 $arg1 $arg2))
-  :qid |e$TokenPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2702@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2704@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2706@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2702@01 $arg0 $arg1 $arg2) (inv@2704@01 $arg0 $arg1 $arg2) (inv@2706@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1800|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2702@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2704@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2706@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2703@01 $arg0 $arg1 $arg2)
-        (img@2705@01 $arg0 $arg1 $arg2)
-        (img@2707@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2702@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2704@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2706@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$TokenPurchase (as pm@2701@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2702@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2704@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2706@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1801|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$EthPurchase($arg0, $arg1, $arg2) }
-;     perm(e$EthPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$EthPurchase($arg0, $arg1, $arg2), perm(e$EthPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2708@01 Int)
-(declare-const $arg1@2709@01 Int)
-(declare-const $arg2@2710@01 Int)
-(push) ; 29
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2711@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef248|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef249|)))
-(assert ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2708@01)
-    ($SortWrappers.IntTo$Snap $arg1@2709@01))
-  ($SortWrappers.IntTo$Snap $arg2@2710@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2708@01)
-    ($SortWrappers.IntTo$Snap $arg1@2709@01))
-  ($SortWrappers.IntTo$Snap $arg2@2710@01))))
-(assert (>
-  ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2708@01)
-      ($SortWrappers.IntTo$Snap $arg1@2709@01))
-    ($SortWrappers.IntTo$Snap $arg2@2710@01)))
-  $Perm.No))
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2712@01 (Int Int Int) Int)
-(declare-fun img@2713@01 (Int Int Int) Bool)
-(declare-fun inv@2714@01 (Int Int Int) Int)
-(declare-fun img@2715@01 (Int Int Int) Bool)
-(declare-fun inv@2716@01 (Int Int Int) Int)
-(declare-fun img@2717@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef248|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef249|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2708@01 Int) ($arg1@2709@01 Int) ($arg2@2710@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2708@01)
-          ($SortWrappers.IntTo$Snap $arg1@2709@01))
-        ($SortWrappers.IntTo$Snap $arg2@2710@01)))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2708@01)
-        ($SortWrappers.IntTo$Snap $arg1@2709@01))
-      ($SortWrappers.IntTo$Snap $arg2@2710@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2708@01)
-        ($SortWrappers.IntTo$Snap $arg1@2709@01))
-      ($SortWrappers.IntTo$Snap $arg2@2710@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2708@01)
-      ($SortWrappers.IntTo$Snap $arg1@2709@01))
-    ($SortWrappers.IntTo$Snap $arg2@2710@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2708@01)
-      ($SortWrappers.IntTo$Snap $arg1@2709@01))
-    ($SortWrappers.IntTo$Snap $arg2@2710@01))))
-  :qid |e$EthPurchase-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2708@01 Int) ($arg1@2709@01 Int) ($arg2@2710@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2708@01)
-          ($SortWrappers.IntTo$Snap $arg1@2709@01))
-        ($SortWrappers.IntTo$Snap $arg2@2710@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2708@01)
-            ($SortWrappers.IntTo$Snap $arg1@2709@01))
-          ($SortWrappers.IntTo$Snap $arg2@2710@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2708@01)
-            ($SortWrappers.IntTo$Snap $arg1@2709@01))
-          ($SortWrappers.IntTo$Snap $arg2@2710@01))))))
-  
-  :qid |quant-u-1802|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2708@01 Int) ($arg11@2709@01 Int) ($arg21@2710@01 Int) ($arg02@2708@01 Int) ($arg12@2709@01 Int) ($arg22@2710@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2708@01)
-                ($SortWrappers.IntTo$Snap $arg11@2709@01))
-              ($SortWrappers.IntTo$Snap $arg21@2710@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2708@01)
-              ($SortWrappers.IntTo$Snap $arg11@2709@01))
-            ($SortWrappers.IntTo$Snap $arg21@2710@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2708@01)
-              ($SortWrappers.IntTo$Snap $arg11@2709@01))
-            ($SortWrappers.IntTo$Snap $arg21@2710@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2708@01)
-              ($SortWrappers.IntTo$Snap $arg11@2709@01))
-            ($SortWrappers.IntTo$Snap $arg21@2710@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2708@01)
-                ($SortWrappers.IntTo$Snap $arg12@2709@01))
-              ($SortWrappers.IntTo$Snap $arg22@2710@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2708@01)
-              ($SortWrappers.IntTo$Snap $arg12@2709@01))
-            ($SortWrappers.IntTo$Snap $arg22@2710@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2708@01)
-              ($SortWrappers.IntTo$Snap $arg12@2709@01))
-            ($SortWrappers.IntTo$Snap $arg22@2710@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2708@01)
-              ($SortWrappers.IntTo$Snap $arg12@2709@01))
-            ($SortWrappers.IntTo$Snap $arg22@2710@01)))))
-      (and
-        (and (= $arg01@2708@01 $arg02@2708@01) (= $arg11@2709@01 $arg12@2709@01))
-        (= $arg21@2710@01 $arg22@2710@01)))
-    (and
-      (and (= $arg01@2708@01 $arg02@2708@01) (= $arg11@2709@01 $arg12@2709@01))
-      (= $arg21@2710@01 $arg22@2710@01)))
-  
-  :qid |e$EthPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2708@01 Int) ($arg1@2709@01 Int) ($arg2@2710@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2708@01)
-            ($SortWrappers.IntTo$Snap $arg1@2709@01))
-          ($SortWrappers.IntTo$Snap $arg2@2710@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2708@01)
-            ($SortWrappers.IntTo$Snap $arg1@2709@01))
-          ($SortWrappers.IntTo$Snap $arg2@2710@01)))))
-    (and
-      (and
-        (= (inv@2712@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01) $arg0@2708@01)
-        (= (inv@2714@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01) $arg1@2709@01)
-        (= (inv@2716@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01) $arg2@2710@01))
-      (and
-        (img@2713@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01)
-        (img@2715@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01)
-        (img@2717@01 $arg0@2708@01 $arg1@2709@01 $arg2@2710@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2708@01)
-      ($SortWrappers.IntTo$Snap $arg1@2709@01))
-    ($SortWrappers.IntTo$Snap $arg2@2710@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2708@01)
-      ($SortWrappers.IntTo$Snap $arg1@2709@01))
-    ($SortWrappers.IntTo$Snap $arg2@2710@01))))
-  :qid |e$EthPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2713@01 $arg0 $arg1 $arg2)
-        (img@2715@01 $arg0 $arg1 $arg2)
-        (img@2717@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2712@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2714@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2716@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2712@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2714@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2716@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2712@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2714@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2716@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2712@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2714@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2716@01 $arg0 $arg1 $arg2))
-  :qid |e$EthPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2712@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2714@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2716@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2712@01 $arg0 $arg1 $arg2) (inv@2714@01 $arg0 $arg1 $arg2) (inv@2716@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1803|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2712@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2714@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2716@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2713@01 $arg0 $arg1 $arg2)
-        (img@2715@01 $arg0 $arg1 $arg2)
-        (img@2717@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2712@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2714@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2716@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$EthPurchase (as pm@2711@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2712@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2714@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2716@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1804|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$AddLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$AddLiquidity($arg0, $arg1, $arg2), perm(e$AddLiquidity($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2718@01 Int)
-(declare-const $arg1@2719@01 Int)
-(declare-const $arg2@2720@01 Int)
-(push) ; 29
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2721@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef250|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef251|)))
-(assert ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2718@01)
-    ($SortWrappers.IntTo$Snap $arg1@2719@01))
-  ($SortWrappers.IntTo$Snap $arg2@2720@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2718@01)
-    ($SortWrappers.IntTo$Snap $arg1@2719@01))
-  ($SortWrappers.IntTo$Snap $arg2@2720@01))))
-(assert (>
-  ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2718@01)
-      ($SortWrappers.IntTo$Snap $arg1@2719@01))
-    ($SortWrappers.IntTo$Snap $arg2@2720@01)))
-  $Perm.No))
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2722@01 (Int Int Int) Int)
-(declare-fun img@2723@01 (Int Int Int) Bool)
-(declare-fun inv@2724@01 (Int Int Int) Int)
-(declare-fun img@2725@01 (Int Int Int) Bool)
-(declare-fun inv@2726@01 (Int Int Int) Int)
-(declare-fun img@2727@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef250|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef251|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2718@01 Int) ($arg1@2719@01 Int) ($arg2@2720@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2718@01)
-          ($SortWrappers.IntTo$Snap $arg1@2719@01))
-        ($SortWrappers.IntTo$Snap $arg2@2720@01)))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2718@01)
-        ($SortWrappers.IntTo$Snap $arg1@2719@01))
-      ($SortWrappers.IntTo$Snap $arg2@2720@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2718@01)
-        ($SortWrappers.IntTo$Snap $arg1@2719@01))
-      ($SortWrappers.IntTo$Snap $arg2@2720@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2718@01)
-      ($SortWrappers.IntTo$Snap $arg1@2719@01))
-    ($SortWrappers.IntTo$Snap $arg2@2720@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2718@01)
-      ($SortWrappers.IntTo$Snap $arg1@2719@01))
-    ($SortWrappers.IntTo$Snap $arg2@2720@01))))
-  :qid |e$AddLiquidity-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2718@01 Int) ($arg1@2719@01 Int) ($arg2@2720@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2718@01)
-          ($SortWrappers.IntTo$Snap $arg1@2719@01))
-        ($SortWrappers.IntTo$Snap $arg2@2720@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2718@01)
-            ($SortWrappers.IntTo$Snap $arg1@2719@01))
-          ($SortWrappers.IntTo$Snap $arg2@2720@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2718@01)
-            ($SortWrappers.IntTo$Snap $arg1@2719@01))
-          ($SortWrappers.IntTo$Snap $arg2@2720@01))))))
-  
-  :qid |quant-u-1805|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2718@01 Int) ($arg11@2719@01 Int) ($arg21@2720@01 Int) ($arg02@2718@01 Int) ($arg12@2719@01 Int) ($arg22@2720@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2718@01)
-                ($SortWrappers.IntTo$Snap $arg11@2719@01))
-              ($SortWrappers.IntTo$Snap $arg21@2720@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2718@01)
-              ($SortWrappers.IntTo$Snap $arg11@2719@01))
-            ($SortWrappers.IntTo$Snap $arg21@2720@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2718@01)
-              ($SortWrappers.IntTo$Snap $arg11@2719@01))
-            ($SortWrappers.IntTo$Snap $arg21@2720@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2718@01)
-              ($SortWrappers.IntTo$Snap $arg11@2719@01))
-            ($SortWrappers.IntTo$Snap $arg21@2720@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2718@01)
-                ($SortWrappers.IntTo$Snap $arg12@2719@01))
-              ($SortWrappers.IntTo$Snap $arg22@2720@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2718@01)
-              ($SortWrappers.IntTo$Snap $arg12@2719@01))
-            ($SortWrappers.IntTo$Snap $arg22@2720@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2718@01)
-              ($SortWrappers.IntTo$Snap $arg12@2719@01))
-            ($SortWrappers.IntTo$Snap $arg22@2720@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2718@01)
-              ($SortWrappers.IntTo$Snap $arg12@2719@01))
-            ($SortWrappers.IntTo$Snap $arg22@2720@01)))))
-      (and
-        (and (= $arg01@2718@01 $arg02@2718@01) (= $arg11@2719@01 $arg12@2719@01))
-        (= $arg21@2720@01 $arg22@2720@01)))
-    (and
-      (and (= $arg01@2718@01 $arg02@2718@01) (= $arg11@2719@01 $arg12@2719@01))
-      (= $arg21@2720@01 $arg22@2720@01)))
-  
-  :qid |e$AddLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2718@01 Int) ($arg1@2719@01 Int) ($arg2@2720@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2718@01)
-            ($SortWrappers.IntTo$Snap $arg1@2719@01))
-          ($SortWrappers.IntTo$Snap $arg2@2720@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2718@01)
-            ($SortWrappers.IntTo$Snap $arg1@2719@01))
-          ($SortWrappers.IntTo$Snap $arg2@2720@01)))))
-    (and
-      (and
-        (= (inv@2722@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01) $arg0@2718@01)
-        (= (inv@2724@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01) $arg1@2719@01)
-        (= (inv@2726@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01) $arg2@2720@01))
-      (and
-        (img@2723@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01)
-        (img@2725@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01)
-        (img@2727@01 $arg0@2718@01 $arg1@2719@01 $arg2@2720@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2718@01)
-      ($SortWrappers.IntTo$Snap $arg1@2719@01))
-    ($SortWrappers.IntTo$Snap $arg2@2720@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2718@01)
-      ($SortWrappers.IntTo$Snap $arg1@2719@01))
-    ($SortWrappers.IntTo$Snap $arg2@2720@01))))
-  :qid |e$AddLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2723@01 $arg0 $arg1 $arg2)
-        (img@2725@01 $arg0 $arg1 $arg2)
-        (img@2727@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2722@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2724@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2726@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2722@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2724@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2726@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2722@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2724@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2726@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2722@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2724@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2726@01 $arg0 $arg1 $arg2))
-  :qid |e$AddLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2722@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2724@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2726@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2722@01 $arg0 $arg1 $arg2) (inv@2724@01 $arg0 $arg1 $arg2) (inv@2726@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1806|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2722@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2724@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2726@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2723@01 $arg0 $arg1 $arg2)
-        (img@2725@01 $arg0 $arg1 $arg2)
-        (img@2727@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2722@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2724@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2726@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$AddLiquidity (as pm@2721@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2722@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2724@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2726@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1807|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$RemoveLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$RemoveLiquidity($arg0, $arg1, $arg2), perm(e$RemoveLiquidity($arg0,
-;     $arg1, $arg2))))
-(declare-const $arg0@2728@01 Int)
-(declare-const $arg1@2729@01 Int)
-(declare-const $arg2@2730@01 Int)
-(push) ; 29
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2731@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef252|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef253|)))
-(assert ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2728@01)
-    ($SortWrappers.IntTo$Snap $arg1@2729@01))
-  ($SortWrappers.IntTo$Snap $arg2@2730@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2728@01)
-    ($SortWrappers.IntTo$Snap $arg1@2729@01))
-  ($SortWrappers.IntTo$Snap $arg2@2730@01))))
-(assert (>
-  ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2728@01)
-      ($SortWrappers.IntTo$Snap $arg1@2729@01))
-    ($SortWrappers.IntTo$Snap $arg2@2730@01)))
-  $Perm.No))
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2732@01 (Int Int Int) Int)
-(declare-fun img@2733@01 (Int Int Int) Bool)
-(declare-fun inv@2734@01 (Int Int Int) Int)
-(declare-fun img@2735@01 (Int Int Int) Bool)
-(declare-fun inv@2736@01 (Int Int Int) Int)
-(declare-fun img@2737@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef252|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef253|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2728@01 Int) ($arg1@2729@01 Int) ($arg2@2730@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2728@01)
-          ($SortWrappers.IntTo$Snap $arg1@2729@01))
-        ($SortWrappers.IntTo$Snap $arg2@2730@01)))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2728@01)
-        ($SortWrappers.IntTo$Snap $arg1@2729@01))
-      ($SortWrappers.IntTo$Snap $arg2@2730@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2728@01)
-        ($SortWrappers.IntTo$Snap $arg1@2729@01))
-      ($SortWrappers.IntTo$Snap $arg2@2730@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2728@01)
-      ($SortWrappers.IntTo$Snap $arg1@2729@01))
-    ($SortWrappers.IntTo$Snap $arg2@2730@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2728@01)
-      ($SortWrappers.IntTo$Snap $arg1@2729@01))
-    ($SortWrappers.IntTo$Snap $arg2@2730@01))))
-  :qid |e$RemoveLiquidity-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2728@01 Int) ($arg1@2729@01 Int) ($arg2@2730@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2728@01)
-          ($SortWrappers.IntTo$Snap $arg1@2729@01))
-        ($SortWrappers.IntTo$Snap $arg2@2730@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2728@01)
-            ($SortWrappers.IntTo$Snap $arg1@2729@01))
-          ($SortWrappers.IntTo$Snap $arg2@2730@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2728@01)
-            ($SortWrappers.IntTo$Snap $arg1@2729@01))
-          ($SortWrappers.IntTo$Snap $arg2@2730@01))))))
-  
-  :qid |quant-u-1808|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2728@01 Int) ($arg11@2729@01 Int) ($arg21@2730@01 Int) ($arg02@2728@01 Int) ($arg12@2729@01 Int) ($arg22@2730@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2728@01)
-                ($SortWrappers.IntTo$Snap $arg11@2729@01))
-              ($SortWrappers.IntTo$Snap $arg21@2730@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2728@01)
-              ($SortWrappers.IntTo$Snap $arg11@2729@01))
-            ($SortWrappers.IntTo$Snap $arg21@2730@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2728@01)
-              ($SortWrappers.IntTo$Snap $arg11@2729@01))
-            ($SortWrappers.IntTo$Snap $arg21@2730@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2728@01)
-              ($SortWrappers.IntTo$Snap $arg11@2729@01))
-            ($SortWrappers.IntTo$Snap $arg21@2730@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2728@01)
-                ($SortWrappers.IntTo$Snap $arg12@2729@01))
-              ($SortWrappers.IntTo$Snap $arg22@2730@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2728@01)
-              ($SortWrappers.IntTo$Snap $arg12@2729@01))
-            ($SortWrappers.IntTo$Snap $arg22@2730@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2728@01)
-              ($SortWrappers.IntTo$Snap $arg12@2729@01))
-            ($SortWrappers.IntTo$Snap $arg22@2730@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2728@01)
-              ($SortWrappers.IntTo$Snap $arg12@2729@01))
-            ($SortWrappers.IntTo$Snap $arg22@2730@01)))))
-      (and
-        (and (= $arg01@2728@01 $arg02@2728@01) (= $arg11@2729@01 $arg12@2729@01))
-        (= $arg21@2730@01 $arg22@2730@01)))
-    (and
-      (and (= $arg01@2728@01 $arg02@2728@01) (= $arg11@2729@01 $arg12@2729@01))
-      (= $arg21@2730@01 $arg22@2730@01)))
-  
-  :qid |e$RemoveLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2728@01 Int) ($arg1@2729@01 Int) ($arg2@2730@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2728@01)
-            ($SortWrappers.IntTo$Snap $arg1@2729@01))
-          ($SortWrappers.IntTo$Snap $arg2@2730@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2728@01)
-            ($SortWrappers.IntTo$Snap $arg1@2729@01))
-          ($SortWrappers.IntTo$Snap $arg2@2730@01)))))
-    (and
-      (and
-        (= (inv@2732@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01) $arg0@2728@01)
-        (= (inv@2734@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01) $arg1@2729@01)
-        (= (inv@2736@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01) $arg2@2730@01))
-      (and
-        (img@2733@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01)
-        (img@2735@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01)
-        (img@2737@01 $arg0@2728@01 $arg1@2729@01 $arg2@2730@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2728@01)
-      ($SortWrappers.IntTo$Snap $arg1@2729@01))
-    ($SortWrappers.IntTo$Snap $arg2@2730@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2728@01)
-      ($SortWrappers.IntTo$Snap $arg1@2729@01))
-    ($SortWrappers.IntTo$Snap $arg2@2730@01))))
-  :qid |e$RemoveLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2733@01 $arg0 $arg1 $arg2)
-        (img@2735@01 $arg0 $arg1 $arg2)
-        (img@2737@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2732@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2734@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2736@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2732@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2734@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2736@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2732@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2734@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2736@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2732@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2734@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2736@01 $arg0 $arg1 $arg2))
-  :qid |e$RemoveLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2732@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2734@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2736@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2732@01 $arg0 $arg1 $arg2) (inv@2734@01 $arg0 $arg1 $arg2) (inv@2736@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1809|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2732@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2734@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2736@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2733@01 $arg0 $arg1 $arg2)
-        (img@2735@01 $arg0 $arg1 $arg2)
-        (img@2737@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2732@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2734@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2736@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$RemoveLiquidity (as pm@2731@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2732@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2734@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2736@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1810|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Transfer($arg0, $arg1, $arg2) }
-;     perm(e$Transfer($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Transfer($arg0, $arg1, $arg2), perm(e$Transfer($arg0, $arg1, $arg2))))
-(declare-const $arg0@2738@01 Int)
-(declare-const $arg1@2739@01 Int)
-(declare-const $arg2@2740@01 Int)
-(push) ; 29
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2741@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef254|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef255|)))
-(assert ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2738@01)
-    ($SortWrappers.IntTo$Snap $arg1@2739@01))
-  ($SortWrappers.IntTo$Snap $arg2@2740@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2738@01)
-    ($SortWrappers.IntTo$Snap $arg1@2739@01))
-  ($SortWrappers.IntTo$Snap $arg2@2740@01))))
-(assert (>
-  ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2738@01)
-      ($SortWrappers.IntTo$Snap $arg1@2739@01))
-    ($SortWrappers.IntTo$Snap $arg2@2740@01)))
-  $Perm.No))
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2742@01 (Int Int Int) Int)
-(declare-fun img@2743@01 (Int Int Int) Bool)
-(declare-fun inv@2744@01 (Int Int Int) Int)
-(declare-fun img@2745@01 (Int Int Int) Bool)
-(declare-fun inv@2746@01 (Int Int Int) Int)
-(declare-fun img@2747@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef254|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef255|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2738@01 Int) ($arg1@2739@01 Int) ($arg2@2740@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2738@01)
-          ($SortWrappers.IntTo$Snap $arg1@2739@01))
-        ($SortWrappers.IntTo$Snap $arg2@2740@01)))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2738@01)
-        ($SortWrappers.IntTo$Snap $arg1@2739@01))
-      ($SortWrappers.IntTo$Snap $arg2@2740@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2738@01)
-        ($SortWrappers.IntTo$Snap $arg1@2739@01))
-      ($SortWrappers.IntTo$Snap $arg2@2740@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2738@01)
-      ($SortWrappers.IntTo$Snap $arg1@2739@01))
-    ($SortWrappers.IntTo$Snap $arg2@2740@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2738@01)
-      ($SortWrappers.IntTo$Snap $arg1@2739@01))
-    ($SortWrappers.IntTo$Snap $arg2@2740@01))))
-  :qid |e$Transfer-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2738@01 Int) ($arg1@2739@01 Int) ($arg2@2740@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2738@01)
-          ($SortWrappers.IntTo$Snap $arg1@2739@01))
-        ($SortWrappers.IntTo$Snap $arg2@2740@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2738@01)
-            ($SortWrappers.IntTo$Snap $arg1@2739@01))
-          ($SortWrappers.IntTo$Snap $arg2@2740@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2738@01)
-            ($SortWrappers.IntTo$Snap $arg1@2739@01))
-          ($SortWrappers.IntTo$Snap $arg2@2740@01))))))
-  
-  :qid |quant-u-1811|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2738@01 Int) ($arg11@2739@01 Int) ($arg21@2740@01 Int) ($arg02@2738@01 Int) ($arg12@2739@01 Int) ($arg22@2740@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2738@01)
-                ($SortWrappers.IntTo$Snap $arg11@2739@01))
-              ($SortWrappers.IntTo$Snap $arg21@2740@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2738@01)
-              ($SortWrappers.IntTo$Snap $arg11@2739@01))
-            ($SortWrappers.IntTo$Snap $arg21@2740@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2738@01)
-              ($SortWrappers.IntTo$Snap $arg11@2739@01))
-            ($SortWrappers.IntTo$Snap $arg21@2740@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2738@01)
-              ($SortWrappers.IntTo$Snap $arg11@2739@01))
-            ($SortWrappers.IntTo$Snap $arg21@2740@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2738@01)
-                ($SortWrappers.IntTo$Snap $arg12@2739@01))
-              ($SortWrappers.IntTo$Snap $arg22@2740@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2738@01)
-              ($SortWrappers.IntTo$Snap $arg12@2739@01))
-            ($SortWrappers.IntTo$Snap $arg22@2740@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2738@01)
-              ($SortWrappers.IntTo$Snap $arg12@2739@01))
-            ($SortWrappers.IntTo$Snap $arg22@2740@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2738@01)
-              ($SortWrappers.IntTo$Snap $arg12@2739@01))
-            ($SortWrappers.IntTo$Snap $arg22@2740@01)))))
-      (and
-        (and (= $arg01@2738@01 $arg02@2738@01) (= $arg11@2739@01 $arg12@2739@01))
-        (= $arg21@2740@01 $arg22@2740@01)))
-    (and
-      (and (= $arg01@2738@01 $arg02@2738@01) (= $arg11@2739@01 $arg12@2739@01))
-      (= $arg21@2740@01 $arg22@2740@01)))
-  
-  :qid |e$Transfer-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2738@01 Int) ($arg1@2739@01 Int) ($arg2@2740@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2738@01)
-            ($SortWrappers.IntTo$Snap $arg1@2739@01))
-          ($SortWrappers.IntTo$Snap $arg2@2740@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2738@01)
-            ($SortWrappers.IntTo$Snap $arg1@2739@01))
-          ($SortWrappers.IntTo$Snap $arg2@2740@01)))))
-    (and
-      (and
-        (= (inv@2742@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01) $arg0@2738@01)
-        (= (inv@2744@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01) $arg1@2739@01)
-        (= (inv@2746@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01) $arg2@2740@01))
-      (and
-        (img@2743@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01)
-        (img@2745@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01)
-        (img@2747@01 $arg0@2738@01 $arg1@2739@01 $arg2@2740@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2738@01)
-      ($SortWrappers.IntTo$Snap $arg1@2739@01))
-    ($SortWrappers.IntTo$Snap $arg2@2740@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2738@01)
-      ($SortWrappers.IntTo$Snap $arg1@2739@01))
-    ($SortWrappers.IntTo$Snap $arg2@2740@01))))
-  :qid |e$Transfer-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2743@01 $arg0 $arg1 $arg2)
-        (img@2745@01 $arg0 $arg1 $arg2)
-        (img@2747@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2742@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2744@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2746@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2742@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2744@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2746@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2742@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2744@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2746@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2742@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2744@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2746@01 $arg0 $arg1 $arg2))
-  :qid |e$Transfer-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2742@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2744@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2746@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2742@01 $arg0 $arg1 $arg2) (inv@2744@01 $arg0 $arg1 $arg2) (inv@2746@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1812|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2742@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2744@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2746@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2743@01 $arg0 $arg1 $arg2)
-        (img@2745@01 $arg0 $arg1 $arg2)
-        (img@2747@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2742@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2744@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2746@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Transfer (as pm@2741@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2742@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2744@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2746@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1813|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Approval($arg0, $arg1, $arg2) }
-;     perm(e$Approval($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Approval($arg0, $arg1, $arg2), perm(e$Approval($arg0, $arg1, $arg2))))
-(declare-const $arg0@2748@01 Int)
-(declare-const $arg1@2749@01 Int)
-(declare-const $arg2@2750@01 Int)
-(push) ; 29
-; [eval] perm(e$Approval($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2751@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef256|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef257|)))
-(assert ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2748@01)
-    ($SortWrappers.IntTo$Snap $arg1@2749@01))
-  ($SortWrappers.IntTo$Snap $arg2@2750@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2748@01)
-    ($SortWrappers.IntTo$Snap $arg1@2749@01))
-  ($SortWrappers.IntTo$Snap $arg2@2750@01))))
-(assert (>
-  ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2748@01)
-      ($SortWrappers.IntTo$Snap $arg1@2749@01))
-    ($SortWrappers.IntTo$Snap $arg2@2750@01)))
-  $Perm.No))
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 29
-(declare-fun inv@2752@01 (Int Int Int) Int)
-(declare-fun img@2753@01 (Int Int Int) Bool)
-(declare-fun inv@2754@01 (Int Int Int) Int)
-(declare-fun img@2755@01 (Int Int Int) Bool)
-(declare-fun inv@2756@01 (Int Int Int) Int)
-(declare-fun img@2757@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef256|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef257|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2748@01 Int) ($arg1@2749@01 Int) ($arg2@2750@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2748@01)
-          ($SortWrappers.IntTo$Snap $arg1@2749@01))
-        ($SortWrappers.IntTo$Snap $arg2@2750@01)))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2748@01)
-        ($SortWrappers.IntTo$Snap $arg1@2749@01))
-      ($SortWrappers.IntTo$Snap $arg2@2750@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2748@01)
-        ($SortWrappers.IntTo$Snap $arg1@2749@01))
-      ($SortWrappers.IntTo$Snap $arg2@2750@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2748@01)
-      ($SortWrappers.IntTo$Snap $arg1@2749@01))
-    ($SortWrappers.IntTo$Snap $arg2@2750@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2748@01)
-      ($SortWrappers.IntTo$Snap $arg1@2749@01))
-    ($SortWrappers.IntTo$Snap $arg2@2750@01))))
-  :qid |e$Approval-aux|)))
-(push) ; 29
-(assert (not (forall (($arg0@2748@01 Int) ($arg1@2749@01 Int) ($arg2@2750@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2748@01)
-          ($SortWrappers.IntTo$Snap $arg1@2749@01))
-        ($SortWrappers.IntTo$Snap $arg2@2750@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2748@01)
-            ($SortWrappers.IntTo$Snap $arg1@2749@01))
-          ($SortWrappers.IntTo$Snap $arg2@2750@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2748@01)
-            ($SortWrappers.IntTo$Snap $arg1@2749@01))
-          ($SortWrappers.IntTo$Snap $arg2@2750@01))))))
-  
-  :qid |quant-u-1814|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 29
-(assert (not (forall (($arg01@2748@01 Int) ($arg11@2749@01 Int) ($arg21@2750@01 Int) ($arg02@2748@01 Int) ($arg12@2749@01 Int) ($arg22@2750@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2748@01)
-                ($SortWrappers.IntTo$Snap $arg11@2749@01))
-              ($SortWrappers.IntTo$Snap $arg21@2750@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2748@01)
-              ($SortWrappers.IntTo$Snap $arg11@2749@01))
-            ($SortWrappers.IntTo$Snap $arg21@2750@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2748@01)
-              ($SortWrappers.IntTo$Snap $arg11@2749@01))
-            ($SortWrappers.IntTo$Snap $arg21@2750@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2748@01)
-              ($SortWrappers.IntTo$Snap $arg11@2749@01))
-            ($SortWrappers.IntTo$Snap $arg21@2750@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2748@01)
-                ($SortWrappers.IntTo$Snap $arg12@2749@01))
-              ($SortWrappers.IntTo$Snap $arg22@2750@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2748@01)
-              ($SortWrappers.IntTo$Snap $arg12@2749@01))
-            ($SortWrappers.IntTo$Snap $arg22@2750@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2748@01)
-              ($SortWrappers.IntTo$Snap $arg12@2749@01))
-            ($SortWrappers.IntTo$Snap $arg22@2750@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2748@01)
-              ($SortWrappers.IntTo$Snap $arg12@2749@01))
-            ($SortWrappers.IntTo$Snap $arg22@2750@01)))))
-      (and
-        (and (= $arg01@2748@01 $arg02@2748@01) (= $arg11@2749@01 $arg12@2749@01))
-        (= $arg21@2750@01 $arg22@2750@01)))
-    (and
-      (and (= $arg01@2748@01 $arg02@2748@01) (= $arg11@2749@01 $arg12@2749@01))
-      (= $arg21@2750@01 $arg22@2750@01)))
-  
-  :qid |e$Approval-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2748@01 Int) ($arg1@2749@01 Int) ($arg2@2750@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2748@01)
-            ($SortWrappers.IntTo$Snap $arg1@2749@01))
-          ($SortWrappers.IntTo$Snap $arg2@2750@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2748@01)
-            ($SortWrappers.IntTo$Snap $arg1@2749@01))
-          ($SortWrappers.IntTo$Snap $arg2@2750@01)))))
-    (and
-      (and
-        (= (inv@2752@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01) $arg0@2748@01)
-        (= (inv@2754@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01) $arg1@2749@01)
-        (= (inv@2756@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01) $arg2@2750@01))
-      (and
-        (img@2753@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01)
-        (img@2755@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01)
-        (img@2757@01 $arg0@2748@01 $arg1@2749@01 $arg2@2750@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2748@01)
-      ($SortWrappers.IntTo$Snap $arg1@2749@01))
-    ($SortWrappers.IntTo$Snap $arg2@2750@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2748@01)
-      ($SortWrappers.IntTo$Snap $arg1@2749@01))
-    ($SortWrappers.IntTo$Snap $arg2@2750@01))))
-  :qid |e$Approval-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2753@01 $arg0 $arg1 $arg2)
-        (img@2755@01 $arg0 $arg1 $arg2)
-        (img@2757@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2752@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2754@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2756@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2752@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2754@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2756@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2752@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2754@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2756@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2752@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2754@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2756@01 $arg0 $arg1 $arg2))
-  :qid |e$Approval-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2752@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2754@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2756@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2752@01 $arg0 $arg1 $arg2) (inv@2754@01 $arg0 $arg1 $arg2) (inv@2756@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1815|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 29
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2752@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2754@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2756@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2753@01 $arg0 $arg1 $arg2)
-        (img@2755@01 $arg0 $arg1 $arg2)
-        (img@2757@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2752@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2754@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2756@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Approval (as pm@2751@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2752@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2754@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2756@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1816|))))
-(check-sat)
-; unsat
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$6
-(push) ; 29
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail$2@2331@01)))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 29
-(set-option :timeout 10)
-(assert (not l$i0$send_fail$2@2331@01))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 776 | l$i0$send_fail$2@2331@01 | live]
-; [else-branch: 776 | !(l$i0$send_fail$2@2331@01) | live]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 776 | l$i0$send_fail$2@2331@01]
-(assert l$i0$send_fail$2@2331@01)
-; [exec]
-; inhale acc($failed(($struct_get($struct_loc(self, 6)): Int)), write)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(declare-const $t@2758@01 $Snap)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(set-option :timeout 0)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 777 | True | live]
-; [else-branch: 777 | False | dead]
-(set-option :timeout 0)
-(push) ; 30
-; [then-branch: 777 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2759@01 $Snap)
-(assert (= $t@2759@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2760@01 $Struct)
-(assert (=
-  self@2760@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 30
-; [then-branch: 778 | False | dead]
-; [else-branch: 778 | True | live]
-(set-option :timeout 0)
-(push) ; 30
-; [else-branch: 778 | True]
-(pop) ; 30
-(pop) ; 29
-(push) ; 29
-; [else-branch: 776 | !(l$i0$send_fail$2@2331@01)]
-(assert (not l$i0$send_fail$2@2331@01))
-(pop) ; 29
-; [eval] !l$i0$send_fail$2
-(push) ; 29
-(set-option :timeout 10)
-(assert (not l$i0$send_fail$2@2331@01))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 29
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail$2@2331@01)))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 779 | !(l$i0$send_fail$2@2331@01) | live]
-; [else-branch: 779 | l$i0$send_fail$2@2331@01 | live]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 779 | !(l$i0$send_fail$2@2331@01)]
-(assert (not l$i0$send_fail$2@2331@01))
-; [exec]
-; $contracts := $old_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; i4$$pre_self := self
-; [exec]
-; i4$$pre_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$7
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; self := l$i0$havoc$8
-; [exec]
-; $contracts := l$i0$havoc$9
-; [exec]
-; inhale |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-(declare-const $t@2761@01 $Snap)
-(assert (= $t@2761@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
-; [eval] $struct_loc(self, 0)
-(assert (=
-  (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 0)))
-  32))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-(declare-const $t@2762@01 $Snap)
-(assert (= $t@2762@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 1)): Seq[Int])
-; [eval] $struct_loc(self, 1)
-(assert (=
-  (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 1)))
-  32))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 2)): Int) &&
-;   ($struct_get($struct_loc(self, 2)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2763@01 $Snap)
-(assert (= $t@2763@01 ($Snap.combine ($Snap.first $t@2763@01) ($Snap.second $t@2763@01))))
-(assert (= ($Snap.first $t@2763@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 2)): Int)
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 2))))
-(assert (= ($Snap.second $t@2763@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 2))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 3)): Int) &&
-;   ($struct_get($struct_loc(self, 3)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2764@01 $Snap)
-(assert (= $t@2764@01 ($Snap.combine ($Snap.first $t@2764@01) ($Snap.second $t@2764@01))))
-(assert (= ($Snap.first $t@2764@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 3)): Int)
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 3))))
-(assert (= ($Snap.second $t@2764@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 3)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 3))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2765@01 $Snap)
-(assert (= $t@2765@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q2@2766@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(push) ; 31
-; [then-branch: 780 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2766@01)) | live]
-; [else-branch: 780 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2766@01) | live]
-(push) ; 32
-; [then-branch: 780 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2766@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))))
-(pop) ; 32
-(push) ; 32
-; [else-branch: 780 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2766@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01)))))
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2766@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3035@11@3035@345-aux|)))
-(assert (forall (($q2@2766@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2766@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3035@11@3035@345|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $t@2767@01 $Snap)
-(assert (= $t@2767@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $q2@2768@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2768@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2768@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2768@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3036@11@3036@253|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       0 <=
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) &&
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $t@2769@01 $Snap)
-(assert (= $t@2769@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $q3@2770@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q4@2771@01 Int)
-(push) ; 31
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(push) ; 32
-; [then-branch: 781 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2770@01), $q4@2771@01)) | live]
-; [else-branch: 781 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2770@01), $q4@2771@01) | live]
-(push) ; 33
-; [then-branch: 781 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2770@01), $q4@2771@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))))
-(pop) ; 33
-(push) ; 33
-; [else-branch: 781 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2770@01), $q4@2771@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01)))
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 33
-(pop) ; 32
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01)))))
-(pop) ; 31
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q4@2771@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))))
-  :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597-aux|)))
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@2770@01 Int)) (!
-  (forall (($q4@2771@01 Int)) (!
-    (or
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-      (not
-        (<=
-          0
-          ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597-aux|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@11@3037@598-aux|)))
-(assert (forall (($q3@2770@01 Int)) (!
-  (forall (($q4@2771@01 Int)) (!
-    (and
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-      (<=
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01)
-        115792089237316195423570985008687907853269984665640564039457584007913129639935))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01) $q4@2771@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2770@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@11@3037@598|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int])): Int)))
-(declare-const $t@2772@01 $Snap)
-(assert (= $t@2772@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)))
-(declare-const $q3@2773@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int))
-(declare-const $q4@2774@01 Int)
-(push) ; 31
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-; [eval] ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 31
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@2773@01 Int)) (!
-  (forall (($q4@2774@01 Int)) (!
-    (<=
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2773@01) $q4@2774@01)
-      ($map_sum<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2773@01)))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2773@01) $q4@2774@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3038@131@3038@505|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2773@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3038@11@3038@506|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 6)): Int) &&
-;   ($struct_get($struct_loc(self, 6)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@2775@01 $Snap)
-(assert (= $t@2775@01 ($Snap.combine ($Snap.first $t@2775@01) ($Snap.second $t@2775@01))))
-(assert (= ($Snap.first $t@2775@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 6)): Int)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 6))))
-(assert (= ($Snap.second $t@2775@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 6)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 6))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 7)): Int) &&
-;   ($struct_get($struct_loc(self, 7)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@2776@01 $Snap)
-(assert (= $t@2776@01 ($Snap.combine ($Snap.first $t@2776@01) ($Snap.second $t@2776@01))))
-(assert (= ($Snap.first $t@2776@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 7)): Int)
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 7))))
-(assert (= ($Snap.second $t@2776@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 7)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 7))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 8)): Int) &&
-;   ($struct_get($struct_loc(self, 8)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2777@01 $Snap)
-(assert (= $t@2777@01 ($Snap.combine ($Snap.first $t@2777@01) ($Snap.second $t@2777@01))))
-(assert (= ($Snap.first $t@2777@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 8)): Int)
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))))
-(assert (= ($Snap.second $t@2777@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 8)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale -170141183460469231731687303715884105728 <=
-;   ($struct_get($struct_loc(self, 9)): Int) &&
-;   ($struct_get($struct_loc(self, 9)): Int) <=
-;   170141183460469231731687303715884105727
-(declare-const $t@2778@01 $Snap)
-(assert (= $t@2778@01 ($Snap.combine ($Snap.first $t@2778@01) ($Snap.second $t@2778@01))))
-(assert (= ($Snap.first $t@2778@01) $Snap.unit))
-; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 9)): Int)
-; [eval] -170141183460469231731687303715884105728
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  (- 0 170141183460469231731687303715884105728)
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 9))))
-(assert (= ($Snap.second $t@2778@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 9)): Int) <= 170141183460469231731687303715884105727
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 9))
-  170141183460469231731687303715884105727))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2779@01 $Snap)
-(assert (= $t@2779@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q5@2780@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(push) ; 31
-; [then-branch: 782 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2780@01)) | live]
-; [else-branch: 782 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2780@01) | live]
-(push) ; 32
-; [then-branch: 782 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2780@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))))
-(pop) ; 32
-(push) ; 32
-; [else-branch: 782 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2780@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01)))))
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@2780@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3043@11@3043@348-aux|)))
-(assert (forall (($q5@2780@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2780@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3043@11@3043@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $t@2781@01 $Snap)
-(assert (= $t@2781@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $q5@2782@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@2782@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2782@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2782@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3044@11@3044@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2783@01 $Snap)
-(assert (= $t@2783@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q6@2784@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(push) ; 31
-; [then-branch: 783 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2784@01)) | live]
-; [else-branch: 783 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2784@01) | live]
-(push) ; 32
-; [then-branch: 783 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2784@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))))
-(pop) ; 32
-(push) ; 32
-; [else-branch: 783 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2784@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01)))))
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@2784@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3045@11@3045@348-aux|)))
-(assert (forall (($q6@2784@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2784@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3045@11@3045@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $t@2785@01 $Snap)
-(assert (= $t@2785@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $q6@2786@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@2786@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2786@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2786@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3046@11@3046@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(self, -1)): Int) ==
-;   9122519725869122497593506884710
-(declare-const $t@2787@01 $Snap)
-(assert (= $t@2787@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
-; [eval] ($struct_get($struct_loc(self, -1)): Int)
-; [eval] $struct_loc(self, -1)
-; [eval] -1
-(assert (=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 (- 0 1)))
-  9122519725869122497593506884710))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $a: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >=
-;     ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $t@2788@01 $Snap)
-(assert (= $t@2788@01 $Snap.unit))
-; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $a@2789@01 Int)
-(set-option :timeout 0)
-(push) ; 30
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc($old_self, 11)): $Map[Int, Int])
-; [eval] $struct_loc($old_self, 11)
-(pop) ; 30
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($a@2789@01 Int)) (!
-  (>=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $a@2789@01)
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$2@2325@01 11)) $a@2789@01))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $a@2789@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3049@11@3049@262|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not (not l$i0$no_reentrant_call$1@2338@01)))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 784 | l$i0$no_reentrant_call$1@2338@01 | live]
-; [else-branch: 784 | !(l$i0$no_reentrant_call$1@2338@01) | live]
-(set-option :timeout 0)
-(push) ; 30
-; [then-branch: 784 | l$i0$no_reentrant_call$1@2338@01]
-(assert l$i0$no_reentrant_call$1@2338@01)
-; [exec]
-; self := $old_self
-; [exec]
-; $contracts := $old_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$10
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$11
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [eval] !l$i0$raw_ret$1
-(push) ; 31
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 785 | !(l$i0$raw_ret$1@2332@01) | live]
-; [else-branch: 785 | l$i0$raw_ret$1@2332@01 | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 785 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 32
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 786 | True | live]
-; [else-branch: 786 | False | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 786 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2790@01 $Snap)
-(assert (= $t@2790@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2791@01 $Struct)
-(assert (=
-  self@2791@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 32
-; [then-branch: 787 | False | dead]
-; [else-branch: 787 | True | live]
-(set-option :timeout 0)
-(push) ; 32
-; [else-branch: 787 | True]
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 785 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-(pop) ; 31
-; [eval] !!l$i0$raw_ret$1
-; [eval] !l$i0$raw_ret$1
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 788 | l$i0$raw_ret$1@2332@01 | live]
-; [else-branch: 788 | !(l$i0$raw_ret$1@2332@01) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 788 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 789 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 789 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(push) ; 32
-; [else-branch: 789 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 32
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 790 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 790 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 790 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 791 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 791 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 33
-; [else-branch: 791 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 33
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 792 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 792 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 792 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [eval] $unwrap(l$i0$tokens_bought)
-(declare-const $t@2792@01 $Snap)
-(declare-const sm@2793@01 $PSF<e$TokenPurchase>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($PSF.lookup_e$TokenPurchase (as sm@2793@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
-  $t@2792@01))
-(assert (<=
-  $Perm.No
-  (ite
-    (and
-      (=
-        ($unwrap<Int> l$i0$eth_sold@2488@01)
-        ($unwrap<Int> l$i0$eth_sold@2488@01))
-      (=
-        ($unwrap<Int> l$tokens_bought@2284@01)
-        ($unwrap<Int> l$tokens_bought@2284@01)))
-    $Perm.Write
-    $Perm.No)))
-; Definitional axioms for snapshot map values
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 793 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 793 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 34
-; [else-branch: 793 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 34
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 794 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 794 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 794 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 795 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 795 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 35
-; [else-branch: 795 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 35
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 35
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 35
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 796 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 796 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 35
-; [then-branch: 796 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; i0$$res := $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $wrap($unwrap(l$i0$eth_sold) * 1)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(declare-const i0$$res@2794@01 Int)
-(assert (=
-  i0$$res@2794@01
-  ($unwrap<Int> ($wrap<$Int> ($unwrap<Int> l$i0$eth_sold@2488@01)))))
-; [exec]
-; label i0$return
-; [exec]
-; $res := $unwrap($wrap(i0$$res))
-; [eval] $unwrap($wrap(i0$$res))
-; [eval] $wrap(i0$$res)
-(declare-const $res@2795@01 Int)
-(assert (= $res@2795@01 ($unwrap<Int> ($wrap<$Int> i0$$res@2794@01))))
-; [exec]
-; label return
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 797 | $out_of_gas@2341@01 | live]
-; [else-branch: 797 | !($out_of_gas@2341@01) | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 797 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 798 | True | live]
-; [else-branch: 798 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 798 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2796@01 $Snap)
-(assert (= $t@2796@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2797@01 $Struct)
-(assert (=
-  self@2797@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-; [then-branch: 799 | False | dead]
-; [else-branch: 799 | True | live]
-(set-option :timeout 0)
-(push) ; 37
-; [else-branch: 799 | True]
-(pop) ; 37
-(pop) ; 36
-(push) ; 36
-; [else-branch: 797 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-(pop) ; 36
-; [eval] !$out_of_gas
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 800 | !($out_of_gas@2341@01) | live]
-; [else-branch: 800 | $out_of_gas@2341@01 | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 800 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-; [exec]
-; label end
-; [eval] !$succ
-; [then-branch: 801 | False | dead]
-; [else-branch: 801 | True | live]
-(push) ; 37
-; [else-branch: 801 | True]
-(pop) ; 37
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 802 | True | live]
-; [else-branch: 802 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 802 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2798@01 $Snap)
-(assert (= $t@2798@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2799@01 $Struct)
-(assert (=
-  self@2799@01
-  ($struct_set<$Struct> l$i0$havoc$2@2325@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$2@2325@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-(pop) ; 36
-(set-option :timeout 0)
-(push) ; 36
-; [else-branch: 800 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-(pop) ; 36
-(pop) ; 35
-(pop) ; 34
-(pop) ; 33
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 788 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-(pop) ; 31
-(pop) ; 30
-(push) ; 30
-; [else-branch: 784 | !(l$i0$no_reentrant_call$1@2338@01)]
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(pop) ; 30
-; [eval] !l$i0$no_reentrant_call$1
-(push) ; 30
-(set-option :timeout 10)
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not (not l$i0$no_reentrant_call$1@2338@01)))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 803 | !(l$i0$no_reentrant_call$1@2338@01) | live]
-; [else-branch: 803 | l$i0$no_reentrant_call$1@2338@01 | live]
-(set-option :timeout 0)
-(push) ; 30
-; [then-branch: 803 | !(l$i0$no_reentrant_call$1@2338@01)]
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$10
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$11
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [eval] !l$i0$raw_ret$1
-(push) ; 31
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 804 | !(l$i0$raw_ret$1@2332@01) | live]
-; [else-branch: 804 | l$i0$raw_ret$1@2332@01 | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 804 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 32
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 805 | True | live]
-; [else-branch: 805 | False | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 805 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2800@01 $Snap)
-(assert (= $t@2800@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2801@01 $Struct)
-(assert (=
-  self@2801@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 32
-; [then-branch: 806 | False | dead]
-; [else-branch: 806 | True | live]
-(set-option :timeout 0)
-(push) ; 32
-; [else-branch: 806 | True]
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 804 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-(pop) ; 31
-; [eval] !!l$i0$raw_ret$1
-; [eval] !l$i0$raw_ret$1
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 807 | l$i0$raw_ret$1@2332@01 | live]
-; [else-branch: 807 | !(l$i0$raw_ret$1@2332@01) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 807 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 808 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 808 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(push) ; 32
-; [else-branch: 808 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 32
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 809 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 809 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 809 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 810 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 810 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 33
-; [else-branch: 810 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 33
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 811 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 811 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 811 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [eval] $unwrap(l$i0$tokens_bought)
-(declare-const $t@2802@01 $Snap)
-(declare-const sm@2803@01 $PSF<e$TokenPurchase>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($PSF.lookup_e$TokenPurchase (as sm@2803@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
-  $t@2802@01))
-(assert (<=
-  $Perm.No
-  (ite
-    (and
-      (=
-        ($unwrap<Int> l$i0$eth_sold@2488@01)
-        ($unwrap<Int> l$i0$eth_sold@2488@01))
-      (=
-        ($unwrap<Int> l$tokens_bought@2284@01)
-        ($unwrap<Int> l$tokens_bought@2284@01)))
-    $Perm.Write
-    $Perm.No)))
-; Definitional axioms for snapshot map values
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 812 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 812 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 34
-; [else-branch: 812 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 34
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 813 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 813 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 813 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 814 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 814 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 35
-; [else-branch: 814 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 35
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 35
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 35
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 815 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 815 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 35
-; [then-branch: 815 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; i0$$res := $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $wrap($unwrap(l$i0$eth_sold) * 1)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(declare-const i0$$res@2804@01 Int)
-(assert (=
-  i0$$res@2804@01
-  ($unwrap<Int> ($wrap<$Int> ($unwrap<Int> l$i0$eth_sold@2488@01)))))
-; [exec]
-; label i0$return
-; [exec]
-; $res := $unwrap($wrap(i0$$res))
-; [eval] $unwrap($wrap(i0$$res))
-; [eval] $wrap(i0$$res)
-(declare-const $res@2805@01 Int)
-(assert (= $res@2805@01 ($unwrap<Int> ($wrap<$Int> i0$$res@2804@01))))
-; [exec]
-; label return
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 816 | $out_of_gas@2341@01 | live]
-; [else-branch: 816 | !($out_of_gas@2341@01) | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 816 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 817 | True | live]
-; [else-branch: 817 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 817 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2806@01 $Snap)
-(assert (= $t@2806@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2807@01 $Struct)
-(assert (=
-  self@2807@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-; [then-branch: 818 | False | dead]
-; [else-branch: 818 | True | live]
-(set-option :timeout 0)
-(push) ; 37
-; [else-branch: 818 | True]
-(pop) ; 37
-(pop) ; 36
-(push) ; 36
-; [else-branch: 816 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-(pop) ; 36
-; [eval] !$out_of_gas
-(push) ; 36
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 36
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 819 | !($out_of_gas@2341@01) | live]
-; [else-branch: 819 | $out_of_gas@2341@01 | live]
-(set-option :timeout 0)
-(push) ; 36
-; [then-branch: 819 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-; [exec]
-; label end
-; [eval] !$succ
-; [then-branch: 820 | False | dead]
-; [else-branch: 820 | True | live]
-(push) ; 37
-; [else-branch: 820 | True]
-(pop) ; 37
-(push) ; 37
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 37
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 821 | True | live]
-; [else-branch: 821 | False | dead]
-(set-option :timeout 0)
-(push) ; 37
-; [then-branch: 821 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2808@01 $Snap)
-(assert (= $t@2808@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2809@01 $Struct)
-(assert (=
-  self@2809@01
-  ($struct_set<$Struct> l$i0$havoc$8@2336@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 37
-(pop) ; 36
-(set-option :timeout 0)
-(push) ; 36
-; [else-branch: 819 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-(pop) ; 36
-(pop) ; 35
-(pop) ; 34
-(pop) ; 33
-(pop) ; 32
-(pop) ; 31
-(push) ; 31
-; [else-branch: 807 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-(pop) ; 31
-(pop) ; 30
-(push) ; 30
-; [else-branch: 803 | l$i0$no_reentrant_call$1@2338@01]
-(assert l$i0$no_reentrant_call$1@2338@01)
-(pop) ; 30
-(pop) ; 29
-(push) ; 29
-; [else-branch: 779 | l$i0$send_fail$2@2331@01]
-(assert l$i0$send_fail$2@2331@01)
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 775 | l$i0$no_reentrant_call@2327@01]
-(assert l$i0$no_reentrant_call@2327@01)
-(pop) ; 28
-(pop) ; 27
-(push) ; 27
-; [else-branch: 723 | l$i0$send_fail$1@2321@01]
-(assert l$i0$send_fail$1@2321@01)
-(pop) ; 27
-(pop) ; 26
-(pop) ; 25
-(push) ; 25
-; [else-branch: 717 | !($unwrap[Int](l$i0$eth_refund@2491@01) > 0)]
-(assert (not (> ($unwrap<Int> l$i0$eth_refund@2491@01) 0)))
-(pop) ; 25
-; [eval] !($unwrap(l$i0$eth_refund) > 0)
-; [eval] $unwrap(l$i0$eth_refund) > 0
-; [eval] $unwrap(l$i0$eth_refund)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (> ($unwrap<Int> l$i0$eth_refund@2491@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.01s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not (> ($unwrap<Int> l$i0$eth_refund@2491@01) 0))))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.01s
-; (get-info :all-statistics)
-; [then-branch: 822 | !($unwrap[Int](l$i0$eth_refund@2491@01) > 0) | live]
-; [else-branch: 822 | $unwrap[Int](l$i0$eth_refund@2491@01) > 0 | live]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 822 | !($unwrap[Int](l$i0$eth_refund@2491@01) > 0)]
-(assert (not (> ($unwrap<Int> l$i0$eth_refund@2491@01) 0)))
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$TokenPurchase($arg0, $arg1, $arg2) }
-;     perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$TokenPurchase($arg0, $arg1, $arg2), perm(e$TokenPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2810@01 Int)
-(declare-const $arg1@2811@01 Int)
-(declare-const $arg2@2812@01 Int)
-(push) ; 26
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2813@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef258|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef259|)))
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2810@01)
-    ($SortWrappers.IntTo$Snap $arg1@2811@01))
-  ($SortWrappers.IntTo$Snap $arg2@2812@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2810@01)
-    ($SortWrappers.IntTo$Snap $arg1@2811@01))
-  ($SortWrappers.IntTo$Snap $arg2@2812@01))))
-(assert (>
-  ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2810@01)
-      ($SortWrappers.IntTo$Snap $arg1@2811@01))
-    ($SortWrappers.IntTo$Snap $arg2@2812@01)))
-  $Perm.No))
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2814@01 (Int Int Int) Int)
-(declare-fun img@2815@01 (Int Int Int) Bool)
-(declare-fun inv@2816@01 (Int Int Int) Int)
-(declare-fun img@2817@01 (Int Int Int) Bool)
-(declare-fun inv@2818@01 (Int Int Int) Int)
-(declare-fun img@2819@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef258|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef259|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2810@01 Int) ($arg1@2811@01 Int) ($arg2@2812@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2810@01)
-          ($SortWrappers.IntTo$Snap $arg1@2811@01))
-        ($SortWrappers.IntTo$Snap $arg2@2812@01)))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2810@01)
-        ($SortWrappers.IntTo$Snap $arg1@2811@01))
-      ($SortWrappers.IntTo$Snap $arg2@2812@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2810@01)
-        ($SortWrappers.IntTo$Snap $arg1@2811@01))
-      ($SortWrappers.IntTo$Snap $arg2@2812@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2810@01)
-      ($SortWrappers.IntTo$Snap $arg1@2811@01))
-    ($SortWrappers.IntTo$Snap $arg2@2812@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2810@01)
-      ($SortWrappers.IntTo$Snap $arg1@2811@01))
-    ($SortWrappers.IntTo$Snap $arg2@2812@01))))
-  :qid |e$TokenPurchase-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2810@01 Int) ($arg1@2811@01 Int) ($arg2@2812@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2810@01)
-          ($SortWrappers.IntTo$Snap $arg1@2811@01))
-        ($SortWrappers.IntTo$Snap $arg2@2812@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2810@01)
-            ($SortWrappers.IntTo$Snap $arg1@2811@01))
-          ($SortWrappers.IntTo$Snap $arg2@2812@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2810@01)
-            ($SortWrappers.IntTo$Snap $arg1@2811@01))
-          ($SortWrappers.IntTo$Snap $arg2@2812@01))))))
-  
-  :qid |quant-u-1817|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2810@01 Int) ($arg11@2811@01 Int) ($arg21@2812@01 Int) ($arg02@2810@01 Int) ($arg12@2811@01 Int) ($arg22@2812@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2810@01)
-                ($SortWrappers.IntTo$Snap $arg11@2811@01))
-              ($SortWrappers.IntTo$Snap $arg21@2812@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2810@01)
-              ($SortWrappers.IntTo$Snap $arg11@2811@01))
-            ($SortWrappers.IntTo$Snap $arg21@2812@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2810@01)
-              ($SortWrappers.IntTo$Snap $arg11@2811@01))
-            ($SortWrappers.IntTo$Snap $arg21@2812@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2810@01)
-              ($SortWrappers.IntTo$Snap $arg11@2811@01))
-            ($SortWrappers.IntTo$Snap $arg21@2812@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2810@01)
-                ($SortWrappers.IntTo$Snap $arg12@2811@01))
-              ($SortWrappers.IntTo$Snap $arg22@2812@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2810@01)
-              ($SortWrappers.IntTo$Snap $arg12@2811@01))
-            ($SortWrappers.IntTo$Snap $arg22@2812@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2810@01)
-              ($SortWrappers.IntTo$Snap $arg12@2811@01))
-            ($SortWrappers.IntTo$Snap $arg22@2812@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2810@01)
-              ($SortWrappers.IntTo$Snap $arg12@2811@01))
-            ($SortWrappers.IntTo$Snap $arg22@2812@01)))))
-      (and
-        (and (= $arg01@2810@01 $arg02@2810@01) (= $arg11@2811@01 $arg12@2811@01))
-        (= $arg21@2812@01 $arg22@2812@01)))
-    (and
-      (and (= $arg01@2810@01 $arg02@2810@01) (= $arg11@2811@01 $arg12@2811@01))
-      (= $arg21@2812@01 $arg22@2812@01)))
-  
-  :qid |e$TokenPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2810@01 Int) ($arg1@2811@01 Int) ($arg2@2812@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2810@01)
-            ($SortWrappers.IntTo$Snap $arg1@2811@01))
-          ($SortWrappers.IntTo$Snap $arg2@2812@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2810@01)
-            ($SortWrappers.IntTo$Snap $arg1@2811@01))
-          ($SortWrappers.IntTo$Snap $arg2@2812@01)))))
-    (and
-      (and
-        (= (inv@2814@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01) $arg0@2810@01)
-        (= (inv@2816@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01) $arg1@2811@01)
-        (= (inv@2818@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01) $arg2@2812@01))
-      (and
-        (img@2815@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01)
-        (img@2817@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01)
-        (img@2819@01 $arg0@2810@01 $arg1@2811@01 $arg2@2812@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2810@01)
-      ($SortWrappers.IntTo$Snap $arg1@2811@01))
-    ($SortWrappers.IntTo$Snap $arg2@2812@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2810@01)
-      ($SortWrappers.IntTo$Snap $arg1@2811@01))
-    ($SortWrappers.IntTo$Snap $arg2@2812@01))))
-  :qid |e$TokenPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2815@01 $arg0 $arg1 $arg2)
-        (img@2817@01 $arg0 $arg1 $arg2)
-        (img@2819@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2814@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2816@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2818@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2814@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2816@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2818@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2814@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2816@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2818@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2814@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2816@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2818@01 $arg0 $arg1 $arg2))
-  :qid |e$TokenPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2814@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2816@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2818@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2814@01 $arg0 $arg1 $arg2) (inv@2816@01 $arg0 $arg1 $arg2) (inv@2818@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1818|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2814@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2816@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2818@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2815@01 $arg0 $arg1 $arg2)
-        (img@2817@01 $arg0 $arg1 $arg2)
-        (img@2819@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2814@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2816@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2818@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$TokenPurchase (as pm@2813@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2814@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2816@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2818@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1819|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$EthPurchase($arg0, $arg1, $arg2) }
-;     perm(e$EthPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$EthPurchase($arg0, $arg1, $arg2), perm(e$EthPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2820@01 Int)
-(declare-const $arg1@2821@01 Int)
-(declare-const $arg2@2822@01 Int)
-(push) ; 26
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2823@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef260|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef261|)))
-(assert ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2820@01)
-    ($SortWrappers.IntTo$Snap $arg1@2821@01))
-  ($SortWrappers.IntTo$Snap $arg2@2822@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2820@01)
-    ($SortWrappers.IntTo$Snap $arg1@2821@01))
-  ($SortWrappers.IntTo$Snap $arg2@2822@01))))
-(assert (>
-  ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2820@01)
-      ($SortWrappers.IntTo$Snap $arg1@2821@01))
-    ($SortWrappers.IntTo$Snap $arg2@2822@01)))
-  $Perm.No))
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2824@01 (Int Int Int) Int)
-(declare-fun img@2825@01 (Int Int Int) Bool)
-(declare-fun inv@2826@01 (Int Int Int) Int)
-(declare-fun img@2827@01 (Int Int Int) Bool)
-(declare-fun inv@2828@01 (Int Int Int) Int)
-(declare-fun img@2829@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef260|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef261|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2820@01 Int) ($arg1@2821@01 Int) ($arg2@2822@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2820@01)
-          ($SortWrappers.IntTo$Snap $arg1@2821@01))
-        ($SortWrappers.IntTo$Snap $arg2@2822@01)))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2820@01)
-        ($SortWrappers.IntTo$Snap $arg1@2821@01))
-      ($SortWrappers.IntTo$Snap $arg2@2822@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2820@01)
-        ($SortWrappers.IntTo$Snap $arg1@2821@01))
-      ($SortWrappers.IntTo$Snap $arg2@2822@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2820@01)
-      ($SortWrappers.IntTo$Snap $arg1@2821@01))
-    ($SortWrappers.IntTo$Snap $arg2@2822@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2820@01)
-      ($SortWrappers.IntTo$Snap $arg1@2821@01))
-    ($SortWrappers.IntTo$Snap $arg2@2822@01))))
-  :qid |e$EthPurchase-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2820@01 Int) ($arg1@2821@01 Int) ($arg2@2822@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2820@01)
-          ($SortWrappers.IntTo$Snap $arg1@2821@01))
-        ($SortWrappers.IntTo$Snap $arg2@2822@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2820@01)
-            ($SortWrappers.IntTo$Snap $arg1@2821@01))
-          ($SortWrappers.IntTo$Snap $arg2@2822@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2820@01)
-            ($SortWrappers.IntTo$Snap $arg1@2821@01))
-          ($SortWrappers.IntTo$Snap $arg2@2822@01))))))
-  
-  :qid |quant-u-1820|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2820@01 Int) ($arg11@2821@01 Int) ($arg21@2822@01 Int) ($arg02@2820@01 Int) ($arg12@2821@01 Int) ($arg22@2822@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2820@01)
-                ($SortWrappers.IntTo$Snap $arg11@2821@01))
-              ($SortWrappers.IntTo$Snap $arg21@2822@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2820@01)
-              ($SortWrappers.IntTo$Snap $arg11@2821@01))
-            ($SortWrappers.IntTo$Snap $arg21@2822@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2820@01)
-              ($SortWrappers.IntTo$Snap $arg11@2821@01))
-            ($SortWrappers.IntTo$Snap $arg21@2822@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2820@01)
-              ($SortWrappers.IntTo$Snap $arg11@2821@01))
-            ($SortWrappers.IntTo$Snap $arg21@2822@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2820@01)
-                ($SortWrappers.IntTo$Snap $arg12@2821@01))
-              ($SortWrappers.IntTo$Snap $arg22@2822@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2820@01)
-              ($SortWrappers.IntTo$Snap $arg12@2821@01))
-            ($SortWrappers.IntTo$Snap $arg22@2822@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2820@01)
-              ($SortWrappers.IntTo$Snap $arg12@2821@01))
-            ($SortWrappers.IntTo$Snap $arg22@2822@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2820@01)
-              ($SortWrappers.IntTo$Snap $arg12@2821@01))
-            ($SortWrappers.IntTo$Snap $arg22@2822@01)))))
-      (and
-        (and (= $arg01@2820@01 $arg02@2820@01) (= $arg11@2821@01 $arg12@2821@01))
-        (= $arg21@2822@01 $arg22@2822@01)))
-    (and
-      (and (= $arg01@2820@01 $arg02@2820@01) (= $arg11@2821@01 $arg12@2821@01))
-      (= $arg21@2822@01 $arg22@2822@01)))
-  
-  :qid |e$EthPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2820@01 Int) ($arg1@2821@01 Int) ($arg2@2822@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2820@01)
-            ($SortWrappers.IntTo$Snap $arg1@2821@01))
-          ($SortWrappers.IntTo$Snap $arg2@2822@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2820@01)
-            ($SortWrappers.IntTo$Snap $arg1@2821@01))
-          ($SortWrappers.IntTo$Snap $arg2@2822@01)))))
-    (and
-      (and
-        (= (inv@2824@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01) $arg0@2820@01)
-        (= (inv@2826@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01) $arg1@2821@01)
-        (= (inv@2828@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01) $arg2@2822@01))
-      (and
-        (img@2825@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01)
-        (img@2827@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01)
-        (img@2829@01 $arg0@2820@01 $arg1@2821@01 $arg2@2822@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2820@01)
-      ($SortWrappers.IntTo$Snap $arg1@2821@01))
-    ($SortWrappers.IntTo$Snap $arg2@2822@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2820@01)
-      ($SortWrappers.IntTo$Snap $arg1@2821@01))
-    ($SortWrappers.IntTo$Snap $arg2@2822@01))))
-  :qid |e$EthPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2825@01 $arg0 $arg1 $arg2)
-        (img@2827@01 $arg0 $arg1 $arg2)
-        (img@2829@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2824@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2826@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2828@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2824@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2826@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2828@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2824@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2826@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2828@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2824@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2826@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2828@01 $arg0 $arg1 $arg2))
-  :qid |e$EthPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2824@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2826@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2828@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@2410@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2824@01 $arg0 $arg1 $arg2) (inv@2826@01 $arg0 $arg1 $arg2) (inv@2828@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1821|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2824@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2826@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2828@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2825@01 $arg0 $arg1 $arg2)
-        (img@2827@01 $arg0 $arg1 $arg2)
-        (img@2829@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2824@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2826@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2828@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$EthPurchase (as pm@2823@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2824@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2826@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2828@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1822|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$AddLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$AddLiquidity($arg0, $arg1, $arg2), perm(e$AddLiquidity($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@2830@01 Int)
-(declare-const $arg1@2831@01 Int)
-(declare-const $arg2@2832@01 Int)
-(push) ; 26
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2833@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef262|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef263|)))
-(assert ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2830@01)
-    ($SortWrappers.IntTo$Snap $arg1@2831@01))
-  ($SortWrappers.IntTo$Snap $arg2@2832@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2830@01)
-    ($SortWrappers.IntTo$Snap $arg1@2831@01))
-  ($SortWrappers.IntTo$Snap $arg2@2832@01))))
-(assert (>
-  ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2830@01)
-      ($SortWrappers.IntTo$Snap $arg1@2831@01))
-    ($SortWrappers.IntTo$Snap $arg2@2832@01)))
-  $Perm.No))
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2834@01 (Int Int Int) Int)
-(declare-fun img@2835@01 (Int Int Int) Bool)
-(declare-fun inv@2836@01 (Int Int Int) Int)
-(declare-fun img@2837@01 (Int Int Int) Bool)
-(declare-fun inv@2838@01 (Int Int Int) Int)
-(declare-fun img@2839@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef262|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef263|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2830@01 Int) ($arg1@2831@01 Int) ($arg2@2832@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2830@01)
-          ($SortWrappers.IntTo$Snap $arg1@2831@01))
-        ($SortWrappers.IntTo$Snap $arg2@2832@01)))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2830@01)
-        ($SortWrappers.IntTo$Snap $arg1@2831@01))
-      ($SortWrappers.IntTo$Snap $arg2@2832@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2830@01)
-        ($SortWrappers.IntTo$Snap $arg1@2831@01))
-      ($SortWrappers.IntTo$Snap $arg2@2832@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2830@01)
-      ($SortWrappers.IntTo$Snap $arg1@2831@01))
-    ($SortWrappers.IntTo$Snap $arg2@2832@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2830@01)
-      ($SortWrappers.IntTo$Snap $arg1@2831@01))
-    ($SortWrappers.IntTo$Snap $arg2@2832@01))))
-  :qid |e$AddLiquidity-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2830@01 Int) ($arg1@2831@01 Int) ($arg2@2832@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2830@01)
-          ($SortWrappers.IntTo$Snap $arg1@2831@01))
-        ($SortWrappers.IntTo$Snap $arg2@2832@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2830@01)
-            ($SortWrappers.IntTo$Snap $arg1@2831@01))
-          ($SortWrappers.IntTo$Snap $arg2@2832@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2830@01)
-            ($SortWrappers.IntTo$Snap $arg1@2831@01))
-          ($SortWrappers.IntTo$Snap $arg2@2832@01))))))
-  
-  :qid |quant-u-1823|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2830@01 Int) ($arg11@2831@01 Int) ($arg21@2832@01 Int) ($arg02@2830@01 Int) ($arg12@2831@01 Int) ($arg22@2832@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2830@01)
-                ($SortWrappers.IntTo$Snap $arg11@2831@01))
-              ($SortWrappers.IntTo$Snap $arg21@2832@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2830@01)
-              ($SortWrappers.IntTo$Snap $arg11@2831@01))
-            ($SortWrappers.IntTo$Snap $arg21@2832@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2830@01)
-              ($SortWrappers.IntTo$Snap $arg11@2831@01))
-            ($SortWrappers.IntTo$Snap $arg21@2832@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2830@01)
-              ($SortWrappers.IntTo$Snap $arg11@2831@01))
-            ($SortWrappers.IntTo$Snap $arg21@2832@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2830@01)
-                ($SortWrappers.IntTo$Snap $arg12@2831@01))
-              ($SortWrappers.IntTo$Snap $arg22@2832@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2830@01)
-              ($SortWrappers.IntTo$Snap $arg12@2831@01))
-            ($SortWrappers.IntTo$Snap $arg22@2832@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2830@01)
-              ($SortWrappers.IntTo$Snap $arg12@2831@01))
-            ($SortWrappers.IntTo$Snap $arg22@2832@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2830@01)
-              ($SortWrappers.IntTo$Snap $arg12@2831@01))
-            ($SortWrappers.IntTo$Snap $arg22@2832@01)))))
-      (and
-        (and (= $arg01@2830@01 $arg02@2830@01) (= $arg11@2831@01 $arg12@2831@01))
-        (= $arg21@2832@01 $arg22@2832@01)))
-    (and
-      (and (= $arg01@2830@01 $arg02@2830@01) (= $arg11@2831@01 $arg12@2831@01))
-      (= $arg21@2832@01 $arg22@2832@01)))
-  
-  :qid |e$AddLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2830@01 Int) ($arg1@2831@01 Int) ($arg2@2832@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2830@01)
-            ($SortWrappers.IntTo$Snap $arg1@2831@01))
-          ($SortWrappers.IntTo$Snap $arg2@2832@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2830@01)
-            ($SortWrappers.IntTo$Snap $arg1@2831@01))
-          ($SortWrappers.IntTo$Snap $arg2@2832@01)))))
-    (and
-      (and
-        (= (inv@2834@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01) $arg0@2830@01)
-        (= (inv@2836@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01) $arg1@2831@01)
-        (= (inv@2838@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01) $arg2@2832@01))
-      (and
-        (img@2835@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01)
-        (img@2837@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01)
-        (img@2839@01 $arg0@2830@01 $arg1@2831@01 $arg2@2832@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2830@01)
-      ($SortWrappers.IntTo$Snap $arg1@2831@01))
-    ($SortWrappers.IntTo$Snap $arg2@2832@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2830@01)
-      ($SortWrappers.IntTo$Snap $arg1@2831@01))
-    ($SortWrappers.IntTo$Snap $arg2@2832@01))))
-  :qid |e$AddLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2835@01 $arg0 $arg1 $arg2)
-        (img@2837@01 $arg0 $arg1 $arg2)
-        (img@2839@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2834@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2836@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2838@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2834@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2836@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2838@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2834@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2836@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2838@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2834@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2836@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2838@01 $arg0 $arg1 $arg2))
-  :qid |e$AddLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2834@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2836@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2838@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@2422@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2834@01 $arg0 $arg1 $arg2) (inv@2836@01 $arg0 $arg1 $arg2) (inv@2838@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1824|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2834@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2836@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2838@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2835@01 $arg0 $arg1 $arg2)
-        (img@2837@01 $arg0 $arg1 $arg2)
-        (img@2839@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2834@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2836@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2838@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$AddLiquidity (as pm@2833@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2834@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2836@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2838@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1825|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$RemoveLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$RemoveLiquidity($arg0, $arg1, $arg2), perm(e$RemoveLiquidity($arg0,
-;     $arg1, $arg2))))
-(declare-const $arg0@2840@01 Int)
-(declare-const $arg1@2841@01 Int)
-(declare-const $arg2@2842@01 Int)
-(push) ; 26
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2843@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef264|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef265|)))
-(assert ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2840@01)
-    ($SortWrappers.IntTo$Snap $arg1@2841@01))
-  ($SortWrappers.IntTo$Snap $arg2@2842@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2840@01)
-    ($SortWrappers.IntTo$Snap $arg1@2841@01))
-  ($SortWrappers.IntTo$Snap $arg2@2842@01))))
-(assert (>
-  ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2840@01)
-      ($SortWrappers.IntTo$Snap $arg1@2841@01))
-    ($SortWrappers.IntTo$Snap $arg2@2842@01)))
-  $Perm.No))
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2844@01 (Int Int Int) Int)
-(declare-fun img@2845@01 (Int Int Int) Bool)
-(declare-fun inv@2846@01 (Int Int Int) Int)
-(declare-fun img@2847@01 (Int Int Int) Bool)
-(declare-fun inv@2848@01 (Int Int Int) Int)
-(declare-fun img@2849@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef264|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef265|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2840@01 Int) ($arg1@2841@01 Int) ($arg2@2842@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2840@01)
-          ($SortWrappers.IntTo$Snap $arg1@2841@01))
-        ($SortWrappers.IntTo$Snap $arg2@2842@01)))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2840@01)
-        ($SortWrappers.IntTo$Snap $arg1@2841@01))
-      ($SortWrappers.IntTo$Snap $arg2@2842@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2840@01)
-        ($SortWrappers.IntTo$Snap $arg1@2841@01))
-      ($SortWrappers.IntTo$Snap $arg2@2842@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2840@01)
-      ($SortWrappers.IntTo$Snap $arg1@2841@01))
-    ($SortWrappers.IntTo$Snap $arg2@2842@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2840@01)
-      ($SortWrappers.IntTo$Snap $arg1@2841@01))
-    ($SortWrappers.IntTo$Snap $arg2@2842@01))))
-  :qid |e$RemoveLiquidity-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2840@01 Int) ($arg1@2841@01 Int) ($arg2@2842@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2840@01)
-          ($SortWrappers.IntTo$Snap $arg1@2841@01))
-        ($SortWrappers.IntTo$Snap $arg2@2842@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2840@01)
-            ($SortWrappers.IntTo$Snap $arg1@2841@01))
-          ($SortWrappers.IntTo$Snap $arg2@2842@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2840@01)
-            ($SortWrappers.IntTo$Snap $arg1@2841@01))
-          ($SortWrappers.IntTo$Snap $arg2@2842@01))))))
-  
-  :qid |quant-u-1826|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2840@01 Int) ($arg11@2841@01 Int) ($arg21@2842@01 Int) ($arg02@2840@01 Int) ($arg12@2841@01 Int) ($arg22@2842@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2840@01)
-                ($SortWrappers.IntTo$Snap $arg11@2841@01))
-              ($SortWrappers.IntTo$Snap $arg21@2842@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2840@01)
-              ($SortWrappers.IntTo$Snap $arg11@2841@01))
-            ($SortWrappers.IntTo$Snap $arg21@2842@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2840@01)
-              ($SortWrappers.IntTo$Snap $arg11@2841@01))
-            ($SortWrappers.IntTo$Snap $arg21@2842@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2840@01)
-              ($SortWrappers.IntTo$Snap $arg11@2841@01))
-            ($SortWrappers.IntTo$Snap $arg21@2842@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2840@01)
-                ($SortWrappers.IntTo$Snap $arg12@2841@01))
-              ($SortWrappers.IntTo$Snap $arg22@2842@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2840@01)
-              ($SortWrappers.IntTo$Snap $arg12@2841@01))
-            ($SortWrappers.IntTo$Snap $arg22@2842@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2840@01)
-              ($SortWrappers.IntTo$Snap $arg12@2841@01))
-            ($SortWrappers.IntTo$Snap $arg22@2842@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2840@01)
-              ($SortWrappers.IntTo$Snap $arg12@2841@01))
-            ($SortWrappers.IntTo$Snap $arg22@2842@01)))))
-      (and
-        (and (= $arg01@2840@01 $arg02@2840@01) (= $arg11@2841@01 $arg12@2841@01))
-        (= $arg21@2842@01 $arg22@2842@01)))
-    (and
-      (and (= $arg01@2840@01 $arg02@2840@01) (= $arg11@2841@01 $arg12@2841@01))
-      (= $arg21@2842@01 $arg22@2842@01)))
-  
-  :qid |e$RemoveLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2840@01 Int) ($arg1@2841@01 Int) ($arg2@2842@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2840@01)
-            ($SortWrappers.IntTo$Snap $arg1@2841@01))
-          ($SortWrappers.IntTo$Snap $arg2@2842@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2840@01)
-            ($SortWrappers.IntTo$Snap $arg1@2841@01))
-          ($SortWrappers.IntTo$Snap $arg2@2842@01)))))
-    (and
-      (and
-        (= (inv@2844@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01) $arg0@2840@01)
-        (= (inv@2846@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01) $arg1@2841@01)
-        (= (inv@2848@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01) $arg2@2842@01))
-      (and
-        (img@2845@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01)
-        (img@2847@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01)
-        (img@2849@01 $arg0@2840@01 $arg1@2841@01 $arg2@2842@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2840@01)
-      ($SortWrappers.IntTo$Snap $arg1@2841@01))
-    ($SortWrappers.IntTo$Snap $arg2@2842@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2840@01)
-      ($SortWrappers.IntTo$Snap $arg1@2841@01))
-    ($SortWrappers.IntTo$Snap $arg2@2842@01))))
-  :qid |e$RemoveLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2845@01 $arg0 $arg1 $arg2)
-        (img@2847@01 $arg0 $arg1 $arg2)
-        (img@2849@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2844@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2846@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2848@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2844@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2846@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2848@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2844@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2846@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2848@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2844@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2846@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2848@01 $arg0 $arg1 $arg2))
-  :qid |e$RemoveLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2844@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2846@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2848@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@2434@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2844@01 $arg0 $arg1 $arg2) (inv@2846@01 $arg0 $arg1 $arg2) (inv@2848@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1827|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2844@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2846@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2848@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2845@01 $arg0 $arg1 $arg2)
-        (img@2847@01 $arg0 $arg1 $arg2)
-        (img@2849@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2844@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2846@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2848@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$RemoveLiquidity (as pm@2843@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2844@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2846@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2848@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1828|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Transfer($arg0, $arg1, $arg2) }
-;     perm(e$Transfer($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Transfer($arg0, $arg1, $arg2), perm(e$Transfer($arg0, $arg1, $arg2))))
-(declare-const $arg0@2850@01 Int)
-(declare-const $arg1@2851@01 Int)
-(declare-const $arg2@2852@01 Int)
-(push) ; 26
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2853@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef266|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef267|)))
-(assert ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2850@01)
-    ($SortWrappers.IntTo$Snap $arg1@2851@01))
-  ($SortWrappers.IntTo$Snap $arg2@2852@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2850@01)
-    ($SortWrappers.IntTo$Snap $arg1@2851@01))
-  ($SortWrappers.IntTo$Snap $arg2@2852@01))))
-(assert (>
-  ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2850@01)
-      ($SortWrappers.IntTo$Snap $arg1@2851@01))
-    ($SortWrappers.IntTo$Snap $arg2@2852@01)))
-  $Perm.No))
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2854@01 (Int Int Int) Int)
-(declare-fun img@2855@01 (Int Int Int) Bool)
-(declare-fun inv@2856@01 (Int Int Int) Int)
-(declare-fun img@2857@01 (Int Int Int) Bool)
-(declare-fun inv@2858@01 (Int Int Int) Int)
-(declare-fun img@2859@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef266|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef267|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2850@01 Int) ($arg1@2851@01 Int) ($arg2@2852@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2850@01)
-          ($SortWrappers.IntTo$Snap $arg1@2851@01))
-        ($SortWrappers.IntTo$Snap $arg2@2852@01)))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2850@01)
-        ($SortWrappers.IntTo$Snap $arg1@2851@01))
-      ($SortWrappers.IntTo$Snap $arg2@2852@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2850@01)
-        ($SortWrappers.IntTo$Snap $arg1@2851@01))
-      ($SortWrappers.IntTo$Snap $arg2@2852@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2850@01)
-      ($SortWrappers.IntTo$Snap $arg1@2851@01))
-    ($SortWrappers.IntTo$Snap $arg2@2852@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2850@01)
-      ($SortWrappers.IntTo$Snap $arg1@2851@01))
-    ($SortWrappers.IntTo$Snap $arg2@2852@01))))
-  :qid |e$Transfer-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2850@01 Int) ($arg1@2851@01 Int) ($arg2@2852@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2850@01)
-          ($SortWrappers.IntTo$Snap $arg1@2851@01))
-        ($SortWrappers.IntTo$Snap $arg2@2852@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2850@01)
-            ($SortWrappers.IntTo$Snap $arg1@2851@01))
-          ($SortWrappers.IntTo$Snap $arg2@2852@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2850@01)
-            ($SortWrappers.IntTo$Snap $arg1@2851@01))
-          ($SortWrappers.IntTo$Snap $arg2@2852@01))))))
-  
-  :qid |quant-u-1829|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2850@01 Int) ($arg11@2851@01 Int) ($arg21@2852@01 Int) ($arg02@2850@01 Int) ($arg12@2851@01 Int) ($arg22@2852@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2850@01)
-                ($SortWrappers.IntTo$Snap $arg11@2851@01))
-              ($SortWrappers.IntTo$Snap $arg21@2852@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2850@01)
-              ($SortWrappers.IntTo$Snap $arg11@2851@01))
-            ($SortWrappers.IntTo$Snap $arg21@2852@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2850@01)
-              ($SortWrappers.IntTo$Snap $arg11@2851@01))
-            ($SortWrappers.IntTo$Snap $arg21@2852@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2850@01)
-              ($SortWrappers.IntTo$Snap $arg11@2851@01))
-            ($SortWrappers.IntTo$Snap $arg21@2852@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2850@01)
-                ($SortWrappers.IntTo$Snap $arg12@2851@01))
-              ($SortWrappers.IntTo$Snap $arg22@2852@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2850@01)
-              ($SortWrappers.IntTo$Snap $arg12@2851@01))
-            ($SortWrappers.IntTo$Snap $arg22@2852@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2850@01)
-              ($SortWrappers.IntTo$Snap $arg12@2851@01))
-            ($SortWrappers.IntTo$Snap $arg22@2852@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2850@01)
-              ($SortWrappers.IntTo$Snap $arg12@2851@01))
-            ($SortWrappers.IntTo$Snap $arg22@2852@01)))))
-      (and
-        (and (= $arg01@2850@01 $arg02@2850@01) (= $arg11@2851@01 $arg12@2851@01))
-        (= $arg21@2852@01 $arg22@2852@01)))
-    (and
-      (and (= $arg01@2850@01 $arg02@2850@01) (= $arg11@2851@01 $arg12@2851@01))
-      (= $arg21@2852@01 $arg22@2852@01)))
-  
-  :qid |e$Transfer-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2850@01 Int) ($arg1@2851@01 Int) ($arg2@2852@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2850@01)
-            ($SortWrappers.IntTo$Snap $arg1@2851@01))
-          ($SortWrappers.IntTo$Snap $arg2@2852@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2850@01)
-            ($SortWrappers.IntTo$Snap $arg1@2851@01))
-          ($SortWrappers.IntTo$Snap $arg2@2852@01)))))
-    (and
-      (and
-        (= (inv@2854@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01) $arg0@2850@01)
-        (= (inv@2856@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01) $arg1@2851@01)
-        (= (inv@2858@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01) $arg2@2852@01))
-      (and
-        (img@2855@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01)
-        (img@2857@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01)
-        (img@2859@01 $arg0@2850@01 $arg1@2851@01 $arg2@2852@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2850@01)
-      ($SortWrappers.IntTo$Snap $arg1@2851@01))
-    ($SortWrappers.IntTo$Snap $arg2@2852@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2850@01)
-      ($SortWrappers.IntTo$Snap $arg1@2851@01))
-    ($SortWrappers.IntTo$Snap $arg2@2852@01))))
-  :qid |e$Transfer-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2855@01 $arg0 $arg1 $arg2)
-        (img@2857@01 $arg0 $arg1 $arg2)
-        (img@2859@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2854@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2856@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2858@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2854@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2856@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2858@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2854@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2856@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2858@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2854@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2856@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2858@01 $arg0 $arg1 $arg2))
-  :qid |e$Transfer-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2854@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2856@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2858@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@2446@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2854@01 $arg0 $arg1 $arg2) (inv@2856@01 $arg0 $arg1 $arg2) (inv@2858@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1830|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2854@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2856@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2858@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2855@01 $arg0 $arg1 $arg2)
-        (img@2857@01 $arg0 $arg1 $arg2)
-        (img@2859@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2854@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2856@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2858@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Transfer (as pm@2853@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2854@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2856@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2858@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1831|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Approval($arg0, $arg1, $arg2) }
-;     perm(e$Approval($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Approval($arg0, $arg1, $arg2), perm(e$Approval($arg0, $arg1, $arg2))))
-(declare-const $arg0@2860@01 Int)
-(declare-const $arg1@2861@01 Int)
-(declare-const $arg2@2862@01 Int)
-(push) ; 26
-; [eval] perm(e$Approval($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-(declare-const pm@2863@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef268|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef269|)))
-(assert ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2860@01)
-    ($SortWrappers.IntTo$Snap $arg1@2861@01))
-  ($SortWrappers.IntTo$Snap $arg2@2862@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@2860@01)
-    ($SortWrappers.IntTo$Snap $arg1@2861@01))
-  ($SortWrappers.IntTo$Snap $arg2@2862@01))))
-(assert (>
-  ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2860@01)
-      ($SortWrappers.IntTo$Snap $arg1@2861@01))
-    ($SortWrappers.IntTo$Snap $arg2@2862@01)))
-  $Perm.No))
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 26
-(declare-fun inv@2864@01 (Int Int Int) Int)
-(declare-fun img@2865@01 (Int Int Int) Bool)
-(declare-fun inv@2866@01 (Int Int Int) Int)
-(declare-fun img@2867@01 (Int Int Int) Bool)
-(declare-fun inv@2868@01 (Int Int Int) Int)
-(declare-fun img@2869@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef268|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef269|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@2860@01 Int) ($arg1@2861@01 Int) ($arg2@2862@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2860@01)
-          ($SortWrappers.IntTo$Snap $arg1@2861@01))
-        ($SortWrappers.IntTo$Snap $arg2@2862@01)))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2860@01)
-        ($SortWrappers.IntTo$Snap $arg1@2861@01))
-      ($SortWrappers.IntTo$Snap $arg2@2862@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@2860@01)
-        ($SortWrappers.IntTo$Snap $arg1@2861@01))
-      ($SortWrappers.IntTo$Snap $arg2@2862@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2860@01)
-      ($SortWrappers.IntTo$Snap $arg1@2861@01))
-    ($SortWrappers.IntTo$Snap $arg2@2862@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2860@01)
-      ($SortWrappers.IntTo$Snap $arg1@2861@01))
-    ($SortWrappers.IntTo$Snap $arg2@2862@01))))
-  :qid |e$Approval-aux|)))
-(push) ; 26
-(assert (not (forall (($arg0@2860@01 Int) ($arg1@2861@01 Int) ($arg2@2862@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@2860@01)
-          ($SortWrappers.IntTo$Snap $arg1@2861@01))
-        ($SortWrappers.IntTo$Snap $arg2@2862@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2860@01)
-            ($SortWrappers.IntTo$Snap $arg1@2861@01))
-          ($SortWrappers.IntTo$Snap $arg2@2862@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2860@01)
-            ($SortWrappers.IntTo$Snap $arg1@2861@01))
-          ($SortWrappers.IntTo$Snap $arg2@2862@01))))))
-  
-  :qid |quant-u-1832|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 26
-(assert (not (forall (($arg01@2860@01 Int) ($arg11@2861@01 Int) ($arg21@2862@01 Int) ($arg02@2860@01 Int) ($arg12@2861@01 Int) ($arg22@2862@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@2860@01)
-                ($SortWrappers.IntTo$Snap $arg11@2861@01))
-              ($SortWrappers.IntTo$Snap $arg21@2862@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2860@01)
-              ($SortWrappers.IntTo$Snap $arg11@2861@01))
-            ($SortWrappers.IntTo$Snap $arg21@2862@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2860@01)
-              ($SortWrappers.IntTo$Snap $arg11@2861@01))
-            ($SortWrappers.IntTo$Snap $arg21@2862@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@2860@01)
-              ($SortWrappers.IntTo$Snap $arg11@2861@01))
-            ($SortWrappers.IntTo$Snap $arg21@2862@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@2860@01)
-                ($SortWrappers.IntTo$Snap $arg12@2861@01))
-              ($SortWrappers.IntTo$Snap $arg22@2862@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2860@01)
-              ($SortWrappers.IntTo$Snap $arg12@2861@01))
-            ($SortWrappers.IntTo$Snap $arg22@2862@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2860@01)
-              ($SortWrappers.IntTo$Snap $arg12@2861@01))
-            ($SortWrappers.IntTo$Snap $arg22@2862@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@2860@01)
-              ($SortWrappers.IntTo$Snap $arg12@2861@01))
-            ($SortWrappers.IntTo$Snap $arg22@2862@01)))))
-      (and
-        (and (= $arg01@2860@01 $arg02@2860@01) (= $arg11@2861@01 $arg12@2861@01))
-        (= $arg21@2862@01 $arg22@2862@01)))
-    (and
-      (and (= $arg01@2860@01 $arg02@2860@01) (= $arg11@2861@01 $arg12@2861@01))
-      (= $arg21@2862@01 $arg22@2862@01)))
-  
-  :qid |e$Approval-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@2860@01 Int) ($arg1@2861@01 Int) ($arg2@2862@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2860@01)
-            ($SortWrappers.IntTo$Snap $arg1@2861@01))
-          ($SortWrappers.IntTo$Snap $arg2@2862@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@2860@01)
-            ($SortWrappers.IntTo$Snap $arg1@2861@01))
-          ($SortWrappers.IntTo$Snap $arg2@2862@01)))))
-    (and
-      (and
-        (= (inv@2864@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01) $arg0@2860@01)
-        (= (inv@2866@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01) $arg1@2861@01)
-        (= (inv@2868@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01) $arg2@2862@01))
-      (and
-        (img@2865@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01)
-        (img@2867@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01)
-        (img@2869@01 $arg0@2860@01 $arg1@2861@01 $arg2@2862@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2860@01)
-      ($SortWrappers.IntTo$Snap $arg1@2861@01))
-    ($SortWrappers.IntTo$Snap $arg2@2862@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@2860@01)
-      ($SortWrappers.IntTo$Snap $arg1@2861@01))
-    ($SortWrappers.IntTo$Snap $arg2@2862@01))))
-  :qid |e$Approval-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@2865@01 $arg0 $arg1 $arg2)
-        (img@2867@01 $arg0 $arg1 $arg2)
-        (img@2869@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2864@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2866@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2868@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@2864@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@2866@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@2868@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@2864@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@2866@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@2868@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@2864@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2866@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@2868@01 $arg0 $arg1 $arg2))
-  :qid |e$Approval-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2864@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2866@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2868@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@2458@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@2864@01 $arg0 $arg1 $arg2) (inv@2866@01 $arg0 $arg1 $arg2) (inv@2868@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1833|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 26
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@2864@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@2866@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@2868@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@2865@01 $arg0 $arg1 $arg2)
-        (img@2867@01 $arg0 $arg1 $arg2)
-        (img@2869@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@2864@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@2866@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@2868@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Approval (as pm@2863@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@2864@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@2866@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@2868@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1834|))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$6
-(push) ; 26
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail$2@2331@01)))
-(check-sat)
-; unknown
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 26
-(set-option :timeout 10)
-(assert (not l$i0$send_fail$2@2331@01))
-(check-sat)
-; unknown
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 823 | l$i0$send_fail$2@2331@01 | live]
-; [else-branch: 823 | !(l$i0$send_fail$2@2331@01) | live]
-(set-option :timeout 0)
-(push) ; 26
-; [then-branch: 823 | l$i0$send_fail$2@2331@01]
-(assert l$i0$send_fail$2@2331@01)
-; [exec]
-; inhale acc($failed(($struct_get($struct_loc(self, 6)): Int)), write)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(declare-const $t@2870@01 $Snap)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 824 | True | live]
-; [else-branch: 824 | False | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 824 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2871@01 $Snap)
-(assert (= $t@2871@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2872@01 $Struct)
-(assert (=
-  self@2872@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 27
-; [then-branch: 825 | False | dead]
-; [else-branch: 825 | True | live]
-(set-option :timeout 0)
-(push) ; 27
-; [else-branch: 825 | True]
-(pop) ; 27
-(pop) ; 26
-(push) ; 26
-; [else-branch: 823 | !(l$i0$send_fail$2@2331@01)]
-(assert (not l$i0$send_fail$2@2331@01))
-(pop) ; 26
-; [eval] !l$i0$send_fail$2
-(push) ; 26
-(set-option :timeout 10)
-(assert (not l$i0$send_fail$2@2331@01))
-(check-sat)
-; unknown
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 26
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail$2@2331@01)))
-(check-sat)
-; unknown
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 826 | !(l$i0$send_fail$2@2331@01) | live]
-; [else-branch: 826 | l$i0$send_fail$2@2331@01 | live]
-(set-option :timeout 0)
-(push) ; 26
-; [then-branch: 826 | !(l$i0$send_fail$2@2331@01)]
-(assert (not l$i0$send_fail$2@2331@01))
-; [exec]
-; $contracts := $old_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; i4$$pre_self := self
-; [exec]
-; i4$$pre_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$7
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; self := l$i0$havoc$8
-; [exec]
-; $contracts := l$i0$havoc$9
-; [exec]
-; inhale |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-(declare-const $t@2873@01 $Snap)
-(assert (= $t@2873@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
-; [eval] $struct_loc(self, 0)
-(assert (=
-  (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 0)))
-  32))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-(declare-const $t@2874@01 $Snap)
-(assert (= $t@2874@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 1)): Seq[Int])
-; [eval] $struct_loc(self, 1)
-(assert (=
-  (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 1)))
-  32))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 2)): Int) &&
-;   ($struct_get($struct_loc(self, 2)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2875@01 $Snap)
-(assert (= $t@2875@01 ($Snap.combine ($Snap.first $t@2875@01) ($Snap.second $t@2875@01))))
-(assert (= ($Snap.first $t@2875@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 2)): Int)
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 2))))
-(assert (= ($Snap.second $t@2875@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 2))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 3)): Int) &&
-;   ($struct_get($struct_loc(self, 3)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2876@01 $Snap)
-(assert (= $t@2876@01 ($Snap.combine ($Snap.first $t@2876@01) ($Snap.second $t@2876@01))))
-(assert (= ($Snap.first $t@2876@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 3)): Int)
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 3))))
-(assert (= ($Snap.second $t@2876@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 3)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 3))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2877@01 $Snap)
-(assert (= $t@2877@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q2@2878@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(push) ; 28
-; [then-branch: 827 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2878@01)) | live]
-; [else-branch: 827 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2878@01) | live]
-(push) ; 29
-; [then-branch: 827 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2878@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))))
-(pop) ; 29
-(push) ; 29
-; [else-branch: 827 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 4)), $q2@2878@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01)))))
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2878@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3035@11@3035@345-aux|)))
-(assert (forall (($q2@2878@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2878@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3035@11@3035@345|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $t@2879@01 $Snap)
-(assert (= $t@2879@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $q2@2880@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2880@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2880@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 4)) $q2@2880@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3036@11@3036@253|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       0 <=
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) &&
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $t@2881@01 $Snap)
-(assert (= $t@2881@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $q3@2882@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q4@2883@01 Int)
-(push) ; 28
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(push) ; 29
-; [then-branch: 828 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2882@01), $q4@2883@01)) | live]
-; [else-branch: 828 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2882@01), $q4@2883@01) | live]
-(push) ; 30
-; [then-branch: 828 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2882@01), $q4@2883@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))))
-(pop) ; 30
-(push) ; 30
-; [else-branch: 828 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](l$i0$havoc$8@2336@01, 5)), $q3@2882@01), $q4@2883@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01)))
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 30
-(pop) ; 29
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01)))))
-(pop) ; 28
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q4@2883@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))))
-  :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597-aux|)))
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@2882@01 Int)) (!
-  (forall (($q4@2883@01 Int)) (!
-    (or
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-      (not
-        (<=
-          0
-          ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597-aux|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@11@3037@598-aux|)))
-(assert (forall (($q3@2882@01 Int)) (!
-  (forall (($q4@2883@01 Int)) (!
-    (and
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-      (<=
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01)
-        115792089237316195423570985008687907853269984665640564039457584007913129639935))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01) $q4@2883@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@131@3037@597|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2882@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3037@11@3037@598|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int])): Int)))
-(declare-const $t@2884@01 $Snap)
-(assert (= $t@2884@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)))
-(declare-const $q3@2885@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int))
-(declare-const $q4@2886@01 Int)
-(push) ; 28
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-; [eval] ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 28
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@2885@01 Int)) (!
-  (forall (($q4@2886@01 Int)) (!
-    (<=
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2885@01) $q4@2886@01)
-      ($map_sum<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2885@01)))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2885@01) $q4@2886@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3038@131@3038@505|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> l$i0$havoc$8@2336@01 5)) $q3@2885@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3038@11@3038@506|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 6)): Int) &&
-;   ($struct_get($struct_loc(self, 6)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@2887@01 $Snap)
-(assert (= $t@2887@01 ($Snap.combine ($Snap.first $t@2887@01) ($Snap.second $t@2887@01))))
-(assert (= ($Snap.first $t@2887@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 6)): Int)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 6))))
-(assert (= ($Snap.second $t@2887@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 6)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 6))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 7)): Int) &&
-;   ($struct_get($struct_loc(self, 7)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@2888@01 $Snap)
-(assert (= $t@2888@01 ($Snap.combine ($Snap.first $t@2888@01) ($Snap.second $t@2888@01))))
-(assert (= ($Snap.first $t@2888@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 7)): Int)
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 7))))
-(assert (= ($Snap.second $t@2888@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 7)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 7))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 8)): Int) &&
-;   ($struct_get($struct_loc(self, 8)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2889@01 $Snap)
-(assert (= $t@2889@01 ($Snap.combine ($Snap.first $t@2889@01) ($Snap.second $t@2889@01))))
-(assert (= ($Snap.first $t@2889@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 8)): Int)
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))))
-(assert (= ($Snap.second $t@2889@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 8)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale -170141183460469231731687303715884105728 <=
-;   ($struct_get($struct_loc(self, 9)): Int) &&
-;   ($struct_get($struct_loc(self, 9)): Int) <=
-;   170141183460469231731687303715884105727
-(declare-const $t@2890@01 $Snap)
-(assert (= $t@2890@01 ($Snap.combine ($Snap.first $t@2890@01) ($Snap.second $t@2890@01))))
-(assert (= ($Snap.first $t@2890@01) $Snap.unit))
-; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 9)): Int)
-; [eval] -170141183460469231731687303715884105728
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  (- 0 170141183460469231731687303715884105728)
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 9))))
-(assert (= ($Snap.second $t@2890@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 9)): Int) <= 170141183460469231731687303715884105727
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 9))
-  170141183460469231731687303715884105727))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2891@01 $Snap)
-(assert (= $t@2891@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q5@2892@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(push) ; 28
-; [then-branch: 829 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2892@01)) | live]
-; [else-branch: 829 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2892@01) | live]
-(push) ; 29
-; [then-branch: 829 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2892@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))))
-(pop) ; 29
-(push) ; 29
-; [else-branch: 829 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 11)), $q5@2892@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01)))))
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@2892@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3043@11@3043@348-aux|)))
-(assert (forall (($q5@2892@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2892@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3043@11@3043@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $t@2893@01 $Snap)
-(assert (= $t@2893@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $q5@2894@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@2894@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2894@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $q5@2894@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3044@11@3044@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2895@01 $Snap)
-(assert (= $t@2895@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q6@2896@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(push) ; 28
-; [then-branch: 830 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2896@01)) | live]
-; [else-branch: 830 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2896@01) | live]
-(push) ; 29
-; [then-branch: 830 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2896@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))))
-(pop) ; 29
-(push) ; 29
-; [else-branch: 830 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](l$i0$havoc$8@2336@01, 12)), $q6@2896@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01)))))
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@2896@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3045@11@3045@348-aux|)))
-(assert (forall (($q6@2896@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2896@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3045@11@3045@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $t@2897@01 $Snap)
-(assert (= $t@2897@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $q6@2898@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@2898@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2898@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 12)) $q6@2898@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3046@11@3046@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(self, -1)): Int) ==
-;   9122519725869122497593506884710
-(declare-const $t@2899@01 $Snap)
-(assert (= $t@2899@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
-; [eval] ($struct_get($struct_loc(self, -1)): Int)
-; [eval] $struct_loc(self, -1)
-; [eval] -1
-(assert (=
-  ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 (- 0 1)))
-  9122519725869122497593506884710))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $a: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >=
-;     ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $t@2900@01 $Snap)
-(assert (= $t@2900@01 $Snap.unit))
-; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $a@2901@01 Int)
-(set-option :timeout 0)
-(push) ; 27
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_get(($struct_get($struct_loc($old_self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc($old_self, 11)): $Map[Int, Int])
-; [eval] $struct_loc($old_self, 11)
-(pop) ; 27
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($a@2901@01 Int)) (!
-  (>=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $a@2901@01)
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2389@01 11)) $a@2901@01))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> l$i0$havoc$8@2336@01 11)) $a@2901@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3049@11@3049@262|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not l$i0$no_reentrant_call$1@2338@01)))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 831 | l$i0$no_reentrant_call$1@2338@01 | live]
-; [else-branch: 831 | !(l$i0$no_reentrant_call$1@2338@01) | live]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 831 | l$i0$no_reentrant_call$1@2338@01]
-(assert l$i0$no_reentrant_call$1@2338@01)
-; [exec]
-; self := $old_self
-; [exec]
-; $contracts := $old_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$10
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$11
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [eval] !l$i0$raw_ret$1
-(push) ; 28
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 28
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 832 | !(l$i0$raw_ret$1@2332@01) | live]
-; [else-branch: 832 | l$i0$raw_ret$1@2332@01 | live]
-(set-option :timeout 0)
-(push) ; 28
-; [then-branch: 832 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 833 | True | live]
-; [else-branch: 833 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 833 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2902@01 $Snap)
-(assert (= $t@2902@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2903@01 $Struct)
-(assert (=
-  self@2903@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 29
-; [then-branch: 834 | False | dead]
-; [else-branch: 834 | True | live]
-(set-option :timeout 0)
-(push) ; 29
-; [else-branch: 834 | True]
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 832 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-(pop) ; 28
-; [eval] !!l$i0$raw_ret$1
-; [eval] !l$i0$raw_ret$1
-(push) ; 28
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 28
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 835 | l$i0$raw_ret$1@2332@01 | live]
-; [else-branch: 835 | !(l$i0$raw_ret$1@2332@01) | live]
-(set-option :timeout 0)
-(push) ; 28
-; [then-branch: 835 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 836 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 836 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(push) ; 29
-; [else-branch: 836 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 29
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 29
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 837 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 837 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 837 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 838 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 838 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 30
-; [else-branch: 838 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 30
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 839 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 839 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 30
-; [then-branch: 839 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [eval] $unwrap(l$i0$tokens_bought)
-(declare-const $t@2904@01 $Snap)
-(declare-const sm@2905@01 $PSF<e$TokenPurchase>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($PSF.lookup_e$TokenPurchase (as sm@2905@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
-  $t@2904@01))
-(assert (<=
-  $Perm.No
-  (ite
-    (and
-      (=
-        ($unwrap<Int> l$i0$eth_sold@2488@01)
-        ($unwrap<Int> l$i0$eth_sold@2488@01))
-      (=
-        ($unwrap<Int> l$tokens_bought@2284@01)
-        ($unwrap<Int> l$tokens_bought@2284@01)))
-    $Perm.Write
-    $Perm.No)))
-; Definitional axioms for snapshot map values
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 840 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 840 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [else-branch: 840 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 31
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 841 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 841 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 841 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 842 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 842 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 32
-; [else-branch: 842 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 32
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 843 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 843 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 843 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; i0$$res := $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $wrap($unwrap(l$i0$eth_sold) * 1)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(declare-const i0$$res@2906@01 Int)
-(assert (=
-  i0$$res@2906@01
-  ($unwrap<Int> ($wrap<$Int> ($unwrap<Int> l$i0$eth_sold@2488@01)))))
-; [exec]
-; label i0$return
-; [exec]
-; $res := $unwrap($wrap(i0$$res))
-; [eval] $unwrap($wrap(i0$$res))
-; [eval] $wrap(i0$$res)
-(declare-const $res@2907@01 Int)
-(assert (= $res@2907@01 ($unwrap<Int> ($wrap<$Int> i0$$res@2906@01))))
-; [exec]
-; label return
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 844 | $out_of_gas@2341@01 | live]
-; [else-branch: 844 | !($out_of_gas@2341@01) | live]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 844 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 34
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 845 | True | live]
-; [else-branch: 845 | False | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 845 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2908@01 $Snap)
-(assert (= $t@2908@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2909@01 $Struct)
-(assert (=
-  self@2909@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 34
-; [then-branch: 846 | False | dead]
-; [else-branch: 846 | True | live]
-(set-option :timeout 0)
-(push) ; 34
-; [else-branch: 846 | True]
-(pop) ; 34
-(pop) ; 33
-(push) ; 33
-; [else-branch: 844 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-(pop) ; 33
-; [eval] !$out_of_gas
-(push) ; 33
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 847 | !($out_of_gas@2341@01) | live]
-; [else-branch: 847 | $out_of_gas@2341@01 | live]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 847 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-; [exec]
-; label end
-; [eval] !$succ
-; [then-branch: 848 | False | dead]
-; [else-branch: 848 | True | live]
-(push) ; 34
-; [else-branch: 848 | True]
-(pop) ; 34
-(push) ; 34
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 849 | True | live]
-; [else-branch: 849 | False | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 849 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2910@01 $Snap)
-(assert (= $t@2910@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2911@01 $Struct)
-(assert (=
-  self@2911@01
-  ($struct_set<$Struct> self@2389@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2389@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 34
-(pop) ; 33
-(set-option :timeout 0)
-(push) ; 33
-; [else-branch: 847 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-(pop) ; 33
-(pop) ; 32
-(pop) ; 31
-(pop) ; 30
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 835 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-(pop) ; 28
-(pop) ; 27
-(push) ; 27
-; [else-branch: 831 | !(l$i0$no_reentrant_call$1@2338@01)]
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(pop) ; 27
-; [eval] !l$i0$no_reentrant_call$1
-(push) ; 27
-(set-option :timeout 10)
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not l$i0$no_reentrant_call$1@2338@01)))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 850 | !(l$i0$no_reentrant_call$1@2338@01) | live]
-; [else-branch: 850 | l$i0$no_reentrant_call$1@2338@01 | live]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 850 | !(l$i0$no_reentrant_call$1@2338@01)]
-(assert (not l$i0$no_reentrant_call$1@2338@01))
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$10
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $contracts := l$i0$havoc$11
-; [exec]
-; $old_$contracts := i4$$pre_$contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [eval] !l$i0$raw_ret$1
-(push) ; 28
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 28
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 851 | !(l$i0$raw_ret$1@2332@01) | live]
-; [else-branch: 851 | l$i0$raw_ret$1@2332@01 | live]
-(set-option :timeout 0)
-(push) ; 28
-; [then-branch: 851 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 852 | True | live]
-; [else-branch: 852 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 852 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2912@01 $Snap)
-(assert (= $t@2912@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2913@01 $Struct)
-(assert (=
-  self@2913@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 29
-; [then-branch: 853 | False | dead]
-; [else-branch: 853 | True | live]
-(set-option :timeout 0)
-(push) ; 29
-; [else-branch: 853 | True]
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 851 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-(pop) ; 28
-; [eval] !!l$i0$raw_ret$1
-; [eval] !l$i0$raw_ret$1
-(push) ; 28
-(set-option :timeout 10)
-(assert (not (not l$i0$raw_ret$1@2332@01)))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 28
-(set-option :timeout 10)
-(assert (not l$i0$raw_ret$1@2332@01))
-(check-sat)
-; unknown
-(pop) ; 28
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 854 | l$i0$raw_ret$1@2332@01 | live]
-; [else-branch: 854 | !(l$i0$raw_ret$1@2332@01) | live]
-(set-option :timeout 0)
-(push) ; 28
-; [then-branch: 854 | l$i0$raw_ret$1@2332@01]
-(assert l$i0$raw_ret$1@2332@01)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 855 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 855 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(push) ; 29
-; [else-branch: 855 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 29
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 29
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 856 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 856 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 856 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 857 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 857 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 30
-; [else-branch: 857 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 30
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 30
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 30
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 858 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 858 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 30
-; [then-branch: 858 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; inhale acc(e$TokenPurchase(l$i0$buyer, $unwrap(l$i0$eth_sold) * 1, $unwrap(l$i0$tokens_bought)), write)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [eval] $unwrap(l$i0$tokens_bought)
-(declare-const $t@2914@01 $Snap)
-(declare-const sm@2915@01 $PSF<e$TokenPurchase>)
-; Definitional axioms for singleton-SM's value
-(assert (=
-  ($PSF.lookup_e$TokenPurchase (as sm@2915@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-      ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01))))
-  $t@2914@01))
-(assert (<=
-  $Perm.No
-  (ite
-    (and
-      (=
-        ($unwrap<Int> l$i0$eth_sold@2488@01)
-        ($unwrap<Int> l$i0$eth_sold@2488@01))
-      (=
-        ($unwrap<Int> l$tokens_bought@2284@01)
-        ($unwrap<Int> l$tokens_bought@2284@01)))
-    $Perm.Write
-    $Perm.No)))
-; Definitional axioms for snapshot map values
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@2398@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap l$i0$buyer@2391@01)
-    ($SortWrappers.IntTo$Snap ($unwrap<Int> l$i0$eth_sold@2488@01)))
-  ($SortWrappers.IntTo$Snap ($unwrap<Int> l$tokens_bought@2284@01)))))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 859 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-; [else-branch: 859 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [else-branch: 859 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-(pop) ; 31
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@2488@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 860 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0) | live]
-; [else-branch: 860 | $unwrap[Int](l$i0$eth_sold@2488@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 860 | !($unwrap[Int](l$i0$eth_sold@2488@01) < 0)]
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-; [then-branch: 861 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 861 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(push) ; 32
-; [else-branch: 861 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(pop) ; 32
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@2488@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 862 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 862 | $unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 862 | !($unwrap[Int](l$i0$eth_sold@2488@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-; [exec]
-; i0$$res := $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $unwrap($wrap($unwrap(l$i0$eth_sold) * 1))
-; [eval] $wrap($unwrap(l$i0$eth_sold) * 1)
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(declare-const i0$$res@2916@01 Int)
-(assert (=
-  i0$$res@2916@01
-  ($unwrap<Int> ($wrap<$Int> ($unwrap<Int> l$i0$eth_sold@2488@01)))))
-; [exec]
-; label i0$return
-; [exec]
-; $res := $unwrap($wrap(i0$$res))
-; [eval] $unwrap($wrap(i0$$res))
-; [eval] $wrap(i0$$res)
-(declare-const $res@2917@01 Int)
-(assert (= $res@2917@01 ($unwrap<Int> ($wrap<$Int> i0$$res@2916@01))))
-; [exec]
-; label return
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 863 | $out_of_gas@2341@01 | live]
-; [else-branch: 863 | !($out_of_gas@2341@01) | live]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 863 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 34
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 864 | True | live]
-; [else-branch: 864 | False | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 864 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2918@01 $Snap)
-(assert (= $t@2918@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2919@01 $Struct)
-(assert (=
-  self@2919@01
-  ($struct_set<$Struct> self@2292@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2292@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 34
-; [then-branch: 865 | False | dead]
-; [else-branch: 865 | True | live]
-(set-option :timeout 0)
-(push) ; 34
-; [else-branch: 865 | True]
-(pop) ; 34
-(pop) ; 33
-(push) ; 33
-; [else-branch: 863 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-(pop) ; 33
-; [eval] !$out_of_gas
-(push) ; 33
-(set-option :timeout 10)
-(assert (not $out_of_gas@2341@01))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 33
-(set-option :timeout 10)
-(assert (not (not $out_of_gas@2341@01)))
-(check-sat)
-; unknown
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 866 | !($out_of_gas@2341@01) | live]
-; [else-branch: 866 | $out_of_gas@2341@01 | live]
-(set-option :timeout 0)
-(push) ; 33
-; [then-branch: 866 | !($out_of_gas@2341@01)]
-(assert (not $out_of_gas@2341@01))
-; [exec]
-; label end
-; [eval] !$succ
-; [then-branch: 867 | False | dead]
-; [else-branch: 867 | True | live]
-(push) ; 34
-; [else-branch: 867 | True]
-(pop) ; 34
-(push) ; 34
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 868 | True | live]
-; [else-branch: 868 | False | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 868 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@2920@01 $Snap)
-(assert (= $t@2920@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2343@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@2921@01 $Struct)
-(assert (=
-  self@2921@01
-  ($struct_set<$Struct> l$i0$havoc$8@2336@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> l$i0$havoc$8@2336@01 8))
-    l$havoc$1@2343@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 34
-(pop) ; 33
-(set-option :timeout 0)
-(push) ; 33
-; [else-branch: 866 | $out_of_gas@2341@01]
-(assert $out_of_gas@2341@01)
-(pop) ; 33
-(pop) ; 32
-(pop) ; 31
-(pop) ; 30
-(pop) ; 29
-(pop) ; 28
-(push) ; 28
-; [else-branch: 854 | !(l$i0$raw_ret$1@2332@01)]
-(assert (not l$i0$raw_ret$1@2332@01))
-(pop) ; 28
-(pop) ; 27
-(push) ; 27
-; [else-branch: 850 | l$i0$no_reentrant_call$1@2338@01]
-(assert l$i0$no_reentrant_call$1@2338@01)
-(pop) ; 27
-(pop) ; 26
-(push) ; 26
-; [else-branch: 826 | l$i0$send_fail$2@2331@01]
-(assert l$i0$send_fail$2@2331@01)
-(pop) ; 26
-(pop) ; 25
-(push) ; 25
-; [else-branch: 822 | $unwrap[Int](l$i0$eth_refund@2491@01) > 0]
-(assert (> ($unwrap<Int> l$i0$eth_refund@2491@01) 0))
-(pop) ; 25
-(pop) ; 24
-(pop) ; 23
-(push) ; 23
-; [else-branch: 714 | l$i0$max_eth@2390@01 - $unwrap[Int](l$i0$eth_sold@2488@01) < 0]
-(assert (< (- l$i0$max_eth@2390@01 ($unwrap<Int> l$i0$eth_sold@2488@01)) 0))
-(pop) ; 23
-(pop) ; 22
-(pop) ; 21
-(pop) ; 20
-(pop) ; 19
-(pop) ; 18
-(pop) ; 17
-(pop) ; 16
-(push) ; 16
-; [else-branch: 689 | $unwrap[Int](l$i2$denominator@2484@01) == 0]
-(assert (= ($unwrap<Int> l$i2$denominator@2484@01) 0))
-(pop) ; 16
-(pop) ; 15
-(push) ; 15
-; [else-branch: 685 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@2471@01) - $unwrap[Int](l$tokens_bought@2284@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@2471@01)
-      ($unwrap<Int> l$tokens_bought@2284@01))))
-    997)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(pop) ; 15
-(pop) ; 14
-(pop) ; 13
-(pop) ; 12
-(push) ; 12
-; [else-branch: 677 | $unwrap[Int](l$i0$token_reserve@2471@01) - $unwrap[Int](l$tokens_bought@2284@01) < 0]
-(assert (<
-  (-
-    ($unwrap<Int> l$i0$token_reserve@2471@01)
-    ($unwrap<Int> l$tokens_bought@2284@01))
-  0))
-(pop) ; 12
-(pop) ; 11
-(push) ; 11
-; [else-branch: 673 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@2472@01 * $unwrap[Int](l$tokens_bought@2284@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@2472@01
-      ($unwrap<Int> l$tokens_bought@2284@01))))
-    1000)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(pop) ; 11
-(pop) ; 10
-(pop) ; 9
-(push) ; 9
-; [else-branch: 667 | l$i2$input_reserve@2472@01 * $unwrap[Int](l$tokens_bought@2284@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (* l$i2$input_reserve@2472@01 ($unwrap<Int> l$tokens_bought@2284@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(push) ; 7
-; [else-branch: 661 | !(l$i2$input_reserve@2472@01 > 0 && $unwrap[Int](l$i0$token_reserve@2471@01) > 0)]
-(assert (not
-  (and
-    (> l$i2$input_reserve@2472@01 0)
-    (> ($unwrap<Int> l$i0$token_reserve@2471@01) 0))))
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [else-branch: 651 | l$i0$send_fail@2309@01]
-(assert l$i0$send_fail@2309@01)
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 647 | !($unwrap[Int](l$deadline@2285@01) >= $struct_get[Int]($struct_loc[Int](block@2289@01, 4)) && $unwrap[Int](l$tokens_bought@2284@01) > 0 && l$i0$max_eth@2390@01 > 0)]
-(assert (not
-  (and
-    (>=
-      ($unwrap<Int> l$deadline@2285@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2289@01 4)))
-    (and (> ($unwrap<Int> l$tokens_bought@2284@01) 0) (> l$i0$max_eth@2390@01 0)))))
-(pop) ; 3
-(pop) ; 2
-(pop) ; 1
-; ---------- f$ethToTokenTransferOutput ----------
-(declare-const l$tokens_bought@2922@01 $Int)
-(declare-const l$deadline@2923@01 $Int)
-(declare-const l$recipient@2924@01 Int)
-(declare-const $succ@2925@01 Bool)
-(declare-const $res@2926@01 Int)
-(declare-const l$tokens_bought@2927@01 $Int)
-(declare-const l$deadline@2928@01 $Int)
-(declare-const l$recipient@2929@01 Int)
-(declare-const $succ@2930@01 Bool)
-(declare-const $res@2931@01 Int)
-(push) ; 1
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 2
-(pop) ; 2
-(push) ; 2
-; [exec]
-; var msg: $Struct
-(declare-const msg@2932@01 $Struct)
-; [exec]
-; var block: $Struct
-(declare-const block@2933@01 $Struct)
-; [exec]
-; var chain: $Struct
-(declare-const chain@2934@01 $Struct)
-; [exec]
-; var tx: $Struct
-(declare-const tx@2935@01 $Struct)
-; [exec]
-; var self: $Struct
-(declare-const self@2936@01 $Struct)
-; [exec]
-; var $contracts: $Map[Int, $Struct]
-(declare-const $contracts@2937@01 $Map<Int~_$Struct>)
-; [exec]
-; var $old_self: $Struct
-(declare-const $old_self@2938@01 $Struct)
-; [exec]
-; var $old_$contracts: $Map[Int, $Struct]
-(declare-const $old_$contracts@2939@01 $Map<Int~_$Struct>)
-; [exec]
-; var $pre_self: $Struct
-(declare-const $pre_self@2940@01 $Struct)
-; [exec]
-; var $pre_$contracts: $Map[Int, $Struct]
-(declare-const $pre_$contracts@2941@01 $Map<Int~_$Struct>)
-; [exec]
-; var $issued_self: $Struct
-(declare-const $issued_self@2942@01 $Struct)
-; [exec]
-; var $issued_$contracts: $Map[Int, $Struct]
-(declare-const $issued_$contracts@2943@01 $Map<Int~_$Struct>)
-; [exec]
-; var $overflow: Bool
-(declare-const $overflow@2944@01 Bool)
-; [exec]
-; var l$i0$tokens_bought: $Int
-(declare-const l$i0$tokens_bought@2945@01 $Int)
-; [exec]
-; var l$i0$max_eth: Int
-(declare-const l$i0$max_eth@2946@01 Int)
-; [exec]
-; var l$i0$deadline: $Int
-(declare-const l$i0$deadline@2947@01 $Int)
-; [exec]
-; var l$i0$buyer: Int
-(declare-const l$i0$buyer@2948@01 Int)
-; [exec]
-; var l$i0$recipient: Int
-(declare-const l$i0$recipient@2949@01 Int)
-; [exec]
-; var i0$$res: Int
-(declare-const i0$$res@2950@01 Int)
-; [exec]
-; var i0$$pre_self: $Struct
-(declare-const i0$$pre_self@2951@01 $Struct)
-; [exec]
-; var i0$$pre_$contracts: $Map[Int, $Struct]
-(declare-const i0$$pre_$contracts@2952@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$send_fail: Bool
-(declare-const l$i0$send_fail@2953@01 Bool)
-; [exec]
-; var l$i0$raw_ret: Int
-(declare-const l$i0$raw_ret@2954@01 Int)
-; [exec]
-; var l$i0$token_reserve: $Int
-(declare-const l$i0$token_reserve@2955@01 $Int)
-; [exec]
-; var l$i2$output_amount: $Int
-(declare-const l$i2$output_amount@2956@01 $Int)
-; [exec]
-; var l$i2$input_reserve: Int
-(declare-const l$i2$input_reserve@2957@01 Int)
-; [exec]
-; var l$i2$output_reserve: $Int
-(declare-const l$i2$output_reserve@2958@01 $Int)
-; [exec]
-; var i2$$res: Int
-(declare-const i2$$res@2959@01 Int)
-; [exec]
-; var l$i2$numerator: $Int
-(declare-const l$i2$numerator@2960@01 $Int)
-; [exec]
-; var l$i2$denominator: $Int
-(declare-const l$i2$denominator@2961@01 $Int)
-; [exec]
-; var l$i0$eth_sold: $Int
-(declare-const l$i0$eth_sold@2962@01 $Int)
-; [exec]
-; var l$i0$eth_refund: $Int
-(declare-const l$i0$eth_refund@2963@01 $Int)
-; [exec]
-; var l$i0$havoc: $Map[Int, $Struct]
-(declare-const l$i0$havoc@2964@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$send_fail$1: Bool
-(declare-const l$i0$send_fail$1@2965@01 Bool)
-; [exec]
-; var i3$$pre_self: $Struct
-(declare-const i3$$pre_self@2966@01 $Struct)
-; [exec]
-; var i3$$pre_$contracts: $Map[Int, $Struct]
-(declare-const i3$$pre_$contracts@2967@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$1: $Map[Int, $Struct]
-(declare-const l$i0$havoc$1@2968@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$2: $Struct
-(declare-const l$i0$havoc$2@2969@01 $Struct)
-; [exec]
-; var l$i0$havoc$3: $Map[Int, $Struct]
-(declare-const l$i0$havoc$3@2970@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$no_reentrant_call: Bool
-(declare-const l$i0$no_reentrant_call@2971@01 Bool)
-; [exec]
-; var l$i0$havoc$4: $Map[Int, $Struct]
-(declare-const l$i0$havoc$4@2972@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$5: $Map[Int, $Struct]
-(declare-const l$i0$havoc$5@2973@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$6: $Map[Int, $Struct]
-(declare-const l$i0$havoc$6@2974@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$send_fail$2: Bool
-(declare-const l$i0$send_fail$2@2975@01 Bool)
-; [exec]
-; var l$i0$raw_ret$1: Bool
-(declare-const l$i0$raw_ret$1@2976@01 Bool)
-; [exec]
-; var i4$$pre_self: $Struct
-(declare-const i4$$pre_self@2977@01 $Struct)
-; [exec]
-; var i4$$pre_$contracts: $Map[Int, $Struct]
-(declare-const i4$$pre_$contracts@2978@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$7: $Map[Int, $Struct]
-(declare-const l$i0$havoc$7@2979@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$8: $Struct
-(declare-const l$i0$havoc$8@2980@01 $Struct)
-; [exec]
-; var l$i0$havoc$9: $Map[Int, $Struct]
-(declare-const l$i0$havoc$9@2981@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$no_reentrant_call$1: Bool
-(declare-const l$i0$no_reentrant_call$1@2982@01 Bool)
-; [exec]
-; var l$i0$havoc$10: $Map[Int, $Struct]
-(declare-const l$i0$havoc$10@2983@01 $Map<Int~_$Struct>)
-; [exec]
-; var l$i0$havoc$11: $Map[Int, $Struct]
-(declare-const l$i0$havoc$11@2984@01 $Map<Int~_$Struct>)
-; [exec]
-; var $out_of_gas: Bool
-(declare-const $out_of_gas@2985@01 Bool)
-; [exec]
-; var l$havoc: Int
-(declare-const l$havoc@2986@01 Int)
-; [exec]
-; var l$havoc$1: Int
-(declare-const l$havoc$1@2987@01 Int)
-; [exec]
-; var l$havoc$2: $Map[Int, $Struct]
-(declare-const l$havoc$2@2988@01 $Map<Int~_$Struct>)
-; [exec]
-; inhale |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-(declare-const $t@2989@01 $Snap)
-(assert (= $t@2989@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
-; [eval] $struct_loc(self, 0)
-(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@2936@01 0))) 32))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-(declare-const $t@2990@01 $Snap)
-(assert (= $t@2990@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(self, 1)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(self, 1)): Seq[Int])
-; [eval] $struct_loc(self, 1)
-(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@2936@01 1))) 32))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 2)): Int) &&
-;   ($struct_get($struct_loc(self, 2)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2991@01 $Snap)
-(assert (= $t@2991@01 ($Snap.combine ($Snap.first $t@2991@01) ($Snap.second $t@2991@01))))
-(assert (= ($Snap.first $t@2991@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 2)): Int)
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@2936@01 2))))
-(assert (= ($Snap.second $t@2991@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 2)): Int)
-; [eval] $struct_loc(self, 2)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 2))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 3)): Int) &&
-;   ($struct_get($struct_loc(self, 3)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@2992@01 $Snap)
-(assert (= $t@2992@01 ($Snap.combine ($Snap.first $t@2992@01) ($Snap.second $t@2992@01))))
-(assert (= ($Snap.first $t@2992@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 3)): Int)
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@2936@01 3))))
-(assert (= ($Snap.second $t@2992@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 3)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 3)): Int)
-; [eval] $struct_loc(self, 3)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 3))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@2993@01 $Snap)
-(assert (= $t@2993@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q2@2994@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(push) ; 4
-; [then-branch: 869 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 4)), $q2@2994@01)) | live]
-; [else-branch: 869 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 4)), $q2@2994@01) | live]
-(push) ; 5
-; [then-branch: 869 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 4)), $q2@2994@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 869 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 4)), $q2@2994@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01)))))
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2994@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3183@11@3183@345-aux|)))
-(assert (forall (($q2@2994@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2994@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3183@11@3183@345|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q2: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $t@2995@01 $Snap)
-(assert (= $t@2995@01 $Snap.unit))
-; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
-(declare-const $q2@2996@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q2): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
-; [eval] $struct_loc(self, 4)
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q2@2996@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2996@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 4)) $q2@2996@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3184@11@3184@253|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       0 <=
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) &&
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $t@2997@01 $Snap)
-(assert (= $t@2997@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935))
-(declare-const $q3@2998@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q4@2999@01 Int)
-(push) ; 4
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) && ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(push) ; 5
-; [then-branch: 870 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](self@2936@01, 5)), $q3@2998@01), $q4@2999@01)) | live]
-; [else-branch: 870 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](self@2936@01, 5)), $q3@2998@01), $q4@2999@01) | live]
-(push) ; 6
-; [then-branch: 870 | !(0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](self@2936@01, 5)), $q3@2998@01), $q4@2999@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))))
-(pop) ; 6
-(push) ; 6
-; [else-branch: 870 | 0 <= $map_get[Int]($map_get[$Map[Int, Int]]($struct_get[$Map[Int, $Map[Int, Int]]]($struct_loc[Int](self@2936@01, 5)), $q3@2998@01), $q4@2999@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01)))
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01)))))
-(pop) ; 4
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q4@2999@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))))
-  :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3185@131@3185@597-aux|)))
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@2998@01 Int)) (!
-  (forall (($q4@2999@01 Int)) (!
-    (or
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-      (not
-        (<=
-          0
-          ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3185@131@3185@597-aux|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3185@11@3185@598-aux|)))
-(assert (forall (($q3@2998@01 Int)) (!
-  (forall (($q4@2999@01 Int)) (!
-    (and
-      (<=
-        0
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-      (<=
-        ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01)
-        115792089237316195423570985008687907853269984665640564039457584007913129639935))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01) $q4@2999@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3185@131@3185@597|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@2998@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3185@11@3185@598|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q3: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;     $q3): $Map[Int, Int]) }
-;     (forall $q4: Int ::
-;       { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) }
-;       ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int]), $q4): Int) <=
-;       ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]),
-;       $q3): $Map[Int, Int])): Int)))
-(declare-const $t@3000@01 $Snap)
-(assert (= $t@3000@01 $Snap.unit))
-; [eval] (forall $q3: Int :: { ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]) } (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)))
-(declare-const $q3@3001@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] (forall $q4: Int :: { ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) } ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int))
-(declare-const $q4@3002@01 Int)
-(push) ; 4
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int) <= ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int]), $q4): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-; [eval] ($map_sum(($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]]), $q3): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 5)): $Map[Int, $Map[Int, Int]])
-; [eval] $struct_loc(self, 5)
-(pop) ; 4
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q3@3001@01 Int)) (!
-  (forall (($q4@3002@01 Int)) (!
-    (<=
-      ($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@3001@01) $q4@3002@01)
-      ($map_sum<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@3001@01)))
-    :pattern (($map_get<Int> ($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@3001@01) $q4@3002@01))
-    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3186@131@3186@505|))
-  :pattern (($map_get<$Map<Int~_Int>> ($struct_get<$Map<Int~_$Map<Int~_Int>>> ($struct_loc<Int> self@2936@01 5)) $q3@3001@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3186@11@3186@506|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 6)): Int) &&
-;   ($struct_get($struct_loc(self, 6)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@3003@01 $Snap)
-(assert (= $t@3003@01 ($Snap.combine ($Snap.first $t@3003@01) ($Snap.second $t@3003@01))))
-(assert (= ($Snap.first $t@3003@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 6)): Int)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@2936@01 6))))
-(assert (= ($Snap.second $t@3003@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 6)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 6))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 7)): Int) &&
-;   ($struct_get($struct_loc(self, 7)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@3004@01 $Snap)
-(assert (= $t@3004@01 ($Snap.combine ($Snap.first $t@3004@01) ($Snap.second $t@3004@01))))
-(assert (= ($Snap.first $t@3004@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 7)): Int)
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@2936@01 7))))
-(assert (= ($Snap.second $t@3004@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 7)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(self, 7)): Int)
-; [eval] $struct_loc(self, 7)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 7))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(self, 8)): Int) &&
-;   ($struct_get($struct_loc(self, 8)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3005@01 $Snap)
-(assert (= $t@3005@01 ($Snap.combine ($Snap.first $t@3005@01) ($Snap.second $t@3005@01))))
-(assert (= ($Snap.first $t@3005@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(self, 8)): Int)
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))))
-(assert (= ($Snap.second $t@3005@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 8)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale -170141183460469231731687303715884105728 <=
-;   ($struct_get($struct_loc(self, 9)): Int) &&
-;   ($struct_get($struct_loc(self, 9)): Int) <=
-;   170141183460469231731687303715884105727
-(declare-const $t@3006@01 $Snap)
-(assert (= $t@3006@01 ($Snap.combine ($Snap.first $t@3006@01) ($Snap.second $t@3006@01))))
-(assert (= ($Snap.first $t@3006@01) $Snap.unit))
-; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 9)): Int)
-; [eval] -170141183460469231731687303715884105728
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  (- 0 170141183460469231731687303715884105728)
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 9))))
-(assert (= ($Snap.second $t@3006@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, 9)): Int) <= 170141183460469231731687303715884105727
-; [eval] ($struct_get($struct_loc(self, 9)): Int)
-; [eval] $struct_loc(self, 9)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 9))
-  170141183460469231731687303715884105727))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@3007@01 $Snap)
-(assert (= $t@3007@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q5@3008@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) && ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(push) ; 4
-; [then-branch: 871 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 11)), $q5@3008@01)) | live]
-; [else-branch: 871 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 11)), $q5@3008@01) | live]
-(push) ; 5
-; [then-branch: 871 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 11)), $q5@3008@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 871 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 11)), $q5@3008@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01)))))
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@3008@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3191@11@3191@348-aux|)))
-(assert (forall (($q5@3008@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3008@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3191@11@3191@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q5: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $t@3009@01 $Snap)
-(assert (= $t@3009@01 $Snap.unit))
-; [eval] (forall $q5: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int))
-(declare-const $q5@3010@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int) <= ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $q5): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 11)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q5@3010@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3010@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 11)) $q5@3010@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3192@11@3192@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     0 <=
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) &&
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $t@3011@01 $Snap)
-(assert (= $t@3011@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-(declare-const $q6@3012@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) && ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(push) ; 4
-; [then-branch: 872 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 12)), $q6@3012@01)) | live]
-; [else-branch: 872 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 12)), $q6@3012@01) | live]
-(push) ; 5
-; [then-branch: 872 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 12)), $q6@3012@01))]
-(assert (not
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 872 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@2936@01, 12)), $q6@3012@01)]
-(assert (<=
-  0
-  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01)))
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (<=
-    0
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))
-  (not
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01)))))
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@3012@01 Int)) (!
-  (or
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))
-    (not
-      (<=
-        0
-        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3193@11@3193@348-aux|)))
-(assert (forall (($q6@3012@01 Int)) (!
-  (and
-    (<=
-      0
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))
-    (<=
-      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01)
-      115792089237316195423570985008687907853269984665640564039457584007913129639935))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3012@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3193@11@3193@348|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $q6: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <=
-;     ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $t@3013@01 $Snap)
-(assert (= $t@3013@01 $Snap.unit))
-; [eval] (forall $q6: Int :: { ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) } ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int))
-(declare-const $q6@3014@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int) <= ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), $q6): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-; [eval] ($map_sum(($struct_get($struct_loc(self, 12)): $Map[Int, Int])): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-(assert (forall (($q6@3014@01 Int)) (!
-  (<=
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3014@01)
-    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12))))
-  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@2936@01 12)) $q6@3014@01))
-  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesuniswap.vy.vpr@3194@11@3194@256|)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(self, -1)): Int) ==
-;   9122519725869122497593506884710
-(declare-const $t@3015@01 $Snap)
-(assert (= $t@3015@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
-; [eval] ($struct_get($struct_loc(self, -1)): Int)
-; [eval] $struct_loc(self, -1)
-; [eval] -1
-(assert (=
-  ($struct_get<Int> ($struct_loc<Int> self@2936@01 (- 0 1)))
-  9122519725869122497593506884710))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= $self_address() &&
-;   $self_address() <= 1461501637330902918203684832716283019655932542975
-(declare-const $t@3016@01 $Snap)
-(assert (= $t@3016@01 ($Snap.combine ($Snap.first $t@3016@01) ($Snap.second $t@3016@01))))
-(assert (= ($Snap.first $t@3016@01) $Snap.unit))
-; [eval] 0 <= $self_address()
-; [eval] $self_address()
-(assert (<= 0 (as $self_address<Int>  Int)))
-(assert (= ($Snap.second $t@3016@01) $Snap.unit))
-; [eval] $self_address() <= 1461501637330902918203684832716283019655932542975
-; [eval] $self_address()
-(assert (<=
-  (as $self_address<Int>  Int)
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= $unwrap(l$tokens_bought) &&
-;   $unwrap(l$tokens_bought) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3017@01 $Snap)
-(assert (= $t@3017@01 ($Snap.combine ($Snap.first $t@3017@01) ($Snap.second $t@3017@01))))
-(assert (= ($Snap.first $t@3017@01) $Snap.unit))
-; [eval] 0 <= $unwrap(l$tokens_bought)
-; [eval] $unwrap(l$tokens_bought)
-(assert (<= 0 ($unwrap<Int> l$tokens_bought@2927@01)))
-(assert (= ($Snap.second $t@3017@01) $Snap.unit))
-; [eval] $unwrap(l$tokens_bought) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$tokens_bought)
-(assert (<=
-  ($unwrap<Int> l$tokens_bought@2927@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= $unwrap(l$deadline) &&
-;   $unwrap(l$deadline) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3018@01 $Snap)
-(assert (= $t@3018@01 ($Snap.combine ($Snap.first $t@3018@01) ($Snap.second $t@3018@01))))
-(assert (= ($Snap.first $t@3018@01) $Snap.unit))
-; [eval] 0 <= $unwrap(l$deadline)
-; [eval] $unwrap(l$deadline)
-(assert (<= 0 ($unwrap<Int> l$deadline@2928@01)))
-(assert (= ($Snap.second $t@3018@01) $Snap.unit))
-; [eval] $unwrap(l$deadline) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$deadline)
-(assert (<=
-  ($unwrap<Int> l$deadline@2928@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= l$recipient &&
-;   l$recipient <= 1461501637330902918203684832716283019655932542975
-(declare-const $t@3019@01 $Snap)
-(assert (= $t@3019@01 ($Snap.combine ($Snap.first $t@3019@01) ($Snap.second $t@3019@01))))
-(assert (= ($Snap.first $t@3019@01) $Snap.unit))
-; [eval] 0 <= l$recipient
-(assert (<= 0 l$recipient@2929@01))
-(assert (= ($Snap.second $t@3019@01) $Snap.unit))
-; [eval] l$recipient <= 1461501637330902918203684832716283019655932542975
-(assert (<= l$recipient@2929@01 1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int) &&
-;   ($struct_get($struct_loc(block, 0)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@3020@01 $Snap)
-(assert (= $t@3020@01 ($Snap.combine ($Snap.first $t@3020@01) ($Snap.second $t@3020@01))))
-(assert (= ($Snap.first $t@3020@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
-; [eval] ($struct_get($struct_loc(block, 0)): Int)
-; [eval] $struct_loc(block, 0)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@2933@01 0))))
-(assert (= ($Snap.second $t@3020@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(block, 0)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(block, 0)): Int)
-; [eval] $struct_loc(block, 0)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 0))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int) &&
-;   ($struct_get($struct_loc(block, 1)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3021@01 $Snap)
-(assert (= $t@3021@01 ($Snap.combine ($Snap.first $t@3021@01) ($Snap.second $t@3021@01))))
-(assert (= ($Snap.first $t@3021@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
-; [eval] ($struct_get($struct_loc(block, 1)): Int)
-; [eval] $struct_loc(block, 1)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@2933@01 1))))
-(assert (= ($Snap.second $t@3021@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(block, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(block, 1)): Int)
-; [eval] $struct_loc(block, 1)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 1))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int) &&
-;   ($struct_get($struct_loc(block, 2)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3022@01 $Snap)
-(assert (= $t@3022@01 ($Snap.combine ($Snap.first $t@3022@01) ($Snap.second $t@3022@01))))
-(assert (= ($Snap.first $t@3022@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
-; [eval] ($struct_get($struct_loc(block, 2)): Int)
-; [eval] $struct_loc(block, 2)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@2933@01 2))))
-(assert (= ($Snap.second $t@3022@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(block, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(block, 2)): Int)
-; [eval] $struct_loc(block, 2)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 2))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
-(declare-const $t@3023@01 $Snap)
-(assert (= $t@3023@01 $Snap.unit))
-; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
-; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
-; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
-; [eval] $struct_loc(block, 3)
-(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@2933@01 3))) 32))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int) &&
-;   ($struct_get($struct_loc(block, 4)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3024@01 $Snap)
-(assert (= $t@3024@01 ($Snap.combine ($Snap.first $t@3024@01) ($Snap.second $t@3024@01))))
-(assert (= ($Snap.first $t@3024@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
-; [eval] ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $struct_loc(block, 4)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@2933@01 4))))
-(assert (= ($Snap.second $t@3024@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(block, 4)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $struct_loc(block, 4)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 4))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(block, -1)): Int) ==
-;   2335365049822495359383864865678187
-(declare-const $t@3025@01 $Snap)
-(assert (= $t@3025@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
-; [eval] ($struct_get($struct_loc(block, -1)): Int)
-; [eval] $struct_loc(block, -1)
-; [eval] -1
-(assert (=
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 (- 0 1)))
-  2335365049822495359383864865678187))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int) &&
-;   ($struct_get($struct_loc(msg, 0)): Int) <=
-;   1461501637330902918203684832716283019655932542975
-(declare-const $t@3026@01 $Snap)
-(assert (= $t@3026@01 ($Snap.combine ($Snap.first $t@3026@01) ($Snap.second $t@3026@01))))
-(assert (= ($Snap.first $t@3026@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0))))
-(assert (= ($Snap.second $t@3026@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(msg, 0)): Int) <= 1461501637330902918203684832716283019655932542975
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0))
-  1461501637330902918203684832716283019655932542975))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int) &&
-;   ($struct_get($struct_loc(msg, 1)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3027@01 $Snap)
-(assert (= $t@3027@01 ($Snap.combine ($Snap.first $t@3027@01) ($Snap.second $t@3027@01))))
-(assert (= ($Snap.first $t@3027@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] $struct_loc(msg, 1)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@2932@01 1))))
-(assert (= ($Snap.second $t@3027@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(msg, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] $struct_loc(msg, 1)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> msg@2932@01 1))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int) &&
-;   ($struct_get($struct_loc(msg, 2)): Int) <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3028@01 $Snap)
-(assert (= $t@3028@01 ($Snap.combine ($Snap.first $t@3028@01) ($Snap.second $t@3028@01))))
-(assert (= ($Snap.first $t@3028@01) $Snap.unit))
-; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
-; [eval] ($struct_get($struct_loc(msg, 2)): Int)
-; [eval] $struct_loc(msg, 2)
-(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@2932@01 2))))
-(assert (= ($Snap.second $t@3028@01) $Snap.unit))
-; [eval] ($struct_get($struct_loc(msg, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(msg, 2)): Int)
-; [eval] $struct_loc(msg, 2)
-(assert (<=
-  ($struct_get<Int> ($struct_loc<Int> msg@2932@01 2))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
-;   35634842679176259756224246631
-(declare-const $t@3029@01 $Snap)
-(assert (= $t@3029@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
-; [eval] ($struct_get($struct_loc(msg, -1)): Int)
-; [eval] $struct_loc(msg, -1)
-; [eval] -1
-(assert (=
-  ($struct_get<Int> ($struct_loc<Int> msg@2932@01 (- 0 1)))
-  35634842679176259756224246631))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
-(declare-const $t@3030@01 $Snap)
-(assert (= $t@3030@01 $Snap.unit))
-; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0)) 0)))
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; inhale (forall $a: Int ::
-;     { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) }
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >=
-;     ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $t@3031@01 $Snap)
-(assert (= $t@3031@01 $Snap.unit))
-; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int))
-(declare-const $a@3032@01 Int)
-(set-option :timeout 0)
-(push) ; 3
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-; [eval] ($map_get(($struct_get($struct_loc(self, 11)): $Map[Int, Int]), $a): Int)
-; [eval] ($struct_get($struct_loc(self, 11)): $Map[Int, Int])
-; [eval] $struct_loc(self, 11)
-(pop) ; 3
-; Nested auxiliary terms: globals (aux)
-; Nested auxiliary terms: non-globals (aux)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; $pre_self := self
-; [exec]
-; $pre_$contracts := $contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $succ := true
-; [exec]
-; $overflow := false
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   ($struct_get($struct_loc(msg, 1)): Int)): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + ($struct_get($struct_loc(msg, 1)): Int)): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-; [eval] ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] $struct_loc(msg, 1)
-(declare-const self@3033@01 $Struct)
-(assert (=
-  self@3033@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    ($struct_get<Int> ($struct_loc<Int> msg@2932@01 1))))))
-; [exec]
-; self := ($struct_set(self, 12, ($map_set(($struct_get($struct_loc(self, 12)): $Map[Int, Int]),
-;   ($struct_get($struct_loc(msg, 0)): Int), ($map_get(($struct_get($struct_loc(self,
-;   12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int)): Int) +
-;   ($struct_get($struct_loc(msg, 1)): Int)): $Map[Int, Int])): $Struct)
-; [eval] ($struct_set(self, 12, ($map_set(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int), ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int)): Int) + ($struct_get($struct_loc(msg, 1)): Int)): $Map[Int, Int])): $Struct)
-; [eval] ($map_set(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int), ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int)): Int) + ($struct_get($struct_loc(msg, 1)): Int)): $Map[Int, Int])
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int)): Int) + ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] ($map_get(($struct_get($struct_loc(self, 12)): $Map[Int, Int]), ($struct_get($struct_loc(msg, 0)): Int)): Int)
-; [eval] ($struct_get($struct_loc(self, 12)): $Map[Int, Int])
-; [eval] $struct_loc(self, 12)
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-; [eval] ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] $struct_loc(msg, 1)
-(declare-const self@3034@01 $Struct)
-(assert (=
-  self@3034@01
-  ($struct_set<$Struct> self@3033@01 12 ($map_set<$Map<Int~_Int>> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@3033@01 12)) ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0)) (+
-    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@3033@01 12)) ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0)))
-    ($struct_get<Int> ($struct_loc<Int> msg@2932@01 1)))))))
-; [eval] !(l$recipient != $self_address() && l$recipient != 0)
-; [eval] l$recipient != $self_address() && l$recipient != 0
-; [eval] l$recipient != $self_address()
-; [eval] $self_address()
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 873 | l$recipient@2929@01 == $self_address[Int] | live]
-; [else-branch: 873 | l$recipient@2929@01 != $self_address[Int] | live]
-(push) ; 4
-; [then-branch: 873 | l$recipient@2929@01 == $self_address[Int]]
-(assert (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-(pop) ; 4
-(push) ; 4
-; [else-branch: 873 | l$recipient@2929@01 != $self_address[Int]]
-(assert (not (= l$recipient@2929@01 (as $self_address<Int>  Int))))
-; [eval] l$recipient != 0
-(pop) ; 4
-(pop) ; 3
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-  (= l$recipient@2929@01 (as $self_address<Int>  Int))))
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (and
-  (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-  (not (= l$recipient@2929@01 0)))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-    (not (= l$recipient@2929@01 0))))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 874 | !(l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0) | live]
-; [else-branch: 874 | l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0 | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 874 | !(l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0)]
-(assert (not
-  (and
-    (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-    (not (= l$recipient@2929@01 0)))))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 4
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 875 | True | live]
-; [else-branch: 875 | False | dead]
-(set-option :timeout 0)
-(push) ; 4
-; [then-branch: 875 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3035@01 $Snap)
-(assert (= $t@3035@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3036@01 $Struct)
-(assert (=
-  self@3036@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 4
-; [then-branch: 876 | False | dead]
-; [else-branch: 876 | True | live]
-(set-option :timeout 0)
-(push) ; 4
-; [else-branch: 876 | True]
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 874 | l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0]
-(assert (and
-  (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-  (not (= l$recipient@2929@01 0))))
-(pop) ; 3
-; [eval] !!(l$recipient != $self_address() && l$recipient != 0)
-; [eval] !(l$recipient != $self_address() && l$recipient != 0)
-; [eval] l$recipient != $self_address() && l$recipient != 0
-; [eval] l$recipient != $self_address()
-; [eval] $self_address()
-(push) ; 3
-; [then-branch: 877 | l$recipient@2929@01 == $self_address[Int] | live]
-; [else-branch: 877 | l$recipient@2929@01 != $self_address[Int] | live]
-(push) ; 4
-; [then-branch: 877 | l$recipient@2929@01 == $self_address[Int]]
-(assert (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-(pop) ; 4
-(push) ; 4
-; [else-branch: 877 | l$recipient@2929@01 != $self_address[Int]]
-(assert (not (= l$recipient@2929@01 (as $self_address<Int>  Int))))
-; [eval] l$recipient != 0
-(pop) ; 4
-(pop) ; 3
-; Joined path conditions
-; Joined path conditions
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-    (not (= l$recipient@2929@01 0))))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (and
-  (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-  (not (= l$recipient@2929@01 0)))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 878 | l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0 | live]
-; [else-branch: 878 | !(l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 878 | l$recipient@2929@01 != $self_address[Int] && l$recipient@2929@01 != 0]
-(assert (and
-  (not (= l$recipient@2929@01 (as $self_address<Int>  Int)))
-  (not (= l$recipient@2929@01 0))))
-; [exec]
-; i0$$pre_self := self
-; [exec]
-; i0$$pre_$contracts := $contracts
-; [exec]
-; l$i0$tokens_bought := l$tokens_bought
-; [exec]
-; l$i0$max_eth := ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] ($struct_get($struct_loc(msg, 1)): Int)
-; [eval] $struct_loc(msg, 1)
-(declare-const l$i0$max_eth@3037@01 Int)
-(assert (= l$i0$max_eth@3037@01 ($struct_get<Int> ($struct_loc<Int> msg@2932@01 1))))
-; [exec]
-; l$i0$deadline := l$deadline
-; [exec]
-; l$i0$buyer := ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] ($struct_get($struct_loc(msg, 0)): Int)
-; [eval] $struct_loc(msg, 0)
-(declare-const l$i0$buyer@3038@01 Int)
-(assert (= l$i0$buyer@3038@01 ($struct_get<Int> ($struct_loc<Int> msg@2932@01 0))))
-; [exec]
-; l$i0$recipient := l$recipient
-; [eval] !($unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int) && ($unwrap(l$i0$tokens_bought) > 0 && l$i0$max_eth > 0))
-; [eval] $unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int) && ($unwrap(l$i0$tokens_bought) > 0 && l$i0$max_eth > 0)
-; [eval] $unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $unwrap(l$i0$deadline)
-; [eval] ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $struct_loc(block, 4)
-(push) ; 4
-; [then-branch: 879 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4))) | live]
-; [else-branch: 879 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) | live]
-(push) ; 5
-; [then-branch: 879 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)))]
-(assert (not
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 879 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4))]
-(assert (>=
-  ($unwrap<Int> l$deadline@2928@01)
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 4))))
-; [eval] $unwrap(l$i0$tokens_bought) > 0
-; [eval] $unwrap(l$i0$tokens_bought)
-(push) ; 6
-; [then-branch: 880 | !($unwrap[Int](l$tokens_bought@2927@01) > 0) | live]
-; [else-branch: 880 | $unwrap[Int](l$tokens_bought@2927@01) > 0 | live]
-(push) ; 7
-; [then-branch: 880 | !($unwrap[Int](l$tokens_bought@2927@01) > 0)]
-(assert (not (> ($unwrap<Int> l$tokens_bought@2927@01) 0)))
-(pop) ; 7
-(push) ; 7
-; [else-branch: 880 | $unwrap[Int](l$tokens_bought@2927@01) > 0]
-(assert (> ($unwrap<Int> l$tokens_bought@2927@01) 0))
-; [eval] l$i0$max_eth > 0
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (> ($unwrap<Int> l$tokens_bought@2927@01) 0)
-  (not (> ($unwrap<Int> l$tokens_bought@2927@01) 0))))
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (and
-    (>=
-      ($unwrap<Int> l$deadline@2928@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-    (or
-      (> ($unwrap<Int> l$tokens_bought@2927@01) 0)
-      (not (> ($unwrap<Int> l$tokens_bought@2927@01) 0))))))
-(assert (or
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (not
-    (>=
-      ($unwrap<Int> l$deadline@2928@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2933@01 4))))))
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (and
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0)))))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (>=
-      ($unwrap<Int> l$deadline@2928@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-    (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0))))))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 881 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0) | live]
-; [else-branch: 881 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0 | live]
-(set-option :timeout 0)
-(push) ; 4
-; [then-branch: 881 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0)]
-(assert (not
-  (and
-    (>=
-      ($unwrap<Int> l$deadline@2928@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-    (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0)))))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 5
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 882 | True | live]
-; [else-branch: 882 | False | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 882 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3039@01 $Snap)
-(assert (= $t@3039@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3040@01 $Struct)
-(assert (=
-  self@3040@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 5
-; [then-branch: 883 | False | dead]
-; [else-branch: 883 | True | live]
-(set-option :timeout 0)
-(push) ; 5
-; [else-branch: 883 | True]
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [else-branch: 881 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0]
-(assert (and
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0))))
-(pop) ; 4
-; [eval] !!($unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int) && ($unwrap(l$i0$tokens_bought) > 0 && l$i0$max_eth > 0))
-; [eval] !($unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int) && ($unwrap(l$i0$tokens_bought) > 0 && l$i0$max_eth > 0))
-; [eval] $unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int) && ($unwrap(l$i0$tokens_bought) > 0 && l$i0$max_eth > 0)
-; [eval] $unwrap(l$i0$deadline) >= ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $unwrap(l$i0$deadline)
-; [eval] ($struct_get($struct_loc(block, 4)): Int)
-; [eval] $struct_loc(block, 4)
-(push) ; 4
-; [then-branch: 884 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4))) | live]
-; [else-branch: 884 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) | live]
-(push) ; 5
-; [then-branch: 884 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)))]
-(assert (not
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 884 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4))]
-(assert (>=
-  ($unwrap<Int> l$deadline@2928@01)
-  ($struct_get<Int> ($struct_loc<Int> block@2933@01 4))))
-; [eval] $unwrap(l$i0$tokens_bought) > 0
-; [eval] $unwrap(l$i0$tokens_bought)
-(push) ; 6
-; [then-branch: 885 | !($unwrap[Int](l$tokens_bought@2927@01) > 0) | live]
-; [else-branch: 885 | $unwrap[Int](l$tokens_bought@2927@01) > 0 | live]
-(push) ; 7
-; [then-branch: 885 | !($unwrap[Int](l$tokens_bought@2927@01) > 0)]
-(assert (not (> ($unwrap<Int> l$tokens_bought@2927@01) 0)))
-(pop) ; 7
-(push) ; 7
-; [else-branch: 885 | $unwrap[Int](l$tokens_bought@2927@01) > 0]
-(assert (> ($unwrap<Int> l$tokens_bought@2927@01) 0))
-; [eval] l$i0$max_eth > 0
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (> ($unwrap<Int> l$tokens_bought@2927@01) 0)
-  (not (> ($unwrap<Int> l$tokens_bought@2927@01) 0))))
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (>=
-      ($unwrap<Int> l$deadline@2928@01)
-      ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-    (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0))))))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (and
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0)))))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 886 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0 | live]
-; [else-branch: 886 | !($unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0) | live]
-(set-option :timeout 0)
-(push) ; 4
-; [then-branch: 886 | $unwrap[Int](l$deadline@2928@01) >= $struct_get[Int]($struct_loc[Int](block@2933@01, 4)) && $unwrap[Int](l$tokens_bought@2927@01) > 0 && l$i0$max_eth@3037@01 > 0]
-(assert (and
-  (>=
-    ($unwrap<Int> l$deadline@2928@01)
-    ($struct_get<Int> ($struct_loc<Int> block@2933@01 4)))
-  (and (> ($unwrap<Int> l$tokens_bought@2927@01) 0) (> l$i0$max_eth@3037@01 0))))
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$TokenPurchase($arg0, $arg1, $arg2) }
-;     perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$TokenPurchase($arg0, $arg1, $arg2), perm(e$TokenPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@3041@01 Int)
-(declare-const $arg1@3042@01 Int)
-(declare-const $arg2@3043@01 Int)
-(push) ; 5
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-(declare-const sm@3044@01 $PSF<e$TokenPurchase>)
-(declare-const s@3045@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3046@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef271|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef272|)))
-(assert ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3041@01)
-    ($SortWrappers.IntTo$Snap $arg1@3042@01))
-  ($SortWrappers.IntTo$Snap $arg2@3043@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3041@01)
-    ($SortWrappers.IntTo$Snap $arg1@3042@01))
-  ($SortWrappers.IntTo$Snap $arg2@3043@01))))
-(assert (>
-  ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3041@01)
-      ($SortWrappers.IntTo$Snap $arg1@3042@01))
-    ($SortWrappers.IntTo$Snap $arg2@3043@01)))
-  $Perm.No))
-; [eval] perm(e$TokenPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3047@01 (Int Int Int) Int)
-(declare-fun img@3048@01 (Int Int Int) Bool)
-(declare-fun inv@3049@01 (Int Int Int) Int)
-(declare-fun img@3050@01 (Int Int Int) Bool)
-(declare-fun inv@3051@01 (Int Int Int) Int)
-(declare-fun img@3052@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef271|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef272|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3041@01 Int) ($arg1@3042@01 Int) ($arg2@3043@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3041@01)
-          ($SortWrappers.IntTo$Snap $arg1@3042@01))
-        ($SortWrappers.IntTo$Snap $arg2@3043@01)))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3041@01)
-        ($SortWrappers.IntTo$Snap $arg1@3042@01))
-      ($SortWrappers.IntTo$Snap $arg2@3043@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3041@01)
-        ($SortWrappers.IntTo$Snap $arg1@3042@01))
-      ($SortWrappers.IntTo$Snap $arg2@3043@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3041@01)
-      ($SortWrappers.IntTo$Snap $arg1@3042@01))
-    ($SortWrappers.IntTo$Snap $arg2@3043@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3041@01)
-      ($SortWrappers.IntTo$Snap $arg1@3042@01))
-    ($SortWrappers.IntTo$Snap $arg2@3043@01))))
-  :qid |e$TokenPurchase-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3041@01 Int) ($arg1@3042@01 Int) ($arg2@3043@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3041@01)
-          ($SortWrappers.IntTo$Snap $arg1@3042@01))
-        ($SortWrappers.IntTo$Snap $arg2@3043@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3041@01)
-            ($SortWrappers.IntTo$Snap $arg1@3042@01))
-          ($SortWrappers.IntTo$Snap $arg2@3043@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3041@01)
-            ($SortWrappers.IntTo$Snap $arg1@3042@01))
-          ($SortWrappers.IntTo$Snap $arg2@3043@01))))))
-  
-  :qid |quant-u-1835|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3041@01 Int) ($arg11@3042@01 Int) ($arg21@3043@01 Int) ($arg02@3041@01 Int) ($arg12@3042@01 Int) ($arg22@3043@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3041@01)
-                ($SortWrappers.IntTo$Snap $arg11@3042@01))
-              ($SortWrappers.IntTo$Snap $arg21@3043@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3041@01)
-              ($SortWrappers.IntTo$Snap $arg11@3042@01))
-            ($SortWrappers.IntTo$Snap $arg21@3043@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3041@01)
-              ($SortWrappers.IntTo$Snap $arg11@3042@01))
-            ($SortWrappers.IntTo$Snap $arg21@3043@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3041@01)
-              ($SortWrappers.IntTo$Snap $arg11@3042@01))
-            ($SortWrappers.IntTo$Snap $arg21@3043@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3041@01)
-                ($SortWrappers.IntTo$Snap $arg12@3042@01))
-              ($SortWrappers.IntTo$Snap $arg22@3043@01)))
-            $Perm.No)
-          ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3041@01)
-              ($SortWrappers.IntTo$Snap $arg12@3042@01))
-            ($SortWrappers.IntTo$Snap $arg22@3043@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3041@01)
-              ($SortWrappers.IntTo$Snap $arg12@3042@01))
-            ($SortWrappers.IntTo$Snap $arg22@3043@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3041@01)
-              ($SortWrappers.IntTo$Snap $arg12@3042@01))
-            ($SortWrappers.IntTo$Snap $arg22@3043@01)))))
-      (and
-        (and (= $arg01@3041@01 $arg02@3041@01) (= $arg11@3042@01 $arg12@3042@01))
-        (= $arg21@3043@01 $arg22@3043@01)))
-    (and
-      (and (= $arg01@3041@01 $arg02@3041@01) (= $arg11@3042@01 $arg12@3042@01))
-      (= $arg21@3043@01 $arg22@3043@01)))
-  
-  :qid |e$TokenPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3041@01 Int) ($arg1@3042@01 Int) ($arg2@3043@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3041@01)
-            ($SortWrappers.IntTo$Snap $arg1@3042@01))
-          ($SortWrappers.IntTo$Snap $arg2@3043@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3041@01)
-            ($SortWrappers.IntTo$Snap $arg1@3042@01))
-          ($SortWrappers.IntTo$Snap $arg2@3043@01)))))
-    (and
-      (and
-        (= (inv@3047@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01) $arg0@3041@01)
-        (= (inv@3049@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01) $arg1@3042@01)
-        (= (inv@3051@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01) $arg2@3043@01))
-      (and
-        (img@3048@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01)
-        (img@3050@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01)
-        (img@3052@01 $arg0@3041@01 $arg1@3042@01 $arg2@3043@01))))
-  :pattern (($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3041@01)
-      ($SortWrappers.IntTo$Snap $arg1@3042@01))
-    ($SortWrappers.IntTo$Snap $arg2@3043@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3041@01)
-      ($SortWrappers.IntTo$Snap $arg1@3042@01))
-    ($SortWrappers.IntTo$Snap $arg2@3043@01))))
-  :qid |e$TokenPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3048@01 $arg0 $arg1 $arg2)
-        (img@3050@01 $arg0 $arg1 $arg2)
-        (img@3052@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3047@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3049@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3051@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3047@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3049@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3051@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3047@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3049@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3051@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3047@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3049@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3051@01 $arg0 $arg1 $arg2))
-  :qid |e$TokenPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3047@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3049@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3051@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$TokenPurchase ($PSF.lookup_e$TokenPurchase (as sm@3044@01  $PSF<e$TokenPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3047@01 $arg0 $arg1 $arg2) (inv@3049@01 $arg0 $arg1 $arg2) (inv@3051@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1836|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3047@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3049@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3051@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3048@01 $arg0 $arg1 $arg2)
-        (img@3050@01 $arg0 $arg1 $arg2)
-        (img@3052@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3047@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3049@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3051@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$TokenPurchase (as pm@3046@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3047@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3049@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3051@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1837|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$EthPurchase($arg0, $arg1, $arg2) }
-;     perm(e$EthPurchase($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$EthPurchase($arg0, $arg1, $arg2), perm(e$EthPurchase($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@3053@01 Int)
-(declare-const $arg1@3054@01 Int)
-(declare-const $arg2@3055@01 Int)
-(push) ; 5
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-(declare-const sm@3056@01 $PSF<e$EthPurchase>)
-(declare-const s@3057@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3058@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef274|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef275|)))
-(assert ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3053@01)
-    ($SortWrappers.IntTo$Snap $arg1@3054@01))
-  ($SortWrappers.IntTo$Snap $arg2@3055@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3053@01)
-    ($SortWrappers.IntTo$Snap $arg1@3054@01))
-  ($SortWrappers.IntTo$Snap $arg2@3055@01))))
-(assert (>
-  ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3053@01)
-      ($SortWrappers.IntTo$Snap $arg1@3054@01))
-    ($SortWrappers.IntTo$Snap $arg2@3055@01)))
-  $Perm.No))
-; [eval] perm(e$EthPurchase($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3059@01 (Int Int Int) Int)
-(declare-fun img@3060@01 (Int Int Int) Bool)
-(declare-fun inv@3061@01 (Int Int Int) Int)
-(declare-fun img@3062@01 (Int Int Int) Bool)
-(declare-fun inv@3063@01 (Int Int Int) Int)
-(declare-fun img@3064@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef274|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef275|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3053@01 Int) ($arg1@3054@01 Int) ($arg2@3055@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3053@01)
-          ($SortWrappers.IntTo$Snap $arg1@3054@01))
-        ($SortWrappers.IntTo$Snap $arg2@3055@01)))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3053@01)
-        ($SortWrappers.IntTo$Snap $arg1@3054@01))
-      ($SortWrappers.IntTo$Snap $arg2@3055@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3053@01)
-        ($SortWrappers.IntTo$Snap $arg1@3054@01))
-      ($SortWrappers.IntTo$Snap $arg2@3055@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3053@01)
-      ($SortWrappers.IntTo$Snap $arg1@3054@01))
-    ($SortWrappers.IntTo$Snap $arg2@3055@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3053@01)
-      ($SortWrappers.IntTo$Snap $arg1@3054@01))
-    ($SortWrappers.IntTo$Snap $arg2@3055@01))))
-  :qid |e$EthPurchase-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3053@01 Int) ($arg1@3054@01 Int) ($arg2@3055@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3053@01)
-          ($SortWrappers.IntTo$Snap $arg1@3054@01))
-        ($SortWrappers.IntTo$Snap $arg2@3055@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3053@01)
-            ($SortWrappers.IntTo$Snap $arg1@3054@01))
-          ($SortWrappers.IntTo$Snap $arg2@3055@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3053@01)
-            ($SortWrappers.IntTo$Snap $arg1@3054@01))
-          ($SortWrappers.IntTo$Snap $arg2@3055@01))))))
-  
-  :qid |quant-u-1838|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3053@01 Int) ($arg11@3054@01 Int) ($arg21@3055@01 Int) ($arg02@3053@01 Int) ($arg12@3054@01 Int) ($arg22@3055@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3053@01)
-                ($SortWrappers.IntTo$Snap $arg11@3054@01))
-              ($SortWrappers.IntTo$Snap $arg21@3055@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3053@01)
-              ($SortWrappers.IntTo$Snap $arg11@3054@01))
-            ($SortWrappers.IntTo$Snap $arg21@3055@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3053@01)
-              ($SortWrappers.IntTo$Snap $arg11@3054@01))
-            ($SortWrappers.IntTo$Snap $arg21@3055@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3053@01)
-              ($SortWrappers.IntTo$Snap $arg11@3054@01))
-            ($SortWrappers.IntTo$Snap $arg21@3055@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3053@01)
-                ($SortWrappers.IntTo$Snap $arg12@3054@01))
-              ($SortWrappers.IntTo$Snap $arg22@3055@01)))
-            $Perm.No)
-          ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3053@01)
-              ($SortWrappers.IntTo$Snap $arg12@3054@01))
-            ($SortWrappers.IntTo$Snap $arg22@3055@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3053@01)
-              ($SortWrappers.IntTo$Snap $arg12@3054@01))
-            ($SortWrappers.IntTo$Snap $arg22@3055@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3053@01)
-              ($SortWrappers.IntTo$Snap $arg12@3054@01))
-            ($SortWrappers.IntTo$Snap $arg22@3055@01)))))
-      (and
-        (and (= $arg01@3053@01 $arg02@3053@01) (= $arg11@3054@01 $arg12@3054@01))
-        (= $arg21@3055@01 $arg22@3055@01)))
-    (and
-      (and (= $arg01@3053@01 $arg02@3053@01) (= $arg11@3054@01 $arg12@3054@01))
-      (= $arg21@3055@01 $arg22@3055@01)))
-  
-  :qid |e$EthPurchase-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3053@01 Int) ($arg1@3054@01 Int) ($arg2@3055@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3053@01)
-            ($SortWrappers.IntTo$Snap $arg1@3054@01))
-          ($SortWrappers.IntTo$Snap $arg2@3055@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3053@01)
-            ($SortWrappers.IntTo$Snap $arg1@3054@01))
-          ($SortWrappers.IntTo$Snap $arg2@3055@01)))))
-    (and
-      (and
-        (= (inv@3059@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01) $arg0@3053@01)
-        (= (inv@3061@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01) $arg1@3054@01)
-        (= (inv@3063@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01) $arg2@3055@01))
-      (and
-        (img@3060@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01)
-        (img@3062@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01)
-        (img@3064@01 $arg0@3053@01 $arg1@3054@01 $arg2@3055@01))))
-  :pattern (($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3053@01)
-      ($SortWrappers.IntTo$Snap $arg1@3054@01))
-    ($SortWrappers.IntTo$Snap $arg2@3055@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3053@01)
-      ($SortWrappers.IntTo$Snap $arg1@3054@01))
-    ($SortWrappers.IntTo$Snap $arg2@3055@01))))
-  :qid |e$EthPurchase-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3060@01 $arg0 $arg1 $arg2)
-        (img@3062@01 $arg0 $arg1 $arg2)
-        (img@3064@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3059@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3061@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3063@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3059@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3061@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3063@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3059@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3061@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3063@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3059@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3061@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3063@01 $arg0 $arg1 $arg2))
-  :qid |e$EthPurchase-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3059@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3061@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3063@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$EthPurchase ($PSF.lookup_e$EthPurchase (as sm@3056@01  $PSF<e$EthPurchase>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3059@01 $arg0 $arg1 $arg2) (inv@3061@01 $arg0 $arg1 $arg2) (inv@3063@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1839|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3059@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3061@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3063@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3060@01 $arg0 $arg1 $arg2)
-        (img@3062@01 $arg0 $arg1 $arg2)
-        (img@3064@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3059@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3061@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3063@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$EthPurchase (as pm@3058@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3059@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3061@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3063@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1840|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$AddLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$AddLiquidity($arg0, $arg1, $arg2), perm(e$AddLiquidity($arg0, $arg1,
-;     $arg2))))
-(declare-const $arg0@3065@01 Int)
-(declare-const $arg1@3066@01 Int)
-(declare-const $arg2@3067@01 Int)
-(push) ; 5
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-(declare-const sm@3068@01 $PSF<e$AddLiquidity>)
-(declare-const s@3069@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3070@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef277|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef278|)))
-(assert ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3065@01)
-    ($SortWrappers.IntTo$Snap $arg1@3066@01))
-  ($SortWrappers.IntTo$Snap $arg2@3067@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3065@01)
-    ($SortWrappers.IntTo$Snap $arg1@3066@01))
-  ($SortWrappers.IntTo$Snap $arg2@3067@01))))
-(assert (>
-  ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3065@01)
-      ($SortWrappers.IntTo$Snap $arg1@3066@01))
-    ($SortWrappers.IntTo$Snap $arg2@3067@01)))
-  $Perm.No))
-; [eval] perm(e$AddLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3071@01 (Int Int Int) Int)
-(declare-fun img@3072@01 (Int Int Int) Bool)
-(declare-fun inv@3073@01 (Int Int Int) Int)
-(declare-fun img@3074@01 (Int Int Int) Bool)
-(declare-fun inv@3075@01 (Int Int Int) Int)
-(declare-fun img@3076@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef277|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef278|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3065@01 Int) ($arg1@3066@01 Int) ($arg2@3067@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3065@01)
-          ($SortWrappers.IntTo$Snap $arg1@3066@01))
-        ($SortWrappers.IntTo$Snap $arg2@3067@01)))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3065@01)
-        ($SortWrappers.IntTo$Snap $arg1@3066@01))
-      ($SortWrappers.IntTo$Snap $arg2@3067@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3065@01)
-        ($SortWrappers.IntTo$Snap $arg1@3066@01))
-      ($SortWrappers.IntTo$Snap $arg2@3067@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3065@01)
-      ($SortWrappers.IntTo$Snap $arg1@3066@01))
-    ($SortWrappers.IntTo$Snap $arg2@3067@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3065@01)
-      ($SortWrappers.IntTo$Snap $arg1@3066@01))
-    ($SortWrappers.IntTo$Snap $arg2@3067@01))))
-  :qid |e$AddLiquidity-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3065@01 Int) ($arg1@3066@01 Int) ($arg2@3067@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3065@01)
-          ($SortWrappers.IntTo$Snap $arg1@3066@01))
-        ($SortWrappers.IntTo$Snap $arg2@3067@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3065@01)
-            ($SortWrappers.IntTo$Snap $arg1@3066@01))
-          ($SortWrappers.IntTo$Snap $arg2@3067@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3065@01)
-            ($SortWrappers.IntTo$Snap $arg1@3066@01))
-          ($SortWrappers.IntTo$Snap $arg2@3067@01))))))
-  
-  :qid |quant-u-1841|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3065@01 Int) ($arg11@3066@01 Int) ($arg21@3067@01 Int) ($arg02@3065@01 Int) ($arg12@3066@01 Int) ($arg22@3067@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3065@01)
-                ($SortWrappers.IntTo$Snap $arg11@3066@01))
-              ($SortWrappers.IntTo$Snap $arg21@3067@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3065@01)
-              ($SortWrappers.IntTo$Snap $arg11@3066@01))
-            ($SortWrappers.IntTo$Snap $arg21@3067@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3065@01)
-              ($SortWrappers.IntTo$Snap $arg11@3066@01))
-            ($SortWrappers.IntTo$Snap $arg21@3067@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3065@01)
-              ($SortWrappers.IntTo$Snap $arg11@3066@01))
-            ($SortWrappers.IntTo$Snap $arg21@3067@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3065@01)
-                ($SortWrappers.IntTo$Snap $arg12@3066@01))
-              ($SortWrappers.IntTo$Snap $arg22@3067@01)))
-            $Perm.No)
-          ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3065@01)
-              ($SortWrappers.IntTo$Snap $arg12@3066@01))
-            ($SortWrappers.IntTo$Snap $arg22@3067@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3065@01)
-              ($SortWrappers.IntTo$Snap $arg12@3066@01))
-            ($SortWrappers.IntTo$Snap $arg22@3067@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3065@01)
-              ($SortWrappers.IntTo$Snap $arg12@3066@01))
-            ($SortWrappers.IntTo$Snap $arg22@3067@01)))))
-      (and
-        (and (= $arg01@3065@01 $arg02@3065@01) (= $arg11@3066@01 $arg12@3066@01))
-        (= $arg21@3067@01 $arg22@3067@01)))
-    (and
-      (and (= $arg01@3065@01 $arg02@3065@01) (= $arg11@3066@01 $arg12@3066@01))
-      (= $arg21@3067@01 $arg22@3067@01)))
-  
-  :qid |e$AddLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3065@01 Int) ($arg1@3066@01 Int) ($arg2@3067@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3065@01)
-            ($SortWrappers.IntTo$Snap $arg1@3066@01))
-          ($SortWrappers.IntTo$Snap $arg2@3067@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3065@01)
-            ($SortWrappers.IntTo$Snap $arg1@3066@01))
-          ($SortWrappers.IntTo$Snap $arg2@3067@01)))))
-    (and
-      (and
-        (= (inv@3071@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01) $arg0@3065@01)
-        (= (inv@3073@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01) $arg1@3066@01)
-        (= (inv@3075@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01) $arg2@3067@01))
-      (and
-        (img@3072@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01)
-        (img@3074@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01)
-        (img@3076@01 $arg0@3065@01 $arg1@3066@01 $arg2@3067@01))))
-  :pattern (($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3065@01)
-      ($SortWrappers.IntTo$Snap $arg1@3066@01))
-    ($SortWrappers.IntTo$Snap $arg2@3067@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3065@01)
-      ($SortWrappers.IntTo$Snap $arg1@3066@01))
-    ($SortWrappers.IntTo$Snap $arg2@3067@01))))
-  :qid |e$AddLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3072@01 $arg0 $arg1 $arg2)
-        (img@3074@01 $arg0 $arg1 $arg2)
-        (img@3076@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3071@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3073@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3075@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3071@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3073@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3075@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3071@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3073@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3075@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3071@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3073@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3075@01 $arg0 $arg1 $arg2))
-  :qid |e$AddLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3071@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3073@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3075@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$AddLiquidity ($PSF.lookup_e$AddLiquidity (as sm@3068@01  $PSF<e$AddLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3071@01 $arg0 $arg1 $arg2) (inv@3073@01 $arg0 $arg1 $arg2) (inv@3075@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1842|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3071@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3073@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3075@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3072@01 $arg0 $arg1 $arg2)
-        (img@3074@01 $arg0 $arg1 $arg2)
-        (img@3076@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3071@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3073@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3075@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$AddLiquidity (as pm@3070@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3071@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3073@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3075@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1843|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$RemoveLiquidity($arg0, $arg1, $arg2) }
-;     perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$RemoveLiquidity($arg0, $arg1, $arg2), perm(e$RemoveLiquidity($arg0,
-;     $arg1, $arg2))))
-(declare-const $arg0@3077@01 Int)
-(declare-const $arg1@3078@01 Int)
-(declare-const $arg2@3079@01 Int)
-(push) ; 5
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-(declare-const sm@3080@01 $PSF<e$RemoveLiquidity>)
-(declare-const s@3081@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3082@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef280|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef281|)))
-(assert ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3077@01)
-    ($SortWrappers.IntTo$Snap $arg1@3078@01))
-  ($SortWrappers.IntTo$Snap $arg2@3079@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3077@01)
-    ($SortWrappers.IntTo$Snap $arg1@3078@01))
-  ($SortWrappers.IntTo$Snap $arg2@3079@01))))
-(assert (>
-  ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3077@01)
-      ($SortWrappers.IntTo$Snap $arg1@3078@01))
-    ($SortWrappers.IntTo$Snap $arg2@3079@01)))
-  $Perm.No))
-; [eval] perm(e$RemoveLiquidity($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3083@01 (Int Int Int) Int)
-(declare-fun img@3084@01 (Int Int Int) Bool)
-(declare-fun inv@3085@01 (Int Int Int) Int)
-(declare-fun img@3086@01 (Int Int Int) Bool)
-(declare-fun inv@3087@01 (Int Int Int) Int)
-(declare-fun img@3088@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef280|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef281|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3077@01 Int) ($arg1@3078@01 Int) ($arg2@3079@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3077@01)
-          ($SortWrappers.IntTo$Snap $arg1@3078@01))
-        ($SortWrappers.IntTo$Snap $arg2@3079@01)))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3077@01)
-        ($SortWrappers.IntTo$Snap $arg1@3078@01))
-      ($SortWrappers.IntTo$Snap $arg2@3079@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3077@01)
-        ($SortWrappers.IntTo$Snap $arg1@3078@01))
-      ($SortWrappers.IntTo$Snap $arg2@3079@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3077@01)
-      ($SortWrappers.IntTo$Snap $arg1@3078@01))
-    ($SortWrappers.IntTo$Snap $arg2@3079@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3077@01)
-      ($SortWrappers.IntTo$Snap $arg1@3078@01))
-    ($SortWrappers.IntTo$Snap $arg2@3079@01))))
-  :qid |e$RemoveLiquidity-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3077@01 Int) ($arg1@3078@01 Int) ($arg2@3079@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3077@01)
-          ($SortWrappers.IntTo$Snap $arg1@3078@01))
-        ($SortWrappers.IntTo$Snap $arg2@3079@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3077@01)
-            ($SortWrappers.IntTo$Snap $arg1@3078@01))
-          ($SortWrappers.IntTo$Snap $arg2@3079@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3077@01)
-            ($SortWrappers.IntTo$Snap $arg1@3078@01))
-          ($SortWrappers.IntTo$Snap $arg2@3079@01))))))
-  
-  :qid |quant-u-1844|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3077@01 Int) ($arg11@3078@01 Int) ($arg21@3079@01 Int) ($arg02@3077@01 Int) ($arg12@3078@01 Int) ($arg22@3079@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3077@01)
-                ($SortWrappers.IntTo$Snap $arg11@3078@01))
-              ($SortWrappers.IntTo$Snap $arg21@3079@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3077@01)
-              ($SortWrappers.IntTo$Snap $arg11@3078@01))
-            ($SortWrappers.IntTo$Snap $arg21@3079@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3077@01)
-              ($SortWrappers.IntTo$Snap $arg11@3078@01))
-            ($SortWrappers.IntTo$Snap $arg21@3079@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3077@01)
-              ($SortWrappers.IntTo$Snap $arg11@3078@01))
-            ($SortWrappers.IntTo$Snap $arg21@3079@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3077@01)
-                ($SortWrappers.IntTo$Snap $arg12@3078@01))
-              ($SortWrappers.IntTo$Snap $arg22@3079@01)))
-            $Perm.No)
-          ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3077@01)
-              ($SortWrappers.IntTo$Snap $arg12@3078@01))
-            ($SortWrappers.IntTo$Snap $arg22@3079@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3077@01)
-              ($SortWrappers.IntTo$Snap $arg12@3078@01))
-            ($SortWrappers.IntTo$Snap $arg22@3079@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3077@01)
-              ($SortWrappers.IntTo$Snap $arg12@3078@01))
-            ($SortWrappers.IntTo$Snap $arg22@3079@01)))))
-      (and
-        (and (= $arg01@3077@01 $arg02@3077@01) (= $arg11@3078@01 $arg12@3078@01))
-        (= $arg21@3079@01 $arg22@3079@01)))
-    (and
-      (and (= $arg01@3077@01 $arg02@3077@01) (= $arg11@3078@01 $arg12@3078@01))
-      (= $arg21@3079@01 $arg22@3079@01)))
-  
-  :qid |e$RemoveLiquidity-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3077@01 Int) ($arg1@3078@01 Int) ($arg2@3079@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3077@01)
-            ($SortWrappers.IntTo$Snap $arg1@3078@01))
-          ($SortWrappers.IntTo$Snap $arg2@3079@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3077@01)
-            ($SortWrappers.IntTo$Snap $arg1@3078@01))
-          ($SortWrappers.IntTo$Snap $arg2@3079@01)))))
-    (and
-      (and
-        (= (inv@3083@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01) $arg0@3077@01)
-        (= (inv@3085@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01) $arg1@3078@01)
-        (= (inv@3087@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01) $arg2@3079@01))
-      (and
-        (img@3084@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01)
-        (img@3086@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01)
-        (img@3088@01 $arg0@3077@01 $arg1@3078@01 $arg2@3079@01))))
-  :pattern (($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3077@01)
-      ($SortWrappers.IntTo$Snap $arg1@3078@01))
-    ($SortWrappers.IntTo$Snap $arg2@3079@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3077@01)
-      ($SortWrappers.IntTo$Snap $arg1@3078@01))
-    ($SortWrappers.IntTo$Snap $arg2@3079@01))))
-  :qid |e$RemoveLiquidity-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3084@01 $arg0 $arg1 $arg2)
-        (img@3086@01 $arg0 $arg1 $arg2)
-        (img@3088@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3083@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3085@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3087@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3083@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3085@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3087@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3083@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3085@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3087@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3083@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3085@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3087@01 $arg0 $arg1 $arg2))
-  :qid |e$RemoveLiquidity-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3083@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3085@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3087@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$RemoveLiquidity ($PSF.lookup_e$RemoveLiquidity (as sm@3080@01  $PSF<e$RemoveLiquidity>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3083@01 $arg0 $arg1 $arg2) (inv@3085@01 $arg0 $arg1 $arg2) (inv@3087@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1845|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3083@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3085@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3087@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3084@01 $arg0 $arg1 $arg2)
-        (img@3086@01 $arg0 $arg1 $arg2)
-        (img@3088@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3083@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3085@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3087@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$RemoveLiquidity (as pm@3082@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3083@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3085@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3087@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1846|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Transfer($arg0, $arg1, $arg2) }
-;     perm(e$Transfer($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Transfer($arg0, $arg1, $arg2), perm(e$Transfer($arg0, $arg1, $arg2))))
-(declare-const $arg0@3089@01 Int)
-(declare-const $arg1@3090@01 Int)
-(declare-const $arg2@3091@01 Int)
-(push) ; 5
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-(declare-const sm@3092@01 $PSF<e$Transfer>)
-(declare-const s@3093@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3094@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef283|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef284|)))
-(assert ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3089@01)
-    ($SortWrappers.IntTo$Snap $arg1@3090@01))
-  ($SortWrappers.IntTo$Snap $arg2@3091@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3089@01)
-    ($SortWrappers.IntTo$Snap $arg1@3090@01))
-  ($SortWrappers.IntTo$Snap $arg2@3091@01))))
-(assert (>
-  ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3089@01)
-      ($SortWrappers.IntTo$Snap $arg1@3090@01))
-    ($SortWrappers.IntTo$Snap $arg2@3091@01)))
-  $Perm.No))
-; [eval] perm(e$Transfer($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3095@01 (Int Int Int) Int)
-(declare-fun img@3096@01 (Int Int Int) Bool)
-(declare-fun inv@3097@01 (Int Int Int) Int)
-(declare-fun img@3098@01 (Int Int Int) Bool)
-(declare-fun inv@3099@01 (Int Int Int) Int)
-(declare-fun img@3100@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef283|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef284|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3089@01 Int) ($arg1@3090@01 Int) ($arg2@3091@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3089@01)
-          ($SortWrappers.IntTo$Snap $arg1@3090@01))
-        ($SortWrappers.IntTo$Snap $arg2@3091@01)))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3089@01)
-        ($SortWrappers.IntTo$Snap $arg1@3090@01))
-      ($SortWrappers.IntTo$Snap $arg2@3091@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3089@01)
-        ($SortWrappers.IntTo$Snap $arg1@3090@01))
-      ($SortWrappers.IntTo$Snap $arg2@3091@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3089@01)
-      ($SortWrappers.IntTo$Snap $arg1@3090@01))
-    ($SortWrappers.IntTo$Snap $arg2@3091@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3089@01)
-      ($SortWrappers.IntTo$Snap $arg1@3090@01))
-    ($SortWrappers.IntTo$Snap $arg2@3091@01))))
-  :qid |e$Transfer-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3089@01 Int) ($arg1@3090@01 Int) ($arg2@3091@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3089@01)
-          ($SortWrappers.IntTo$Snap $arg1@3090@01))
-        ($SortWrappers.IntTo$Snap $arg2@3091@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3089@01)
-            ($SortWrappers.IntTo$Snap $arg1@3090@01))
-          ($SortWrappers.IntTo$Snap $arg2@3091@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3089@01)
-            ($SortWrappers.IntTo$Snap $arg1@3090@01))
-          ($SortWrappers.IntTo$Snap $arg2@3091@01))))))
-  
-  :qid |quant-u-1847|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3089@01 Int) ($arg11@3090@01 Int) ($arg21@3091@01 Int) ($arg02@3089@01 Int) ($arg12@3090@01 Int) ($arg22@3091@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3089@01)
-                ($SortWrappers.IntTo$Snap $arg11@3090@01))
-              ($SortWrappers.IntTo$Snap $arg21@3091@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3089@01)
-              ($SortWrappers.IntTo$Snap $arg11@3090@01))
-            ($SortWrappers.IntTo$Snap $arg21@3091@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3089@01)
-              ($SortWrappers.IntTo$Snap $arg11@3090@01))
-            ($SortWrappers.IntTo$Snap $arg21@3091@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3089@01)
-              ($SortWrappers.IntTo$Snap $arg11@3090@01))
-            ($SortWrappers.IntTo$Snap $arg21@3091@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3089@01)
-                ($SortWrappers.IntTo$Snap $arg12@3090@01))
-              ($SortWrappers.IntTo$Snap $arg22@3091@01)))
-            $Perm.No)
-          ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3089@01)
-              ($SortWrappers.IntTo$Snap $arg12@3090@01))
-            ($SortWrappers.IntTo$Snap $arg22@3091@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3089@01)
-              ($SortWrappers.IntTo$Snap $arg12@3090@01))
-            ($SortWrappers.IntTo$Snap $arg22@3091@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3089@01)
-              ($SortWrappers.IntTo$Snap $arg12@3090@01))
-            ($SortWrappers.IntTo$Snap $arg22@3091@01)))))
-      (and
-        (and (= $arg01@3089@01 $arg02@3089@01) (= $arg11@3090@01 $arg12@3090@01))
-        (= $arg21@3091@01 $arg22@3091@01)))
-    (and
-      (and (= $arg01@3089@01 $arg02@3089@01) (= $arg11@3090@01 $arg12@3090@01))
-      (= $arg21@3091@01 $arg22@3091@01)))
-  
-  :qid |e$Transfer-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3089@01 Int) ($arg1@3090@01 Int) ($arg2@3091@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3089@01)
-            ($SortWrappers.IntTo$Snap $arg1@3090@01))
-          ($SortWrappers.IntTo$Snap $arg2@3091@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3089@01)
-            ($SortWrappers.IntTo$Snap $arg1@3090@01))
-          ($SortWrappers.IntTo$Snap $arg2@3091@01)))))
-    (and
-      (and
-        (= (inv@3095@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01) $arg0@3089@01)
-        (= (inv@3097@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01) $arg1@3090@01)
-        (= (inv@3099@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01) $arg2@3091@01))
-      (and
-        (img@3096@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01)
-        (img@3098@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01)
-        (img@3100@01 $arg0@3089@01 $arg1@3090@01 $arg2@3091@01))))
-  :pattern (($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3089@01)
-      ($SortWrappers.IntTo$Snap $arg1@3090@01))
-    ($SortWrappers.IntTo$Snap $arg2@3091@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3089@01)
-      ($SortWrappers.IntTo$Snap $arg1@3090@01))
-    ($SortWrappers.IntTo$Snap $arg2@3091@01))))
-  :qid |e$Transfer-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3096@01 $arg0 $arg1 $arg2)
-        (img@3098@01 $arg0 $arg1 $arg2)
-        (img@3100@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3095@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3097@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3099@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3095@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3097@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3099@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3095@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3097@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3099@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3095@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3097@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3099@01 $arg0 $arg1 $arg2))
-  :qid |e$Transfer-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3095@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3097@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3099@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Transfer ($PSF.lookup_e$Transfer (as sm@3092@01  $PSF<e$Transfer>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3095@01 $arg0 $arg1 $arg2) (inv@3097@01 $arg0 $arg1 $arg2) (inv@3099@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1848|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3095@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3097@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3099@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3096@01 $arg0 $arg1 $arg2)
-        (img@3098@01 $arg0 $arg1 $arg2)
-        (img@3100@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3095@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3097@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3099@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Transfer (as pm@3094@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3095@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3097@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3099@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1849|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; exhale true &&
-;   (forall $arg0: Int, $arg1: Int, $arg2: Int ::
-;     { e$Approval($arg0, $arg1, $arg2) }
-;     perm(e$Approval($arg0, $arg1, $arg2)) > none ==>
-;     acc(e$Approval($arg0, $arg1, $arg2), perm(e$Approval($arg0, $arg1, $arg2))))
-(declare-const $arg0@3101@01 Int)
-(declare-const $arg1@3102@01 Int)
-(declare-const $arg2@3103@01 Int)
-(push) ; 5
-; [eval] perm(e$Approval($arg0, $arg1, $arg2)) > none
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-(declare-const sm@3104@01 $PSF<e$Approval>)
-(declare-const s@3105@01 $Snap)
-; Definitional axioms for snapshot map values
-(declare-const pm@3106@01 $PPM)
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef286|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef287|)))
-(assert ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3101@01)
-    ($SortWrappers.IntTo$Snap $arg1@3102@01))
-  ($SortWrappers.IntTo$Snap $arg2@3103@01))) ($Snap.combine
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap $arg0@3101@01)
-    ($SortWrappers.IntTo$Snap $arg1@3102@01))
-  ($SortWrappers.IntTo$Snap $arg2@3103@01))))
-(assert (>
-  ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3101@01)
-      ($SortWrappers.IntTo$Snap $arg1@3102@01))
-    ($SortWrappers.IntTo$Snap $arg2@3103@01)))
-  $Perm.No))
-; [eval] perm(e$Approval($arg0, $arg1, $arg2))
-; Definitional axioms for snapshot map values
-; Definitional axioms for snapshot map values
-(pop) ; 5
-(declare-fun inv@3107@01 (Int Int Int) Int)
-(declare-fun img@3108@01 (Int Int Int) Bool)
-(declare-fun inv@3109@01 (Int Int Int) Int)
-(declare-fun img@3110@01 (Int Int Int) Bool)
-(declare-fun inv@3111@01 (Int Int Int) Int)
-(declare-fun img@3112@01 (Int Int Int) Bool)
-; Nested auxiliary terms: globals
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=
-    ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2)))
-    $Perm.No)
-  :pattern (($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resPrmSumDef286|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2)))
-  :pattern (($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0)
-      ($SortWrappers.IntTo$Snap $arg1))
-    ($SortWrappers.IntTo$Snap $arg2))))
-  :qid |qp.resTrgDef287|)))
-; Nested auxiliary terms: non-globals
-(assert (forall (($arg0@3101@01 Int) ($arg1@3102@01 Int) ($arg2@3103@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3101@01)
-          ($SortWrappers.IntTo$Snap $arg1@3102@01))
-        ($SortWrappers.IntTo$Snap $arg2@3103@01)))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3101@01)
-        ($SortWrappers.IntTo$Snap $arg1@3102@01))
-      ($SortWrappers.IntTo$Snap $arg2@3103@01))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0@3101@01)
-        ($SortWrappers.IntTo$Snap $arg1@3102@01))
-      ($SortWrappers.IntTo$Snap $arg2@3103@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3101@01)
-      ($SortWrappers.IntTo$Snap $arg1@3102@01))
-    ($SortWrappers.IntTo$Snap $arg2@3103@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3101@01)
-      ($SortWrappers.IntTo$Snap $arg1@3102@01))
-    ($SortWrappers.IntTo$Snap $arg2@3103@01))))
-  :qid |e$Approval-aux|)))
-(push) ; 5
-(assert (not (forall (($arg0@3101@01 Int) ($arg1@3102@01 Int) ($arg2@3103@01 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap $arg0@3101@01)
-          ($SortWrappers.IntTo$Snap $arg1@3102@01))
-        ($SortWrappers.IntTo$Snap $arg2@3103@01)))
-      $Perm.No)
-    (or
-      (=
-        ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3101@01)
-            ($SortWrappers.IntTo$Snap $arg1@3102@01))
-          ($SortWrappers.IntTo$Snap $arg2@3103@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3101@01)
-            ($SortWrappers.IntTo$Snap $arg1@3102@01))
-          ($SortWrappers.IntTo$Snap $arg2@3103@01))))))
-  
-  :qid |quant-u-1850|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for snapshot map values
-; Check receiver injectivity
-(push) ; 5
-(assert (not (forall (($arg01@3101@01 Int) ($arg11@3102@01 Int) ($arg21@3103@01 Int) ($arg02@3101@01 Int) ($arg12@3102@01 Int) ($arg22@3103@01 Int)) (!
-  (=>
-    (and
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg01@3101@01)
-                ($SortWrappers.IntTo$Snap $arg11@3102@01))
-              ($SortWrappers.IntTo$Snap $arg21@3103@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3101@01)
-              ($SortWrappers.IntTo$Snap $arg11@3102@01))
-            ($SortWrappers.IntTo$Snap $arg21@3103@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3101@01)
-              ($SortWrappers.IntTo$Snap $arg11@3102@01))
-            ($SortWrappers.IntTo$Snap $arg21@3103@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg01@3101@01)
-              ($SortWrappers.IntTo$Snap $arg11@3102@01))
-            ($SortWrappers.IntTo$Snap $arg21@3103@01)))))
-      (and
-        (and
-          (>
-            ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-              ($Snap.combine
-                ($SortWrappers.IntTo$Snap $arg02@3101@01)
-                ($SortWrappers.IntTo$Snap $arg12@3102@01))
-              ($SortWrappers.IntTo$Snap $arg22@3103@01)))
-            $Perm.No)
-          ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3101@01)
-              ($SortWrappers.IntTo$Snap $arg12@3102@01))
-            ($SortWrappers.IntTo$Snap $arg22@3103@01))) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3101@01)
-              ($SortWrappers.IntTo$Snap $arg12@3102@01))
-            ($SortWrappers.IntTo$Snap $arg22@3103@01))))
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap $arg02@3101@01)
-              ($SortWrappers.IntTo$Snap $arg12@3102@01))
-            ($SortWrappers.IntTo$Snap $arg22@3103@01)))))
-      (and
-        (and (= $arg01@3101@01 $arg02@3101@01) (= $arg11@3102@01 $arg12@3102@01))
-        (= $arg21@3103@01 $arg22@3103@01)))
-    (and
-      (and (= $arg01@3101@01 $arg02@3101@01) (= $arg11@3102@01 $arg12@3102@01))
-      (= $arg21@3103@01 $arg22@3103@01)))
-  
-  :qid |e$Approval-rcvrInj|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Definitional axioms for inverse functions
-(assert (forall (($arg0@3101@01 Int) ($arg1@3102@01 Int) ($arg2@3103@01 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3101@01)
-            ($SortWrappers.IntTo$Snap $arg1@3102@01))
-          ($SortWrappers.IntTo$Snap $arg2@3103@01)))
-        $Perm.No)
-      (<
-        $Perm.No
-        ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap $arg0@3101@01)
-            ($SortWrappers.IntTo$Snap $arg1@3102@01))
-          ($SortWrappers.IntTo$Snap $arg2@3103@01)))))
-    (and
-      (and
-        (= (inv@3107@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01) $arg0@3101@01)
-        (= (inv@3109@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01) $arg1@3102@01)
-        (= (inv@3111@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01) $arg2@3103@01))
-      (and
-        (img@3108@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01)
-        (img@3110@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01)
-        (img@3112@01 $arg0@3101@01 $arg1@3102@01 $arg2@3103@01))))
-  :pattern (($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3101@01)
-      ($SortWrappers.IntTo$Snap $arg1@3102@01))
-    ($SortWrappers.IntTo$Snap $arg2@3103@01))) ($Snap.combine
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap $arg0@3101@01)
-      ($SortWrappers.IntTo$Snap $arg1@3102@01))
-    ($SortWrappers.IntTo$Snap $arg2@3103@01))))
-  :qid |e$Approval-invOfFct|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (and
-        (img@3108@01 $arg0 $arg1 $arg2)
-        (img@3110@01 $arg0 $arg1 $arg2)
-        (img@3112@01 $arg0 $arg1 $arg2))
-      (and
-        (>
-          ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3107@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3109@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3111@01 $arg0 $arg1 $arg2))))
-          $Perm.No)
-        (<
-          $Perm.No
-          ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap (inv@3107@01 $arg0 $arg1 $arg2))
-              ($SortWrappers.IntTo$Snap (inv@3109@01 $arg0 $arg1 $arg2)))
-            ($SortWrappers.IntTo$Snap (inv@3111@01 $arg0 $arg1 $arg2)))))))
-    (and
-      (= (inv@3107@01 $arg0 $arg1 $arg2) $arg0)
-      (= (inv@3109@01 $arg0 $arg1 $arg2) $arg1)
-      (= (inv@3111@01 $arg0 $arg1 $arg2) $arg2)))
-  :pattern ((inv@3107@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3109@01 $arg0 $arg1 $arg2))
-  :pattern ((inv@3111@01 $arg0 $arg1 $arg2))
-  :qid |e$Approval-fctOfInv|)))
-(assert (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (>
-      ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3107@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3109@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3111@01 $arg0 $arg1 $arg2))))
-      $Perm.No)
-    ($PSF.loc_e$Approval ($PSF.lookup_e$Approval (as sm@3104@01  $PSF<e$Approval>) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))) ($Snap.combine
-      ($Snap.combine
-        ($SortWrappers.IntTo$Snap $arg0)
-        ($SortWrappers.IntTo$Snap $arg1))
-      ($SortWrappers.IntTo$Snap $arg2))))
-  :pattern ((inv@3107@01 $arg0 $arg1 $arg2) (inv@3109@01 $arg0 $arg1 $arg2) (inv@3111@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1851|)))
-; Precomputing data for removing quantified permissions
-; Done precomputing, updating quantified chunks
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; Final check if taken enough permissions
-(set-option :timeout 0)
-(push) ; 5
-(assert (not (forall (($arg0 Int) ($arg1 Int) ($arg2 Int)) (!
-  (=>
-    (and
-      (>
-        ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-          ($Snap.combine
-            ($SortWrappers.IntTo$Snap (inv@3107@01 $arg0 $arg1 $arg2))
-            ($SortWrappers.IntTo$Snap (inv@3109@01 $arg0 $arg1 $arg2)))
-          ($SortWrappers.IntTo$Snap (inv@3111@01 $arg0 $arg1 $arg2))))
-        $Perm.No)
-      (and
-        (img@3108@01 $arg0 $arg1 $arg2)
-        (img@3110@01 $arg0 $arg1 $arg2)
-        (img@3112@01 $arg0 $arg1 $arg2))
-      (and
-        (= $arg0 (inv@3107@01 $arg0 $arg1 $arg2))
-        (= $arg1 (inv@3109@01 $arg0 $arg1 $arg2))
-        (= $arg2 (inv@3111@01 $arg0 $arg1 $arg2))))
-    (=
-      ($PSF.perm_e$Approval (as pm@3106@01  $PPM) ($Snap.combine
-        ($Snap.combine
-          ($SortWrappers.IntTo$Snap (inv@3107@01 $arg0 $arg1 $arg2))
-          ($SortWrappers.IntTo$Snap (inv@3109@01 $arg0 $arg1 $arg2)))
-        ($SortWrappers.IntTo$Snap (inv@3111@01 $arg0 $arg1 $arg2))))
-      $Perm.No))
-  
-  :qid |quant-u-1852|))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; Done removing quantified permissions
-; [exec]
-; inhale 0 <= l$i0$raw_ret &&
-;   l$i0$raw_ret <=
-;   115792089237316195423570985008687907853269984665640564039457584007913129639935
-(declare-const $t@3113@01 $Snap)
-(assert (= $t@3113@01 ($Snap.combine ($Snap.first $t@3113@01) ($Snap.second $t@3113@01))))
-(assert (= ($Snap.first $t@3113@01) $Snap.unit))
-; [eval] 0 <= l$i0$raw_ret
-(assert (<= 0 l$i0$raw_ret@2954@01))
-(assert (= ($Snap.second $t@3113@01) $Snap.unit))
-; [eval] l$i0$raw_ret <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
-(assert (<=
-  l$i0$raw_ret@2954@01
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail@2953@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not l$i0$send_fail@2953@01))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 887 | l$i0$send_fail@2953@01 | live]
-; [else-branch: 887 | !(l$i0$send_fail@2953@01) | live]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 887 | l$i0$send_fail@2953@01]
-(assert l$i0$send_fail@2953@01)
-; [exec]
-; inhale acc($failed(($struct_get($struct_loc(self, 6)): Int)), write)
-; [eval] ($struct_get($struct_loc(self, 6)): Int)
-; [eval] $struct_loc(self, 6)
-(declare-const $t@3114@01 $Snap)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(set-option :timeout 0)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 888 | True | live]
-; [else-branch: 888 | False | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 888 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3115@01 $Snap)
-(assert (= $t@3115@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3116@01 $Struct)
-(assert (=
-  self@3116@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 6
-; [then-branch: 889 | False | dead]
-; [else-branch: 889 | True | live]
-(set-option :timeout 0)
-(push) ; 6
-; [else-branch: 889 | True]
-(pop) ; 6
-(pop) ; 5
-(push) ; 5
-; [else-branch: 887 | !(l$i0$send_fail@2953@01)]
-(assert (not l$i0$send_fail@2953@01))
-(pop) ; 5
-; [eval] !l$i0$send_fail
-(push) ; 5
-(set-option :timeout 10)
-(assert (not l$i0$send_fail@2953@01))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not l$i0$send_fail@2953@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 890 | !(l$i0$send_fail@2953@01) | live]
-; [else-branch: 890 | l$i0$send_fail@2953@01 | live]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 890 | !(l$i0$send_fail@2953@01)]
-(assert (not l$i0$send_fail@2953@01))
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; $old_self := self
-; [exec]
-; $old_$contracts := $contracts
-; [exec]
-; l$i0$token_reserve := $wrap(l$i0$raw_ret)
-; [eval] $wrap(l$i0$raw_ret)
-(declare-const l$i0$token_reserve@3117@01 $Int)
-(assert (= l$i0$token_reserve@3117@01 ($wrap<$Int> l$i0$raw_ret@2954@01)))
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth < 0
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 891 | $struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0 | dead]
-; [else-branch: 891 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0) | live]
-(set-option :timeout 0)
-(push) ; 6
-; [else-branch: 891 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0)]
-(assert (not
-  (<
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    0)))
-(pop) ; 6
-; [eval] !(($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth < 0)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth < 0
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (<
-  (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-  0)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 892 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0) | live]
-; [else-branch: 892 | $struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0 | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 892 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 < 0)]
-(assert (not
-  (<
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    0)))
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 893 | $struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 893 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 7
-; [else-branch: 893 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 7
-; [eval] !(($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (>
-  (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 894 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 894 | $struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 894 | !($struct_get[Int]($struct_loc[Int](self@3034@01, 8)) - l$i0$max_eth@3037@01 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [exec]
-; l$i2$output_amount := l$i0$tokens_bought
-; [exec]
-; l$i2$input_reserve := ($struct_get($struct_loc(self, 8)): Int) -
-;   l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int) - l$i0$max_eth
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const l$i2$input_reserve@3118@01 Int)
-(assert (=
-  l$i2$input_reserve@3118@01
-  (- ($struct_get<Int> ($struct_loc<Int> self@3034@01 8)) l$i0$max_eth@3037@01)))
-; [exec]
-; l$i2$output_reserve := l$i0$token_reserve
-; [eval] !(l$i2$input_reserve > 0 && $unwrap(l$i2$output_reserve) > 0)
-; [eval] l$i2$input_reserve > 0 && $unwrap(l$i2$output_reserve) > 0
-; [eval] l$i2$input_reserve > 0
-(push) ; 8
-; [then-branch: 895 | !(l$i2$input_reserve@3118@01 > 0) | live]
-; [else-branch: 895 | l$i2$input_reserve@3118@01 > 0 | live]
-(push) ; 9
-; [then-branch: 895 | !(l$i2$input_reserve@3118@01 > 0)]
-(assert (not (> l$i2$input_reserve@3118@01 0)))
-(pop) ; 9
-(push) ; 9
-; [else-branch: 895 | l$i2$input_reserve@3118@01 > 0]
-(assert (> l$i2$input_reserve@3118@01 0))
-; [eval] $unwrap(l$i2$output_reserve) > 0
-; [eval] $unwrap(l$i2$output_reserve)
-(pop) ; 9
-(pop) ; 8
-; Joined path conditions
-; Joined path conditions
-(assert (or (> l$i2$input_reserve@3118@01 0) (not (> l$i2$input_reserve@3118@01 0))))
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (and
-  (> l$i2$input_reserve@3118@01 0)
-  (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (> l$i2$input_reserve@3118@01 0)
-    (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0)))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 896 | !(l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0) | live]
-; [else-branch: 896 | l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0 | live]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 896 | !(l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0)]
-(assert (not
-  (and
-    (> l$i2$input_reserve@3118@01 0)
-    (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0))))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 9
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 897 | True | live]
-; [else-branch: 897 | False | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 897 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3119@01 $Snap)
-(assert (= $t@3119@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3120@01 $Struct)
-(assert (=
-  self@3120@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 9
-; [then-branch: 898 | False | dead]
-; [else-branch: 898 | True | live]
-(set-option :timeout 0)
-(push) ; 9
-; [else-branch: 898 | True]
-(pop) ; 9
-(pop) ; 8
-(push) ; 8
-; [else-branch: 896 | l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0]
-(assert (and
-  (> l$i2$input_reserve@3118@01 0)
-  (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0)))
-(pop) ; 8
-; [eval] !!(l$i2$input_reserve > 0 && $unwrap(l$i2$output_reserve) > 0)
-; [eval] !(l$i2$input_reserve > 0 && $unwrap(l$i2$output_reserve) > 0)
-; [eval] l$i2$input_reserve > 0 && $unwrap(l$i2$output_reserve) > 0
-; [eval] l$i2$input_reserve > 0
-(push) ; 8
-; [then-branch: 899 | !(l$i2$input_reserve@3118@01 > 0) | live]
-; [else-branch: 899 | l$i2$input_reserve@3118@01 > 0 | live]
-(push) ; 9
-; [then-branch: 899 | !(l$i2$input_reserve@3118@01 > 0)]
-(assert (not (> l$i2$input_reserve@3118@01 0)))
-(pop) ; 9
-(push) ; 9
-; [else-branch: 899 | l$i2$input_reserve@3118@01 > 0]
-(assert (> l$i2$input_reserve@3118@01 0))
-; [eval] $unwrap(l$i2$output_reserve) > 0
-; [eval] $unwrap(l$i2$output_reserve)
-(pop) ; 9
-(pop) ; 8
-; Joined path conditions
-; Joined path conditions
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not
-  (and
-    (> l$i2$input_reserve@3118@01 0)
-    (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0)))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (and
-  (> l$i2$input_reserve@3118@01 0)
-  (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 900 | l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0 | live]
-; [else-branch: 900 | !(l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0) | live]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 900 | l$i2$input_reserve@3118@01 > 0 && $unwrap[Int](l$i0$token_reserve@3117@01) > 0]
-(assert (and
-  (> l$i2$input_reserve@3118@01 0)
-  (> ($unwrap<Int> l$i0$token_reserve@3117@01) 0)))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount) < 0
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not (< (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01)) 0))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 901 | l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0 | dead]
-; [else-branch: 901 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 9
-; [else-branch: 901 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0)]
-(assert (not (< (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01)) 0)))
-(pop) ; 9
-; [eval] !(l$i2$input_reserve * $unwrap(l$i2$output_amount) < 0)
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount) < 0
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (< (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01)) 0)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not (< (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01)) 0))))
-(check-sat)
-; unsat
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 902 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0) | live]
-; [else-branch: 902 | l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 902 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) < 0)]
-(assert (not (< (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01)) 0)))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (>
-  (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 903 | l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-; [else-branch: 903 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 903 | l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; [exec]
-; $overflow := true
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 11
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 904 | True | live]
-; [else-branch: 904 | False | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 904 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3121@01 $Snap)
-(assert (= $t@3121@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3122@01 $Struct)
-(assert (=
-  self@3122@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 11
-; [then-branch: 905 | False | dead]
-; [else-branch: 905 | True | live]
-(set-option :timeout 0)
-(push) ; 11
-; [else-branch: 905 | True]
-(pop) ; 11
-(pop) ; 10
-(push) ; 10
-; [else-branch: 903 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 10
-; [eval] !(l$i2$input_reserve * $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (>
-  (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 906 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 906 | l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 906 | !(l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (* l$i2$input_reserve@3118@01 ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 < 0
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount)))
-; [eval] $wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 907 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0 | dead]
-; [else-branch: 907 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0) | live]
-(set-option :timeout 0)
-(push) ; 11
-; [else-branch: 907 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0)]
-(assert (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    0)))
-(pop) ; 11
-; [eval] !($unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 < 0)
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 < 0
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount)))
-; [eval] $wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (<
-  (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@3118@01
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    1000)
-  0)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 908 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0) | live]
-; [else-branch: 908 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0 | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 908 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 < 0)]
-(assert (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    0)))
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount)))
-; [eval] $wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@3118@01
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    1000)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 909 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-; [else-branch: 909 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 909 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@3118@01
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    1000)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; [exec]
-; $overflow := true
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 13
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 910 | True | live]
-; [else-branch: 910 | False | dead]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 910 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3123@01 $Snap)
-(assert (= $t@3123@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3124@01 $Struct)
-(assert (=
-  self@3124@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 13
-; [then-branch: 911 | False | dead]
-; [else-branch: 911 | True | live]
-(set-option :timeout 0)
-(push) ; 13
-; [else-branch: 911 | True]
-(pop) ; 13
-(pop) ; 12
-(push) ; 12
-; [else-branch: 909 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 12
-; [eval] !($unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount)))
-; [eval] $wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@3118@01
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    1000)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 912 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 912 | $unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 912 | !($unwrap[Int]($wrap[$Int](l$i2$input_reserve@3118@01 * $unwrap[Int](l$tokens_bought@2927@01))) * 1000 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (*
-        l$i2$input_reserve@3118@01
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      1000)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [exec]
-; l$i2$numerator := $wrap($unwrap($wrap(l$i2$input_reserve *
-;   $unwrap(l$i2$output_amount))) *
-;   1000)
-; [eval] $wrap($unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000)
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))) * 1000
-; [eval] $unwrap($wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount)))
-; [eval] $wrap(l$i2$input_reserve * $unwrap(l$i2$output_amount))
-; [eval] l$i2$input_reserve * $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_amount)
-(declare-const l$i2$numerator@3125@01 $Int)
-(assert (=
-  l$i2$numerator@3125@01
-  ($wrap<$Int> (*
-    ($unwrap<Int> ($wrap<$Int> (*
-      l$i2$input_reserve@3118@01
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    1000))))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) < 0
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    0))))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (<
-  (-
-    ($unwrap<Int> l$i0$token_reserve@3117@01)
-    ($unwrap<Int> l$tokens_bought@2927@01))
-  0)))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 913 | $unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0 | live]
-; [else-branch: 913 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 913 | $unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0]
-(assert (<
-  (-
-    ($unwrap<Int> l$i0$token_reserve@3117@01)
-    ($unwrap<Int> l$tokens_bought@2927@01))
-  0))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 14
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 914 | True | live]
-; [else-branch: 914 | False | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 914 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3126@01 $Snap)
-(assert (= $t@3126@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3127@01 $Struct)
-(assert (=
-  self@3127@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 14
-; [then-branch: 915 | False | dead]
-; [else-branch: 915 | True | live]
-(set-option :timeout 0)
-(push) ; 14
-; [else-branch: 915 | True]
-(pop) ; 14
-(pop) ; 13
-(push) ; 13
-; [else-branch: 913 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0)]
-(assert (not
-  (<
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    0)))
-(pop) ; 13
-; [eval] !($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) < 0)
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) < 0
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (<
-  (-
-    ($unwrap<Int> l$i0$token_reserve@3117@01)
-    ($unwrap<Int> l$tokens_bought@2927@01))
-  0)))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    0))))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 916 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0) | live]
-; [else-branch: 916 | $unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0 | live]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 916 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) < 0)]
-(assert (not
-  (<
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    0)))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 917 | $unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 917 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 14
-; [else-branch: 917 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 14
-; [eval] !($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (>
-  (-
-    ($unwrap<Int> l$i0$token_reserve@3117@01)
-    ($unwrap<Int> l$tokens_bought@2927@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 918 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 918 | $unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 918 | !($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 < 0
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)))
-; [eval] $wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 919 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0 | dead]
-; [else-branch: 919 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0) | live]
-(set-option :timeout 0)
-(push) ; 15
-; [else-branch: 919 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0)]
-(assert (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    0)))
-(pop) ; 15
-; [eval] !($unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 < 0)
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 < 0
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)))
-; [eval] $wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (<
-  (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    997)
-  0)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 920 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0) | live]
-; [else-branch: 920 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0 | dead]
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 920 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 < 0)]
-(assert (not
-  (<
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    0)))
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)))
-; [eval] $wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    997)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 921 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-; [else-branch: 921 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 921 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935]
-(assert (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    997)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935))
-; [exec]
-; $overflow := true
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 17
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 922 | True | live]
-; [else-branch: 922 | False | dead]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 922 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3128@01 $Snap)
-(assert (= $t@3128@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3129@01 $Struct)
-(assert (=
-  self@3129@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 17
-; [then-branch: 923 | False | dead]
-; [else-branch: 923 | True | live]
-(set-option :timeout 0)
-(push) ; 17
-; [else-branch: 923 | True]
-(pop) ; 17
-(pop) ; 16
-(push) ; 16
-; [else-branch: 921 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 16
-; [eval] !($unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)))
-; [eval] $wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (>
-  (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    997)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 924 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 924 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | live]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 924 | !($unwrap[Int]($wrap[$Int]($unwrap[Int](l$i0$token_reserve@3117@01) - $unwrap[Int](l$tokens_bought@2927@01))) * 997 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (*
-      ($unwrap<Int> ($wrap<$Int> (-
-        ($unwrap<Int> l$i0$token_reserve@3117@01)
-        ($unwrap<Int> l$tokens_bought@2927@01))))
-      997)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [exec]
-; l$i2$denominator := $wrap($unwrap($wrap($unwrap(l$i2$output_reserve) -
-;   $unwrap(l$i2$output_amount))) *
-;   997)
-; [eval] $wrap($unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997)
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))) * 997
-; [eval] $unwrap($wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)))
-; [eval] $wrap($unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount))
-; [eval] $unwrap(l$i2$output_reserve) - $unwrap(l$i2$output_amount)
-; [eval] $unwrap(l$i2$output_reserve)
-; [eval] $unwrap(l$i2$output_amount)
-(declare-const l$i2$denominator@3130@01 $Int)
-(assert (=
-  l$i2$denominator@3130@01
-  ($wrap<$Int> (*
-    ($unwrap<Int> ($wrap<$Int> (-
-      ($unwrap<Int> l$i0$token_reserve@3117@01)
-      ($unwrap<Int> l$tokens_bought@2927@01))))
-    997))))
-; [eval] $unwrap(l$i2$denominator) == 0
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0))))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 925 | $unwrap[Int](l$i2$denominator@3130@01) == 0 | live]
-; [else-branch: 925 | $unwrap[Int](l$i2$denominator@3130@01) != 0 | live]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 925 | $unwrap[Int](l$i2$denominator@3130@01) == 0]
-(assert (= ($unwrap<Int> l$i2$denominator@3130@01) 0))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 18
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 926 | True | live]
-; [else-branch: 926 | False | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 926 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3131@01 $Snap)
-(assert (= $t@3131@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3132@01 $Struct)
-(assert (=
-  self@3132@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 18
-; [then-branch: 927 | False | dead]
-; [else-branch: 927 | True | live]
-(set-option :timeout 0)
-(push) ; 18
-; [else-branch: 927 | True]
-(pop) ; 18
-(pop) ; 17
-(push) ; 17
-; [else-branch: 925 | $unwrap[Int](l$i2$denominator@3130@01) != 0]
-(assert (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0)))
-(pop) ; 17
-; [eval] !($unwrap(l$i2$denominator) == 0)
-; [eval] $unwrap(l$i2$denominator) == 0
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0))))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 928 | $unwrap[Int](l$i2$denominator@3130@01) != 0 | live]
-; [else-branch: 928 | $unwrap[Int](l$i2$denominator@3130@01) == 0 | live]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 928 | $unwrap[Int](l$i2$denominator@3130@01) != 0]
-(assert (not (= ($unwrap<Int> l$i2$denominator@3130@01) 0)))
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) < 0
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 18
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not (= 0 ($unwrap<Int> l$i2$denominator@3130@01)))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 929 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 929 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(set-option :timeout 0)
-(push) ; 19
-; [else-branch: 929 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-(assert (not (= 0 ($unwrap<Int> l$i2$denominator@3130@01))))
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 19
-(pop) ; 18
-; Joined path conditions
-(assert (not (= 0 ($unwrap<Int> l$i2$denominator@3130@01))))
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    0))))
-(check-sat)
-; unsat
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 930 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0 | dead]
-; [else-branch: 930 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0) | live]
-(set-option :timeout 0)
-(push) ; 18
-; [else-branch: 930 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0)]
-(assert (not
-  (<
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    0)))
-(pop) ; 18
-; [eval] !($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) < 0)
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) < 0
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 18
-; [then-branch: 931 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 931 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 19
-; [else-branch: 931 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 19
-(pop) ; 18
-; Joined path conditions
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (<
-  ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-  0)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.01s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    0))))
-(check-sat)
-; unsat
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 932 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0) | live]
-; [else-branch: 932 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 932 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) < 0)]
-(assert (not
-  (<
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    0)))
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 19
-; [then-branch: 933 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 933 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 20
-; [else-branch: 933 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 934 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 934 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 19
-; [else-branch: 934 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 19
-; [eval] !($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 19
-; [then-branch: 935 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 935 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 20
-; [else-branch: 935 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 936 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 936 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 19
-; [then-branch: 936 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 < 0
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 20
-; [then-branch: 937 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 937 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 21
-; [else-branch: 937 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 21
-(pop) ; 20
-; Joined path conditions
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 938 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0 | dead]
-; [else-branch: 938 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0) | live]
-(set-option :timeout 0)
-(push) ; 20
-; [else-branch: 938 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0)]
-(assert (not
-  (<
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    0)))
-(pop) ; 20
-; [eval] !($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 < 0)
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 < 0
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 20
-; [then-branch: 939 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 939 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 21
-; [else-branch: 939 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 21
-(pop) ; 20
-; Joined path conditions
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (<
-  (+
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    1)
-  0)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not
-  (<
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    0))))
-(check-sat)
-; unsat
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 940 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0) | live]
-; [else-branch: 940 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0 | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 940 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 < 0)]
-(assert (not
-  (<
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    0)))
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 21
-; [then-branch: 941 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 941 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 22
-; [else-branch: 941 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 942 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 942 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 21
-; [else-branch: 942 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 21
-; [eval] !($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 21
-; [then-branch: 943 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 943 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 22
-; [else-branch: 943 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (>
-  (+
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    1)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 944 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 944 | $unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 21
-; [then-branch: 944 | !($unwrap[Int]($w_div[$Int](l$i2$numerator@3125@01, l$i2$denominator@3130@01)) + 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (+
-      ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-      1)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [exec]
-; i2$$res := $unwrap($wrap($unwrap((0 == $unwrap(l$i2$denominator) ?
-;     $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) :
-;     $w_div(l$i2$numerator, l$i2$denominator))) +
-;   1))
-; [eval] $unwrap($wrap($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1))
-; [eval] $wrap($unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1)
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))) + 1
-; [eval] $unwrap((0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator)))
-; [eval] (0 == $unwrap(l$i2$denominator) ? $wrap($unwrap(l$i2$numerator) \ $unwrap(l$i2$denominator)) : $w_div(l$i2$numerator, l$i2$denominator))
-; [eval] 0 == $unwrap(l$i2$denominator)
-; [eval] $unwrap(l$i2$denominator)
-(push) ; 22
-; [then-branch: 945 | 0 == $unwrap[Int](l$i2$denominator@3130@01) | dead]
-; [else-branch: 945 | 0 != $unwrap[Int](l$i2$denominator@3130@01) | live]
-(push) ; 23
-; [else-branch: 945 | 0 != $unwrap[Int](l$i2$denominator@3130@01)]
-; [eval] $w_div(l$i2$numerator, l$i2$denominator)
-(pop) ; 23
-(pop) ; 22
-; Joined path conditions
-(declare-const i2$$res@3133@01 Int)
-(assert (=
-  i2$$res@3133@01
-  ($unwrap<Int> ($wrap<$Int> (+
-    ($unwrap<Int> ($w_div<$Int> l$i2$numerator@3125@01 l$i2$denominator@3130@01))
-    1)))))
-; [exec]
-; label i2$return
-; [exec]
-; l$i0$eth_sold := $wrap(i2$$res)
-; [eval] $wrap(i2$$res)
-(declare-const l$i0$eth_sold@3134@01 $Int)
-(assert (= l$i0$eth_sold@3134@01 ($wrap<$Int> i2$$res@3133@01)))
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not (< ($unwrap<Int> l$i0$eth_sold@3134@01) 0))))
-(check-sat)
-; unsat
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 946 | $unwrap[Int](l$i0$eth_sold@3134@01) < 0 | dead]
-; [else-branch: 946 | !($unwrap[Int](l$i0$eth_sold@3134@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 22
-; [else-branch: 946 | !($unwrap[Int](l$i0$eth_sold@3134@01) < 0)]
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@3134@01) 0)))
-(pop) ; 22
-; [eval] !($unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@3134@01) 0)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not (< ($unwrap<Int> l$i0$eth_sold@3134@01) 0))))
-(check-sat)
-; unsat
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 947 | !($unwrap[Int](l$i0$eth_sold@3134@01) < 0) | live]
-; [else-branch: 947 | $unwrap[Int](l$i0$eth_sold@3134@01) < 0 | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 947 | !($unwrap[Int](l$i0$eth_sold@3134@01) < 0)]
-(assert (not (< ($unwrap<Int> l$i0$eth_sold@3134@01) 0)))
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 23
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    ($unwrap<Int> l$i0$eth_sold@3134@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 23
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 948 | $unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 948 | !($unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 23
-; [else-branch: 948 | !($unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    ($unwrap<Int> l$i0$eth_sold@3134@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 23
-; [eval] !($unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 23
-(set-option :timeout 10)
-(assert (not (>
-  ($unwrap<Int> l$i0$eth_sold@3134@01)
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(check-sat)
-; unknown
-(pop) ; 23
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 23
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    ($unwrap<Int> l$i0$eth_sold@3134@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 23
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 949 | !($unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-; [else-branch: 949 | $unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-(set-option :timeout 0)
-(push) ; 23
-; [then-branch: 949 | !($unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    ($unwrap<Int> l$i0$eth_sold@3134@01)
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0))))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0)))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 950 | l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0 | live]
-; [else-branch: 950 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0) | live]
-(set-option :timeout 0)
-(push) ; 24
-; [then-branch: 950 | l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0]
-(assert (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0))
-; [exec]
-; label revert
-; [exec]
-; $succ := false
-; [exec]
-; $res := l$havoc
-; [exec]
-; self := $pre_self
-; [exec]
-; $contracts := $pre_$contracts
-; [exec]
-; $old_self := $pre_self
-; [exec]
-; $old_$contracts := $pre_$contracts
-; [exec]
-; label end
-; [eval] !$succ
-(push) ; 25
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 951 | True | live]
-; [else-branch: 951 | False | dead]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 951 | True]
-; [exec]
-; inhale l$havoc$1 >= 0
-(declare-const $t@3135@01 $Snap)
-(assert (= $t@3135@01 $Snap.unit))
-; [eval] l$havoc$1 >= 0
-(assert (>= l$havoc$1@2987@01 0))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; self := ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) +
-;   l$havoc$1): $Struct)
-; [eval] ($struct_set(self, 8, ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1): $Struct)
-; [eval] ($struct_get($struct_loc(self, 8)): Int) + l$havoc$1
-; [eval] ($struct_get($struct_loc(self, 8)): Int)
-; [eval] $struct_loc(self, 8)
-(declare-const self@3136@01 $Struct)
-(assert (=
-  self@3136@01
-  ($struct_set<$Struct> self@2936@01 8 (+
-    ($struct_get<Int> ($struct_loc<Int> self@2936@01 8))
-    l$havoc$1@2987@01))))
-; [exec]
-; $contracts := l$havoc$2
-(pop) ; 25
-; [then-branch: 952 | False | dead]
-; [else-branch: 952 | True | live]
-(set-option :timeout 0)
-(push) ; 25
-; [else-branch: 952 | True]
-(pop) ; 25
-(pop) ; 24
-(push) ; 24
-; [else-branch: 950 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0)]
-(assert (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0)))
-(pop) ; 24
-; [eval] !(l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 < 0)
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 < 0
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0)))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0))))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 953 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0) | live]
-; [else-branch: 953 | l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0 | live]
-(set-option :timeout 0)
-(push) ; 24
-; [then-branch: 953 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) < 0)]
-(assert (not (< (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01)) 0)))
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not
-  (>
-    (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935))))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 954 | l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935 | dead]
-; [else-branch: 954 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935) | live]
-(set-option :timeout 0)
-(push) ; 25
-; [else-branch: 954 | !(l$i0$max_eth@3037@01 - $unwrap[Int](l$i0$eth_sold@3134@01) > 115792089237316195423570985008687907853269984665640564039457584007913129639935)]
-(assert (not
-  (>
-    (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01))
-    115792089237316195423570985008687907853269984665640564039457584007913129639935)))
-(pop) ; 25
-; [eval] !(l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935)
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1 > 115792089237316195423570985008687907853269984665640564039457584007913129639935
-; [eval] l$i0$max_eth - $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold) * 1
-; [eval] $unwrap(l$i0$eth_sold)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (>
-  (- l$i0$max_eth@3037@01 ($unwrap<Int> l$i0$eth_sold@3134@01))
-  115792089237316195423570985008687907853269984665640564039457584007913129639935)))
 (check-sat)

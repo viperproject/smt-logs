@@ -85,16 +85,22 @@
 (declare-fun Tag (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._module.Term |##_module.Term.S| |##_module.Term.K| |##_module.Term.Apply| tytagFamily$Term)
@@ -109,6 +115,8 @@
 (ite (_module.Term.S_q |x#0|) |t#0| (ite (_module.Term.K_q |x#0|) |t#0| (let ((|n#0| (_module.Term.cdr |x#0|)))
 (let ((|m#0| (_module.Term.car |x#0|)))
 (ite  (and (and (|_module.Term#Equal| |m#0| |#_module.Term.K|) (_module.__default.IsValue ($LS $LZ) |n#0|)) (_module.__default.IsValue ($LS $LZ) |y#0|)) |n#0| (ite  (and (and (and (and (_module.Term.Apply_q |m#0|) (|_module.Term#Equal| (_module.Term.car |m#0|) |#_module.Term.S|)) (_module.__default.IsValue ($LS $LZ) (_module.Term.cdr |m#0|))) (_module.__default.IsValue ($LS $LZ) |n#0|)) (_module.__default.IsValue ($LS $LZ) |y#0|)) (|#_module.Term.Apply| (|#_module.Term.Apply| (_module.Term.cdr |m#0|) |y#0|) (|#_module.Term.Apply| |n#0| |y#0|)) |t#0|)))))))))))))
+ :qid |Combinatorsdfy.99:15|
+ :skolemid |618|
  :pattern ( (_module.__default.Step |t#0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|t#0@@0| T@U) ) (!  (=> (or (|_module.__default.ContainsS#canCall| |t#0@@0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@0| Tclass._module.Term))) (and (=> (not (_module.Term.S_q |t#0@@0|)) (=> (not (_module.Term.K_q |t#0@@0|)) (let ((|y#1@@0| (_module.Term.cdr |t#0@@0|)))
@@ -116,9 +124,13 @@
  (and (|_module.__default.ContainsS#canCall| |x#1@@0|) (=> (not (_module.__default.ContainsS $ly |x#1@@0|)) (|_module.__default.ContainsS#canCall| |y#1@@0|))))))) (= (_module.__default.ContainsS ($LS $ly) |t#0@@0|) (ite (_module.Term.S_q |t#0@@0|) true (ite (_module.Term.K_q |t#0@@0|) false (let ((|y#0@@0| (_module.Term.cdr |t#0@@0|)))
 (let ((|x#0@@0| (_module.Term.car |t#0@@0|)))
  (or (_module.__default.ContainsS $ly |x#0@@0|) (_module.__default.ContainsS $ly |y#0@@0|)))))))))
+ :qid |Combinatorsdfy.333:10|
+ :skolemid |746|
  :pattern ( (_module.__default.ContainsS ($LS $ly) |t#0@@0|))
 ))))
 (assert (forall ((|a#10#0#0| T@U) (|a#10#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Term.Apply| |a#10#0#0| |a#10#1#0|) Tclass._module.Term)  (and ($Is DatatypeTypeType |a#10#0#0| Tclass._module.Term) ($Is DatatypeTypeType |a#10#1#0| Tclass._module.Term)))
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |816|
  :pattern ( ($Is DatatypeTypeType (|#_module.Term.Apply| |a#10#0#0| |a#10#1#0|) Tclass._module.Term))
 )))
 (assert (= (DatatypeCtorId |#_module.Term.S|) |##_module.Term.S|))
@@ -126,6 +138,8 @@
 (assert ($Is DatatypeTypeType |#_module.Term.S| Tclass._module.Term))
 (assert ($Is DatatypeTypeType |#_module.Term.K| Tclass._module.Term))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) (|t#0@@1| T@U) ) (!  (=> (or (|_module.__default.IsValue#canCall| |t#0@@1|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@1| Tclass._module.Term))) (=> (and (_module.__default.IsValue $ly@@0 |t#0@@1|) (_module.Term.Apply_q |t#0@@1|)) (and (_module.__default.IsValue $ly@@0 (_module.Term.car |t#0@@1|)) (_module.__default.IsValue $ly@@0 (_module.Term.cdr |t#0@@1|)))))
+ :qid |Combinatorsdfy.21:10|
+ :skolemid |584|
  :pattern ( (_module.__default.IsValue $ly@@0 |t#0@@1|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|t#0@@2| T@U) ) (!  (=> (or (|_module.__default.Step#canCall| (Lit DatatypeTypeType |t#0@@2|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@2| Tclass._module.Term))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.S_q (Lit DatatypeTypeType |t#0@@2|)))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.K_q (Lit DatatypeTypeType |t#0@@2|)))))) (let ((|y#3| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@2|)))))
@@ -137,40 +151,67 @@
 (ite (_module.Term.S_q |x#2|) |t#0@@2| (ite (_module.Term.K_q |x#2|) |t#0@@2| (let ((|n#2| (Lit DatatypeTypeType (_module.Term.cdr |x#2|))))
 (let ((|m#2| (Lit DatatypeTypeType (_module.Term.car |x#2|))))
 (ite  (and (and (|_module.Term#Equal| |m#2| |#_module.Term.K|) (_module.__default.IsValue ($LS $LZ) |n#2|)) (_module.__default.IsValue ($LS $LZ) |y#2|)) |n#2| (ite  (and (and (and (and (_module.Term.Apply_q |m#2|) (|_module.Term#Equal| (_module.Term.car |m#2|) |#_module.Term.S|)) (_module.__default.IsValue ($LS $LZ) (Lit DatatypeTypeType (_module.Term.cdr |m#2|)))) (_module.__default.IsValue ($LS $LZ) |n#2|)) (_module.__default.IsValue ($LS $LZ) |y#2|)) (|#_module.Term.Apply| (Lit DatatypeTypeType (|#_module.Term.Apply| (Lit DatatypeTypeType (_module.Term.cdr |m#2|)) |y#2|)) (Lit DatatypeTypeType (|#_module.Term.Apply| |n#2| |y#2|))) |t#0@@2|)))))))))))))
+ :qid |Combinatorsdfy.99:15|
  :weight 3
+ :skolemid |619|
  :pattern ( (_module.__default.Step (Lit DatatypeTypeType |t#0@@2|)))
 ))))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.Term#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |830|
  :pattern ( (|_module.Term#Equal| a b))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d T@U) ) (! (= (_module.Term.S_q d) (= (DatatypeCtorId d) |##_module.Term.S|))
+ :qid |unknown.0:0|
+ :skolemid |808|
  :pattern ( (_module.Term.S_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Term.K_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Term.K|))
+ :qid |unknown.0:0|
+ :skolemid |810|
  :pattern ( (_module.Term.K_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Term.Apply_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Term.Apply|))
+ :qid |unknown.0:0|
+ :skolemid |813|
  :pattern ( (_module.Term.Apply_q d@@1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Term.Apply_q d@@2) (exists ((|a#9#0#0| T@U) (|a#9#1#0| T@U) ) (= d@@2 (|#_module.Term.Apply| |a#9#0#0| |a#9#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Term.Apply_q d@@2) (exists ((|a#9#0#0| T@U) (|a#9#1#0| T@U) ) (! (= d@@2 (|#_module.Term.Apply| |a#9#0#0| |a#9#1#0|))
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |814|
+)))
+ :qid |unknown.0:0|
+ :skolemid |815|
  :pattern ( (_module.Term.Apply_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (_module.Term.S_q d@@3) (= d@@3 |#_module.Term.S|))
+ :qid |unknown.0:0|
+ :skolemid |809|
  :pattern ( (_module.Term.S_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> (_module.Term.K_q d@@4) (= d@@4 |#_module.Term.K|))
+ :qid |unknown.0:0|
+ :skolemid |811|
  :pattern ( (_module.Term.K_q d@@4))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|t#0@@3| T@U) ) (!  (=> (or (|_module.__default.Step#canCall| |t#0@@3|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@3| Tclass._module.Term))) (and (=> (not (_module.__default.ContainsS ($LS $LZ) |t#0@@3|)) (and (not (_module.__default.ContainsS ($LS $LZ) (_module.__default.Step |t#0@@3|))) (or (|_module.Term#Equal| (_module.__default.Step |t#0@@3|) |t#0@@3|) (< (_module.__default.TermSize ($LS $LZ) (_module.__default.Step |t#0@@3|)) (_module.__default.TermSize ($LS $LZ) |t#0@@3|))))) ($Is DatatypeTypeType (_module.__default.Step |t#0@@3|) Tclass._module.Term)))
+ :qid |Combinatorsdfy.99:15|
+ :skolemid |616|
  :pattern ( (_module.__default.Step |t#0@@3|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) (|t#0@@4| T@U) ) (!  (=> (or (|_module.__default.ContainsS#canCall| (Lit DatatypeTypeType |t#0@@4|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@4| Tclass._module.Term))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.S_q (Lit DatatypeTypeType |t#0@@4|)))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.K_q (Lit DatatypeTypeType |t#0@@4|)))))) (let ((|y#3@@0| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@4|)))))
@@ -178,7 +219,9 @@
  (and (|_module.__default.ContainsS#canCall| |x#3@@0|) (=> (not (_module.__default.ContainsS ($LS $ly@@1) |x#3@@0|)) (|_module.__default.ContainsS#canCall| |y#3@@0|))))))) (= (_module.__default.ContainsS ($LS $ly@@1) (Lit DatatypeTypeType |t#0@@4|)) (ite (_module.Term.S_q (Lit DatatypeTypeType |t#0@@4|)) true (ite (_module.Term.K_q (Lit DatatypeTypeType |t#0@@4|)) false (U_2_bool (let ((|y#2@@0| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@4|)))))
 (let ((|x#2@@0| (Lit DatatypeTypeType (_module.Term.car (Lit DatatypeTypeType |t#0@@4|)))))
 (Lit boolType (bool_2_U  (or (_module.__default.ContainsS ($LS $ly@@1) |x#2@@0|) (_module.__default.ContainsS ($LS $ly@@1) |y#2@@0|))))))))))))
+ :qid |Combinatorsdfy.333:10|
  :weight 3
+ :skolemid |747|
  :pattern ( (_module.__default.ContainsS ($LS $ly@@1) (Lit DatatypeTypeType |t#0@@4|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) (|t#0@@5| T@U) ) (!  (=> (or (|_module.__default.TermSize#canCall| (Lit DatatypeTypeType |t#0@@5|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@5| Tclass._module.Term))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.S_q (Lit DatatypeTypeType |t#0@@5|)))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.K_q (Lit DatatypeTypeType |t#0@@5|)))))) (let ((|y#3@@1| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@5|)))))
@@ -186,10 +229,14 @@
  (and (|_module.__default.TermSize#canCall| |x#3@@1|) (|_module.__default.TermSize#canCall| |y#3@@1|)))))) (= (_module.__default.TermSize ($LS $ly@@2) (Lit DatatypeTypeType |t#0@@5|)) (ite (_module.Term.S_q (Lit DatatypeTypeType |t#0@@5|)) 1 (ite (_module.Term.K_q (Lit DatatypeTypeType |t#0@@5|)) 1 (let ((|y#2@@1| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@5|)))))
 (let ((|x#2@@1| (Lit DatatypeTypeType (_module.Term.car (Lit DatatypeTypeType |t#0@@5|)))))
 (LitInt (+ (+ 1 (_module.__default.TermSize ($LS $ly@@2) |x#2@@1|)) (_module.__default.TermSize ($LS $ly@@2) |y#2@@1|))))))))))
+ :qid |Combinatorsdfy.392:16|
  :weight 3
+ :skolemid |773|
  :pattern ( (_module.__default.TermSize ($LS $ly@@2) (Lit DatatypeTypeType |t#0@@5|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@3 T@U) (|t#0@@6| T@U) ) (!  (=> (or (|_module.__default.TermSize#canCall| |t#0@@6|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@6| Tclass._module.Term))) (<= (LitInt 0) (_module.__default.TermSize $ly@@3 |t#0@@6|)))
+ :qid |Combinatorsdfy.392:16|
+ :skolemid |770|
  :pattern ( (_module.__default.TermSize $ly@@3 |t#0@@6|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@4 T@U) (|t#0@@7| T@U) ) (!  (=> (or (|_module.__default.IsValue#canCall| |t#0@@7|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@7| Tclass._module.Term))) (and (=> (not (_module.Term.S_q |t#0@@7|)) (=> (not (_module.Term.K_q |t#0@@7|)) (let ((|b#1| (_module.Term.cdr |t#0@@7|)))
@@ -201,6 +248,8 @@
 (ite (_module.Term.S_q |a#0|) (_module.__default.IsValue $ly@@4 |b#0|) (ite (_module.Term.K_q |a#0|) (_module.__default.IsValue $ly@@4 |b#0|) (let ((|y#0@@1| (_module.Term.cdr |a#0|)))
 (let ((|x#0@@1| (_module.Term.car |a#0|)))
  (and (and (|_module.Term#Equal| |x#0@@1| |#_module.Term.S|) (_module.__default.IsValue $ly@@4 |y#0@@1|)) (_module.__default.IsValue $ly@@4 |b#0|)))))))))))))
+ :qid |Combinatorsdfy.21:10|
+ :skolemid |586|
  :pattern ( (_module.__default.IsValue ($LS $ly@@4) |t#0@@7|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@5 T@U) (|t#0@@8| T@U) ) (!  (=> (or (|_module.__default.TermSize#canCall| |t#0@@8|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@8| Tclass._module.Term))) (and (=> (not (_module.Term.S_q |t#0@@8|)) (=> (not (_module.Term.K_q |t#0@@8|)) (let ((|y#1@@2| (_module.Term.cdr |t#0@@8|)))
@@ -208,33 +257,51 @@
  (and (|_module.__default.TermSize#canCall| |x#1@@2|) (|_module.__default.TermSize#canCall| |y#1@@2|)))))) (= (_module.__default.TermSize ($LS $ly@@5) |t#0@@8|) (ite (_module.Term.S_q |t#0@@8|) 1 (ite (_module.Term.K_q |t#0@@8|) 1 (let ((|y#0@@2| (_module.Term.cdr |t#0@@8|)))
 (let ((|x#0@@2| (_module.Term.car |t#0@@8|)))
 (+ (+ 1 (_module.__default.TermSize $ly@@5 |x#0@@2|)) (_module.__default.TermSize $ly@@5 |y#0@@2|)))))))))
+ :qid |Combinatorsdfy.392:16|
+ :skolemid |772|
  :pattern ( (_module.__default.TermSize ($LS $ly@@5) |t#0@@8|))
 ))))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (_module.Term.Apply_q a@@0) (_module.Term.Apply_q b@@0)) (= (|_module.Term#Equal| a@@0 b@@0)  (and (|_module.Term#Equal| (_module.Term.car a@@0) (_module.Term.car b@@0)) (|_module.Term#Equal| (_module.Term.cdr a@@0) (_module.Term.cdr b@@0)))))
+ :qid |unknown.0:0|
+ :skolemid |829|
  :pattern ( (|_module.Term#Equal| a@@0 b@@0) (_module.Term.Apply_q a@@0))
  :pattern ( (|_module.Term#Equal| a@@0 b@@0) (_module.Term.Apply_q b@@0))
 )))
 (assert (forall (($ly@@6 T@U) (|t#0@@9| T@U) ) (! (= (_module.__default.IsValue ($LS $ly@@6) |t#0@@9|) (_module.__default.IsValue $ly@@6 |t#0@@9|))
+ :qid |Combinatorsdfy.21:10|
+ :skolemid |581|
  :pattern ( (_module.__default.IsValue ($LS $ly@@6) |t#0@@9|))
 )))
 (assert (forall (($ly@@7 T@U) (|t#0@@10| T@U) ) (! (= (_module.__default.ContainsS ($LS $ly@@7) |t#0@@10|) (_module.__default.ContainsS $ly@@7 |t#0@@10|))
+ :qid |Combinatorsdfy.333:10|
+ :skolemid |742|
  :pattern ( (_module.__default.ContainsS ($LS $ly@@7) |t#0@@10|))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (and (_module.Term.S_q a@@1) (_module.Term.S_q b@@1)) (|_module.Term#Equal| a@@1 b@@1))
+ :qid |unknown.0:0|
+ :skolemid |827|
  :pattern ( (|_module.Term#Equal| a@@1 b@@1) (_module.Term.S_q a@@1))
  :pattern ( (|_module.Term#Equal| a@@1 b@@1) (_module.Term.S_q b@@1))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) ) (!  (=> (and (_module.Term.K_q a@@2) (_module.Term.K_q b@@2)) (|_module.Term#Equal| a@@2 b@@2))
+ :qid |unknown.0:0|
+ :skolemid |828|
  :pattern ( (|_module.Term#Equal| a@@2 b@@2) (_module.Term.K_q a@@2))
  :pattern ( (|_module.Term#Equal| a@@2 b@@2) (_module.Term.K_q b@@2))
 )))
 (assert (forall ((|a#8#0#0| T@U) (|a#8#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Term.Apply| |a#8#0#0| |a#8#1#0|)) |##_module.Term.Apply|)
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |812|
  :pattern ( (|#_module.Term.Apply| |a#8#0#0| |a#8#1#0|))
 )))
 (assert (forall ((|a#12#0#0| T@U) (|a#12#1#0| T@U) ) (! (= (_module.Term.car (|#_module.Term.Apply| |a#12#0#0| |a#12#1#0|)) |a#12#0#0|)
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |820|
  :pattern ( (|#_module.Term.Apply| |a#12#0#0| |a#12#1#0|))
 )))
 (assert (forall ((|a#14#0#0| T@U) (|a#14#1#0| T@U) ) (! (= (_module.Term.cdr (|#_module.Term.Apply| |a#14#0#0| |a#14#1#0|)) |a#14#1#0|)
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |822|
  :pattern ( (|#_module.Term.Apply| |a#14#0#0| |a#14#1#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@8 T@U) (|t#0@@11| T@U) ) (!  (=> (or (|_module.__default.IsValue#canCall| (Lit DatatypeTypeType |t#0@@11|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0@@11| Tclass._module.Term))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.S_q (Lit DatatypeTypeType |t#0@@11|)))))) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Term.K_q (Lit DatatypeTypeType |t#0@@11|)))))) (let ((|b#3| (Lit DatatypeTypeType (_module.Term.cdr (Lit DatatypeTypeType |t#0@@11|)))))
@@ -246,48 +313,75 @@
 (ite (_module.Term.S_q |a#2|) (_module.__default.IsValue ($LS $ly@@8) |b#2|) (ite (_module.Term.K_q |a#2|) (_module.__default.IsValue ($LS $ly@@8) |b#2|) (let ((|y#2@@2| (Lit DatatypeTypeType (_module.Term.cdr |a#2|))))
 (let ((|x#2@@2| (Lit DatatypeTypeType (_module.Term.car |a#2|))))
  (and (and (|_module.Term#Equal| |x#2@@2| |#_module.Term.S|) (_module.__default.IsValue ($LS $ly@@8) |y#2@@2|)) (_module.__default.IsValue ($LS $ly@@8) |b#2|)))))))))))))
+ :qid |Combinatorsdfy.21:10|
  :weight 3
+ :skolemid |587|
  :pattern ( (_module.__default.IsValue ($LS $ly@@8) (Lit DatatypeTypeType |t#0@@11|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((d@@5 T@U) ) (!  (=> (|$IsA#_module.Term| d@@5) (or (or (_module.Term.S_q d@@5) (_module.Term.K_q d@@5)) (_module.Term.Apply_q d@@5)))
+ :qid |unknown.0:0|
+ :skolemid |825|
  :pattern ( (|$IsA#_module.Term| d@@5))
 )))
 (assert (forall ((|a#13#0#0| T@U) (|a#13#1#0| T@U) ) (! (< (DtRank |a#13#0#0|) (DtRank (|#_module.Term.Apply| |a#13#0#0| |a#13#1#0|)))
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |821|
  :pattern ( (|#_module.Term.Apply| |a#13#0#0| |a#13#1#0|))
 )))
 (assert (forall ((|a#15#0#0| T@U) (|a#15#1#0| T@U) ) (! (< (DtRank |a#15#1#0|) (DtRank (|#_module.Term.Apply| |a#15#0#0| |a#15#1#0|)))
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |823|
  :pattern ( (|#_module.Term.Apply| |a#15#0#0| |a#15#1#0|))
 )))
 (assert (forall (($ly@@9 T@U) (|t#0@@12| T@U) ) (! (= (_module.__default.TermSize ($LS $ly@@9) |t#0@@12|) (_module.__default.TermSize $ly@@9 |t#0@@12|))
+ :qid |Combinatorsdfy.392:16|
+ :skolemid |768|
  :pattern ( (_module.__default.TermSize ($LS $ly@@9) |t#0@@12|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |884|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@6 T@U) ) (!  (=> ($Is DatatypeTypeType d@@6 Tclass._module.Term) (or (or (_module.Term.S_q d@@6) (_module.Term.K_q d@@6)) (_module.Term.Apply_q d@@6)))
+ :qid |unknown.0:0|
+ :skolemid |826|
  :pattern ( (_module.Term.Apply_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.Term))
  :pattern ( (_module.Term.K_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.Term))
  :pattern ( (_module.Term.S_q d@@6) ($Is DatatypeTypeType d@@6 Tclass._module.Term))
 )))
 (assert (forall ((d@@7 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) ($Is DatatypeTypeType d@@7 Tclass._module.Term)) ($IsAlloc DatatypeTypeType d@@7 Tclass._module.Term $h))
+ :qid |unknown.0:0|
+ :skolemid |824|
  :pattern ( ($IsAlloc DatatypeTypeType d@@7 Tclass._module.Term $h))
 )))
 (assert (= (Tag Tclass._module.Term) Tagclass._module.Term))
@@ -295,18 +389,28 @@
 (assert (= |#_module.Term.S| (Lit DatatypeTypeType |#_module.Term.S|)))
 (assert (= |#_module.Term.K| (Lit DatatypeTypeType |#_module.Term.K|)))
 (assert (forall ((d@@8 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.Term.Apply_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass._module.Term $h@@0))) ($IsAlloc DatatypeTypeType (_module.Term.car d@@8) Tclass._module.Term $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |817|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Term.car d@@8) Tclass._module.Term $h@@0))
 )))
 (assert (forall ((d@@9 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.Term.Apply_q d@@9) ($IsAlloc DatatypeTypeType d@@9 Tclass._module.Term $h@@1))) ($IsAlloc DatatypeTypeType (_module.Term.cdr d@@9) Tclass._module.Term $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |818|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Term.cdr d@@9) Tclass._module.Term $h@@1))
 )))
 (assert (forall ((|a#11#0#0| T@U) (|a#11#1#0| T@U) ) (! (= (|#_module.Term.Apply| (Lit DatatypeTypeType |a#11#0#0|) (Lit DatatypeTypeType |a#11#1#0|)) (Lit DatatypeTypeType (|#_module.Term.Apply| |a#11#0#0| |a#11#1#0|)))
+ :qid |Combinatorsdfy.14:31|
+ :skolemid |819|
  :pattern ( (|#_module.Term.Apply| (Lit DatatypeTypeType |a#11#0#0|) (Lit DatatypeTypeType |a#11#1#0|)))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (push 1)
@@ -330,6 +434,7 @@
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.Step_split0)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:35:12
+; Started: 2025-01-26 23:07:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1259,7 +1259,7 @@
       (= (inv@7@01 (Seq_index s@1@01 i@6@01)) i@6@01)
       (img@8@01 (Seq_index s@1@01 i@6@01))))
   :pattern ((Seq_index s@1@01 i@6@01))
-  :qid |quant-u-12176|)))
+  :qid |quant-u-12123|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1337,7 +1337,7 @@
       (pTaken@10@01 self i@9@01))
     $Perm.No)
   
-  :qid |quant-u-12178|))))
+  :qid |quant-u-12125|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -1349,7 +1349,7 @@
 (assert (not (forall ((self $Ref)) (!
   (= (pTaken@10@01 self i@9@01) $Perm.No)
   
-  :qid |quant-u-12179|))))
+  :qid |quant-u-12126|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -1364,7 +1364,7 @@
     (= self (Seq_index s@1@01 i@9@01))
     (= (- $Perm.Write (pTaken@10@01 self i@9@01)) $Perm.No))
   
-  :qid |quant-u-12180|))))
+  :qid |quant-u-12127|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -1824,7 +1824,7 @@
       (= (inv@18@01 (Seq_index s@1@01 i@17@01)) i@17@01)
       (img@19@01 (Seq_index s@1@01 i@17@01))))
   :pattern ((Seq_index s@1@01 i@17@01))
-  :qid |quant-u-12182|)))
+  :qid |quant-u-12129|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1902,7 +1902,7 @@
       (pTaken@21@01 self i@20@01))
     $Perm.No)
   
-  :qid |quant-u-12184|))))
+  :qid |quant-u-12131|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -1914,7 +1914,7 @@
 (assert (not (forall ((self $Ref)) (!
   (= (pTaken@21@01 self i@20@01) $Perm.No)
   
-  :qid |quant-u-12185|))))
+  :qid |quant-u-12132|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -1929,7 +1929,7 @@
     (= self (Seq_index s@1@01 i@20@01))
     (= (- $Perm.Write (pTaken@21@01 self i@20@01)) $Perm.No))
   
-  :qid |quant-u-12186|))))
+  :qid |quant-u-12133|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2177,7 +2177,7 @@
       (pTaken@27@01 self))
     $Perm.No)
   
-  :qid |quant-u-12189|))))
+  :qid |quant-u-12136|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2195,7 +2195,7 @@
       (= self (Seq_index s@1@01 (inv@25@01 self))))
     (= (- $Perm.Write (pTaken@27@01 self)) $Perm.No))
   
-  :qid |quant-u-12190|))))
+  :qid |quant-u-12137|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2271,7 +2271,7 @@
       (pTaken@29@01 self i@28@01))
     $Perm.No)
   
-  :qid |quant-u-12192|))))
+  :qid |quant-u-12139|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2283,7 +2283,7 @@
 (assert (not (forall ((self $Ref)) (!
   (= (pTaken@29@01 self i@28@01) $Perm.No)
   
-  :qid |quant-u-12193|))))
+  :qid |quant-u-12140|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2298,7 +2298,7 @@
     (= self (Seq_index s@1@01 i@28@01))
     (= (- $Perm.Write (pTaken@29@01 self i@28@01)) $Perm.No))
   
-  :qid |quant-u-12194|))))
+  :qid |quant-u-12141|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2496,7 +2496,7 @@
   :pattern ((Set_in n@33@01 g@31@01))
   :pattern ((inv@34@01 n@33@01))
   :pattern ((img@35@01 n@33@01))
-  :qid |quant-u-12196|)))
+  :qid |quant-u-12143|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@35@01 r) (Set_in (inv@34@01 r) g@31@01)) (= (inv@34@01 r) r))
   :pattern ((inv@34@01 r))
@@ -2525,7 +2525,7 @@
     :pattern ((Set_in n@33@01 g@31@01))
     :pattern ((inv@34@01 n@33@01))
     :pattern ((img@35@01 n@33@01))
-    :qid |quant-u-12196|))
+    :qid |quant-u-12143|))
   (forall ((n@33@01 $Ref)) (!
     (=> (Set_in n@33@01 g@31@01) (not (= n@33@01 $Ref.null)))
     :pattern ((Set_in n@33@01 g@31@01))
@@ -2577,7 +2577,7 @@
   :pattern ((Set_in n@36@01 g@31@01))
   :pattern ((inv@37@01 n@36@01))
   :pattern ((img@38@01 n@36@01))
-  :qid |quant-u-12198|)))
+  :qid |quant-u-12145|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@38@01 r) (Set_in (inv@37@01 r) g@31@01)) (= (inv@37@01 r) r))
   :pattern ((inv@37@01 r))
@@ -2611,7 +2611,7 @@
     :pattern ((Set_in n@36@01 g@31@01))
     :pattern ((inv@37@01 n@36@01))
     :pattern ((img@38@01 n@36@01))
-    :qid |quant-u-12198|))
+    :qid |quant-u-12145|))
   (forall ((n@36@01 $Ref)) (!
     (=> (Set_in n@36@01 g@31@01) (not (= n@36@01 $Ref.null)))
     :pattern ((Set_in n@36@01 g@31@01))

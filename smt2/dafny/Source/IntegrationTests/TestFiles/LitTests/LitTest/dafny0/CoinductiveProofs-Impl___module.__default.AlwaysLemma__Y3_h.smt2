@@ -81,187 +81,307 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TORDINAL TagORDINAL alloc Tagclass._module.Stream |##_module.Stream.Cons| tytagFamily$Stream)
 )
 (assert (= (Tag TORDINAL) TagORDINAL))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((d T@U) ) (!  (=> (|$IsA#_module.Stream| d) (_module.Stream.Cons_q d))
+ :qid |unknown.0:0|
+ :skolemid |952|
  :pattern ( (|$IsA#_module.Stream| d))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((_module.Stream$T T@U) (d@@0 T@U) ) (!  (=> ($Is DatatypeTypeType d@@0 (Tclass._module.Stream _module.Stream$T)) (_module.Stream.Cons_q d@@0))
+ :qid |unknown.0:0|
+ :skolemid |953|
  :pattern ( (_module.Stream.Cons_q d@@0) ($Is DatatypeTypeType d@@0 (Tclass._module.Stream _module.Stream$T)))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.Y#$_T0| T@U) ($ly T@U) (|_k#0| T@U) (|s#0| T@U) ) (!  (=> (or (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0| |_k#0| |s#0|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |s#0| (Tclass._module.Stream |_module._default.Y#$_T0|)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0|)) (and (_module.Stream.Cons_q |s#0|) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0| (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0|)))) (=> (=> (< 0 (|ORD#Offset| |_k#0|)) (_module.__default.Y_h |_module._default.Y#$_T0| $ly (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0|))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0|) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0| |_k'#0| |s#0|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |694|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0| $ly |_k'#0| |s#0|))
 ))))) (= (_module.__default.Y_h |_module._default.Y#$_T0| ($LS $ly) |_k#0| |s#0|)  (and (=> (< 0 (|ORD#Offset| |_k#0|)) (_module.__default.Y_h |_module._default.Y#$_T0| $ly (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0|))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0|) (_module.__default.Y_h |_module._default.Y#$_T0| $ly |_k'#0@@0| |s#0|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |693|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0| $ly |_k'#0@@0| |s#0|))
 )))))))
+ :qid |unknown.0:0|
+ :skolemid |695|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0| ($LS $ly) |_k#0| |s#0|))
 ))))
 (assert (forall ((_module.Stream$T@@0 T@U) (|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#2#0#0| |a#2#1#0|) (Tclass._module.Stream _module.Stream$T@@0))  (and ($IsBox |a#2#0#0| _module.Stream$T@@0) ($Is DatatypeTypeType |a#2#1#0| (Tclass._module.Stream _module.Stream$T@@0))))
+ :qid |unknown.0:0|
+ :skolemid |946|
  :pattern ( ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#2#0#0| |a#2#1#0|) (Tclass._module.Stream _module.Stream$T@@0)))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Stream.Cons_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Stream.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |943|
  :pattern ( (_module.Stream.Cons_q d@@1))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Stream.Cons_q d@@2) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@2 (|#_module.Stream.Cons| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (_module.Stream.Cons_q d@@2) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@2 (|#_module.Stream.Cons| |a#1#0#0| |a#1#1#0|))
+ :qid |CoinductiveProofsdfy.4:29|
+ :skolemid |944|
+)))
+ :qid |unknown.0:0|
+ :skolemid |945|
  :pattern ( (_module.Stream.Cons_q d@@2))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.Stream$T@@1 T@U) ) (!  (and (= (Tag (Tclass._module.Stream _module.Stream$T@@1)) Tagclass._module.Stream) (= (TagFamily (Tclass._module.Stream _module.Stream$T@@1)) tytagFamily$Stream))
+ :qid |unknown.0:0|
+ :skolemid |530|
  :pattern ( (Tclass._module.Stream _module.Stream$T@@1))
 )))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.Y#$_T0@@0| T@U) ($ly@@0 T@U) (|_k#0@@0| T@U) (|s#0@@0| T@U) ) (!  (=> (or (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@0| (Lit BoxType |_k#0@@0|) (Lit DatatypeTypeType |s#0@@0|)) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |s#0@@0| (Tclass._module.Stream |_module._default.Y#$_T0@@0|)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (and (_module.Stream.Cons_q (Lit DatatypeTypeType |s#0@@0|)) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@0| (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |s#0@@0|)))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |s#0@@0|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#2| T@U) ) (!  (=> (|ORD#Less| |_k'#2| |_k#0@@0|) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@0| |_k'#2| |s#0@@0|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |700|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) |_k'#2| |s#0@@0|))
 ))))) (= (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) (Lit BoxType |_k#0@@0|) (Lit DatatypeTypeType |s#0@@0|))  (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |s#0@@0|))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#2@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@0| |_k#0@@0|) (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) |_k'#2@@0| |s#0@@0|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |699|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) |_k'#2@@0| |s#0@@0|))
 )))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |701|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@0| ($LS $ly@@0) (Lit BoxType |_k#0@@0|) (Lit DatatypeTypeType |s#0@@0|)))
 ))))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (and (or (= o@@2 (|ORD#Plus| o@@2 p@@1)) (|ORD#Less| o@@2 (|ORD#Plus| o@@2 p@@1))) (or (= p@@1 (|ORD#Plus| o@@2 p@@1)) (|ORD#Less| p@@1 (|ORD#Plus| o@@2 p@@1))))
+ :qid |DafnyPreludebpl.443:15|
+ :skolemid |93|
  :pattern ( (|ORD#Plus| o@@2 p@@1))
 )))
 (assert (forall ((o@@3 T@U) (p@@2 T@U) ) (!  (or (or (|ORD#Less| o@@3 p@@2) (= o@@3 p@@2)) (|ORD#Less| p@@2 o@@3))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@3 p@@2) (|ORD#Less| p@@2 o@@3))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.Y#$_T0@@1| T@U) ($ly@@1 T@U) (|_k#0@@1| T@U) (|s#0@@1| T@U) ) (!  (=> (or (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@1| (Lit BoxType |_k#0@@1|) |s#0@@1|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |s#0@@1| (Tclass._module.Stream |_module._default.Y#$_T0@@1|)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (and (_module.Stream.Cons_q |s#0@@1|) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@1| (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@1|)))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@1|))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |_k#0@@1|) (|_module.__default.Y_h#canCall| |_module._default.Y#$_T0@@1| |_k'#1| |s#0@@1|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |697|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) |_k'#1| |s#0@@1|))
 ))))) (= (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) (Lit BoxType |_k#0@@1|) |s#0@@1|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@1|)) (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) (|ORD#Minus| |_k#0@@1| (|ORD#FromNat| 1)) (_module.Stream.tail |s#0@@1|))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@1|)) (forall ((|_k'#1@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@0| |_k#0@@1|) (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) |_k'#1@@0| |s#0@@1|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |696|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) |_k'#1@@0| |s#0@@1|))
 )))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |698|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@1| ($LS $ly@@1) (Lit BoxType |_k#0@@1|) |s#0@@1|))
 ))))
 (assert (forall ((o@@4 T@U) (p@@3 T@U) ) (!  (and (=> (= o@@4 (|ORD#FromNat| 0)) (= (|ORD#Plus| o@@4 p@@3) p@@3)) (=> (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Plus| o@@4 p@@3) o@@4)))
+ :qid |DafnyPreludebpl.446:15|
+ :skolemid |94|
  :pattern ( (|ORD#Plus| o@@4 p@@3))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|_module._default.Y#$_T0@@2| T@U) ($ly@@2 T@U) (|s#0@@2| T@U) (|_k#0@@2| T@U) ) (!  (=> (and ($Is DatatypeTypeType |s#0@@2| (Tclass._module.Stream |_module._default.Y#$_T0@@2|)) (= |_k#0@@2| (|ORD#FromNat| 0))) (_module.__default.Y_h |_module._default.Y#$_T0@@2| $ly@@2 |_k#0@@2| |s#0@@2|))
+ :qid |unknown.0:0|
+ :skolemid |687|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@2| $ly@@2 |_k#0@@2| |s#0@@2|))
 ))))
 (assert (forall ((o@@5 T@U) ) (! (<= 0 (|ORD#Offset| o@@5))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@5))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Stream.Cons| |a#0#0#0| |a#0#1#0|)) |##_module.Stream.Cons|)
+ :qid |CoinductiveProofsdfy.4:29|
+ :skolemid |942|
  :pattern ( (|#_module.Stream.Cons| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (_module.Stream.head (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|)) |a#3#0#0|)
+ :qid |CoinductiveProofsdfy.4:29|
+ :skolemid |950|
  :pattern ( (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (_module.Stream.tail (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|)) |a#4#1#0|)
+ :qid |CoinductiveProofsdfy.4:29|
+ :skolemid |951|
  :pattern ( (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((_module.Stream$T@@2 T@U) ) (! (= (Tclass._module.Stream_0 (Tclass._module.Stream _module.Stream$T@@2)) _module.Stream$T@@2)
+ :qid |unknown.0:0|
+ :skolemid |531|
  :pattern ( (Tclass._module.Stream _module.Stream$T@@2))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall ((o@@6 T@U) (p@@4 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@6 p@@4) (or (not (= o@@6 p@@4)) (not true))) (=> (and (|ORD#IsNat| o@@6) (not (|ORD#IsNat| p@@4))) (|ORD#Less| o@@6 p@@4))) (=> (and (|ORD#IsNat| o@@6) (|ORD#IsNat| p@@4)) (= (|ORD#Less| o@@6 p@@4) (< (|ORD#Offset| o@@6) (|ORD#Offset| p@@4))))) (=> (and (|ORD#Less| o@@6 p@@4) (|ORD#IsNat| p@@4)) (|ORD#IsNat| o@@6)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@6 p@@4))
 )))
 (assert (forall ((|_module._default.Y#$_T0@@3| T@U) ($ly@@3 T@U) (|_k#0@@3| T@U) (|s#0@@3| T@U) ) (! (= (_module.__default.Y_h |_module._default.Y#$_T0@@3| ($LS $ly@@3) |_k#0@@3| |s#0@@3|) (_module.__default.Y_h |_module._default.Y#$_T0@@3| $ly@@3 |_k#0@@3| |s#0@@3|))
+ :qid |unknown.0:0|
+ :skolemid |689|
  :pattern ( (_module.__default.Y_h |_module._default.Y#$_T0@@3| ($LS $ly@@3) |_k#0@@3| |s#0@@3|))
 )))
 (assert (forall ((d@@3 T@U) (_module.Stream$T@@3 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (_module.Stream.Cons_q d@@3) ($IsAlloc DatatypeTypeType d@@3 (Tclass._module.Stream _module.Stream$T@@3) $h))) ($IsAllocBox (_module.Stream.head d@@3) _module.Stream$T@@3 $h))
+ :qid |unknown.0:0|
+ :skolemid |948|
  :pattern ( ($IsAllocBox (_module.Stream.head d@@3) _module.Stream$T@@3 $h))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |992|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((o@@7 T@U) (m@@5 Int) (n@@1 Int) ) (!  (=> (and (<= 0 m@@5) (<= 0 n@@1)) (= (|ORD#Plus| (|ORD#Plus| o@@7 (|ORD#FromNat| m@@5)) (|ORD#FromNat| n@@1)) (|ORD#Plus| o@@7 (|ORD#FromNat| (+ m@@5 n@@1)))))
+ :qid |DafnyPreludebpl.461:15|
+ :skolemid |97|
  :pattern ( (|ORD#Plus| (|ORD#Plus| o@@7 (|ORD#FromNat| m@@5)) (|ORD#FromNat| n@@1)))
 )))
 (assert (forall ((o@@8 T@U) (m@@6 Int) (n@@2 Int) ) (!  (=> (and (and (<= 0 m@@6) (<= 0 n@@2)) (<= n@@2 (+ (|ORD#Offset| o@@8) m@@6))) (and (=> (<= 0 (- m@@6 n@@2)) (= (|ORD#Minus| (|ORD#Plus| o@@8 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)) (|ORD#Plus| o@@8 (|ORD#FromNat| (- m@@6 n@@2))))) (=> (<= (- m@@6 n@@2) 0) (= (|ORD#Minus| (|ORD#Plus| o@@8 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)) (|ORD#Minus| o@@8 (|ORD#FromNat| (- n@@2 m@@6)))))))
+ :qid |DafnyPreludebpl.471:15|
+ :skolemid |99|
  :pattern ( (|ORD#Minus| (|ORD#Plus| o@@8 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)))
 )))
 (assert (forall ((o@@9 T@U) (m@@7 Int) (n@@3 Int) ) (!  (=> (and (and (<= 0 m@@7) (<= 0 n@@3)) (<= n@@3 (+ (|ORD#Offset| o@@9) m@@7))) (and (=> (<= 0 (- m@@7 n@@3)) (= (|ORD#Plus| (|ORD#Minus| o@@9 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)) (|ORD#Minus| o@@9 (|ORD#FromNat| (- m@@7 n@@3))))) (=> (<= (- m@@7 n@@3) 0) (= (|ORD#Plus| (|ORD#Minus| o@@9 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)) (|ORD#Plus| o@@9 (|ORD#FromNat| (- n@@3 m@@7)))))))
+ :qid |DafnyPreludebpl.477:15|
+ :skolemid |100|
  :pattern ( (|ORD#Plus| (|ORD#Minus| o@@9 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)))
 )))
 (assert (forall ((_module.Stream$T@@4 T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass._module.Stream _module.Stream$T@@4)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) (Tclass._module.Stream _module.Stream$T@@4))))
+ :qid |unknown.0:0|
+ :skolemid |532|
  :pattern ( ($IsBox bx (Tclass._module.Stream _module.Stream$T@@4)))
 )))
 (assert (forall ((o@@10 T@U) ) (!  (=> (|ORD#IsNat| o@@10) (= o@@10 (|ORD#FromNat| (|ORD#Offset| o@@10))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@10))
  :pattern ( (|ORD#IsNat| o@@10))
 )))
 (assert (forall ((d@@4 T@U) (_module.Stream$T@@5 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.Stream.Cons_q d@@4) ($IsAlloc DatatypeTypeType d@@4 (Tclass._module.Stream _module.Stream$T@@5) $h@@0))) ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@4) (Tclass._module.Stream _module.Stream$T@@5) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |949|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@4) (Tclass._module.Stream _module.Stream$T@@5) $h@@0))
 )))
 (assert (forall ((o@@11 T@U) (p@@5 T@U) ) (!  (=> (and (|ORD#IsNat| p@@5) (<= (|ORD#Offset| p@@5) (|ORD#Offset| o@@11))) (or (and (= p@@5 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@11 p@@5) o@@11)) (and (or (not (= p@@5 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@11 p@@5) o@@11))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@11 p@@5))
 )))
 (assert (forall ((o@@12 T@U) (p@@6 T@U) ) (!  (and (=> (|ORD#IsNat| (|ORD#Plus| o@@12 p@@6)) (and (|ORD#IsNat| o@@12) (|ORD#IsNat| p@@6))) (=> (|ORD#IsNat| p@@6) (and (= (|ORD#IsNat| (|ORD#Plus| o@@12 p@@6)) (|ORD#IsNat| o@@12)) (= (|ORD#Offset| (|ORD#Plus| o@@12 p@@6)) (+ (|ORD#Offset| o@@12) (|ORD#Offset| p@@6))))))
+ :qid |DafnyPreludebpl.438:15|
+ :skolemid |92|
  :pattern ( (|ORD#Plus| o@@12 p@@6))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((h@@0 T@U) (v@@1 T@U) ) (! ($IsAlloc BoxType v@@1 TORDINAL h@@0)
+ :qid |DafnyPreludebpl.293:14|
+ :skolemid |65|
  :pattern ( ($IsAlloc BoxType v@@1 TORDINAL h@@0))
 )))
 (assert (forall ((_module.Stream$T@@6 T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_module.Stream.Cons| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._module.Stream _module.Stream$T@@6) $h@@1)  (and ($IsAllocBox |a#2#0#0@@0| _module.Stream$T@@6 $h@@1) ($IsAlloc DatatypeTypeType |a#2#1#0@@0| (Tclass._module.Stream _module.Stream$T@@6) $h@@1))))
+ :qid |unknown.0:0|
+ :skolemid |947|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Stream.Cons| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._module.Stream _module.Stream$T@@6) $h@@1))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is BoxType v@@2 TORDINAL)
+ :qid |DafnyPreludebpl.232:14|
+ :skolemid |44|
  :pattern ( ($Is BoxType v@@2 TORDINAL))
 )))
 (push 1)
@@ -284,6 +404,7 @@
 (declare-fun $Heap@1 () T@U)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun null () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.AlwaysLemma__Y3_h)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -300,31 +421,47 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 32) (let ((anon18_Else_correct  (and (=> (= (ControlFlow 0 2) (- 0 3)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)))))) (=> (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|))))) (=> (= (ControlFlow 0 2) (- 0 1)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#1@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@1| |_k#0@@4|) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#1@@1| |s#1|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |734|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#1@@1| |s#1|))
 ))))))))))
 (let ((anon18_Then_correct  (=> (= |##_k#4@0| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1))) (=> (and (and ($IsAlloc BoxType |##_k#4@0| TORDINAL $Heap@0) ($IsAlloc DatatypeTypeType |s#1| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|) $Heap@0)) (and (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|))) (and (=> (= (ControlFlow 0 21) (- 0 23)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (=> (< 0 (|ORD#Offset| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)))))) (and (=> (= (ControlFlow 0 21) (- 0 22)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (=> (= (LitInt 0) (|ORD#Offset| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)))) (forall ((|_k'#6| T@U) ) (!  (=> (|ORD#Less| |_k'#6| (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#6| |s#1|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |750|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#6| |s#1|))
 )))))) (=> (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Plus| |_k#0@@4| (|ORD#FromNat| 1)) |s#1|) (= (ControlFlow 0 21) 2)) anon18_Else_correct)))))))
 (let ((anon17_Else_correct  (and (=> (= (ControlFlow 0 24) 21) anon18_Then_correct) (=> (= (ControlFlow 0 24) 2) anon18_Else_correct))))
 (let ((anon17_Then_correct  (=> (and (and ($IsAlloc BoxType |_k#0@@4| TORDINAL $Heap@0) ($IsAlloc DatatypeTypeType |s#1| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|) $Heap@0)) (and (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|))) (and (=> (= (ControlFlow 0 18) (- 0 20)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)))))) (and (=> (= (ControlFlow 0 18) (- 0 19)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| |s#1|) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#5| T@U) ) (!  (=> (|ORD#Less| |_k'#5| |_k#0@@4|) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#5| |s#1|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |747|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#5| |s#1|))
 )))))) (=> (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| |s#1|) (= (ControlFlow 0 18) 2)) anon18_Else_correct))))))
 (let ((anon16_Else_correct  (and (=> (= (ControlFlow 0 25) 18) anon17_Then_correct) (=> (= (ControlFlow 0 25) 24) anon17_Else_correct))))
 (let ((anon16_Then_correct  (=> ($IsAlloc BoxType |_k#0@@4| TORDINAL $Heap@0) (=> (and (_module.Stream.Cons_q |s#1|) (= |##s#3@0| (_module.Stream.tail |s#1|))) (=> (and (and ($IsAlloc DatatypeTypeType |##s#3@0| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|) $Heap@0) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| (_module.Stream.tail |s#1|))) (and (_module.Stream.Cons_q |s#1|) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| (_module.Stream.tail |s#1|)))) (and (=> (= (ControlFlow 0 15) (- 0 17)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| (_module.Stream.tail |s#1|)) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail (_module.Stream.tail |s#1|))))))) (and (=> (= (ControlFlow 0 15) (- 0 16)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k#0@@4| (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| (_module.Stream.tail |s#1|)) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#4| T@U) ) (!  (=> (|ORD#Less| |_k'#4| |_k#0@@4|) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#4| (_module.Stream.tail |s#1|)))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |744|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#4| (_module.Stream.tail |s#1|)))
 )))))) (=> (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k#0@@4| (_module.Stream.tail |s#1|)) (= (ControlFlow 0 15) 2)) anon18_Else_correct))))))))
 (let ((anon15_Else_correct  (and (=> (= (ControlFlow 0 26) 15) anon16_Then_correct) (=> (= (ControlFlow 0 26) 25) anon16_Else_correct))))
 (let ((anon15_Then_correct  (and (=> (= (ControlFlow 0 10) (- 0 14)) (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1)))) (=> (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1))) (and (=> (= (ControlFlow 0 10) (- 0 13)) (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|))) (=> (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|)) (=> (and (and (and (= |##_k#1@0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) ($IsAlloc BoxType |##_k#1@0| TORDINAL $Heap@0)) (and (_module.Stream.Cons_q |s#1|) (= |##s#2@0| (_module.Stream.tail |s#1|)))) (and (and ($IsAlloc DatatypeTypeType |##s#2@0| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|) $Heap@0) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|))) (and (_module.Stream.Cons_q |s#1|) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|))))) (and (=> (= (ControlFlow 0 10) (- 0 12)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (=> (< 0 (|ORD#Offset| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (|ORD#FromNat| 1)) (_module.Stream.tail (_module.Stream.tail |s#1|))))))) (and (=> (= (ControlFlow 0 10) (- 0 11)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (=> (= (LitInt 0) (|ORD#Offset| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (forall ((|_k'#3| T@U) ) (!  (=> (|ORD#Less| |_k'#3| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#3| (_module.Stream.tail |s#1|)))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |741|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#3| (_module.Stream.tail |s#1|)))
 )))))) (=> (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (= (ControlFlow 0 10) 2)) anon18_Else_correct))))))))))
 (let ((anon14_Else_correct  (and (=> (= (ControlFlow 0 27) 10) anon15_Then_correct) (=> (= (ControlFlow 0 27) 26) anon15_Else_correct))))
 (let ((anon14_Then_correct  (and (=> (= (ControlFlow 0 5) (- 0 9)) (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1)))) (=> (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1))) (and (=> (= (ControlFlow 0 5) (- 0 8)) (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|))) (=> (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|)) (=> (and (and (and (= |##_k#0@0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) ($IsAlloc BoxType |##_k#0@0| TORDINAL $Heap@0)) (and (_module.Stream.Cons_q |s#1|) (= |##s#1@0| (_module.Stream.tail |s#1|)))) (and (and ($IsAlloc DatatypeTypeType |##s#1@0| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|) $Heap@0) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|))) (and (_module.Stream.Cons_q |s#1|) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|))))) (and (=> (= (ControlFlow 0 5) (- 0 7)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (=> (< 0 (|ORD#Offset| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) (|ORD#Minus| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (|ORD#FromNat| 1)) (_module.Stream.tail (_module.Stream.tail |s#1|))))))) (and (=> (= (ControlFlow 0 5) (- 0 6)) (=> (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (or (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (=> (= (LitInt 0) (|ORD#Offset| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)))) (forall ((|_k'#2@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@1| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#2@@1| (_module.Stream.tail |s#1|)))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |738|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS ($LS $LZ)) |_k'#2@@1| (_module.Stream.tail |s#1|)))
 )))))) (=> (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) (_module.Stream.tail |s#1|)) (= (ControlFlow 0 5) 2)) anon18_Else_correct))))))))))
 (let ((anon13_Then_correct  (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (and (=> (= (ControlFlow 0 28) (- 0 30)) (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1)))) (=> (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1))) (and (=> (= (ControlFlow 0 28) (- 0 29)) (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|))) (=> (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|)) (=> (and (and (= |_k##0@0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) (_module.Stream.Cons_q |s#1|)) (and (_module.Stream.Cons_q |s#1|) (= |s##0@0| (_module.Stream.tail |s#1|)))) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k##0@0| |s##0@0|)) (and (and (|_module.__default.Y_h#canCall| |_module._default.AlwaysLemma_Y3#$_T0| |_k##0@0| |s##0@0|) (and (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k##0@0| |s##0@0|) (and (=> (< 0 (|ORD#Offset| |_k##0@0|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) (|ORD#Minus| |_k##0@0| (|ORD#FromNat| 1)) (_module.Stream.tail |s##0@0|))) (=> (= (LitInt 0) (|ORD#Offset| |_k##0@0|)) (forall ((|_k'#0@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@1| |_k##0@0|) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k'#0@@1| |s##0@0|))
+ :qid |CoinductiveProofsdfy.113:20|
+ :skolemid |733|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k'#0@@1| |s##0@0|))
 )))))) (= $Heap $Heap@0))) (and (=> (= (ControlFlow 0 28) 5) anon14_Then_correct) (=> (= (ControlFlow 0 28) 27) anon14_Else_correct)))))))))))
 (let ((anon13_Else_correct  (=> (<= (|ORD#Offset| |_k#0@@4|) 0) (=> (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (= $Heap $Heap@1)) (and (forall ((|_k'#7| T@U) (|s#2| T@U) ) (!  (=> (and ($Is DatatypeTypeType |s#2| (Tclass._module.Stream |_module._default.AlwaysLemma_Y3#$_T0|)) (|ORD#Less| |_k'#7| |_k#0@@4|)) (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k'#7| |s#2|))
+ :qid |CoinductiveProofsdfy.140:35|
+ :skolemid |753|
  :pattern ( (_module.__default.Y_h |_module._default.AlwaysLemma_Y3#$_T0| ($LS $LZ) |_k'#7| |s#2|))
 )) (= (ControlFlow 0 4) 2))) anon18_Else_correct))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 31) 28) anon13_Then_correct) (=> (= (ControlFlow 0 31) 4) anon13_Else_correct)))))

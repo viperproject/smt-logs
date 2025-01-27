@@ -111,16 +111,22 @@
 (declare-fun DtRank (T@U) Int)
 (declare-fun |Seq#Rank| (T@U) Int)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TChar TagChar TagSet TagSeq alloc Tagclass._module.Path Tagclass._module.Expression Tagclass._module.StateC |##_module.StateC.S| tytagFamily$Path tytagFamily$Expression tytagFamily$StateC)
@@ -128,6 +134,8 @@
 (assert (= (Tag TChar) TagChar))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|a#2#0#0| T@U) (|a#2#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.StateC.S| |a#2#0#0| |a#2#1#0|) Tclass._module.StateC)  (and ($IsBox |a#2#0#0| Tclass._module.State) ($IsBox |a#2#1#0| Tclass._module.Cache)))
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1273|
  :pattern ( ($Is DatatypeTypeType (|#_module.StateC.S| |a#2#0#0| |a#2#1#0|) Tclass._module.StateC))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (=> (or |_module.__default.EmptyCache#canCall| (< 1 $FunctionContextHeight)) (and (|Set#Equal| (_module.__default.DomC _module.__default.EmptyCache) |Set#Empty|) ($IsBox _module.__default.EmptyCache Tclass._module.Cache)))))
@@ -135,164 +143,272 @@
 (assert ($AlwaysAllocated Tclass._module.Cache))
 (assert ($AlwaysAllocated Tclass._module.HashValue))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|_module.StateC#Equal| a b)  (and (= (_module.StateC.st a) (_module.StateC.st b)) (= (_module.StateC.c a) (_module.StateC.c b))))
+ :qid |unknown.0:0|
+ :skolemid |1282|
  :pattern ( (|_module.StateC#Equal| a b))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|stC#0| T@U) ) (!  (=> (or (|_module.__default.ClearCache#canCall| |stC#0|) (and (< 4 $FunctionContextHeight) ($Is DatatypeTypeType |stC#0| Tclass._module.StateC))) (and (and (_module.StateC.S_q |stC#0|) |_module.__default.EmptyCache#canCall|) (= (_module.__default.ClearCache |stC#0|) (|#_module.StateC.S| (_module.StateC.st |stC#0|) _module.__default.EmptyCache))))
+ :qid |CloudMakeConsistentBuildslegacydfy.156:27|
+ :skolemid |889|
  :pattern ( (_module.__default.ClearCache |stC#0|))
 ))))
 (assert (forall ((d T@U) ) (!  (=> ($Is DatatypeTypeType d Tclass._module.StateC) (_module.StateC.S_q d))
+ :qid |unknown.0:0|
+ :skolemid |1281|
  :pattern ( (_module.StateC.S_q d) ($Is DatatypeTypeType d Tclass._module.StateC))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (! (= (|_module.StateC#Equal| a@@0 b@@0) (= a@@0 b@@0))
+ :qid |unknown.0:0|
+ :skolemid |1283|
  :pattern ( (|_module.StateC#Equal| a@@0 b@@0))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= (Lit T x@@2) x@@2)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@2))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|stC#0@@0| T@U) ) (!  (=> (or (|_module.__default.ClearCache#canCall| |stC#0@@0|) (and (< 4 $FunctionContextHeight) ($Is DatatypeTypeType |stC#0@@0| Tclass._module.StateC))) (and (let ((|stC'#0| (_module.__default.ClearCache |stC#0@@0|)))
  (and (and (= (_module.StateC.st |stC#0@@0|) (_module.StateC.st |stC'#0|)) (|Set#Equal| (_module.__default.DomC (_module.StateC.c |stC'#0|)) |Set#Empty|)) (_module.__default.ConsistentCache |stC'#0|))) ($Is DatatypeTypeType (_module.__default.ClearCache |stC#0@@0|) Tclass._module.StateC)))
+ :qid |CloudMakeConsistentBuildslegacydfy.156:27|
+ :skolemid |887|
  :pattern ( (_module.__default.ClearCache |stC#0@@0|))
 ))))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.StateC.S_q d@@0) (= (DatatypeCtorId d@@0) |##_module.StateC.S|))
+ :qid |unknown.0:0|
+ :skolemid |1270|
  :pattern ( (_module.StateC.S_q d@@0))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@3))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.StateC.S_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (= d@@1 (|#_module.StateC.S| |a#1#0#0| |a#1#1#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.StateC.S_q d@@1) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) ) (! (= d@@1 (|#_module.StateC.S| |a#1#0#0| |a#1#1#0|))
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1271|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1272|
  :pattern ( (_module.StateC.S_q d@@1))
 )))
 (assert (= (Ctor SetType) 4))
 (assert (forall ((v T@U) (t0 T@U) ) (! (= ($Is SetType v (TSet t0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0)))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert (= (Ctor BoxType) 5))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((|stC#0@@1| T@U) ) (!  (=> (or (|_module.__default.ClearCache#canCall| (Lit DatatypeTypeType |stC#0@@1|)) (and (< 4 $FunctionContextHeight) ($Is DatatypeTypeType |stC#0@@1| Tclass._module.StateC))) (and (and (_module.StateC.S_q (Lit DatatypeTypeType |stC#0@@1|)) |_module.__default.EmptyCache#canCall|) (= (_module.__default.ClearCache (Lit DatatypeTypeType |stC#0@@1|)) (|#_module.StateC.S| (Lit BoxType (_module.StateC.st (Lit DatatypeTypeType |stC#0@@1|))) _module.__default.EmptyCache))))
+ :qid |CloudMakeConsistentBuildslegacydfy.156:27|
  :weight 3
+ :skolemid |890|
  :pattern ( (_module.__default.ClearCache (Lit DatatypeTypeType |stC#0@@1|)))
 ))))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._module.Path) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) Tclass._module.Path)))
+ :qid |unknown.0:0|
+ :skolemid |703|
  :pattern ( ($IsBox bx@@0 Tclass._module.Path))
 )))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 Tclass._module.Expression) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) Tclass._module.Expression)))
+ :qid |unknown.0:0|
+ :skolemid |723|
  :pattern ( ($IsBox bx@@1 Tclass._module.Expression))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._module.StateC) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@2)) bx@@2) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@2) Tclass._module.StateC)))
+ :qid |unknown.0:0|
+ :skolemid |735|
  :pattern ( ($IsBox bx@@2 Tclass._module.StateC))
 )))
 (assert (= (Ctor SeqType) 6))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|cmd#0| T@U) (|deps#0| T@U) (|ext#0| T@U) ) (!  (=> (or (|_module.__default.Loc#canCall| |cmd#0| |deps#0| |ext#0|) (and (< 2 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |cmd#0| Tclass._module.Expression) ($Is DatatypeTypeType |deps#0| Tclass._module.Expression)) ($Is SeqType |ext#0| (TSeq TChar))))) ($Is DatatypeTypeType (_module.__default.Loc |cmd#0| |deps#0| |ext#0|) Tclass._module.Path))
+ :qid |CloudMakeConsistentBuildslegacydfy.228:20|
+ :skolemid |966|
  :pattern ( (_module.__default.Loc |cmd#0| |deps#0| |ext#0|))
 ))))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (|Set#Equal| a@@1 b@@1) (= a@@1 b@@1))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@1 b@@1))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|p#0| T@U) ) (!  (=> (or (|_module.__default.Hash#canCall| |p#0|) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |p#0| Tclass._module.Path))) ($IsBox (_module.__default.Hash |p#0|) Tclass._module.HashValue))
+ :qid |CloudMakeConsistentBuildslegacydfy.307:21|
+ :skolemid |1071|
  :pattern ( (_module.__default.Hash |p#0|))
 ))))
 (assert (= (Ctor charType) 7))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 TChar) (and (= ($Box charType ($Unbox charType bx@@3)) bx@@3) ($Is charType ($Unbox charType bx@@3) TChar)))
+ :qid |DafnyPreludebpl.185:15|
+ :skolemid |30|
  :pattern ( ($IsBox bx@@3 TChar))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((s T@U) ) (! (<= 0 (|Seq#Length| s))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s))
 )))
 (assert (forall ((ty T@U) ) (!  (=> ($AlwaysAllocated ty) (forall ((h@@0 T@U) (v@@2 T@U) ) (!  (=> ($IsBox v@@2 ty) ($IsAllocBox v@@2 ty h@@0))
+ :qid |DafnyPreludebpl.337:13|
+ :skolemid |79|
  :pattern ( ($IsAllocBox v@@2 ty h@@0))
 )))
+ :qid |DafnyPreludebpl.335:17|
+ :skolemid |80|
  :pattern ( ($AlwaysAllocated ty))
 )))
 (assert (forall ((v@@3 T@U) (t0@@0 T@U) (h@@1 T@U) ) (! (= ($IsAlloc SetType v@@3 (TSet t0@@0) h@@1) (forall ((bx@@4 T@U) ) (!  (=> (|Set#IsMember| v@@3 bx@@4) ($IsAllocBox bx@@4 t0@@0 h@@1))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@3 bx@@4))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@3 (TSet t0@@0) h@@1))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.StateC.S| |a#0#0#0| |a#0#1#0|)) |##_module.StateC.S|)
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1269|
  :pattern ( (|#_module.StateC.S| |a#0#0#0| |a#0#1#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (_module.StateC.st (|#_module.StateC.S| |a#4#0#0| |a#4#1#0|)) |a#4#0#0|)
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1277|
  :pattern ( (|#_module.StateC.S| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= (_module.StateC.c (|#_module.StateC.S| |a#5#0#0| |a#5#1#0|)) |a#5#1#0|)
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1278|
  :pattern ( (|#_module.StateC.S| |a#5#0#0| |a#5#1#0|))
 )))
 (assert (forall ((v@@4 T@U) (t0@@1 T@U) (h@@2 T@U) ) (! (= ($IsAlloc SeqType v@@4 (TSeq t0@@1) h@@2) (forall ((i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| v@@4))) ($IsAllocBox (|Seq#Index| v@@4 i) t0@@1 h@@2))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@4 i))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@4 (TSeq t0@@1) h@@2))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((t@@3 T@U) ) (! (= (Inv0_TSeq (TSeq t@@3)) t@@3)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@3))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Tag (TSeq t@@4)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@4))
 )))
 (assert (forall ((x@@4 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|c#0| T@U) ) (!  (=> (or (|_module.__default.DomC#canCall| |c#0|) (and (< 0 $FunctionContextHeight) ($IsBox |c#0| Tclass._module.Cache))) ($Is SetType (_module.__default.DomC |c#0|) (TSet Tclass._module.HashValue)))
+ :qid |CloudMakeConsistentBuildslegacydfy.97:21|
+ :skolemid |779|
  :pattern ( (_module.__default.DomC |c#0|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|st#0| T@U) ) (!  (=> (or (|_module.__default.DomSt#canCall| |st#0|) (and (< 1 $FunctionContextHeight) ($IsBox |st#0| Tclass._module.State))) ($Is SetType (_module.__default.DomSt |st#0|) (TSet Tclass._module.Path)))
+ :qid |CloudMakeConsistentBuildslegacydfy.10:22|
+ :skolemid |708|
  :pattern ( (_module.__default.DomSt |st#0|))
 ))))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0@@2 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@2 t1 t2 (MapType0Store t0@@2 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 8)) (= (Ctor FieldType) 9)) (forall ((t0@@3 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@3 t1@@0 (MapType1Store t0@@3 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 10))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 10)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1580|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|stC#0@@2| T@U) ) (!  (=> (or (|_module.__default.ConsistentCache#canCall| (Lit DatatypeTypeType |stC#0@@2|)) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |stC#0@@2| Tclass._module.StateC))) (and (forall ((|cmd#1| T@U) (|deps#1| T@U) (|e#1| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |cmd#1| Tclass._module.Expression) ($Is DatatypeTypeType |deps#1| Tclass._module.Expression)) ($Is SeqType |e#1| (TSeq TChar))) (and (and (and (|_module.__default.Loc#canCall| |cmd#1| |deps#1| |e#1|) (|_module.__default.Hash#canCall| (_module.__default.Loc |cmd#1| |deps#1| |e#1|))) (and (_module.StateC.S_q (Lit DatatypeTypeType |stC#0@@2|)) (|_module.__default.DomC#canCall| (Lit BoxType (_module.StateC.c (Lit DatatypeTypeType |stC#0@@2|)))))) (=> (|Set#IsMember| (_module.__default.DomC (Lit BoxType (_module.StateC.c (Lit DatatypeTypeType |stC#0@@2|)))) (_module.__default.Hash (_module.__default.Loc |cmd#1| |deps#1| |e#1|))) (and (|_module.__default.Loc#canCall| |cmd#1| |deps#1| |e#1|) (and (_module.StateC.S_q (Lit DatatypeTypeType |stC#0@@2|)) (|_module.__default.DomSt#canCall| (Lit BoxType (_module.StateC.st (Lit DatatypeTypeType |stC#0@@2|)))))))))
+ :qid |CloudMakeConsistentBuildslegacydfy.151:10|
+ :skolemid |877|
  :pattern ( (_module.__default.Loc |cmd#1| |deps#1| |e#1|))
 )) (= (_module.__default.ConsistentCache (Lit DatatypeTypeType |stC#0@@2|)) (forall ((|cmd#1@@0| T@U) (|deps#1@@0| T@U) (|e#1@@0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |cmd#1@@0| Tclass._module.Expression) ($Is DatatypeTypeType |deps#1@@0| Tclass._module.Expression)) ($Is SeqType |e#1@@0| (TSeq TChar))) (=> (|Set#IsMember| (_module.__default.DomC (Lit BoxType (_module.StateC.c (Lit DatatypeTypeType |stC#0@@2|)))) (_module.__default.Hash (_module.__default.Loc |cmd#1@@0| |deps#1@@0| |e#1@@0|))) (|Set#IsMember| (_module.__default.DomSt (Lit BoxType (_module.StateC.st (Lit DatatypeTypeType |stC#0@@2|)))) ($Box DatatypeTypeType (_module.__default.Loc |cmd#1@@0| |deps#1@@0| |e#1@@0|)))))
+ :qid |CloudMakeConsistentBuildslegacydfy.151:10|
+ :skolemid |876|
  :pattern ( (_module.__default.Loc |cmd#1@@0| |deps#1@@0| |e#1@@0|))
 )))))
+ :qid |CloudMakeConsistentBuildslegacydfy.149:33|
  :weight 3
+ :skolemid |878|
  :pattern ( (_module.__default.ConsistentCache (Lit DatatypeTypeType |stC#0@@2|)))
 ))))
 (assert (forall ((bx@@5 T@U) (t@@5 T@U) ) (!  (=> ($IsBox bx@@5 (TSet t@@5)) (and (= ($Box SetType ($Unbox SetType bx@@5)) bx@@5) ($Is SetType ($Unbox SetType bx@@5) (TSet t@@5))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@5 (TSet t@@5)))
 )))
 (assert (forall ((bx@@6 T@U) (t@@6 T@U) ) (!  (=> ($IsBox bx@@6 (TSeq t@@6)) (and (= ($Box SeqType ($Unbox SeqType bx@@6)) bx@@6) ($Is SeqType ($Unbox SeqType bx@@6) (TSeq t@@6))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@6 (TSeq t@@6)))
 )))
 (assert (forall ((d@@2 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) ($Is DatatypeTypeType d@@2 Tclass._module.StateC)) ($IsAlloc DatatypeTypeType d@@2 Tclass._module.StateC $h))
+ :qid |unknown.0:0|
+ :skolemid |1279|
  :pattern ( ($IsAlloc DatatypeTypeType d@@2 Tclass._module.StateC $h))
 )))
 (assert (forall ((d@@3 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@3 Tclass._module.Expression)) ($IsAlloc DatatypeTypeType d@@3 Tclass._module.Expression $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1405|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 Tclass._module.Expression $h@@0))
 )))
 (assert (forall ((d@@4 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d@@4 Tclass._module.Path)) ($IsAlloc DatatypeTypeType d@@4 Tclass._module.Path $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1532|
  :pattern ( ($IsAlloc DatatypeTypeType d@@4 Tclass._module.Path $h@@1))
 )))
 (assert (= (Tag Tclass._module.Path) Tagclass._module.Path))
@@ -302,45 +418,75 @@
 (assert (= (Tag Tclass._module.StateC) Tagclass._module.StateC))
 (assert (= (TagFamily Tclass._module.StateC) tytagFamily$StateC))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) ) (! (= (|Set#Equal| a@@2 b@@2) (forall ((o@@0 T@U) ) (! (= (|Set#IsMember| a@@2 o@@0) (|Set#IsMember| b@@2 o@@0))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@2 o@@0))
  :pattern ( (|Set#IsMember| b@@2 o@@0))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@2 b@@2))
 )))
 (assert (forall ((d@@5 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.StateC.S_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass._module.StateC $h@@2))) ($IsAllocBox (_module.StateC.st d@@5) Tclass._module.State $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1274|
  :pattern ( ($IsAllocBox (_module.StateC.st d@@5) Tclass._module.State $h@@2))
 )))
 (assert (forall ((d@@6 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.StateC.S_q d@@6) ($IsAlloc DatatypeTypeType d@@6 Tclass._module.StateC $h@@3))) ($IsAllocBox (_module.StateC.c d@@6) Tclass._module.Cache $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1275|
  :pattern ( ($IsAllocBox (_module.StateC.c d@@6) Tclass._module.Cache $h@@3))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((|stC#0@@3| T@U) ) (!  (=> (or (|_module.__default.ConsistentCache#canCall| |stC#0@@3|) (and (< 3 $FunctionContextHeight) ($Is DatatypeTypeType |stC#0@@3| Tclass._module.StateC))) (and (forall ((|cmd#0@@0| T@U) (|deps#0@@0| T@U) (|e#0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |cmd#0@@0| Tclass._module.Expression) ($Is DatatypeTypeType |deps#0@@0| Tclass._module.Expression)) ($Is SeqType |e#0| (TSeq TChar))) (and (and (and (|_module.__default.Loc#canCall| |cmd#0@@0| |deps#0@@0| |e#0|) (|_module.__default.Hash#canCall| (_module.__default.Loc |cmd#0@@0| |deps#0@@0| |e#0|))) (and (_module.StateC.S_q |stC#0@@3|) (|_module.__default.DomC#canCall| (_module.StateC.c |stC#0@@3|)))) (=> (|Set#IsMember| (_module.__default.DomC (_module.StateC.c |stC#0@@3|)) (_module.__default.Hash (_module.__default.Loc |cmd#0@@0| |deps#0@@0| |e#0|))) (and (|_module.__default.Loc#canCall| |cmd#0@@0| |deps#0@@0| |e#0|) (and (_module.StateC.S_q |stC#0@@3|) (|_module.__default.DomSt#canCall| (_module.StateC.st |stC#0@@3|)))))))
+ :qid |CloudMakeConsistentBuildslegacydfy.151:10|
+ :skolemid |874|
  :pattern ( (_module.__default.Loc |cmd#0@@0| |deps#0@@0| |e#0|))
 )) (= (_module.__default.ConsistentCache |stC#0@@3|) (forall ((|cmd#0@@1| T@U) (|deps#0@@1| T@U) (|e#0@@0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |cmd#0@@1| Tclass._module.Expression) ($Is DatatypeTypeType |deps#0@@1| Tclass._module.Expression)) ($Is SeqType |e#0@@0| (TSeq TChar))) (=> (|Set#IsMember| (_module.__default.DomC (_module.StateC.c |stC#0@@3|)) (_module.__default.Hash (_module.__default.Loc |cmd#0@@1| |deps#0@@1| |e#0@@0|))) (|Set#IsMember| (_module.__default.DomSt (_module.StateC.st |stC#0@@3|)) ($Box DatatypeTypeType (_module.__default.Loc |cmd#0@@1| |deps#0@@1| |e#0@@0|)))))
+ :qid |CloudMakeConsistentBuildslegacydfy.151:10|
+ :skolemid |873|
  :pattern ( (_module.__default.Loc |cmd#0@@1| |deps#0@@1| |e#0@@0|))
 )))))
+ :qid |CloudMakeConsistentBuildslegacydfy.149:33|
+ :skolemid |875|
  :pattern ( (_module.__default.ConsistentCache |stC#0@@3|))
 ))))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (|#_module.StateC.S| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)) (Lit DatatypeTypeType (|#_module.StateC.S| |a#3#0#0| |a#3#1#0|)))
+ :qid |CloudMakeConsistentBuildslegacydfy.32:21|
+ :skolemid |1276|
  :pattern ( (|#_module.StateC.S| (Lit BoxType |a#3#0#0|) (Lit BoxType |a#3#1#0|)))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@5)) (Lit BoxType ($Box T@@4 x@@5)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@5)))
 )))
 (assert (forall ((s@@0 T@U) ) (!  (=> (= (|Seq#Length| s@@0) 0) (= s@@0 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@0))
 )))
 (assert (forall ((h@@3 T@U) (v@@5 T@U) ) (! ($IsAlloc charType v@@5 TChar h@@3)
+ :qid |DafnyPreludebpl.292:14|
+ :skolemid |64|
  :pattern ( ($IsAlloc charType v@@5 TChar h@@3))
 )))
 (assert (forall ((v@@6 T@U) (t0@@4 T@U) ) (! (= ($Is SeqType v@@6 (TSeq t0@@4)) (forall ((i@@0 Int) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| v@@6))) ($IsBox (|Seq#Index| v@@6 i@@0) t0@@4))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@6 i@@0))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@6 (TSeq t0@@4)))
 )))
 (assert (forall ((s@@1 T@U) (i@@1 Int) ) (!  (=> (and (<= 0 i@@1) (< i@@1 (|Seq#Length| s@@1))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@1 i@@1))) (|Seq#Rank| s@@1)))
+ :qid |DafnyPreludebpl.1353:15|
+ :skolemid |267|
  :pattern ( (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@1 i@@1))))
 )))
 (assert (forall ((v@@7 T@U) ) (! ($Is charType v@@7 TChar)
+ :qid |DafnyPreludebpl.231:14|
+ :skolemid |43|
  :pattern ( ($Is charType v@@7 TChar))
 )))
 (push 1)
@@ -353,6 +499,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.ClearCache)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -380,6 +527,8 @@
 (|Set#Equal| (_module.__default.DomC (_module.StateC.c |stC'#1@@1|)) |Set#Empty|))) (=> (let ((|stC'#1@@2| (_module.__default.ClearCache |stC#0@@4|)))
 (|Set#Equal| (_module.__default.DomC (_module.StateC.c |stC'#1@@2|)) |Set#Empty|)) (=> (= (ControlFlow 0 2) (- 0 1)) (let ((|stC'#1@@3| (_module.__default.ClearCache |stC#0@@4|)))
  (=> (|_module.__default.ConsistentCache#canCall| |stC'#1@@3|) (or (_module.__default.ConsistentCache |stC'#1@@3|) (forall ((|cmd#0@@2| T@U) (|deps#0@@2| T@U) (|e#0@@1| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |cmd#0@@2| Tclass._module.Expression) ($Is DatatypeTypeType |deps#0@@2| Tclass._module.Expression)) ($Is SeqType |e#0@@1| (TSeq TChar))) (=> (|Set#IsMember| (_module.__default.DomC (_module.StateC.c |stC'#1@@3|)) (_module.__default.Hash (_module.__default.Loc |cmd#0@@2| |deps#0@@2| |e#0@@1|))) (|Set#IsMember| (_module.__default.DomSt (_module.StateC.st |stC'#1@@3|)) ($Box DatatypeTypeType (_module.__default.Loc |cmd#0@@2| |deps#0@@2| |e#0@@1|)))))
+ :qid |CloudMakeConsistentBuildslegacydfy.151:10|
+ :skolemid |891|
  :pattern ( (_module.__default.Loc |cmd#0@@2| |deps#0@@2| |e#0@@1|))
 ))))))))))))
 (let ((anon9_Else_correct  (=> (_module.StateC.S_q |stC#0@@4|) (=> (and |_module.__default.EmptyCache#canCall| (= (_module.__default.ClearCache |stC#0@@4|) (|#_module.StateC.S| (_module.StateC.st |stC#0@@4|) _module.__default.EmptyCache))) (=> (and (and (_module.StateC.S_q |stC#0@@4|) |_module.__default.EmptyCache#canCall|) (and ($Is DatatypeTypeType (_module.__default.ClearCache |stC#0@@4|) Tclass._module.StateC) (= (ControlFlow 0 5) 2))) GeneratedUnifiedExit_correct)))))

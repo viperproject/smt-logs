@@ -153,581 +153,948 @@
 (declare-fun implements$_module.XB (T@U) Bool)
 (declare-fun implements$_module.XC (T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSeq alloc Tagclass._System.object? Tagclass._System.object Tagclass._module.ClassP Tagclass._module.ClassP? Tagclass._module.ClassQ Tagclass._module.ClassQ? Tagclass._module.ClassR Tagclass._module.ClassR_k Tagclass._module.ClassR? Tagclass._module.ClassR_k? Tagclass._module.ClassS Tagclass._module.ClassS? Tagclass._module.ClassT Tagclass._module.ClassT? Tagclass._module.XX Tagclass._module.XX? Tagclass._module.TraitA Tagclass._module.TraitB Tagclass._module.TraitA? Tagclass._module.XA? Tagclass._module.XB? Tagclass._module.XC? Tagclass._module.XD? Tagclass._module.XA Tagclass._module.XB Tagclass._module.XC Tagclass._module.XD Tagclass._module.TraitB? tytagFamily$object tytagFamily$ClassP tytagFamily$ClassQ tytagFamily$ClassR |tytagFamily$ClassR'| tytagFamily$ClassS tytagFamily$ClassT tytagFamily$XX tytagFamily$TraitA tytagFamily$TraitB tytagFamily$XA tytagFamily$XB tytagFamily$XC tytagFamily$XD)
 )
 (assert (= (Tag TInt) TagInt))
-(assert (forall ((_module.ClassQ$Y T@U) ) (implements$_module.TraitA (Tclass._module.ClassQ? _module.ClassQ$Y) _module.ClassQ$Y)))
-(assert (forall ((_module.ClassR$Z T@U) ) (implements$_module.TraitA (Tclass._module.ClassR? _module.ClassR$Z) _module.ClassR$Z)))
-(assert (forall ((_module.ClassR$Z@@0 T@U) ) (implements$_module.TraitB (Tclass._module.ClassR? _module.ClassR$Z@@0) _module.ClassR$Z@@0)))
+(assert (forall ((_module.ClassQ$Y T@U) ) (! (implements$_module.TraitA (Tclass._module.ClassQ? _module.ClassQ$Y) _module.ClassQ$Y)
+ :qid |unknown.0:0|
+ :skolemid |652|
+)))
+(assert (forall ((_module.ClassR$Z T@U) ) (! (implements$_module.TraitA (Tclass._module.ClassR? _module.ClassR$Z) _module.ClassR$Z)
+ :qid |unknown.0:0|
+ :skolemid |657|
+)))
+(assert (forall ((_module.ClassR$Z@@0 T@U) ) (! (implements$_module.TraitB (Tclass._module.ClassR? _module.ClassR$Z@@0) _module.ClassR$Z@@0)
+ :qid |unknown.0:0|
+ :skolemid |658|
+)))
 (assert (= (Ctor refType) 3))
 (assert (forall ((_module.TraitA$X T@U) (|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass._module.TraitA _module.TraitA$X) $h) ($IsAlloc refType |c#0| (Tclass._module.TraitA? _module.TraitA$X) $h))
+ :qid |unknown.0:0|
+ :skolemid |638|
  :pattern ( ($IsAlloc refType |c#0| (Tclass._module.TraitA _module.TraitA$X) $h))
  :pattern ( ($IsAlloc refType |c#0| (Tclass._module.TraitA? _module.TraitA$X) $h))
 )))
 (assert (forall ((_module.TraitB$X T@U) (|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| (Tclass._module.TraitB _module.TraitB$X) $h@@0) ($IsAlloc refType |c#0@@0| (Tclass._module.TraitB? _module.TraitB$X) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |645|
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass._module.TraitB _module.TraitB$X) $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass._module.TraitB? _module.TraitB$X) $h@@0))
 )))
 (assert (forall ((_module.ClassQ$Y@@0 T@U) (|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| (Tclass._module.ClassQ _module.ClassQ$Y@@0) $h@@1) ($IsAlloc refType |c#0@@1| (Tclass._module.ClassQ? _module.ClassQ$Y@@0) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |654|
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass._module.ClassQ _module.ClassQ$Y@@0) $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass._module.ClassQ? _module.ClassQ$Y@@0) $h@@1))
 )))
 (assert (forall ((_module.ClassR$Z@@1 T@U) (|c#0@@2| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass._module.ClassR _module.ClassR$Z@@1) $h@@2) ($IsAlloc refType |c#0@@2| (Tclass._module.ClassR? _module.ClassR$Z@@1) $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |660|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass._module.ClassR _module.ClassR$Z@@1) $h@@2))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass._module.ClassR? _module.ClassR$Z@@1) $h@@2))
 )))
 (assert (forall ((_module.ClassT$Z T@U) (|c#0@@3| T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType |c#0@@3| (Tclass._module.ClassT _module.ClassT$Z) $h@@3) ($IsAlloc refType |c#0@@3| (Tclass._module.ClassT? _module.ClassT$Z) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |669|
  :pattern ( ($IsAlloc refType |c#0@@3| (Tclass._module.ClassT _module.ClassT$Z) $h@@3))
  :pattern ( ($IsAlloc refType |c#0@@3| (Tclass._module.ClassT? _module.ClassT$Z) $h@@3))
 )))
 (assert (implements$_module.XD Tclass._module.XX?))
 (assert (forall ((bx T@U) ($h@@4 T@U) ) (!  (=> (and ($IsAllocBox bx Tclass._module.ClassS? $h@@4) ($IsGoodHeap $h@@4)) ($IsAllocBox bx (Tclass._module.TraitA? TInt) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |747|
  :pattern ( ($IsAllocBox bx Tclass._module.ClassS? $h@@4))
 )))
 (assert (forall ((bx@@0 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsAllocBox bx@@0 Tclass._module.ClassR_k? $h@@5) ($IsGoodHeap $h@@5)) ($IsAllocBox bx@@0 (Tclass._module.TraitB? TInt) $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |755|
  :pattern ( ($IsAllocBox bx@@0 Tclass._module.ClassR_k? $h@@5))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass._module.ClassP?)  (or (= $o null) (= (dtype $o) Tclass._module.ClassP?)))
+ :qid |unknown.0:0|
+ :skolemid |646|
  :pattern ( ($Is refType $o Tclass._module.ClassP?))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.ClassS?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.ClassS?)))
+ :qid |unknown.0:0|
+ :skolemid |661|
  :pattern ( ($Is refType $o@@0 Tclass._module.ClassS?))
 )))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass._module.ClassR_k?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass._module.ClassR_k?)))
+ :qid |unknown.0:0|
+ :skolemid |670|
  :pattern ( ($Is refType $o@@1 Tclass._module.ClassR_k?))
 )))
 (assert (forall (($o@@2 T@U) ) (! (= ($Is refType $o@@2 Tclass._module.XX?)  (or (= $o@@2 null) (= (dtype $o@@2) Tclass._module.XX?)))
+ :qid |unknown.0:0|
+ :skolemid |694|
  :pattern ( ($Is refType $o@@2 Tclass._module.XX?))
 )))
 (assert (forall ((bx@@1 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsAllocBox bx@@1 Tclass._module.XA? $h@@6) ($IsGoodHeap $h@@6)) ($IsAllocBox bx@@1 Tclass._System.object? $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |759|
  :pattern ( ($IsAllocBox bx@@1 Tclass._module.XA? $h@@6))
 )))
 (assert (forall ((bx@@2 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsAllocBox bx@@2 Tclass._module.XB? $h@@7) ($IsGoodHeap $h@@7)) ($IsAllocBox bx@@2 Tclass._System.object? $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |763|
  :pattern ( ($IsAllocBox bx@@2 Tclass._module.XB? $h@@7))
 )))
 (assert (forall ((bx@@3 T@U) ($h@@8 T@U) ) (!  (=> (and ($IsAllocBox bx@@3 Tclass._module.XC? $h@@8) ($IsGoodHeap $h@@8)) ($IsAllocBox bx@@3 Tclass._module.XA? $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |767|
  :pattern ( ($IsAllocBox bx@@3 Tclass._module.XC? $h@@8))
 )))
 (assert (forall ((bx@@4 T@U) ($h@@9 T@U) ) (!  (=> (and ($IsAllocBox bx@@4 Tclass._module.XC? $h@@9) ($IsGoodHeap $h@@9)) ($IsAllocBox bx@@4 Tclass._module.XB? $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |771|
  :pattern ( ($IsAllocBox bx@@4 Tclass._module.XC? $h@@9))
 )))
 (assert (forall ((bx@@5 T@U) ($h@@10 T@U) ) (!  (=> (and ($IsAllocBox bx@@5 Tclass._module.XD? $h@@10) ($IsGoodHeap $h@@10)) ($IsAllocBox bx@@5 Tclass._module.XC? $h@@10))
+ :qid |unknown.0:0|
+ :skolemid |775|
  :pattern ( ($IsAllocBox bx@@5 Tclass._module.XD? $h@@10))
 )))
 (assert (forall ((bx@@6 T@U) ($h@@11 T@U) ) (!  (=> (and ($IsAllocBox bx@@6 Tclass._module.XX? $h@@11) ($IsGoodHeap $h@@11)) ($IsAllocBox bx@@6 Tclass._module.XD? $h@@11))
+ :qid |unknown.0:0|
+ :skolemid |783|
  :pattern ( ($IsAllocBox bx@@6 Tclass._module.XX? $h@@11))
 )))
 (assert (forall ((|c#0@@4| T@U) ($h@@12 T@U) ) (! (= ($IsAlloc refType |c#0@@4| Tclass._System.object $h@@12) ($IsAlloc refType |c#0@@4| Tclass._System.object? $h@@12))
+ :qid |unknown.0:0|
+ :skolemid |351|
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._System.object $h@@12))
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass._System.object? $h@@12))
 )))
 (assert (forall ((|c#0@@5| T@U) ($h@@13 T@U) ) (! (= ($IsAlloc refType |c#0@@5| Tclass._module.ClassP $h@@13) ($IsAlloc refType |c#0@@5| Tclass._module.ClassP? $h@@13))
+ :qid |unknown.0:0|
+ :skolemid |649|
  :pattern ( ($IsAlloc refType |c#0@@5| Tclass._module.ClassP $h@@13))
  :pattern ( ($IsAlloc refType |c#0@@5| Tclass._module.ClassP? $h@@13))
 )))
 (assert (forall ((|c#0@@6| T@U) ($h@@14 T@U) ) (! (= ($IsAlloc refType |c#0@@6| Tclass._module.ClassS $h@@14) ($IsAlloc refType |c#0@@6| Tclass._module.ClassS? $h@@14))
+ :qid |unknown.0:0|
+ :skolemid |664|
  :pattern ( ($IsAlloc refType |c#0@@6| Tclass._module.ClassS $h@@14))
  :pattern ( ($IsAlloc refType |c#0@@6| Tclass._module.ClassS? $h@@14))
 )))
 (assert (forall ((|c#0@@7| T@U) ($h@@15 T@U) ) (! (= ($IsAlloc refType |c#0@@7| Tclass._module.ClassR_k $h@@15) ($IsAlloc refType |c#0@@7| Tclass._module.ClassR_k? $h@@15))
+ :qid |unknown.0:0|
+ :skolemid |673|
  :pattern ( ($IsAlloc refType |c#0@@7| Tclass._module.ClassR_k $h@@15))
  :pattern ( ($IsAlloc refType |c#0@@7| Tclass._module.ClassR_k? $h@@15))
 )))
 (assert (forall ((|c#0@@8| T@U) ($h@@16 T@U) ) (! (= ($IsAlloc refType |c#0@@8| Tclass._module.XA $h@@16) ($IsAlloc refType |c#0@@8| Tclass._module.XA? $h@@16))
+ :qid |unknown.0:0|
+ :skolemid |677|
  :pattern ( ($IsAlloc refType |c#0@@8| Tclass._module.XA $h@@16))
  :pattern ( ($IsAlloc refType |c#0@@8| Tclass._module.XA? $h@@16))
 )))
 (assert (forall ((|c#0@@9| T@U) ($h@@17 T@U) ) (! (= ($IsAlloc refType |c#0@@9| Tclass._module.XB $h@@17) ($IsAlloc refType |c#0@@9| Tclass._module.XB? $h@@17))
+ :qid |unknown.0:0|
+ :skolemid |681|
  :pattern ( ($IsAlloc refType |c#0@@9| Tclass._module.XB $h@@17))
  :pattern ( ($IsAlloc refType |c#0@@9| Tclass._module.XB? $h@@17))
 )))
 (assert (forall ((|c#0@@10| T@U) ($h@@18 T@U) ) (! (= ($IsAlloc refType |c#0@@10| Tclass._module.XC $h@@18) ($IsAlloc refType |c#0@@10| Tclass._module.XC? $h@@18))
+ :qid |unknown.0:0|
+ :skolemid |685|
  :pattern ( ($IsAlloc refType |c#0@@10| Tclass._module.XC $h@@18))
  :pattern ( ($IsAlloc refType |c#0@@10| Tclass._module.XC? $h@@18))
 )))
 (assert (forall ((|c#0@@11| T@U) ($h@@19 T@U) ) (! (= ($IsAlloc refType |c#0@@11| Tclass._module.XD $h@@19) ($IsAlloc refType |c#0@@11| Tclass._module.XD? $h@@19))
+ :qid |unknown.0:0|
+ :skolemid |689|
  :pattern ( ($IsAlloc refType |c#0@@11| Tclass._module.XD $h@@19))
  :pattern ( ($IsAlloc refType |c#0@@11| Tclass._module.XD? $h@@19))
 )))
 (assert (forall ((|c#0@@12| T@U) ($h@@20 T@U) ) (! (= ($IsAlloc refType |c#0@@12| Tclass._module.XX $h@@20) ($IsAlloc refType |c#0@@12| Tclass._module.XX? $h@@20))
+ :qid |unknown.0:0|
+ :skolemid |697|
  :pattern ( ($IsAlloc refType |c#0@@12| Tclass._module.XX $h@@20))
  :pattern ( ($IsAlloc refType |c#0@@12| Tclass._module.XX? $h@@20))
 )))
-(assert (forall ((_module.ClassT$Z@@0 T@U) ) (implements$_module.TraitA (Tclass._module.ClassT? _module.ClassT$Z@@0) (TSeq _module.ClassT$Z@@0))))
+(assert (forall ((_module.ClassT$Z@@0 T@U) ) (! (implements$_module.TraitA (Tclass._module.ClassT? _module.ClassT$Z@@0) (TSeq _module.ClassT$Z@@0))
+ :qid |unknown.0:0|
+ :skolemid |667|
+)))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((_module.TraitA$X@@0 T@U) ($o@@3 T@U) ($h@@21 T@U) ) (! (= ($IsAlloc refType $o@@3 (Tclass._module.TraitA? _module.TraitA$X@@0) $h@@21)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@21 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |636|
  :pattern ( ($IsAlloc refType $o@@3 (Tclass._module.TraitA? _module.TraitA$X@@0) $h@@21))
 )))
 (assert (forall ((_module.TraitB$X@@0 T@U) ($o@@4 T@U) ($h@@22 T@U) ) (! (= ($IsAlloc refType $o@@4 (Tclass._module.TraitB? _module.TraitB$X@@0) $h@@22)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@22 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |643|
  :pattern ( ($IsAlloc refType $o@@4 (Tclass._module.TraitB? _module.TraitB$X@@0) $h@@22))
 )))
 (assert (forall ((_module.ClassQ$Y@@1 T@U) ($o@@5 T@U) ($h@@23 T@U) ) (! (= ($IsAlloc refType $o@@5 (Tclass._module.ClassQ? _module.ClassQ$Y@@1) $h@@23)  (or (= $o@@5 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@23 $o@@5) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |651|
  :pattern ( ($IsAlloc refType $o@@5 (Tclass._module.ClassQ? _module.ClassQ$Y@@1) $h@@23))
 )))
 (assert (forall ((_module.ClassR$Z@@2 T@U) ($o@@6 T@U) ($h@@24 T@U) ) (! (= ($IsAlloc refType $o@@6 (Tclass._module.ClassR? _module.ClassR$Z@@2) $h@@24)  (or (= $o@@6 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@24 $o@@6) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |656|
  :pattern ( ($IsAlloc refType $o@@6 (Tclass._module.ClassR? _module.ClassR$Z@@2) $h@@24))
 )))
 (assert (forall ((_module.ClassT$Z@@1 T@U) ($o@@7 T@U) ($h@@25 T@U) ) (! (= ($IsAlloc refType $o@@7 (Tclass._module.ClassT? _module.ClassT$Z@@1) $h@@25)  (or (= $o@@7 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@25 $o@@7) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |666|
  :pattern ( ($IsAlloc refType $o@@7 (Tclass._module.ClassT? _module.ClassT$Z@@1) $h@@25))
 )))
 (assert (forall ((_module.ClassQ$Y@@2 T@U) ($o@@8 T@U) ) (!  (=> ($Is refType $o@@8 (Tclass._module.ClassQ? _module.ClassQ$Y@@2)) ($Is refType $o@@8 (Tclass._module.TraitA? _module.ClassQ$Y@@2)))
+ :qid |unknown.0:0|
+ :skolemid |736|
  :pattern ( ($Is refType $o@@8 (Tclass._module.ClassQ? _module.ClassQ$Y@@2)))
 )))
 (assert (forall ((_module.ClassQ$Y@@3 T@U) (bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 (Tclass._module.ClassQ? _module.ClassQ$Y@@3)) ($IsBox bx@@7 (Tclass._module.TraitA? _module.ClassQ$Y@@3)))
+ :qid |unknown.0:0|
+ :skolemid |734|
  :pattern ( ($IsBox bx@@7 (Tclass._module.ClassQ? _module.ClassQ$Y@@3)))
 )))
 (assert (forall ((_module.ClassR$Z@@3 T@U) ($o@@9 T@U) ) (!  (=> ($Is refType $o@@9 (Tclass._module.ClassR? _module.ClassR$Z@@3)) ($Is refType $o@@9 (Tclass._module.TraitA? _module.ClassR$Z@@3)))
+ :qid |unknown.0:0|
+ :skolemid |740|
  :pattern ( ($Is refType $o@@9 (Tclass._module.ClassR? _module.ClassR$Z@@3)))
 )))
 (assert (forall ((_module.ClassR$Z@@4 T@U) (bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 (Tclass._module.ClassR? _module.ClassR$Z@@4)) ($IsBox bx@@8 (Tclass._module.TraitA? _module.ClassR$Z@@4)))
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( ($IsBox bx@@8 (Tclass._module.ClassR? _module.ClassR$Z@@4)))
 )))
 (assert (forall ((_module.ClassR$Z@@5 T@U) ($o@@10 T@U) ) (!  (=> ($Is refType $o@@10 (Tclass._module.ClassR? _module.ClassR$Z@@5)) ($Is refType $o@@10 (Tclass._module.TraitB? _module.ClassR$Z@@5)))
+ :qid |unknown.0:0|
+ :skolemid |744|
  :pattern ( ($Is refType $o@@10 (Tclass._module.ClassR? _module.ClassR$Z@@5)))
 )))
 (assert (forall ((_module.ClassR$Z@@6 T@U) (bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 (Tclass._module.ClassR? _module.ClassR$Z@@6)) ($IsBox bx@@9 (Tclass._module.TraitB? _module.ClassR$Z@@6)))
+ :qid |unknown.0:0|
+ :skolemid |742|
  :pattern ( ($IsBox bx@@9 (Tclass._module.ClassR? _module.ClassR$Z@@6)))
 )))
 (assert (forall (($o@@11 T@U) ($h@@26 T@U) ) (! (= ($IsAlloc refType $o@@11 Tclass._System.object? $h@@26)  (or (= $o@@11 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@26 $o@@11) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |348|
  :pattern ( ($IsAlloc refType $o@@11 Tclass._System.object? $h@@26))
 )))
 (assert (forall (($o@@12 T@U) ($h@@27 T@U) ) (! (= ($IsAlloc refType $o@@12 Tclass._module.ClassP? $h@@27)  (or (= $o@@12 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@27 $o@@12) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |647|
  :pattern ( ($IsAlloc refType $o@@12 Tclass._module.ClassP? $h@@27))
 )))
 (assert (forall (($o@@13 T@U) ($h@@28 T@U) ) (! (= ($IsAlloc refType $o@@13 Tclass._module.ClassS? $h@@28)  (or (= $o@@13 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@28 $o@@13) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |662|
  :pattern ( ($IsAlloc refType $o@@13 Tclass._module.ClassS? $h@@28))
 )))
 (assert (forall (($o@@14 T@U) ($h@@29 T@U) ) (! (= ($IsAlloc refType $o@@14 Tclass._module.ClassR_k? $h@@29)  (or (= $o@@14 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@29 $o@@14) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |671|
  :pattern ( ($IsAlloc refType $o@@14 Tclass._module.ClassR_k? $h@@29))
 )))
 (assert (forall (($o@@15 T@U) ($h@@30 T@U) ) (! (= ($IsAlloc refType $o@@15 Tclass._module.XA? $h@@30)  (or (= $o@@15 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@30 $o@@15) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |675|
  :pattern ( ($IsAlloc refType $o@@15 Tclass._module.XA? $h@@30))
 )))
 (assert (forall (($o@@16 T@U) ($h@@31 T@U) ) (! (= ($IsAlloc refType $o@@16 Tclass._module.XB? $h@@31)  (or (= $o@@16 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@31 $o@@16) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |679|
  :pattern ( ($IsAlloc refType $o@@16 Tclass._module.XB? $h@@31))
 )))
 (assert (forall (($o@@17 T@U) ($h@@32 T@U) ) (! (= ($IsAlloc refType $o@@17 Tclass._module.XC? $h@@32)  (or (= $o@@17 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@32 $o@@17) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |683|
  :pattern ( ($IsAlloc refType $o@@17 Tclass._module.XC? $h@@32))
 )))
 (assert (forall (($o@@18 T@U) ($h@@33 T@U) ) (! (= ($IsAlloc refType $o@@18 Tclass._module.XD? $h@@33)  (or (= $o@@18 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@33 $o@@18) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |687|
  :pattern ( ($IsAlloc refType $o@@18 Tclass._module.XD? $h@@33))
 )))
 (assert (forall (($o@@19 T@U) ($h@@34 T@U) ) (! (= ($IsAlloc refType $o@@19 Tclass._module.XX? $h@@34)  (or (= $o@@19 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@34 $o@@19) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |695|
  :pattern ( ($IsAlloc refType $o@@19 Tclass._module.XX? $h@@34))
 )))
 (assert (forall (($o@@20 T@U) ) (!  (=> ($Is refType $o@@20 Tclass._module.ClassS?) ($Is refType $o@@20 (Tclass._module.TraitA? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |748|
  :pattern ( ($Is refType $o@@20 Tclass._module.ClassS?))
 )))
 (assert (forall ((bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 Tclass._module.ClassS?) ($IsBox bx@@10 (Tclass._module.TraitA? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |746|
  :pattern ( ($IsBox bx@@10 Tclass._module.ClassS?))
 )))
 (assert (forall (($o@@21 T@U) ) (!  (=> ($Is refType $o@@21 Tclass._module.ClassR_k?) ($Is refType $o@@21 (Tclass._module.TraitB? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |756|
  :pattern ( ($Is refType $o@@21 Tclass._module.ClassR_k?))
 )))
 (assert (forall ((bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 Tclass._module.ClassR_k?) ($IsBox bx@@11 (Tclass._module.TraitB? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |754|
  :pattern ( ($IsBox bx@@11 Tclass._module.ClassR_k?))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((_module.ClassT$Z@@2 T@U) ($o@@22 T@U) ) (!  (=> ($Is refType $o@@22 (Tclass._module.ClassT? _module.ClassT$Z@@2)) ($Is refType $o@@22 (Tclass._module.TraitA? (TSeq _module.ClassT$Z@@2))))
+ :qid |unknown.0:0|
+ :skolemid |752|
  :pattern ( ($Is refType $o@@22 (Tclass._module.ClassT? _module.ClassT$Z@@2)))
 )))
 (assert (forall ((_module.ClassT$Z@@3 T@U) (bx@@12 T@U) ) (!  (=> ($IsBox bx@@12 (Tclass._module.ClassT? _module.ClassT$Z@@3)) ($IsBox bx@@12 (Tclass._module.TraitA? (TSeq _module.ClassT$Z@@3))))
+ :qid |unknown.0:0|
+ :skolemid |750|
  :pattern ( ($IsBox bx@@12 (Tclass._module.ClassT? _module.ClassT$Z@@3)))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@2))
 )))
 (assert (forall ((_module.TraitA$X@@1 T@U) (|c#0@@13| T@U) ) (! (= ($Is refType |c#0@@13| (Tclass._module.TraitA _module.TraitA$X@@1))  (and ($Is refType |c#0@@13| (Tclass._module.TraitA? _module.TraitA$X@@1)) (or (not (= |c#0@@13| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |637|
  :pattern ( ($Is refType |c#0@@13| (Tclass._module.TraitA _module.TraitA$X@@1)))
  :pattern ( ($Is refType |c#0@@13| (Tclass._module.TraitA? _module.TraitA$X@@1)))
 )))
 (assert (forall ((_module.TraitB$X@@1 T@U) (|c#0@@14| T@U) ) (! (= ($Is refType |c#0@@14| (Tclass._module.TraitB _module.TraitB$X@@1))  (and ($Is refType |c#0@@14| (Tclass._module.TraitB? _module.TraitB$X@@1)) (or (not (= |c#0@@14| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |644|
  :pattern ( ($Is refType |c#0@@14| (Tclass._module.TraitB _module.TraitB$X@@1)))
  :pattern ( ($Is refType |c#0@@14| (Tclass._module.TraitB? _module.TraitB$X@@1)))
 )))
 (assert (forall ((_module.ClassQ$Y@@4 T@U) (|c#0@@15| T@U) ) (! (= ($Is refType |c#0@@15| (Tclass._module.ClassQ _module.ClassQ$Y@@4))  (and ($Is refType |c#0@@15| (Tclass._module.ClassQ? _module.ClassQ$Y@@4)) (or (not (= |c#0@@15| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |653|
  :pattern ( ($Is refType |c#0@@15| (Tclass._module.ClassQ _module.ClassQ$Y@@4)))
  :pattern ( ($Is refType |c#0@@15| (Tclass._module.ClassQ? _module.ClassQ$Y@@4)))
 )))
 (assert (forall ((_module.ClassR$Z@@7 T@U) (|c#0@@16| T@U) ) (! (= ($Is refType |c#0@@16| (Tclass._module.ClassR _module.ClassR$Z@@7))  (and ($Is refType |c#0@@16| (Tclass._module.ClassR? _module.ClassR$Z@@7)) (or (not (= |c#0@@16| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |659|
  :pattern ( ($Is refType |c#0@@16| (Tclass._module.ClassR _module.ClassR$Z@@7)))
  :pattern ( ($Is refType |c#0@@16| (Tclass._module.ClassR? _module.ClassR$Z@@7)))
 )))
 (assert (forall ((_module.ClassT$Z@@4 T@U) (|c#0@@17| T@U) ) (! (= ($Is refType |c#0@@17| (Tclass._module.ClassT _module.ClassT$Z@@4))  (and ($Is refType |c#0@@17| (Tclass._module.ClassT? _module.ClassT$Z@@4)) (or (not (= |c#0@@17| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |668|
  :pattern ( ($Is refType |c#0@@17| (Tclass._module.ClassT _module.ClassT$Z@@4)))
  :pattern ( ($Is refType |c#0@@17| (Tclass._module.ClassT? _module.ClassT$Z@@4)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v) t h@@0) ($IsAlloc T@@0 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@0 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@13 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@13 t@@0 h@@1) ($IsAllocBox bx@@13 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@13 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@1 v@@0 t@@1 h@@2) ($IsAlloc T@@1 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@1 v@@0 t@@1 h@@2))
 )))
 (assert (forall ((_module.ClassQ$Y@@5 T@U) ) (!  (and (= (Tag (Tclass._module.ClassQ _module.ClassQ$Y@@5)) Tagclass._module.ClassQ) (= (TagFamily (Tclass._module.ClassQ _module.ClassQ$Y@@5)) tytagFamily$ClassQ))
+ :qid |unknown.0:0|
+ :skolemid |519|
  :pattern ( (Tclass._module.ClassQ _module.ClassQ$Y@@5))
 )))
 (assert (forall ((_module.ClassQ$Y@@6 T@U) ) (!  (and (= (Tag (Tclass._module.ClassQ? _module.ClassQ$Y@@6)) Tagclass._module.ClassQ?) (= (TagFamily (Tclass._module.ClassQ? _module.ClassQ$Y@@6)) tytagFamily$ClassQ))
+ :qid |unknown.0:0|
+ :skolemid |522|
  :pattern ( (Tclass._module.ClassQ? _module.ClassQ$Y@@6))
 )))
 (assert (forall ((_module.ClassR$Z@@8 T@U) ) (!  (and (= (Tag (Tclass._module.ClassR _module.ClassR$Z@@8)) Tagclass._module.ClassR) (= (TagFamily (Tclass._module.ClassR _module.ClassR$Z@@8)) tytagFamily$ClassR))
+ :qid |unknown.0:0|
+ :skolemid |525|
  :pattern ( (Tclass._module.ClassR _module.ClassR$Z@@8))
 )))
 (assert (forall ((_module.ClassR$Z@@9 T@U) ) (!  (and (= (Tag (Tclass._module.ClassR? _module.ClassR$Z@@9)) Tagclass._module.ClassR?) (= (TagFamily (Tclass._module.ClassR? _module.ClassR$Z@@9)) tytagFamily$ClassR))
+ :qid |unknown.0:0|
+ :skolemid |529|
  :pattern ( (Tclass._module.ClassR? _module.ClassR$Z@@9))
 )))
 (assert (forall ((_module.ClassT$Z@@5 T@U) ) (!  (and (= (Tag (Tclass._module.ClassT _module.ClassT$Z@@5)) Tagclass._module.ClassT) (= (TagFamily (Tclass._module.ClassT _module.ClassT$Z@@5)) tytagFamily$ClassT))
+ :qid |unknown.0:0|
+ :skolemid |535|
  :pattern ( (Tclass._module.ClassT _module.ClassT$Z@@5))
 )))
 (assert (forall ((_module.ClassT$Z@@6 T@U) ) (!  (and (= (Tag (Tclass._module.ClassT? _module.ClassT$Z@@6)) Tagclass._module.ClassT?) (= (TagFamily (Tclass._module.ClassT? _module.ClassT$Z@@6)) tytagFamily$ClassT))
+ :qid |unknown.0:0|
+ :skolemid |538|
  :pattern ( (Tclass._module.ClassT? _module.ClassT$Z@@6))
 )))
 (assert (forall ((_module.TraitA$X@@2 T@U) ) (!  (and (= (Tag (Tclass._module.TraitA _module.TraitA$X@@2)) Tagclass._module.TraitA) (= (TagFamily (Tclass._module.TraitA _module.TraitA$X@@2)) tytagFamily$TraitA))
+ :qid |unknown.0:0|
+ :skolemid |557|
  :pattern ( (Tclass._module.TraitA _module.TraitA$X@@2))
 )))
 (assert (forall ((_module.TraitB$X@@2 T@U) ) (!  (and (= (Tag (Tclass._module.TraitB _module.TraitB$X@@2)) Tagclass._module.TraitB) (= (TagFamily (Tclass._module.TraitB _module.TraitB$X@@2)) tytagFamily$TraitB))
+ :qid |unknown.0:0|
+ :skolemid |563|
  :pattern ( (Tclass._module.TraitB _module.TraitB$X@@2))
 )))
 (assert (forall ((_module.TraitA$X@@3 T@U) ) (!  (and (= (Tag (Tclass._module.TraitA? _module.TraitA$X@@3)) Tagclass._module.TraitA?) (= (TagFamily (Tclass._module.TraitA? _module.TraitA$X@@3)) tytagFamily$TraitA))
+ :qid |unknown.0:0|
+ :skolemid |569|
  :pattern ( (Tclass._module.TraitA? _module.TraitA$X@@3))
 )))
 (assert (forall ((_module.TraitB$X@@3 T@U) ) (!  (and (= (Tag (Tclass._module.TraitB? _module.TraitB$X@@3)) Tagclass._module.TraitB?) (= (TagFamily (Tclass._module.TraitB? _module.TraitB$X@@3)) tytagFamily$TraitB))
+ :qid |unknown.0:0|
+ :skolemid |639|
  :pattern ( (Tclass._module.TraitB? _module.TraitB$X@@3))
 )))
 (assert (implements$_module.TraitA Tclass._module.ClassS? TInt))
 (assert (implements$_module.TraitB Tclass._module.ClassR_k? TInt))
 (assert (forall ((bx@@14 T@U) ) (!  (=> ($IsBox bx@@14 Tclass._System.object?) (and (= ($Box refType ($Unbox refType bx@@14)) bx@@14) ($Is refType ($Unbox refType bx@@14) Tclass._System.object?)))
+ :qid |unknown.0:0|
+ :skolemid |346|
  :pattern ( ($IsBox bx@@14 Tclass._System.object?))
 )))
 (assert (forall ((bx@@15 T@U) ) (!  (=> ($IsBox bx@@15 Tclass._System.object) (and (= ($Box refType ($Unbox refType bx@@15)) bx@@15) ($Is refType ($Unbox refType bx@@15) Tclass._System.object)))
+ :qid |unknown.0:0|
+ :skolemid |349|
  :pattern ( ($IsBox bx@@15 Tclass._System.object))
 )))
 (assert (forall ((bx@@16 T@U) ) (!  (=> ($IsBox bx@@16 Tclass._module.ClassP) (and (= ($Box refType ($Unbox refType bx@@16)) bx@@16) ($Is refType ($Unbox refType bx@@16) Tclass._module.ClassP)))
+ :qid |unknown.0:0|
+ :skolemid |517|
  :pattern ( ($IsBox bx@@16 Tclass._module.ClassP))
 )))
 (assert (forall ((bx@@17 T@U) ) (!  (=> ($IsBox bx@@17 Tclass._module.ClassP?) (and (= ($Box refType ($Unbox refType bx@@17)) bx@@17) ($Is refType ($Unbox refType bx@@17) Tclass._module.ClassP?)))
+ :qid |unknown.0:0|
+ :skolemid |518|
  :pattern ( ($IsBox bx@@17 Tclass._module.ClassP?))
 )))
 (assert (forall ((bx@@18 T@U) ) (!  (=> ($IsBox bx@@18 Tclass._module.ClassR_k) (and (= ($Box refType ($Unbox refType bx@@18)) bx@@18) ($Is refType ($Unbox refType bx@@18) Tclass._module.ClassR_k)))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( ($IsBox bx@@18 Tclass._module.ClassR_k))
 )))
 (assert (forall ((bx@@19 T@U) ) (!  (=> ($IsBox bx@@19 Tclass._module.ClassR_k?) (and (= ($Box refType ($Unbox refType bx@@19)) bx@@19) ($Is refType ($Unbox refType bx@@19) Tclass._module.ClassR_k?)))
+ :qid |unknown.0:0|
+ :skolemid |532|
  :pattern ( ($IsBox bx@@19 Tclass._module.ClassR_k?))
 )))
 (assert (forall ((bx@@20 T@U) ) (!  (=> ($IsBox bx@@20 Tclass._module.ClassS) (and (= ($Box refType ($Unbox refType bx@@20)) bx@@20) ($Is refType ($Unbox refType bx@@20) Tclass._module.ClassS)))
+ :qid |unknown.0:0|
+ :skolemid |533|
  :pattern ( ($IsBox bx@@20 Tclass._module.ClassS))
 )))
 (assert (forall ((bx@@21 T@U) ) (!  (=> ($IsBox bx@@21 Tclass._module.ClassS?) (and (= ($Box refType ($Unbox refType bx@@21)) bx@@21) ($Is refType ($Unbox refType bx@@21) Tclass._module.ClassS?)))
+ :qid |unknown.0:0|
+ :skolemid |534|
  :pattern ( ($IsBox bx@@21 Tclass._module.ClassS?))
 )))
 (assert (forall ((bx@@22 T@U) ) (!  (=> ($IsBox bx@@22 Tclass._module.XX) (and (= ($Box refType ($Unbox refType bx@@22)) bx@@22) ($Is refType ($Unbox refType bx@@22) Tclass._module.XX)))
+ :qid |unknown.0:0|
+ :skolemid |551|
  :pattern ( ($IsBox bx@@22 Tclass._module.XX))
 )))
 (assert (forall ((bx@@23 T@U) ) (!  (=> ($IsBox bx@@23 Tclass._module.XX?) (and (= ($Box refType ($Unbox refType bx@@23)) bx@@23) ($Is refType ($Unbox refType bx@@23) Tclass._module.XX?)))
+ :qid |unknown.0:0|
+ :skolemid |552|
  :pattern ( ($IsBox bx@@23 Tclass._module.XX?))
 )))
 (assert (forall ((bx@@24 T@U) ) (!  (=> ($IsBox bx@@24 Tclass._module.XA?) (and (= ($Box refType ($Unbox refType bx@@24)) bx@@24) ($Is refType ($Unbox refType bx@@24) Tclass._module.XA?)))
+ :qid |unknown.0:0|
+ :skolemid |578|
  :pattern ( ($IsBox bx@@24 Tclass._module.XA?))
 )))
 (assert (forall ((bx@@25 T@U) ) (!  (=> ($IsBox bx@@25 Tclass._module.XB?) (and (= ($Box refType ($Unbox refType bx@@25)) bx@@25) ($Is refType ($Unbox refType bx@@25) Tclass._module.XB?)))
+ :qid |unknown.0:0|
+ :skolemid |579|
  :pattern ( ($IsBox bx@@25 Tclass._module.XB?))
 )))
 (assert (forall ((bx@@26 T@U) ) (!  (=> ($IsBox bx@@26 Tclass._module.XC?) (and (= ($Box refType ($Unbox refType bx@@26)) bx@@26) ($Is refType ($Unbox refType bx@@26) Tclass._module.XC?)))
+ :qid |unknown.0:0|
+ :skolemid |580|
  :pattern ( ($IsBox bx@@26 Tclass._module.XC?))
 )))
 (assert (forall ((bx@@27 T@U) ) (!  (=> ($IsBox bx@@27 Tclass._module.XD?) (and (= ($Box refType ($Unbox refType bx@@27)) bx@@27) ($Is refType ($Unbox refType bx@@27) Tclass._module.XD?)))
+ :qid |unknown.0:0|
+ :skolemid |581|
  :pattern ( ($IsBox bx@@27 Tclass._module.XD?))
 )))
 (assert (forall ((bx@@28 T@U) ) (!  (=> ($IsBox bx@@28 Tclass._module.XA) (and (= ($Box refType ($Unbox refType bx@@28)) bx@@28) ($Is refType ($Unbox refType bx@@28) Tclass._module.XA)))
+ :qid |unknown.0:0|
+ :skolemid |586|
  :pattern ( ($IsBox bx@@28 Tclass._module.XA))
 )))
 (assert (forall ((bx@@29 T@U) ) (!  (=> ($IsBox bx@@29 Tclass._module.XB) (and (= ($Box refType ($Unbox refType bx@@29)) bx@@29) ($Is refType ($Unbox refType bx@@29) Tclass._module.XB)))
+ :qid |unknown.0:0|
+ :skolemid |587|
  :pattern ( ($IsBox bx@@29 Tclass._module.XB))
 )))
 (assert (forall ((bx@@30 T@U) ) (!  (=> ($IsBox bx@@30 Tclass._module.XC) (and (= ($Box refType ($Unbox refType bx@@30)) bx@@30) ($Is refType ($Unbox refType bx@@30) Tclass._module.XC)))
+ :qid |unknown.0:0|
+ :skolemid |588|
  :pattern ( ($IsBox bx@@30 Tclass._module.XC))
 )))
 (assert (forall ((bx@@31 T@U) ) (!  (=> ($IsBox bx@@31 Tclass._module.XD) (and (= ($Box refType ($Unbox refType bx@@31)) bx@@31) ($Is refType ($Unbox refType bx@@31) Tclass._module.XD)))
+ :qid |unknown.0:0|
+ :skolemid |589|
  :pattern ( ($IsBox bx@@31 Tclass._module.XD))
 )))
 (assert (forall ((_module.ClassQ$Y@@7 T@U) ($o@@23 T@U) ) (! (= ($Is refType $o@@23 (Tclass._module.ClassQ? _module.ClassQ$Y@@7))  (or (= $o@@23 null) (= (dtype $o@@23) (Tclass._module.ClassQ? _module.ClassQ$Y@@7))))
+ :qid |unknown.0:0|
+ :skolemid |650|
  :pattern ( ($Is refType $o@@23 (Tclass._module.ClassQ? _module.ClassQ$Y@@7)))
 )))
 (assert (forall ((_module.ClassR$Z@@10 T@U) ($o@@24 T@U) ) (! (= ($Is refType $o@@24 (Tclass._module.ClassR? _module.ClassR$Z@@10))  (or (= $o@@24 null) (= (dtype $o@@24) (Tclass._module.ClassR? _module.ClassR$Z@@10))))
+ :qid |unknown.0:0|
+ :skolemid |655|
  :pattern ( ($Is refType $o@@24 (Tclass._module.ClassR? _module.ClassR$Z@@10)))
 )))
 (assert (forall ((_module.ClassT$Z@@7 T@U) ($o@@25 T@U) ) (! (= ($Is refType $o@@25 (Tclass._module.ClassT? _module.ClassT$Z@@7))  (or (= $o@@25 null) (= (dtype $o@@25) (Tclass._module.ClassT? _module.ClassT$Z@@7))))
+ :qid |unknown.0:0|
+ :skolemid |665|
  :pattern ( ($Is refType $o@@25 (Tclass._module.ClassT? _module.ClassT$Z@@7)))
 )))
 (assert (forall ((|c#0@@18| T@U) ) (! (= ($Is refType |c#0@@18| Tclass._System.object)  (and ($Is refType |c#0@@18| Tclass._System.object?) (or (not (= |c#0@@18| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |350|
  :pattern ( ($Is refType |c#0@@18| Tclass._System.object))
  :pattern ( ($Is refType |c#0@@18| Tclass._System.object?))
 )))
 (assert (forall ((|c#0@@19| T@U) ) (! (= ($Is refType |c#0@@19| Tclass._module.ClassP)  (and ($Is refType |c#0@@19| Tclass._module.ClassP?) (or (not (= |c#0@@19| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |648|
  :pattern ( ($Is refType |c#0@@19| Tclass._module.ClassP))
  :pattern ( ($Is refType |c#0@@19| Tclass._module.ClassP?))
 )))
 (assert (forall ((|c#0@@20| T@U) ) (! (= ($Is refType |c#0@@20| Tclass._module.ClassS)  (and ($Is refType |c#0@@20| Tclass._module.ClassS?) (or (not (= |c#0@@20| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |663|
  :pattern ( ($Is refType |c#0@@20| Tclass._module.ClassS))
  :pattern ( ($Is refType |c#0@@20| Tclass._module.ClassS?))
 )))
 (assert (forall ((|c#0@@21| T@U) ) (! (= ($Is refType |c#0@@21| Tclass._module.ClassR_k)  (and ($Is refType |c#0@@21| Tclass._module.ClassR_k?) (or (not (= |c#0@@21| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |672|
  :pattern ( ($Is refType |c#0@@21| Tclass._module.ClassR_k))
  :pattern ( ($Is refType |c#0@@21| Tclass._module.ClassR_k?))
 )))
 (assert (forall ((|c#0@@22| T@U) ) (! (= ($Is refType |c#0@@22| Tclass._module.XA)  (and ($Is refType |c#0@@22| Tclass._module.XA?) (or (not (= |c#0@@22| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |676|
  :pattern ( ($Is refType |c#0@@22| Tclass._module.XA))
  :pattern ( ($Is refType |c#0@@22| Tclass._module.XA?))
 )))
 (assert (forall ((|c#0@@23| T@U) ) (! (= ($Is refType |c#0@@23| Tclass._module.XB)  (and ($Is refType |c#0@@23| Tclass._module.XB?) (or (not (= |c#0@@23| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |680|
  :pattern ( ($Is refType |c#0@@23| Tclass._module.XB))
  :pattern ( ($Is refType |c#0@@23| Tclass._module.XB?))
 )))
 (assert (forall ((|c#0@@24| T@U) ) (! (= ($Is refType |c#0@@24| Tclass._module.XC)  (and ($Is refType |c#0@@24| Tclass._module.XC?) (or (not (= |c#0@@24| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |684|
  :pattern ( ($Is refType |c#0@@24| Tclass._module.XC))
  :pattern ( ($Is refType |c#0@@24| Tclass._module.XC?))
 )))
 (assert (forall ((|c#0@@25| T@U) ) (! (= ($Is refType |c#0@@25| Tclass._module.XD)  (and ($Is refType |c#0@@25| Tclass._module.XD?) (or (not (= |c#0@@25| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |688|
  :pattern ( ($Is refType |c#0@@25| Tclass._module.XD))
  :pattern ( ($Is refType |c#0@@25| Tclass._module.XD?))
 )))
 (assert (forall ((|c#0@@26| T@U) ) (! (= ($Is refType |c#0@@26| Tclass._module.XX)  (and ($Is refType |c#0@@26| Tclass._module.XX?) (or (not (= |c#0@@26| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |696|
  :pattern ( ($Is refType |c#0@@26| Tclass._module.XX))
  :pattern ( ($Is refType |c#0@@26| Tclass._module.XX?))
 )))
 (assert (forall ((_module.ClassQ$Y@@8 T@U) (bx@@32 T@U) ($h@@35 T@U) ) (!  (=> (and ($IsAllocBox bx@@32 (Tclass._module.ClassQ? _module.ClassQ$Y@@8) $h@@35) ($IsGoodHeap $h@@35)) ($IsAllocBox bx@@32 (Tclass._module.TraitA? _module.ClassQ$Y@@8) $h@@35))
+ :qid |unknown.0:0|
+ :skolemid |735|
  :pattern ( ($IsAllocBox bx@@32 (Tclass._module.ClassQ? _module.ClassQ$Y@@8) $h@@35))
 )))
 (assert (forall ((_module.ClassR$Z@@11 T@U) (bx@@33 T@U) ($h@@36 T@U) ) (!  (=> (and ($IsAllocBox bx@@33 (Tclass._module.ClassR? _module.ClassR$Z@@11) $h@@36) ($IsGoodHeap $h@@36)) ($IsAllocBox bx@@33 (Tclass._module.TraitA? _module.ClassR$Z@@11) $h@@36))
+ :qid |unknown.0:0|
+ :skolemid |739|
  :pattern ( ($IsAllocBox bx@@33 (Tclass._module.ClassR? _module.ClassR$Z@@11) $h@@36))
 )))
 (assert (forall ((_module.ClassR$Z@@12 T@U) (bx@@34 T@U) ($h@@37 T@U) ) (!  (=> (and ($IsAllocBox bx@@34 (Tclass._module.ClassR? _module.ClassR$Z@@12) $h@@37) ($IsGoodHeap $h@@37)) ($IsAllocBox bx@@34 (Tclass._module.TraitB? _module.ClassR$Z@@12) $h@@37))
+ :qid |unknown.0:0|
+ :skolemid |743|
  :pattern ( ($IsAllocBox bx@@34 (Tclass._module.ClassR? _module.ClassR$Z@@12) $h@@37))
 )))
 (assert (forall ((_module.ClassQ$Y@@9 T@U) ($o@@26 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@26 (Tclass._module.ClassQ? _module.ClassQ$Y@@9) $heap) ($IsAlloc refType $o@@26 (Tclass._module.TraitA? _module.ClassQ$Y@@9) $heap))
+ :qid |unknown.0:0|
+ :skolemid |737|
  :pattern ( ($IsAlloc refType $o@@26 (Tclass._module.ClassQ? _module.ClassQ$Y@@9) $heap))
 )))
 (assert (forall ((_module.ClassR$Z@@13 T@U) ($o@@27 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@27 (Tclass._module.ClassR? _module.ClassR$Z@@13) $heap@@0) ($IsAlloc refType $o@@27 (Tclass._module.TraitA? _module.ClassR$Z@@13) $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |741|
  :pattern ( ($IsAlloc refType $o@@27 (Tclass._module.ClassR? _module.ClassR$Z@@13) $heap@@0))
 )))
 (assert (forall ((_module.ClassR$Z@@14 T@U) ($o@@28 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@28 (Tclass._module.ClassR? _module.ClassR$Z@@14) $heap@@1) ($IsAlloc refType $o@@28 (Tclass._module.TraitB? _module.ClassR$Z@@14) $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |745|
  :pattern ( ($IsAlloc refType $o@@28 (Tclass._module.ClassR? _module.ClassR$Z@@14) $heap@@1))
 )))
 (assert (forall (($o@@29 T@U) ($heap@@2 T@U) ) (!  (=> ($IsAlloc refType $o@@29 Tclass._module.ClassS? $heap@@2) ($IsAlloc refType $o@@29 (Tclass._module.TraitA? TInt) $heap@@2))
+ :qid |unknown.0:0|
+ :skolemid |749|
  :pattern ( ($IsAlloc refType $o@@29 Tclass._module.ClassS? $heap@@2))
 )))
 (assert (forall (($o@@30 T@U) ($heap@@3 T@U) ) (!  (=> ($IsAlloc refType $o@@30 Tclass._module.ClassR_k? $heap@@3) ($IsAlloc refType $o@@30 (Tclass._module.TraitB? TInt) $heap@@3))
+ :qid |unknown.0:0|
+ :skolemid |757|
  :pattern ( ($IsAlloc refType $o@@30 Tclass._module.ClassR_k? $heap@@3))
 )))
 (assert (forall ((_module.TraitA$X@@4 T@U) (bx@@35 T@U) ($h@@38 T@U) ) (!  (=> (and ($IsAllocBox bx@@35 (Tclass._module.TraitA? _module.TraitA$X@@4) $h@@38) ($IsGoodHeap $h@@38)) ($IsAllocBox bx@@35 Tclass._System.object? $h@@38))
+ :qid |unknown.0:0|
+ :skolemid |731|
  :pattern ( ($IsAllocBox bx@@35 (Tclass._module.TraitA? _module.TraitA$X@@4) $h@@38))
 )))
 (assert (forall ((_module.TraitA$X@@5 T@U) ($o@@31 T@U) ($heap@@4 T@U) ) (!  (=> ($IsAlloc refType $o@@31 (Tclass._module.TraitA? _module.TraitA$X@@5) $heap@@4) ($IsAlloc refType $o@@31 Tclass._System.object? $heap@@4))
+ :qid |unknown.0:0|
+ :skolemid |733|
  :pattern ( ($IsAlloc refType $o@@31 (Tclass._module.TraitA? _module.TraitA$X@@5) $heap@@4))
 )))
 (assert (forall (($o@@32 T@U) ($heap@@5 T@U) ) (!  (=> ($IsAlloc refType $o@@32 Tclass._module.XA? $heap@@5) ($IsAlloc refType $o@@32 Tclass._System.object? $heap@@5))
+ :qid |unknown.0:0|
+ :skolemid |761|
  :pattern ( ($IsAlloc refType $o@@32 Tclass._module.XA? $heap@@5))
 )))
 (assert (forall (($o@@33 T@U) ($heap@@6 T@U) ) (!  (=> ($IsAlloc refType $o@@33 Tclass._module.XB? $heap@@6) ($IsAlloc refType $o@@33 Tclass._System.object? $heap@@6))
+ :qid |unknown.0:0|
+ :skolemid |765|
  :pattern ( ($IsAlloc refType $o@@33 Tclass._module.XB? $heap@@6))
 )))
 (assert (forall (($o@@34 T@U) ($heap@@7 T@U) ) (!  (=> ($IsAlloc refType $o@@34 Tclass._module.XC? $heap@@7) ($IsAlloc refType $o@@34 Tclass._module.XA? $heap@@7))
+ :qid |unknown.0:0|
+ :skolemid |769|
  :pattern ( ($IsAlloc refType $o@@34 Tclass._module.XC? $heap@@7))
 )))
 (assert (forall (($o@@35 T@U) ($heap@@8 T@U) ) (!  (=> ($IsAlloc refType $o@@35 Tclass._module.XC? $heap@@8) ($IsAlloc refType $o@@35 Tclass._module.XB? $heap@@8))
+ :qid |unknown.0:0|
+ :skolemid |773|
  :pattern ( ($IsAlloc refType $o@@35 Tclass._module.XC? $heap@@8))
 )))
 (assert (forall (($o@@36 T@U) ($heap@@9 T@U) ) (!  (=> ($IsAlloc refType $o@@36 Tclass._module.XD? $heap@@9) ($IsAlloc refType $o@@36 Tclass._module.XC? $heap@@9))
+ :qid |unknown.0:0|
+ :skolemid |777|
  :pattern ( ($IsAlloc refType $o@@36 Tclass._module.XD? $heap@@9))
 )))
 (assert (forall (($o@@37 T@U) ($heap@@10 T@U) ) (!  (=> ($IsAlloc refType $o@@37 Tclass._module.XX? $heap@@10) ($IsAlloc refType $o@@37 Tclass._module.XD? $heap@@10))
+ :qid |unknown.0:0|
+ :skolemid |785|
  :pattern ( ($IsAlloc refType $o@@37 Tclass._module.XX? $heap@@10))
 )))
 (assert (forall ((_module.ClassT$Z@@8 T@U) (bx@@36 T@U) ($h@@39 T@U) ) (!  (=> (and ($IsAllocBox bx@@36 (Tclass._module.ClassT? _module.ClassT$Z@@8) $h@@39) ($IsGoodHeap $h@@39)) ($IsAllocBox bx@@36 (Tclass._module.TraitA? (TSeq _module.ClassT$Z@@8)) $h@@39))
+ :qid |unknown.0:0|
+ :skolemid |751|
  :pattern ( ($IsAllocBox bx@@36 (Tclass._module.ClassT? _module.ClassT$Z@@8) $h@@39))
 )))
 (assert (forall ((_module.ClassT$Z@@9 T@U) ($o@@38 T@U) ($heap@@11 T@U) ) (!  (=> ($IsAlloc refType $o@@38 (Tclass._module.ClassT? _module.ClassT$Z@@9) $heap@@11) ($IsAlloc refType $o@@38 (Tclass._module.TraitA? (TSeq _module.ClassT$Z@@9)) $heap@@11))
+ :qid |unknown.0:0|
+ :skolemid |753|
  :pattern ( ($IsAlloc refType $o@@38 (Tclass._module.ClassT? _module.ClassT$Z@@9) $heap@@11))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((bx@@37 T@U) ) (!  (=> ($IsBox bx@@37 TInt) (and (= ($Box intType ($Unbox intType bx@@37)) bx@@37) ($Is intType ($Unbox intType bx@@37) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@37 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@2) ($Is T@@2 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@2))
 )))
 (assert (forall ((s T@U) ) (! (<= 0 (|Seq#Length| s))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s))
 )))
 (assert (forall (($o@@39 T@U) ) (! ($Is refType $o@@39 Tclass._System.object?)
+ :qid |unknown.0:0|
+ :skolemid |347|
  :pattern ( ($Is refType $o@@39 Tclass._System.object?))
 )))
 (assert (= (Ctor SeqType) 7))
 (assert (forall ((v@@2 T@U) (t0@@0 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SeqType v@@2 (TSeq t0@@0) h@@3) (forall ((i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| v@@2))) ($IsAllocBox (|Seq#Index| v@@2 i) t0@@0 h@@3))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@2 i))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@2 (TSeq t0@@0) h@@3))
 )))
 (assert (forall ((t@@3 T@U) ) (! (= (Inv0_TSeq (TSeq t@@3)) t@@3)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@3))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Tag (TSeq t@@4)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@4))
 )))
 (assert (forall ((_module.ClassQ$Y@@10 T@U) ) (! (= (Tclass._module.ClassQ_0 (Tclass._module.ClassQ _module.ClassQ$Y@@10)) _module.ClassQ$Y@@10)
+ :qid |unknown.0:0|
+ :skolemid |520|
  :pattern ( (Tclass._module.ClassQ _module.ClassQ$Y@@10))
 )))
 (assert (forall ((_module.ClassQ$Y@@11 T@U) ) (! (= (Tclass._module.ClassQ?_0 (Tclass._module.ClassQ? _module.ClassQ$Y@@11)) _module.ClassQ$Y@@11)
+ :qid |unknown.0:0|
+ :skolemid |523|
  :pattern ( (Tclass._module.ClassQ? _module.ClassQ$Y@@11))
 )))
 (assert (forall ((_module.ClassR$Z@@15 T@U) ) (! (= (Tclass._module.ClassR_0 (Tclass._module.ClassR _module.ClassR$Z@@15)) _module.ClassR$Z@@15)
+ :qid |unknown.0:0|
+ :skolemid |526|
  :pattern ( (Tclass._module.ClassR _module.ClassR$Z@@15))
 )))
 (assert (forall ((_module.ClassR$Z@@16 T@U) ) (! (= (Tclass._module.ClassR?_0 (Tclass._module.ClassR? _module.ClassR$Z@@16)) _module.ClassR$Z@@16)
+ :qid |unknown.0:0|
+ :skolemid |530|
  :pattern ( (Tclass._module.ClassR? _module.ClassR$Z@@16))
 )))
 (assert (forall ((_module.ClassT$Z@@10 T@U) ) (! (= (Tclass._module.ClassT_0 (Tclass._module.ClassT _module.ClassT$Z@@10)) _module.ClassT$Z@@10)
+ :qid |unknown.0:0|
+ :skolemid |536|
  :pattern ( (Tclass._module.ClassT _module.ClassT$Z@@10))
 )))
 (assert (forall ((_module.ClassT$Z@@11 T@U) ) (! (= (Tclass._module.ClassT?_0 (Tclass._module.ClassT? _module.ClassT$Z@@11)) _module.ClassT$Z@@11)
+ :qid |unknown.0:0|
+ :skolemid |539|
  :pattern ( (Tclass._module.ClassT? _module.ClassT$Z@@11))
 )))
 (assert (forall ((_module.TraitA$X@@6 T@U) ) (! (= (Tclass._module.TraitA_0 (Tclass._module.TraitA _module.TraitA$X@@6)) _module.TraitA$X@@6)
+ :qid |unknown.0:0|
+ :skolemid |558|
  :pattern ( (Tclass._module.TraitA _module.TraitA$X@@6))
 )))
 (assert (forall ((_module.TraitB$X@@4 T@U) ) (! (= (Tclass._module.TraitB_0 (Tclass._module.TraitB _module.TraitB$X@@4)) _module.TraitB$X@@4)
+ :qid |unknown.0:0|
+ :skolemid |564|
  :pattern ( (Tclass._module.TraitB _module.TraitB$X@@4))
 )))
 (assert (forall ((_module.TraitA$X@@7 T@U) ) (! (= (Tclass._module.TraitA?_0 (Tclass._module.TraitA? _module.TraitA$X@@7)) _module.TraitA$X@@7)
+ :qid |unknown.0:0|
+ :skolemid |570|
  :pattern ( (Tclass._module.TraitA? _module.TraitA$X@@7))
 )))
 (assert (forall ((_module.TraitB$X@@5 T@U) ) (! (= (Tclass._module.TraitB?_0 (Tclass._module.TraitB? _module.TraitB$X@@5)) _module.TraitB$X@@5)
+ :qid |unknown.0:0|
+ :skolemid |640|
  :pattern ( (Tclass._module.TraitB? _module.TraitB$X@@5))
 )))
 (assert (forall ((x@@3 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@3))
 )))
 (assert (forall ((_module.TraitA$X@@8 T@U) ($o@@40 T@U) ) (! (= ($Is refType $o@@40 (Tclass._module.TraitA? _module.TraitA$X@@8))  (or (= $o@@40 null) (implements$_module.TraitA (dtype $o@@40) _module.TraitA$X@@8)))
+ :qid |unknown.0:0|
+ :skolemid |635|
  :pattern ( ($Is refType $o@@40 (Tclass._module.TraitA? _module.TraitA$X@@8)))
 )))
 (assert (forall ((_module.TraitB$X@@6 T@U) ($o@@41 T@U) ) (! (= ($Is refType $o@@41 (Tclass._module.TraitB? _module.TraitB$X@@6))  (or (= $o@@41 null) (implements$_module.TraitB (dtype $o@@41) _module.TraitB$X@@6)))
+ :qid |unknown.0:0|
+ :skolemid |642|
  :pattern ( ($Is refType $o@@41 (Tclass._module.TraitB? _module.TraitB$X@@6)))
 )))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@42 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@42 $f))  (=> (and (or (not (= $o@@42 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@42) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |786|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@42 $f))
 )))
 (assert (forall ((_module.TraitA$X@@9 T@U) ($o@@43 T@U) ) (!  (=> ($Is refType $o@@43 (Tclass._module.TraitA? _module.TraitA$X@@9)) ($Is refType $o@@43 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |732|
  :pattern ( ($Is refType $o@@43 (Tclass._module.TraitA? _module.TraitA$X@@9)))
 )))
 (assert (forall ((_module.TraitA$X@@10 T@U) (bx@@38 T@U) ) (!  (=> ($IsBox bx@@38 (Tclass._module.TraitA? _module.TraitA$X@@10)) ($IsBox bx@@38 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |730|
  :pattern ( ($IsBox bx@@38 (Tclass._module.TraitA? _module.TraitA$X@@10)))
 )))
 (assert (forall ((bx@@39 T@U) (t@@5 T@U) ) (!  (=> ($IsBox bx@@39 (TSeq t@@5)) (and (= ($Box SeqType ($Unbox SeqType bx@@39)) bx@@39) ($Is SeqType ($Unbox SeqType bx@@39) (TSeq t@@5))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@39 (TSeq t@@5)))
 )))
 (assert (forall ((_module.ClassQ$Y@@12 T@U) (bx@@40 T@U) ) (!  (=> ($IsBox bx@@40 (Tclass._module.ClassQ _module.ClassQ$Y@@12)) (and (= ($Box refType ($Unbox refType bx@@40)) bx@@40) ($Is refType ($Unbox refType bx@@40) (Tclass._module.ClassQ _module.ClassQ$Y@@12))))
+ :qid |unknown.0:0|
+ :skolemid |521|
  :pattern ( ($IsBox bx@@40 (Tclass._module.ClassQ _module.ClassQ$Y@@12)))
 )))
 (assert (forall ((_module.ClassQ$Y@@13 T@U) (bx@@41 T@U) ) (!  (=> ($IsBox bx@@41 (Tclass._module.ClassQ? _module.ClassQ$Y@@13)) (and (= ($Box refType ($Unbox refType bx@@41)) bx@@41) ($Is refType ($Unbox refType bx@@41) (Tclass._module.ClassQ? _module.ClassQ$Y@@13))))
+ :qid |unknown.0:0|
+ :skolemid |524|
  :pattern ( ($IsBox bx@@41 (Tclass._module.ClassQ? _module.ClassQ$Y@@13)))
 )))
 (assert (forall ((_module.ClassR$Z@@17 T@U) (bx@@42 T@U) ) (!  (=> ($IsBox bx@@42 (Tclass._module.ClassR _module.ClassR$Z@@17)) (and (= ($Box refType ($Unbox refType bx@@42)) bx@@42) ($Is refType ($Unbox refType bx@@42) (Tclass._module.ClassR _module.ClassR$Z@@17))))
+ :qid |unknown.0:0|
+ :skolemid |527|
  :pattern ( ($IsBox bx@@42 (Tclass._module.ClassR _module.ClassR$Z@@17)))
 )))
 (assert (forall ((_module.ClassR$Z@@18 T@U) (bx@@43 T@U) ) (!  (=> ($IsBox bx@@43 (Tclass._module.ClassR? _module.ClassR$Z@@18)) (and (= ($Box refType ($Unbox refType bx@@43)) bx@@43) ($Is refType ($Unbox refType bx@@43) (Tclass._module.ClassR? _module.ClassR$Z@@18))))
+ :qid |unknown.0:0|
+ :skolemid |531|
  :pattern ( ($IsBox bx@@43 (Tclass._module.ClassR? _module.ClassR$Z@@18)))
 )))
 (assert (forall ((_module.ClassT$Z@@12 T@U) (bx@@44 T@U) ) (!  (=> ($IsBox bx@@44 (Tclass._module.ClassT _module.ClassT$Z@@12)) (and (= ($Box refType ($Unbox refType bx@@44)) bx@@44) ($Is refType ($Unbox refType bx@@44) (Tclass._module.ClassT _module.ClassT$Z@@12))))
+ :qid |unknown.0:0|
+ :skolemid |537|
  :pattern ( ($IsBox bx@@44 (Tclass._module.ClassT _module.ClassT$Z@@12)))
 )))
 (assert (forall ((_module.ClassT$Z@@13 T@U) (bx@@45 T@U) ) (!  (=> ($IsBox bx@@45 (Tclass._module.ClassT? _module.ClassT$Z@@13)) (and (= ($Box refType ($Unbox refType bx@@45)) bx@@45) ($Is refType ($Unbox refType bx@@45) (Tclass._module.ClassT? _module.ClassT$Z@@13))))
+ :qid |unknown.0:0|
+ :skolemid |540|
  :pattern ( ($IsBox bx@@45 (Tclass._module.ClassT? _module.ClassT$Z@@13)))
 )))
 (assert (forall ((_module.TraitA$X@@11 T@U) (bx@@46 T@U) ) (!  (=> ($IsBox bx@@46 (Tclass._module.TraitA _module.TraitA$X@@11)) (and (= ($Box refType ($Unbox refType bx@@46)) bx@@46) ($Is refType ($Unbox refType bx@@46) (Tclass._module.TraitA _module.TraitA$X@@11))))
+ :qid |unknown.0:0|
+ :skolemid |559|
  :pattern ( ($IsBox bx@@46 (Tclass._module.TraitA _module.TraitA$X@@11)))
 )))
 (assert (forall ((_module.TraitB$X@@7 T@U) (bx@@47 T@U) ) (!  (=> ($IsBox bx@@47 (Tclass._module.TraitB _module.TraitB$X@@7)) (and (= ($Box refType ($Unbox refType bx@@47)) bx@@47) ($Is refType ($Unbox refType bx@@47) (Tclass._module.TraitB _module.TraitB$X@@7))))
+ :qid |unknown.0:0|
+ :skolemid |565|
  :pattern ( ($IsBox bx@@47 (Tclass._module.TraitB _module.TraitB$X@@7)))
 )))
 (assert (forall ((_module.TraitA$X@@12 T@U) (bx@@48 T@U) ) (!  (=> ($IsBox bx@@48 (Tclass._module.TraitA? _module.TraitA$X@@12)) (and (= ($Box refType ($Unbox refType bx@@48)) bx@@48) ($Is refType ($Unbox refType bx@@48) (Tclass._module.TraitA? _module.TraitA$X@@12))))
+ :qid |unknown.0:0|
+ :skolemid |571|
  :pattern ( ($IsBox bx@@48 (Tclass._module.TraitA? _module.TraitA$X@@12)))
 )))
 (assert (forall ((_module.TraitB$X@@8 T@U) (bx@@49 T@U) ) (!  (=> ($IsBox bx@@49 (Tclass._module.TraitB? _module.TraitB$X@@8)) (and (= ($Box refType ($Unbox refType bx@@49)) bx@@49) ($Is refType ($Unbox refType bx@@49) (Tclass._module.TraitB? _module.TraitB$X@@8))))
+ :qid |unknown.0:0|
+ :skolemid |641|
  :pattern ( ($IsBox bx@@49 (Tclass._module.TraitB? _module.TraitB$X@@8)))
 )))
 (assert (forall (($o@@44 T@U) ) (!  (=> ($Is refType $o@@44 Tclass._module.XA?) ($Is refType $o@@44 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |760|
  :pattern ( ($Is refType $o@@44 Tclass._module.XA?))
 )))
 (assert (forall ((bx@@50 T@U) ) (!  (=> ($IsBox bx@@50 Tclass._module.XA?) ($IsBox bx@@50 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |758|
  :pattern ( ($IsBox bx@@50 Tclass._module.XA?))
 )))
 (assert (forall (($o@@45 T@U) ) (!  (=> ($Is refType $o@@45 Tclass._module.XB?) ($Is refType $o@@45 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |764|
  :pattern ( ($Is refType $o@@45 Tclass._module.XB?))
 )))
 (assert (forall ((bx@@51 T@U) ) (!  (=> ($IsBox bx@@51 Tclass._module.XB?) ($IsBox bx@@51 Tclass._System.object?))
+ :qid |unknown.0:0|
+ :skolemid |762|
  :pattern ( ($IsBox bx@@51 Tclass._module.XB?))
 )))
 (assert (forall (($o@@46 T@U) ) (!  (=> ($Is refType $o@@46 Tclass._module.XC?) ($Is refType $o@@46 Tclass._module.XA?))
+ :qid |unknown.0:0|
+ :skolemid |768|
  :pattern ( ($Is refType $o@@46 Tclass._module.XC?))
 )))
 (assert (forall ((bx@@52 T@U) ) (!  (=> ($IsBox bx@@52 Tclass._module.XC?) ($IsBox bx@@52 Tclass._module.XA?))
+ :qid |unknown.0:0|
+ :skolemid |766|
  :pattern ( ($IsBox bx@@52 Tclass._module.XC?))
 )))
 (assert (forall (($o@@47 T@U) ) (!  (=> ($Is refType $o@@47 Tclass._module.XC?) ($Is refType $o@@47 Tclass._module.XB?))
+ :qid |unknown.0:0|
+ :skolemid |772|
  :pattern ( ($Is refType $o@@47 Tclass._module.XC?))
 )))
 (assert (forall ((bx@@53 T@U) ) (!  (=> ($IsBox bx@@53 Tclass._module.XC?) ($IsBox bx@@53 Tclass._module.XB?))
+ :qid |unknown.0:0|
+ :skolemid |770|
  :pattern ( ($IsBox bx@@53 Tclass._module.XC?))
 )))
 (assert (forall (($o@@48 T@U) ) (!  (=> ($Is refType $o@@48 Tclass._module.XD?) ($Is refType $o@@48 Tclass._module.XC?))
+ :qid |unknown.0:0|
+ :skolemid |776|
  :pattern ( ($Is refType $o@@48 Tclass._module.XD?))
 )))
 (assert (forall ((bx@@54 T@U) ) (!  (=> ($IsBox bx@@54 Tclass._module.XD?) ($IsBox bx@@54 Tclass._module.XC?))
+ :qid |unknown.0:0|
+ :skolemid |774|
  :pattern ( ($IsBox bx@@54 Tclass._module.XD?))
 )))
 (assert (forall (($o@@49 T@U) ) (!  (=> ($Is refType $o@@49 Tclass._module.XX?) ($Is refType $o@@49 Tclass._module.XD?))
+ :qid |unknown.0:0|
+ :skolemid |784|
  :pattern ( ($Is refType $o@@49 Tclass._module.XX?))
 )))
 (assert (forall ((bx@@55 T@U) ) (!  (=> ($IsBox bx@@55 Tclass._module.XX?) ($IsBox bx@@55 Tclass._module.XD?))
+ :qid |unknown.0:0|
+ :skolemid |782|
  :pattern ( ($IsBox bx@@55 Tclass._module.XX?))
 )))
 (assert (forall ((h@@4 T@U) (r T@U) (f T@U) (x@@4 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@4 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@4 r) f x@@4))) ($HeapSucc h@@4 (MapType0Store refType (MapType0Type FieldType BoxType) h@@4 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@4 r) f x@@4))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |116|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@4 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@4 r) f x@@4)))
 )))
 (assert (= (Tag Tclass._System.object?) Tagclass._System.object?))
@@ -767,29 +1134,47 @@
 (assert (= (Tag Tclass._module.XD) Tagclass._module.XD))
 (assert (= (TagFamily Tclass._module.XD) tytagFamily$XD))
 (assert (forall (($o@@50 T@U) ) (! (= ($Is refType $o@@50 Tclass._module.XA?)  (or (= $o@@50 null) (implements$_module.XA (dtype $o@@50))))
+ :qid |unknown.0:0|
+ :skolemid |674|
  :pattern ( ($Is refType $o@@50 Tclass._module.XA?))
 )))
 (assert (forall (($o@@51 T@U) ) (! (= ($Is refType $o@@51 Tclass._module.XB?)  (or (= $o@@51 null) (implements$_module.XB (dtype $o@@51))))
+ :qid |unknown.0:0|
+ :skolemid |678|
  :pattern ( ($Is refType $o@@51 Tclass._module.XB?))
 )))
 (assert (forall (($o@@52 T@U) ) (! (= ($Is refType $o@@52 Tclass._module.XC?)  (or (= $o@@52 null) (implements$_module.XC (dtype $o@@52))))
+ :qid |unknown.0:0|
+ :skolemid |682|
  :pattern ( ($Is refType $o@@52 Tclass._module.XC?))
 )))
 (assert (forall (($o@@53 T@U) ) (! (= ($Is refType $o@@53 Tclass._module.XD?)  (or (= $o@@53 null) (implements$_module.XD (dtype $o@@53))))
+ :qid |unknown.0:0|
+ :skolemid |686|
  :pattern ( ($Is refType $o@@53 Tclass._module.XD?))
 )))
 (assert (forall ((s@@0 T@U) ) (!  (=> (= (|Seq#Length| s@@0) 0) (= s@@0 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@0))
 )))
 (assert (forall ((h@@5 T@U) (v@@3 T@U) ) (! ($IsAlloc intType v@@3 TInt h@@5)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@3 TInt h@@5))
 )))
 (assert (forall ((v@@4 T@U) (t0@@2 T@U) ) (! (= ($Is SeqType v@@4 (TSeq t0@@2)) (forall ((i@@0 Int) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| v@@4))) ($IsBox (|Seq#Index| v@@4 i@@0) t0@@2))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@4 i@@0))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@4 (TSeq t0@@2)))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@5 TInt))
 )))
 (push 1)
@@ -839,6 +1224,7 @@
 (declare-fun |defass#xx#0| () Bool)
 (declare-fun |xx#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.IsTests)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -855,30 +1241,56 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 31) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (=> (and (and (or (not (= $nw@0 null)) (not true)) ($Is refType $nw@0 Tclass._module.ClassP?)) (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $nw@0) alloc)))) (= $Heap@0 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap $nw@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $nw@0) alloc ($Box boolType (bool_2_U true))))))) (=> (and (and (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (or (not (= $nw@1 null)) (not true)) ($Is refType $nw@1 (Tclass._module.ClassQ? TInt)))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $nw@1) alloc)))) (= $Heap@1 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@0 $nw@1 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $nw@1) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)))) (and (and (and (or (not (= $nw@2 null)) (not true)) ($Is refType $nw@2 (Tclass._module.ClassR? TInt))) (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@2) alloc)))) (= $Heap@2 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@1 $nw@2 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $nw@2) alloc ($Box boolType (bool_2_U true))))))) (and (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (and (or (not (= $nw@3 null)) (not true)) ($Is refType $nw@3 Tclass._module.ClassR_k?))))) (and (and (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@3) alloc)))) (= $Heap@3 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@2 $nw@3 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $nw@3) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3))) (and (and (or (not (= $nw@4 null)) (not true)) ($Is refType $nw@4 Tclass._module.ClassS?)) (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@4) alloc)))) (= $Heap@4 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@3 $nw@4 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $nw@4) alloc ($Box boolType (bool_2_U true)))))))) (and (and (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (and (or (not (= $nw@5 null)) (not true)) ($Is refType $nw@5 (Tclass._module.ClassT? TInt)))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@5) alloc)))) (= $Heap@5 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@4 $nw@5 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 $nw@5) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)))))) (and (=> (= (ControlFlow 0 2) (- 0 30)) true) (and (=> (= (ControlFlow 0 2) (- 0 29)) true) (and (=> (= (ControlFlow 0 2) (- 0 28)) true) (=> (and (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6)) (and (forall (($o@@54 T@U) ) (!  (=> (and (or (not (= $o@@54 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@54) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@54) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@5 $o@@54)))
+ :qid |AsIsCompiledfy.104:8|
+ :skolemid |561|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@54))
 )) ($HeapSucc $Heap@5 $Heap@6))) (and (=> (= (ControlFlow 0 2) (- 0 27)) true) (and (=> (= (ControlFlow 0 2) (- 0 26)) true) (and (=> (= (ControlFlow 0 2) (- 0 25)) true) (=> (and (and ($IsGoodHeap $Heap@7) ($IsHeapAnchor $Heap@7)) (and (forall (($o@@55 T@U) ) (!  (=> (and (or (not (= $o@@55 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@55) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@55) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@55)))
+ :qid |AsIsCompiledfy.104:8|
+ :skolemid |561|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@55))
 )) ($HeapSucc $Heap@6 $Heap@7))) (and (=> (= (ControlFlow 0 2) (- 0 24)) true) (and (=> (= (ControlFlow 0 2) (- 0 23)) true) (and (=> (= (ControlFlow 0 2) (- 0 22)) true) (=> (and (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8)) (and (forall (($o@@56 T@U) ) (!  (=> (and (or (not (= $o@@56 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@56) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@56) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@56)))
+ :qid |AsIsCompiledfy.104:8|
+ :skolemid |561|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@56))
 )) ($HeapSucc $Heap@7 $Heap@8))) (and (=> (= (ControlFlow 0 2) (- 0 21)) true) (and (=> (= (ControlFlow 0 2) (- 0 20)) true) (and (=> (= (ControlFlow 0 2) (- 0 19)) true) (=> (and (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9)) (and (forall (($o@@57 T@U) ) (!  (=> (and (or (not (= $o@@57 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@57) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@57) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@57)))
+ :qid |AsIsCompiledfy.104:8|
+ :skolemid |561|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@57))
 )) ($HeapSucc $Heap@8 $Heap@9))) (and (=> (= (ControlFlow 0 2) (- 0 18)) true) (and (=> (= (ControlFlow 0 2) (- 0 17)) true) (=> (and (and ($IsGoodHeap $Heap@10) ($IsHeapAnchor $Heap@10)) (and (forall (($o@@58 T@U) ) (!  (=> (and (or (not (= $o@@58 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@58) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@58) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@58)))
+ :qid |AsIsCompiledfy.110:8|
+ :skolemid |567|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@58))
 )) ($HeapSucc $Heap@9 $Heap@10))) (and (=> (= (ControlFlow 0 2) (- 0 16)) true) (and (=> (= (ControlFlow 0 2) (- 0 15)) true) (=> (and (and ($IsGoodHeap $Heap@11) ($IsHeapAnchor $Heap@11)) (and (forall (($o@@59 T@U) ) (!  (=> (and (or (not (= $o@@59 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@59) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@59) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@59)))
+ :qid |AsIsCompiledfy.110:8|
+ :skolemid |567|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@59))
 )) ($HeapSucc $Heap@10 $Heap@11))) (and (=> (= (ControlFlow 0 2) (- 0 14)) true) (and (=> (= (ControlFlow 0 2) (- 0 13)) true) (and (=> (= (ControlFlow 0 2) (- 0 12)) true) (and (=> (= (ControlFlow 0 2) (- 0 11)) true) (and (=> (= (ControlFlow 0 2) (- 0 10)) true) (and (=> (= (ControlFlow 0 2) (- 0 9)) true) (=> (and (and ($IsGoodHeap $Heap@12) ($IsHeapAnchor $Heap@12)) (and (forall (($o@@60 T@U) ) (!  (=> (and (or (not (= $o@@60 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@60) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@60) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@60)))
+ :qid |AsIsCompiledfy.114:8|
+ :skolemid |573|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@60))
 )) ($HeapSucc $Heap@11 $Heap@12))) (and (=> (= (ControlFlow 0 2) (- 0 8)) true) (and (=> (= (ControlFlow 0 2) (- 0 7)) true) (and (=> (= (ControlFlow 0 2) (- 0 6)) true) (=> (and ($IsGoodHeap $Heap@13) ($IsHeapAnchor $Heap@13)) (=> (and (and (and (and (forall (($o@@61 T@U) ) (!  (=> (and (or (not (= $o@@61 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@61) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@13 $o@@61) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@12 $o@@61)))
+ :qid |AsIsCompiledfy.114:8|
+ :skolemid |573|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@13 $o@@61))
 )) ($HeapSucc $Heap@12 $Heap@13)) (and ($IsGoodHeap $Heap@14) ($IsHeapAnchor $Heap@14))) (and (and (forall (($o@@62 T@U) ) (!  (=> (and (or (not (= $o@@62 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@13 $o@@62) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@62) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@13 $o@@62)))
+ :qid |AsIsCompiledfy.132:8|
+ :skolemid |576|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@62))
 )) ($HeapSucc $Heap@13 $Heap@14)) (and ($IsGoodHeap $Heap@15) ($IsHeapAnchor $Heap@15)))) (and (and (and (forall (($o@@63 T@U) ) (!  (=> (and (or (not (= $o@@63 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@63) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $o@@63) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@14 $o@@63)))
+ :qid |AsIsCompiledfy.143:8|
+ :skolemid |584|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $o@@63))
 )) ($HeapSucc $Heap@14 $Heap@15)) (and (or (not (= $nw@6 null)) (not true)) ($Is refType $nw@6 Tclass._module.XX?))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@6) alloc)))) (= $Heap@16 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@15 $nw@6 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@15 $nw@6) alloc ($Box boolType (bool_2_U true)))))) (and ($IsGoodHeap $Heap@16) ($IsHeapAnchor $Heap@16))))) (and (=> (= (ControlFlow 0 2) (- 0 5)) true) (=> (and (and ($IsGoodHeap $Heap@17) ($IsHeapAnchor $Heap@17)) (and (forall (($o@@64 T@U) ) (!  (=> (and (or (not (= $o@@64 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@16 $o@@64) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@17 $o@@64) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@16 $o@@64)))
+ :qid |AsIsCompiledfy.132:8|
+ :skolemid |576|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@17 $o@@64))
 )) ($HeapSucc $Heap@16 $Heap@17))) (and (=> (= (ControlFlow 0 2) (- 0 4)) true) (=> (and (and ($IsGoodHeap $Heap@18) ($IsHeapAnchor $Heap@18)) (and (forall (($o@@65 T@U) ) (!  (=> (and (or (not (= $o@@65 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@17 $o@@65) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@18 $o@@65) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@17 $o@@65)))
+ :qid |AsIsCompiledfy.143:8|
+ :skolemid |584|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@18 $o@@65))
 )) ($HeapSucc $Heap@17 $Heap@18))) (and (=> (= (ControlFlow 0 2) (- 0 3)) true) (=> (and (and (and ($IsGoodHeap $Heap@19) ($IsHeapAnchor $Heap@19)) (forall (($o@@66 T@U) ) (!  (=> (and (or (not (= $o@@66 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@18 $o@@66) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@19 $o@@66) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@18 $o@@66)))
+ :qid |AsIsCompiledfy.154:8|
+ :skolemid |592|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@19 $o@@66))
 ))) (and ($HeapSucc $Heap@18 $Heap@19) (= (ControlFlow 0 2) (- 0 1)))) true)))))))))))))))))))))))))))))))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and (and (=> |defass#p#0| (and ($Is refType |p#0| Tclass._module.ClassP) ($IsAlloc refType |p#0| Tclass._module.ClassP $Heap))) true) (and (=> |defass#q#0| (and ($Is refType |q#0| (Tclass._module.ClassQ TInt)) ($IsAlloc refType |q#0| (Tclass._module.ClassQ TInt) $Heap))) true)) (and (and (=> |defass#r#0| (and ($Is refType |r#0| (Tclass._module.ClassR TInt)) ($IsAlloc refType |r#0| (Tclass._module.ClassR TInt) $Heap))) true) (and (=> |defass#r'#0| (and ($Is refType |r'#0| Tclass._module.ClassR_k) ($IsAlloc refType |r'#0| Tclass._module.ClassR_k $Heap))) true))) (and (and (and (=> |defass#s#0| (and ($Is refType |s#0| Tclass._module.ClassS) ($IsAlloc refType |s#0| Tclass._module.ClassS $Heap))) true) (and (=> |defass#t#0| (and ($Is refType |t#0| (Tclass._module.ClassT TInt)) ($IsAlloc refType |t#0| (Tclass._module.ClassT TInt) $Heap))) true)) (and (and (=> |defass#xx#0| (and ($Is refType |xx#0| Tclass._module.XX) ($IsAlloc refType |xx#0| Tclass._module.XX $Heap))) true) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 31) 2))))) anon0_correct))))

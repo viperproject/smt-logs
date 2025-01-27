@@ -99,16 +99,22 @@
 (declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass.DiamondInitialization.M Tagclass.DiamondInitialization.M? Tagclass.DiamondInitialization.A? Tagclass.DiamondInitialization.A Tagclass.DiamondInitialization.B? Tagclass.DiamondInitialization.B Tagclass.DiamondInitialization.C? Tagclass.DiamondInitialization.C Tagclass.DiamondInitialization.D? Tagclass.DiamondInitialization.D Tagclass.DiamondInitialization.E? Tagclass.DiamondInitialization.E tytagFamily$M tytagFamily$A tytagFamily$B tytagFamily$C tytagFamily$D tytagFamily$E)
@@ -116,128 +122,204 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor refType) 3))
 (assert (forall ((DiamondInitialization.A$XA T@U) (|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass.DiamondInitialization.A DiamondInitialization.A$XA) $h) ($IsAlloc refType |c#0| (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA) $h))
+ :qid |unknown.0:0|
+ :skolemid |4586|
  :pattern ( ($IsAlloc refType |c#0| (Tclass.DiamondInitialization.A DiamondInitialization.A$XA) $h))
  :pattern ( ($IsAlloc refType |c#0| (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA) $h))
 )))
 (assert (forall ((DiamondInitialization.B$XB T@U) (|c#0@@0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@0| (Tclass.DiamondInitialization.B DiamondInitialization.B$XB) $h@@0) ($IsAlloc refType |c#0@@0| (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |4596|
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass.DiamondInitialization.B DiamondInitialization.B$XB) $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@0| (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB) $h@@0))
 )))
 (assert (forall ((DiamondInitialization.C$XC T@U) (|c#0@@1| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@1| (Tclass.DiamondInitialization.C DiamondInitialization.C$XC) $h@@1) ($IsAlloc refType |c#0@@1| (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |4606|
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.DiamondInitialization.C DiamondInitialization.C$XC) $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC) $h@@1))
 )))
 (assert (forall ((DiamondInitialization.E$XE T@U) (|c#0@@2| T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass.DiamondInitialization.E DiamondInitialization.E$XE) $h@@2) ($IsAlloc refType |c#0@@2| (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE) $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |4622|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.DiamondInitialization.E DiamondInitialization.E$XE) $h@@2))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE) $h@@2))
 )))
 (assert (implements$DiamondInitialization.D Tclass.DiamondInitialization.M?))
 (assert (forall (($o T@U) ) (! (= ($Is refType $o Tclass.DiamondInitialization.M?)  (or (= $o null) (= (dtype $o) Tclass.DiamondInitialization.M?)))
+ :qid |unknown.0:0|
+ :skolemid |4623|
  :pattern ( ($Is refType $o Tclass.DiamondInitialization.M?))
 )))
 (assert (forall ((|c#0@@3| T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType |c#0@@3| Tclass.DiamondInitialization.D $h@@3) ($IsAlloc refType |c#0@@3| Tclass.DiamondInitialization.D? $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |4612|
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass.DiamondInitialization.D $h@@3))
  :pattern ( ($IsAlloc refType |c#0@@3| Tclass.DiamondInitialization.D? $h@@3))
 )))
 (assert (forall ((|c#0@@4| T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType |c#0@@4| Tclass.DiamondInitialization.M $h@@4) ($IsAlloc refType |c#0@@4| Tclass.DiamondInitialization.M? $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |4632|
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass.DiamondInitialization.M $h@@4))
  :pattern ( ($IsAlloc refType |c#0@@4| Tclass.DiamondInitialization.M? $h@@4))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((DiamondInitialization.A$XA@@0 T@U) ($o@@0 T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@0) $h@@5)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4579|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@0) $h@@5))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@0 T@U) ($o@@1 T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType $o@@1 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@0) $h@@6)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4591|
  :pattern ( ($IsAlloc refType $o@@1 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@0) $h@@6))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@0 T@U) ($o@@2 T@U) ($h@@7 T@U) ) (! (= ($IsAlloc refType $o@@2 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@0) $h@@7)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@7 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4601|
  :pattern ( ($IsAlloc refType $o@@2 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@0) $h@@7))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@0 T@U) ($o@@3 T@U) ($h@@8 T@U) ) (! (= ($IsAlloc refType $o@@3 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@0) $h@@8)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4617|
  :pattern ( ($IsAlloc refType $o@@3 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@0) $h@@8))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@1 T@U) ($o@@4 T@U) ) (!  (=> ($Is refType $o@@4 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@1)) ($Is refType $o@@4 (Tclass.DiamondInitialization.A? DiamondInitialization.B$XB@@1)))
+ :qid |unknown.0:0|
+ :skolemid |4635|
  :pattern ( ($Is refType $o@@4 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@1)))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@1 T@U) ($o@@5 T@U) ) (!  (=> ($Is refType $o@@5 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@1)) ($Is refType $o@@5 (Tclass.DiamondInitialization.A? DiamondInitialization.C$XC@@1)))
+ :qid |unknown.0:0|
+ :skolemid |4639|
  :pattern ( ($Is refType $o@@5 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@1)))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@1 T@U) ($o@@6 T@U) ) (!  (=> ($Is refType $o@@6 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@1)) ($Is refType $o@@6 (Tclass.DiamondInitialization.B? DiamondInitialization.E$XE@@1)))
+ :qid |unknown.0:0|
+ :skolemid |4647|
  :pattern ( ($Is refType $o@@6 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@1)))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@2 T@U) ($o@@7 T@U) ) (!  (=> ($Is refType $o@@7 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@2)) ($Is refType $o@@7 (Tclass.DiamondInitialization.C? DiamondInitialization.E$XE@@2)))
+ :qid |unknown.0:0|
+ :skolemid |4651|
  :pattern ( ($Is refType $o@@7 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@2)))
 )))
 (assert (forall (($o@@8 T@U) ($h@@9 T@U) ) (! (= ($IsAlloc refType $o@@8 Tclass.DiamondInitialization.D? $h@@9)  (or (= $o@@8 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@8) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4609|
  :pattern ( ($IsAlloc refType $o@@8 Tclass.DiamondInitialization.D? $h@@9))
 )))
 (assert (forall (($o@@9 T@U) ($h@@10 T@U) ) (! (= ($IsAlloc refType $o@@9 Tclass.DiamondInitialization.M? $h@@10)  (or (= $o@@9 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@10 $o@@9) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |4624|
  :pattern ( ($IsAlloc refType $o@@9 Tclass.DiamondInitialization.M? $h@@10))
 )))
 (assert (forall (($o@@10 T@U) ) (!  (=> ($Is refType $o@@10 Tclass.DiamondInitialization.D?) ($Is refType $o@@10 (Tclass.DiamondInitialization.A? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4643|
  :pattern ( ($Is refType $o@@10 Tclass.DiamondInitialization.D?))
 )))
 (assert (forall (($o@@11 T@U) ) (!  (=> ($Is refType $o@@11 Tclass.DiamondInitialization.M?) ($Is refType $o@@11 (Tclass.DiamondInitialization.B? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4655|
  :pattern ( ($Is refType $o@@11 Tclass.DiamondInitialization.M?))
 )))
 (assert (forall (($o@@12 T@U) ) (!  (=> ($Is refType $o@@12 Tclass.DiamondInitialization.M?) ($Is refType $o@@12 (Tclass.DiamondInitialization.E? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4659|
  :pattern ( ($Is refType $o@@12 Tclass.DiamondInitialization.M?))
 )))
 (assert (forall (($o@@13 T@U) ) (!  (=> ($Is refType $o@@13 Tclass.DiamondInitialization.M?) ($Is refType $o@@13 (Tclass.DiamondInitialization.C? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4663|
  :pattern ( ($Is refType $o@@13 Tclass.DiamondInitialization.M?))
 )))
 (assert (forall (($o@@14 T@U) ) (!  (=> ($Is refType $o@@14 Tclass.DiamondInitialization.M?) ($Is refType $o@@14 (Tclass.DiamondInitialization.A? TInt)))
+ :qid |unknown.0:0|
+ :skolemid |4671|
  :pattern ( ($Is refType $o@@14 Tclass.DiamondInitialization.M?))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |4047|
  :pattern ( ($Unbox T x@@2))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@1 T@U) (|c#0@@5| T@U) ) (! (= ($Is refType |c#0@@5| (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@1))  (and ($Is refType |c#0@@5| (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@1)) (or (not (= |c#0@@5| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4585|
  :pattern ( ($Is refType |c#0@@5| (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@1)))
  :pattern ( ($Is refType |c#0@@5| (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@1)))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@2 T@U) (|c#0@@6| T@U) ) (! (= ($Is refType |c#0@@6| (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@2))  (and ($Is refType |c#0@@6| (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@2)) (or (not (= |c#0@@6| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4595|
  :pattern ( ($Is refType |c#0@@6| (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@2)))
  :pattern ( ($Is refType |c#0@@6| (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@2)))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@2 T@U) (|c#0@@7| T@U) ) (! (= ($Is refType |c#0@@7| (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@2))  (and ($Is refType |c#0@@7| (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@2)) (or (not (= |c#0@@7| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4605|
  :pattern ( ($Is refType |c#0@@7| (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@2)))
  :pattern ( ($Is refType |c#0@@7| (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@2)))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@3 T@U) (|c#0@@8| T@U) ) (! (= ($Is refType |c#0@@8| (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@3))  (and ($Is refType |c#0@@8| (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@3)) (or (not (= |c#0@@8| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4621|
  :pattern ( ($Is refType |c#0@@8| (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@3)))
  :pattern ( ($Is refType |c#0@@8| (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@3)))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@2 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@2)) Tagclass.DiamondInitialization.A?) (= (TagFamily (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@2)) tytagFamily$A))
+ :qid |unknown.0:0|
+ :skolemid |4575|
  :pattern ( (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@2))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@3 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@3)) Tagclass.DiamondInitialization.A) (= (TagFamily (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@3)) tytagFamily$A))
+ :qid |unknown.0:0|
+ :skolemid |4582|
  :pattern ( (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@3))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@3 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@3)) Tagclass.DiamondInitialization.B?) (= (TagFamily (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@3)) tytagFamily$B))
+ :qid |unknown.0:0|
+ :skolemid |4587|
  :pattern ( (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@3))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@4 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@4)) Tagclass.DiamondInitialization.B) (= (TagFamily (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@4)) tytagFamily$B))
+ :qid |unknown.0:0|
+ :skolemid |4592|
  :pattern ( (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@4))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@3 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@3)) Tagclass.DiamondInitialization.C?) (= (TagFamily (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@3)) tytagFamily$C))
+ :qid |unknown.0:0|
+ :skolemid |4597|
  :pattern ( (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@3))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@4 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@4)) Tagclass.DiamondInitialization.C) (= (TagFamily (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@4)) tytagFamily$C))
+ :qid |unknown.0:0|
+ :skolemid |4602|
  :pattern ( (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@4))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@4 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@4)) Tagclass.DiamondInitialization.E?) (= (TagFamily (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@4)) tytagFamily$E))
+ :qid |unknown.0:0|
+ :skolemid |4613|
  :pattern ( (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@4))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@5 T@U) ) (!  (and (= (Tag (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@5)) Tagclass.DiamondInitialization.E) (= (TagFamily (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@5)) tytagFamily$E))
+ :qid |unknown.0:0|
+ :skolemid |4618|
  :pattern ( (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@5))
 )))
 (assert (implements$DiamondInitialization.B Tclass.DiamondInitialization.M? TInt))
@@ -245,93 +327,150 @@
 (assert (implements$DiamondInitialization.C Tclass.DiamondInitialization.M? TInt))
 (assert (implements$DiamondInitialization.A Tclass.DiamondInitialization.M? TInt))
 (assert (forall ((|c#0@@9| T@U) ) (! (= ($Is refType |c#0@@9| Tclass.DiamondInitialization.D)  (and ($Is refType |c#0@@9| Tclass.DiamondInitialization.D?) (or (not (= |c#0@@9| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4611|
  :pattern ( ($Is refType |c#0@@9| Tclass.DiamondInitialization.D))
  :pattern ( ($Is refType |c#0@@9| Tclass.DiamondInitialization.D?))
 )))
 (assert (forall ((|c#0@@10| T@U) ) (! (= ($Is refType |c#0@@10| Tclass.DiamondInitialization.M)  (and ($Is refType |c#0@@10| Tclass.DiamondInitialization.M?) (or (not (= |c#0@@10| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |4631|
  :pattern ( ($Is refType |c#0@@10| Tclass.DiamondInitialization.M))
  :pattern ( ($Is refType |c#0@@10| Tclass.DiamondInitialization.M?))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@5 T@U) ($o@@15 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@15 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@5) $heap) ($IsAlloc refType $o@@15 (Tclass.DiamondInitialization.A? DiamondInitialization.B$XB@@5) $heap))
+ :qid |unknown.0:0|
+ :skolemid |4636|
  :pattern ( ($IsAlloc refType $o@@15 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@5) $heap))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@5 T@U) ($o@@16 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@16 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@5) $heap@@0) ($IsAlloc refType $o@@16 (Tclass.DiamondInitialization.A? DiamondInitialization.C$XC@@5) $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |4640|
  :pattern ( ($IsAlloc refType $o@@16 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@5) $heap@@0))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@6 T@U) ($o@@17 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@17 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@6) $heap@@1) ($IsAlloc refType $o@@17 (Tclass.DiamondInitialization.B? DiamondInitialization.E$XE@@6) $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |4648|
  :pattern ( ($IsAlloc refType $o@@17 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@6) $heap@@1))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@7 T@U) ($o@@18 T@U) ($heap@@2 T@U) ) (!  (=> ($IsAlloc refType $o@@18 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@7) $heap@@2) ($IsAlloc refType $o@@18 (Tclass.DiamondInitialization.C? DiamondInitialization.E$XE@@7) $heap@@2))
+ :qid |unknown.0:0|
+ :skolemid |4652|
  :pattern ( ($IsAlloc refType $o@@18 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@7) $heap@@2))
 )))
 (assert (forall (($o@@19 T@U) ($heap@@3 T@U) ) (!  (=> ($IsAlloc refType $o@@19 Tclass.DiamondInitialization.D? $heap@@3) ($IsAlloc refType $o@@19 (Tclass.DiamondInitialization.A? TInt) $heap@@3))
+ :qid |unknown.0:0|
+ :skolemid |4644|
  :pattern ( ($IsAlloc refType $o@@19 Tclass.DiamondInitialization.D? $heap@@3))
 )))
 (assert (forall (($o@@20 T@U) ($heap@@4 T@U) ) (!  (=> ($IsAlloc refType $o@@20 Tclass.DiamondInitialization.M? $heap@@4) ($IsAlloc refType $o@@20 (Tclass.DiamondInitialization.B? TInt) $heap@@4))
+ :qid |unknown.0:0|
+ :skolemid |4656|
  :pattern ( ($IsAlloc refType $o@@20 Tclass.DiamondInitialization.M? $heap@@4))
 )))
 (assert (forall (($o@@21 T@U) ($heap@@5 T@U) ) (!  (=> ($IsAlloc refType $o@@21 Tclass.DiamondInitialization.M? $heap@@5) ($IsAlloc refType $o@@21 (Tclass.DiamondInitialization.E? TInt) $heap@@5))
+ :qid |unknown.0:0|
+ :skolemid |4660|
  :pattern ( ($IsAlloc refType $o@@21 Tclass.DiamondInitialization.M? $heap@@5))
 )))
 (assert (forall (($o@@22 T@U) ($heap@@6 T@U) ) (!  (=> ($IsAlloc refType $o@@22 Tclass.DiamondInitialization.M? $heap@@6) ($IsAlloc refType $o@@22 (Tclass.DiamondInitialization.C? TInt) $heap@@6))
+ :qid |unknown.0:0|
+ :skolemid |4664|
  :pattern ( ($IsAlloc refType $o@@22 Tclass.DiamondInitialization.M? $heap@@6))
 )))
 (assert (forall (($o@@23 T@U) ($heap@@7 T@U) ) (!  (=> ($IsAlloc refType $o@@23 Tclass.DiamondInitialization.M? $heap@@7) ($IsAlloc refType $o@@23 (Tclass.DiamondInitialization.A? TInt) $heap@@7))
+ :qid |unknown.0:0|
+ :skolemid |4672|
  :pattern ( ($IsAlloc refType $o@@23 Tclass.DiamondInitialization.M? $heap@@7))
 )))
 (assert (forall (($o@@24 T@U) ($heap@@8 T@U) ) (!  (=> ($IsAlloc refType $o@@24 Tclass.DiamondInitialization.M? $heap@@8) ($IsAlloc refType $o@@24 Tclass.DiamondInitialization.D? $heap@@8))
+ :qid |unknown.0:0|
+ :skolemid |4668|
  :pattern ( ($IsAlloc refType $o@@24 Tclass.DiamondInitialization.M? $heap@@8))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@4 T@U) ) (! (= (Tclass.DiamondInitialization.A?_0 (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@4)) DiamondInitialization.A$XA@@4)
+ :qid |unknown.0:0|
+ :skolemid |4576|
  :pattern ( (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@4))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@5 T@U) ) (! (= (Tclass.DiamondInitialization.A_0 (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@5)) DiamondInitialization.A$XA@@5)
+ :qid |unknown.0:0|
+ :skolemid |4583|
  :pattern ( (Tclass.DiamondInitialization.A DiamondInitialization.A$XA@@5))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@6 T@U) ) (! (= (Tclass.DiamondInitialization.B?_0 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@6)) DiamondInitialization.B$XB@@6)
+ :qid |unknown.0:0|
+ :skolemid |4588|
  :pattern ( (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@6))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@7 T@U) ) (! (= (Tclass.DiamondInitialization.B_0 (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@7)) DiamondInitialization.B$XB@@7)
+ :qid |unknown.0:0|
+ :skolemid |4593|
  :pattern ( (Tclass.DiamondInitialization.B DiamondInitialization.B$XB@@7))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@6 T@U) ) (! (= (Tclass.DiamondInitialization.C?_0 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@6)) DiamondInitialization.C$XC@@6)
+ :qid |unknown.0:0|
+ :skolemid |4598|
  :pattern ( (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@6))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@7 T@U) ) (! (= (Tclass.DiamondInitialization.C_0 (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@7)) DiamondInitialization.C$XC@@7)
+ :qid |unknown.0:0|
+ :skolemid |4603|
  :pattern ( (Tclass.DiamondInitialization.C DiamondInitialization.C$XC@@7))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@8 T@U) ) (! (= (Tclass.DiamondInitialization.E?_0 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@8)) DiamondInitialization.E$XE@@8)
+ :qid |unknown.0:0|
+ :skolemid |4614|
  :pattern ( (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@8))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@9 T@U) ) (! (= (Tclass.DiamondInitialization.E_0 (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@9)) DiamondInitialization.E$XE@@9)
+ :qid |unknown.0:0|
+ :skolemid |4619|
  :pattern ( (Tclass.DiamondInitialization.E DiamondInitialization.E$XE@@9))
 )))
 (assert (forall ((x@@3 T@U) (T@@0 T@T) ) (! (= ($Unbox T@@0 ($Box T@@0 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |4046|
  :pattern ( ($Box T@@0 x@@3))
 )))
 (assert (forall ((DiamondInitialization.A$XA@@6 T@U) ($o@@25 T@U) ) (! (= ($Is refType $o@@25 (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@6))  (or (= $o@@25 null) (implements$DiamondInitialization.A (dtype $o@@25) DiamondInitialization.A$XA@@6)))
+ :qid |unknown.0:0|
+ :skolemid |4578|
  :pattern ( ($Is refType $o@@25 (Tclass.DiamondInitialization.A? DiamondInitialization.A$XA@@6)))
 )))
 (assert (forall ((DiamondInitialization.B$XB@@8 T@U) ($o@@26 T@U) ) (! (= ($Is refType $o@@26 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@8))  (or (= $o@@26 null) (implements$DiamondInitialization.B (dtype $o@@26) DiamondInitialization.B$XB@@8)))
+ :qid |unknown.0:0|
+ :skolemid |4590|
  :pattern ( ($Is refType $o@@26 (Tclass.DiamondInitialization.B? DiamondInitialization.B$XB@@8)))
 )))
 (assert (forall ((DiamondInitialization.C$XC@@8 T@U) ($o@@27 T@U) ) (! (= ($Is refType $o@@27 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@8))  (or (= $o@@27 null) (implements$DiamondInitialization.C (dtype $o@@27) DiamondInitialization.C$XC@@8)))
+ :qid |unknown.0:0|
+ :skolemid |4600|
  :pattern ( ($Is refType $o@@27 (Tclass.DiamondInitialization.C? DiamondInitialization.C$XC@@8)))
 )))
 (assert (forall ((DiamondInitialization.E$XE@@10 T@U) ($o@@28 T@U) ) (! (= ($Is refType $o@@28 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@10))  (or (= $o@@28 null) (implements$DiamondInitialization.E (dtype $o@@28) DiamondInitialization.E$XE@@10)))
+ :qid |unknown.0:0|
+ :skolemid |4616|
  :pattern ( ($Is refType $o@@28 (Tclass.DiamondInitialization.E? DiamondInitialization.E$XE@@10)))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@29 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@29 $f))  (=> (and (or (not (= $o@@29 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@29) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |8393|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@29 $f))
 )))
 (assert (forall (($o@@30 T@U) ) (!  (=> ($Is refType $o@@30 Tclass.DiamondInitialization.M?) ($Is refType $o@@30 Tclass.DiamondInitialization.D?))
+ :qid |unknown.0:0|
+ :skolemid |4667|
  :pattern ( ($Is refType $o@@30 Tclass.DiamondInitialization.M?))
 )))
 (assert (= (Tag Tclass.DiamondInitialization.M) Tagclass.DiamondInitialization.M))
@@ -343,12 +482,18 @@
 (assert (= (Tag Tclass.DiamondInitialization.D) Tagclass.DiamondInitialization.D))
 (assert (= (TagFamily Tclass.DiamondInitialization.D) tytagFamily$D))
 (assert (forall (($o@@31 T@U) ) (! (= ($Is refType $o@@31 Tclass.DiamondInitialization.D?)  (or (= $o@@31 null) (implements$DiamondInitialization.D (dtype $o@@31))))
+ :qid |unknown.0:0|
+ :skolemid |4608|
  :pattern ( ($Is refType $o@@31 Tclass.DiamondInitialization.D?))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |4082|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |4061|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -381,6 +526,7 @@
 (declare-fun |defass#c0#0| () Bool)
 (declare-fun |c0#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$DiamondInitialization.M.Print)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

@@ -176,16 +176,22 @@
 (declare-fun |lambda#34| (T@U T@U T@U T@U) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TChar TagBool TagChar TagSet TagSeq TagMap alloc allocName |##_System._tuple#2._#Make2| Tagclass._System.Tuple2 Tagclass._module.Object Tagclass._module.Region Tagclass._module.Memory Tagclass._module.Memory? Tagclass._module.Object? |##_module.Region.Frozen| |##_module.Region.Heap| |##_module.Region.Stack| |##_module.Region.Frame| |##_module.Region.Isolate| class._module.Object? |##_module.Edge.Edge| Tagclass._module.Edge |tytagFamily$_tuple#2| tytagFamily$Object tytagFamily$Region tytagFamily$Memory tytagFamily$Edge field$fields)
@@ -196,512 +202,856 @@
 (assert (= (DeclName alloc) allocName))
 (assert  (and (and (= (Ctor refType) 3) (= (Ctor SetType) 4)) (= (Ctor DatatypeTypeType) 5)))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this T@U) (|os#0| T@U) (|region#0| T@U) ) (!  (=> (or (|_module.Memory.ownedBy#canCall| this |os#0| |region#0|) (and (< 3 $FunctionContextHeight) (and (and (and (or (not (= this null)) (not true)) ($Is refType this Tclass._module.Memory)) ($Is SetType |os#0| (TSet Tclass._module.Object))) ($Is DatatypeTypeType |region#0| Tclass._module.Region)))) (and (forall ((|o#0| T@U) ) (!  (=> (and ($Is refType |o#0| Tclass._module.Object) (|Set#IsMember| |os#0| ($Box refType |o#0|))) (= (|_module.Region#Equal| (_module.Object.region |o#0|) |region#0|) (|Set#IsMember| (_module.Memory.ownedBy this |os#0| |region#0|) ($Box refType |o#0|))))
+ :qid |gitissue3855dfy.595:18|
+ :skolemid |1167|
  :pattern ( (|Set#IsMember| (_module.Memory.ownedBy this |os#0| |region#0|) ($Box refType |o#0|)))
  :pattern ( (_module.Object.region |o#0|))
  :pattern ( (|Set#IsMember| |os#0| ($Box refType |o#0|)))
 )) ($Is SetType (_module.Memory.ownedBy this |os#0| |region#0|) (TSet Tclass._module.Object))))
+ :qid |gitissue3855dfy.594:10|
+ :skolemid |1168|
  :pattern ( (_module.Memory.ownedBy this |os#0| |region#0|))
 ))))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) (|a#6#2#0| T@U) (i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| |a#6#1#0|))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| |a#6#1#0| i))) (DtRank (|#_module.Edge.Edge| |a#6#0#0| |a#6#1#0| |a#6#2#0|))))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |817|
  :pattern ( (|Seq#Index| |a#6#1#0| i) (|#_module.Edge.Edge| |a#6#0#0| |a#6#1#0| |a#6#2#0|))
 )))
 (assert (= (Ctor SeqType) 6))
 (assert (forall ((|a#2#0#0| T@U) (|a#2#1#0| T@U) (|a#2#2#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Edge.Edge| |a#2#0#0| |a#2#1#0| |a#2#2#0|) Tclass._module.Edge)  (and (and ($Is refType |a#2#0#0| Tclass._module.Object) ($Is SeqType |a#2#1#0| (TSeq TChar))) ($Is refType |a#2#2#0| Tclass._module.Object)))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |809|
  :pattern ( ($Is DatatypeTypeType (|#_module.Edge.Edge| |a#2#0#0| |a#2#1#0| |a#2#2#0|) Tclass._module.Edge))
 )))
 (assert  (=> (< 2 $FunctionContextHeight) (forall (($o T@U) ) (!  (=> (and (or (not (= $o null)) (not true)) (= (dtype $o) Tclass._module.Object?)) ($Is DatatypeTypeType (_module.Object.region $o) Tclass._module.Region))
+ :qid |unknown.0:0|
+ :skolemid |740|
  :pattern ( (_module.Object.region $o))
 ))))
 (assert  (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 ))) (= (Ctor BoxType) 7)))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap T@U) (this@@0 T@U) (|os#0@@0| T@U) ) (!  (=> (or (|_module.Memory.heapExternalsZeroOrOneXXX#canCall| $Heap this@@0 |os#0@@0|) (and (< 5 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap) (and (or (not (= this@@0 null)) (not true)) (and ($Is refType this@@0 Tclass._module.Memory) ($IsAlloc refType this@@0 Tclass._module.Memory $Heap)))) ($Is SetType |os#0@@0| (TSet Tclass._module.Object))))) (and (and (|_module.Memory.edges#canCall| $Heap this@@0 |os#0@@0|) (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@0 |os#0@@0|)) (= (_module.Memory.heapExternalsZeroOrOneXXX $Heap this@@0 |os#0@@0|) (let ((|heapRegionPartitions#0| (_module.Memory.partitionOfJustHeapRegions this@@0 |os#0@@0|)))
 (forall ((|hr#0| T@U) ) (!  (=> (and ($Is DatatypeTypeType |hr#0| Tclass._module.Region) (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#0|) ($Box DatatypeTypeType |hr#0|))) (<= (|Set#Card| ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| |heapRegionPartitions#0|) ($Box DatatypeTypeType |hr#0|)))) (LitInt 1)))
+ :qid |gitissue3855dfy.296:12|
+ :skolemid |972|
  :pattern ( ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| |heapRegionPartitions#0|) ($Box DatatypeTypeType |hr#0|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#0|) ($Box DatatypeTypeType |hr#0|)))
 ))))))
+ :qid |gitissue3855dfy.291:13|
+ :skolemid |973|
  :pattern ( (_module.Memory.heapExternalsZeroOrOneXXX $Heap this@@0 |os#0@@0|) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (and (_module.Region.Heap_q a) (_module.Region.Heap_q b)) (= (|_module.Region#Equal| a b) (= (_module.Region.region a) (_module.Region.region b))))
+ :qid |unknown.0:0|
+ :skolemid |733|
  :pattern ( (|_module.Region#Equal| a b) (_module.Region.Heap_q a))
  :pattern ( (|_module.Region#Equal| a b) (_module.Region.Heap_q b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (_module.Region.Stack_q a@@0) (_module.Region.Stack_q b@@0)) (= (|_module.Region#Equal| a@@0 b@@0) (= (_module.Region.region a@@0) (_module.Region.region b@@0))))
+ :qid |unknown.0:0|
+ :skolemid |734|
  :pattern ( (|_module.Region#Equal| a@@0 b@@0) (_module.Region.Stack_q a@@0))
  :pattern ( (|_module.Region#Equal| a@@0 b@@0) (_module.Region.Stack_q b@@0))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (and (_module.Region.Frame_q a@@1) (_module.Region.Frame_q b@@1)) (= (|_module.Region#Equal| a@@1 b@@1) (= (_module.Region.prev a@@1) (_module.Region.prev b@@1))))
+ :qid |unknown.0:0|
+ :skolemid |735|
  :pattern ( (|_module.Region#Equal| a@@1 b@@1) (_module.Region.Frame_q a@@1))
  :pattern ( (|_module.Region#Equal| a@@1 b@@1) (_module.Region.Frame_q b@@1))
 )))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|$w#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#54| |l#0| |l#1|) |$w#0|))  (and ($IsBox |$w#0| |l#0|) (|Set#IsMember| |l#1| |$w#0|)))
+ :qid |gitissue3855dfy.19:10|
+ :skolemid |1418|
  :pattern ( (MapType0Select BoxType boolType (|lambda#54| |l#0| |l#1|) |$w#0|))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) (t T@U) ) (! (= (|Map#Domain| (|Map#Glue| a@@2 b@@2 t)) a@@2)
+ :qid |DafnyPreludebpl.1443:15|
+ :skolemid |286|
  :pattern ( (|Map#Domain| (|Map#Glue| a@@2 b@@2 t)))
 )))
 (assert (forall ((a@@3 T@U) (b@@3 T@U) (t@@0 T@U) ) (! (= (|Map#Elements| (|Map#Glue| a@@3 b@@3 t@@0)) b@@3)
+ :qid |DafnyPreludebpl.1446:15|
+ :skolemid |287|
  :pattern ( (|Map#Elements| (|Map#Glue| a@@3 b@@3 t@@0)))
 )))
 (assert (forall ((|a#0#0#0| T@U) (|a#0#1#0| T@U) (|a#0#2#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Edge.Edge| |a#0#0#0| |a#0#1#0| |a#0#2#0|)) |##_module.Edge.Edge|)
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |804|
  :pattern ( (|#_module.Edge.Edge| |a#0#0#0| |a#0#1#0| |a#0#2#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) (|a#4#2#0| T@U) ) (! (= (_module.Edge.f (|#_module.Edge.Edge| |a#4#0#0| |a#4#1#0| |a#4#2#0|)) |a#4#0#0|)
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |815|
  :pattern ( (|#_module.Edge.Edge| |a#4#0#0| |a#4#1#0| |a#4#2#0|))
 )))
 (assert (forall ((|a#5#0#0| T@U) (|a#5#1#0| T@U) (|a#5#2#0| T@U) ) (! (= (_module.Edge.n (|#_module.Edge.Edge| |a#5#0#0| |a#5#1#0| |a#5#2#0|)) |a#5#1#0|)
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |816|
  :pattern ( (|#_module.Edge.Edge| |a#5#0#0| |a#5#1#0| |a#5#2#0|))
 )))
 (assert (forall ((|a#8#0#0| T@U) (|a#8#1#0| T@U) (|a#8#2#0| T@U) ) (! (= (_module.Edge.t (|#_module.Edge.Edge| |a#8#0#0| |a#8#1#0| |a#8#2#0|)) |a#8#2#0|)
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |819|
  :pattern ( (|#_module.Edge.Edge| |a#8#0#0| |a#8#1#0| |a#8#2#0|))
 )))
 (assert (forall ((|_System._tuple#2$T0| T@U) (|_System._tuple#2$T1| T@U) (d T@U) ) (!  (=> ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)) (_System.Tuple2.___hMake2_q d))
+ :qid |unknown.0:0|
+ :skolemid |468|
  :pattern ( (_System.Tuple2.___hMake2_q d) ($Is DatatypeTypeType d (Tclass._System.Tuple2 |_System._tuple#2$T0| |_System._tuple#2$T1|)))
 )))
-(assert  (and (and (and (= (Ctor FieldType) 8) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 9))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+(assert  (and (and (and (= (Ctor FieldType) 8) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 9)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert  (=> (< 2 $FunctionContextHeight) (forall (($h T@U) ($o@@0 T@U) ) (!  (=> (and (and ($IsGoodHeap $h) (and (or (not (= $o@@0 null)) (not true)) (= (dtype $o@@0) Tclass._module.Object?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h $o@@0) alloc)))) ($IsAlloc DatatypeTypeType (_module.Object.region $o@@0) Tclass._module.Region $h))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |741|
  :pattern ( (_module.Object.region $o@@0) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h $o@@0) alloc)))
 ))))
 (assert (forall ((o T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (= (DatatypeCtorId |#_module.Region.Frozen|) |##_module.Region.Frozen|))
 (assert (= (DatatypeCtorId |#_module.Region.Isolate|) |##_module.Region.Isolate|))
 (assert (forall (($o@@1 T@U) ) (! (= ($Is refType $o@@1 Tclass._module.Object?)  (or (= $o@@1 null) (= (dtype $o@@1) Tclass._module.Object?)))
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( ($Is refType $o@@1 Tclass._module.Object?))
 )))
 (assert (forall (($o@@2 T@U) ) (! (= ($Is refType $o@@2 Tclass._module.Memory?)  (or (= $o@@2 null) (= (dtype $o@@2) Tclass._module.Memory?)))
+ :qid |unknown.0:0|
+ :skolemid |824|
  :pattern ( ($Is refType $o@@2 Tclass._module.Memory?))
 )))
 (assert (forall ((|c#0| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0| Tclass._module.Object $h@@0) ($IsAlloc refType |c#0| Tclass._module.Object? $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |803|
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object $h@@0))
  :pattern ( ($IsAlloc refType |c#0| Tclass._module.Object? $h@@0))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.Memory $h@@1) ($IsAlloc refType |c#0@@0| Tclass._module.Memory? $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1378|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Memory $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.Memory? $h@@1))
 )))
 (assert (forall ((d@@0 T@U) ) (!  (=> ($Is DatatypeTypeType d@@0 Tclass._module.Edge) (_module.Edge.Edge_q d@@0))
+ :qid |unknown.0:0|
+ :skolemid |821|
  :pattern ( (_module.Edge.Edge_q d@@0) ($Is DatatypeTypeType d@@0 Tclass._module.Edge))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@1 T@U) (|os#0@@1| T@U) ) (!  (=> (or (|_module.Memory.allRegions#canCall| this@@1 (Lit SetType |os#0@@1|)) (and (< 3 $FunctionContextHeight) (and (and (or (not (= this@@1 null)) (not true)) ($Is refType this@@1 Tclass._module.Memory)) ($Is SetType |os#0@@1| (TSet Tclass._module.Object))))) (= (_module.Memory.allRegions this@@1 (Lit SetType |os#0@@1|)) (|Set#FromBoogieMap| (|lambda#122| Tclass._module.Object (Lit SetType |os#0@@1|) |os#0@@1|))))
+ :qid |gitissue3855dfy.600:10|
  :weight 3
+ :skolemid |1187|
  :pattern ( (_module.Memory.allRegions this@@1 (Lit SetType |os#0@@1|)))
 ))))
 (assert (forall ((|_System._tuple#2$T0@@0| T@U) (|_System._tuple#2$T1@@0| T@U) (|a#2#0#0@@0| T@U) (|a#2#1#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|))  (and ($IsBox |a#2#0#0@@0| |_System._tuple#2$T0@@0|) ($IsBox |a#2#1#0@@0| |_System._tuple#2$T1@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |456|
  :pattern ( ($Is DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@0| |a#2#1#0@@0|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@0| |_System._tuple#2$T1@@0|)))
 )))
 (assert ($Is DatatypeTypeType |#_module.Region.Frozen| Tclass._module.Region))
 (assert ($Is DatatypeTypeType |#_module.Region.Isolate| Tclass._module.Region))
 (assert (forall ((s T@U) ) (!  (and (= (= (|Set#Card| s) 0) (= s |Set#Empty|)) (=> (or (not (= (|Set#Card| s) 0)) (not true)) (exists ((x@@2 T@U) ) (! (|Set#IsMember| s x@@2)
+ :qid |DafnyPreludebpl.678:20|
+ :skolemid |126|
  :pattern ( (|Set#IsMember| s x@@2))
 ))))
+ :qid |DafnyPreludebpl.674:15|
+ :skolemid |127|
  :pattern ( (|Set#Card| s))
 )))
 (assert (= (FDim _module.Object.fields) 0))
 (assert (= (FieldOfDecl class._module.Object? field$fields) _module.Object.fields))
 (assert  (not ($IsGhostField _module.Object.fields)))
 (assert (forall (($h@@2 T@U) ) (!  (=> ($IsGoodHeap $h@@2) ($IsAlloc DatatypeTypeType |#_module.Region.Frozen| Tclass._module.Region $h@@2))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |699|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.Region.Frozen| Tclass._module.Region $h@@2))
 )))
 (assert (forall (($h@@3 T@U) ) (!  (=> ($IsGoodHeap $h@@3) ($IsAlloc DatatypeTypeType |#_module.Region.Isolate| Tclass._module.Region $h@@3))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |729|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.Region.Isolate| Tclass._module.Region $h@@3))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@2 T@U) (|os#0@@2| T@U) (|region#0@@0| T@U) ) (!  (=> (or (|_module.Memory.ownedBy#canCall| (Lit refType this@@2) (Lit SetType |os#0@@2|) (Lit DatatypeTypeType |region#0@@0|)) (and (< 3 $FunctionContextHeight) (and (and (and (or (not (= this@@2 null)) (not true)) ($Is refType this@@2 Tclass._module.Memory)) ($Is SetType |os#0@@2| (TSet Tclass._module.Object))) ($Is DatatypeTypeType |region#0@@0| Tclass._module.Region)))) (and (forall ((|o#3| T@U) ) (!  (=> ($Is refType |o#3| Tclass._module.Object) (=> (|Set#IsMember| (Lit SetType |os#0@@2|) ($Box refType |o#3|)) (and (|$IsA#_module.Region| (_module.Object.region |o#3|)) (|$IsA#_module.Region| (Lit DatatypeTypeType |region#0@@0|)))))
+ :qid |gitissue3855dfy.597:7|
+ :skolemid |1175|
  :pattern ( (_module.Object.region |o#3|))
  :pattern ( (|Set#IsMember| |os#0@@2| ($Box refType |o#3|)))
 )) (= (_module.Memory.ownedBy (Lit refType this@@2) (Lit SetType |os#0@@2|) (Lit DatatypeTypeType |region#0@@0|)) (|Set#FromBoogieMap| (|lambda#117| Tclass._module.Object (Lit SetType |os#0@@2|) |region#0@@0|)))))
+ :qid |gitissue3855dfy.594:10|
  :weight 3
+ :skolemid |1176|
  :pattern ( (_module.Memory.ownedBy (Lit refType this@@2) (Lit SetType |os#0@@2|) (Lit DatatypeTypeType |region#0@@0|)))
 ))))
 (assert (forall (($o@@3 T@U) ($h@@4 T@U) ) (! (= ($IsAlloc refType $o@@3 Tclass._module.Object? $h@@4)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |739|
  :pattern ( ($IsAlloc refType $o@@3 Tclass._module.Object? $h@@4))
 )))
 (assert (forall (($o@@4 T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType $o@@4 Tclass._module.Memory? $h@@5)  (or (= $o@@4 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@4) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |825|
  :pattern ( ($IsAlloc refType $o@@4 Tclass._module.Memory? $h@@5))
 )))
 (assert (forall ((|l#0@@0| T@U) (|l#1@@0| T@U) (|$w#0@@0| T@U) ) (! (= (MapType0Select BoxType BoxType (|lambda#129| |l#0@@0| |l#1@@0|) |$w#0@@0|) ($Box SetType (_module.Memory.ownedBy |l#0@@0| |l#1@@0| ($Unbox DatatypeTypeType |$w#0@@0|))))
+ :qid |gitissue3855dfy.613:10|
+ :skolemid |1426|
  :pattern ( (MapType0Select BoxType BoxType (|lambda#129| |l#0@@0| |l#1@@0|) |$w#0@@0|))
 )))
 (assert (forall ((a@@4 T@U) (b@@4 T@U) ) (! (= (|_module.Region#Equal| a@@4 b@@4) (= a@@4 b@@4))
+ :qid |unknown.0:0|
+ :skolemid |737|
  :pattern ( (|_module.Region#Equal| a@@4 b@@4))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@3 T@U) (|os#0@@3| T@U) (|region#0@@1| T@U) ) (!  (=> (or (|_module.Memory.ownedBy#canCall| this@@3 |os#0@@3| |region#0@@1|) (and (< 3 $FunctionContextHeight) (and (and (and (or (not (= this@@3 null)) (not true)) ($Is refType this@@3 Tclass._module.Memory)) ($Is SetType |os#0@@3| (TSet Tclass._module.Object))) ($Is DatatypeTypeType |region#0@@1| Tclass._module.Region)))) (and (forall ((|o#1| T@U) ) (!  (=> ($Is refType |o#1| Tclass._module.Object) (=> (|Set#IsMember| |os#0@@3| ($Box refType |o#1|)) (and (|$IsA#_module.Region| (_module.Object.region |o#1|)) (|$IsA#_module.Region| |region#0@@1|))))
+ :qid |gitissue3855dfy.597:7|
+ :skolemid |1171|
  :pattern ( (_module.Object.region |o#1|))
  :pattern ( (|Set#IsMember| |os#0@@3| ($Box refType |o#1|)))
 )) (= (_module.Memory.ownedBy this@@3 |os#0@@3| |region#0@@1|) (|Set#FromBoogieMap| (|lambda#117| Tclass._module.Object |os#0@@3| |region#0@@1|)))))
+ :qid |gitissue3855dfy.594:10|
+ :skolemid |1172|
  :pattern ( (_module.Memory.ownedBy this@@3 |os#0@@3| |region#0@@1|))
 ))))
 (assert (forall ((x@@3 Int) ) (! (= (LitInt x@@3) x@@3)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T T@T) ) (! (= (Lit T x@@4) x@@4)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@4))
 )))
 (assert (= (Ctor MapType) 10))
-(assert (forall ((a@@5 T@U) (b@@5 T@U) (t0@@0 T@U) (t1@@0 T@U) ) (!  (=> (forall ((bx T@U) )  (=> (|Set#IsMember| a@@5 bx) (and ($IsBox bx t0@@0) ($IsBox (MapType0Select BoxType BoxType b@@5 bx) t1@@0)))) ($Is MapType (|Map#Glue| a@@5 b@@5 (TMap t0@@0 t1@@0)) (TMap t0@@0 t1@@0)))
+(assert (forall ((a@@5 T@U) (b@@5 T@U) (t0@@0 T@U) (t1@@0 T@U) ) (!  (=> (forall ((bx T@U) ) (!  (=> (|Set#IsMember| a@@5 bx) (and ($IsBox bx t0@@0) ($IsBox (MapType0Select BoxType BoxType b@@5 bx) t1@@0)))
+ :qid |DafnyPreludebpl.1452:11|
+ :skolemid |288|
+)) ($Is MapType (|Map#Glue| a@@5 b@@5 (TMap t0@@0 t1@@0)) (TMap t0@@0 t1@@0)))
+ :qid |DafnyPreludebpl.1449:15|
+ :skolemid |289|
  :pattern ( (|Map#Glue| a@@5 b@@5 (TMap t0@@0 t1@@0)))
 )))
 (assert (forall ((|_System._tuple#2$T0@@1| T@U) (|_System._tuple#2$T1@@1| T@U) (|a#2#0#0@@1| T@U) (|a#2#1#0@@1| T@U) ($h@@6 T@U) ) (!  (=> ($IsGoodHeap $h@@6) (= ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@1| |a#2#1#0@@1|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@6)  (and ($IsAllocBox |a#2#0#0@@1| |_System._tuple#2$T0@@1| $h@@6) ($IsAllocBox |a#2#1#0@@1| |_System._tuple#2$T1@@1| $h@@6))))
+ :qid |unknown.0:0|
+ :skolemid |457|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_System._tuple#2._#Make2| |a#2#0#0@@1| |a#2#1#0@@1|) (Tclass._System.Tuple2 |_System._tuple#2$T0@@1| |_System._tuple#2$T1@@1|) $h@@6))
 )))
 (assert (forall ((|a#2#0#0@@2| T@U) (|a#2#1#0@@2| T@U) (|a#2#2#0@@0| T@U) ($h@@7 T@U) ) (!  (=> ($IsGoodHeap $h@@7) (= ($IsAlloc DatatypeTypeType (|#_module.Edge.Edge| |a#2#0#0@@2| |a#2#1#0@@2| |a#2#2#0@@0|) Tclass._module.Edge $h@@7)  (and (and ($IsAlloc refType |a#2#0#0@@2| Tclass._module.Object $h@@7) ($IsAlloc SeqType |a#2#1#0@@2| (TSeq TChar) $h@@7)) ($IsAlloc refType |a#2#2#0@@0| Tclass._module.Object $h@@7))))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |810|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Edge.Edge| |a#2#0#0@@2| |a#2#1#0@@2| |a#2#2#0@@0|) Tclass._module.Edge $h@@7))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_System.Tuple2.___hMake2_q d@@1) (= (DatatypeCtorId d@@1) |##_System._tuple#2._#Make2|))
+ :qid |unknown.0:0|
+ :skolemid |449|
  :pattern ( (_System.Tuple2.___hMake2_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.Region.Frozen_q d@@2) (= (DatatypeCtorId d@@2) |##_module.Region.Frozen|))
+ :qid |unknown.0:0|
+ :skolemid |697|
  :pattern ( (_module.Region.Frozen_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.Region.Heap_q d@@3) (= (DatatypeCtorId d@@3) |##_module.Region.Heap|))
+ :qid |unknown.0:0|
+ :skolemid |701|
  :pattern ( (_module.Region.Heap_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (! (= (_module.Region.Stack_q d@@4) (= (DatatypeCtorId d@@4) |##_module.Region.Stack|))
+ :qid |unknown.0:0|
+ :skolemid |710|
  :pattern ( (_module.Region.Stack_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (_module.Region.Frame_q d@@5) (= (DatatypeCtorId d@@5) |##_module.Region.Frame|))
+ :qid |unknown.0:0|
+ :skolemid |719|
  :pattern ( (_module.Region.Frame_q d@@5))
 )))
 (assert (forall ((d@@6 T@U) ) (! (= (_module.Region.Isolate_q d@@6) (= (DatatypeCtorId d@@6) |##_module.Region.Isolate|))
+ :qid |unknown.0:0|
+ :skolemid |727|
  :pattern ( (_module.Region.Isolate_q d@@6))
 )))
 (assert (forall ((d@@7 T@U) ) (! (= (_module.Edge.Edge_q d@@7) (= (DatatypeCtorId d@@7) |##_module.Edge.Edge|))
+ :qid |unknown.0:0|
+ :skolemid |805|
  :pattern ( (_module.Edge.Edge_q d@@7))
 )))
 (assert (forall ((x@@5 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@5))
 )))
-(assert (forall ((d@@8 T@U) ) (!  (=> (_module.Edge.Edge_q d@@8) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) (|a#1#2#0| T@U) ) (= d@@8 (|#_module.Edge.Edge| |a#1#0#0| |a#1#1#0| |a#1#2#0|))))
+(assert (forall ((d@@8 T@U) ) (!  (=> (_module.Edge.Edge_q d@@8) (exists ((|a#1#0#0| T@U) (|a#1#1#0| T@U) (|a#1#2#0| T@U) ) (! (= d@@8 (|#_module.Edge.Edge| |a#1#0#0| |a#1#1#0| |a#1#2#0|))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |806|
+)))
+ :qid |unknown.0:0|
+ :skolemid |807|
  :pattern ( (_module.Edge.Edge_q d@@8))
 )))
 (assert (forall ((a@@6 T@U) (b@@6 T@U) ) (! (= (|Set#Disjoint| a@@6 b@@6) (forall ((o@@0 T@U) ) (!  (or (not (|Set#IsMember| a@@6 o@@0)) (not (|Set#IsMember| b@@6 o@@0)))
+ :qid |DafnyPreludebpl.794:19|
+ :skolemid |151|
  :pattern ( (|Set#IsMember| a@@6 o@@0))
  :pattern ( (|Set#IsMember| b@@6 o@@0))
 )))
+ :qid |DafnyPreludebpl.791:15|
+ :skolemid |152|
  :pattern ( (|Set#Disjoint| a@@6 b@@6))
 )))
 (assert (forall ((m@@1 T@U) (bx@@0 T@U) ) (! (= (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx@@0) (U_2_bool (MapType0Select BoxType boolType m@@1 bx@@0)))
+ :qid |DafnyPreludebpl.805:15|
+ :skolemid |153|
  :pattern ( (|Set#IsMember| (|Set#FromBoogieMap| m@@1) bx@@0))
 )))
-(assert (forall ((d@@9 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@9) (exists ((|a#1#0#0@@0| T@U) (|a#1#1#0@@0| T@U) ) (= d@@9 (|#_System._tuple#2._#Make2| |a#1#0#0@@0| |a#1#1#0@@0|))))
+(assert (forall ((d@@9 T@U) ) (!  (=> (_System.Tuple2.___hMake2_q d@@9) (exists ((|a#1#0#0@@0| T@U) (|a#1#1#0@@0| T@U) ) (! (= d@@9 (|#_System._tuple#2._#Make2| |a#1#0#0@@0| |a#1#1#0@@0|))
+ :qid |unknown.0:0|
+ :skolemid |450|
+)))
+ :qid |unknown.0:0|
+ :skolemid |451|
  :pattern ( (_System.Tuple2.___hMake2_q d@@9))
 )))
 (assert (forall ((d@@10 T@U) ) (!  (=> (_module.Region.Frozen_q d@@10) (= d@@10 |#_module.Region.Frozen|))
+ :qid |unknown.0:0|
+ :skolemid |698|
  :pattern ( (_module.Region.Frozen_q d@@10))
 )))
 (assert (forall ((d@@11 T@U) ) (!  (=> (_module.Region.Isolate_q d@@11) (= d@@11 |#_module.Region.Isolate|))
+ :qid |unknown.0:0|
+ :skolemid |728|
  :pattern ( (_module.Region.Isolate_q d@@11))
 )))
 (assert (forall ((v T@U) (t0@@1 T@U) ) (! (= ($Is SetType v (TSet t0@@1)) (forall ((bx@@1 T@U) ) (!  (=> (|Set#IsMember| v bx@@1) ($IsBox bx@@1 t0@@1))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx@@1))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@1)))
 )))
-(assert (forall ((d@@12 T@U) ) (!  (=> (_module.Region.Heap_q d@@12) (exists ((|a#25#0#0| T@U) ) (= d@@12 (|#_module.Region.Heap| |a#25#0#0|))))
+(assert (forall ((d@@12 T@U) ) (!  (=> (_module.Region.Heap_q d@@12) (exists ((|a#25#0#0| T@U) ) (! (= d@@12 (|#_module.Region.Heap| |a#25#0#0|))
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |702|
+)))
+ :qid |unknown.0:0|
+ :skolemid |703|
  :pattern ( (_module.Region.Heap_q d@@12))
 )))
-(assert (forall ((d@@13 T@U) ) (!  (=> (_module.Region.Stack_q d@@13) (exists ((|a#30#0#0| T@U) ) (= d@@13 (|#_module.Region.Stack| |a#30#0#0|))))
+(assert (forall ((d@@13 T@U) ) (!  (=> (_module.Region.Stack_q d@@13) (exists ((|a#30#0#0| T@U) ) (! (= d@@13 (|#_module.Region.Stack| |a#30#0#0|))
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |711|
+)))
+ :qid |unknown.0:0|
+ :skolemid |712|
  :pattern ( (_module.Region.Stack_q d@@13))
 )))
-(assert (forall ((d@@14 T@U) ) (!  (=> (_module.Region.Frame_q d@@14) (exists ((|a#35#0#0| T@U) ) (= d@@14 (|#_module.Region.Frame| |a#35#0#0|))))
+(assert (forall ((d@@14 T@U) ) (!  (=> (_module.Region.Frame_q d@@14) (exists ((|a#35#0#0| T@U) ) (! (= d@@14 (|#_module.Region.Frame| |a#35#0#0|))
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |720|
+)))
+ :qid |unknown.0:0|
+ :skolemid |721|
  :pattern ( (_module.Region.Frame_q d@@14))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@0 T@U) (this@@4 T@U) (|os#0@@4| T@U) ) (!  (=> (or (|_module.Memory.edges#canCall| $Heap@@0 this@@4 |os#0@@4|) (and (< 2 $FunctionContextHeight) (and (and (and ($IsGoodHeap $Heap@@0) (or (not (= this@@4 null)) (not true))) ($IsAlloc refType this@@4 Tclass._module.Memory $Heap@@0)) (and ($Is SetType |os#0@@4| (TSet Tclass._module.Object)) ($IsAlloc SetType |os#0@@4| (TSet Tclass._module.Object) $Heap@@0))))) ($IsAlloc SetType (_module.Memory.edges $Heap@@0 this@@4 |os#0@@4|) (TSet Tclass._module.Edge) $Heap@@0))
+ :qid |gitissue3855dfy.256:12|
+ :skolemid |918|
  :pattern ( ($IsAlloc SetType (_module.Memory.edges $Heap@@0 this@@4 |os#0@@4|) (TSet Tclass._module.Edge) $Heap@@0))
 ))))
 (assert ($IsGhostField alloc))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@5 T@U) (|os#0@@5| T@U) (|region#0@@2| T@U) ) (!  (=> (or (|_module.Memory.ownedBy#canCall| this@@5 (Lit SetType |os#0@@5|) (Lit DatatypeTypeType |region#0@@2|)) (and (< 3 $FunctionContextHeight) (and (and (and (or (not (= this@@5 null)) (not true)) ($Is refType this@@5 Tclass._module.Memory)) ($Is SetType |os#0@@5| (TSet Tclass._module.Object))) ($Is DatatypeTypeType |region#0@@2| Tclass._module.Region)))) (and (forall ((|o#2| T@U) ) (!  (=> ($Is refType |o#2| Tclass._module.Object) (=> (|Set#IsMember| (Lit SetType |os#0@@5|) ($Box refType |o#2|)) (and (|$IsA#_module.Region| (_module.Object.region |o#2|)) (|$IsA#_module.Region| (Lit DatatypeTypeType |region#0@@2|)))))
+ :qid |gitissue3855dfy.597:7|
+ :skolemid |1173|
  :pattern ( (_module.Object.region |o#2|))
  :pattern ( (|Set#IsMember| |os#0@@5| ($Box refType |o#2|)))
 )) (= (_module.Memory.ownedBy this@@5 (Lit SetType |os#0@@5|) (Lit DatatypeTypeType |region#0@@2|)) (|Set#FromBoogieMap| (|lambda#117| Tclass._module.Object (Lit SetType |os#0@@5|) |region#0@@2|)))))
+ :qid |gitissue3855dfy.594:10|
  :weight 3
+ :skolemid |1174|
  :pattern ( (_module.Memory.ownedBy this@@5 (Lit SetType |os#0@@5|) (Lit DatatypeTypeType |region#0@@2|)))
 ))))
 (assert (forall ((v@@0 T@U) (t@@1 T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t@@1 h) ($IsAlloc T@@1 v@@0 t@@1 h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t@@1 h))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 Tclass._module.Object) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) Tclass._module.Object)))
+ :qid |unknown.0:0|
+ :skolemid |590|
  :pattern ( ($IsBox bx@@2 Tclass._module.Object))
 )))
 (assert (forall ((bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 Tclass._module.Region) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@3)) bx@@3) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@3) Tclass._module.Region)))
+ :qid |unknown.0:0|
+ :skolemid |599|
  :pattern ( ($IsBox bx@@3 Tclass._module.Region))
 )))
 (assert (forall ((bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 Tclass._module.Memory) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) Tclass._module.Memory)))
+ :qid |unknown.0:0|
+ :skolemid |600|
  :pattern ( ($IsBox bx@@4 Tclass._module.Memory))
 )))
 (assert (forall ((bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 Tclass._module.Memory?) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) Tclass._module.Memory?)))
+ :qid |unknown.0:0|
+ :skolemid |601|
  :pattern ( ($IsBox bx@@5 Tclass._module.Memory?))
 )))
 (assert (forall ((bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 Tclass._module.Object?) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) Tclass._module.Object?)))
+ :qid |unknown.0:0|
+ :skolemid |622|
  :pattern ( ($IsBox bx@@6 Tclass._module.Object?))
 )))
 (assert (forall ((bx@@7 T@U) ) (!  (=> ($IsBox bx@@7 Tclass._module.Edge) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@7)) bx@@7) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@7) Tclass._module.Edge)))
+ :qid |unknown.0:0|
+ :skolemid |808|
  :pattern ( ($IsBox bx@@7 Tclass._module.Edge))
 )))
 (assert (forall ((|a#26#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Region.Heap| |a#26#0#0|) Tclass._module.Region) ($Is refType |a#26#0#0| Tclass._module.Object))
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |704|
  :pattern ( ($Is DatatypeTypeType (|#_module.Region.Heap| |a#26#0#0|) Tclass._module.Region))
 )))
 (assert (forall ((|a#31#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Region.Stack| |a#31#0#0|) Tclass._module.Region) ($Is refType |a#31#0#0| Tclass._module.Object))
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |713|
  :pattern ( ($Is DatatypeTypeType (|#_module.Region.Stack| |a#31#0#0|) Tclass._module.Region))
 )))
 (assert (forall ((|a#36#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Region.Frame| |a#36#0#0|) Tclass._module.Region) ($Is refType |a#36#0#0| Tclass._module.Object))
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |722|
  :pattern ( ($Is DatatypeTypeType (|#_module.Region.Frame| |a#36#0#0|) Tclass._module.Region))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass._module.Object)  (and ($Is refType |c#0@@1| Tclass._module.Object?) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |802|
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Object))
  :pattern ( ($Is refType |c#0@@1| Tclass._module.Object?))
 )))
 (assert (forall ((|c#0@@2| T@U) ) (! (= ($Is refType |c#0@@2| Tclass._module.Memory)  (and ($Is refType |c#0@@2| Tclass._module.Memory?) (or (not (= |c#0@@2| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1377|
  :pattern ( ($Is refType |c#0@@2| Tclass._module.Memory))
  :pattern ( ($Is refType |c#0@@2| Tclass._module.Memory?))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@6 T@U) (|os#0@@6| T@U) ) (!  (=> (or (|_module.Memory.allRegions#canCall| this@@6 |os#0@@6|) (and (< 3 $FunctionContextHeight) (and (and (or (not (= this@@6 null)) (not true)) ($Is refType this@@6 Tclass._module.Memory)) ($Is SetType |os#0@@6| (TSet Tclass._module.Object))))) (and (forall ((|o#0@@0| T@U) ) (!  (=> (and ($Is refType |o#0@@0| Tclass._module.Object) (|Set#IsMember| |os#0@@6| ($Box refType |o#0@@0|))) (|Set#IsMember| (_module.Memory.allRegions this@@6 |os#0@@6|) ($Box DatatypeTypeType (_module.Object.region |o#0@@0|))))
+ :qid |gitissue3855dfy.601:19|
+ :skolemid |1180|
  :pattern ( (_module.Object.region |o#0@@0|))
  :pattern ( (|Set#IsMember| |os#0@@6| ($Box refType |o#0@@0|)))
 )) ($Is SetType (_module.Memory.allRegions this@@6 |os#0@@6|) (TSet Tclass._module.Region))))
+ :qid |gitissue3855dfy.600:10|
+ :skolemid |1181|
  :pattern ( (_module.Memory.allRegions this@@6 |os#0@@6|))
 ))))
 (assert (forall ((m@@2 T@U) ) (! (= (= (|Map#Card| m@@2) 0) (= m@@2 |Map#Empty|))
+ :qid |DafnyPreludebpl.1382:15|
+ :skolemid |272|
  :pattern ( (|Map#Card| m@@2))
 )))
 (assert (forall ((|l#0@@1| T@U) (|l#1@@1| T@U) (|l#2| T@U) (|$y#0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#122| |l#0@@1| |l#1@@1| |l#2|) |$y#0|)) (exists ((|o#1@@0| T@U) ) (!  (and (and ($Is refType |o#1@@0| |l#0@@1|) (|Set#IsMember| |l#1@@1| ($Box refType |o#1@@0|))) (= |$y#0| ($Box DatatypeTypeType (_module.Object.region |o#1@@0|))))
+ :qid |gitissue3855dfy.603:7|
+ :skolemid |1184|
  :pattern ( (_module.Object.region |o#1@@0|))
  :pattern ( (|Set#IsMember| |l#2| ($Box refType |o#1@@0|)))
 )))
+ :qid |gitissue3855dfy.87:7|
+ :skolemid |1425|
  :pattern ( (MapType0Select BoxType boolType (|lambda#122| |l#0@@1| |l#1@@1| |l#2|) |$y#0|))
 )))
 (assert (forall ((|l#0@@2| T@U) (|l#1@@2| T@U) (|l#2@@0| T@U) (|$y#0@@0| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#137| |l#0@@2| |l#1@@2| |l#2@@0|) |$y#0@@0|)) (exists ((|o#2@@0| T@U) ) (!  (and (and ($Is DatatypeTypeType |o#2@@0| |l#0@@2|) (|Set#IsMember| |l#1@@2| ($Box DatatypeTypeType |o#2@@0|))) (= |$y#0@@0| ($Box boolType (bool_2_U (_module.Region.Heap_q |o#2@@0|)))))
+ :qid |gitissue3855dfy.634:25|
+ :skolemid |1221|
  :pattern ( (_module.Region.Heap_q |o#2@@0|))
  :pattern ( (|Set#IsMember| |l#2@@0| ($Box DatatypeTypeType |o#2@@0|)))
 )))
+ :qid |gitissue3855dfy.19:10|
+ :skolemid |1427|
  :pattern ( (MapType0Select BoxType boolType (|lambda#137| |l#0@@2| |l#1@@2| |l#2@@0|) |$y#0@@0|))
 )))
 (assert (forall (($h@@8 T@U) ($o@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (or (not (= $o@@5 null)) (not true)) (= (dtype $o@@5) Tclass._module.Object?))) ($Is MapType ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@5) _module.Object.fields)) (TMap (TSeq TChar) Tclass._module.Object)))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |742|
  :pattern ( ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@8 $o@@5) _module.Object.fields)))
 )))
 (assert (forall (($h@@9 T@U) ($o@@6 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@9) (and (or (not (= $o@@6 null)) (not true)) (= (dtype $o@@6) Tclass._module.Object?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@6) alloc)))) ($IsAlloc MapType ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@6) _module.Object.fields)) (TMap (TSeq TChar) Tclass._module.Object) $h@@9))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |743|
  :pattern ( ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@9 $o@@6) _module.Object.fields)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@1 T@U) (this@@7 T@U) (|os#0@@7| T@U) ) (!  (=> (or (|_module.Memory.edges#canCall| $Heap@@1 this@@7 |os#0@@7|) (and (< 2 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@1) (and (or (not (= this@@7 null)) (not true)) (and ($Is refType this@@7 Tclass._module.Memory) ($IsAlloc refType this@@7 Tclass._module.Memory $Heap@@1)))) (and ($Is SetType |os#0@@7| (TSet Tclass._module.Object)) ($IsAlloc SetType |os#0@@7| (TSet Tclass._module.Object) $Heap@@1))))) (and (and (forall ((|edge#0| T@U) ) (!  (=> (and ($Is DatatypeTypeType |edge#0| Tclass._module.Edge) (|Set#IsMember| (_module.Memory.edges $Heap@@1 this@@7 |os#0@@7|) ($Box DatatypeTypeType |edge#0|))) (and (|Set#IsMember| (|Map#Domain| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 (_module.Edge.f |edge#0|)) _module.Object.fields))) ($Box SeqType (_module.Edge.n |edge#0|))) (= ($Unbox refType (MapType0Select BoxType BoxType (|Map#Elements| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 (_module.Edge.f |edge#0|)) _module.Object.fields))) ($Box SeqType (_module.Edge.n |edge#0|)))) (_module.Edge.t |edge#0|))))
+ :qid |gitissue3855dfy.258:20|
+ :skolemid |916|
  :pattern ( (_module.Edge.t |edge#0|))
  :pattern ( (_module.Edge.f |edge#0|))
  :pattern ( (_module.Edge.n |edge#0|))
  :pattern ( (|Set#IsMember| (_module.Memory.edges $Heap@@1 this@@7 |os#0@@7|) ($Box DatatypeTypeType |edge#0|)))
 )) (=> (|Set#Equal| |os#0@@7| |Set#Empty|) (|Set#Equal| (_module.Memory.edges $Heap@@1 this@@7 |os#0@@7|) |Set#Empty|))) ($Is SetType (_module.Memory.edges $Heap@@1 this@@7 |os#0@@7|) (TSet Tclass._module.Edge))))
+ :qid |gitissue3855dfy.256:12|
+ :skolemid |917|
  :pattern ( (_module.Memory.edges $Heap@@1 this@@7 |os#0@@7|))
 ))))
 (assert (forall ((a@@7 T@U) (b@@7 T@U) ) (!  (=> (|Set#Equal| a@@7 b@@7) (= a@@7 b@@7))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@7 b@@7))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap@@2 T@U) (this@@8 T@U) (|os#0@@8| T@U) (|region#0@@3| T@U) ) (!  (=> (and (or (|_module.Memory.ownedBy#canCall| this@@8 |os#0@@8| |region#0@@3|) (and (< 3 $FunctionContextHeight) (and (and (and (or (not (= this@@8 null)) (not true)) ($IsAlloc refType this@@8 Tclass._module.Memory $Heap@@2)) (and ($Is SetType |os#0@@8| (TSet Tclass._module.Object)) ($IsAlloc SetType |os#0@@8| (TSet Tclass._module.Object) $Heap@@2))) (and ($Is DatatypeTypeType |region#0@@3| Tclass._module.Region) ($IsAlloc DatatypeTypeType |region#0@@3| Tclass._module.Region $Heap@@2))))) ($IsGoodHeap $Heap@@2)) ($IsAlloc SetType (_module.Memory.ownedBy this@@8 |os#0@@8| |region#0@@3|) (TSet Tclass._module.Object) $Heap@@2))
+ :qid |gitissue3855dfy.594:10|
+ :skolemid |1169|
  :pattern ( ($IsAlloc SetType (_module.Memory.ownedBy this@@8 |os#0@@8| |region#0@@3|) (TSet Tclass._module.Object) $Heap@@2))
 ))))
 (assert (forall ((|a#26#0#0@@0| T@U) ($h@@10 T@U) ) (!  (=> ($IsGoodHeap $h@@10) (= ($IsAlloc DatatypeTypeType (|#_module.Region.Heap| |a#26#0#0@@0|) Tclass._module.Region $h@@10) ($IsAlloc refType |a#26#0#0@@0| Tclass._module.Object $h@@10)))
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |705|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Region.Heap| |a#26#0#0@@0|) Tclass._module.Region $h@@10))
 )))
 (assert (forall ((|a#31#0#0@@0| T@U) ($h@@11 T@U) ) (!  (=> ($IsGoodHeap $h@@11) (= ($IsAlloc DatatypeTypeType (|#_module.Region.Stack| |a#31#0#0@@0|) Tclass._module.Region $h@@11) ($IsAlloc refType |a#31#0#0@@0| Tclass._module.Object $h@@11)))
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |714|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Region.Stack| |a#31#0#0@@0|) Tclass._module.Region $h@@11))
 )))
 (assert (forall ((|a#36#0#0@@0| T@U) ($h@@12 T@U) ) (!  (=> ($IsGoodHeap $h@@12) (= ($IsAlloc DatatypeTypeType (|#_module.Region.Frame| |a#36#0#0@@0|) Tclass._module.Region $h@@12) ($IsAlloc refType |a#36#0#0@@0| Tclass._module.Object $h@@12)))
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |723|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.Region.Frame| |a#36#0#0@@0|) Tclass._module.Region $h@@12))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@9 T@U) (|os#0@@9| T@U) ) (!  (=> (or (|_module.Memory.allRegions#canCall| (Lit refType this@@9) (Lit SetType |os#0@@9|)) (and (< 3 $FunctionContextHeight) (and (and (or (not (= this@@9 null)) (not true)) ($Is refType this@@9 Tclass._module.Memory)) ($Is SetType |os#0@@9| (TSet Tclass._module.Object))))) (= (_module.Memory.allRegions (Lit refType this@@9) (Lit SetType |os#0@@9|)) (|Set#FromBoogieMap| (|lambda#122| Tclass._module.Object (Lit SetType |os#0@@9|) |os#0@@9|))))
+ :qid |gitissue3855dfy.600:10|
  :weight 3
+ :skolemid |1189|
  :pattern ( (_module.Memory.allRegions (Lit refType this@@9) (Lit SetType |os#0@@9|)))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap@@3 T@U) (this@@10 T@U) (|os#0@@10| T@U) ) (!  (=> (and (or (|_module.Memory.allRegions#canCall| this@@10 |os#0@@10|) (and (< 3 $FunctionContextHeight) (and (and (or (not (= this@@10 null)) (not true)) ($IsAlloc refType this@@10 Tclass._module.Memory $Heap@@3)) (and ($Is SetType |os#0@@10| (TSet Tclass._module.Object)) ($IsAlloc SetType |os#0@@10| (TSet Tclass._module.Object) $Heap@@3))))) ($IsGoodHeap $Heap@@3)) ($IsAlloc SetType (_module.Memory.allRegions this@@10 |os#0@@10|) (TSet Tclass._module.Region) $Heap@@3))
+ :qid |gitissue3855dfy.600:10|
+ :skolemid |1182|
  :pattern ( ($IsAlloc SetType (_module.Memory.allRegions this@@10 |os#0@@10|) (TSet Tclass._module.Region) $Heap@@3))
 ))))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((bx@@8 T@U) ) (!  (=> ($IsBox bx@@8 TBool) (and (= ($Box boolType ($Unbox boolType bx@@8)) bx@@8) ($Is boolType ($Unbox boolType bx@@8) TBool)))
+ :qid |DafnyPreludebpl.182:15|
+ :skolemid |29|
  :pattern ( ($IsBox bx@@8 TBool))
 )))
 (assert (= (Ctor charType) 11))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 TChar) (and (= ($Box charType ($Unbox charType bx@@9)) bx@@9) ($Is charType ($Unbox charType bx@@9) TChar)))
+ :qid |DafnyPreludebpl.185:15|
+ :skolemid |30|
  :pattern ( ($IsBox bx@@9 TChar))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@2) ($Is T@@2 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@2))
 )))
 (assert (forall ((s@@0 T@U) ) (! (<= 0 (|Set#Card| s@@0))
+ :qid |DafnyPreludebpl.664:15|
+ :skolemid |124|
  :pattern ( (|Set#Card| s@@0))
 )))
 (assert (forall ((s@@1 T@U) ) (! (<= 0 (|Seq#Length| s@@1))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s@@1))
 )))
 (assert (forall ((m@@3 T@U) ) (! (<= 0 (|Map#Card| m@@3))
+ :qid |DafnyPreludebpl.1380:15|
+ :skolemid |271|
  :pattern ( (|Map#Card| m@@3))
 )))
 (assert (forall ((a@@8 T@U) (b@@8 T@U) ) (!  (=> (and (_module.Region.Frozen_q a@@8) (_module.Region.Frozen_q b@@8)) (|_module.Region#Equal| a@@8 b@@8))
+ :qid |unknown.0:0|
+ :skolemid |732|
  :pattern ( (|_module.Region#Equal| a@@8 b@@8) (_module.Region.Frozen_q a@@8))
  :pattern ( (|_module.Region#Equal| a@@8 b@@8) (_module.Region.Frozen_q b@@8))
 )))
 (assert (forall ((a@@9 T@U) (b@@9 T@U) ) (!  (=> (and (_module.Region.Isolate_q a@@9) (_module.Region.Isolate_q b@@9)) (|_module.Region#Equal| a@@9 b@@9))
+ :qid |unknown.0:0|
+ :skolemid |736|
  :pattern ( (|_module.Region#Equal| a@@9 b@@9) (_module.Region.Isolate_q a@@9))
  :pattern ( (|_module.Region#Equal| a@@9 b@@9) (_module.Region.Isolate_q b@@9))
 )))
 (assert (forall ((v@@2 T@U) (t0@@2 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@2) h@@0) (forall ((bx@@10 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@10) ($IsAllocBox bx@@10 t0@@2 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@10))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@2) h@@0))
 )))
 (assert (forall ((t@@3 T@U) (u T@U) ) (! (= (Inv0_TMap (TMap t@@3 u)) t@@3)
+ :qid |DafnyPreludebpl.57:15|
+ :skolemid |9|
  :pattern ( (TMap t@@3 u))
 )))
 (assert (forall ((t@@4 T@U) (u@@0 T@U) ) (! (= (Inv1_TMap (TMap t@@4 u@@0)) u@@0)
+ :qid |DafnyPreludebpl.58:15|
+ :skolemid |10|
  :pattern ( (TMap t@@4 u@@0))
 )))
 (assert (forall ((t@@5 T@U) (u@@1 T@U) ) (! (= (Tag (TMap t@@5 u@@1)) TagMap)
+ :qid |DafnyPreludebpl.59:15|
+ :skolemid |11|
  :pattern ( (TMap t@@5 u@@1))
 )))
 (assert (forall ((|a#0#0#0@@0| T@U) (|a#0#1#0@@0| T@U) ) (! (= (DatatypeCtorId (|#_System._tuple#2._#Make2| |a#0#0#0@@0| |a#0#1#0@@0|)) |##_System._tuple#2._#Make2|)
+ :qid |unknown.0:0|
+ :skolemid |448|
  :pattern ( (|#_System._tuple#2._#Make2| |a#0#0#0@@0| |a#0#1#0@@0|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@2| T@U) (|_System._tuple#2$T1@@2| T@U) ) (! (= (Tclass._System.Tuple2_0 (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|)) |_System._tuple#2$T0@@2|)
+ :qid |unknown.0:0|
+ :skolemid |453|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@2| |_System._tuple#2$T1@@2|))
 )))
 (assert (forall ((|_System._tuple#2$T0@@3| T@U) (|_System._tuple#2$T1@@3| T@U) ) (! (= (Tclass._System.Tuple2_1 (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|)) |_System._tuple#2$T1@@3|)
+ :qid |unknown.0:0|
+ :skolemid |454|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@3| |_System._tuple#2$T1@@3|))
 )))
 (assert (forall ((|a#4#0#0@@0| T@U) (|a#4#1#0@@0| T@U) ) (! (= (_System.Tuple2._0 (|#_System._tuple#2._#Make2| |a#4#0#0@@0| |a#4#1#0@@0|)) |a#4#0#0@@0|)
+ :qid |unknown.0:0|
+ :skolemid |463|
  :pattern ( (|#_System._tuple#2._#Make2| |a#4#0#0@@0| |a#4#1#0@@0|))
 )))
 (assert (forall ((|a#6#0#0@@0| T@U) (|a#6#1#0@@0| T@U) ) (! (= (_System.Tuple2._1 (|#_System._tuple#2._#Make2| |a#6#0#0@@0| |a#6#1#0@@0|)) |a#6#1#0@@0|)
+ :qid |unknown.0:0|
+ :skolemid |465|
  :pattern ( (|#_System._tuple#2._#Make2| |a#6#0#0@@0| |a#6#1#0@@0|))
 )))
 (assert (forall ((v@@3 T@U) (t0@@3 T@U) (h@@1 T@U) ) (! (= ($IsAlloc SeqType v@@3 (TSeq t0@@3) h@@1) (forall ((i@@0 Int) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| v@@3))) ($IsAllocBox (|Seq#Index| v@@3 i@@0) t0@@3 h@@1))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@3 i@@0))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@3 (TSeq t0@@3) h@@1))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) (|a#3#2#0| T@U) ) (! (= (|#_module.Edge.Edge| (Lit refType |a#3#0#0|) (Lit SeqType |a#3#1#0|) (Lit refType |a#3#2#0|)) (Lit DatatypeTypeType (|#_module.Edge.Edge| |a#3#0#0| |a#3#1#0| |a#3#2#0|)))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |814|
  :pattern ( (|#_module.Edge.Edge| (Lit refType |a#3#0#0|) (Lit SeqType |a#3#1#0|) (Lit refType |a#3#2#0|)))
 )))
 (assert (forall ((t@@6 T@U) ) (! (= (Inv0_TSet (TSet t@@6)) t@@6)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@6))
 )))
 (assert (forall ((t@@7 T@U) ) (! (= (Tag (TSet t@@7)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@7))
 )))
 (assert (forall ((t@@8 T@U) ) (! (= (Inv0_TSeq (TSeq t@@8)) t@@8)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@8))
 )))
 (assert (forall ((t@@9 T@U) ) (! (= (Tag (TSeq t@@9)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@9))
 )))
 (assert (forall ((|a#24#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Region.Heap| |a#24#0#0|)) |##_module.Region.Heap|)
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |700|
  :pattern ( (|#_module.Region.Heap| |a#24#0#0|))
 )))
 (assert (forall ((|a#28#0#0| T@U) ) (! (= (_module.Region.region (|#_module.Region.Heap| |a#28#0#0|)) |a#28#0#0|)
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |708|
  :pattern ( (|#_module.Region.Heap| |a#28#0#0|))
 )))
 (assert (forall ((|a#29#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Region.Stack| |a#29#0#0|)) |##_module.Region.Stack|)
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |709|
  :pattern ( (|#_module.Region.Stack| |a#29#0#0|))
 )))
 (assert (forall ((|a#33#0#0| T@U) ) (! (= (_module.Region.region (|#_module.Region.Stack| |a#33#0#0|)) |a#33#0#0|)
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |717|
  :pattern ( (|#_module.Region.Stack| |a#33#0#0|))
 )))
 (assert (forall ((|a#34#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Region.Frame| |a#34#0#0|)) |##_module.Region.Frame|)
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |718|
  :pattern ( (|#_module.Region.Frame| |a#34#0#0|))
 )))
 (assert (forall ((|a#38#0#0| T@U) ) (! (= (_module.Region.prev (|#_module.Region.Frame| |a#38#0#0|)) |a#38#0#0|)
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |726|
  :pattern ( (|#_module.Region.Frame| |a#38#0#0|))
 )))
 (assert (forall ((x@@6 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@6))
 )))
 (assert (forall ((v@@4 T@U) (t0@@4 T@U) (t1@@1 T@U) (h@@2 T@U) ) (! (= ($IsAlloc MapType v@@4 (TMap t0@@4 t1@@1) h@@2) (forall ((bx@@11 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@4) bx@@11) (and ($IsAllocBox (MapType0Select BoxType BoxType (|Map#Elements| v@@4) bx@@11) t1@@1 h@@2) ($IsAllocBox bx@@11 t0@@4 h@@2)))
+ :qid |DafnyPreludebpl.318:19|
+ :skolemid |75|
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| v@@4) bx@@11))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@4) bx@@11))
 )))
+ :qid |DafnyPreludebpl.315:15|
+ :skolemid |76|
  :pattern ( ($IsAlloc MapType v@@4 (TMap t0@@4 t1@@1) h@@2))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) (|a#7#2#0| T@U) ) (! (< (|Seq#Rank| |a#7#1#0|) (DtRank (|#_module.Edge.Edge| |a#7#0#0| |a#7#1#0| |a#7#2#0|)))
+ :qid |gitissue3855dfy.149:22|
+ :skolemid |818|
  :pattern ( (|#_module.Edge.Edge| |a#7#0#0| |a#7#1#0| |a#7#2#0|))
 )))
 (assert (forall ((|a#5#0#0@@0| T@U) (|a#5#1#0@@0| T@U) ) (! (< (BoxRank |a#5#0#0@@0|) (DtRank (|#_System._tuple#2._#Make2| |a#5#0#0@@0| |a#5#1#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |464|
  :pattern ( (|#_System._tuple#2._#Make2| |a#5#0#0@@0| |a#5#1#0@@0|))
 )))
 (assert (forall ((|a#7#0#0@@0| T@U) (|a#7#1#0@@0| T@U) ) (! (< (BoxRank |a#7#1#0@@0|) (DtRank (|#_System._tuple#2._#Make2| |a#7#0#0@@0| |a#7#1#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |466|
  :pattern ( (|#_System._tuple#2._#Make2| |a#7#0#0@@0| |a#7#1#0@@0|))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall (($Heap@@4 T@U) (this@@11 T@U) (|os#0@@11| T@U) ) (!  (=> (and (or (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@11 |os#0@@11|) (and (< 4 $FunctionContextHeight) (and (and (or (not (= this@@11 null)) (not true)) ($IsAlloc refType this@@11 Tclass._module.Memory $Heap@@4)) (and ($Is SetType |os#0@@11| (TSet Tclass._module.Object)) ($IsAlloc SetType |os#0@@11| (TSet Tclass._module.Object) $Heap@@4))))) ($IsGoodHeap $Heap@@4)) ($IsAlloc MapType (_module.Memory.partitionOfJustHeapRegions this@@11 |os#0@@11|) (TMap Tclass._module.Region (TSet Tclass._module.Object)) $Heap@@4))
+ :qid |gitissue3855dfy.625:10|
+ :skolemid |1219|
  :pattern ( ($IsAlloc MapType (_module.Memory.partitionOfJustHeapRegions this@@11 |os#0@@11|) (TMap Tclass._module.Region (TSet Tclass._module.Object)) $Heap@@4))
 ))))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((this@@12 T@U) (|os#0@@12| T@U) ) (!  (=> (or (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@12 |os#0@@12|) (and (< 4 $FunctionContextHeight) (and (and (or (not (= this@@12 null)) (not true)) ($Is refType this@@12 Tclass._module.Memory)) ($Is SetType |os#0@@12| (TSet Tclass._module.Object))))) (and (and (|_module.Memory.allRegions#canCall| this@@12 |os#0@@12|) (forall ((|region#0@@4| T@U) ) (!  (=> ($Is DatatypeTypeType |region#0@@4| Tclass._module.Region) (and (|_module.Memory.allRegions#canCall| this@@12 |os#0@@12|) (=> (|Set#IsMember| (_module.Memory.allRegions this@@12 |os#0@@12|) ($Box DatatypeTypeType |region#0@@4|)) (|_module.Memory.ownedBy#canCall| this@@12 |os#0@@12| |region#0@@4|))))
+ :qid |gitissue3855dfy.635:7|
+ :skolemid |1222|
  :pattern ( (_module.Memory.ownedBy this@@12 |os#0@@12| |region#0@@4|))
  :pattern ( (|Set#IsMember| (_module.Memory.allRegions this@@12 |os#0@@12|) ($Box DatatypeTypeType |region#0@@4|)))
 ))) (= (_module.Memory.partitionOfJustHeapRegions this@@12 |os#0@@12|) (|Map#Glue| (|Set#FromBoogieMap| (|lambda#54| Tclass._module.Region (_module.Memory.allRegions this@@12 |os#0@@12|))) (|lambda#129| this@@12 |os#0@@12|) (TMap Tclass._module.Region (TSet Tclass._module.Object))))))
+ :qid |gitissue3855dfy.625:10|
+ :skolemid |1224|
  :pattern ( (_module.Memory.partitionOfJustHeapRegions this@@12 |os#0@@12|))
 ))))
 (assert (forall ((u@@2 T@U) ) (!  (not (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@2))
+ :qid |DafnyPreludebpl.1438:15|
+ :skolemid |285|
  :pattern ( (|Set#IsMember| (|Map#Domain| |Map#Empty|) u@@2))
 )))
 (assert (forall ((bx@@12 T@U) (s@@2 T@U) (t@@10 T@U) ) (!  (=> ($IsBox bx@@12 (TMap s@@2 t@@10)) (and (= ($Box MapType ($Unbox MapType bx@@12)) bx@@12) ($Is MapType ($Unbox MapType bx@@12) (TMap s@@2 t@@10))))
+ :qid |DafnyPreludebpl.207:15|
+ :skolemid |36|
  :pattern ( ($IsBox bx@@12 (TMap s@@2 t@@10)))
 )))
 (assert (forall ((|_System._tuple#2$T0@@4| T@U) (|_System._tuple#2$T1@@4| T@U) (bx@@13 T@U) ) (!  (=> ($IsBox bx@@13 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@13)) bx@@13) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@13) (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|))))
+ :qid |unknown.0:0|
+ :skolemid |455|
  :pattern ( ($IsBox bx@@13 (Tclass._System.Tuple2 |_System._tuple#2$T0@@4| |_System._tuple#2$T1@@4|)))
 )))
 (assert (forall ((d@@15 T@U) ) (!  (=> (|$IsA#_module.Region| d@@15) (or (or (or (or (_module.Region.Frozen_q d@@15) (_module.Region.Heap_q d@@15)) (_module.Region.Stack_q d@@15)) (_module.Region.Frame_q d@@15)) (_module.Region.Isolate_q d@@15)))
+ :qid |unknown.0:0|
+ :skolemid |730|
  :pattern ( (|$IsA#_module.Region| d@@15))
 )))
 (assert (forall ((|_System._tuple#2$T0@@5| T@U) (|_System._tuple#2$T1@@5| T@U) ) (!  (and (= (Tag (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) Tagclass._System.Tuple2) (= (TagFamily (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|)) |tytagFamily$_tuple#2|))
+ :qid |unknown.0:0|
+ :skolemid |452|
  :pattern ( (Tclass._System.Tuple2 |_System._tuple#2$T0@@5| |_System._tuple#2$T1@@5|))
 )))
 (assert (forall ((|l#0@@3| T@U) (|l#1@@3| T@U) (|l#2@@1| T@U) (|$y#0@@1| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#117| |l#0@@3| |l#1@@3| |l#2@@1|) |$y#0@@1|))  (and ($IsBox |$y#0@@1| |l#0@@3|) (and (|Set#IsMember| |l#1@@3| |$y#0@@1|) (|_module.Region#Equal| (_module.Object.region ($Unbox refType |$y#0@@1|)) |l#2@@1|))))
+ :qid |gitissue3855dfy.87:7|
+ :skolemid |1424|
  :pattern ( (MapType0Select BoxType boolType (|lambda#117| |l#0@@3| |l#1@@3| |l#2@@1|) |$y#0@@1|))
 )))
-(assert (forall ((m@@4 T@U) ) (!  (or (= m@@4 |Map#Empty|) (exists ((k T@U) ) (|Set#IsMember| (|Map#Domain| m@@4) k)))
+(assert (forall ((m@@4 T@U) ) (!  (or (= m@@4 |Map#Empty|) (exists ((k T@U) ) (! (|Set#IsMember| (|Map#Domain| m@@4) k)
+ :qid |DafnyPreludebpl.1388:31|
+ :skolemid |273|
+)))
+ :qid |DafnyPreludebpl.1386:15|
+ :skolemid |274|
  :pattern ( (|Map#Domain| m@@4))
 )))
-(assert (forall ((m@@5 T@U) ) (!  (or (= m@@5 |Map#Empty|) (exists ((v@@5 T@U) ) (|Set#IsMember| (|Map#Values| m@@5) v@@5)))
+(assert (forall ((m@@5 T@U) ) (!  (or (= m@@5 |Map#Empty|) (exists ((v@@5 T@U) ) (! (|Set#IsMember| (|Map#Values| m@@5) v@@5)
+ :qid |DafnyPreludebpl.1391:31|
+ :skolemid |275|
+)))
+ :qid |DafnyPreludebpl.1389:15|
+ :skolemid |276|
  :pattern ( (|Map#Values| m@@5))
 )))
 (assert (forall ((m@@6 T@U) (item T@U) ) (! (= (|Set#IsMember| (|Map#Items| m@@6) item)  (and (|Set#IsMember| (|Map#Domain| m@@6) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (= (MapType0Select BoxType BoxType (|Map#Elements| m@@6) (_System.Tuple2._0 ($Unbox DatatypeTypeType item))) (_System.Tuple2._1 ($Unbox DatatypeTypeType item)))))
+ :qid |DafnyPreludebpl.1430:15|
+ :skolemid |284|
  :pattern ( (|Set#IsMember| (|Map#Items| m@@6) item))
 )))
 (assert (forall ((m@@7 T@U) (v@@6 T@U) ) (! (= (|Set#IsMember| (|Map#Values| m@@7) v@@6) (exists ((u@@3 T@U) ) (!  (and (|Set#IsMember| (|Map#Domain| m@@7) u@@3) (= v@@6 (MapType0Select BoxType BoxType (|Map#Elements| m@@7) u@@3)))
+ :qid |DafnyPreludebpl.1414:10|
+ :skolemid |282|
  :pattern ( (|Set#IsMember| (|Map#Domain| m@@7) u@@3))
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| m@@7) u@@3))
 )))
+ :qid |DafnyPreludebpl.1412:15|
+ :skolemid |283|
  :pattern ( (|Set#IsMember| (|Map#Values| m@@7) v@@6))
 )))
 (assert (forall ((d@@16 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@16)) (DtRank d@@16))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@16)))
 )))
 (assert (forall ((m@@8 T@U) ) (! (= (|Set#Card| (|Map#Domain| m@@8)) (|Map#Card| m@@8))
+ :qid |DafnyPreludebpl.1396:15|
+ :skolemid |279|
  :pattern ( (|Set#Card| (|Map#Domain| m@@8)))
  :pattern ( (|Map#Card| m@@8))
 )))
 (assert (forall ((m@@9 T@U) ) (! (= (|Set#Card| (|Map#Items| m@@9)) (|Map#Card| m@@9))
+ :qid |DafnyPreludebpl.1402:15|
+ :skolemid |281|
  :pattern ( (|Set#Card| (|Map#Items| m@@9)))
  :pattern ( (|Map#Card| m@@9))
 )))
 (assert (forall ((m@@10 T@U) ) (! (<= (|Set#Card| (|Map#Values| m@@10)) (|Map#Card| m@@10))
+ :qid |DafnyPreludebpl.1399:15|
+ :skolemid |280|
  :pattern ( (|Set#Card| (|Map#Values| m@@10)))
  :pattern ( (|Map#Card| m@@10))
 )))
 (assert (forall ((bx@@14 T@U) (t@@11 T@U) ) (!  (=> ($IsBox bx@@14 (TSet t@@11)) (and (= ($Box SetType ($Unbox SetType bx@@14)) bx@@14) ($Is SetType ($Unbox SetType bx@@14) (TSet t@@11))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@14 (TSet t@@11)))
 )))
 (assert (forall ((bx@@15 T@U) (t@@12 T@U) ) (!  (=> ($IsBox bx@@15 (TSeq t@@12)) (and (= ($Box SeqType ($Unbox SeqType bx@@15)) bx@@15) ($Is SeqType ($Unbox SeqType bx@@15) (TSeq t@@12))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@15 (TSeq t@@12)))
 )))
 (assert (forall ((v@@7 T@U) (t0@@5 T@U) (t1@@2 T@U) ) (! (= ($Is MapType v@@7 (TMap t0@@5 t1@@2)) (forall ((bx@@16 T@U) ) (!  (=> (|Set#IsMember| (|Map#Domain| v@@7) bx@@16) (and ($IsBox (MapType0Select BoxType BoxType (|Map#Elements| v@@7) bx@@16) t1@@2) ($IsBox bx@@16 t0@@5)))
+ :qid |DafnyPreludebpl.261:19|
+ :skolemid |55|
  :pattern ( (MapType0Select BoxType BoxType (|Map#Elements| v@@7) bx@@16))
  :pattern ( (|Set#IsMember| (|Map#Domain| v@@7) bx@@16))
 )))
+ :qid |DafnyPreludebpl.258:15|
+ :skolemid |56|
  :pattern ( ($Is MapType v@@7 (TMap t0@@5 t1@@2)))
 )))
 (assert (= (Tag Tclass._module.Object) Tagclass._module.Object))
@@ -719,9 +1069,13 @@
 (assert (= |#_module.Region.Frozen| (Lit DatatypeTypeType |#_module.Region.Frozen|)))
 (assert (= |#_module.Region.Isolate| (Lit DatatypeTypeType |#_module.Region.Isolate|)))
 (assert (forall ((d@@17 T@U) ($h@@13 T@U) ) (!  (=> (and ($IsGoodHeap $h@@13) (and (_module.Edge.Edge_q d@@17) ($IsAlloc DatatypeTypeType d@@17 Tclass._module.Edge $h@@13))) ($IsAlloc SeqType (_module.Edge.n d@@17) (TSeq TChar) $h@@13))
+ :qid |unknown.0:0|
+ :skolemid |812|
  :pattern ( ($IsAlloc SeqType (_module.Edge.n d@@17) (TSeq TChar) $h@@13))
 )))
 (assert (forall ((d@@18 T@U) ) (!  (=> ($Is DatatypeTypeType d@@18 Tclass._module.Region) (or (or (or (or (_module.Region.Frozen_q d@@18) (_module.Region.Heap_q d@@18)) (_module.Region.Stack_q d@@18)) (_module.Region.Frame_q d@@18)) (_module.Region.Isolate_q d@@18)))
+ :qid |unknown.0:0|
+ :skolemid |731|
  :pattern ( (_module.Region.Isolate_q d@@18) ($Is DatatypeTypeType d@@18 Tclass._module.Region))
  :pattern ( (_module.Region.Frame_q d@@18) ($Is DatatypeTypeType d@@18 Tclass._module.Region))
  :pattern ( (_module.Region.Stack_q d@@18) ($Is DatatypeTypeType d@@18 Tclass._module.Region))
@@ -729,90 +1083,147 @@
  :pattern ( (_module.Region.Frozen_q d@@18) ($Is DatatypeTypeType d@@18 Tclass._module.Region))
 )))
 (assert (forall ((a@@10 T@U) (b@@10 T@U) ) (! (= (|Set#Equal| a@@10 b@@10) (forall ((o@@1 T@U) ) (! (= (|Set#IsMember| a@@10 o@@1) (|Set#IsMember| b@@10 o@@1))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@10 o@@1))
  :pattern ( (|Set#IsMember| b@@10 o@@1))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@10 b@@10))
 )))
 (assert (forall ((d@@19 T@U) (|_System._tuple#2$T0@@6| T@U) ($h@@14 T@U) ) (!  (=> (and ($IsGoodHeap $h@@14) (and (_System.Tuple2.___hMake2_q d@@19) (exists ((|_System._tuple#2$T1@@6| T@U) ) (! ($IsAlloc DatatypeTypeType d@@19 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@14)
+ :qid |unknown.0:0|
+ :skolemid |458|
  :pattern ( ($IsAlloc DatatypeTypeType d@@19 (Tclass._System.Tuple2 |_System._tuple#2$T0@@6| |_System._tuple#2$T1@@6|) $h@@14))
 )))) ($IsAllocBox (_System.Tuple2._0 d@@19) |_System._tuple#2$T0@@6| $h@@14))
+ :qid |unknown.0:0|
+ :skolemid |459|
  :pattern ( ($IsAllocBox (_System.Tuple2._0 d@@19) |_System._tuple#2$T0@@6| $h@@14))
 )))
 (assert (forall ((d@@20 T@U) (|_System._tuple#2$T1@@7| T@U) ($h@@15 T@U) ) (!  (=> (and ($IsGoodHeap $h@@15) (and (_System.Tuple2.___hMake2_q d@@20) (exists ((|_System._tuple#2$T0@@7| T@U) ) (! ($IsAlloc DatatypeTypeType d@@20 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@15)
+ :qid |unknown.0:0|
+ :skolemid |460|
  :pattern ( ($IsAlloc DatatypeTypeType d@@20 (Tclass._System.Tuple2 |_System._tuple#2$T0@@7| |_System._tuple#2$T1@@7|) $h@@15))
 )))) ($IsAllocBox (_System.Tuple2._1 d@@20) |_System._tuple#2$T1@@7| $h@@15))
+ :qid |unknown.0:0|
+ :skolemid |461|
  :pattern ( ($IsAllocBox (_System.Tuple2._1 d@@20) |_System._tuple#2$T1@@7| $h@@15))
 )))
 (assert (forall ((|l#0@@4| T@U) (|l#1@@4| T@U) (|l#2@@2| T@U) (|l#3| T@U) (|l#4| T@U) (|l#5| T@U) (|l#6| T@U) (|l#7| T@U) (|l#8| T@U) (|l#9| T@U) (|l#10| T@U) (|$y#0@@2| T@U) ) (! (= (U_2_bool (MapType0Select BoxType boolType (|lambda#47| |l#0@@4| |l#1@@4| |l#2@@2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9| |l#10|) |$y#0@@2|)) (exists ((|o#0@@1| T@U) (|n#0| T@U) ) (!  (and (and (and ($Is refType |o#0@@1| |l#0@@4|) ($Is SeqType |n#0| |l#1@@4|)) (and (|Set#IsMember| |l#2@@2| ($Box refType |o#0@@1|)) (|Set#IsMember| (|Map#Domain| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#3| |o#0@@1|) |l#4|))) ($Box SeqType |n#0|)))) (= |$y#0@@2| ($Box DatatypeTypeType (|#_module.Edge.Edge| |o#0@@1| |n#0| ($Unbox refType (MapType0Select BoxType BoxType (|Map#Elements| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#5| |o#0@@1|) |l#6|))) ($Box SeqType |n#0|)))))))
+ :qid |gitissue3855dfy.261:10|
+ :skolemid |920|
  :pattern ( ($Unbox refType (MapType0Select BoxType BoxType (|Map#Elements| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#9| |o#0@@1|) |l#10|))) ($Box SeqType |n#0|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| ($Unbox MapType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#7| |o#0@@1|) |l#8|))) ($Box SeqType |n#0|)))
 )))
+ :qid |gitissue3855dfy.87:7|
+ :skolemid |1416|
  :pattern ( (MapType0Select BoxType boolType (|lambda#47| |l#0@@4| |l#1@@4| |l#2@@2| |l#3| |l#4| |l#5| |l#6| |l#7| |l#8| |l#9| |l#10|) |$y#0@@2|))
 )))
 (assert (forall ((d@@21 T@U) ($h@@16 T@U) ) (!  (=> (and ($IsGoodHeap $h@@16) (and (_module.Region.Heap_q d@@21) ($IsAlloc DatatypeTypeType d@@21 Tclass._module.Region $h@@16))) ($IsAlloc refType (_module.Region.region d@@21) Tclass._module.Object $h@@16))
+ :qid |unknown.0:0|
+ :skolemid |706|
  :pattern ( ($IsAlloc refType (_module.Region.region d@@21) Tclass._module.Object $h@@16))
 )))
 (assert (forall ((d@@22 T@U) ($h@@17 T@U) ) (!  (=> (and ($IsGoodHeap $h@@17) (and (_module.Region.Stack_q d@@22) ($IsAlloc DatatypeTypeType d@@22 Tclass._module.Region $h@@17))) ($IsAlloc refType (_module.Region.region d@@22) Tclass._module.Object $h@@17))
+ :qid |unknown.0:0|
+ :skolemid |715|
  :pattern ( ($IsAlloc refType (_module.Region.region d@@22) Tclass._module.Object $h@@17))
 )))
 (assert (forall ((d@@23 T@U) ($h@@18 T@U) ) (!  (=> (and ($IsGoodHeap $h@@18) (and (_module.Region.Frame_q d@@23) ($IsAlloc DatatypeTypeType d@@23 Tclass._module.Region $h@@18))) ($IsAlloc refType (_module.Region.prev d@@23) Tclass._module.Object $h@@18))
+ :qid |unknown.0:0|
+ :skolemid |724|
  :pattern ( ($IsAlloc refType (_module.Region.prev d@@23) Tclass._module.Object $h@@18))
 )))
 (assert (forall ((d@@24 T@U) ($h@@19 T@U) ) (!  (=> (and ($IsGoodHeap $h@@19) (and (_module.Edge.Edge_q d@@24) ($IsAlloc DatatypeTypeType d@@24 Tclass._module.Edge $h@@19))) ($IsAlloc refType (_module.Edge.f d@@24) Tclass._module.Object $h@@19))
+ :qid |unknown.0:0|
+ :skolemid |811|
  :pattern ( ($IsAlloc refType (_module.Edge.f d@@24) Tclass._module.Object $h@@19))
 )))
 (assert (forall ((d@@25 T@U) ($h@@20 T@U) ) (!  (=> (and ($IsGoodHeap $h@@20) (and (_module.Edge.Edge_q d@@25) ($IsAlloc DatatypeTypeType d@@25 Tclass._module.Edge $h@@20))) ($IsAlloc refType (_module.Edge.t d@@25) Tclass._module.Object $h@@20))
+ :qid |unknown.0:0|
+ :skolemid |813|
  :pattern ( ($IsAlloc refType (_module.Edge.t d@@25) Tclass._module.Object $h@@20))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((this@@13 T@U) (|os#0@@13| T@U) ) (!  (=> (or (|_module.Memory.partitionOfJustHeapRegions#canCall| (Lit refType this@@13) (Lit SetType |os#0@@13|)) (and (< 4 $FunctionContextHeight) (and (and (or (not (= this@@13 null)) (not true)) ($Is refType this@@13 Tclass._module.Memory)) ($Is SetType |os#0@@13| (TSet Tclass._module.Object))))) (and (and (|_module.Memory.allRegions#canCall| (Lit refType this@@13) (Lit SetType |os#0@@13|)) (forall ((|region#0@@5| T@U) ) (!  (=> ($Is DatatypeTypeType |region#0@@5| Tclass._module.Region) (and (|_module.Memory.allRegions#canCall| (Lit refType this@@13) (Lit SetType |os#0@@13|)) (=> (|Set#IsMember| (Lit SetType (_module.Memory.allRegions (Lit refType this@@13) (Lit SetType |os#0@@13|))) ($Box DatatypeTypeType |region#0@@5|)) (|_module.Memory.ownedBy#canCall| (Lit refType this@@13) (Lit SetType |os#0@@13|) |region#0@@5|))))
+ :qid |gitissue3855dfy.635:7|
+ :skolemid |1230|
  :pattern ( (_module.Memory.ownedBy this@@13 |os#0@@13| |region#0@@5|))
  :pattern ( (|Set#IsMember| (_module.Memory.allRegions this@@13 |os#0@@13|) ($Box DatatypeTypeType |region#0@@5|)))
 ))) (= (_module.Memory.partitionOfJustHeapRegions (Lit refType this@@13) (Lit SetType |os#0@@13|)) (|Map#Glue| (|Set#FromBoogieMap| (|lambda#54| Tclass._module.Region (Lit SetType (_module.Memory.allRegions (Lit refType this@@13) (Lit SetType |os#0@@13|))))) (|lambda#129| (Lit refType this@@13) (Lit SetType |os#0@@13|)) (TMap Tclass._module.Region (TSet Tclass._module.Object))))))
+ :qid |gitissue3855dfy.625:10|
  :weight 3
+ :skolemid |1232|
  :pattern ( (_module.Memory.partitionOfJustHeapRegions (Lit refType this@@13) (Lit SetType |os#0@@13|)))
 ))))
 (assert (forall ((|a#3#0#0@@0| T@U) (|a#3#1#0@@0| T@U) ) (! (= (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0@@0|) (Lit BoxType |a#3#1#0@@0|)) (Lit DatatypeTypeType (|#_System._tuple#2._#Make2| |a#3#0#0@@0| |a#3#1#0@@0|)))
+ :qid |unknown.0:0|
+ :skolemid |462|
  :pattern ( (|#_System._tuple#2._#Make2| (Lit BoxType |a#3#0#0@@0|) (Lit BoxType |a#3#1#0@@0|)))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((|a#27#0#0| T@U) ) (! (= (|#_module.Region.Heap| (Lit refType |a#27#0#0|)) (Lit DatatypeTypeType (|#_module.Region.Heap| |a#27#0#0|)))
+ :qid |gitissue3855dfy.19:33|
+ :skolemid |707|
  :pattern ( (|#_module.Region.Heap| (Lit refType |a#27#0#0|)))
 )))
 (assert (forall ((|a#32#0#0| T@U) ) (! (= (|#_module.Region.Stack| (Lit refType |a#32#0#0|)) (Lit DatatypeTypeType (|#_module.Region.Stack| |a#32#0#0|)))
+ :qid |gitissue3855dfy.19:58|
+ :skolemid |716|
  :pattern ( (|#_module.Region.Stack| (Lit refType |a#32#0#0|)))
 )))
 (assert (forall ((|a#37#0#0| T@U) ) (! (= (|#_module.Region.Frame| (Lit refType |a#37#0#0|)) (Lit DatatypeTypeType (|#_module.Region.Frame| |a#37#0#0|)))
+ :qid |gitissue3855dfy.19:84|
+ :skolemid |725|
  :pattern ( (|#_module.Region.Frame| (Lit refType |a#37#0#0|)))
 )))
 (assert (forall ((x@@8 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@8)) (Lit BoxType ($Box T@@4 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@8)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@5 T@U) (this@@14 T@U) (|os#0@@14| T@U) ) (!  (=> (or (|_module.Memory.edges#canCall| $Heap@@5 this@@14 |os#0@@14|) (and (< 2 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@5) (and (or (not (= this@@14 null)) (not true)) (and ($Is refType this@@14 Tclass._module.Memory) ($IsAlloc refType this@@14 Tclass._module.Memory $Heap@@5)))) ($Is SetType |os#0@@14| (TSet Tclass._module.Object))))) (= (_module.Memory.edges $Heap@@5 this@@14 |os#0@@14|) (|Set#FromBoogieMap| (|lambda#47| Tclass._module.Object (TSeq TChar) |os#0@@14| $Heap@@5 _module.Object.fields $Heap@@5 _module.Object.fields $Heap@@5 _module.Object.fields $Heap@@5 _module.Object.fields))))
+ :qid |gitissue3855dfy.256:12|
+ :skolemid |921|
  :pattern ( (_module.Memory.edges $Heap@@5 this@@14 |os#0@@14|) ($IsGoodHeap $Heap@@5))
 ))))
 (assert (forall ((s@@3 T@U) ) (!  (=> (= (|Seq#Length| s@@3) 0) (= s@@3 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@3))
 )))
 (assert  (and (forall ((t0@@6 T@T) (t1@@3 T@T) (t2 T@T) (val@@1 T@U) (m@@11 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@6 t1@@3 t2 (MapType1Store t0@@6 t1@@3 t2 m@@11 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@12 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@12 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@12 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@13 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@13 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@13 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0@@5| T@U) (|l#1@@5| T@U) (|l#2@@3| T@U) (|l#3@@0| T@U) ($o@@7 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#34| |l#0@@5| |l#1@@5| |l#2@@3| |l#3@@0|) $o@@7 $f))  (=> (and (or (not (= $o@@7 |l#0@@5|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1@@5| $o@@7) |l#2@@3|)))) (|Set#IsMember| |l#3@@0| ($Box refType $o@@7))))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1412|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#34| |l#0@@5| |l#1@@5| |l#2@@3| |l#3@@0|) $o@@7 $f))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((this@@15 T@U) (|os#0@@15| T@U) ) (!  (=> (or (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@15 |os#0@@15|) (and (< 4 $FunctionContextHeight) (and (and (or (not (= this@@15 null)) (not true)) ($Is refType this@@15 Tclass._module.Memory)) ($Is SetType |os#0@@15| (TSet Tclass._module.Object))))) (and (and (and (forall ((|o#0@@2| T@U) ) (!  (=> (and ($Is refType |o#0@@2| Tclass._module.Object) (|Set#IsMember| |os#0@@15| ($Box refType |o#0@@2|))) (=> (_module.Region.Heap_q (_module.Object.region |o#0@@2|)) (|Set#IsMember| (|Map#Domain| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType (_module.Object.region |o#0@@2|)))))
+ :qid |gitissue3855dfy.626:18|
+ :skolemid |1215|
  :pattern ( (_module.Object.region |o#0@@2|))
  :pattern ( (|Set#IsMember| |os#0@@15| ($Box refType |o#0@@2|)))
 )) (forall ((|o#1@@1| T@U) ) (!  (=> (and ($Is refType |o#1@@1| Tclass._module.Object) (|Set#IsMember| |os#0@@15| ($Box refType |o#1@@1|))) (=> (_module.Region.Heap_q (_module.Object.region |o#1@@1|)) (|Set#IsMember| ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType (_module.Object.region |o#1@@1|)))) ($Box refType |o#1@@1|))))
+ :qid |gitissue3855dfy.627:18|
+ :skolemid |1216|
  :pattern ( (_module.Object.region |o#1@@1|))
  :pattern ( (|Set#IsMember| |os#0@@15| ($Box refType |o#1@@1|)))
 ))) (forall ((|o1#0| T@U) (|o2#0| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |o1#0| Tclass._module.Region) ($Is DatatypeTypeType |o2#0| Tclass._module.Region)) (and (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o1#0|)) (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o2#0|)))) (=> (and (_module.Region.Heap_q |o1#0|) (_module.Region.Heap_q |o2#0|)) (ite (|_module.Region#Equal| |o1#0| |o2#0|) (|Set#Equal| ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o1#0|))) ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o2#0|)))) (|Set#Disjoint| ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o1#0|))) ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o2#0|)))))))
+ :qid |gitissue3855dfy.628:18|
+ :skolemid |1217|
  :pattern ( ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o2#0|))) ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o1#0|))))
  :pattern ( ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o2#0|))) (_module.Region.Heap_q |o1#0|))
  :pattern ( ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|)) ($Box DatatypeTypeType |o2#0|))) (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o1#0|)))
@@ -823,42 +1234,71 @@
  :pattern ( (_module.Region.Heap_q |o1#0|) (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o2#0|)))
  :pattern ( (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o2#0|)) (|Set#IsMember| (_module.Memory.allRegions this@@15 |os#0@@15|) ($Box DatatypeTypeType |o1#0|)))
 ))) ($Is MapType (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|) (TMap Tclass._module.Region (TSet Tclass._module.Object)))))
+ :qid |gitissue3855dfy.625:10|
+ :skolemid |1218|
  :pattern ( (_module.Memory.partitionOfJustHeapRegions this@@15 |os#0@@15|))
 ))))
 (assert (forall ((h@@3 T@U) (v@@8 T@U) ) (! ($IsAlloc boolType v@@8 TBool h@@3)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |63|
  :pattern ( ($IsAlloc boolType v@@8 TBool h@@3))
 )))
 (assert (forall ((h@@4 T@U) (v@@9 T@U) ) (! ($IsAlloc charType v@@9 TChar h@@4)
+ :qid |DafnyPreludebpl.292:14|
+ :skolemid |64|
  :pattern ( ($IsAlloc charType v@@9 TChar h@@4))
 )))
 (assert (forall ((v@@10 T@U) (t0@@7 T@U) ) (! (= ($Is SeqType v@@10 (TSeq t0@@7)) (forall ((i@@1 Int) ) (!  (=> (and (<= 0 i@@1) (< i@@1 (|Seq#Length| v@@10))) ($IsBox (|Seq#Index| v@@10 i@@1) t0@@7))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@10 i@@1))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@10 (TSeq t0@@7)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((this@@16 T@U) (|os#0@@16| T@U) ) (!  (=> (or (|_module.Memory.allRegions#canCall| this@@16 |os#0@@16|) (and (< 3 $FunctionContextHeight) (and (and (or (not (= this@@16 null)) (not true)) ($Is refType this@@16 Tclass._module.Memory)) ($Is SetType |os#0@@16| (TSet Tclass._module.Object))))) (= (_module.Memory.allRegions this@@16 |os#0@@16|) (|Set#FromBoogieMap| (|lambda#122| Tclass._module.Object |os#0@@16| |os#0@@16|))))
+ :qid |gitissue3855dfy.600:10|
+ :skolemid |1185|
  :pattern ( (_module.Memory.allRegions this@@16 |os#0@@16|))
 ))))
-(assert (forall ((m@@14 T@U) ) (!  (or (= m@@14 |Map#Empty|) (exists ((k@@0 T@U) (v@@11 T@U) ) (|Set#IsMember| (|Map#Items| m@@14) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@0 v@@11)))))
+(assert (forall ((m@@14 T@U) ) (!  (or (= m@@14 |Map#Empty|) (exists ((k@@0 T@U) (v@@11 T@U) ) (! (|Set#IsMember| (|Map#Items| m@@14) ($Box DatatypeTypeType (|#_System._tuple#2._#Make2| k@@0 v@@11)))
+ :qid |DafnyPreludebpl.1394:31|
+ :skolemid |277|
+)))
+ :qid |DafnyPreludebpl.1392:15|
+ :skolemid |278|
  :pattern ( (|Map#Items| m@@14))
 )))
 (assert  (=> (<= 4 $FunctionContextHeight) (forall ((this@@17 T@U) (|os#0@@17| T@U) ) (!  (=> (or (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@17 (Lit SetType |os#0@@17|)) (and (< 4 $FunctionContextHeight) (and (and (or (not (= this@@17 null)) (not true)) ($Is refType this@@17 Tclass._module.Memory)) ($Is SetType |os#0@@17| (TSet Tclass._module.Object))))) (and (and (|_module.Memory.allRegions#canCall| this@@17 (Lit SetType |os#0@@17|)) (forall ((|region#0@@6| T@U) ) (!  (=> ($Is DatatypeTypeType |region#0@@6| Tclass._module.Region) (and (|_module.Memory.allRegions#canCall| this@@17 (Lit SetType |os#0@@17|)) (=> (|Set#IsMember| (_module.Memory.allRegions this@@17 (Lit SetType |os#0@@17|)) ($Box DatatypeTypeType |region#0@@6|)) (|_module.Memory.ownedBy#canCall| this@@17 (Lit SetType |os#0@@17|) |region#0@@6|))))
+ :qid |gitissue3855dfy.635:7|
+ :skolemid |1226|
  :pattern ( (_module.Memory.ownedBy this@@17 |os#0@@17| |region#0@@6|))
  :pattern ( (|Set#IsMember| (_module.Memory.allRegions this@@17 |os#0@@17|) ($Box DatatypeTypeType |region#0@@6|)))
 ))) (= (_module.Memory.partitionOfJustHeapRegions this@@17 (Lit SetType |os#0@@17|)) (|Map#Glue| (|Set#FromBoogieMap| (|lambda#54| Tclass._module.Region (_module.Memory.allRegions this@@17 (Lit SetType |os#0@@17|)))) (|lambda#129| this@@17 (Lit SetType |os#0@@17|)) (TMap Tclass._module.Region (TSet Tclass._module.Object))))))
+ :qid |gitissue3855dfy.625:10|
  :weight 3
+ :skolemid |1228|
  :pattern ( (_module.Memory.partitionOfJustHeapRegions this@@17 (Lit SetType |os#0@@17|)))
 ))))
 (assert (forall ((s@@4 T@U) (i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| s@@4))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@4 i@@2))) (|Seq#Rank| s@@4)))
+ :qid |DafnyPreludebpl.1353:15|
+ :skolemid |267|
  :pattern ( (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@4 i@@2))))
 )))
 (assert (forall ((v@@12 T@U) (t0@@8 T@U) (t1@@4 T@U) ) (!  (=> ($Is MapType v@@12 (TMap t0@@8 t1@@4)) (and (and ($Is SetType (|Map#Domain| v@@12) (TSet t0@@8)) ($Is SetType (|Map#Values| v@@12) (TSet t1@@4))) ($Is SetType (|Map#Items| v@@12) (TSet (Tclass._System.Tuple2 t0@@8 t1@@4)))))
+ :qid |DafnyPreludebpl.267:15|
+ :skolemid |57|
  :pattern ( ($Is MapType v@@12 (TMap t0@@8 t1@@4)))
 )))
 (assert (forall ((v@@13 T@U) ) (! ($Is boolType v@@13 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |42|
  :pattern ( ($Is boolType v@@13 TBool))
 )))
 (assert (forall ((v@@14 T@U) ) (! ($Is charType v@@14 TChar)
+ :qid |DafnyPreludebpl.231:14|
+ :skolemid |43|
  :pattern ( ($Is charType v@@14 TChar))
 )))
 (push 1)
@@ -874,6 +1314,7 @@
 (declare-fun |edges#Z#0@0| () T@U)
 (declare-fun |let#1#0#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.Memory.heapExternalsZeroOrOneXXX)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -890,6 +1331,8 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 11) (let ((anon6_correct  (=> (= (_module.Memory.heapExternalsZeroOrOneXXX $Heap@@6 this@@18 |os#0@@18|) (forall ((|hr#2| T@U) ) (!  (=> (and ($Is DatatypeTypeType |hr#2| Tclass._module.Region) (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#2|))) (<= (|Set#Card| ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#2|)))) (LitInt 1)))
+ :qid |gitissue3855dfy.296:12|
+ :skolemid |977|
  :pattern ( ($Unbox SetType (MapType0Select BoxType BoxType (|Map#Elements| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#2|))))
  :pattern ( (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#2|)))
 ))) (=> (and ($Is boolType (bool_2_U (_module.Memory.heapExternalsZeroOrOneXXX $Heap@@6 this@@18 |os#0@@18|)) TBool) (= (ControlFlow 0 3) (- 0 2))) |b$reqreads#0@0|))))
@@ -897,7 +1340,10 @@
 (let ((anon10_Then_correct  (=> (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#1@0|)) (and (=> (= (ControlFlow 0 5) (- 0 6)) (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#1@0|))) (=> (|Set#IsMember| (|Map#Domain| |heapRegionPartitions#Z#0@0|) ($Box DatatypeTypeType |hr#1@0|)) (=> (= (ControlFlow 0 5) 3) anon6_correct))))))
 (let ((anon9_Then_correct  (=> (and ($Is DatatypeTypeType |hr#1@0| Tclass._module.Region) ($IsAlloc DatatypeTypeType |hr#1@0| Tclass._module.Region $Heap@@6)) (and (=> (= (ControlFlow 0 8) 5) anon10_Then_correct) (=> (= (ControlFlow 0 8) 7) anon10_Else_correct)))))
 (let ((anon9_Else_correct  (=> (and (not (and ($Is DatatypeTypeType |hr#1@0| Tclass._module.Region) ($IsAlloc DatatypeTypeType |hr#1@0| Tclass._module.Region $Heap@@6))) (= (ControlFlow 0 4) 3)) anon6_correct)))
-(let ((anon8_Else_correct  (=> ($IsAllocBox ($Box refType this@@18) Tclass._module.Memory? $Heap@@6) (=> (and ($IsAlloc SetType |os#0@@18| (TSet Tclass._module.Object) $Heap@@6) (= |b$reqreads#0@0| (forall (($o@@8 T@U) ($f@@0 T@U) )  (=> (and (and (or (not (= $o@@8 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 $o@@8) alloc)))) (|Set#IsMember| |os#0@@18| ($Box refType $o@@8))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@8 $f@@0)))))) (=> (and (and (|_module.Memory.edges#canCall| $Heap@@6 this@@18 |os#0@@18|) (= |let#0#0#0| (_module.Memory.edges $Heap@@6 this@@18 |os#0@@18|))) (and (|_module.Memory.edges#canCall| $Heap@@6 this@@18 |os#0@@18|) ($Is SetType |let#0#0#0| (TSet Tclass._module.Edge)))) (=> (and (and (and (= |edges#Z#0@0| |let#0#0#0|) ($IsAllocBox ($Box refType this@@18) Tclass._module.Memory? $Heap@@6)) (and ($IsAlloc SetType |os#0@@18| (TSet Tclass._module.Object) $Heap@@6) (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@18 |os#0@@18|))) (and (and (= |let#1#0#0| (_module.Memory.partitionOfJustHeapRegions this@@18 |os#0@@18|)) (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@18 |os#0@@18|)) (and ($Is MapType |let#1#0#0| (TMap Tclass._module.Region (TSet Tclass._module.Object))) (= |heapRegionPartitions#Z#0@0| |let#1#0#0|)))) (and (=> (= (ControlFlow 0 9) 8) anon9_Then_correct) (=> (= (ControlFlow 0 9) 4) anon9_Else_correct))))))))
+(let ((anon8_Else_correct  (=> ($IsAllocBox ($Box refType this@@18) Tclass._module.Memory? $Heap@@6) (=> (and ($IsAlloc SetType |os#0@@18| (TSet Tclass._module.Object) $Heap@@6) (= |b$reqreads#0@0| (forall (($o@@8 T@U) ($f@@0 T@U) ) (!  (=> (and (and (or (not (= $o@@8 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@6 $o@@8) alloc)))) (|Set#IsMember| |os#0@@18| ($Box refType $o@@8))) (U_2_bool (MapType1Select refType FieldType boolType $_ReadsFrame@0 $o@@8 $f@@0)))
+ :qid |gitissue3855dfy.294:18|
+ :skolemid |974|
+)))) (=> (and (and (|_module.Memory.edges#canCall| $Heap@@6 this@@18 |os#0@@18|) (= |let#0#0#0| (_module.Memory.edges $Heap@@6 this@@18 |os#0@@18|))) (and (|_module.Memory.edges#canCall| $Heap@@6 this@@18 |os#0@@18|) ($Is SetType |let#0#0#0| (TSet Tclass._module.Edge)))) (=> (and (and (and (= |edges#Z#0@0| |let#0#0#0|) ($IsAllocBox ($Box refType this@@18) Tclass._module.Memory? $Heap@@6)) (and ($IsAlloc SetType |os#0@@18| (TSet Tclass._module.Object) $Heap@@6) (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@18 |os#0@@18|))) (and (and (= |let#1#0#0| (_module.Memory.partitionOfJustHeapRegions this@@18 |os#0@@18|)) (|_module.Memory.partitionOfJustHeapRegions#canCall| this@@18 |os#0@@18|)) (and ($Is MapType |let#1#0#0| (TMap Tclass._module.Region (TSet Tclass._module.Object))) (= |heapRegionPartitions#Z#0@0| |let#1#0#0|)))) (and (=> (= (ControlFlow 0 9) 8) anon9_Then_correct) (=> (= (ControlFlow 0 9) 4) anon9_Else_correct))))))))
 (let ((anon8_Then_correct true))
 (let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#34| null $Heap@@6 alloc |os#0@@18|)) (and (=> (= (ControlFlow 0 10) 1) anon8_Then_correct) (=> (= (ControlFlow 0 10) 9) anon8_Else_correct)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@6) ($IsHeapAnchor $Heap@@6)) (=> (and (and (and (or (not (= this@@18 null)) (not true)) (and ($Is refType this@@18 Tclass._module.Memory) ($IsAlloc refType this@@18 Tclass._module.Memory $Heap@@6))) ($Is SetType |os#0@@18| (TSet Tclass._module.Object))) (and (= 5 $FunctionContextHeight) (= (ControlFlow 0 11) 10))) anon0_correct))))

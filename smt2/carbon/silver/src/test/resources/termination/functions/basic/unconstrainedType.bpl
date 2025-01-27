@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:27
+// Date:         2025-01-26 23:13:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/unconstrainedType.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/unconstrainedType-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -235,8 +235,8 @@ function  fac#triggerStateless(i: int, h_1: HuhDomainType): int;
 procedure fac#definedness(i: int, h_1: HuhDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -255,8 +255,8 @@ procedure fac#definedness(i: int, h_1: HuhDomainType) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function fac might not hold. Assertion i - 1 >= 0 might not hold. (unconstrainedType.vpr@12.20--12.33) [18078]"}
             i - 1 >= 0;
           // Stop execution
@@ -278,10 +278,10 @@ procedure fac#definedness(i: int, h_1: HuhDomainType) returns (Result: int)
 procedure fac_termination_proof(i: int, h_1: HuhDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -296,16 +296,16 @@ procedure fac_termination_proof(i: int, h_1: HuhDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (i == 0) -- <no position>
     if (i == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(h, old(h)): Bool) && (bounded(old(h)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(h, old(h)): Bool) might not hold. (<no position>) [18079]"}
           (decreasing(h_1, h_1): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(h)): Bool) might not hold. (<no position>) [18080]"}

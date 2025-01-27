@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:37:17
+; Started: 2025-01-26 23:09:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -728,7 +728,7 @@
       (= (inv@6@01 (loc<Ref> a@2@01 j@4@01)) j@4@01)
       (img@7@01 (loc<Ref> a@2@01 j@4@01))))
   :pattern ((loc<Ref> a@2@01 j@4@01))
-  :qid |quant-u-14232|)))
+  :qid |quant-u-14205|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -812,7 +812,7 @@
       (= (inv@10@01 (loc<Ref> a@2@01 j$0@9@01)) j$0@9@01)
       (img@11@01 (loc<Ref> a@2@01 j$0@9@01))))
   :pattern ((loc<Ref> a@2@01 j$0@9@01))
-  :qid |quant-u-14234|)))
+  :qid |quant-u-14207|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1212,7 +1212,7 @@
       (pTaken@17@01 r))
     $Perm.No)
   
-  :qid |quant-u-14237|))))
+  :qid |quant-u-14210|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1230,7 +1230,7 @@
       (= r (loc<Ref> a@2@01 (inv@15@01 r))))
     (= (- $Perm.Write (pTaken@17@01 r)) $Perm.No))
   
-  :qid |quant-u-14238|))))
+  :qid |quant-u-14211|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1557,7 +1557,7 @@
       (= (inv@25@01 (loc<Ref> a@2@01 j$3@24@01)) j$3@24@01)
       (img@26@01 (loc<Ref> a@2@01 j$3@24@01))))
   :pattern ((loc<Ref> a@2@01 j$3@24@01))
-  :qid |quant-u-14240|)))
+  :qid |quant-u-14213|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1894,7 +1894,7 @@
       (pTaken@32@01 r))
     $Perm.No)
   
-  :qid |quant-u-14243|))))
+  :qid |quant-u-14216|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1912,7 +1912,7 @@
       (= r (loc<Ref> a@2@01 (inv@30@01 r))))
     (= (- $Perm.Write (pTaken@32@01 r)) $Perm.No))
   
-  :qid |quant-u-14244|))))
+  :qid |quant-u-14217|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -2116,7 +2116,7 @@
       (= (inv@25@01 (loc<Ref> a@2@01 j$3@24@01)) j$3@24@01)
       (img@26@01 (loc<Ref> a@2@01 j$3@24@01))))
   :pattern ((loc<Ref> a@2@01 j$3@24@01))
-  :qid |quant-u-14240|)))
+  :qid |quant-u-14213|)))
 (assert (forall ((j$3@24@01 Int)) (!
   (=>
     (and (<= 0 j$3@24@01) (< j$3@24@01 (len<Int> a@2@01)))
@@ -2435,7 +2435,7 @@
       (pTaken@39@01 r))
     $Perm.No)
   
-  :qid |quant-u-14247|))))
+  :qid |quant-u-14220|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2453,7 +2453,7 @@
       (= r (loc<Ref> a@2@01 (inv@37@01 r))))
     (= (- $Perm.Write (pTaken@39@01 r)) $Perm.No))
   
-  :qid |quant-u-14248|))))
+  :qid |quant-u-14221|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2872,7 +2872,7 @@
       (pTaken@46@01 r))
     $Perm.No)
   
-  :qid |quant-u-14251|))))
+  :qid |quant-u-14224|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -2890,7 +2890,7 @@
       (= r (loc<Ref> a@2@01 (inv@44@01 r))))
     (= (- $Perm.Write (pTaken@46@01 r)) $Perm.No))
   
-  :qid |quant-u-14252|))))
+  :qid |quant-u-14225|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -3249,7 +3249,7 @@
       (pTaken@52@01 r))
     $Perm.No)
   
-  :qid |quant-u-14255|))))
+  :qid |quant-u-14228|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3267,7 +3267,7 @@
       (= r (loc<Ref> a@2@01 (inv@50@01 r))))
     (= (- $Perm.Write (pTaken@52@01 r)) $Perm.No))
   
-  :qid |quant-u-14256|))))
+  :qid |quant-u-14229|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3616,7 +3616,7 @@
       (= (inv@60@01 (loc<Ref> a@55@01 j@58@01)) j@58@01)
       (img@61@01 (loc<Ref> a@55@01 j@58@01))))
   :pattern ((loc<Ref> a@55@01 j@58@01))
-  :qid |quant-u-14258|)))
+  :qid |quant-u-14231|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3826,7 +3826,7 @@
       (pTaken@67@01 r))
     $Perm.No)
   
-  :qid |quant-u-14261|))))
+  :qid |quant-u-14234|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3844,7 +3844,7 @@
       (= r (loc<Ref> a@55@01 (inv@65@01 r))))
     (= (- $Perm.Write (pTaken@67@01 r)) $Perm.No))
   
-  :qid |quant-u-14262|))))
+  :qid |quant-u-14235|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3914,7 +3914,7 @@
       (= (inv@71@01 (loc<Ref> a@55@01 j$0@70@01)) j$0@70@01)
       (img@72@01 (loc<Ref> a@55@01 j$0@70@01))))
   :pattern ((loc<Ref> a@55@01 j$0@70@01))
-  :qid |quant-u-14264|)))
+  :qid |quant-u-14237|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

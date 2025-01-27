@@ -72,16 +72,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc)
@@ -89,109 +95,178 @@
 (assert (= (Tag TInt) TagInt))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap T@U) (|a#0| Int) (|b#0| Int) ) (!  (=> (or (|_module.__default.Gcd#canCall| |a#0| |b#0|) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap) (and (> |a#0| 0) (> |b#0| 0))))) (and (|$let#0$canCall| |a#0| |b#0|) (= (_module.__default.Gcd |a#0| |b#0|) (let ((|d#0| (|$let#0_d| |a#0| |b#0|)))
 |d#0|))))
+ :qid |Problem2dfy.192:16|
+ :skolemid |705|
  :pattern ( (_module.__default.Gcd |a#0| |b#0|) ($IsGoodHeap $Heap))
 ))))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 3)) (= (Ctor BoxType) 4)) (= (Ctor refType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 3)) (= (Ctor BoxType) 4)) (= (Ctor refType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|d#0@@0| Int) (|a#0@@0| Int) ) (!  (=> (or (|_module.__default.Divides#canCall| (LitInt |d#0@@0|) (LitInt |a#0@@0|)) (and (< 1 $FunctionContextHeight) (U_2_bool (Lit boolType (bool_2_U  (and (> |d#0@@0| 0) (> |a#0@@0| 0))))))) (and (forall ((|n#1| Int) ) (!  (=> (> |n#1| 0) (|_module.__default.MulTriple#canCall| |n#1| (LitInt |d#0@@0|) (LitInt |a#0@@0|)))
+ :qid |Problem2dfy.209:10|
+ :skolemid |726|
  :pattern ( (_module.__default.MulTriple |n#1| |d#0@@0| |a#0@@0|))
 )) (= (_module.__default.Divides true (LitInt |d#0@@0|) (LitInt |a#0@@0|)) (exists ((|n#1@@0| Int) ) (!  (and (> |n#1@@0| 0) (_module.__default.MulTriple |n#1@@0| (LitInt |d#0@@0|) (LitInt |a#0@@0|)))
+ :qid |Problem2dfy.209:10|
+ :skolemid |725|
  :pattern ( (_module.__default.MulTriple |n#1@@0| |d#0@@0| |a#0@@0|))
 )))))
+ :qid |Problem2dfy.206:35|
  :weight 3
+ :skolemid |727|
  :pattern ( (_module.__default.Divides true (LitInt |d#0@@0|) (LitInt |a#0@@0|)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((|d#0@@1| Int) (|a#0@@1| Int) ) (!  (=> (or (|_module.__default.Divides#canCall| |d#0@@1| |a#0@@1|) (and (< 1 $FunctionContextHeight) (and (> |d#0@@1| 0) (> |a#0@@1| 0)))) (and (forall ((|n#0| Int) ) (!  (=> (> |n#0| 0) (|_module.__default.MulTriple#canCall| |n#0| |d#0@@1| |a#0@@1|))
+ :qid |Problem2dfy.209:10|
+ :skolemid |723|
  :pattern ( (_module.__default.MulTriple |n#0| |d#0@@1| |a#0@@1|))
 )) (= (_module.__default.Divides true |d#0@@1| |a#0@@1|) (exists ((|n#0@@0| Int) ) (!  (and (> |n#0@@0| 0) (_module.__default.MulTriple |n#0@@0| |d#0@@1| |a#0@@1|))
+ :qid |Problem2dfy.209:10|
+ :skolemid |722|
  :pattern ( (_module.__default.MulTriple |n#0@@0| |d#0@@1| |a#0@@1|))
 )))))
+ :qid |Problem2dfy.206:35|
+ :skolemid |724|
  :pattern ( (_module.__default.Divides true |d#0@@1| |a#0@@1|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|pcThis#0| Int) (|pcThat#0| Int) (|a0#0| Int) (|b0#0| Int) (|b#0@@0| Int) ) (!  (=> (or (|_module.__default.FinalStretch#canCall| |pcThis#0| |pcThat#0| |a0#0| |b0#0| |b#0@@0|) (< 0 $FunctionContextHeight)) (= (_module.__default.FinalStretch |pcThis#0| |pcThat#0| |a0#0| |b0#0| |b#0@@0|) (ite  (or (not (= |pcThat#0| 3)) (not true)) 10 (ite (= |pcThis#0| (LitInt 3)) 0 (ite  (and (= |pcThis#0| (LitInt 2)) (= |a0#0| |b0#0|)) 1 (ite  (and (= |pcThis#0| (LitInt 1)) (= |a0#0| |b#0@@0|)) 2 (ite (= |pcThis#0| (LitInt 0)) 3 (ite  (and (= |pcThis#0| (LitInt 2)) (< |a0#0| |b0#0|)) 4 5))))))))
+ :qid |Problem2dfy.168:29|
+ :skolemid |695|
  :pattern ( (_module.__default.FinalStretch |pcThis#0| |pcThat#0| |a0#0| |b0#0| |b#0@@0|))
 ))))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|d#0@@2| Int) (|a#0@@2| Int) (|b#0@@1| Int) ) (!  (=> (or (|_module.__default.DividesBoth#canCall| (LitInt |d#0@@2|) (LitInt |a#0@@2|) (LitInt |b#0@@1|)) (and (< 2 $FunctionContextHeight) (U_2_bool (Lit boolType (bool_2_U  (and (> |a#0@@2| 0) (> |b#0@@1| 0))))))) (and (=> (U_2_bool (Lit boolType (bool_2_U (> |d#0@@2| 0)))) (and (|_module.__default.Divides#canCall| (LitInt |d#0@@2|) (LitInt |a#0@@2|)) (=> (_module.__default.Divides reveal__module._default.Divides (LitInt |d#0@@2|) (LitInt |a#0@@2|)) (|_module.__default.Divides#canCall| (LitInt |d#0@@2|) (LitInt |b#0@@1|))))) (= (_module.__default.DividesBoth (LitInt |d#0@@2|) (LitInt |a#0@@2|) (LitInt |b#0@@1|))  (and (and (> |d#0@@2| 0) (_module.__default.Divides reveal__module._default.Divides (LitInt |d#0@@2|) (LitInt |a#0@@2|))) (_module.__default.Divides reveal__module._default.Divides (LitInt |d#0@@2|) (LitInt |b#0@@1|))))))
+ :qid |Problem2dfy.200:29|
  :weight 3
+ :skolemid |717|
  :pattern ( (_module.__default.DividesBoth (LitInt |d#0@@2|) (LitInt |a#0@@2|) (LitInt |b#0@@1|)))
 ))))
 (assert (forall ((a Int) (b Int) ) (!  (=> (|$let#0$canCall| a b) (and (_module.__default.DividesBoth (|$let#0_d| a b) a b) (forall ((|m#0| Int) ) (!  (=> (_module.__default.DividesBoth |m#0| a b) (<= |m#0| (|$let#0_d| a b)))
+ :qid |Problem2dfy.196:43|
+ :skolemid |703|
  :pattern ( (_module.__default.DividesBoth |m#0| a b))
 ))))
+ :qid |Problem2dfy.196:3|
+ :skolemid |704|
  :pattern ( (|$let#0_d| a b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) (c T@U) ) (!  (=> (or (not (= a@@0 c)) (not true)) (=> (and ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c)) ($HeapSucc a@@0 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@0 b@@0) ($HeapSucc b@@0 c))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((|d#0@@3| Int) (|a#0@@3| Int) (|b#0@@2| Int) ) (!  (=> (or (|_module.__default.DividesBoth#canCall| |d#0@@3| |a#0@@3| |b#0@@2|) (and (< 2 $FunctionContextHeight) (and (> |a#0@@3| 0) (> |b#0@@2| 0)))) (and (=> (> |d#0@@3| 0) (and (|_module.__default.Divides#canCall| |d#0@@3| |a#0@@3|) (=> (_module.__default.Divides reveal__module._default.Divides |d#0@@3| |a#0@@3|) (|_module.__default.Divides#canCall| |d#0@@3| |b#0@@2|)))) (= (_module.__default.DividesBoth |d#0@@3| |a#0@@3| |b#0@@2|)  (and (and (> |d#0@@3| 0) (_module.__default.Divides reveal__module._default.Divides |d#0@@3| |a#0@@3|)) (_module.__default.Divides reveal__module._default.Divides |d#0@@3| |b#0@@2|)))))
+ :qid |Problem2dfy.200:29|
+ :skolemid |716|
  :pattern ( (_module.__default.DividesBoth |d#0@@3| |a#0@@3| |b#0@@2|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|n#0@@1| Int) (|d#0@@4| Int) (|a#0@@4| Int) ) (!  (=> (or (|_module.__default.MulTriple#canCall| (LitInt |n#0@@1|) (LitInt |d#0@@4|) (LitInt |a#0@@4|)) (and (< 0 $FunctionContextHeight) (U_2_bool (Lit boolType (bool_2_U  (and (> |n#0@@1| 0) (> |d#0@@4| 0))))))) (= (_module.__default.MulTriple (LitInt |n#0@@1|) (LitInt |d#0@@4|) (LitInt |a#0@@4|)) (= (LitInt (Mul (LitInt |n#0@@1|) (LitInt |d#0@@4|))) (LitInt |a#0@@4|))))
+ :qid |Problem2dfy.211:27|
  :weight 3
+ :skolemid |735|
  :pattern ( (_module.__default.MulTriple (LitInt |n#0@@1|) (LitInt |d#0@@4|) (LitInt |a#0@@4|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |801|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@6 y))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|pcThis#0@@0| Int) (|pcThat#0@@0| Int) (|a0#0@@0| Int) (|b0#0@@0| Int) (|b#0@@3| Int) ) (!  (=> (or (|_module.__default.FinalStretch#canCall| (LitInt |pcThis#0@@0|) (LitInt |pcThat#0@@0|) (LitInt |a0#0@@0|) (LitInt |b0#0@@0|) (LitInt |b#0@@3|)) (< 0 $FunctionContextHeight)) (= (_module.__default.FinalStretch (LitInt |pcThis#0@@0|) (LitInt |pcThat#0@@0|) (LitInt |a0#0@@0|) (LitInt |b0#0@@0|) (LitInt |b#0@@3|)) (ite  (or (not (= |pcThat#0@@0| 3)) (not true)) 10 (ite (= (LitInt |pcThis#0@@0|) (LitInt 3)) 0 (ite  (and (= (LitInt |pcThis#0@@0|) (LitInt 2)) (= (LitInt |a0#0@@0|) (LitInt |b0#0@@0|))) 1 (ite  (and (= (LitInt |pcThis#0@@0|) (LitInt 1)) (= (LitInt |a0#0@@0|) (LitInt |b#0@@3|))) 2 (ite (= (LitInt |pcThis#0@@0|) (LitInt 0)) 3 (ite  (and (= (LitInt |pcThis#0@@0|) (LitInt 2)) (< |a0#0@@0| |b0#0@@0|)) 4 5))))))))
+ :qid |Problem2dfy.168:29|
  :weight 3
+ :skolemid |696|
  :pattern ( (_module.__default.FinalStretch (LitInt |pcThis#0@@0|) (LitInt |pcThat#0@@0|) (LitInt |a0#0@@0|) (LitInt |b0#0@@0|) (LitInt |b#0@@3|)))
 ))))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@8)) (Lit BoxType ($Box T@@3 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@8)))
 )))
 (assert  (=> (<= 5 $FunctionContextHeight) (forall (($Heap@@0 T@U) (|a#0@@5| Int) (|b#0@@4| Int) ) (!  (=> (or (|_module.__default.Gcd#canCall| (LitInt |a#0@@5|) (LitInt |b#0@@4|)) (and (< 5 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) (U_2_bool (Lit boolType (bool_2_U  (and (> |a#0@@5| 0) (> |b#0@@4| 0)))))))) (and (|$let#0$canCall| (LitInt |a#0@@5|) (LitInt |b#0@@4|)) (= (_module.__default.Gcd (LitInt |a#0@@5|) (LitInt |b#0@@4|)) (let ((|d#1| (|$let#0_d| (LitInt |a#0@@5|) (LitInt |b#0@@4|))))
 |d#1|))))
+ :qid |Problem2dfy.192:16|
  :weight 3
+ :skolemid |706|
  :pattern ( (_module.__default.Gcd (LitInt |a#0@@5|) (LitInt |b#0@@4|)) ($IsGoodHeap $Heap@@0))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|n#0@@2| Int) (|d#0@@5| Int) (|a#0@@6| Int) ) (!  (=> (or (|_module.__default.MulTriple#canCall| |n#0@@2| |d#0@@5| |a#0@@6|) (and (< 0 $FunctionContextHeight) (and (> |n#0@@2| 0) (> |d#0@@5| 0)))) (= (_module.__default.MulTriple |n#0@@2| |d#0@@5| |a#0@@6|) (= (Mul |n#0@@2| |d#0@@5|) |a#0@@6|)))
+ :qid |Problem2dfy.211:27|
+ :skolemid |734|
  :pattern ( (_module.__default.MulTriple |n#0@@2| |d#0@@5| |a#0@@6|))
 ))))
 (assert (forall ((h@@1 T@U) (v@@0 T@U) ) (! ($IsAlloc intType v@@0 TInt h@@1)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@0 TInt h@@1))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (push 1)
@@ -280,6 +355,7 @@
 (declare-fun |b1#0@0| () Int)
 (declare-fun |a1#0@0| () Int)
 (declare-fun |budget0#1@0| () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.ParallelGcd)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -365,6 +441,8 @@
 (let ((anon140_Then_correct  (=> (and (= |pc0#0@0| (LitInt 3)) (= |pc1#0@0| (LitInt 3))) (and (=> (= (ControlFlow 0 93) (- 0 94)) (> |a#0@0| 0)) (=> (> |a#0@0| 0) (=> (and (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (|_module.__default.Gcd#canCall| |a#0@0| |a#0@0|)) (and (and (= (_module.__default.Gcd |a#0@0| |a#0@0|) |a#0@0|) (= $Heap@0 $Heap@1)) (and (= |gcd#0@0| |a#0@0|) (= (ControlFlow 0 93) 92)))) GeneratedUnifiedExit_correct))))))
 (let ((anon105_correct  (and (=> (= (ControlFlow 0 6) (- 0 29)) (or (<= 0 |$decr$loop#00@1|) (= (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|))) (=> (or (<= 0 |$decr$loop#00@1|) (= (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (and (=> (= (ControlFlow 0 6) (- 0 28)) (or (or (<= 0 |$decr$loop#01@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (= (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|))) (=> (or (or (<= 0 |$decr$loop#01@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (= (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (and (=> (= (ControlFlow 0 6) (- 0 27)) (or (or (or (<= 0 |$decr$loop#02@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (= (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|))) (=> (or (or (or (<= 0 |$decr$loop#02@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (= (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|)) (and (=> (= (ControlFlow 0 6) (- 0 26)) (or (or (or (or (<= 0 |$decr$loop#03@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|)) (= (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|))) (=> (or (or (or (or (<= 0 |$decr$loop#03@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|)) (= (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|)) (and (=> (= (ControlFlow 0 6) (- 0 25)) (or (or (or (or (or (<= 0 |$decr$loop#04@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|)) (< (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|)) (= (- (- 8 |pc0#0@3|) |pc1#0@3|) |$decr$loop#04@1|))) (=> (or (or (or (or (or (<= 0 |$decr$loop#04@1|) (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|)) (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|)) (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|)) (< (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|)) (= (- (- 8 |pc0#0@3|) |pc1#0@3|) |$decr$loop#04@1|)) (and (=> (= (ControlFlow 0 6) (- 0 24)) (or (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|) (and (= (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|) (or (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|) (and (= (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|) (or (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|) (and (= (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|) (or (< (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|) (and (= (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|) (< (- (- 8 |pc0#0@3|) |pc1#0@3|) |$decr$loop#04@1|)))))))))) (=> (or (< (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|) (and (= (+ |a#0@1| |b#0@1|) |$decr$loop#00@1|) (or (< (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|) (and (= (+ (_module.__default.FinalStretch |pc0#0@3| |pc1#0@3| |a0#0@2| |b0#0@2| |b#0@1|) (_module.__default.FinalStretch |pc1#0@3| |pc0#0@3| |b1#0@2| |a1#0@2| |a#0@1|)) |$decr$loop#01@1|) (or (< (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|) (and (= (+ (ite  (and (and (= |pc0#0@3| (LitInt 2)) (< |a0#0@2| |b0#0@2|)) (not (< |a#0@1| |b#0@1|))) 1 0) (ite  (and (and (= |pc1#0@3| (LitInt 2)) (< |b1#0@2| |a1#0@2|)) (not (< |b#0@1| |a#0@1|))) 1 0)) |$decr$loop#02@1|) (or (< (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|) (and (= (+ (ite (< |a#0@1| |b#0@1|) |budget0#0@2| 0) (ite (< |b#0@1| |a#0@1|) |budget1#0@2| 0)) |$decr$loop#03@1|) (< (- (- 8 |pc0#0@3|) |pc1#0@3|) |$decr$loop#04@1|))))))))) (=> (=> (< 0 |a#0@1|) (=> (< 0 |b#0@1|) (and (|_module.__default.Gcd#canCall| |A#0| |B#0|) (|_module.__default.Gcd#canCall| |a#0@1| |b#0@1|)))) (and (=> (= (ControlFlow 0 6) (- 0 23)) (=> |$w$loop#0@0| (< 0 |a#0@1|))) (=> (=> |$w$loop#0@0| (< 0 |a#0@1|)) (and (=> (= (ControlFlow 0 6) (- 0 22)) (=> |$w$loop#0@0| (< 0 |b#0@1|))) (=> (=> |$w$loop#0@0| (< 0 |b#0@1|)) (and (=> (= (ControlFlow 0 6) (- 0 21)) (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |a#0@1| |b#0@1|)))) (=> (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |a#0@1| |b#0@1|))) (and (=> (= (ControlFlow 0 6) (- 0 20)) (=> |$w$loop#0@0| (<= (LitInt 0) |pc0#0@3|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |pc0#0@3|)) (and (=> (= (ControlFlow 0 6) (- 0 19)) (=> |$w$loop#0@0| (< |pc0#0@3| 4))) (=> (=> |$w$loop#0@0| (< |pc0#0@3| 4)) (and (=> (= (ControlFlow 0 6) (- 0 18)) (=> |$w$loop#0@0| (<= (LitInt 0) |pc1#0@3|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |pc1#0@3|)) (and (=> (= (ControlFlow 0 6) (- 0 17)) (=> |$w$loop#0@0| (< |pc1#0@3| 4))) (=> (=> |$w$loop#0@0| (< |pc1#0@3| 4)) (and (=> (= (ControlFlow 0 6) (- 0 16)) (=> |$w$loop#0@0| (or (= |pc0#0@3| (LitInt 0)) (= |a0#0@2| |a#0@1|)))) (=> (=> |$w$loop#0@0| (or (= |pc0#0@3| (LitInt 0)) (= |a0#0@2| |a#0@1|))) (and (=> (= (ControlFlow 0 6) (- 0 15)) (=> |$w$loop#0@0| (or (= |pc1#0@3| (LitInt 0)) (= |b1#0@2| |b#0@1|)))) (=> (=> |$w$loop#0@0| (or (= |pc1#0@3| (LitInt 0)) (= |b1#0@2| |b#0@1|))) (and (=> (= (ControlFlow 0 6) (- 0 14)) (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 2)) (<= |b#0@1| |b0#0@2|)))) (=> (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 2)) (<= |b#0@1| |b0#0@2|))) (and (=> (= (ControlFlow 0 6) (- 0 13)) (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 2)) (=> (<= |b0#0@2| |a0#0@2|) (= |b0#0@2| |b#0@1|))))) (=> (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 2)) (=> (<= |b0#0@2| |a0#0@2|) (= |b0#0@2| |b#0@1|)))) (and (=> (= (ControlFlow 0 6) (- 0 12)) (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 2)) (<= |a#0@1| |a1#0@2|)))) (=> (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 2)) (<= |a#0@1| |a1#0@2|))) (and (=> (= (ControlFlow 0 6) (- 0 11)) (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 2)) (=> (<= |a1#0@2| |b1#0@2|) (= |a1#0@2| |a#0@1|))))) (=> (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 2)) (=> (<= |a1#0@2| |b1#0@2|) (= |a1#0@2| |a#0@1|)))) (and (=> (= (ControlFlow 0 6) (- 0 10)) (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 3)) (= |a#0@1| |b#0@1|)))) (=> (=> |$w$loop#0@0| (=> (= |pc0#0@3| (LitInt 3)) (= |a#0@1| |b#0@1|))) (and (=> (= (ControlFlow 0 6) (- 0 9)) (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 3)) (= |a#0@1| |b#0@1|)))) (=> (=> |$w$loop#0@0| (=> (= |pc1#0@3| (LitInt 3)) (= |a#0@1| |b#0@1|))) (and (=> (= (ControlFlow 0 6) (- 0 8)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@2|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@2|)) (and (=> (= (ControlFlow 0 6) (- 0 7)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@2|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@2|)) (=> (= (ControlFlow 0 6) (- 0 5)) (=> |$w$loop#0@0| (or (or (= |pc0#0@3| (LitInt 3)) (= |pc1#0@3| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@2| |budget1#0@2|))))))))))))))))))))))))))))))))))))))))))))))))))))))
 (let ((anon103_correct  (=> (and (and (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3)))) (= |b1#0@1| |a1#0@1|)) (= |pc1#0@1| (LitInt 3))) (and (=> (= (ControlFlow 0 82) (- 0 83)) (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|))) (=> (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|)) (=> (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (=> (and (and (and (and (= |call4formal@outThis#0@0| (ite (< 0 |budget1#0@1|) (- |budget1#0@1| 1) |budget1#0@1|)) (=> (= |pc0#0@0| (LitInt 3)) (= |call5formal@outThat#0@0| |budget0#0@1|))) (and (=> (or (not (= |pc0#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0| 0)) (forall (($o@@0 T@U) ) (!  (=> (and (or (not (= $o@@0 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@0) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@2 $o@@0))
 )))) (and (and ($HeapSucc $Heap@0 $Heap@2) (= |pc1#0@3| |pc1#0@1|)) (and (= |budget0#0@2| |call5formal@outThat#0@0|) (= |budget1#0@2| |call4formal@outThis#0@0|)))) (and (and (and (= |b#0@1| |b#0@0|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |pc0#0@0|))) (and (and (= |a#0@1| |a#0@0|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 82) 6))))) anon105_correct)))))))
 (let ((anon168_Else_correct  (=> (and (not (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3))))) (= (ControlFlow 0 85) 82)) anon103_correct)))
@@ -374,6 +452,8 @@
 (let ((anon166_Then_correct  (=> (= |pc1#0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 89) 87) anon167_Then_correct) (=> (= (ControlFlow 0 89) 88) anon167_Else_correct)))))
 (let ((anon166_Else_correct  (=> (or (not (= |pc1#0@0| (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 86) 84) anon168_Then_correct) (=> (= (ControlFlow 0 86) 85) anon168_Else_correct)))))
 (let ((anon97_correct  (=> (and (and (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3)))) (< |b1#0@1| |a1#0@1|)) (= |pc1#0@2| (LitInt 0))) (and (=> (= (ControlFlow 0 74) (- 0 75)) (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|))) (=> (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|)) (=> (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (=> (and (and (and (and (= |call4formal@outThis#0@0@@0| (ite (< 0 |budget1#0@1|) (- |budget1#0@1| 1) |budget1#0@1|)) (=> (= |pc0#0@0| (LitInt 3)) (= |call5formal@outThat#0@0@@0| |budget0#0@1|))) (and (=> (or (not (= |pc0#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0@@0| 0)) (forall (($o@@1 T@U) ) (!  (=> (and (or (not (= $o@@1 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@1) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@1) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@1)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 $o@@1))
 )))) (and (and ($HeapSucc $Heap@0 $Heap@3) (= |pc1#0@3| |pc1#0@2|)) (and (= |budget0#0@2| |call5formal@outThat#0@0@@0|) (= |budget1#0@2| |call4formal@outThis#0@0@@0|)))) (and (and (and (= |b#0@1| |b#0@0|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |pc0#0@0|))) (and (and (= |a#0@1| |a#0@0|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 74) 6))))) anon105_correct)))))))
 (let ((anon164_Else_correct  (=> (and (not (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3))))) (= (ControlFlow 0 77) 74)) anon97_correct)))
@@ -383,6 +463,8 @@
 (let ((anon162_Then_correct  (=> (= |pc1#0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 81) 79) anon163_Then_correct) (=> (= (ControlFlow 0 81) 80) anon163_Else_correct)))))
 (let ((anon162_Else_correct  (=> (or (not (= |pc1#0@0| (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 78) 76) anon164_Then_correct) (=> (= (ControlFlow 0 78) 77) anon164_Else_correct)))))
 (let ((anon91_correct  (=> (and (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3)))) (> |b1#0@1| |a1#0@1|)) (and (=> (= (ControlFlow 0 60) (- 0 67)) (> |a#0@0| 0)) (=> (> |a#0@0| 0) (and (=> (= (ControlFlow 0 60) (- 0 66)) (> |b#0@0| 0)) (=> (> |b#0@0| 0) (=> (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (=> (and (and (|_module.__default.Gcd#canCall| |a#0@0| |b#0@0|) (|_module.__default.Gcd#canCall| |b#0@0| |a#0@0|)) (and (= (_module.__default.Gcd |a#0@0| |b#0@0|) (_module.__default.Gcd |b#0@0| |a#0@0|)) (= $Heap@0 $Heap@4))) (and (=> (= (ControlFlow 0 60) (- 0 65)) (> |b#0@0| |a#0@0|)) (=> (> |b#0@0| |a#0@0|) (and (=> (= (ControlFlow 0 60) (- 0 64)) (> |a#0@0| 0)) (=> (> |a#0@0| 0) (=> (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)) (=> (and (and (and (|_module.__default.Gcd#canCall| |b#0@0| |a#0@0|) (|_module.__default.Gcd#canCall| (- |b#0@0| |a#0@0|) |a#0@0|)) (= (_module.__default.Gcd |b#0@0| |a#0@0|) (_module.__default.Gcd (- |b#0@0| |a#0@0|) |a#0@0|))) (and (= $Heap@4 $Heap@5) (= |a##0_2_2@1| (- |b#0@0| |a#0@0|)))) (and (=> (= (ControlFlow 0 60) (- 0 63)) (> |a##0_2_2@1| 0)) (=> (> |a##0_2_2@1| 0) (and (=> (= (ControlFlow 0 60) (- 0 62)) (> |a#0@0| 0)) (=> (> |a#0@0| 0) (=> (and (and (and ($IsGoodHeap $Heap@6) ($IsHeapAnchor $Heap@6)) (and (|_module.__default.Gcd#canCall| |a##0_2_2@1| |a#0@0|) (|_module.__default.Gcd#canCall| |a#0@0| |a##0_2_2@1|))) (and (and (= (_module.__default.Gcd |a##0_2_2@1| |a#0@0|) (_module.__default.Gcd |a#0@0| |a##0_2_2@1|)) (= $Heap@5 $Heap@6)) (and (= |$rhs#0_2_0@1| (- |b1#0@1| |a1#0@1|)) (= |$rhs#0_2_1@1| (LitInt 0))))) (and (=> (= (ControlFlow 0 60) (- 0 61)) (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|))) (=> (or (= |pc0#0@0| (LitInt 3)) (< 0 |budget1#0@1|)) (=> (and ($IsGoodHeap $Heap@7) ($IsHeapAnchor $Heap@7)) (=> (and (and (and (and (= |call4formal@outThis#0@0@@1| (ite (< 0 |budget1#0@1|) (- |budget1#0@1| 1) |budget1#0@1|)) (=> (= |pc0#0@0| (LitInt 3)) (= |call5formal@outThat#0@0@@1| |budget0#0@1|))) (and (=> (or (not (= |pc0#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0@@1| 0)) (forall (($o@@2 T@U) ) (!  (=> (and (or (not (= $o@@2 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@2) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@2) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 $o@@2)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@7 $o@@2))
 )))) (and (and ($HeapSucc $Heap@6 $Heap@7) (= |pc1#0@3| |$rhs#0_2_1@1|)) (and (= |budget0#0@2| |call5formal@outThat#0@0@@1|) (= |budget1#0@2| |call4formal@outThis#0@0@@1|)))) (and (and (and (= |b#0@1| |$rhs#0_2_0@1|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |pc0#0@0|))) (and (and (= |a#0@1| |a#0@0|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 60) 6))))) anon105_correct))))))))))))))))))))))))
 (let ((anon160_Else_correct  (=> (and (not (and (= |pc1#0@0| (LitInt 2)) (or (> |budget1#0@1| 0) (= |pc0#0@0| (LitInt 3))))) (= (ControlFlow 0 69) 60)) anon91_correct)))
@@ -392,6 +474,8 @@
 (let ((anon158_Then_correct  (=> (= |pc1#0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 73) 71) anon159_Then_correct) (=> (= (ControlFlow 0 73) 72) anon159_Else_correct)))))
 (let ((anon158_Else_correct  (=> (or (not (= |pc1#0@0| (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 70) 68) anon160_Then_correct) (=> (= (ControlFlow 0 70) 69) anon160_Else_correct)))))
 (let ((anon83_correct  (=> (and (and (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3)))) (= |a0#0@1| |b0#0@1|)) (= |pc0#0@1| (LitInt 3))) (and (=> (= (ControlFlow 0 52) (- 0 53)) (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|))) (=> (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|)) (=> (and ($IsGoodHeap $Heap@8) ($IsHeapAnchor $Heap@8)) (=> (and (and (and (and (= |call4formal@outThis#0@0@@2| (ite (< 0 |budget0#0@1|) (- |budget0#0@1| 1) |budget0#0@1|)) (=> (= |pc1#0@0| (LitInt 3)) (= |call5formal@outThat#0@0@@2| |budget1#0@1|))) (and (=> (or (not (= |pc1#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0@@2| 0)) (forall (($o@@3 T@U) ) (!  (=> (and (or (not (= $o@@3 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@3) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@3) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@3)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@8 $o@@3))
 )))) (and (and ($HeapSucc $Heap@0 $Heap@8) (= |pc1#0@3| |pc1#0@0|)) (and (= |budget0#0@2| |call4formal@outThis#0@0@@2|) (= |budget1#0@2| |call5formal@outThat#0@0@@2|)))) (and (and (and (= |b#0@1| |b#0@0|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |pc0#0@1|))) (and (and (= |a#0@1| |a#0@0|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 52) 6))))) anon105_correct)))))))
 (let ((anon154_Else_correct  (=> (and (not (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3))))) (= (ControlFlow 0 55) 52)) anon83_correct)))
@@ -401,6 +485,8 @@
 (let ((anon152_Then_correct  (=> (= |pc0#0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 59) 57) anon153_Then_correct) (=> (= (ControlFlow 0 59) 58) anon153_Else_correct)))))
 (let ((anon152_Else_correct  (=> (or (not (= |pc0#0@0| (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 56) 54) anon154_Then_correct) (=> (= (ControlFlow 0 56) 55) anon154_Else_correct)))))
 (let ((anon77_correct  (=> (and (and (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3)))) (< |a0#0@1| |b0#0@1|)) (= |pc0#0@2| (LitInt 0))) (and (=> (= (ControlFlow 0 44) (- 0 45)) (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|))) (=> (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|)) (=> (and ($IsGoodHeap $Heap@9) ($IsHeapAnchor $Heap@9)) (=> (and (and (and (and (= |call4formal@outThis#0@0@@3| (ite (< 0 |budget0#0@1|) (- |budget0#0@1| 1) |budget0#0@1|)) (=> (= |pc1#0@0| (LitInt 3)) (= |call5formal@outThat#0@0@@3| |budget1#0@1|))) (and (=> (or (not (= |pc1#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0@@3| 0)) (forall (($o@@4 T@U) ) (!  (=> (and (or (not (= $o@@4 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@4) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@4) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@4)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@9 $o@@4))
 )))) (and (and ($HeapSucc $Heap@0 $Heap@9) (= |pc1#0@3| |pc1#0@0|)) (and (= |budget0#0@2| |call4formal@outThis#0@0@@3|) (= |budget1#0@2| |call5formal@outThat#0@0@@3|)))) (and (and (and (= |b#0@1| |b#0@0|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |pc0#0@2|))) (and (and (= |a#0@1| |a#0@0|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 44) 6))))) anon105_correct)))))))
 (let ((anon150_Else_correct  (=> (and (not (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3))))) (= (ControlFlow 0 47) 44)) anon77_correct)))
@@ -410,6 +496,8 @@
 (let ((anon148_Then_correct  (=> (= |pc0#0@0| (LitInt 2)) (and (=> (= (ControlFlow 0 51) 49) anon149_Then_correct) (=> (= (ControlFlow 0 51) 50) anon149_Else_correct)))))
 (let ((anon148_Else_correct  (=> (or (not (= |pc0#0@0| (LitInt 2))) (not true)) (and (=> (= (ControlFlow 0 48) 46) anon150_Then_correct) (=> (= (ControlFlow 0 48) 47) anon150_Else_correct)))))
 (let ((anon71_correct  (=> (and (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3)))) (> |a0#0@1| |b0#0@1|)) (and (=> (= (ControlFlow 0 34) (- 0 37)) (> |a#0@0| |b#0@0|)) (=> (> |a#0@0| |b#0@0|) (and (=> (= (ControlFlow 0 34) (- 0 36)) (> |b#0@0| 0)) (=> (> |b#0@0| 0) (=> (and (and (and ($IsGoodHeap $Heap@10) ($IsHeapAnchor $Heap@10)) (and (|_module.__default.Gcd#canCall| |a#0@0| |b#0@0|) (|_module.__default.Gcd#canCall| (- |a#0@0| |b#0@0|) |b#0@0|))) (and (and (= (_module.__default.Gcd |a#0@0| |b#0@0|) (_module.__default.Gcd (- |a#0@0| |b#0@0|) |b#0@0|)) (= $Heap@0 $Heap@10)) (and (= |$rhs#0_7_0@1| (- |a0#0@1| |b0#0@1|)) (= |$rhs#0_7_1@1| (LitInt 0))))) (and (=> (= (ControlFlow 0 34) (- 0 35)) (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|))) (=> (or (= |pc1#0@0| (LitInt 3)) (< 0 |budget0#0@1|)) (=> (and ($IsGoodHeap $Heap@11) ($IsHeapAnchor $Heap@11)) (=> (and (and (and (and (= |call4formal@outThis#0@0@@4| (ite (< 0 |budget0#0@1|) (- |budget0#0@1| 1) |budget0#0@1|)) (=> (= |pc1#0@0| (LitInt 3)) (= |call5formal@outThat#0@0@@4| |budget1#0@1|))) (and (=> (or (not (= |pc1#0@0| (LitInt 3))) (not true)) (> |call5formal@outThat#0@0@@4| 0)) (forall (($o@@5 T@U) ) (!  (=> (and (or (not (= $o@@5 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@5) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@5) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@10 $o@@5)))
+ :qid |Problem2dfy.179:8|
+ :skolemid |698|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@11 $o@@5))
 )))) (and (and ($HeapSucc $Heap@10 $Heap@11) (= |pc1#0@3| |pc1#0@0|)) (and (= |budget0#0@2| |call4formal@outThis#0@0@@4|) (= |budget1#0@2| |call5formal@outThat#0@0@@4|)))) (and (and (and (= |b#0@1| |b#0@0|) (= |a1#0@2| |a1#0@1|)) (and (= |b1#0@2| |b1#0@1|) (= |pc0#0@3| |$rhs#0_7_1@1|))) (and (and (= |a#0@1| |$rhs#0_7_0@1|) (= |b0#0@2| |b0#0@1|)) (and (= |a0#0@2| |a0#0@1|) (= (ControlFlow 0 34) 6))))) anon105_correct))))))))))))
 (let ((anon146_Else_correct  (=> (and (not (and (= |pc0#0@0| (LitInt 2)) (or (> |budget0#0@1| 0) (= |pc1#0@0| (LitInt 3))))) (= (ControlFlow 0 39) 34)) anon71_correct)))
@@ -431,11 +519,45 @@
 (let ((anon109_LoopBody_correct  (and (=> (= (ControlFlow 0 169) 168) anon110_Then_correct) (=> (= (ControlFlow 0 169) 98) anon110_Else_correct))))
 (let ((anon109_LoopDone_correct true))
 (let ((anon109_LoopHead_correct  (=> (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (=> (and (and (and (and (and (and (and (and (and (and (and (and (not false) (<= 1 |A#0|)) (<= 1 |B#0|)) (and (<= 0 |pc0#0@0|) (< |pc0#0@0| 4))) (and (<= 0 |pc1#0@0|) (< |pc1#0@0| 4))) (= |$rhs#2@0| 0)) (= |$rhs#3@0| 0)) (<= 2 |$decr_init$loop#00@0|)) (= |$decr_init$loop#02@0| 0)) (<= 0 |$decr_init$loop#03@0|)) (= |$decr_init$loop#04@0| 8)) (and (and (and (=> |$w$loop#0@0| (< 0 |a#0@0|)) (=> |$w$loop#0@0| (< 0 |b#0@0|))) (and (=> |$w$loop#0@0| (and (|_module.__default.Gcd#canCall| |A#0| |B#0|) (|_module.__default.Gcd#canCall| |a#0@0| |b#0@0|))) (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |a#0@0| |b#0@0|))))) (and (and (=> |$w$loop#0@0| (<= (LitInt 0) |pc0#0@0|)) (=> |$w$loop#0@0| (< |pc0#0@0| 4))) (and (=> |$w$loop#0@0| (<= (LitInt 0) |pc1#0@0|)) (=> |$w$loop#0@0| (< |pc1#0@0| 4)))))) (and (and (and (and (=> |$w$loop#0@0| (or (= |pc0#0@0| (LitInt 0)) (= |a0#0@1| |a#0@0|))) (=> |$w$loop#0@0| (or (= |pc1#0@0| (LitInt 0)) (= |b1#0@1| |b#0@0|)))) (and (=> |$w$loop#0@0| (=> (= |pc0#0@0| (LitInt 2)) (<= |b#0@0| |b0#0@1|))) (=> |$w$loop#0@0| (=> (= |pc0#0@0| (LitInt 2)) (=> (<= |b0#0@1| |a0#0@1|) (= |b0#0@1| |b#0@0|)))))) (and (and (=> |$w$loop#0@0| (=> (= |pc1#0@0| (LitInt 2)) (<= |a#0@0| |a1#0@1|))) (=> |$w$loop#0@0| (=> (= |pc1#0@0| (LitInt 2)) (=> (<= |a1#0@1| |b1#0@1|) (= |a1#0@1| |a#0@0|))))) (and (=> |$w$loop#0@0| (=> (= |pc0#0@0| (LitInt 3)) (= |a#0@0| |b#0@0|))) (=> |$w$loop#0@0| (=> (= |pc1#0@0| (LitInt 3)) (= |a#0@0| |b#0@0|)))))) (and (and (and (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@1|)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@1|))) (and (=> |$w$loop#0@0| (or (or (= |pc0#0@0| (LitInt 3)) (= |pc1#0@0| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@1| |budget1#0@1|)))) (forall (($o@@6 T@U) ) (!  (=> (and (or (not (= $o@@6 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@6) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@6) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@6)))
+ :qid |Problem2dfy.120:3|
+ :skolemid |680|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@6))
 )))) (and (and ($HeapSucc $Heap@@1 $Heap@0) (forall (($o@@7 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@7 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@7) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@7) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@7) $f@@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@7 $f@@0))))
+ :qid |Problem2dfy.120:3|
+ :skolemid |681|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@7) $f@@0))
 ))) (and (<= (+ |a#0@0| |b#0@0|) |$decr_init$loop#00@0|) (=> (= (+ |a#0@0| |b#0@0|) |$decr_init$loop#00@0|) (and (<= (+ (_module.__default.FinalStretch |pc0#0@0| |pc1#0@0| |a0#0@1| |b0#0@1| |b#0@0|) (_module.__default.FinalStretch |pc1#0@0| |pc0#0@0| |b1#0@1| |a1#0@1| |a#0@0|)) |$decr_init$loop#01@0|) (=> (= (+ (_module.__default.FinalStretch |pc0#0@0| |pc1#0@0| |a0#0@1| |b0#0@1| |b#0@0|) (_module.__default.FinalStretch |pc1#0@0| |pc0#0@0| |b1#0@1| |a1#0@1| |a#0@0|)) |$decr_init$loop#01@0|) (and (<= (+ (ite  (and (and (= |pc0#0@0| (LitInt 2)) (< |a0#0@1| |b0#0@1|)) (not (< |a#0@0| |b#0@0|))) 1 0) (ite  (and (and (= |pc1#0@0| (LitInt 2)) (< |b1#0@1| |a1#0@1|)) (not (< |b#0@0| |a#0@0|))) 1 0)) |$decr_init$loop#02@0|) (=> (= (+ (ite  (and (and (= |pc0#0@0| (LitInt 2)) (< |a0#0@1| |b0#0@1|)) (not (< |a#0@0| |b#0@0|))) 1 0) (ite  (and (and (= |pc1#0@0| (LitInt 2)) (< |b1#0@1| |a1#0@1|)) (not (< |b#0@0| |a#0@0|))) 1 0)) |$decr_init$loop#02@0|) (and (<= (+ (ite (< |a#0@0| |b#0@0|) |budget0#0@1| 0) (ite (< |b#0@0| |a#0@0|) |budget1#0@1| 0)) |$decr_init$loop#03@0|) (=> (= (+ (ite (< |a#0@0| |b#0@0|) |budget0#0@1| 0) (ite (< |b#0@0| |a#0@0|) |budget1#0@1| 0)) |$decr_init$loop#03@0|) (<= (- (- 8 |pc0#0@0|) |pc1#0@0|) |$decr_init$loop#04@0|))))))))))))) (and (=> (= (ControlFlow 0 170) 2) anon109_LoopDone_correct) (=> (= (ControlFlow 0 170) 169) anon109_LoopBody_correct))))))
-(let ((anon3_correct  (and (=> (= (ControlFlow 0 171) (- 0 190)) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> (+ 0 1) 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> (+ 0 1) 0)))))) (or (exists ((|$as#budget00#0| Int) )  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> |$as#budget00#0| 0) (> (+ 0 1) 0)))) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> 0 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> 0 0)))))) (or (exists ((|$as#budget00#0@@0| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> |$as#budget00#0@@0| 0) (> 0 0)))) (or (exists ((|$as#budget10#0| Int) )  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> (+ 0 1) 0) (> |$as#budget10#0| 0)))) (or (exists ((|$as#budget10#0@@0| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> 0 0) (> |$as#budget10#0@@0| 0)))) (exists ((|$as#budget00#0@@1| Int) (|$as#budget10#0@@1| Int) )  (and (> |$as#budget00#0@@1| 0) (> |$as#budget10#0@@1| 0)))))))))))) (=> (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> (+ 0 1) 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> (+ 0 1) 0)))))) (or (exists ((|$as#budget00#0@@2| Int) )  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> |$as#budget00#0@@2| 0) (> (+ 0 1) 0)))) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> 0 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> 0 0)))))) (or (exists ((|$as#budget00#0@@3| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> |$as#budget00#0@@3| 0) (> 0 0)))) (or (exists ((|$as#budget10#0@@2| Int) )  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> (+ 0 1) 0) (> |$as#budget10#0@@2| 0)))) (or (exists ((|$as#budget10#0@@3| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> 0 0) (> |$as#budget10#0@@3| 0)))) (exists ((|$as#budget00#0@@4| Int) (|$as#budget10#0@@4| Int) )  (and (> |$as#budget00#0@@4| 0) (> |$as#budget10#0@@4| 0))))))))))) (=> (and (and (and (> |budget0#0@0| 0) (> |budget1#0@0| 0)) (= |$decr_init$loop#00@0| (+ |A#0| |B#0|))) (and (and (= |$decr_init$loop#01@0| (+ (_module.__default.FinalStretch |$rhs#2@0| |$rhs#3@0| |a0#0@0| |b0#0@0| |B#0|) (_module.__default.FinalStretch |$rhs#3@0| |$rhs#2@0| |b1#0@0| |a1#0@0| |A#0|))) (= |$decr_init$loop#02@0| (+ (ite  (and (and (= |$rhs#2@0| (LitInt 2)) (< |a0#0@0| |b0#0@0|)) (not (< |A#0| |B#0|))) 1 0) (ite  (and (and (= |$rhs#3@0| (LitInt 2)) (< |b1#0@0| |a1#0@0|)) (not (< |B#0| |A#0|))) 1 0)))) (and (= |$decr_init$loop#03@0| (+ (ite (< |A#0| |B#0|) |budget0#0@0| 0) (ite (< |B#0| |A#0|) |budget1#0@0| 0))) (= |$decr_init$loop#04@0| (- (- 8 |$rhs#2@0|) |$rhs#3@0|))))) (and (=> (= (ControlFlow 0 171) (- 0 189)) (=> |$w$loop#0@0| (< 0 |A#0|))) (=> (=> |$w$loop#0@0| (< 0 |A#0|)) (and (=> (= (ControlFlow 0 171) (- 0 188)) (=> |$w$loop#0@0| (< 0 |B#0|))) (=> (=> |$w$loop#0@0| (< 0 |B#0|)) (and (=> (= (ControlFlow 0 171) (- 0 187)) (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 186)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#2@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#2@0|)) (and (=> (= (ControlFlow 0 171) (- 0 185)) (=> |$w$loop#0@0| (< |$rhs#2@0| 4))) (=> (=> |$w$loop#0@0| (< |$rhs#2@0| 4)) (and (=> (= (ControlFlow 0 171) (- 0 184)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#3@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#3@0|)) (and (=> (= (ControlFlow 0 171) (- 0 183)) (=> |$w$loop#0@0| (< |$rhs#3@0| 4))) (=> (=> |$w$loop#0@0| (< |$rhs#3@0| 4)) (and (=> (= (ControlFlow 0 171) (- 0 182)) (=> |$w$loop#0@0| (or (= |$rhs#2@0| (LitInt 0)) (= |a0#0@0| |A#0|)))) (=> (=> |$w$loop#0@0| (or (= |$rhs#2@0| (LitInt 0)) (= |a0#0@0| |A#0|))) (and (=> (= (ControlFlow 0 171) (- 0 181)) (=> |$w$loop#0@0| (or (= |$rhs#3@0| (LitInt 0)) (= |b1#0@0| |B#0|)))) (=> (=> |$w$loop#0@0| (or (= |$rhs#3@0| (LitInt 0)) (= |b1#0@0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 180)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (<= |B#0| |b0#0@0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (<= |B#0| |b0#0@0|))) (and (=> (= (ControlFlow 0 171) (- 0 179)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (=> (<= |b0#0@0| |a0#0@0|) (= |b0#0@0| |B#0|))))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (=> (<= |b0#0@0| |a0#0@0|) (= |b0#0@0| |B#0|)))) (and (=> (= (ControlFlow 0 171) (- 0 178)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (<= |A#0| |a1#0@0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (<= |A#0| |a1#0@0|))) (and (=> (= (ControlFlow 0 171) (- 0 177)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (=> (<= |a1#0@0| |b1#0@0|) (= |a1#0@0| |A#0|))))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (=> (<= |a1#0@0| |b1#0@0|) (= |a1#0@0| |A#0|)))) (and (=> (= (ControlFlow 0 171) (- 0 176)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 3)) (= |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 3)) (= |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 175)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 3)) (= |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 3)) (= |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 174)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@0|)) (and (=> (= (ControlFlow 0 171) (- 0 173)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@0|)) (and (=> (= (ControlFlow 0 171) (- 0 172)) (=> |$w$loop#0@0| (or (or (= |$rhs#2@0| (LitInt 3)) (= |$rhs#3@0| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@0| |budget1#0@0|))))) (=> (=> |$w$loop#0@0| (or (or (= |$rhs#2@0| (LitInt 3)) (= |$rhs#3@0| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@0| |budget1#0@0|)))) (=> (= (ControlFlow 0 171) 170) anon109_LoopHead_correct))))))))))))))))))))))))))))))))))))))))))
+(let ((anon3_correct  (and (=> (= (ControlFlow 0 171) (- 0 190)) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> (+ 0 1) 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> (+ 0 1) 0)))))) (or (exists ((|$as#budget00#0| Int) ) (!  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> |$as#budget00#0| 0) (> (+ 0 1) 0)))
+ :qid |Problem2dfy.119:7|
+ :skolemid |679|
+)) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> 0 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> 0 0)))))) (or (exists ((|$as#budget00#0@@0| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> |$as#budget00#0@@0| 0) (> 0 0)))
+ :qid |Problem2dfy.119:7|
+ :skolemid |678|
+)) (or (exists ((|$as#budget10#0| Int) ) (!  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> (+ 0 1) 0) (> |$as#budget10#0| 0)))
+ :qid |Problem2dfy.119:16|
+ :skolemid |677|
+)) (or (exists ((|$as#budget10#0@@0| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> 0 0) (> |$as#budget10#0@@0| 0)))
+ :qid |Problem2dfy.119:16|
+ :skolemid |676|
+)) (exists ((|$as#budget00#0@@1| Int) (|$as#budget10#0@@1| Int) ) (!  (and (> |$as#budget00#0@@1| 0) (> |$as#budget10#0@@1| 0))
+ :qid |Problem2dfy.119:7|
+ :skolemid |675|
+))))))))))) (=> (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> (+ 0 1) 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> (+ 0 1) 0)))))) (or (exists ((|$as#budget00#0@@2| Int) ) (!  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> |$as#budget00#0@@2| 0) (> (+ 0 1) 0)))
+ :qid |Problem2dfy.119:7|
+ :skolemid |679|
+)) (or (and (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> (+ 0 1) 0) (> 0 0)))))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (U_2_bool (Lit boolType (bool_2_U  (and (> 0 0) (> 0 0)))))) (or (exists ((|$as#budget00#0@@3| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> |$as#budget00#0@@3| 0) (> 0 0)))
+ :qid |Problem2dfy.119:7|
+ :skolemid |678|
+)) (or (exists ((|$as#budget10#0@@2| Int) ) (!  (and ($Is intType (int_2_U (LitInt (+ 0 1))) TInt) (and (> (+ 0 1) 0) (> |$as#budget10#0@@2| 0)))
+ :qid |Problem2dfy.119:16|
+ :skolemid |677|
+)) (or (exists ((|$as#budget10#0@@3| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (> 0 0) (> |$as#budget10#0@@3| 0)))
+ :qid |Problem2dfy.119:16|
+ :skolemid |676|
+)) (exists ((|$as#budget00#0@@4| Int) (|$as#budget10#0@@4| Int) ) (!  (and (> |$as#budget00#0@@4| 0) (> |$as#budget10#0@@4| 0))
+ :qid |Problem2dfy.119:7|
+ :skolemid |675|
+)))))))))) (=> (and (and (and (> |budget0#0@0| 0) (> |budget1#0@0| 0)) (= |$decr_init$loop#00@0| (+ |A#0| |B#0|))) (and (and (= |$decr_init$loop#01@0| (+ (_module.__default.FinalStretch |$rhs#2@0| |$rhs#3@0| |a0#0@0| |b0#0@0| |B#0|) (_module.__default.FinalStretch |$rhs#3@0| |$rhs#2@0| |b1#0@0| |a1#0@0| |A#0|))) (= |$decr_init$loop#02@0| (+ (ite  (and (and (= |$rhs#2@0| (LitInt 2)) (< |a0#0@0| |b0#0@0|)) (not (< |A#0| |B#0|))) 1 0) (ite  (and (and (= |$rhs#3@0| (LitInt 2)) (< |b1#0@0| |a1#0@0|)) (not (< |B#0| |A#0|))) 1 0)))) (and (= |$decr_init$loop#03@0| (+ (ite (< |A#0| |B#0|) |budget0#0@0| 0) (ite (< |B#0| |A#0|) |budget1#0@0| 0))) (= |$decr_init$loop#04@0| (- (- 8 |$rhs#2@0|) |$rhs#3@0|))))) (and (=> (= (ControlFlow 0 171) (- 0 189)) (=> |$w$loop#0@0| (< 0 |A#0|))) (=> (=> |$w$loop#0@0| (< 0 |A#0|)) (and (=> (= (ControlFlow 0 171) (- 0 188)) (=> |$w$loop#0@0| (< 0 |B#0|))) (=> (=> |$w$loop#0@0| (< 0 |B#0|)) (and (=> (= (ControlFlow 0 171) (- 0 187)) (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (= (_module.__default.Gcd |A#0| |B#0|) (_module.__default.Gcd |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 186)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#2@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#2@0|)) (and (=> (= (ControlFlow 0 171) (- 0 185)) (=> |$w$loop#0@0| (< |$rhs#2@0| 4))) (=> (=> |$w$loop#0@0| (< |$rhs#2@0| 4)) (and (=> (= (ControlFlow 0 171) (- 0 184)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#3@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#3@0|)) (and (=> (= (ControlFlow 0 171) (- 0 183)) (=> |$w$loop#0@0| (< |$rhs#3@0| 4))) (=> (=> |$w$loop#0@0| (< |$rhs#3@0| 4)) (and (=> (= (ControlFlow 0 171) (- 0 182)) (=> |$w$loop#0@0| (or (= |$rhs#2@0| (LitInt 0)) (= |a0#0@0| |A#0|)))) (=> (=> |$w$loop#0@0| (or (= |$rhs#2@0| (LitInt 0)) (= |a0#0@0| |A#0|))) (and (=> (= (ControlFlow 0 171) (- 0 181)) (=> |$w$loop#0@0| (or (= |$rhs#3@0| (LitInt 0)) (= |b1#0@0| |B#0|)))) (=> (=> |$w$loop#0@0| (or (= |$rhs#3@0| (LitInt 0)) (= |b1#0@0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 180)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (<= |B#0| |b0#0@0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (<= |B#0| |b0#0@0|))) (and (=> (= (ControlFlow 0 171) (- 0 179)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (=> (<= |b0#0@0| |a0#0@0|) (= |b0#0@0| |B#0|))))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 2)) (=> (<= |b0#0@0| |a0#0@0|) (= |b0#0@0| |B#0|)))) (and (=> (= (ControlFlow 0 171) (- 0 178)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (<= |A#0| |a1#0@0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (<= |A#0| |a1#0@0|))) (and (=> (= (ControlFlow 0 171) (- 0 177)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (=> (<= |a1#0@0| |b1#0@0|) (= |a1#0@0| |A#0|))))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 2)) (=> (<= |a1#0@0| |b1#0@0|) (= |a1#0@0| |A#0|)))) (and (=> (= (ControlFlow 0 171) (- 0 176)) (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 3)) (= |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#2@0| (LitInt 3)) (= |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 175)) (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 3)) (= |A#0| |B#0|)))) (=> (=> |$w$loop#0@0| (=> (= |$rhs#3@0| (LitInt 3)) (= |A#0| |B#0|))) (and (=> (= (ControlFlow 0 171) (- 0 174)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget0#0@0|)) (and (=> (= (ControlFlow 0 171) (- 0 173)) (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |budget1#0@0|)) (and (=> (= (ControlFlow 0 171) (- 0 172)) (=> |$w$loop#0@0| (or (or (= |$rhs#2@0| (LitInt 3)) (= |$rhs#3@0| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@0| |budget1#0@0|))))) (=> (=> |$w$loop#0@0| (or (or (= |$rhs#2@0| (LitInt 3)) (= |$rhs#3@0| (LitInt 3))) (<= (LitInt 1) (+ |budget0#0@0| |budget1#0@0|)))) (=> (= (ControlFlow 0 171) 170) anon109_LoopHead_correct))))))))))))))))))))))))))))))))))))))))))
 (let ((anon108_Else_correct  (=> (and (>= 0 |budget0#1@0|) (= (ControlFlow 0 192) 171)) anon3_correct)))
 (let ((anon108_Then_correct  (=> (and (> |budget0#1@0| 0) (= (ControlFlow 0 191) 171)) anon3_correct)))
 (let ((anon107_Then_correct  (and (=> (= (ControlFlow 0 193) 191) anon108_Then_correct) (=> (= (ControlFlow 0 193) 192) anon108_Else_correct))))

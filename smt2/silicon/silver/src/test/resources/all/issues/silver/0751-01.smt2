@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:32:21
+; Started: 2025-01-26 23:04:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,37 +126,37 @@
 (assert (forall ((s@$ $Snap) (idx@0@00 Int)) (!
   (= (f_get2%limited s@$ idx@0@00) (f_get2 s@$ idx@0@00))
   :pattern ((f_get2 s@$ idx@0@00))
-  :qid |quant-u-9208|)))
+  :qid |quant-u-9154|)))
 (assert (forall ((s@$ $Snap) (idx@0@00 Int)) (!
   (f_get2%stateless idx@0@00)
   :pattern ((f_get2%limited s@$ idx@0@00))
-  :qid |quant-u-9209|)))
+  :qid |quant-u-9155|)))
 (assert (forall ((s@$ $Snap) (idx@2@00 Int)) (!
   (= (f_get%limited s@$ idx@2@00) (f_get s@$ idx@2@00))
   :pattern ((f_get s@$ idx@2@00))
-  :qid |quant-u-9210|)))
+  :qid |quant-u-9156|)))
 (assert (forall ((s@$ $Snap) (idx@2@00 Int)) (!
   (f_get%stateless idx@2@00)
   :pattern ((f_get%limited s@$ idx@2@00))
-  :qid |quant-u-9211|)))
+  :qid |quant-u-9157|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (f_clamp%limited s@$) (f_clamp s@$))
   :pattern ((f_clamp s@$))
-  :qid |quant-u-9212|)))
+  :qid |quant-u-9158|)))
 (assert (forall ((s@$ $Snap)) (!
   (as f_clamp%stateless  Bool)
   :pattern ((f_clamp%limited s@$))
-  :qid |quant-u-9213|)))
+  :qid |quant-u-9159|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@4@00 (f_clamp%limited s@$))) (=>
     (f_clamp%precondition s@$)
     (= result@4@00 0)))
   :pattern ((f_clamp%limited s@$))
-  :qid |quant-u-9214|)))
+  :qid |quant-u-9160|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@4@00 (f_clamp%limited s@$))) true)
   :pattern ((f_clamp%limited s@$))
-  :qid |quant-u-9215|)))
+  :qid |quant-u-9161|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- main ----------

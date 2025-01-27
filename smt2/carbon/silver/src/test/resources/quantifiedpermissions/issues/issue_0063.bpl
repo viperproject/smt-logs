@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:14
+// Date:         2025-01-26 23:16:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0063.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0063-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -577,10 +577,10 @@ procedure even_odd(S: (Seq Ref)) returns ()
   var j_14: int;
   var i_3: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4: int;
   var ExhaleHeap: HeapType;
   var i_14: int;
@@ -661,15 +661,15 @@ procedure even_odd(S: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall i: Int ::
   //     { (i in [0..|S|)) }
   //     { S[i] }
   //     (i in [0..|S|)) && i % 2 == 0 ==> acc(S[i].f, write)) -- issue_0063.vpr@10.3--10.70
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|S|)) } { S[i] } (i in [0..|S|)) && i % 2 == 0 ==> acc(S[i].f, write))
       if (*) {
@@ -732,8 +732,8 @@ procedure even_odd(S: (Seq Ref)) returns ()
   //     { (i in [0..|S|)) }
   //     { S[i] }
   //     (i in [0..|S|)) && i % 2 == 1 ==> acc(S[i].f, write)) -- issue_0063.vpr@11.3--11.70
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|S|)) } { S[i] } (i in [0..|S|)) && i % 2 == 1 ==> acc(S[i].f, write))
       if (*) {

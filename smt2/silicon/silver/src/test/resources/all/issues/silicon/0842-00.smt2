@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:32
+; Started: 2025-01-26 23:06:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -537,11 +537,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (two%limited s@$) (two s@$))
   :pattern ((two s@$))
-  :qid |quant-u-11269|)))
+  :qid |quant-u-11216|)))
 (assert (forall ((s@$ $Snap)) (!
   (as two%stateless  Bool)
   :pattern ((two%limited s@$))
-  :qid |quant-u-11270|)))
+  :qid |quant-u-11217|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -553,11 +553,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (two%precondition s@$) (= (two s@$) 2))
   :pattern ((two s@$))
-  :qid |quant-u-11273|)))
+  :qid |quant-u-11220|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((two s@$))
-  :qid |quant-u-11274|)))
+  :qid |quant-u-11221|)))
 ; ---------- FUNCTION one----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -567,11 +567,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (one%limited s@$) (one s@$))
   :pattern ((one s@$))
-  :qid |quant-u-11271|)))
+  :qid |quant-u-11218|)))
 (assert (forall ((s@$ $Snap)) (!
   (as one%stateless  Bool)
   :pattern ((one%limited s@$))
-  :qid |quant-u-11272|)))
+  :qid |quant-u-11219|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -583,11 +583,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (one%precondition s@$) (= (one s@$) 1))
   :pattern ((one s@$))
-  :qid |quant-u-11275|)))
+  :qid |quant-u-11222|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((one s@$))
-  :qid |quant-u-11276|)))
+  :qid |quant-u-11223|)))
 ; ---------- Q ----------
 (declare-const x@2@00 $Ref)
 ; ---------- P ----------

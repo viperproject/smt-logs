@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:41:51
+// Date:         2025-01-26 23:13:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/heap_dependent_triggers.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/heap_dependent_triggers-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -283,11 +283,11 @@ procedure bar01#definedness(i: int) returns (Result: int)
 procedure test01a(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -302,8 +302,8 @@ procedure test01a(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) -- heap_dependent_triggers.vpr@12.3--12.18
     perm := FullPerm;
@@ -332,8 +332,8 @@ procedure test01a(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) -- heap_dependent_triggers.vpr@16.3--16.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@16.10--16.18) [51510]"}
@@ -360,8 +360,8 @@ procedure test01a(x: Ref) returns ()
     // -- Check definedness of fun01(x, 5)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@19.10--19.21) [51512]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -377,8 +377,8 @@ procedure test01a(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar01(5) > 0 -- heap_dependent_triggers.vpr@23.3--23.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar01(5) > 0
       if (*) {
@@ -397,11 +397,11 @@ procedure test01a(x: Ref) returns ()
 procedure test01b(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -417,8 +417,8 @@ procedure test01b(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- heap_dependent_triggers.vpr@27.3--27.30
     perm := FullPerm;
@@ -433,8 +433,8 @@ procedure test01b(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- heap_dependent_triggers.vpr@28.3--28.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (heap_dependent_triggers.vpr@28.10--28.16) [51516]"}
       x != y;
     assume state(Heap, Mask);
@@ -458,8 +458,8 @@ procedure test01b(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(y.f, write) -- heap_dependent_triggers.vpr@32.3--32.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (heap_dependent_triggers.vpr@32.10--32.18) [51518]"}
@@ -486,8 +486,8 @@ procedure test01b(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun01(x, 5)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@35.10--35.21) [51520]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -503,8 +503,8 @@ procedure test01b(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar01(5) > 0 -- heap_dependent_triggers.vpr@36.3--36.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar01(5) > 0
       if (*) {
@@ -524,10 +524,10 @@ procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -564,12 +564,12 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(x.f, write) -- heap_dependent_triggers.vpr@43.3--43.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@43.10--43.18) [51523]"}
@@ -596,8 +596,8 @@ procedure test02(x: Ref) returns ()
     // -- Check definedness of old(fun01(x, 5))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@46.14--46.25) [51525]"}
           NoPerm < perm ==> NoPerm < oldMask[x, f_7];
@@ -610,8 +610,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(bar01(5)) > 0 -- heap_dependent_triggers.vpr@47.3--47.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(bar01(5)) > 0
       if (*) {
@@ -631,10 +631,10 @@ procedure test03a(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -655,8 +655,8 @@ procedure test03a(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int :: { old(fun01(x, i)) } bar01(i) > 0) -- heap_dependent_triggers.vpr@53.3--53.58
     assume state(Heap, Mask);
@@ -682,8 +682,8 @@ procedure test03a(x: Ref) returns ()
     // -- Check definedness of old(fun01(x, 5))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@55.14--55.25) [51527]"}
           NoPerm < perm ==> NoPerm < oldMask[x, f_7];
@@ -696,8 +696,8 @@ procedure test03a(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(bar01(5)) > 0 -- heap_dependent_triggers.vpr@56.3--56.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old(bar01(5)) > 0
       if (*) {
@@ -717,10 +717,10 @@ procedure test03b(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -747,8 +747,8 @@ procedure test03b(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int :: { old(fun01(x, i)) } bar01(i) > 0) -- heap_dependent_triggers.vpr@62.3--62.58
     assume state(Heap, Mask);
@@ -769,8 +769,8 @@ procedure test03b(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(y.f, write) -- heap_dependent_triggers.vpr@64.3--64.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (heap_dependent_triggers.vpr@64.10--64.18) [51530]"}
@@ -797,8 +797,8 @@ procedure test03b(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun01(x, 5)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@67.10--67.21) [51532]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -814,8 +814,8 @@ procedure test03b(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar01(5) > 0 -- heap_dependent_triggers.vpr@68.3--68.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar01(5) > 0
       if (*) {
@@ -835,10 +835,10 @@ procedure test03c(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -865,8 +865,8 @@ procedure test03c(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int :: { old(fun01(x, i)) } bar01(i) > 0) -- heap_dependent_triggers.vpr@74.3--74.58
     assume state(Heap, Mask);
@@ -887,8 +887,8 @@ procedure test03c(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) -- heap_dependent_triggers.vpr@76.3--76.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@76.10--76.18) [51535]"}
@@ -915,8 +915,8 @@ procedure test03c(x: Ref, y: Ref) returns ()
     // -- Check definedness of fun01(x, 5)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (heap_dependent_triggers.vpr@79.10--79.21) [51537]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -932,8 +932,8 @@ procedure test03c(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar01(5) > 0 -- heap_dependent_triggers.vpr@83.3--83.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar01(5) > 0
       if (*) {

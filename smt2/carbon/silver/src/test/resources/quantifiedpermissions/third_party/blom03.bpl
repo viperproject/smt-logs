@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:08
+// Date:         2025-01-26 23:16:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom03.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom03-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -760,13 +760,13 @@ procedure vals_meth(p_1: Perm, ar_1: (Seq Ref)) returns (res: (Seq int))
   var j_13: int;
   var i_5: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_15: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_6_2: int;
   
   // -- Initializing the state
@@ -854,8 +854,8 @@ procedure vals_meth(p_1: Perm, ar_1: (Seq Ref)) returns (res: (Seq int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -895,8 +895,8 @@ procedure vals_meth(p_1: Perm, ar_1: (Seq Ref)) returns (res: (Seq int))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of vals_meth might not hold. Assertion |res| == |ar| might not hold. (blom03.vpr@21.11--21.24) [153332]"}
       Seq#Length(res) == Seq#Length(ar_1);
     if (*) {
@@ -923,10 +923,10 @@ procedure Problem__problem(ar_1: (Seq Ref)) returns ()
   var j_4: int;
   var i_21: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4_1: int;
   var j_2_2: int;
   var ExhaleHeap: HeapType;
@@ -1011,16 +1011,16 @@ procedure Problem__problem(ar_1: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: xs := vals(1 / 2, ar) -- blom03.vpr@30.3--30.22
     
     // -- Check definedness of vals(1 / 2, ar)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function vals might not hold. Assertion 1 / 2 > none might not hold. (blom03.vpr@30.9--30.22) [153341]"}
           NoPerm < 1 / 2;
         if (*) {
@@ -1077,8 +1077,8 @@ procedure Problem__problem(ar_1: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |xs| == |ar| -- blom03.vpr@31.3--31.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |xs| == |ar| might not hold. (blom03.vpr@31.10--31.22) [153346]"}
       Seq#Length(xs) == Seq#Length(ar_1);
     assume state(Heap, Mask);
@@ -1087,8 +1087,8 @@ procedure Problem__problem(ar_1: (Seq Ref)) returns ()
   //     { xs[i] }
   //     { ar[i] }
   //     0 <= i && i < |ar| ==> xs[i] == ar[i].val) -- blom03.vpr@32.3--32.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { xs[i] } { ar[i] } 0 <= i && i < |ar| ==> xs[i] == ar[i].val)
       if (*) {

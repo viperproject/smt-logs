@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:53
+// Date:         2025-01-26 23:16:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/max_array/max-array-standard.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/max_array/max-array-standard-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -265,15 +265,15 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j$1: int;
   var j$2: int;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j$4: int;
   var j$5: int;
   var ExhaleHeap: HeapType;
@@ -336,8 +336,8 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -446,8 +446,8 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 1 <= k && k <= len(a) might not hold on entry. Assertion 1 <= k might not hold. (max-array-standard.vpr@29.17--29.38) [106838]"}
               1 <= k;
             assert {:msg "  Loop invariant 1 <= k && k <= len(a) might not hold on entry. Assertion k <= len(a) might not hold. (max-array-standard.vpr@29.17--29.38) [106839]"}
@@ -689,8 +689,8 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
                 k := k + 1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 1 <= k && k <= len(a) might not be preserved. Assertion 1 <= k might not hold. (max-array-standard.vpr@29.17--29.38) [106854]"}
               1 <= k;
             assert {:msg "  Loop invariant 1 <= k && k <= len(a) might not be preserved. Assertion k <= len(a) might not hold. (max-array-standard.vpr@29.17--29.38) [106855]"}
@@ -825,8 +825,8 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -912,15 +912,15 @@ procedure vmax(a_2: IArrayDomainType) returns (at_1: int)
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: IArrayDomainType;
   var QPMask: MaskType;
   var i_8: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var x: int;
   
@@ -932,8 +932,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale len(a) == 3 -- max-array-standard.vpr@45.3--45.21
     assume (len(a_2): int) == 3;
@@ -1009,8 +1009,8 @@ procedure client() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       havoc QPMask;
       
       // -- check that the permission amount is positive
@@ -1113,8 +1113,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, 0).val <= x -- max-array-standard.vpr@52.3--52.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of loc(a, 0).val <= x
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 0).val (max-array-standard.vpr@52.10--52.28) [106875]"}
@@ -1124,8 +1124,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == loc(a, len(a) - 1).val -- max-array-standard.vpr@53.3--53.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x == loc(a, len(a) - 1).val
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, len(a) - 1).val (max-array-standard.vpr@53.10--53.37) [106877]"}
@@ -1135,15 +1135,15 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == 2 -- max-array-standard.vpr@54.3--54.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 2 might not hold. (max-array-standard.vpr@54.10--54.16) [106879]"}
       x == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, 1).val < x -- max-array-standard.vpr@55.3--55.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of loc(a, 1).val < x
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 1).val (max-array-standard.vpr@55.10--55.27) [106880]"}

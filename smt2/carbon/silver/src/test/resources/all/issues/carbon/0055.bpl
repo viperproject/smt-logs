@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:06
+// Date:         2025-01-26 23:15:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0055.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0055-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -237,8 +237,8 @@ procedure Nodesize$#definedness(this$_3: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -265,8 +265,8 @@ procedure Nodesize$#definedness(this$_3: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this$_3));
       assume UnfoldingHeap[null, Nodevalid$(this$_3)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_3, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_3, Nodevalue$]), FrameFragment((if UnfoldingHeap[this$_3, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this$_3, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodevalid$(this$_3) (0055.vpr@9.1--15.2) [82219]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodevalid$(this$_3)];
@@ -297,8 +297,8 @@ procedure Nodesize$#definedness(this$_3: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this$_3, Nodenext$);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function Nodesize$ might not hold. Assertion this$_3.Nodenext$ != null might not hold. (0055.vpr@14.85--14.113) [82222]"}
             UnfoldingHeap[this$_3, Nodenext$] != null;
           perm := FullPerm;
@@ -333,8 +333,8 @@ procedure Nodesize$#definedness(this$_3: Ref) returns (Result: int)
     Result := (if Heap[this$_3, Nodenext$] != null then 1 + Nodesize$(Heap, Heap[this$_3, Nodenext$]) else 1);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Nodesize$ might not hold. Assertion result > 0 might not hold. (0055.vpr@12.11--12.21) [82224]"}
       Result > 0;
 }
@@ -382,8 +382,8 @@ procedure Nodecontains$#definedness(this$_4: Ref, i: int) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -410,8 +410,8 @@ procedure Nodecontains$#definedness(this$_4: Ref, i: int) returns (Result: bool)
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this$_4));
       assume UnfoldingHeap[null, Nodevalid$(this$_4)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_4, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_4, Nodevalue$]), FrameFragment((if UnfoldingHeap[this$_4, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this$_4, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodevalid$(this$_4) (0055.vpr@17.1--22.2) [82225]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodevalid$(this$_4)];
@@ -445,8 +445,8 @@ procedure Nodecontains$#definedness(this$_4: Ref, i: int) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, this$_4, Nodenext$);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             assert {:msg "  Precondition of function Nodecontains$ might not hold. Assertion this$_4.Nodenext$ != null might not hold. (0055.vpr@21.112--21.147) [82229]"}
               UnfoldingHeap[this$_4, Nodenext$] != null;
             perm := FullPerm;
@@ -562,12 +562,12 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -602,8 +602,8 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -617,8 +617,8 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
     // -- Check definedness of Nodesize$(this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function Nodesize$ might not hold. Assertion this != null might not hold. (0055.vpr@33.44--33.59) [82233]"}
           this != null;
         perm := FullPerm;
@@ -638,8 +638,8 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function Nodecontains$ might not hold. Assertion this != null might not hold. (0055.vpr@33.97--33.119) [82235]"}
             this != null;
           perm := FullPerm;
@@ -676,8 +676,8 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Nodevalid$(this), write) -- 0055.vpr@37.3--37.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Nodevalid$(this) might fail. There might be insufficient permission to access this.Nodenext$ (0055.vpr@37.3--37.36) [82241]"}
@@ -726,8 +726,8 @@ procedure Nodeinit$(this: Ref, k$: Perm, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Nodeinit$ might not hold. There might be insufficient permission to access Nodevalid$(this) (0055.vpr@33.11--33.133) [82247]"}

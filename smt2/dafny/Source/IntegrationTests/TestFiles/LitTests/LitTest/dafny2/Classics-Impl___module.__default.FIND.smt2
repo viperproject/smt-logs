@@ -73,16 +73,22 @@
 (declare-fun Tclass._System.array?_0 (T@U) T@U)
 (declare-fun Tclass._System.array_0 (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._System.array? Tagclass._System.array tytagFamily$array)
@@ -90,126 +96,205 @@
 (assert (= (FDim alloc) 0))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((_System.array$arg T@U) ($o T@U) ) (!  (=> (and (or (not (= $o null)) (not true)) (= (dtype $o) (Tclass._System.array? _System.array$arg))) ($Is intType (int_2_U (_System.array.Length $o)) TInt))
+ :qid |unknown.0:0|
+ :skolemid |359|
  :pattern ( (_System.array.Length $o) (Tclass._System.array? _System.array$arg))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall ((_System.array$arg@@0 T@U) (|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h) ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h))
+ :qid |unknown.0:0|
+ :skolemid |365|
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array _System.array$arg@@0) $h))
  :pattern ( ($IsAlloc refType |c#0| (Tclass._System.array? _System.array$arg@@0) $h))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((_System.array$arg@@1 T@U) ($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass._System.array? _System.array$arg@@1) $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |358|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass._System.array? _System.array$arg@@1) $h@@0))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((_System.array$arg@@2 T@U) ($h@@1 T@U) ($o@@1 T@U) ($i0 Int) ) (!  (=> (and (and (and ($IsGoodHeap $h@@1) (and (or (not (= $o@@1 null)) (not true)) (= (dtype $o@@1) (Tclass._System.array? _System.array$arg@@2)))) (and (<= 0 $i0) (< $i0 (_System.array.Length $o@@1)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) alloc)))) ($IsAllocBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) (IndexField $i0)) _System.array$arg@@2 $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |356|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) (IndexField $i0)) (Tclass._System.array? _System.array$arg@@2))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert (forall ((_System.array$arg@@3 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3))  (and ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |364|
  :pattern ( ($Is refType |c#0@@0| (Tclass._System.array _System.array$arg@@3)))
  :pattern ( ($Is refType |c#0@@0| (Tclass._System.array? _System.array$arg@@3)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx t@@0 h@@1) ($IsAllocBox bx t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
 )))
 (assert (forall ((_System.array$arg@@4 T@U) ) (!  (and (= (Tag (Tclass._System.array? _System.array$arg@@4)) Tagclass._System.array?) (= (TagFamily (Tclass._System.array? _System.array$arg@@4)) tytagFamily$array))
+ :qid |unknown.0:0|
+ :skolemid |352|
  :pattern ( (Tclass._System.array? _System.array$arg@@4))
 )))
 (assert (forall ((_System.array$arg@@5 T@U) ) (!  (and (= (Tag (Tclass._System.array _System.array$arg@@5)) Tagclass._System.array) (= (TagFamily (Tclass._System.array _System.array$arg@@5)) tytagFamily$array))
+ :qid |unknown.0:0|
+ :skolemid |361|
  :pattern ( (Tclass._System.array _System.array$arg@@5))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@2 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#2| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f))  (=> (and (or (not (= $o@@2 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@2) |l#2|)))) (= $o@@2 |l#3|)))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |559|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#2| |l#0| |l#1| |l#2| |l#3|) $o@@2 $f))
 )))
 (assert (forall ((_System.array$arg@@6 T@U) ($o@@3 T@U) ) (! (= ($Is refType $o@@3 (Tclass._System.array? _System.array$arg@@6))  (or (= $o@@3 null) (= (dtype $o@@3) (Tclass._System.array? _System.array$arg@@6))))
+ :qid |unknown.0:0|
+ :skolemid |357|
  :pattern ( ($Is refType $o@@3 (Tclass._System.array? _System.array$arg@@6)))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TInt) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@0 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@1) t@@2) ($Is T@@3 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
 )))
 (assert (forall ((o@@0 T@U) ) (! (<= 0 (_System.array.Length o@@0))
+ :qid |DafnyPreludebpl.571:15|
+ :skolemid |112|
  :pattern ( (_System.array.Length o@@0))
 )))
 (assert (forall ((i Int) ) (! (= (FDim (IndexField i)) 1)
+ :qid |DafnyPreludebpl.515:15|
+ :skolemid |103|
  :pattern ( (IndexField i))
 )))
 (assert (forall ((i@@0 Int) ) (! (= (IndexField_Inverse (IndexField i@@0)) i@@0)
+ :qid |DafnyPreludebpl.517:15|
+ :skolemid |104|
  :pattern ( (IndexField i@@0))
 )))
 (assert (forall ((_System.array$arg@@7 T@U) ) (! (= (Tclass._System.array?_0 (Tclass._System.array? _System.array$arg@@7)) _System.array$arg@@7)
+ :qid |unknown.0:0|
+ :skolemid |353|
  :pattern ( (Tclass._System.array? _System.array$arg@@7))
 )))
 (assert (forall ((_System.array$arg@@8 T@U) ) (! (= (Tclass._System.array_0 (Tclass._System.array _System.array$arg@@8)) _System.array$arg@@8)
+ :qid |unknown.0:0|
+ :skolemid |362|
  :pattern ( (Tclass._System.array _System.array$arg@@8))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert (forall ((_System.array$arg@@9 T@U) ($h@@2 T@U) ($o@@4 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) (Tclass._System.array? _System.array$arg@@9)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) alloc)))) ($IsAlloc intType (int_2_U (_System.array.Length $o@@4)) TInt $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |360|
  :pattern ( (_System.array.Length $o@@4) ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) alloc)) (Tclass._System.array? _System.array$arg@@9))
 )))
 (assert (forall ((_System.array$arg@@10 T@U) ($h@@3 T@U) ($o@@5 T@U) ($i0@@0 Int) ) (!  (=> (and (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@5 null)) (not true)) (= (dtype $o@@5) (Tclass._System.array? _System.array$arg@@10)))) (and (<= 0 $i0@@0) (< $i0@@0 (_System.array.Length $o@@5)))) ($IsBox (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@5) (IndexField $i0@@0)) _System.array$arg@@10))
+ :qid |unknown.0:0|
+ :skolemid |355|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@5) (IndexField $i0@@0)) (Tclass._System.array? _System.array$arg@@10))
 )))
 (assert (forall ((_System.array$arg@@11 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass._System.array? _System.array$arg@@11)) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) (Tclass._System.array? _System.array$arg@@11))))
+ :qid |unknown.0:0|
+ :skolemid |354|
  :pattern ( ($IsBox bx@@1 (Tclass._System.array? _System.array$arg@@11)))
 )))
 (assert (forall ((_System.array$arg@@12 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._System.array _System.array$arg@@12)) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) (Tclass._System.array _System.array$arg@@12))))
+ :qid |unknown.0:0|
+ :skolemid |363|
  :pattern ( ($IsBox bx@@2 (Tclass._System.array _System.array$arg@@12)))
 )))
 (assert (forall ((h@@3 T@U) (r T@U) (f T@U) (x@@6 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6))) ($HeapSucc h@@3 (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |116|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@3 r (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@3 r) f x@@6)))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@8)) (Lit BoxType ($Box T@@5 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@8)))
 )))
 (assert (forall ((h@@4 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@4)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@2 TInt h@@4))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@3 TInt))
 )))
 (push 1)
@@ -276,6 +361,7 @@
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun |$decr_init$loop#0_00@1| () Int)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.FIND)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -303,6 +389,8 @@
 (let ((anon164_Then_correct  (and (=> (= (ControlFlow 0 304) 302) anon165_Then_correct) (=> (= (ControlFlow 0 304) 303) anon165_Else_correct))))
 (let ((anon164_Else_correct true))
 (let ((anon17_correct  (=> (forall ((|p#3| Int) (|q#3| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3|) (< |p#3| |m#0@0|)) (<= |m#0@0| |q#3|)) (< |q#3| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#3|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#3|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |499|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#3|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#3|))))
 )) (and (=> (= (ControlFlow 0 305) 304) anon164_Then_correct) (=> (= (ControlFlow 0 305) 290) anon164_Else_correct)))))
 (let ((anon163_Else_correct  (=> (and (not (and (and (and (<= (LitInt 0) |p#2@0|) (< |p#2@0| |m#0@0|)) (<= |m#0@0| |q#2@0|)) (< |q#2@0| |N#0|))) (= (ControlFlow 0 311) 305)) anon17_correct)))
@@ -335,6 +423,8 @@
 (let ((anon198_Else_correct  (=> (or (not (= |i#0_0@1| |m#0@0|)) (not true)) (and (=> (= (ControlFlow 0 198) 193) anon199_Then_correct) (=> (= (ControlFlow 0 198) 196) anon199_Else_correct)))))
 (let ((anon198_Then_correct  (=> (= |i#0_0@1| |m#0@0|) (and (=> (= (ControlFlow 0 197) 193) anon199_Then_correct) (=> (= (ControlFlow 0 197) 196) anon199_Else_correct)))))
 (let ((anon77_correct  (=> (forall ((|p#0_5| Int) (|q#0_5| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5|) (<= |p#0_5| |n#0@0|)) (< |n#0@0| |q#0_5|)) (< |q#0_5| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_5|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_5|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |520|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_5|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_5|))))
 )) (and (=> (= (ControlFlow 0 199) 197) anon198_Then_correct) (=> (= (ControlFlow 0 199) 198) anon198_Else_correct)))))
 (let ((anon197_Else_correct  (=> (and (not (and (and (and (<= (LitInt 0) |p#0_4@0|) (<= |p#0_4@0| |n#0@0|)) (< |n#0@0| |q#0_4@0|)) (< |q#0_4@0| |N#0|))) (= (ControlFlow 0 205) 199)) anon77_correct)))
@@ -348,6 +438,8 @@
 (let ((anon193_Then_correct  (and (=> (= (ControlFlow 0 212) 210) anon194_Then_correct) (=> (= (ControlFlow 0 212) 211) anon194_Else_correct))))
 (let ((anon193_Else_correct true))
 (let ((anon68_correct  (=> (forall ((|p#0_3| Int) (|q#0_3| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3|) (< |p#0_3| |m#0@0|)) (<= |m#0@0| |q#0_3|)) (< |q#0_3| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_3|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_3|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |517|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_3|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_3|))))
 )) (and (=> (= (ControlFlow 0 213) 212) anon193_Then_correct) (=> (= (ControlFlow 0 213) 187) anon193_Else_correct)))))
 (let ((anon192_Else_correct  (=> (and (not (and (and (and (<= (LitInt 0) |p#0_2@0|) (< |p#0_2@0| |m#0@0|)) (<= |m#0@0| |q#0_2@0|)) (< |q#0_2@0| |N#0|))) (= (ControlFlow 0 219) 213)) anon68_correct)))
@@ -361,6 +453,8 @@
 (let ((anon188_Then_correct  (and (=> (= (ControlFlow 0 226) 224) anon189_Then_correct) (=> (= (ControlFlow 0 226) 225) anon189_Else_correct))))
 (let ((anon188_Else_correct true))
 (let ((anon59_correct  (=> (forall ((|q#0_1| Int) ) (!  (=> (and (< |j#0_0@1| |q#0_1|) (< |q#0_1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_1|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |514|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_1|))))
 )) (and (=> (= (ControlFlow 0 227) 226) anon188_Then_correct) (=> (= (ControlFlow 0 227) 186) anon188_Else_correct)))))
 (let ((anon187_Else_correct  (=> (and (not (and (< |j#0_0@1| |q#0_0@0|) (< |q#0_0@0| |N#0|))) (= (ControlFlow 0 231) 227)) anon59_correct)))
@@ -370,6 +464,8 @@
 (let ((anon185_Then_correct  (and (=> (= (ControlFlow 0 234) 232) anon186_Then_correct) (=> (= (ControlFlow 0 234) 233) anon186_Else_correct))))
 (let ((anon185_Else_correct true))
 (let ((anon54_correct  (=> (forall ((|p#0_1| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1|) (< |p#0_1| |i#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |511|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_1|))))
 )) (and (=> (= (ControlFlow 0 235) 234) anon185_Then_correct) (=> (= (ControlFlow 0 235) 185) anon185_Else_correct)))))
 (let ((anon184_Else_correct  (=> (and (not (and (<= (LitInt 0) |p#0_0@0|) (< |p#0_0@0| |i#0_0@1|))) (= (ControlFlow 0 239) 235)) anon54_correct)))
@@ -379,6 +475,8 @@
 (let ((anon182_Then_correct  (and (=> (= (ControlFlow 0 242) 240) anon183_Then_correct) (=> (= (ControlFlow 0 242) 241) anon183_Else_correct))))
 (let ((anon182_Else_correct true))
 (let ((anon49_correct  (=> (=> (<= |i#0_0@1| |j#0_0@1|) (exists ((|g#0_3| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3|) (<= |g#0_3| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |509|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_3|))))
 ))) (and (=> (= (ControlFlow 0 243) 242) anon182_Then_correct) (=> (= (ControlFlow 0 243) 184) anon182_Else_correct)))))
 (let ((anon181_Else_correct  (=> (and (not (and (<= (LitInt 0) |g#0_2@0|) (<= |g#0_2@0| |j#0_0@1|))) (= (ControlFlow 0 249) 243)) anon49_correct)))
@@ -389,6 +487,8 @@
 (let ((anon178_Then_correct  (=> (<= |i#0_0@1| |j#0_0@1|) (and (=> (= (ControlFlow 0 253) 252) anon179_Then_correct) (=> (= (ControlFlow 0 253) 245) anon179_Else_correct)))))
 (let ((anon178_Else_correct  (=> (and (< |j#0_0@1| |i#0_0@1|) (= (ControlFlow 0 244) 243)) anon49_correct)))
 (let ((anon42_correct  (=> (=> (<= |i#0_0@1| |j#0_0@1|) (exists ((|g#0_1| Int) ) (!  (and (and (<= |i#0_0@1| |g#0_1|) (< |g#0_1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_1|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |507|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_1|))))
 ))) (and (=> (= (ControlFlow 0 254) 253) anon178_Then_correct) (=> (= (ControlFlow 0 254) 244) anon178_Else_correct)))))
 (let ((anon177_Else_correct  (=> (and (not (and (<= |i#0_0@1| |g#0_0@0|) (< |g#0_0@0| |N#0|))) (= (ControlFlow 0 260) 254)) anon42_correct)))
@@ -406,15 +506,23 @@
 (let ((anon172_Then_correct  (=> (and (<= |m#0@0| |i#0_0@1|) (= (ControlFlow 0 269) 268)) anon33_correct)))
 (let ((anon171_Then_correct  (=> (not |$w$loop#0_0@1|) (and (=> (= (ControlFlow 0 271) 269) anon172_Then_correct) (=> (= (ControlFlow 0 271) 270) anon172_Else_correct)))))
 (let ((continue_0_correct  (and (=> (= (ControlFlow 0 171) (- 0 178)) (or (<= 0 |$decr$loop#00@1|) (= (- |n#0@1| |m#0@1|) |$decr$loop#00@1|))) (=> (or (<= 0 |$decr$loop#00@1|) (= (- |n#0@1| |m#0@1|) |$decr$loop#00@1|)) (and (=> (= (ControlFlow 0 171) (- 0 177)) (< (- |n#0@1| |m#0@1|) |$decr$loop#00@1|)) (=> (< (- |n#0@1| |m#0@1|) |$decr$loop#00@1|) (and (=> (= (ControlFlow 0 171) (- 0 176)) (=> |$w$loop#0@0| (<= (LitInt 0) |m#0@1|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |m#0@1|)) (and (=> (= (ControlFlow 0 171) (- 0 175)) (=> |$w$loop#0@0| (<= |m#0@1| |f#0|))) (=> (=> |$w$loop#0@0| (<= |m#0@1| |f#0|)) (and (=> (= (ControlFlow 0 171) (- 0 174)) (=> |$w$loop#0@0| (<= |f#0| |n#0@1|))) (=> (=> |$w$loop#0@0| (<= |f#0| |n#0@1|)) (and (=> (= (ControlFlow 0 171) (- 0 173)) (=> |$w$loop#0@0| (< |n#0@1| |N#0|))) (=> (=> |$w$loop#0@0| (< |n#0@1| |N#0|)) (and (=> (= (ControlFlow 0 171) (- 0 172)) (=> |$w$loop#0@0| (forall ((|p#3@@0| Int) (|q#3@@0| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3@@0|) (< |p#3@@0| |m#0@1|)) (<= |m#0@1| |q#3@@0|)) (< |q#3@@0| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#3@@0|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#3@@0|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |501|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#3@@0|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#3@@0|))))
 )))) (=> (=> |$w$loop#0@0| (forall ((|p#3@@1| Int) (|q#3@@1| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3@@1|) (< |p#3@@1| |m#0@1|)) (<= |m#0@1| |q#3@@1|)) (< |q#3@@1| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#3@@1|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#3@@1|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |501|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#3@@1|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#3@@1|))))
 ))) (=> (= (ControlFlow 0 171) (- 0 170)) (=> |$w$loop#0@0| (forall ((|p#5| Int) (|q#5| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#5|) (<= |p#5| |n#0@1|)) (< |n#0@1| |q#5|)) (< |q#5| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#5|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#5|))))))
+ :qid |Classicsdfy.57:22|
+ :skolemid |504|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#5|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#5|))))
 ))))))))))))))))))))
 (let ((anon238_Then_correct  (=> (and (and (<= |i#0_0@1| |f#0|) (= |m#0@1| |i#0_0@1|)) (and (= |n#0@1| |n#0@0|) (= (ControlFlow 0 180) 171))) continue_0_correct)))
 (let ((anon237_Then_correct  (=> (and (and (<= |f#0| |j#0_0@1|) (= |m#0@1| |m#0@0|)) (and (= |n#0@1| |j#0_0@1|) (= (ControlFlow 0 179) 171))) continue_0_correct)))
 (let ((GeneratedUnifiedExit_correct  (=> (= (ControlFlow 0 166) (- 0 165)) (forall ((|p#1| Int) (|q#1| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#1|) (<= |p#1| |f#0|)) (<= |f#0| |q#1|)) (< |q#1| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 |A#0|) (IndexField |p#1|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 |A#0|) (IndexField |q#1|))))))
+ :qid |Classicsdfy.51:18|
+ :skolemid |497|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 |A#0|) (IndexField |q#1|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@6 |A#0|) (IndexField |p#1|))))
 )))))
 (let ((after_0_correct  (=> (and (= $Heap@6 $Heap@5) (= (ControlFlow 0 167) 166)) GeneratedUnifiedExit_correct)))
@@ -430,6 +538,8 @@
 (let ((anon215_Then_correct  (and (=> (= (ControlFlow 0 128) 126) anon216_Then_correct) (=> (= (ControlFlow 0 128) 127) anon216_Else_correct))))
 (let ((anon215_Else_correct true))
 (let ((anon106_correct  (=> (exists ((|g#0_0_3| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3|) (<= |g#0_0_3| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |528|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3|))))
 )) (and (=> (= (ControlFlow 0 129) 128) anon215_Then_correct) (=> (= (ControlFlow 0 129) 120) anon215_Else_correct)))))
 (let ((anon214_Else_correct  (=> (and (not (and (<= (LitInt 0) |g#0_0_2@0|) (<= |g#0_0_2@0| |j#0_0@1|))) (= (ControlFlow 0 133) 129)) anon106_correct)))
@@ -439,6 +549,8 @@
 (let ((anon212_Then_correct  (and (=> (= (ControlFlow 0 136) 134) anon213_Then_correct) (=> (= (ControlFlow 0 136) 135) anon213_Else_correct))))
 (let ((anon212_Else_correct true))
 (let ((anon101_correct  (=> (exists ((|g#0_0_1| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_1|) (< |g#0_0_1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |525|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1|))))
 )) (and (=> (= (ControlFlow 0 137) 136) anon212_Then_correct) (=> (= (ControlFlow 0 137) 119) anon212_Else_correct)))))
 (let ((anon211_Else_correct  (=> (and (not (and (<= |i#0_0@2| |g#0_0_0@0|) (< |g#0_0_0@0| |N#0|))) (= (ControlFlow 0 141) 137)) anon101_correct)))
@@ -463,6 +575,8 @@
 (let ((anon230_Then_correct  (and (=> (= (ControlFlow 0 81) 79) anon231_Then_correct) (=> (= (ControlFlow 0 81) 80) anon231_Else_correct))))
 (let ((anon230_Else_correct true))
 (let ((anon132_correct  (=> (exists ((|g#0_0_7| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7|) (<= |g#0_0_7| |j#0_0@2|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |541|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7|))))
 )) (and (=> (= (ControlFlow 0 82) 81) anon230_Then_correct) (=> (= (ControlFlow 0 82) 73) anon230_Else_correct)))))
 (let ((anon229_Else_correct  (=> (and (not (and (<= (LitInt 0) |g#0_0_6@0|) (<= |g#0_0_6@0| |j#0_0@2|))) (= (ControlFlow 0 86) 82)) anon132_correct)))
@@ -472,6 +586,8 @@
 (let ((anon227_Then_correct  (and (=> (= (ControlFlow 0 89) 87) anon228_Then_correct) (=> (= (ControlFlow 0 89) 88) anon228_Else_correct))))
 (let ((anon227_Else_correct true))
 (let ((anon127_correct  (=> (exists ((|g#0_0_5| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5|) (< |g#0_0_5| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |538|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5|))))
 )) (and (=> (= (ControlFlow 0 90) 89) anon227_Then_correct) (=> (= (ControlFlow 0 90) 72) anon227_Else_correct)))))
 (let ((anon226_Else_correct  (=> (and (not (and (<= |i#0_0@2| |g#0_0_4@0|) (< |g#0_0_4@0| |N#0|))) (= (ControlFlow 0 94) 90)) anon127_correct)))
@@ -489,28 +605,52 @@
 (let ((anon221_Then_correct  (=> (<= (LitInt 0) |j#0_0@2|) (and (=> (= (ControlFlow 0 103) 102) anon222_Then_correct) (=> (= (ControlFlow 0 103) 99) anon222_Else_correct)))))
 (let ((anon220_Then_correct  (=> (not |$w$loop#0_0_1@2|) (and (=> (= (ControlFlow 0 105) 103) anon221_Then_correct) (=> (= (ControlFlow 0 105) 104) anon221_Else_correct)))))
 (let ((anon148_correct  (and (=> (= (ControlFlow 0 24) (- 0 36)) (or (<= 0 |$decr$loop#0_00@2|) (= (- |j#0_0@4| |i#0_0@4|) |$decr$loop#0_00@2|))) (=> (or (<= 0 |$decr$loop#0_00@2|) (= (- |j#0_0@4| |i#0_0@4|) |$decr$loop#0_00@2|)) (and (=> (= (ControlFlow 0 24) (- 0 35)) (< (- |j#0_0@4| |i#0_0@4|) |$decr$loop#0_00@2|)) (=> (< (- |j#0_0@4| |i#0_0@4|) |$decr$loop#0_00@2|) (and (=> (= (ControlFlow 0 24) (- 0 34)) (=> |$w$loop#0_0@1| (<= |m#0@0| |i#0_0@4|))) (=> (=> |$w$loop#0_0@1| (<= |m#0@0| |i#0_0@4|)) (and (=> (= (ControlFlow 0 24) (- 0 33)) (=> |$w$loop#0_0@1| (<= |j#0_0@4| |n#0@0|))) (=> (=> |$w$loop#0_0@1| (<= |j#0_0@4| |n#0@0|)) (and (=> (= (ControlFlow 0 24) (- 0 32)) (=> |$w$loop#0_0@1| (<= (LitInt (- 0 1)) |j#0_0@4|))) (=> (=> |$w$loop#0_0@1| (<= (LitInt (- 0 1)) |j#0_0@4|)) (and (=> (= (ControlFlow 0 24) (- 0 31)) (=> |$w$loop#0_0@1| (<= |i#0_0@4| |N#0|))) (=> (=> |$w$loop#0_0@1| (<= |i#0_0@4| |N#0|)) (and (=> (= (ControlFlow 0 24) (- 0 30)) (=> |$w$loop#0_0@1| (=> (<= |i#0_0@4| |j#0_0@4|) (exists ((|g#0_1@@0| Int) ) (!  (and (and (<= |i#0_0@4| |g#0_1@@0|) (< |g#0_1@@0| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_1@@0|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |508|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_1@@0|))))
 ))))) (=> (=> |$w$loop#0_0@1| (=> (<= |i#0_0@4| |j#0_0@4|) (exists ((|g#0_1@@1| Int) ) (!  (and (and (<= |i#0_0@4| |g#0_1@@1|) (< |g#0_1@@1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_1@@1|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |508|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_1@@1|))))
 )))) (and (=> (= (ControlFlow 0 24) (- 0 29)) (=> |$w$loop#0_0@1| (=> (<= |i#0_0@4| |j#0_0@4|) (exists ((|g#0_3@@0| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3@@0|) (<= |g#0_3@@0| |j#0_0@4|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_3@@0|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |510|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_3@@0|))))
 ))))) (=> (=> |$w$loop#0_0@1| (=> (<= |i#0_0@4| |j#0_0@4|) (exists ((|g#0_3@@1| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3@@1|) (<= |g#0_3@@1| |j#0_0@4|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_3@@1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |510|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |g#0_3@@1|))))
 )))) (and (=> (= (ControlFlow 0 24) (- 0 28)) (=> |$w$loop#0_0@1| (forall ((|p#0_1@@0| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1@@0|) (< |p#0_1@@0| |i#0_0@4|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_1@@0|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |513|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_1@@0|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_1@@1| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1@@1|) (< |p#0_1@@1| |i#0_0@4|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_1@@1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |513|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_1@@1|))))
 ))) (and (=> (= (ControlFlow 0 24) (- 0 27)) (=> |$w$loop#0_0@1| (forall ((|q#0_1@@0| Int) ) (!  (=> (and (< |j#0_0@4| |q#0_1@@0|) (< |q#0_1@@0| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_1@@0|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |516|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_1@@0|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|q#0_1@@1| Int) ) (!  (=> (and (< |j#0_0@4| |q#0_1@@1|) (< |q#0_1@@1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_1@@1|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |516|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_1@@1|))))
 ))) (and (=> (= (ControlFlow 0 24) (- 0 26)) (=> |$w$loop#0_0@1| (forall ((|p#0_3@@0| Int) (|q#0_3@@0| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3@@0|) (< |p#0_3@@0| |m#0@0|)) (<= |m#0@0| |q#0_3@@0|)) (< |q#0_3@@0| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_3@@0|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_3@@0|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |519|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_3@@0|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_3@@0|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_3@@1| Int) (|q#0_3@@1| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3@@1|) (< |p#0_3@@1| |m#0@0|)) (<= |m#0@0| |q#0_3@@1|)) (< |q#0_3@@1| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_3@@1|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_3@@1|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |519|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_3@@1|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_3@@1|))))
 ))) (and (=> (= (ControlFlow 0 24) (- 0 25)) (=> |$w$loop#0_0@1| (forall ((|p#0_5@@0| Int) (|q#0_5@@0| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5@@0|) (<= |p#0_5@@0| |n#0@0|)) (< |n#0@0| |q#0_5@@0|)) (< |q#0_5@@0| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_5@@0|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_5@@0|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |522|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_5@@0|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_5@@0|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_5@@1| Int) (|q#0_5@@1| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5@@1|) (<= |p#0_5@@1| |n#0@0|)) (< |n#0@0| |q#0_5@@1|)) (< |q#0_5@@1| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_5@@1|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_5@@1|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |522|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |q#0_5@@1|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |p#0_5@@1|))))
 ))) (=> (= (ControlFlow 0 24) (- 0 23)) (=> |$w$loop#0_0@1| (or (and (and (= |i#0_0@4| |m#0@0|) (= |j#0_0@4| |n#0@0|)) (= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@4 |A#0|) (IndexField |f#0|)))))) (and (< |m#0@0| |i#0_0@4|) (< |j#0_0@4| |n#0@0|)))))))))))))))))))))))))))))))
 (let ((anon146_correct  (and (=> (= (ControlFlow 0 38) (- 0 40)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |A#0|) (IndexField |i#0_0@2|)))) |$rhs#0_0@1|)) (and (=> (= (ControlFlow 0 38) (- 0 39)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |A#0|) (IndexField |j#0_0@2|)))))) (=> (and (and (and (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |A#0|) (IndexField |i#0_0@2|)))) |$rhs#0_0@1|) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@3 |A#0|) (IndexField |j#0_0@2|)))))) (and (= |$rhs#0_0_2_2@2| (+ |i#0_0@2| 1)) (= |$rhs#0_0_2_3@2| (- |j#0_0@2| 1)))) (and (and (= |i#0_0@4| |$rhs#0_0_2_2@2|) (= |j#0_0@4| |$rhs#0_0_2_3@2|)) (and (= $Heap@4 $Heap@3) (= (ControlFlow 0 38) 24)))) anon148_correct)))))
@@ -523,79 +663,143 @@
 (let ((anon234_Then_correct  (=> (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |j#0_0@2|)))) |$rhs#0_0@1|) (and (=> (= (ControlFlow 0 61) (- 0 63)) (or (not (= |A#0| null)) (not true))) (=> (or (not (= |A#0| null)) (not true)) (and (=> (= (ControlFlow 0 61) (- 0 62)) (and (<= 0 |i#0_0@2|) (< |i#0_0@2| (_System.array.Length |A#0|)))) (=> (= (ControlFlow 0 61) 58) anon143_correct)))))))
 (let ((anon233_Then_correct  (=> (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |j#0_0@2|)))) |$rhs#0_0@1|) (and (=> (= (ControlFlow 0 65) (- 0 67)) (or (not (= |A#0| null)) (not true))) (=> (or (not (= |A#0| null)) (not true)) (and (=> (= (ControlFlow 0 65) (- 0 66)) (and (<= 0 |j#0_0@2|) (< |j#0_0@2| (_System.array.Length |A#0|)))) (and (=> (= (ControlFlow 0 65) 61) anon234_Then_correct) (=> (= (ControlFlow 0 65) 64) anon234_Else_correct))))))))
 (let ((anon233_Else_correct  (=> (and (< |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |j#0_0@2|))))) (= |j#0_0@3| (- |j#0_0@2| 1))) (and (=> (= (ControlFlow 0 15) (- 0 22)) (or (<= 0 |j#0_0@2|) (= |j#0_0@3| |j#0_0@2|))) (=> (or (<= 0 |j#0_0@2|) (= |j#0_0@3| |j#0_0@2|)) (and (=> (= (ControlFlow 0 15) (- 0 21)) (< |j#0_0@3| |j#0_0@2|)) (=> (< |j#0_0@3| |j#0_0@2|) (and (=> (= (ControlFlow 0 15) (- 0 20)) (=> |$w$loop#0_0_1@2| (<= (LitInt 0) |j#0_0@3|))) (=> (=> |$w$loop#0_0_1@2| (<= (LitInt 0) |j#0_0@3|)) (and (=> (= (ControlFlow 0 15) (- 0 19)) (=> |$w$loop#0_0_1@2| (<= |j#0_0@3| |n#0@0|))) (=> (=> |$w$loop#0_0_1@2| (<= |j#0_0@3| |n#0@0|)) (and (=> (= (ControlFlow 0 15) (- 0 18)) (=> |$w$loop#0_0_1@2| (=> |firstIteration#0_0_0@2| (<= |f#0| |j#0_0@3|)))) (=> (=> |$w$loop#0_0_1@2| (=> |firstIteration#0_0_0@2| (<= |f#0| |j#0_0@3|))) (and (=> (= (ControlFlow 0 15) (- 0 17)) (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_5@@0| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5@@0|) (< |g#0_0_5@@0| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@0|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |540|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@0|))))
 )))) (=> (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_5@@1| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5@@1|) (< |g#0_0_5@@1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@1|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |540|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@1|))))
 ))) (and (=> (= (ControlFlow 0 15) (- 0 16)) (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_7@@0| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7@@0|) (<= |g#0_0_7@@0| |j#0_0@3|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@0|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |543|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@0|))))
 )))) (=> (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_7@@1| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7@@1|) (<= |g#0_0_7@@1| |j#0_0@3|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |543|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@1|))))
 ))) (=> (= (ControlFlow 0 15) (- 0 14)) (=> |$w$loop#0_0_1@2| (forall ((|q#0_0_1| Int) ) (!  (=> (and (< |j#0_0@3| |q#0_0_1|) (< |q#0_0_1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1|))))))
+ :qid |Classicsdfy.86:26|
+ :skolemid |546|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1|))))
 )))))))))))))))))))))
 (let ((anon220_Else_correct  (=> |$w$loop#0_0_1@2| (and (=> (= (ControlFlow 0 68) (- 0 70)) (or (not (= |A#0| null)) (not true))) (=> (or (not (= |A#0| null)) (not true)) (and (=> (= (ControlFlow 0 68) (- 0 69)) (and (<= 0 |j#0_0@2|) (< |j#0_0@2| (_System.array.Length |A#0|)))) (=> (and (<= 0 |j#0_0@2|) (< |j#0_0@2| (_System.array.Length |A#0|))) (and (=> (= (ControlFlow 0 68) 65) anon233_Then_correct) (=> (= (ControlFlow 0 68) 15) anon233_Else_correct)))))))))
 (let ((anon219_LoopBody_correct  (and (=> (= (ControlFlow 0 106) 105) anon220_Then_correct) (=> (= (ControlFlow 0 106) 68) anon220_Else_correct))))
 (let ((anon219_LoopDone_correct true))
 (let ((anon219_LoopHead_correct  (=> (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not false) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) (= |$rhs#0@0| 0)) (<= 0 |$rhs#1@0|)) (<= 0 |$decr_init$loop#00@0|)) |$w$loop#0@0|) (<= 0 |i#0_0@2|)) (<= (- 0 1) |j#0_0@2|)) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) |$w$loop#0_0@1|) |$w$loop#0_0_0@2|) (<= 0 |j#0_0@1|)) (and (=> |$w$loop#0_0_1@2| (<= (LitInt 0) |j#0_0@2|)) (=> |$w$loop#0_0_1@2| (<= |j#0_0@2| |n#0@0|)))) (and (and (and (=> |$w$loop#0_0_1@2| (=> |firstIteration#0_0_0@2| (<= |f#0| |j#0_0@2|))) (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_5@@2| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5@@2|) (< |g#0_0_5@@2| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@2|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |540|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@2|))))
 )))) (and (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_7@@2| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7@@2|) (<= |g#0_0_7@@2| |j#0_0@2|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@2|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |543|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@2|))))
 ))) (=> |$w$loop#0_0_1@2| (forall ((|q#0_0_1@@0| Int) ) (!  (=> (and (< |j#0_0@2| |q#0_0_1@@0|) (< |q#0_0_1@@0| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@0|))))))
+ :qid |Classicsdfy.86:26|
+ :skolemid |546|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@0|))))
 ))))) (and (and (forall (($o@@6 T@U) ) (!  (=> (and (or (not (= $o@@6 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@6) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@6) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@6)) (= $o@@6 |A#0|)))
+ :qid |Classicsdfy.82:7|
+ :skolemid |547|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@6))
 )) ($HeapSucc $Heap@1 $Heap@1)) (and (forall (($o@@7 T@U) ($f@@0 T@U) ) (!  (=> (and (or (not (= $o@@7 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7) $f@@0) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7) $f@@0)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@7 $f@@0))))
+ :qid |Classicsdfy.82:7|
+ :skolemid |548|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@7) $f@@0))
 )) (<= |j#0_0@2| |j#0_0@1|))))) (and (=> (= (ControlFlow 0 107) 13) anon219_LoopDone_correct) (=> (= (ControlFlow 0 107) 106) anon219_LoopBody_correct)))))
 (let ((anon218_Then_correct  (=> (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |i#0_0@2|))))) (and (=> (= (ControlFlow 0 108) (- 0 114)) (=> |$w$loop#0_0_1@2| (<= (LitInt 0) |j#0_0@1|))) (=> (=> |$w$loop#0_0_1@2| (<= (LitInt 0) |j#0_0@1|)) (and (=> (= (ControlFlow 0 108) (- 0 113)) (=> |$w$loop#0_0_1@2| (<= |j#0_0@1| |n#0@0|))) (=> (=> |$w$loop#0_0_1@2| (<= |j#0_0@1| |n#0@0|)) (and (=> (= (ControlFlow 0 108) (- 0 112)) (=> |$w$loop#0_0_1@2| (=> |firstIteration#0_0_0@2| (<= |f#0| |j#0_0@1|)))) (=> (=> |$w$loop#0_0_1@2| (=> |firstIteration#0_0_0@2| (<= |f#0| |j#0_0@1|))) (and (=> (= (ControlFlow 0 108) (- 0 111)) (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_5@@3| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5@@3|) (< |g#0_0_5@@3| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@3|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |540|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@3|))))
 )))) (=> (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_5@@4| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_5@@4|) (< |g#0_0_5@@4| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@4|))))))
+ :qid |Classicsdfy.84:26|
+ :skolemid |540|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_5@@4|))))
 ))) (and (=> (= (ControlFlow 0 108) (- 0 110)) (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_7@@3| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7@@3|) (<= |g#0_0_7@@3| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |543|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@3|))))
 )))) (=> (=> |$w$loop#0_0_1@2| (exists ((|g#0_0_7@@4| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_7@@4|) (<= |g#0_0_7@@4| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@4|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.85:26|
+ :skolemid |543|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_7@@4|))))
 ))) (and (=> (= (ControlFlow 0 108) (- 0 109)) (=> |$w$loop#0_0_1@2| (forall ((|q#0_0_1@@1| Int) ) (!  (=> (and (< |j#0_0@1| |q#0_0_1@@1|) (< |q#0_0_1@@1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@1|))))))
+ :qid |Classicsdfy.86:26|
+ :skolemid |546|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@1|))))
 )))) (=> (=> |$w$loop#0_0_1@2| (forall ((|q#0_0_1@@2| Int) ) (!  (=> (and (< |j#0_0@1| |q#0_0_1@@2|) (< |q#0_0_1@@2| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@2|))))))
+ :qid |Classicsdfy.86:26|
+ :skolemid |546|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_0_1@@2|))))
 ))) (=> (= (ControlFlow 0 108) 107) anon219_LoopHead_correct))))))))))))))))
 (let ((anon218_Else_correct  (=> (< (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |i#0_0@2|)))) |$rhs#0_0@1|) (=> (and (= |$decr$loop#0_0_00@3| (- |j#0_0@1| |i#0_0@2|)) (= |i#0_0@3| (+ |i#0_0@2| 1))) (and (=> (= (ControlFlow 0 5) (- 0 12)) (or (<= 0 |$decr$loop#0_0_00@3|) (= (- |j#0_0@1| |i#0_0@3|) |$decr$loop#0_0_00@3|))) (=> (or (<= 0 |$decr$loop#0_0_00@3|) (= (- |j#0_0@1| |i#0_0@3|) |$decr$loop#0_0_00@3|)) (and (=> (= (ControlFlow 0 5) (- 0 11)) (< (- |j#0_0@1| |i#0_0@3|) |$decr$loop#0_0_00@3|)) (=> (< (- |j#0_0@1| |i#0_0@3|) |$decr$loop#0_0_00@3|) (and (=> (= (ControlFlow 0 5) (- 0 10)) (=> |$w$loop#0_0_0@2| (<= |m#0@0| |i#0_0@3|))) (=> (=> |$w$loop#0_0_0@2| (<= |m#0@0| |i#0_0@3|)) (and (=> (= (ControlFlow 0 5) (- 0 9)) (=> |$w$loop#0_0_0@2| (<= |i#0_0@3| |N#0|))) (=> (=> |$w$loop#0_0_0@2| (<= |i#0_0@3| |N#0|)) (and (=> (= (ControlFlow 0 5) (- 0 8)) (=> |$w$loop#0_0_0@2| (=> |firstIteration#0_0_0@2| (<= |i#0_0@3| |f#0|)))) (=> (=> |$w$loop#0_0_0@2| (=> |firstIteration#0_0_0@2| (<= |i#0_0@3| |f#0|))) (and (=> (= (ControlFlow 0 5) (- 0 7)) (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_1@@0| Int) ) (!  (and (and (<= |i#0_0@3| |g#0_0_1@@0|) (< |g#0_0_1@@0| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@0|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |527|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@0|))))
 )))) (=> (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_1@@1| Int) ) (!  (and (and (<= |i#0_0@3| |g#0_0_1@@1|) (< |g#0_0_1@@1| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@1|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |527|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@1|))))
 ))) (and (=> (= (ControlFlow 0 5) (- 0 6)) (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_3@@0| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3@@0|) (<= |g#0_0_3@@0| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@0|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |530|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@0|))))
 )))) (=> (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_3@@1| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3@@1|) (<= |g#0_0_3@@1| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |530|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@1|))))
 ))) (=> (= (ControlFlow 0 5) (- 0 4)) (=> |$w$loop#0_0_0@2| (forall ((|p#0_0_1| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_0_1|) (< |p#0_0_1| |i#0_0@3|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.78:26|
+ :skolemid |533|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1|))))
 ))))))))))))))))))))))
 (let ((anon205_Else_correct  (=> |$w$loop#0_0_0@2| (and (=> (= (ControlFlow 0 115) (- 0 117)) (or (not (= |A#0| null)) (not true))) (=> (or (not (= |A#0| null)) (not true)) (and (=> (= (ControlFlow 0 115) (- 0 116)) (and (<= 0 |i#0_0@2|) (< |i#0_0@2| (_System.array.Length |A#0|)))) (=> (and (<= 0 |i#0_0@2|) (< |i#0_0@2| (_System.array.Length |A#0|))) (and (=> (= (ControlFlow 0 115) 108) anon218_Then_correct) (=> (= (ControlFlow 0 115) 5) anon218_Else_correct)))))))))
 (let ((anon204_LoopBody_correct  (and (=> (= (ControlFlow 0 153) 152) anon205_Then_correct) (=> (= (ControlFlow 0 153) 115) anon205_Else_correct))))
 (let ((anon204_LoopDone_correct true))
 (let ((anon204_LoopHead_correct  (=> (and (and (and (and (and (and (and (and (and (and (and (and (and (not false) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) (= |$rhs#0@0| 0)) (<= 0 |$rhs#1@0|)) (<= 0 |$decr_init$loop#00@0|)) |$w$loop#0@0|) (<= 0 |i#0_0@2|)) (<= 0 |j#0_0@1|)) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) |$w$loop#0_0@1|) (and (=> |$w$loop#0_0_0@2| (<= |m#0@0| |i#0_0@2|)) (=> |$w$loop#0_0_0@2| (<= |i#0_0@2| |N#0|)))) (and (and (and (=> |$w$loop#0_0_0@2| (=> |firstIteration#0_0_0@2| (<= |i#0_0@2| |f#0|))) (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_1@@2| Int) ) (!  (and (and (<= |i#0_0@2| |g#0_0_1@@2|) (< |g#0_0_1@@2| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@2|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |527|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@2|))))
 )))) (and (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_3@@2| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3@@2|) (<= |g#0_0_3@@2| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@2|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |530|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@2|))))
 ))) (=> |$w$loop#0_0_0@2| (forall ((|p#0_0_1@@0| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_0_1@@0|) (< |p#0_0_1@@0| |i#0_0@2|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@0|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.78:26|
+ :skolemid |533|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@0|))))
 ))))) (and (and (forall (($o@@8 T@U) ) (!  (=> (and (or (not (= $o@@8 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@8) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@8) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@8)) (= $o@@8 |A#0|)))
+ :qid |Classicsdfy.74:7|
+ :skolemid |534|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@8))
 )) ($HeapSucc $Heap@1 $Heap@1)) (and (forall (($o@@9 T@U) ($f@@1 T@U) ) (!  (=> (and (or (not (= $o@@9 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@9) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@9) $f@@1) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@9) $f@@1)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@9 $f@@1))))
+ :qid |Classicsdfy.74:7|
+ :skolemid |535|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@9) $f@@1))
 )) (<= (- |j#0_0@1| |i#0_0@2|) |$decr_init$loop#0_0_00@2|))))) (and (=> (= (ControlFlow 0 154) 3) anon204_LoopDone_correct) (=> (= (ControlFlow 0 154) 153) anon204_LoopBody_correct)))))
 (let ((anon89_correct  (=> (and (= |firstIteration#0_0_0@2|  (and (= |i#0_0@1| |m#0@0|) (= |j#0_0@1| |n#0@0|))) (= |$decr_init$loop#0_0_00@2| (- |j#0_0@1| |i#0_0@1|))) (and (=> (= (ControlFlow 0 155) (- 0 161)) (=> |$w$loop#0_0_0@2| (<= |m#0@0| |i#0_0@1|))) (=> (=> |$w$loop#0_0_0@2| (<= |m#0@0| |i#0_0@1|)) (and (=> (= (ControlFlow 0 155) (- 0 160)) (=> |$w$loop#0_0_0@2| (<= |i#0_0@1| |N#0|))) (=> (=> |$w$loop#0_0_0@2| (<= |i#0_0@1| |N#0|)) (and (=> (= (ControlFlow 0 155) (- 0 159)) (=> |$w$loop#0_0_0@2| (=> |firstIteration#0_0_0@2| (<= |i#0_0@1| |f#0|)))) (=> (=> |$w$loop#0_0_0@2| (=> |firstIteration#0_0_0@2| (<= |i#0_0@1| |f#0|))) (and (=> (= (ControlFlow 0 155) (- 0 158)) (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_1@@3| Int) ) (!  (and (and (<= |i#0_0@1| |g#0_0_1@@3|) (< |g#0_0_1@@3| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@3|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |527|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@3|))))
 )))) (=> (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_1@@4| Int) ) (!  (and (and (<= |i#0_0@1| |g#0_0_1@@4|) (< |g#0_0_1@@4| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@4|))))))
+ :qid |Classicsdfy.76:26|
+ :skolemid |527|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_1@@4|))))
 ))) (and (=> (= (ControlFlow 0 155) (- 0 157)) (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_3@@3| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3@@3|) (<= |g#0_0_3@@3| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |530|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@3|))))
 )))) (=> (=> |$w$loop#0_0_0@2| (exists ((|g#0_0_3@@4| Int) ) (!  (and (and (<= (LitInt 0) |g#0_0_3@@4|) (<= |g#0_0_3@@4| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@4|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.77:26|
+ :skolemid |530|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_0_3@@4|))))
 ))) (and (=> (= (ControlFlow 0 155) (- 0 156)) (=> |$w$loop#0_0_0@2| (forall ((|p#0_0_1@@1| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_0_1@@1|) (< |p#0_0_1@@1| |i#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@1|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.78:26|
+ :skolemid |533|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@1|))))
 )))) (=> (=> |$w$loop#0_0_0@2| (forall ((|p#0_0_1@@2| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_0_1@@2|) (< |p#0_0_1@@2| |i#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@2|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.78:26|
+ :skolemid |533|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_0_1@@2|))))
 ))) (=> (= (ControlFlow 0 155) 154) anon204_LoopHead_correct))))))))))))))))
 (let ((anon203_Else_correct  (=> (and (or (not (= |i#0_0@1| |m#0@0|)) (not true)) (= (ControlFlow 0 163) 155)) anon89_correct)))
@@ -605,66 +809,122 @@
 (let ((anon170_LoopBody_correct  (and (=> (= (ControlFlow 0 272) 271) anon171_Then_correct) (=> (= (ControlFlow 0 272) 183) anon171_Else_correct))))
 (let ((anon170_LoopDone_correct true))
 (let ((anon170_LoopHead_correct  (=> (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (=> (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not false) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) (= |$rhs#0@0| 0)) (<= 0 |$rhs#1@0|)) (<= 0 |$decr_init$loop#00@0|)) |$w$loop#0@0|) (<= 0 |i#0_0@1|)) (<= (- 0 1) |j#0_0@1|)) (<= 0 |m#0@0|)) (<= 1 |n#0@0|)) (=> |$w$loop#0_0@1| (<= |m#0@0| |i#0_0@1|))) (and (=> |$w$loop#0_0@1| (<= |j#0_0@1| |n#0@0|)) (=> |$w$loop#0_0@1| (<= (LitInt (- 0 1)) |j#0_0@1|)))) (and (and (=> |$w$loop#0_0@1| (<= |i#0_0@1| |N#0|)) (=> |$w$loop#0_0@1| (=> (<= |i#0_0@1| |j#0_0@1|) (exists ((|g#0_1@@2| Int) ) (!  (and (and (<= |i#0_0@1| |g#0_1@@2|) (< |g#0_1@@2| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_1@@2|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |508|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_1@@2|))))
 ))))) (and (=> |$w$loop#0_0@1| (=> (<= |i#0_0@1| |j#0_0@1|) (exists ((|g#0_3@@2| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3@@2|) (<= |g#0_3@@2| |j#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_3@@2|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |510|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |g#0_3@@2|))))
 )))) (=> |$w$loop#0_0@1| (forall ((|p#0_1@@2| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1@@2|) (< |p#0_1@@2| |i#0_0@1|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_1@@2|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |513|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_1@@2|))))
 )))))) (and (and (and (=> |$w$loop#0_0@1| (forall ((|q#0_1@@2| Int) ) (!  (=> (and (< |j#0_0@1| |q#0_1@@2|) (< |q#0_1@@2| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_1@@2|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |516|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_1@@2|))))
 ))) (=> |$w$loop#0_0@1| (forall ((|p#0_3@@2| Int) (|q#0_3@@2| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3@@2|) (< |p#0_3@@2| |m#0@0|)) (<= |m#0@0| |q#0_3@@2|)) (< |q#0_3@@2| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_3@@2|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_3@@2|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |519|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_3@@2|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_3@@2|))))
 )))) (and (=> |$w$loop#0_0@1| (forall ((|p#0_5@@2| Int) (|q#0_5@@2| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5@@2|) (<= |p#0_5@@2| |n#0@0|)) (< |n#0@0| |q#0_5@@2|)) (< |q#0_5@@2| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_5@@2|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_5@@2|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |522|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |q#0_5@@2|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |p#0_5@@2|))))
 ))) (=> |$w$loop#0_0@1| (or (and (and (= |i#0_0@1| |m#0@0|) (= |j#0_0@1| |n#0@0|)) (= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 |A#0|) (IndexField |f#0|)))))) (and (< |m#0@0| |i#0_0@1|) (< |j#0_0@1| |n#0@0|)))))) (and (and (forall (($o@@10 T@U) ) (!  (=> (and (or (not (= $o@@10 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@10) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@10) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@10)) (= $o@@10 |A#0|)))
+ :qid |Classicsdfy.60:5|
+ :skolemid |523|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@10))
 )) ($HeapSucc $Heap@0 $Heap@1)) (and (forall (($o@@11 T@U) ($f@@2 T@U) ) (!  (=> (and (or (not (= $o@@11 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@11) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@11) $f@@2) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@11) $f@@2)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@11 $f@@2))))
+ :qid |Classicsdfy.60:5|
+ :skolemid |524|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@1 $o@@11) $f@@2))
 )) (<= (- |j#0_0@1| |i#0_0@1|) |$decr_init$loop#0_00@1|))))) (and (=> (= (ControlFlow 0 273) 2) anon170_LoopDone_correct) (=> (= (ControlFlow 0 273) 272) anon170_LoopBody_correct))))))
 (let ((anon169_Else_correct  (=> (and (< |m#0@0| |n#0@0|) (= |$decr$loop#00@1| (- |n#0@0| |m#0@0|))) (and (=> (= (ControlFlow 0 274) (- 0 287)) (or (not (= |A#0| null)) (not true))) (=> (or (not (= |A#0| null)) (not true)) (and (=> (= (ControlFlow 0 274) (- 0 286)) (and (<= 0 |f#0|) (< |f#0| (_System.array.Length |A#0|)))) (=> (and (<= 0 |f#0|) (< |f#0| (_System.array.Length |A#0|))) (=> (and (= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |f#0|))))) (= |$decr_init$loop#0_00@1| (- |n#0@0| |m#0@0|))) (and (=> (= (ControlFlow 0 274) (- 0 285)) (=> |$w$loop#0_0@1| (<= |m#0@0| |m#0@0|))) (=> (=> |$w$loop#0_0@1| (<= |m#0@0| |m#0@0|)) (and (=> (= (ControlFlow 0 274) (- 0 284)) (=> |$w$loop#0_0@1| (<= |n#0@0| |n#0@0|))) (=> (=> |$w$loop#0_0@1| (<= |n#0@0| |n#0@0|)) (and (=> (= (ControlFlow 0 274) (- 0 283)) (=> |$w$loop#0_0@1| (<= (LitInt (- 0 1)) |n#0@0|))) (=> (=> |$w$loop#0_0@1| (<= (LitInt (- 0 1)) |n#0@0|)) (and (=> (= (ControlFlow 0 274) (- 0 282)) (=> |$w$loop#0_0@1| (<= |m#0@0| |N#0|))) (=> (=> |$w$loop#0_0@1| (<= |m#0@0| |N#0|)) (and (=> (= (ControlFlow 0 274) (- 0 281)) (=> |$w$loop#0_0@1| (=> (<= |m#0@0| |n#0@0|) (exists ((|g#0_1@@3| Int) ) (!  (and (and (<= |m#0@0| |g#0_1@@3|) (< |g#0_1@@3| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_1@@3|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |508|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_1@@3|))))
 ))))) (=> (=> |$w$loop#0_0@1| (=> (<= |m#0@0| |n#0@0|) (exists ((|g#0_1@@4| Int) ) (!  (and (and (<= |m#0@0| |g#0_1@@4|) (< |g#0_1@@4| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_1@@4|))))))
+ :qid |Classicsdfy.63:35|
+ :skolemid |508|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_1@@4|))))
 )))) (and (=> (= (ControlFlow 0 274) (- 0 280)) (=> |$w$loop#0_0@1| (=> (<= |m#0@0| |n#0@0|) (exists ((|g#0_3@@3| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3@@3|) (<= |g#0_3@@3| |n#0@0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_3@@3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |510|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_3@@3|))))
 ))))) (=> (=> |$w$loop#0_0@1| (=> (<= |m#0@0| |n#0@0|) (exists ((|g#0_3@@4| Int) ) (!  (and (and (<= (LitInt 0) |g#0_3@@4|) (<= |g#0_3@@4| |n#0@0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_3@@4|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.64:35|
+ :skolemid |510|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |g#0_3@@4|))))
 )))) (and (=> (= (ControlFlow 0 274) (- 0 279)) (=> |$w$loop#0_0@1| (forall ((|p#0_1@@3| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1@@3|) (< |p#0_1@@3| |m#0@0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_1@@3|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |513|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_1@@3|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_1@@4| Int) ) (!  (=> (and (<= (LitInt 0) |p#0_1@@4|) (< |p#0_1@@4| |m#0@0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_1@@4|)))) |$rhs#0_0@1|))
+ :qid |Classicsdfy.65:24|
+ :skolemid |513|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_1@@4|))))
 ))) (and (=> (= (ControlFlow 0 274) (- 0 278)) (=> |$w$loop#0_0@1| (forall ((|q#0_1@@3| Int) ) (!  (=> (and (< |n#0@0| |q#0_1@@3|) (< |q#0_1@@3| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_1@@3|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |516|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_1@@3|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|q#0_1@@4| Int) ) (!  (=> (and (< |n#0@0| |q#0_1@@4|) (< |q#0_1@@4| |N#0|)) (<= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_1@@4|))))))
+ :qid |Classicsdfy.66:24|
+ :skolemid |516|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_1@@4|))))
 ))) (and (=> (= (ControlFlow 0 274) (- 0 277)) (=> |$w$loop#0_0@1| (forall ((|p#0_3@@3| Int) (|q#0_3@@3| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3@@3|) (< |p#0_3@@3| |m#0@0|)) (<= |m#0@0| |q#0_3@@3|)) (< |q#0_3@@3| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_3@@3|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_3@@3|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |519|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_3@@3|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_3@@3|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_3@@4| Int) (|q#0_3@@4| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_3@@4|) (< |p#0_3@@4| |m#0@0|)) (<= |m#0@0| |q#0_3@@4|)) (< |q#0_3@@4| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_3@@4|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_3@@4|))))))
+ :qid |Classicsdfy.68:24|
+ :skolemid |519|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_3@@4|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_3@@4|))))
 ))) (and (=> (= (ControlFlow 0 274) (- 0 276)) (=> |$w$loop#0_0@1| (forall ((|p#0_5@@3| Int) (|q#0_5@@3| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5@@3|) (<= |p#0_5@@3| |n#0@0|)) (< |n#0@0| |q#0_5@@3|)) (< |q#0_5@@3| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_5@@3|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_5@@3|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |522|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_5@@3|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_5@@3|))))
 )))) (=> (=> |$w$loop#0_0@1| (forall ((|p#0_5@@4| Int) (|q#0_5@@4| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#0_5@@4|) (<= |p#0_5@@4| |n#0@0|)) (< |n#0@0| |q#0_5@@4|)) (< |q#0_5@@4| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_5@@4|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_5@@4|))))))
+ :qid |Classicsdfy.69:24|
+ :skolemid |522|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#0_5@@4|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#0_5@@4|))))
 ))) (and (=> (= (ControlFlow 0 274) (- 0 275)) (=> |$w$loop#0_0@1| (or (and (and (= |m#0@0| |m#0@0|) (= |n#0@0| |n#0@0|)) (= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |f#0|)))))) (and (< |m#0@0| |m#0@0|) (< |n#0@0| |n#0@0|))))) (=> (=> |$w$loop#0_0@1| (or (and (and (= |m#0@0| |m#0@0|) (= |n#0@0| |n#0@0|)) (= |$rhs#0_0@1| (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |f#0|)))))) (and (< |m#0@0| |m#0@0|) (< |n#0@0| |n#0@0|)))) (=> (= (ControlFlow 0 274) 273) anon170_LoopHead_correct)))))))))))))))))))))))))))))))
 (let ((anon155_Else_correct  (=> |$w$loop#0@0| (and (=> (= (ControlFlow 0 288) 168) anon169_Then_correct) (=> (= (ControlFlow 0 288) 274) anon169_Else_correct)))))
 (let ((anon154_LoopBody_correct  (and (=> (= (ControlFlow 0 327) 326) anon155_Then_correct) (=> (= (ControlFlow 0 327) 288) anon155_Else_correct))))
 (let ((anon154_LoopDone_correct true))
 (let ((anon154_LoopHead_correct  (=> (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (=> (and (and (and (and (and (and (and (not false) (<= 0 |m#0@0|)) (<= 0 |n#0@0|)) (= |$rhs#0@0| 0)) (<= 0 |$rhs#1@0|)) (<= 0 |$decr_init$loop#00@0|)) (and (=> |$w$loop#0@0| (<= (LitInt 0) |m#0@0|)) (=> |$w$loop#0@0| (<= |m#0@0| |f#0|)))) (and (and (and (=> |$w$loop#0@0| (<= |f#0| |n#0@0|)) (=> |$w$loop#0@0| (< |n#0@0| |N#0|))) (and (=> |$w$loop#0@0| (forall ((|p#3@@2| Int) (|q#3@@2| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3@@2|) (< |p#3@@2| |m#0@0|)) (<= |m#0@0| |q#3@@2|)) (< |q#3@@2| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#3@@2|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#3@@2|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |501|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#3@@2|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#3@@2|))))
 ))) (=> |$w$loop#0@0| (forall ((|p#5@@0| Int) (|q#5@@0| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#5@@0|) (<= |p#5@@0| |n#0@0|)) (< |n#0@0| |q#5@@0|)) (< |q#5@@0| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#5@@0|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#5@@0|))))))
+ :qid |Classicsdfy.57:22|
+ :skolemid |504|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |q#5@@0|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |A#0|) (IndexField |p#5@@0|))))
 ))))) (and (and (forall (($o@@12 T@U) ) (!  (=> (and (or (not (= $o@@12 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@12) alloc)))) (or (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@12) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@12)) (= $o@@12 |A#0|)))
+ :qid |Classicsdfy.54:3|
+ :skolemid |505|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@12))
 )) ($HeapSucc $Heap $Heap@0)) (and (forall (($o@@13 T@U) ($f@@3 T@U) ) (!  (=> (and (or (not (= $o@@13 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@13) alloc)))) (or (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@13) $f@@3) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@13) $f@@3)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 $o@@13 $f@@3))))
+ :qid |Classicsdfy.54:3|
+ :skolemid |506|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@13) $f@@3))
 )) (<= (- |n#0@0| |m#0@0|) |$decr_init$loop#00@0|))))) (and (=> (= (ControlFlow 0 328) 1) anon154_LoopDone_correct) (=> (= (ControlFlow 0 328) 327) anon154_LoopBody_correct))))))
 (let ((anon0_correct  (=> (and (and (= $_ModifiesFrame@0 (|lambda#2| null $Heap alloc |A#0|)) (= |$rhs#0@0| (LitInt 0))) (and (= |$rhs#1@0| (- |N#0| 1)) (= |$decr_init$loop#00@0| (- |$rhs#1@0| |$rhs#0@0|)))) (and (=> (= (ControlFlow 0 329) (- 0 335)) (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#0@0|))) (=> (=> |$w$loop#0@0| (<= (LitInt 0) |$rhs#0@0|)) (and (=> (= (ControlFlow 0 329) (- 0 334)) (=> |$w$loop#0@0| (<= |$rhs#0@0| |f#0|))) (=> (=> |$w$loop#0@0| (<= |$rhs#0@0| |f#0|)) (and (=> (= (ControlFlow 0 329) (- 0 333)) (=> |$w$loop#0@0| (<= |f#0| |$rhs#1@0|))) (=> (=> |$w$loop#0@0| (<= |f#0| |$rhs#1@0|)) (and (=> (= (ControlFlow 0 329) (- 0 332)) (=> |$w$loop#0@0| (< |$rhs#1@0| |N#0|))) (=> (=> |$w$loop#0@0| (< |$rhs#1@0| |N#0|)) (and (=> (= (ControlFlow 0 329) (- 0 331)) (=> |$w$loop#0@0| (forall ((|p#3@@3| Int) (|q#3@@3| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3@@3|) (< |p#3@@3| |$rhs#0@0|)) (<= |$rhs#0@0| |q#3@@3|)) (< |q#3@@3| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#3@@3|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#3@@3|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |501|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#3@@3|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#3@@3|))))
 )))) (=> (=> |$w$loop#0@0| (forall ((|p#3@@4| Int) (|q#3@@4| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#3@@4|) (< |p#3@@4| |$rhs#0@0|)) (<= |$rhs#0@0| |q#3@@4|)) (< |q#3@@4| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#3@@4|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#3@@4|))))))
+ :qid |Classicsdfy.56:22|
+ :skolemid |501|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#3@@4|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#3@@4|))))
 ))) (and (=> (= (ControlFlow 0 329) (- 0 330)) (=> |$w$loop#0@0| (forall ((|p#5@@1| Int) (|q#5@@1| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#5@@1|) (<= |p#5@@1| |$rhs#1@0|)) (< |$rhs#1@0| |q#5@@1|)) (< |q#5@@1| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#5@@1|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#5@@1|))))))
+ :qid |Classicsdfy.57:22|
+ :skolemid |504|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#5@@1|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#5@@1|))))
 )))) (=> (=> |$w$loop#0@0| (forall ((|p#5@@2| Int) (|q#5@@2| Int) ) (!  (=> (and (and (and (<= (LitInt 0) |p#5@@2|) (<= |p#5@@2| |$rhs#1@0|)) (< |$rhs#1@0| |q#5@@2|)) (< |q#5@@2| |N#0|)) (<= (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#5@@2|)))) (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#5@@2|))))))
+ :qid |Classicsdfy.57:22|
+ :skolemid |504|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |q#5@@2|))) ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |A#0|) (IndexField |p#5@@2|))))
 ))) (=> (= (ControlFlow 0 329) 328) anon154_LoopHead_correct))))))))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($Is refType |A#0| (Tclass._System.array TInt)) ($IsAlloc refType |A#0| (Tclass._System.array TInt) $Heap)) (= 0 $FunctionContextHeight)) (and (and (= (_System.array.Length |A#0|) |N#0|) (<= (LitInt 0) |f#0|)) (and (< |f#0| |N#0|) (= (ControlFlow 0 336) 329)))) anon0_correct))))

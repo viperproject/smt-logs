@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:47
+// Date:         2025-01-26 23:15:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/adt_as_fields_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/adt_as_fields_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,12 +243,12 @@ axiom !IsWandField(condtion);
 procedure adt_as_fields_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var f_38: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,8 +258,8 @@ procedure adt_as_fields_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[f_38, $allocated];
@@ -274,8 +274,8 @@ procedure adt_as_fields_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0 -- adt_as_fields_1.vpr@13.5--13.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (List_tag(f.list): Int) == 1 || (List_tag(f.list): Int) == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@13.12--13.41) [103821]"}
@@ -295,8 +295,8 @@ procedure adt_as_fields_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0) -- adt_as_fields_1.vpr@17.5--17.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of !((List_tag((get_List_tail(f.list): List[Int])): Int) == 0)
       assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@17.12--17.31) [103825]"}
@@ -319,8 +319,8 @@ procedure adt_as_fields_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f.list == (Nil(): List[Int]) -- adt_as_fields_1.vpr@22.5--22.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of f.list == (Nil(): List[Int])
       assert {:msg "  Assert might fail. There might be insufficient permission to access f.list (adt_as_fields_1.vpr@22.12--22.27) [103829]"}
@@ -330,8 +330,8 @@ procedure adt_as_fields_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f.condtion == true -- adt_as_fields_1.vpr@23.5--23.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of f.condtion == true
       assert {:msg "  Assert might fail. There might be insufficient permission to access f.condtion (adt_as_fields_1.vpr@23.12--23.30) [103831]"}

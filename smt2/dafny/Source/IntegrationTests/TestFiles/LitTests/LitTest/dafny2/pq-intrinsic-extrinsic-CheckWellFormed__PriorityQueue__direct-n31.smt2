@@ -78,35 +78,51 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass.PriorityQueue__direct.T_k |##PriorityQueue_direct.T'.Leaf| |##PriorityQueue_direct.T'.Node| |tytagFamily$T'|)
 )
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|a#6#0#0| Int) (|a#6#1#0| T@U) (|a#6#2#0| T@U) ) (! (= ($Is DatatypeTypeType (|#PriorityQueue_direct.T'.Node| |a#6#0#0| |a#6#1#0| |a#6#2#0|) Tclass.PriorityQueue__direct.T_k)  (and (and ($Is intType (int_2_U |a#6#0#0|) TInt) ($Is DatatypeTypeType |a#6#1#0| Tclass.PriorityQueue__direct.T_k)) ($Is DatatypeTypeType |a#6#2#0| Tclass.PriorityQueue__direct.T_k)))
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2887|
  :pattern ( ($Is DatatypeTypeType (|#PriorityQueue_direct.T'.Node| |a#6#0#0| |a#6#1#0| |a#6#2#0|) Tclass.PriorityQueue__direct.T_k))
 )))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((|a#4#0#0| Int) (|a#4#1#0| T@U) (|a#4#2#0| T@U) ) (! (= (DatatypeCtorId (|#PriorityQueue_direct.T'.Node| |a#4#0#0| |a#4#1#0| |a#4#2#0|)) |##PriorityQueue_direct.T'.Node|)
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2883|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#4#0#0| |a#4#1#0| |a#4#2#0|))
 )))
 (assert (forall ((|a#8#0#0| Int) (|a#8#1#0| T@U) (|a#8#2#0| T@U) ) (! (= (PriorityQueue__direct.T_k.val (|#PriorityQueue_direct.T'.Node| |a#8#0#0| |a#8#1#0| |a#8#2#0|)) |a#8#0#0|)
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2892|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#8#0#0| |a#8#1#0| |a#8#2#0|))
 )))
 (assert (forall ((|a#9#0#0| Int) (|a#9#1#0| T@U) (|a#9#2#0| T@U) ) (! (= (PriorityQueue__direct.T_k.left (|#PriorityQueue_direct.T'.Node| |a#9#0#0| |a#9#1#0| |a#9#2#0|)) |a#9#1#0|)
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2893|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#9#0#0| |a#9#1#0| |a#9#2#0|))
 )))
 (assert (forall ((|a#11#0#0| Int) (|a#11#1#0| T@U) (|a#11#2#0| T@U) ) (! (= (PriorityQueue__direct.T_k.right (|#PriorityQueue_direct.T'.Node| |a#11#0#0| |a#11#1#0| |a#11#2#0|)) |a#11#2#0|)
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2895|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#11#0#0| |a#11#1#0| |a#11#2#0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly T@U) (|t#0| T@U) ) (!  (=> (or (|PriorityQueue__direct.__default.Valid#canCall| (Lit DatatypeTypeType |t#0|)) (and (< 1 $FunctionContextHeight) ($Is DatatypeTypeType |t#0| Tclass.PriorityQueue__direct.T_k))) (and (=> (not (U_2_bool (Lit boolType (bool_2_U (PriorityQueue__direct.T_k.Leaf_q (Lit DatatypeTypeType |t#0|)))))) (let ((|right#3| (Lit DatatypeTypeType (PriorityQueue__direct.T_k.right (Lit DatatypeTypeType |t#0|)))))
@@ -116,87 +132,141 @@
 (let ((|left#2| (Lit DatatypeTypeType (PriorityQueue__direct.T_k.left (Lit DatatypeTypeType |t#0|)))))
 (let ((|x#2| (LitInt (PriorityQueue__direct.T_k.val (Lit DatatypeTypeType |t#0|)))))
  (and (and (and (PriorityQueue__direct.__default.Valid ($LS $ly) |left#2|) (PriorityQueue__direct.__default.Valid ($LS $ly) |right#2|)) (or (|PriorityQueue__direct.T_k#Equal| |left#2| |#PriorityQueue_direct.T'.Leaf|) (<= |x#2| (LitInt (PriorityQueue__direct.T_k.val |left#2|))))) (or (|PriorityQueue__direct.T_k#Equal| |right#2| |#PriorityQueue_direct.T'.Leaf|) (<= |x#2| (LitInt (PriorityQueue__direct.T_k.val |right#2|))))))))))))
+ :qid |pqintrinsicextrinsicdfy.263:19|
  :weight 3
+ :skolemid |2844|
  :pattern ( (PriorityQueue__direct.__default.Valid ($LS $ly) (Lit DatatypeTypeType |t#0|)))
 ))))
 (assert (= (DatatypeCtorId |#PriorityQueue_direct.T'.Leaf|) |##PriorityQueue_direct.T'.Leaf|))
 (assert ($Is DatatypeTypeType |#PriorityQueue_direct.T'.Leaf| Tclass.PriorityQueue__direct.T_k))
 (assert (forall ((a T@U) (b T@U) ) (! (= (|PriorityQueue__direct.T_k#Equal| a b) (= a b))
+ :qid |unknown.0:0|
+ :skolemid |2902|
  :pattern ( (|PriorityQueue__direct.T_k#Equal| a b))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2327|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2325|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((d T@U) ) (! (= (PriorityQueue__direct.T_k.Leaf_q d) (= (DatatypeCtorId d) |##PriorityQueue_direct.T'.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |2881|
  :pattern ( (PriorityQueue__direct.T_k.Leaf_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (PriorityQueue__direct.T_k.Node_q d@@0) (= (DatatypeCtorId d@@0) |##PriorityQueue_direct.T'.Node|))
+ :qid |unknown.0:0|
+ :skolemid |2884|
  :pattern ( (PriorityQueue__direct.T_k.Node_q d@@0))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2336|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (PriorityQueue__direct.T_k.Node_q d@@1) (exists ((|a#5#0#0| Int) (|a#5#1#0| T@U) (|a#5#2#0| T@U) ) (= d@@1 (|#PriorityQueue_direct.T'.Node| |a#5#0#0| |a#5#1#0| |a#5#2#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (PriorityQueue__direct.T_k.Node_q d@@1) (exists ((|a#5#0#0| Int) (|a#5#1#0| T@U) (|a#5#2#0| T@U) ) (! (= d@@1 (|#PriorityQueue_direct.T'.Node| |a#5#0#0| |a#5#1#0| |a#5#2#0|))
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2885|
+)))
+ :qid |unknown.0:0|
+ :skolemid |2886|
  :pattern ( (PriorityQueue__direct.T_k.Node_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (!  (=> (PriorityQueue__direct.T_k.Leaf_q d@@2) (= d@@2 |#PriorityQueue_direct.T'.Leaf|))
+ :qid |unknown.0:0|
+ :skolemid |2882|
  :pattern ( (PriorityQueue__direct.T_k.Leaf_q d@@2))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (PriorityQueue__direct.T_k.Node_q a@@0) (PriorityQueue__direct.T_k.Node_q b@@0)) (= (|PriorityQueue__direct.T_k#Equal| a@@0 b@@0)  (and (and (= (PriorityQueue__direct.T_k.val a@@0) (PriorityQueue__direct.T_k.val b@@0)) (|PriorityQueue__direct.T_k#Equal| (PriorityQueue__direct.T_k.left a@@0) (PriorityQueue__direct.T_k.left b@@0))) (|PriorityQueue__direct.T_k#Equal| (PriorityQueue__direct.T_k.right a@@0) (PriorityQueue__direct.T_k.right b@@0)))))
+ :qid |unknown.0:0|
+ :skolemid |2901|
  :pattern ( (|PriorityQueue__direct.T_k#Equal| a@@0 b@@0) (PriorityQueue__direct.T_k.Node_q a@@0))
  :pattern ( (|PriorityQueue__direct.T_k#Equal| a@@0 b@@0) (PriorityQueue__direct.T_k.Node_q b@@0))
 )))
 (assert (forall ((d@@3 T@U) ) (!  (=> (|$IsA#PriorityQueue__direct.T_k| d@@3) (or (PriorityQueue__direct.T_k.Leaf_q d@@3) (PriorityQueue__direct.T_k.Node_q d@@3)))
+ :qid |unknown.0:0|
+ :skolemid |2898|
  :pattern ( (|$IsA#PriorityQueue__direct.T_k| d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__direct.T_k) (or (PriorityQueue__direct.T_k.Leaf_q d@@4) (PriorityQueue__direct.T_k.Node_q d@@4)))
+ :qid |unknown.0:0|
+ :skolemid |2899|
  :pattern ( (PriorityQueue__direct.T_k.Node_q d@@4) ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__direct.T_k))
  :pattern ( (PriorityQueue__direct.T_k.Leaf_q d@@4) ($Is DatatypeTypeType d@@4 Tclass.PriorityQueue__direct.T_k))
 )))
 (assert (forall (($ly@@0 T@U) (|t#0@@0| T@U) ) (! (= (PriorityQueue__direct.__default.Valid ($LS $ly@@0) |t#0@@0|) (PriorityQueue__direct.__default.Valid $ly@@0 |t#0@@0|))
+ :qid |pqintrinsicextrinsicdfy.263:19|
+ :skolemid |2838|
  :pattern ( (PriorityQueue__direct.__default.Valid ($LS $ly@@0) |t#0@@0|))
 )))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (!  (=> (and (PriorityQueue__direct.T_k.Leaf_q a@@1) (PriorityQueue__direct.T_k.Leaf_q b@@1)) (|PriorityQueue__direct.T_k#Equal| a@@1 b@@1))
+ :qid |unknown.0:0|
+ :skolemid |2900|
  :pattern ( (|PriorityQueue__direct.T_k#Equal| a@@1 b@@1) (PriorityQueue__direct.T_k.Leaf_q a@@1))
  :pattern ( (|PriorityQueue__direct.T_k#Equal| a@@1 b@@1) (PriorityQueue__direct.T_k.Leaf_q b@@1))
 )))
 (assert (forall ((|a#7#0#0| Int) (|a#7#1#0| T@U) (|a#7#2#0| T@U) ) (! (= (|#PriorityQueue_direct.T'.Node| (LitInt |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|) (Lit DatatypeTypeType |a#7#2#0|)) (Lit DatatypeTypeType (|#PriorityQueue_direct.T'.Node| |a#7#0#0| |a#7#1#0| |a#7#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2891|
  :pattern ( (|#PriorityQueue_direct.T'.Node| (LitInt |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|) (Lit DatatypeTypeType |a#7#2#0|)))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2335|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((|a#10#0#0| Int) (|a#10#1#0| T@U) (|a#10#2#0| T@U) ) (! (< (DtRank |a#10#1#0|) (DtRank (|#PriorityQueue_direct.T'.Node| |a#10#0#0| |a#10#1#0| |a#10#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2894|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#10#0#0| |a#10#1#0| |a#10#2#0|))
 )))
 (assert (forall ((|a#12#0#0| Int) (|a#12#1#0| T@U) (|a#12#2#0| T@U) ) (! (< (DtRank |a#12#2#0|) (DtRank (|#PriorityQueue_direct.T'.Node| |a#12#0#0| |a#12#1#0| |a#12#2#0|)))
+ :qid |pqintrinsicextrinsicdfy.262:29|
+ :skolemid |2896|
  :pattern ( (|#PriorityQueue_direct.T'.Node| |a#12#0#0| |a#12#1#0| |a#12#2#0|))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3531|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@5 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (PriorityQueue__direct.T_k.Node_q d@@5) ($IsAlloc DatatypeTypeType d@@5 Tclass.PriorityQueue__direct.T_k $h))) ($IsAlloc intType (int_2_U (PriorityQueue__direct.T_k.val d@@5)) TInt $h))
+ :qid |unknown.0:0|
+ :skolemid |2888|
  :pattern ( ($IsAlloc intType (int_2_U (PriorityQueue__direct.T_k.val d@@5)) TInt $h))
 )))
 (assert (forall ((d@@6 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@6 Tclass.PriorityQueue__direct.T_k)) ($IsAlloc DatatypeTypeType d@@6 Tclass.PriorityQueue__direct.T_k $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |2897|
  :pattern ( ($IsAlloc DatatypeTypeType d@@6 Tclass.PriorityQueue__direct.T_k $h@@0))
 )))
 (assert (= (Tag Tclass.PriorityQueue__direct.T_k) Tagclass.PriorityQueue__direct.T_k))
@@ -208,25 +278,39 @@
 (let ((|left#0| (PriorityQueue__direct.T_k.left |t#0@@1|)))
 (let ((|x#0| (PriorityQueue__direct.T_k.val |t#0@@1|)))
  (and (and (and (PriorityQueue__direct.__default.Valid $ly@@1 |left#0|) (PriorityQueue__direct.__default.Valid $ly@@1 |right#0|)) (or (|PriorityQueue__direct.T_k#Equal| |left#0| |#PriorityQueue_direct.T'.Leaf|) (<= |x#0| (PriorityQueue__direct.T_k.val |left#0|)))) (or (|PriorityQueue__direct.T_k#Equal| |right#0| |#PriorityQueue_direct.T'.Leaf|) (<= |x#0| (PriorityQueue__direct.T_k.val |right#0|)))))))))))
+ :qid |pqintrinsicextrinsicdfy.263:19|
+ :skolemid |2843|
  :pattern ( (PriorityQueue__direct.__default.Valid ($LS $ly@@1) |t#0@@1|))
 ))))
 (assert (= |#PriorityQueue_direct.T'.Leaf| (Lit DatatypeTypeType |#PriorityQueue_direct.T'.Leaf|)))
 (assert (forall ((d@@7 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (PriorityQueue__direct.T_k.Node_q d@@7) ($IsAlloc DatatypeTypeType d@@7 Tclass.PriorityQueue__direct.T_k $h@@1))) ($IsAlloc DatatypeTypeType (PriorityQueue__direct.T_k.left d@@7) Tclass.PriorityQueue__direct.T_k $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |2889|
  :pattern ( ($IsAlloc DatatypeTypeType (PriorityQueue__direct.T_k.left d@@7) Tclass.PriorityQueue__direct.T_k $h@@1))
 )))
 (assert (forall ((d@@8 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (PriorityQueue__direct.T_k.Node_q d@@8) ($IsAlloc DatatypeTypeType d@@8 Tclass.PriorityQueue__direct.T_k $h@@2))) ($IsAlloc DatatypeTypeType (PriorityQueue__direct.T_k.right d@@8) Tclass.PriorityQueue__direct.T_k $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |2890|
  :pattern ( ($IsAlloc DatatypeTypeType (PriorityQueue__direct.T_k.right d@@8) Tclass.PriorityQueue__direct.T_k $h@@2))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2328|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2326|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |2371|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |2350|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -236,6 +320,7 @@
 (declare-fun null () T@U)
 (declare-fun $Heap () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellFormed$$PriorityQueue__direct.T)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

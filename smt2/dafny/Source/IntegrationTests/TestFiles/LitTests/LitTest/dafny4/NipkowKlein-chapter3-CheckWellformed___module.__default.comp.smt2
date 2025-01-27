@@ -123,16 +123,22 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TChar TInt TagChar TagInt TagSeq alloc Tagclass._module.List Tagclass._module.aexp Tagclass._module.instr |##_module.List.Nil| |##_module.List.Cons| |##_module.aexp.N| |##_module.aexp.V| |##_module.aexp.Plus| |##_module.instr.LOADI| |##_module.instr.LOAD| |##_module.instr.ADD| tytagFamily$List tytagFamily$aexp tytagFamily$instr)
@@ -141,6 +147,8 @@
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((|a#26#0#0| T@U) (|a#26#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.aexp.Plus| |a#26#0#0| |a#26#1#0|) Tclass._module.aexp)  (and ($Is DatatypeTypeType |a#26#0#0| Tclass._module.aexp) ($Is DatatypeTypeType |a#26#1#0| Tclass._module.aexp)))
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |751|
  :pattern ( ($Is DatatypeTypeType (|#_module.aexp.Plus| |a#26#0#0| |a#26#1#0|) Tclass._module.aexp))
 )))
 (assert (= (Ctor BoxType) 4))
@@ -148,101 +156,179 @@
 (|_module.__default.append#canCall| _module._default.append$_T0 |tail#3| (Lit DatatypeTypeType |ys#0|)))) (= (_module.__default.append _module._default.append$_T0 ($LS $ly) (Lit DatatypeTypeType |xs#0|) (Lit DatatypeTypeType |ys#0|)) (ite (_module.List.Nil_q (Lit DatatypeTypeType |xs#0|)) |ys#0| (let ((|tail#2| (Lit DatatypeTypeType (_module.List.tail (Lit DatatypeTypeType |xs#0|)))))
 (let ((|x#2| (Lit BoxType (_module.List.head (Lit DatatypeTypeType |xs#0|)))))
 (Lit DatatypeTypeType (|#_module.List.Cons| |x#2| (Lit DatatypeTypeType (_module.__default.append _module._default.append$_T0 ($LS $ly) |tail#2| (Lit DatatypeTypeType |ys#0|)))))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |590|
  :pattern ( (_module.__default.append _module._default.append$_T0 ($LS $ly) (Lit DatatypeTypeType |xs#0|) (Lit DatatypeTypeType |ys#0|)))
 ))))
 (assert (forall ((|a#22#0#0| T@U) (i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| |a#22#0#0|))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| |a#22#0#0| i))) (DtRank (|#_module.aexp.V| |a#22#0#0|))))
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |745|
  :pattern ( (|Seq#Index| |a#22#0#0| i) (|#_module.aexp.V| |a#22#0#0|))
 )))
 (assert (forall ((|a#69#0#0| T@U) (i@@0 Int) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| |a#69#0#0|))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| |a#69#0#0| i@@0))) (DtRank (|#_module.instr.LOAD| |a#69#0#0|))))
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |831|
  :pattern ( (|Seq#Index| |a#69#0#0| i@@0) (|#_module.instr.LOAD| |a#69#0#0|))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (= (DatatypeCtorId |#_module.List.Nil|) |##_module.List.Nil|))
 (assert (= (DatatypeCtorId |#_module.instr.ADD|) |##_module.instr.ADD|))
 (assert (forall ((_module.List$T T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) ($IsAlloc DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T) $h))
+ :qid |unknown.0:0|
+ :skolemid |710|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T) $h))
 )))
 (assert ($Is DatatypeTypeType |#_module.instr.ADD| Tclass._module.instr))
 (assert (forall ((_module.List$T@@0 T@U) ) (! ($Is DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T@@0))
+ :qid |unknown.0:0|
+ :skolemid |709|
  :pattern ( ($Is DatatypeTypeType |#_module.List.Nil| (Tclass._module.List _module.List$T@@0)))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((_module.List$T@@1 T@U) (|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.List.Cons| |a#6#0#0| |a#6#1#0|) (Tclass._module.List _module.List$T@@1))  (and ($IsBox |a#6#0#0| _module.List$T@@1) ($Is DatatypeTypeType |a#6#1#0| (Tclass._module.List _module.List$T@@1))))
+ :qid |unknown.0:0|
+ :skolemid |715|
  :pattern ( ($Is DatatypeTypeType (|#_module.List.Cons| |a#6#0#0| |a#6#1#0|) (Tclass._module.List _module.List$T@@1)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.append$_T0@@0 T@U) ($ly@@0 T@U) (|xs#0@@0| T@U) (|ys#0@@0| T@U) ) (!  (=> (or (|_module.__default.append#canCall| _module._default.append$_T0@@0 |xs#0@@0| |ys#0@@0|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@0| (Tclass._module.List _module._default.append$_T0@@0)) ($Is DatatypeTypeType |ys#0@@0| (Tclass._module.List _module._default.append$_T0@@0))))) (and (=> (not (_module.List.Nil_q |xs#0@@0|)) (let ((|tail#1| (_module.List.tail |xs#0@@0|)))
 (|_module.__default.append#canCall| _module._default.append$_T0@@0 |tail#1| |ys#0@@0|))) (= (_module.__default.append _module._default.append$_T0@@0 ($LS $ly@@0) |xs#0@@0| |ys#0@@0|) (ite (_module.List.Nil_q |xs#0@@0|) |ys#0@@0| (let ((|tail#0| (_module.List.tail |xs#0@@0|)))
 (let ((|x#0| (_module.List.head |xs#0@@0|)))
 (|#_module.List.Cons| |x#0| (_module.__default.append _module._default.append$_T0@@0 $ly@@0 |tail#0| |ys#0@@0|))))))))
+ :qid |unknown.0:0|
+ :skolemid |589|
  :pattern ( (_module.__default.append _module._default.append$_T0@@0 ($LS $ly@@0) |xs#0@@0| |ys#0@@0|))
 ))))
 (assert (forall ((d T@U) ) (! (= (_module.List.Nil_q d) (= (DatatypeCtorId d) |##_module.List.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |707|
  :pattern ( (_module.List.Nil_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.List.Cons_q d@@0) (= (DatatypeCtorId d@@0) |##_module.List.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |712|
  :pattern ( (_module.List.Cons_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.aexp.N_q d@@1) (= (DatatypeCtorId d@@1) |##_module.aexp.N|))
+ :qid |unknown.0:0|
+ :skolemid |730|
  :pattern ( (_module.aexp.N_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.aexp.V_q d@@2) (= (DatatypeCtorId d@@2) |##_module.aexp.V|))
+ :qid |unknown.0:0|
+ :skolemid |738|
  :pattern ( (_module.aexp.V_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.aexp.Plus_q d@@3) (= (DatatypeCtorId d@@3) |##_module.aexp.Plus|))
+ :qid |unknown.0:0|
+ :skolemid |748|
  :pattern ( (_module.aexp.Plus_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (! (= (_module.instr.LOADI_q d@@4) (= (DatatypeCtorId d@@4) |##_module.instr.LOADI|))
+ :qid |unknown.0:0|
+ :skolemid |816|
  :pattern ( (_module.instr.LOADI_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (! (= (_module.instr.LOAD_q d@@5) (= (DatatypeCtorId d@@5) |##_module.instr.LOAD|))
+ :qid |unknown.0:0|
+ :skolemid |824|
  :pattern ( (_module.instr.LOAD_q d@@5))
 )))
 (assert (forall ((d@@6 T@U) ) (! (= (_module.instr.ADD_q d@@6) (= (DatatypeCtorId d@@6) |##_module.instr.ADD|))
+ :qid |unknown.0:0|
+ :skolemid |833|
  :pattern ( (_module.instr.ADD_q d@@6))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@7 T@U) ) (!  (=> (_module.List.Cons_q d@@7) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (= d@@7 (|#_module.List.Cons| |a#5#0#0| |a#5#1#0|))))
+(assert (forall ((d@@7 T@U) ) (!  (=> (_module.List.Cons_q d@@7) (exists ((|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= d@@7 (|#_module.List.Cons| |a#5#0#0| |a#5#1#0|))
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |713|
+)))
+ :qid |unknown.0:0|
+ :skolemid |714|
  :pattern ( (_module.List.Cons_q d@@7))
 )))
-(assert (forall ((d@@8 T@U) ) (!  (=> (_module.aexp.Plus_q d@@8) (exists ((|a#25#0#0| T@U) (|a#25#1#0| T@U) ) (= d@@8 (|#_module.aexp.Plus| |a#25#0#0| |a#25#1#0|))))
+(assert (forall ((d@@8 T@U) ) (!  (=> (_module.aexp.Plus_q d@@8) (exists ((|a#25#0#0| T@U) (|a#25#1#0| T@U) ) (! (= d@@8 (|#_module.aexp.Plus| |a#25#0#0| |a#25#1#0|))
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |749|
+)))
+ :qid |unknown.0:0|
+ :skolemid |750|
  :pattern ( (_module.aexp.Plus_q d@@8))
 )))
 (assert (forall ((d@@9 T@U) ) (!  (=> (_module.List.Nil_q d@@9) (= d@@9 |#_module.List.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |708|
  :pattern ( (_module.List.Nil_q d@@9))
 )))
 (assert (forall ((d@@10 T@U) ) (!  (=> (_module.instr.ADD_q d@@10) (= d@@10 |#_module.instr.ADD|))
+ :qid |unknown.0:0|
+ :skolemid |834|
  :pattern ( (_module.instr.ADD_q d@@10))
 )))
-(assert (forall ((d@@11 T@U) ) (!  (=> (_module.aexp.N_q d@@11) (exists ((|a#13#0#0| Int) ) (= d@@11 (|#_module.aexp.N| |a#13#0#0|))))
+(assert (forall ((d@@11 T@U) ) (!  (=> (_module.aexp.N_q d@@11) (exists ((|a#13#0#0| Int) ) (! (= d@@11 (|#_module.aexp.N| |a#13#0#0|))
+ :qid |NipkowKleinchapter3dfy.21:19|
+ :skolemid |731|
+)))
+ :qid |unknown.0:0|
+ :skolemid |732|
  :pattern ( (_module.aexp.N_q d@@11))
 )))
-(assert (forall ((d@@12 T@U) ) (!  (=> (_module.aexp.V_q d@@12) (exists ((|a#18#0#0| T@U) ) (= d@@12 (|#_module.aexp.V| |a#18#0#0|))))
+(assert (forall ((d@@12 T@U) ) (!  (=> (_module.aexp.V_q d@@12) (exists ((|a#18#0#0| T@U) ) (! (= d@@12 (|#_module.aexp.V| |a#18#0#0|))
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |739|
+)))
+ :qid |unknown.0:0|
+ :skolemid |740|
  :pattern ( (_module.aexp.V_q d@@12))
 )))
-(assert (forall ((d@@13 T@U) ) (!  (=> (_module.instr.LOADI_q d@@13) (exists ((|a#60#0#0| Int) ) (= d@@13 (|#_module.instr.LOADI| |a#60#0#0|))))
+(assert (forall ((d@@13 T@U) ) (!  (=> (_module.instr.LOADI_q d@@13) (exists ((|a#60#0#0| Int) ) (! (= d@@13 (|#_module.instr.LOADI| |a#60#0#0|))
+ :qid |NipkowKleinchapter3dfy.199:24|
+ :skolemid |817|
+)))
+ :qid |unknown.0:0|
+ :skolemid |818|
  :pattern ( (_module.instr.LOADI_q d@@13))
 )))
-(assert (forall ((d@@14 T@U) ) (!  (=> (_module.instr.LOAD_q d@@14) (exists ((|a#65#0#0| T@U) ) (= d@@14 (|#_module.instr.LOAD| |a#65#0#0|))))
+(assert (forall ((d@@14 T@U) ) (!  (=> (_module.instr.LOAD_q d@@14) (exists ((|a#65#0#0| T@U) ) (! (= d@@14 (|#_module.instr.LOAD| |a#65#0#0|))
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |825|
+)))
+ :qid |unknown.0:0|
+ :skolemid |826|
  :pattern ( (_module.instr.LOAD_q d@@14))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.List$T@@2 T@U) ) (!  (and (= (Tag (Tclass._module.List _module.List$T@@2)) Tagclass._module.List) (= (TagFamily (Tclass._module.List _module.List$T@@2)) tytagFamily$List))
+ :qid |unknown.0:0|
+ :skolemid |583|
  :pattern ( (Tclass._module.List _module.List$T@@2))
 )))
 (assert (forall ((bx T@U) ) (!  (=> ($IsBox bx Tclass._module.aexp) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) Tclass._module.aexp)))
+ :qid |unknown.0:0|
+ :skolemid |594|
  :pattern ( ($IsBox bx Tclass._module.aexp))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._module.instr) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) Tclass._module.instr)))
+ :qid |unknown.0:0|
+ :skolemid |676|
  :pattern ( ($IsBox bx@@0 Tclass._module.instr))
 )))
 (assert (= (Ctor SeqType) 5))
@@ -253,10 +339,14 @@
 (Lit DatatypeTypeType (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType (|#_module.instr.LOAD| |x#2@@0|))) (Lit DatatypeTypeType |#_module.List.Nil|)))) (let ((|a1#2| (Lit DatatypeTypeType (_module.aexp._h2 (Lit DatatypeTypeType |a#0|)))))
 (let ((|a0#2| (Lit DatatypeTypeType (_module.aexp._h1 (Lit DatatypeTypeType |a#0|)))))
 (Lit DatatypeTypeType (_module.__default.append Tclass._module.instr ($LS $LZ) (Lit DatatypeTypeType (_module.__default.append Tclass._module.instr ($LS $LZ) (Lit DatatypeTypeType (_module.__default.comp ($LS $ly@@1) |a0#2|)) (Lit DatatypeTypeType (_module.__default.comp ($LS $ly@@1) |a1#2|)))) (Lit DatatypeTypeType (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType |#_module.instr.ADD|)) (Lit DatatypeTypeType |#_module.List.Nil|))))))))))))
+ :qid |NipkowKleinchapter3dfy.225:16|
  :weight 3
+ :skolemid |696|
  :pattern ( (_module.__default.comp ($LS $ly@@1) (Lit DatatypeTypeType |a#0|)))
 ))))
 (assert (forall ((_module.List$T@@3 T@U) (d@@15 T@U) ) (!  (=> ($Is DatatypeTypeType d@@15 (Tclass._module.List _module.List$T@@3)) (or (_module.List.Nil_q d@@15) (_module.List.Cons_q d@@15)))
+ :qid |unknown.0:0|
+ :skolemid |725|
  :pattern ( (_module.List.Cons_q d@@15) ($Is DatatypeTypeType d@@15 (Tclass._module.List _module.List$T@@3)))
  :pattern ( (_module.List.Nil_q d@@15) ($Is DatatypeTypeType d@@15 (Tclass._module.List _module.List$T@@3)))
 )))
@@ -267,172 +357,281 @@
 (|#_module.List.Cons| ($Box DatatypeTypeType (|#_module.instr.LOAD| |x#0@@0|)) (Lit DatatypeTypeType |#_module.List.Nil|))) (let ((|a1#0| (_module.aexp._h2 |a#0@@0|)))
 (let ((|a0#0| (_module.aexp._h1 |a#0@@0|)))
 (_module.__default.append Tclass._module.instr ($LS $LZ) (_module.__default.append Tclass._module.instr ($LS $LZ) (_module.__default.comp $ly@@2 |a0#0|) (_module.__default.comp $ly@@2 |a1#0|)) (Lit DatatypeTypeType (|#_module.List.Cons| ($Box DatatypeTypeType (Lit DatatypeTypeType |#_module.instr.ADD|)) (Lit DatatypeTypeType |#_module.List.Nil|)))))))))))
+ :qid |NipkowKleinchapter3dfy.225:16|
+ :skolemid |695|
  :pattern ( (_module.__default.comp ($LS $ly@@2) |a#0@@0|))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TInt) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@1 TInt))
 )))
 (assert (= (Ctor charType) 6))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TChar) (and (= ($Box charType ($Unbox charType bx@@2)) bx@@2) ($Is charType ($Unbox charType bx@@2) TChar)))
+ :qid |DafnyPreludebpl.185:15|
+ :skolemid |30|
  :pattern ( ($IsBox bx@@2 TChar))
 )))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((s T@U) ) (! (<= 0 (|Seq#Length| s))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |221|
  :pattern ( (|Seq#Length| s))
 )))
 (assert (forall ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.List.Cons| |a#4#0#0| |a#4#1#0|)) |##_module.List.Cons|)
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |711|
  :pattern ( (|#_module.List.Cons| |a#4#0#0| |a#4#1#0|))
 )))
 (assert (forall ((|a#8#0#0| T@U) (|a#8#1#0| T@U) ) (! (= (_module.List.head (|#_module.List.Cons| |a#8#0#0| |a#8#1#0|)) |a#8#0#0|)
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |720|
  :pattern ( (|#_module.List.Cons| |a#8#0#0| |a#8#1#0|))
 )))
 (assert (forall ((|a#10#0#0| T@U) (|a#10#1#0| T@U) ) (! (= (_module.List.tail (|#_module.List.Cons| |a#10#0#0| |a#10#1#0|)) |a#10#1#0|)
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |722|
  :pattern ( (|#_module.List.Cons| |a#10#0#0| |a#10#1#0|))
 )))
 (assert (forall ((|a#24#0#0| T@U) (|a#24#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.aexp.Plus| |a#24#0#0| |a#24#1#0|)) |##_module.aexp.Plus|)
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |747|
  :pattern ( (|#_module.aexp.Plus| |a#24#0#0| |a#24#1#0|))
 )))
 (assert (forall ((|a#28#0#0| T@U) (|a#28#1#0| T@U) ) (! (= (_module.aexp._h1 (|#_module.aexp.Plus| |a#28#0#0| |a#28#1#0|)) |a#28#0#0|)
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |755|
  :pattern ( (|#_module.aexp.Plus| |a#28#0#0| |a#28#1#0|))
 )))
 (assert (forall ((|a#30#0#0| T@U) (|a#30#1#0| T@U) ) (! (= (_module.aexp._h2 (|#_module.aexp.Plus| |a#30#0#0| |a#30#1#0|)) |a#30#1#0|)
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |757|
  :pattern ( (|#_module.aexp.Plus| |a#30#0#0| |a#30#1#0|))
 )))
 (assert (forall ((v@@1 T@U) (t0 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SeqType v@@1 (TSeq t0) h@@0) (forall ((i@@1 Int) ) (!  (=> (and (<= 0 i@@1) (< i@@1 (|Seq#Length| v@@1))) ($IsAllocBox (|Seq#Index| v@@1 i@@1) t0 h@@0))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |73|
  :pattern ( (|Seq#Index| v@@1 i@@1))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |74|
  :pattern ( ($IsAlloc SeqType v@@1 (TSeq t0) h@@0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.append$_T0@@1 T@U) ($ly@@3 T@U) (|xs#0@@1| T@U) (|ys#0@@1| T@U) ) (!  (=> (or (|_module.__default.append#canCall| _module._default.append$_T0@@1 |xs#0@@1| |ys#0@@1|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |xs#0@@1| (Tclass._module.List _module._default.append$_T0@@1)) ($Is DatatypeTypeType |ys#0@@1| (Tclass._module.List _module._default.append$_T0@@1))))) ($Is DatatypeTypeType (_module.__default.append _module._default.append$_T0@@1 $ly@@3 |xs#0@@1| |ys#0@@1|) (Tclass._module.List _module._default.append$_T0@@1)))
+ :qid |unknown.0:0|
+ :skolemid |586|
  :pattern ( (_module.__default.append _module._default.append$_T0@@1 $ly@@3 |xs#0@@1| |ys#0@@1|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@4 T@U) (|a#0@@1| T@U) ) (!  (=> (or (|_module.__default.comp#canCall| |a#0@@1|) (and (< 2 $FunctionContextHeight) ($Is DatatypeTypeType |a#0@@1| Tclass._module.aexp))) ($Is DatatypeTypeType (_module.__default.comp $ly@@4 |a#0@@1|) (Tclass._module.List Tclass._module.instr)))
+ :qid |NipkowKleinchapter3dfy.225:16|
+ :skolemid |693|
  :pattern ( (_module.__default.comp $ly@@4 |a#0@@1|))
 ))))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSeq (TSeq t@@1)) t@@1)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |7|
  :pattern ( (TSeq t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSeq t@@2)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |8|
  :pattern ( (TSeq t@@2))
 )))
 (assert (forall ((_module.List$T@@4 T@U) ) (! (= (Tclass._module.List_0 (Tclass._module.List _module.List$T@@4)) _module.List$T@@4)
+ :qid |unknown.0:0|
+ :skolemid |584|
  :pattern ( (Tclass._module.List _module.List$T@@4))
 )))
 (assert (forall ((|a#12#0#0| Int) ) (! (= (DatatypeCtorId (|#_module.aexp.N| |a#12#0#0|)) |##_module.aexp.N|)
+ :qid |NipkowKleinchapter3dfy.21:19|
+ :skolemid |729|
  :pattern ( (|#_module.aexp.N| |a#12#0#0|))
 )))
 (assert (forall ((|a#16#0#0| Int) ) (! (= (_module.aexp.n (|#_module.aexp.N| |a#16#0#0|)) |a#16#0#0|)
+ :qid |NipkowKleinchapter3dfy.21:19|
+ :skolemid |736|
  :pattern ( (|#_module.aexp.N| |a#16#0#0|))
 )))
 (assert (forall ((|a#17#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.aexp.V| |a#17#0#0|)) |##_module.aexp.V|)
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |737|
  :pattern ( (|#_module.aexp.V| |a#17#0#0|))
 )))
 (assert (forall ((|a#21#0#0| T@U) ) (! (= (_module.aexp._h0 (|#_module.aexp.V| |a#21#0#0|)) |a#21#0#0|)
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |744|
  :pattern ( (|#_module.aexp.V| |a#21#0#0|))
 )))
 (assert (forall ((|a#59#0#0| Int) ) (! (= (DatatypeCtorId (|#_module.instr.LOADI| |a#59#0#0|)) |##_module.instr.LOADI|)
+ :qid |NipkowKleinchapter3dfy.199:24|
+ :skolemid |815|
  :pattern ( (|#_module.instr.LOADI| |a#59#0#0|))
 )))
 (assert (forall ((|a#63#0#0| Int) ) (! (= (_module.instr._h12 (|#_module.instr.LOADI| |a#63#0#0|)) |a#63#0#0|)
+ :qid |NipkowKleinchapter3dfy.199:24|
+ :skolemid |822|
  :pattern ( (|#_module.instr.LOADI| |a#63#0#0|))
 )))
 (assert (forall ((|a#64#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.instr.LOAD| |a#64#0#0|)) |##_module.instr.LOAD|)
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |823|
  :pattern ( (|#_module.instr.LOAD| |a#64#0#0|))
 )))
 (assert (forall ((|a#68#0#0| T@U) ) (! (= (_module.instr._h13 (|#_module.instr.LOAD| |a#68#0#0|)) |a#68#0#0|)
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |830|
  :pattern ( (|#_module.instr.LOAD| |a#68#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall ((|a#9#0#0| T@U) (|a#9#1#0| T@U) ) (! (< (BoxRank |a#9#0#0|) (DtRank (|#_module.List.Cons| |a#9#0#0| |a#9#1#0|)))
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |721|
  :pattern ( (|#_module.List.Cons| |a#9#0#0| |a#9#1#0|))
 )))
 (assert (forall ((|a#11#0#0| T@U) (|a#11#1#0| T@U) ) (! (< (DtRank |a#11#1#0|) (DtRank (|#_module.List.Cons| |a#11#0#0| |a#11#1#0|)))
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |723|
  :pattern ( (|#_module.List.Cons| |a#11#0#0| |a#11#1#0|))
 )))
 (assert (forall ((|a#29#0#0| T@U) (|a#29#1#0| T@U) ) (! (< (DtRank |a#29#0#0|) (DtRank (|#_module.aexp.Plus| |a#29#0#0| |a#29#1#0|)))
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |756|
  :pattern ( (|#_module.aexp.Plus| |a#29#0#0| |a#29#1#0|))
 )))
 (assert (forall ((|a#31#0#0| T@U) (|a#31#1#0| T@U) ) (! (< (DtRank |a#31#1#0|) (DtRank (|#_module.aexp.Plus| |a#31#0#0| |a#31#1#0|)))
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |758|
  :pattern ( (|#_module.aexp.Plus| |a#31#0#0| |a#31#1#0|))
 )))
 (assert (forall (($ly@@5 T@U) (|a#0@@2| T@U) ) (! (= (_module.__default.comp ($LS $ly@@5) |a#0@@2|) (_module.__default.comp $ly@@5 |a#0@@2|))
+ :qid |NipkowKleinchapter3dfy.225:16|
+ :skolemid |691|
  :pattern ( (_module.__default.comp ($LS $ly@@5) |a#0@@2|))
 )))
 (assert (forall ((|a#14#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.aexp.N| |a#14#0#0|) Tclass._module.aexp) ($Is intType (int_2_U |a#14#0#0|) TInt))
+ :qid |NipkowKleinchapter3dfy.21:19|
+ :skolemid |733|
  :pattern ( ($Is DatatypeTypeType (|#_module.aexp.N| |a#14#0#0|) Tclass._module.aexp))
 )))
 (assert (forall ((|a#61#0#0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.instr.LOADI| |a#61#0#0|) Tclass._module.instr) ($Is intType (int_2_U |a#61#0#0|) TInt))
+ :qid |NipkowKleinchapter3dfy.199:24|
+ :skolemid |819|
  :pattern ( ($Is DatatypeTypeType (|#_module.instr.LOADI| |a#61#0#0|) Tclass._module.instr))
 )))
 (assert (forall ((|a#23#0#0| T@U) ) (! (< (|Seq#Rank| |a#23#0#0|) (DtRank (|#_module.aexp.V| |a#23#0#0|)))
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |746|
  :pattern ( (|#_module.aexp.V| |a#23#0#0|))
 )))
 (assert (forall ((|a#70#0#0| T@U) ) (! (< (|Seq#Rank| |a#70#0#0|) (DtRank (|#_module.instr.LOAD| |a#70#0#0|)))
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |832|
  :pattern ( (|#_module.instr.LOAD| |a#70#0#0|))
 )))
 (assert (forall ((d@@16 T@U) (_module.List$T@@5 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) (and (_module.List.Cons_q d@@16) ($IsAlloc DatatypeTypeType d@@16 (Tclass._module.List _module.List$T@@5) $h@@0))) ($IsAllocBox (_module.List.head d@@16) _module.List$T@@5 $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |717|
  :pattern ( ($IsAllocBox (_module.List.head d@@16) _module.List$T@@5 $h@@0))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0@@0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@0 t1 t2 (MapType0Store t0@@0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 7)) (= (Ctor FieldType) 8)) (forall ((t0@@1 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 (MapType1Store t0@@1 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 9))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 9)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |842|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap T@U) (_module._default.append$_T0@@2 T@U) ($ly@@6 T@U) (|xs#0@@2| T@U) (|ys#0@@2| T@U) ) (!  (=> (and (or (|_module.__default.append#canCall| _module._default.append$_T0@@2 |xs#0@@2| |ys#0@@2|) (and (< 1 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |xs#0@@2| (Tclass._module.List _module._default.append$_T0@@2)) ($IsAlloc DatatypeTypeType |xs#0@@2| (Tclass._module.List _module._default.append$_T0@@2) $Heap)) (and ($Is DatatypeTypeType |ys#0@@2| (Tclass._module.List _module._default.append$_T0@@2)) ($IsAlloc DatatypeTypeType |ys#0@@2| (Tclass._module.List _module._default.append$_T0@@2) $Heap))))) ($IsGoodHeap $Heap)) ($IsAlloc DatatypeTypeType (_module.__default.append _module._default.append$_T0@@2 $ly@@6 |xs#0@@2| |ys#0@@2|) (Tclass._module.List _module._default.append$_T0@@2) $Heap))
+ :qid |NipkowKleinchapter3dfy.11:16|
+ :skolemid |587|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.__default.append _module._default.append$_T0@@2 $ly@@6 |xs#0@@2| |ys#0@@2|) (Tclass._module.List _module._default.append$_T0@@2) $Heap))
 ))))
 (assert (forall ((d@@17 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.aexp.N_q d@@17) ($IsAlloc DatatypeTypeType d@@17 Tclass._module.aexp $h@@1))) ($IsAlloc intType (int_2_U (_module.aexp.n d@@17)) TInt $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |734|
  :pattern ( ($IsAlloc intType (int_2_U (_module.aexp.n d@@17)) TInt $h@@1))
 )))
 (assert (forall ((d@@18 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.instr.LOADI_q d@@18) ($IsAlloc DatatypeTypeType d@@18 Tclass._module.instr $h@@2))) ($IsAlloc intType (int_2_U (_module.instr._h12 d@@18)) TInt $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |820|
  :pattern ( ($IsAlloc intType (int_2_U (_module.instr._h12 d@@18)) TInt $h@@2))
 )))
 (assert (forall ((d@@19 T@U) ) (!  (=> ($Is DatatypeTypeType d@@19 Tclass._module.aexp) (or (or (_module.aexp.N_q d@@19) (_module.aexp.V_q d@@19)) (_module.aexp.Plus_q d@@19)))
+ :qid |unknown.0:0|
+ :skolemid |761|
  :pattern ( (_module.aexp.Plus_q d@@19) ($Is DatatypeTypeType d@@19 Tclass._module.aexp))
  :pattern ( (_module.aexp.V_q d@@19) ($Is DatatypeTypeType d@@19 Tclass._module.aexp))
  :pattern ( (_module.aexp.N_q d@@19) ($Is DatatypeTypeType d@@19 Tclass._module.aexp))
 )))
 (assert (forall ((d@@20 T@U) ) (!  (=> ($Is DatatypeTypeType d@@20 Tclass._module.instr) (or (or (_module.instr.LOADI_q d@@20) (_module.instr.LOAD_q d@@20)) (_module.instr.ADD_q d@@20)))
+ :qid |unknown.0:0|
+ :skolemid |837|
  :pattern ( (_module.instr.ADD_q d@@20) ($Is DatatypeTypeType d@@20 Tclass._module.instr))
  :pattern ( (_module.instr.LOAD_q d@@20) ($Is DatatypeTypeType d@@20 Tclass._module.instr))
  :pattern ( (_module.instr.LOADI_q d@@20) ($Is DatatypeTypeType d@@20 Tclass._module.instr))
 )))
 (assert (forall ((d@@21 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@21)) (DtRank d@@21))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@21)))
 )))
 (assert (forall ((_module._default.append$_T0@@3 T@U) ($ly@@7 T@U) (|xs#0@@3| T@U) (|ys#0@@3| T@U) ) (! (= (_module.__default.append _module._default.append$_T0@@3 ($LS $ly@@7) |xs#0@@3| |ys#0@@3|) (_module.__default.append _module._default.append$_T0@@3 $ly@@7 |xs#0@@3| |ys#0@@3|))
+ :qid |unknown.0:0|
+ :skolemid |581|
  :pattern ( (_module.__default.append _module._default.append$_T0@@3 ($LS $ly@@7) |xs#0@@3| |ys#0@@3|))
 )))
 (assert (forall ((bx@@3 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@3 (TSeq t@@3)) (and (= ($Box SeqType ($Unbox SeqType bx@@3)) bx@@3) ($Is SeqType ($Unbox SeqType bx@@3) (TSeq t@@3))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |35|
  :pattern ( ($IsBox bx@@3 (TSeq t@@3)))
 )))
 (assert (forall ((_module.List$T@@6 T@U) (bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (Tclass._module.List _module.List$T@@6)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@4)) bx@@4) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@4) (Tclass._module.List _module.List$T@@6))))
+ :qid |unknown.0:0|
+ :skolemid |585|
  :pattern ( ($IsBox bx@@4 (Tclass._module.List _module.List$T@@6)))
 )))
 (assert (forall ((d@@22 T@U) (_module.List$T@@7 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.List.Cons_q d@@22) ($IsAlloc DatatypeTypeType d@@22 (Tclass._module.List _module.List$T@@7) $h@@3))) ($IsAlloc DatatypeTypeType (_module.List.tail d@@22) (Tclass._module.List _module.List$T@@7) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |718|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.List.tail d@@22) (Tclass._module.List _module.List$T@@7) $h@@3))
 )))
 (assert (forall ((d@@23 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@4) ($Is DatatypeTypeType d@@23 Tclass._module.aexp)) ($IsAlloc DatatypeTypeType d@@23 Tclass._module.aexp $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |759|
  :pattern ( ($IsAlloc DatatypeTypeType d@@23 Tclass._module.aexp $h@@4))
 )))
 (assert (forall ((d@@24 T@U) ($h@@5 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) ($Is DatatypeTypeType d@@24 Tclass._module.instr)) ($IsAlloc DatatypeTypeType d@@24 Tclass._module.instr $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |835|
  :pattern ( ($IsAlloc DatatypeTypeType d@@24 Tclass._module.instr $h@@5))
 )))
 (assert (= (Tag Tclass._module.aexp) Tagclass._module.aexp))
@@ -442,71 +641,117 @@
 (assert (= |#_module.List.Nil| (Lit DatatypeTypeType |#_module.List.Nil|)))
 (assert (= |#_module.instr.ADD| (Lit DatatypeTypeType |#_module.instr.ADD|)))
 (assert (forall ((|a#19#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.aexp.V| |a#19#0#0|) Tclass._module.aexp) ($Is SeqType |a#19#0#0| (TSeq TChar)))
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |741|
  :pattern ( ($Is DatatypeTypeType (|#_module.aexp.V| |a#19#0#0|) Tclass._module.aexp))
 )))
 (assert (forall ((|a#66#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.instr.LOAD| |a#66#0#0|) Tclass._module.instr) ($Is SeqType |a#66#0#0| (TSeq TChar)))
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |827|
  :pattern ( ($Is DatatypeTypeType (|#_module.instr.LOAD| |a#66#0#0|) Tclass._module.instr))
 )))
 (assert (forall ((d@@25 T@U) ($h@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@6) (and (_module.aexp.V_q d@@25) ($IsAlloc DatatypeTypeType d@@25 Tclass._module.aexp $h@@6))) ($IsAlloc SeqType (_module.aexp._h0 d@@25) (TSeq TChar) $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |742|
  :pattern ( ($IsAlloc SeqType (_module.aexp._h0 d@@25) (TSeq TChar) $h@@6))
 )))
 (assert (forall ((d@@26 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsGoodHeap $h@@7) (and (_module.instr.LOAD_q d@@26) ($IsAlloc DatatypeTypeType d@@26 Tclass._module.instr $h@@7))) ($IsAlloc SeqType (_module.instr._h13 d@@26) (TSeq TChar) $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |828|
  :pattern ( ($IsAlloc SeqType (_module.instr._h13 d@@26) (TSeq TChar) $h@@7))
 )))
 (assert (forall ((d@@27 T@U) ($h@@8 T@U) ) (!  (=> (and ($IsGoodHeap $h@@8) (and (_module.aexp.Plus_q d@@27) ($IsAlloc DatatypeTypeType d@@27 Tclass._module.aexp $h@@8))) ($IsAlloc DatatypeTypeType (_module.aexp._h1 d@@27) Tclass._module.aexp $h@@8))
+ :qid |unknown.0:0|
+ :skolemid |752|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.aexp._h1 d@@27) Tclass._module.aexp $h@@8))
 )))
 (assert (forall ((d@@28 T@U) ($h@@9 T@U) ) (!  (=> (and ($IsGoodHeap $h@@9) (and (_module.aexp.Plus_q d@@28) ($IsAlloc DatatypeTypeType d@@28 Tclass._module.aexp $h@@9))) ($IsAlloc DatatypeTypeType (_module.aexp._h2 d@@28) Tclass._module.aexp $h@@9))
+ :qid |unknown.0:0|
+ :skolemid |753|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.aexp._h2 d@@28) Tclass._module.aexp $h@@9))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (= (|#_module.List.Cons| (Lit BoxType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)) (Lit DatatypeTypeType (|#_module.List.Cons| |a#7#0#0| |a#7#1#0|)))
+ :qid |NipkowKleinchapter3dfy.9:31|
+ :skolemid |719|
  :pattern ( (|#_module.List.Cons| (Lit BoxType |a#7#0#0|) (Lit DatatypeTypeType |a#7#1#0|)))
 )))
 (assert (forall ((|a#27#0#0| T@U) (|a#27#1#0| T@U) ) (! (= (|#_module.aexp.Plus| (Lit DatatypeTypeType |a#27#0#0|) (Lit DatatypeTypeType |a#27#1#0|)) (Lit DatatypeTypeType (|#_module.aexp.Plus| |a#27#0#0| |a#27#1#0|)))
+ :qid |NipkowKleinchapter3dfy.21:45|
+ :skolemid |754|
  :pattern ( (|#_module.aexp.Plus| (Lit DatatypeTypeType |a#27#0#0|) (Lit DatatypeTypeType |a#27#1#0|)))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#15#0#0| Int) ) (! (= (|#_module.aexp.N| (LitInt |a#15#0#0|)) (Lit DatatypeTypeType (|#_module.aexp.N| |a#15#0#0|)))
+ :qid |NipkowKleinchapter3dfy.21:19|
+ :skolemid |735|
  :pattern ( (|#_module.aexp.N| (LitInt |a#15#0#0|)))
 )))
 (assert (forall ((|a#20#0#0| T@U) ) (! (= (|#_module.aexp.V| (Lit SeqType |a#20#0#0|)) (Lit DatatypeTypeType (|#_module.aexp.V| |a#20#0#0|)))
+ :qid |NipkowKleinchapter3dfy.21:31|
+ :skolemid |743|
  :pattern ( (|#_module.aexp.V| (Lit SeqType |a#20#0#0|)))
 )))
 (assert (forall ((|a#62#0#0| Int) ) (! (= (|#_module.instr.LOADI| (LitInt |a#62#0#0|)) (Lit DatatypeTypeType (|#_module.instr.LOADI| |a#62#0#0|)))
+ :qid |NipkowKleinchapter3dfy.199:24|
+ :skolemid |821|
  :pattern ( (|#_module.instr.LOADI| (LitInt |a#62#0#0|)))
 )))
 (assert (forall ((|a#67#0#0| T@U) ) (! (= (|#_module.instr.LOAD| (Lit SeqType |a#67#0#0|)) (Lit DatatypeTypeType (|#_module.instr.LOAD| |a#67#0#0|)))
+ :qid |NipkowKleinchapter3dfy.199:36|
+ :skolemid |829|
  :pattern ( (|#_module.instr.LOAD| (Lit SeqType |a#67#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((s@@0 T@U) ) (!  (=> (= (|Seq#Length| s@@0) 0) (= s@@0 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |222|
  :pattern ( (|Seq#Length| s@@0))
 )))
 (assert (forall ((h@@1 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@1)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@2 TInt h@@1))
 )))
 (assert (forall ((h@@2 T@U) (v@@3 T@U) ) (! ($IsAlloc charType v@@3 TChar h@@2)
+ :qid |DafnyPreludebpl.292:14|
+ :skolemid |64|
  :pattern ( ($IsAlloc charType v@@3 TChar h@@2))
 )))
 (assert (forall ((_module.List$T@@8 T@U) (|a#6#0#0@@0| T@U) (|a#6#1#0@@0| T@U) ($h@@10 T@U) ) (!  (=> ($IsGoodHeap $h@@10) (= ($IsAlloc DatatypeTypeType (|#_module.List.Cons| |a#6#0#0@@0| |a#6#1#0@@0|) (Tclass._module.List _module.List$T@@8) $h@@10)  (and ($IsAllocBox |a#6#0#0@@0| _module.List$T@@8 $h@@10) ($IsAlloc DatatypeTypeType |a#6#1#0@@0| (Tclass._module.List _module.List$T@@8) $h@@10))))
+ :qid |unknown.0:0|
+ :skolemid |716|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.List.Cons| |a#6#0#0@@0| |a#6#1#0@@0|) (Tclass._module.List _module.List$T@@8) $h@@10))
 )))
 (assert (forall ((v@@4 T@U) (t0@@2 T@U) ) (! (= ($Is SeqType v@@4 (TSeq t0@@2)) (forall ((i@@2 Int) ) (!  (=> (and (<= 0 i@@2) (< i@@2 (|Seq#Length| v@@4))) ($IsBox (|Seq#Index| v@@4 i@@2) t0@@2))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |53|
  :pattern ( (|Seq#Index| v@@4 i@@2))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |54|
  :pattern ( ($Is SeqType v@@4 (TSeq t0@@2)))
 )))
 (assert (forall ((s@@1 T@U) (i@@3 Int) ) (!  (=> (and (<= 0 i@@3) (< i@@3 (|Seq#Length| s@@1))) (< (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@1 i@@3))) (|Seq#Rank| s@@1)))
+ :qid |DafnyPreludebpl.1353:15|
+ :skolemid |267|
  :pattern ( (DtRank ($Unbox DatatypeTypeType (|Seq#Index| s@@1 i@@3))))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@5 TInt))
 )))
 (assert (forall ((v@@6 T@U) ) (! ($Is charType v@@6 TChar)
+ :qid |DafnyPreludebpl.231:14|
+ :skolemid |43|
  :pattern ( ($Is charType v@@6 TChar))
 )))
 (push 1)
@@ -525,6 +770,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.comp)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)

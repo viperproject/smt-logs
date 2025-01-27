@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:38
+// Date:         2025-01-26 23:14:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0491.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0491-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure foo#definedness(l_1: Ref, i: int) returns (Result: bool)
   var j_12: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -260,8 +260,8 @@ procedure foo#definedness(l_1: Ref, i: int) returns (Result: bool)
           UnfoldingMask := Mask;
           assume list2#trigger(UnfoldingHeap, list2(l_1, j_12));
           assume UnfoldingHeap[null, list2(l_1, j_12)] == CombineFrames(FrameFragment(UnfoldingHeap[l_1, elem]), CombineFrames(FrameFragment(UnfoldingHeap[l_1, next]), FrameFragment((if UnfoldingHeap[l_1, next] != null then UnfoldingHeap[null, list2(UnfoldingHeap[l_1, next], j_12)] else EmptyFrame))));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list2(l, j) (0491.vpr@9.1--14.2) [64406]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(l_1, j_12)];
@@ -290,8 +290,8 @@ procedure foo#definedness(l_1: Ref, i: int) returns (Result: bool)
               HasDirectPerm(UnfoldingMask, l_1, next);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               perm := FullPerm;
               assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(l.next, j) (0491.vpr@13.68--13.82) [64409]"}
                 NoPerm < perm ==> NoPerm < UnfoldingMask[null, list2(UnfoldingHeap[l_1, next], j_12)];
@@ -409,19 +409,19 @@ procedure list2#definedness(this: Ref, i: int) returns ()
 procedure needsPredicateTrigger() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var l1_1: Ref;
   var l2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var k: int;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -433,8 +433,8 @@ procedure needsPredicateTrigger() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[l1_1, $allocated];
@@ -456,8 +456,8 @@ procedure needsPredicateTrigger() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(l1, k), write) -- 0491.vpr@22.3--22.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding list2(l1, k) might fail. There might be insufficient permission to access l1.elem (0491.vpr@22.3--22.20) [64415]"}
@@ -521,8 +521,8 @@ procedure needsPredicateTrigger() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list2(l2, k), write) -- 0491.vpr@35.3--35.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding list2(l2, k) might fail. There might be insufficient permission to access l2.elem (0491.vpr@35.3--35.20) [64424]"}
@@ -571,14 +571,14 @@ procedure needsPredicateTrigger() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(l2, k) -- 0491.vpr@39.3--39.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(l2, k)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list2(l2, k) (0491.vpr@39.10--39.20) [64430]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list2(l2, k)];

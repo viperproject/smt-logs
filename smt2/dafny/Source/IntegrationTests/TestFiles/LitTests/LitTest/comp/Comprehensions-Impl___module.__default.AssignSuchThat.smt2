@@ -60,16 +60,22 @@
 (declare-fun $IsAlloc (T@T T@U T@U T@U) Bool)
 (declare-fun $Is (T@T T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TBool TInt TagBool TagInt alloc)
@@ -77,58 +83,93 @@
 (assert (= (Tag TBool) TagBool))
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |2349|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |2347|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |2358|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0| Int) ) (!  (=> (or (|_module.__default.Thirteen#canCall| |x#0|) (< 0 $FunctionContextHeight)) (= (_module.__default.Thirteen |x#0|) (= |x#0| (LitInt 13))))
+ :qid |Comprehensionsdfy.24:20|
+ :skolemid |2910|
  :pattern ( (_module.__default.Thirteen |x#0|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|_module.__default.Thirteen#canCall| (LitInt |x#0@@0|)) (< 0 $FunctionContextHeight)) (= (_module.__default.Thirteen (LitInt |x#0@@0|)) (= (LitInt |x#0@@0|) (LitInt 13))))
+ :qid |Comprehensionsdfy.24:20|
  :weight 3
+ :skolemid |2911|
  :pattern ( (_module.__default.Thirteen (LitInt |x#0@@0|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |2357|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |3336|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |2350|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |2348|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |2393|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((h@@0 T@U) (v@@0 T@U) ) (! ($IsAlloc boolType v@@0 TBool h@@0)
+ :qid |DafnyPreludebpl.291:14|
+ :skolemid |2395|
  :pattern ( ($IsAlloc boolType v@@0 TBool h@@0))
 )))
 (assert (forall ((v@@1 T@U) ) (! ($Is intType v@@1 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |2372|
  :pattern ( ($Is intType v@@1 TInt))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is boolType v@@2 TBool)
+ :qid |DafnyPreludebpl.230:14|
+ :skolemid |2374|
  :pattern ( ($Is boolType v@@2 TBool))
 )))
 (push 1)
@@ -148,6 +189,7 @@
 (declare-fun |##x#0@0| () Int)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id Impl$$_module.__default.AssignSuchThat)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -166,7 +208,145 @@
  (=> (= (ControlFlow 0 0) 24) (let ((anon17_correct true))
 (let ((anon25_Else_correct  (=> (and (not |b#0@1|) (= (ControlFlow 0 5) 3)) anon17_correct)))
 (let ((anon25_Then_correct  (=> (and |b#0@1| (= (ControlFlow 0 4) 3)) anon17_correct)))
-(let ((anon13_correct  (=> (=> (<= (LitInt 12) |x#2@0|) (=> (< |x#2@0| |y#2@0|) (|_module.__default.Thirteen#canCall| |x#2@0|))) (and (=> (= (ControlFlow 0 6) (- 0 7)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (+ |$as#x1#0| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0|) (< |$as#x1#0| (+ |$as#x1#0| 1))) (_module.__default.Thirteen |$as#x1#0|)) true))) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@0| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@0| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@0|) (< |$as#x1#0@@0| (+ |$as#x1#0@@0| 1))) (_module.__default.Thirteen |$as#x1#0@@0|)) false))) (or (exists ((|$as#b0#0| Bool) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0|))) (or (exists ((|$as#b0#0@@0| Bool) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@0|))) (or (exists ((|$as#x1#0@@1| Int) (|$as#b0#0@@1| Bool) )  (and ($Is intType (int_2_U (+ |$as#x1#0@@1| 1)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@1|) (< |$as#x1#0@@1| (+ |$as#x1#0@@1| 1))) (_module.__default.Thirteen |$as#x1#0@@1|)) |$as#b0#0@@1|))) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@2| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@2|) (< |$as#x1#0@@2| 0)) (_module.__default.Thirteen |$as#x1#0@@2|)) true))) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@3| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@3|) (< |$as#x1#0@@3| 0)) (_module.__default.Thirteen |$as#x1#0@@3|)) false))) (or (exists ((|$as#b0#0@@2| Bool) )  (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) |$as#b0#0@@2|))) (or (exists ((|$as#b0#0@@3| Bool) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@3|))) (or (exists ((|$as#b0#0@@4| Bool) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@4|))) (or (exists ((|$as#x1#0@@4| Int) (|$as#b0#0@@5| Bool) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@4|) (< |$as#x1#0@@4| 0)) (_module.__default.Thirteen |$as#x1#0@@4|)) |$as#b0#0@@5|))) (or (exists ((|$as#y1#0| Int) )  (and (and ($Is intType (int_2_U (- |$as#y1#0| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0| 1)) (< (- |$as#y1#0| 1) |$as#y1#0|)) (_module.__default.Thirteen (- |$as#y1#0| 1))) true))) (or (exists ((|$as#y1#0@@0| Int) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@0|)) (_module.__default.Thirteen (LitInt 12))) true))) (or (exists ((|$as#y1#0@@1| Int) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@1|)) (_module.__default.Thirteen (LitInt 0))) true))) (or (exists ((|$as#x1#0@@5| Int) (|$as#y1#0@@2| Int) )  (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@5|) (< |$as#x1#0@@5| |$as#y1#0@@2|)) (_module.__default.Thirteen |$as#x1#0@@5|)) true))) (or (exists ((|$as#y1#0@@3| Int) )  (and (and ($Is intType (int_2_U (- |$as#y1#0@@3| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@3| 1)) (< (- |$as#y1#0@@3| 1) |$as#y1#0@@3|)) (_module.__default.Thirteen (- |$as#y1#0@@3| 1))) false))) (or (exists ((|$as#y1#0@@4| Int) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@4|)) (_module.__default.Thirteen (LitInt 12))) false))) (or (exists ((|$as#y1#0@@5| Int) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@5|)) (_module.__default.Thirteen (LitInt 0))) false))) (or (exists ((|$as#x1#0@@6| Int) (|$as#y1#0@@6| Int) )  (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@6|) (< |$as#x1#0@@6| |$as#y1#0@@6|)) (_module.__default.Thirteen |$as#x1#0@@6|)) false))) (or (exists ((|$as#b0#0@@6| Bool) (|$as#y1#0@@7| Int) )  (and ($Is intType (int_2_U (- |$as#y1#0@@7| 1)) TInt) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@7| 1)) (< (- |$as#y1#0@@7| 1) |$as#y1#0@@7|)) (_module.__default.Thirteen (- |$as#y1#0@@7| 1))) |$as#b0#0@@6|))) (or (exists ((|$as#b0#0@@7| Bool) (|$as#y1#0@@8| Int) )  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@8|)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@7|))) (or (exists ((|$as#b0#0@@8| Bool) (|$as#y1#0@@9| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@9|)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@8|))) (exists ((|$as#x1#0@@7| Int) (|$as#b0#0@@9| Bool) (|$as#y1#0@@10| Int) )  (and (and (and (<= (LitInt 12) |$as#x1#0@@7|) (< |$as#x1#0@@7| |$as#y1#0@@10|)) (_module.__default.Thirteen |$as#x1#0@@7|)) |$as#b0#0@@9|))))))))))))))))))))))))))))))))))) (=> (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@8| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@8| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@8|) (< |$as#x1#0@@8| (+ |$as#x1#0@@8| 1))) (_module.__default.Thirteen |$as#x1#0@@8|)) true))) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@9| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@9| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@9|) (< |$as#x1#0@@9| (+ |$as#x1#0@@9| 1))) (_module.__default.Thirteen |$as#x1#0@@9|)) false))) (or (exists ((|$as#b0#0@@10| Bool) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@10|))) (or (exists ((|$as#b0#0@@11| Bool) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@11|))) (or (exists ((|$as#x1#0@@10| Int) (|$as#b0#0@@12| Bool) )  (and ($Is intType (int_2_U (+ |$as#x1#0@@10| 1)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@10|) (< |$as#x1#0@@10| (+ |$as#x1#0@@10| 1))) (_module.__default.Thirteen |$as#x1#0@@10|)) |$as#b0#0@@12|))) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@11| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@11|) (< |$as#x1#0@@11| 0)) (_module.__default.Thirteen |$as#x1#0@@11|)) true))) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@12| Int) )  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@12|) (< |$as#x1#0@@12| 0)) (_module.__default.Thirteen |$as#x1#0@@12|)) false))) (or (exists ((|$as#b0#0@@13| Bool) )  (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) |$as#b0#0@@13|))) (or (exists ((|$as#b0#0@@14| Bool) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@14|))) (or (exists ((|$as#b0#0@@15| Bool) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@15|))) (or (exists ((|$as#x1#0@@13| Int) (|$as#b0#0@@16| Bool) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@13|) (< |$as#x1#0@@13| 0)) (_module.__default.Thirteen |$as#x1#0@@13|)) |$as#b0#0@@16|))) (or (exists ((|$as#y1#0@@11| Int) )  (and (and ($Is intType (int_2_U (- |$as#y1#0@@11| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@11| 1)) (< (- |$as#y1#0@@11| 1) |$as#y1#0@@11|)) (_module.__default.Thirteen (- |$as#y1#0@@11| 1))) true))) (or (exists ((|$as#y1#0@@12| Int) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@12|)) (_module.__default.Thirteen (LitInt 12))) true))) (or (exists ((|$as#y1#0@@13| Int) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@13|)) (_module.__default.Thirteen (LitInt 0))) true))) (or (exists ((|$as#x1#0@@14| Int) (|$as#y1#0@@14| Int) )  (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@14|) (< |$as#x1#0@@14| |$as#y1#0@@14|)) (_module.__default.Thirteen |$as#x1#0@@14|)) true))) (or (exists ((|$as#y1#0@@15| Int) )  (and (and ($Is intType (int_2_U (- |$as#y1#0@@15| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@15| 1)) (< (- |$as#y1#0@@15| 1) |$as#y1#0@@15|)) (_module.__default.Thirteen (- |$as#y1#0@@15| 1))) false))) (or (exists ((|$as#y1#0@@16| Int) )  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@16|)) (_module.__default.Thirteen (LitInt 12))) false))) (or (exists ((|$as#y1#0@@17| Int) )  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@17|)) (_module.__default.Thirteen (LitInt 0))) false))) (or (exists ((|$as#x1#0@@15| Int) (|$as#y1#0@@18| Int) )  (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@15|) (< |$as#x1#0@@15| |$as#y1#0@@18|)) (_module.__default.Thirteen |$as#x1#0@@15|)) false))) (or (exists ((|$as#b0#0@@17| Bool) (|$as#y1#0@@19| Int) )  (and ($Is intType (int_2_U (- |$as#y1#0@@19| 1)) TInt) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@19| 1)) (< (- |$as#y1#0@@19| 1) |$as#y1#0@@19|)) (_module.__default.Thirteen (- |$as#y1#0@@19| 1))) |$as#b0#0@@17|))) (or (exists ((|$as#b0#0@@18| Bool) (|$as#y1#0@@20| Int) )  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@20|)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@18|))) (or (exists ((|$as#b0#0@@19| Bool) (|$as#y1#0@@21| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@21|)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@19|))) (exists ((|$as#x1#0@@16| Int) (|$as#b0#0@@20| Bool) (|$as#y1#0@@22| Int) )  (and (and (and (<= (LitInt 12) |$as#x1#0@@16|) (< |$as#x1#0@@16| |$as#y1#0@@22|)) (_module.__default.Thirteen |$as#x1#0@@16|)) |$as#b0#0@@20|)))))))))))))))))))))))))))))))))) (=> (and (and (and (<= (LitInt 12) |x#0@2|) (< |x#0@2| |y#0@2|)) (_module.__default.Thirteen |x#0@2|)) |b#0@1|) (and (=> (= (ControlFlow 0 6) 4) anon25_Then_correct) (=> (= (ControlFlow 0 6) 5) anon25_Else_correct))))))))
+(let ((anon13_correct  (=> (=> (<= (LitInt 12) |x#2@0|) (=> (< |x#2@0| |y#2@0|) (|_module.__default.Thirteen#canCall| |x#2@0|))) (and (=> (= (ControlFlow 0 6) (- 0 7)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (+ |$as#x1#0| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0|) (< |$as#x1#0| (+ |$as#x1#0| 1))) (_module.__default.Thirteen |$as#x1#0|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2951|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@0| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@0| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@0|) (< |$as#x1#0@@0| (+ |$as#x1#0@@0| 1))) (_module.__default.Thirteen |$as#x1#0@@0|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2950|
+)) (or (exists ((|$as#b0#0| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2949|
+)) (or (exists ((|$as#b0#0@@0| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@0|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2948|
+)) (or (exists ((|$as#x1#0@@1| Int) (|$as#b0#0@@1| Bool) ) (!  (and ($Is intType (int_2_U (+ |$as#x1#0@@1| 1)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@1|) (< |$as#x1#0@@1| (+ |$as#x1#0@@1| 1))) (_module.__default.Thirteen |$as#x1#0@@1|)) |$as#b0#0@@1|))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2947|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@2| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@2|) (< |$as#x1#0@@2| 0)) (_module.__default.Thirteen |$as#x1#0@@2|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2946|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@3| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@3|) (< |$as#x1#0@@3| 0)) (_module.__default.Thirteen |$as#x1#0@@3|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2945|
+)) (or (exists ((|$as#b0#0@@2| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) |$as#b0#0@@2|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2944|
+)) (or (exists ((|$as#b0#0@@3| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@3|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2943|
+)) (or (exists ((|$as#b0#0@@4| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@4|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2942|
+)) (or (exists ((|$as#x1#0@@4| Int) (|$as#b0#0@@5| Bool) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@4|) (< |$as#x1#0@@4| 0)) (_module.__default.Thirteen |$as#x1#0@@4|)) |$as#b0#0@@5|))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2941|
+)) (or (exists ((|$as#y1#0| Int) ) (!  (and (and ($Is intType (int_2_U (- |$as#y1#0| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0| 1)) (< (- |$as#y1#0| 1) |$as#y1#0|)) (_module.__default.Thirteen (- |$as#y1#0| 1))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2940|
+)) (or (exists ((|$as#y1#0@@0| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@0|)) (_module.__default.Thirteen (LitInt 12))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2939|
+)) (or (exists ((|$as#y1#0@@1| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@1|)) (_module.__default.Thirteen (LitInt 0))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2938|
+)) (or (exists ((|$as#x1#0@@5| Int) (|$as#y1#0@@2| Int) ) (!  (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@5|) (< |$as#x1#0@@5| |$as#y1#0@@2|)) (_module.__default.Thirteen |$as#x1#0@@5|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2937|
+)) (or (exists ((|$as#y1#0@@3| Int) ) (!  (and (and ($Is intType (int_2_U (- |$as#y1#0@@3| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@3| 1)) (< (- |$as#y1#0@@3| 1) |$as#y1#0@@3|)) (_module.__default.Thirteen (- |$as#y1#0@@3| 1))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2936|
+)) (or (exists ((|$as#y1#0@@4| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@4|)) (_module.__default.Thirteen (LitInt 12))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2935|
+)) (or (exists ((|$as#y1#0@@5| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@5|)) (_module.__default.Thirteen (LitInt 0))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2934|
+)) (or (exists ((|$as#x1#0@@6| Int) (|$as#y1#0@@6| Int) ) (!  (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@6|) (< |$as#x1#0@@6| |$as#y1#0@@6|)) (_module.__default.Thirteen |$as#x1#0@@6|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2933|
+)) (or (exists ((|$as#b0#0@@6| Bool) (|$as#y1#0@@7| Int) ) (!  (and ($Is intType (int_2_U (- |$as#y1#0@@7| 1)) TInt) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@7| 1)) (< (- |$as#y1#0@@7| 1) |$as#y1#0@@7|)) (_module.__default.Thirteen (- |$as#y1#0@@7| 1))) |$as#b0#0@@6|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2932|
+)) (or (exists ((|$as#b0#0@@7| Bool) (|$as#y1#0@@8| Int) ) (!  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@8|)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@7|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2931|
+)) (or (exists ((|$as#b0#0@@8| Bool) (|$as#y1#0@@9| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@9|)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@8|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2930|
+)) (exists ((|$as#x1#0@@7| Int) (|$as#b0#0@@9| Bool) (|$as#y1#0@@10| Int) ) (!  (and (and (and (<= (LitInt 12) |$as#x1#0@@7|) (< |$as#x1#0@@7| |$as#y1#0@@10|)) (_module.__default.Thirteen |$as#x1#0@@7|)) |$as#b0#0@@9|)
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2929|
+))))))))))))))))))))))))))))))))))) (=> (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@8| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@8| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@8|) (< |$as#x1#0@@8| (+ |$as#x1#0@@8| 1))) (_module.__default.Thirteen |$as#x1#0@@8|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2951|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@9| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (+ |$as#x1#0@@9| 1)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@9|) (< |$as#x1#0@@9| (+ |$as#x1#0@@9| 1))) (_module.__default.Thirteen |$as#x1#0@@9|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2950|
+)) (or (exists ((|$as#b0#0@@10| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@10|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2949|
+)) (or (exists ((|$as#b0#0@@11| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@11|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2948|
+)) (or (exists ((|$as#x1#0@@10| Int) (|$as#b0#0@@12| Bool) ) (!  (and ($Is intType (int_2_U (+ |$as#x1#0@@10| 1)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@10|) (< |$as#x1#0@@10| (+ |$as#x1#0@@10| 1))) (_module.__default.Thirteen |$as#x1#0@@10|)) |$as#b0#0@@12|))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2947|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) true)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) true)) (or (exists ((|$as#x1#0@@11| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@11|) (< |$as#x1#0@@11| 0)) (_module.__default.Thirteen |$as#x1#0@@11|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2946|
+)) (or (and (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) false)) (or (and (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) false)) (or (exists ((|$as#x1#0@@12| Int) ) (!  (and (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) |$as#x1#0@@12|) (< |$as#x1#0@@12| 0)) (_module.__default.Thirteen |$as#x1#0@@12|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2945|
+)) (or (exists ((|$as#b0#0@@13| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1)))) |$as#b0#0@@13|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2944|
+)) (or (exists ((|$as#b0#0@@14| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@14|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2943|
+)) (or (exists ((|$as#b0#0@@15| Bool) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@15|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2942|
+)) (or (exists ((|$as#x1#0@@13| Int) (|$as#b0#0@@16| Bool) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) |$as#x1#0@@13|) (< |$as#x1#0@@13| 0)) (_module.__default.Thirteen |$as#x1#0@@13|)) |$as#b0#0@@16|))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2941|
+)) (or (exists ((|$as#y1#0@@11| Int) ) (!  (and (and ($Is intType (int_2_U (- |$as#y1#0@@11| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@11| 1)) (< (- |$as#y1#0@@11| 1) |$as#y1#0@@11|)) (_module.__default.Thirteen (- |$as#y1#0@@11| 1))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2940|
+)) (or (exists ((|$as#y1#0@@12| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@12|)) (_module.__default.Thirteen (LitInt 12))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2939|
+)) (or (exists ((|$as#y1#0@@13| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U true)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@13|)) (_module.__default.Thirteen (LitInt 0))) true))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2938|
+)) (or (exists ((|$as#x1#0@@14| Int) (|$as#y1#0@@14| Int) ) (!  (and ($Is boolType (Lit boolType (bool_2_U true)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@14|) (< |$as#x1#0@@14| |$as#y1#0@@14|)) (_module.__default.Thirteen |$as#x1#0@@14|)) true))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2937|
+)) (or (exists ((|$as#y1#0@@15| Int) ) (!  (and (and ($Is intType (int_2_U (- |$as#y1#0@@15| 1)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@15| 1)) (< (- |$as#y1#0@@15| 1) |$as#y1#0@@15|)) (_module.__default.Thirteen (- |$as#y1#0@@15| 1))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2936|
+)) (or (exists ((|$as#y1#0@@16| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@16|)) (_module.__default.Thirteen (LitInt 12))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2935|
+)) (or (exists ((|$as#y1#0@@17| Int) ) (!  (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is boolType (Lit boolType (bool_2_U false)) TBool)) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@17|)) (_module.__default.Thirteen (LitInt 0))) false))
+ :qid |Comprehensionsdfy.34:9|
+ :skolemid |2934|
+)) (or (exists ((|$as#x1#0@@15| Int) (|$as#y1#0@@18| Int) ) (!  (and ($Is boolType (Lit boolType (bool_2_U false)) TBool) (and (and (and (<= (LitInt 12) |$as#x1#0@@15|) (< |$as#x1#0@@15| |$as#y1#0@@18|)) (_module.__default.Thirteen |$as#x1#0@@15|)) false))
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2933|
+)) (or (exists ((|$as#b0#0@@17| Bool) (|$as#y1#0@@19| Int) ) (!  (and ($Is intType (int_2_U (- |$as#y1#0@@19| 1)) TInt) (and (and (and (<= (LitInt 12) (- |$as#y1#0@@19| 1)) (< (- |$as#y1#0@@19| 1) |$as#y1#0@@19|)) (_module.__default.Thirteen (- |$as#y1#0@@19| 1))) |$as#b0#0@@17|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2932|
+)) (or (exists ((|$as#b0#0@@18| Bool) (|$as#y1#0@@20| Int) ) (!  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y1#0@@20|)) (_module.__default.Thirteen (LitInt 12))) |$as#b0#0@@18|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2931|
+)) (or (exists ((|$as#b0#0@@19| Bool) (|$as#y1#0@@21| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y1#0@@21|)) (_module.__default.Thirteen (LitInt 0))) |$as#b0#0@@19|))
+ :qid |Comprehensionsdfy.34:6|
+ :skolemid |2930|
+)) (exists ((|$as#x1#0@@16| Int) (|$as#b0#0@@20| Bool) (|$as#y1#0@@22| Int) ) (!  (and (and (and (<= (LitInt 12) |$as#x1#0@@16|) (< |$as#x1#0@@16| |$as#y1#0@@22|)) (_module.__default.Thirteen |$as#x1#0@@16|)) |$as#b0#0@@20|)
+ :qid |Comprehensionsdfy.34:3|
+ :skolemid |2929|
+)))))))))))))))))))))))))))))))))) (=> (and (and (and (<= (LitInt 12) |x#0@2|) (< |x#0@2| |y#0@2|)) (_module.__default.Thirteen |x#0@2|)) |b#0@1|) (and (=> (= (ControlFlow 0 6) 4) anon25_Then_correct) (=> (= (ControlFlow 0 6) 5) anon25_Else_correct))))))))
 (let ((anon24_Else_correct  (=> (and (not (and (and (<= (LitInt 12) |x#2@0|) (< |x#2@0| |y#2@0|)) (_module.__default.Thirteen |x#2@0|))) (= (ControlFlow 0 9) 6)) anon13_correct)))
 (let ((anon24_Then_correct  (=> (and (and (and (<= (LitInt 12) |x#2@0|) (< |x#2@0| |y#2@0|)) (_module.__default.Thirteen |x#2@0|)) (= (ControlFlow 0 8) 6)) anon13_correct)))
 (let ((anon23_Else_correct  (=> (not (and (<= (LitInt 12) |x#2@0|) (< |x#2@0| |y#2@0|))) (and (=> (= (ControlFlow 0 11) 8) anon24_Then_correct) (=> (= (ControlFlow 0 11) 9) anon24_Else_correct)))))
@@ -175,7 +355,43 @@
 (let ((anon22_Then_correct  (=> (<= (LitInt 12) |x#2@0|) (and (=> (= (ControlFlow 0 12) 10) anon23_Then_correct) (=> (= (ControlFlow 0 12) 11) anon23_Else_correct)))))
 (let ((anon21_Then_correct  (and (=> (= (ControlFlow 0 14) 12) anon22_Then_correct) (=> (= (ControlFlow 0 14) 13) anon22_Else_correct))))
 (let ((anon21_Else_correct true))
-(let ((anon5_correct  (=> (=> (<= (LitInt 12) |x#1@0|) (=> (< |x#1@0| |y#1@0|) (|_module.__default.Thirteen#canCall| |x#1@0|))) (and (=> (= (ControlFlow 0 15) (- 0 16)) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0| Int) )  (and ($Is intType (int_2_U (+ |$as#x0#0| 1)) TInt) (and (and (<= (LitInt 12) |$as#x0#0|) (< |$as#x0#0| (+ |$as#x0#0| 1))) (_module.__default.Thirteen |$as#x0#0|)))) (or (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1))))) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@0| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@0|) (< |$as#x0#0@@0| 0)) (_module.__default.Thirteen |$as#x0#0@@0|)))) (or (exists ((|$as#y0#0| Int) )  (and ($Is intType (int_2_U (- |$as#y0#0| 1)) TInt) (and (and (<= (LitInt 12) (- |$as#y0#0| 1)) (< (- |$as#y0#0| 1) |$as#y0#0|)) (_module.__default.Thirteen (- |$as#y0#0| 1))))) (or (exists ((|$as#y0#0@@0| Int) )  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y0#0@@0|)) (_module.__default.Thirteen (LitInt 12))))) (or (exists ((|$as#y0#0@@1| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y0#0@@1|)) (_module.__default.Thirteen (LitInt 0))))) (exists ((|$as#x0#0@@1| Int) (|$as#y0#0@@2| Int) )  (and (and (<= (LitInt 12) |$as#x0#0@@1|) (< |$as#x0#0@@1| |$as#y0#0@@2|)) (_module.__default.Thirteen |$as#x0#0@@1|)))))))))))))) (=> (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@2| Int) )  (and ($Is intType (int_2_U (+ |$as#x0#0@@2| 1)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@2|) (< |$as#x0#0@@2| (+ |$as#x0#0@@2| 1))) (_module.__default.Thirteen |$as#x0#0@@2|)))) (or (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1))))) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@3| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@3|) (< |$as#x0#0@@3| 0)) (_module.__default.Thirteen |$as#x0#0@@3|)))) (or (exists ((|$as#y0#0@@3| Int) )  (and ($Is intType (int_2_U (- |$as#y0#0@@3| 1)) TInt) (and (and (<= (LitInt 12) (- |$as#y0#0@@3| 1)) (< (- |$as#y0#0@@3| 1) |$as#y0#0@@3|)) (_module.__default.Thirteen (- |$as#y0#0@@3| 1))))) (or (exists ((|$as#y0#0@@4| Int) )  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y0#0@@4|)) (_module.__default.Thirteen (LitInt 12))))) (or (exists ((|$as#y0#0@@5| Int) )  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y0#0@@5|)) (_module.__default.Thirteen (LitInt 0))))) (exists ((|$as#x0#0@@4| Int) (|$as#y0#0@@6| Int) )  (and (and (<= (LitInt 12) |$as#x0#0@@4|) (< |$as#x0#0@@4| |$as#y0#0@@6|)) (_module.__default.Thirteen |$as#x0#0@@4|))))))))))))) (=> (and (and (<= (LitInt 12) |x#0@1|) (< |x#0@1| |y#0@1|)) (_module.__default.Thirteen |x#0@1|)) (and (=> (= (ControlFlow 0 15) 14) anon21_Then_correct) (=> (= (ControlFlow 0 15) 2) anon21_Else_correct))))))))
+(let ((anon5_correct  (=> (=> (<= (LitInt 12) |x#1@0|) (=> (< |x#1@0| |y#1@0|) (|_module.__default.Thirteen#canCall| |x#1@0|))) (and (=> (= (ControlFlow 0 15) (- 0 16)) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0| Int) ) (!  (and ($Is intType (int_2_U (+ |$as#x0#0| 1)) TInt) (and (and (<= (LitInt 12) |$as#x0#0|) (< |$as#x0#0| (+ |$as#x0#0| 1))) (_module.__default.Thirteen |$as#x0#0|)))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2928|
+)) (or (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1))))) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@0| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@0|) (< |$as#x0#0@@0| 0)) (_module.__default.Thirteen |$as#x0#0@@0|)))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2927|
+)) (or (exists ((|$as#y0#0| Int) ) (!  (and ($Is intType (int_2_U (- |$as#y0#0| 1)) TInt) (and (and (<= (LitInt 12) (- |$as#y0#0| 1)) (< (- |$as#y0#0| 1) |$as#y0#0|)) (_module.__default.Thirteen (- |$as#y0#0| 1))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2926|
+)) (or (exists ((|$as#y0#0@@0| Int) ) (!  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y0#0@@0|)) (_module.__default.Thirteen (LitInt 12))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2925|
+)) (or (exists ((|$as#y0#0@@1| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y0#0@@1|)) (_module.__default.Thirteen (LitInt 0))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2924|
+)) (exists ((|$as#x0#0@@1| Int) (|$as#y0#0@@2| Int) ) (!  (and (and (<= (LitInt 12) |$as#x0#0@@1|) (< |$as#x0#0@@1| |$as#y0#0@@2|)) (_module.__default.Thirteen |$as#x0#0@@1|))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2923|
+))))))))))))) (=> (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt (+ 12 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 (+ 12 1))) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt (+ 0 1))) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 (+ 0 1))) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@2| Int) ) (!  (and ($Is intType (int_2_U (+ |$as#x0#0@@2| 1)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@2|) (< |$as#x0#0@@2| (+ |$as#x0#0@@2| 1))) (_module.__default.Thirteen |$as#x0#0@@2|)))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2928|
+)) (or (and (and ($Is intType (int_2_U (LitInt (- 0 1))) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt (- 0 1))) (< (- 0 1) 0)) (_module.__default.Thirteen (LitInt (- 0 1))))) (or (and (and ($Is intType (int_2_U (LitInt 12)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 0)) (_module.__default.Thirteen (LitInt 12)))) (or (and (and ($Is intType (int_2_U (LitInt 0)) TInt) ($Is intType (int_2_U (LitInt 0)) TInt)) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 0)) (_module.__default.Thirteen (LitInt 0)))) (or (exists ((|$as#x0#0@@3| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) |$as#x0#0@@3|) (< |$as#x0#0@@3| 0)) (_module.__default.Thirteen |$as#x0#0@@3|)))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2927|
+)) (or (exists ((|$as#y0#0@@3| Int) ) (!  (and ($Is intType (int_2_U (- |$as#y0#0@@3| 1)) TInt) (and (and (<= (LitInt 12) (- |$as#y0#0@@3| 1)) (< (- |$as#y0#0@@3| 1) |$as#y0#0@@3|)) (_module.__default.Thirteen (- |$as#y0#0@@3| 1))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2926|
+)) (or (exists ((|$as#y0#0@@4| Int) ) (!  (and ($Is intType (int_2_U (LitInt 12)) TInt) (and (and (<= (LitInt 12) (LitInt 12)) (< 12 |$as#y0#0@@4|)) (_module.__default.Thirteen (LitInt 12))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2925|
+)) (or (exists ((|$as#y0#0@@5| Int) ) (!  (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (and (<= (LitInt 12) (LitInt 0)) (< 0 |$as#y0#0@@5|)) (_module.__default.Thirteen (LitInt 0))))
+ :qid |Comprehensionsdfy.31:6|
+ :skolemid |2924|
+)) (exists ((|$as#x0#0@@4| Int) (|$as#y0#0@@6| Int) ) (!  (and (and (<= (LitInt 12) |$as#x0#0@@4|) (< |$as#x0#0@@4| |$as#y0#0@@6|)) (_module.__default.Thirteen |$as#x0#0@@4|))
+ :qid |Comprehensionsdfy.31:3|
+ :skolemid |2923|
+)))))))))))) (=> (and (and (<= (LitInt 12) |x#0@1|) (< |x#0@1| |y#0@1|)) (_module.__default.Thirteen |x#0@1|)) (and (=> (= (ControlFlow 0 15) 14) anon21_Then_correct) (=> (= (ControlFlow 0 15) 2) anon21_Else_correct))))))))
 (let ((anon20_Else_correct  (=> (and (not (and (<= (LitInt 12) |x#1@0|) (< |x#1@0| |y#1@0|))) (= (ControlFlow 0 18) 15)) anon5_correct)))
 (let ((anon20_Then_correct  (=> (and (and (and (<= (LitInt 12) |x#1@0|) (< |x#1@0| |y#1@0|)) ($IsAlloc intType (int_2_U |x#1@0|) TInt $Heap)) (and (|_module.__default.Thirteen#canCall| |x#1@0|) (= (ControlFlow 0 17) 15))) anon5_correct)))
 (let ((anon19_Else_correct  (=> (< |x#1@0| (LitInt 12)) (and (=> (= (ControlFlow 0 20) 17) anon20_Then_correct) (=> (= (ControlFlow 0 20) 18) anon20_Else_correct)))))

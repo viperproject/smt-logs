@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:44:28
+// Date:         2025-01-26 23:16:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_qsort.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_qsort-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -604,15 +604,15 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
   var j_14: int;
   var i_3: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i1_8: int;
   var storeIndex: int;
   var index: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var aux: int;
   var i3_6: int;
@@ -703,8 +703,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -776,8 +776,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1016,8 +1016,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
                 index := index + 1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1164,8 +1164,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= start && (start <= storeIndex && storeIndex <= |s|) -- parallel_qsort.vpr@39.5--39.66
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion 0 <= start might not hold. (parallel_qsort.vpr@39.12--39.66) [186202]"}
           0 <= start_1;
         assert {:msg "  Exhale might fail. Assertion start <= storeIndex might not hold. (parallel_qsort.vpr@39.12--39.66) [186203]"}
@@ -1178,8 +1178,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
   //     { (i in [start..storeIndex)) }
   //     { s[i] }
   //     (i in [start..storeIndex)) ==> acc(s[i].f, write)) -- parallel_qsort.vpr@40.5--40.76
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { (i in [start..storeIndex)) } { s[i] } (i in [start..storeIndex)) ==> acc(s[i].f, write))
           if (*) {
@@ -1239,8 +1239,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= storeIndex + 1 && (storeIndex + 1 <= end && end <= |s|) -- parallel_qsort.vpr@43.5--43.66
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion 0 <= storeIndex + 1 might not hold. (parallel_qsort.vpr@43.12--43.66) [186210]"}
           0 <= storeIndex + 1;
         assert {:msg "  Exhale might fail. Assertion storeIndex + 1 <= end might not hold. (parallel_qsort.vpr@43.12--43.66) [186211]"}
@@ -1252,8 +1252,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
       // -- Translating statement: exhale (forall i: Int ::
   //     { s[i] }
   //     (i in [storeIndex + 1..end)) ==> acc(s[i].f, write)) -- parallel_qsort.vpr@44.5--44.76
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { s[i] } (i in [storeIndex + 1..end)) ==> acc(s[i].f, write))
           if (*) {
@@ -1418,8 +1418,8 @@ procedure qsort(s_1: (Seq Ref), start_1: int, end_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive

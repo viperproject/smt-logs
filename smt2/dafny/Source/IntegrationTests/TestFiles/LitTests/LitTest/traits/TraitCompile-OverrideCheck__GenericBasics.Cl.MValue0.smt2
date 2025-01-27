@@ -74,147 +74,238 @@
 (declare-fun Tclass.GenericBasics.Cl_0 (T@U) T@U)
 (declare-fun Tclass.GenericBasics.Cl?_0 (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass.GenericBasics.Cl Tagclass.GenericBasics.Tr Tagclass.GenericBasics.Tr? Tagclass.GenericBasics.Cl? tytagFamily$Cl tytagFamily$Tr)
 )
-(assert (forall ((GenericBasics.Cl$Q T@U) ) (implements$GenericBasics.Tr (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q) GenericBasics.Cl$Q TInt)))
+(assert (forall ((GenericBasics.Cl$Q T@U) ) (! (implements$GenericBasics.Tr (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q) GenericBasics.Cl$Q TInt)
+ :qid |unknown.0:0|
+ :skolemid |1763|
+)))
 (assert (= (Tag TInt) TagInt))
 (assert (= (Ctor refType) 3))
 (assert (forall ((GenericBasics.Cl$Q@@0 T@U) (|c#0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0| (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@0) $h) ($IsAlloc refType |c#0| (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@0) $h))
+ :qid |unknown.0:0|
+ :skolemid |1829|
  :pattern ( ($IsAlloc refType |c#0| (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@0) $h))
  :pattern ( ($IsAlloc refType |c#0| (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@0) $h))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@1 T@U) ($o T@U) ) (!  (=> ($Is refType $o (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@1)) ($Is refType $o (Tclass.GenericBasics.Tr? GenericBasics.Cl$Q@@1 TInt)))
+ :qid |unknown.0:0|
+ :skolemid |1906|
  :pattern ( ($Is refType $o (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@1)))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@2 T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@2)) ($IsBox bx (Tclass.GenericBasics.Tr? GenericBasics.Cl$Q@@2 TInt)))
+ :qid |unknown.0:0|
+ :skolemid |1904|
  :pattern ( ($IsBox bx (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@2)))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((GenericBasics.Cl$Q@@3 T@U) ($o@@0 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@0 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@3) $h@@0)  (or (= $o@@0 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@0) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1762|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@3) $h@@0))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |1250|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |1251|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1158|
  :pattern ( ($Unbox T x@@2))
 )))
 (assert (forall ((GenericBasics.Tr$A T@U) (GenericBasics.Tr$B T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass.GenericBasics.Tr GenericBasics.Tr$A GenericBasics.Tr$B))  (and ($Is refType |c#0@@0| (Tclass.GenericBasics.Tr? GenericBasics.Tr$A GenericBasics.Tr$B)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1756|
  :pattern ( ($Is refType |c#0@@0| (Tclass.GenericBasics.Tr GenericBasics.Tr$A GenericBasics.Tr$B)))
  :pattern ( ($Is refType |c#0@@0| (Tclass.GenericBasics.Tr? GenericBasics.Tr$A GenericBasics.Tr$B)))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@4 T@U) (|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@4))  (and ($Is refType |c#0@@1| (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@4)) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |1828|
  :pattern ( ($Is refType |c#0@@1| (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@4)))
  :pattern ( ($Is refType |c#0@@1| (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@4)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v) t h@@0) ($IsAlloc T@@0 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |1171|
  :pattern ( ($IsAllocBox ($Box T@@0 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@0 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@0 t@@0 h@@1) ($IsAllocBox bx@@0 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |1243|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@0 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@1 v@@0 t@@1 h@@2) ($IsAlloc T@@1 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |1242|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@1 v@@0 t@@1 h@@2))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@5 T@U) ) (!  (and (= (Tag (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@5)) Tagclass.GenericBasics.Cl) (= (TagFamily (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@5)) tytagFamily$Cl))
+ :qid |unknown.0:0|
+ :skolemid |1679|
  :pattern ( (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@5))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@6 T@U) ) (!  (and (= (Tag (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@6)) Tagclass.GenericBasics.Cl?) (= (TagFamily (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@6)) tytagFamily$Cl))
+ :qid |unknown.0:0|
+ :skolemid |1758|
  :pattern ( (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@6))
 )))
 (assert (forall ((GenericBasics.Tr$A@@0 T@U) (GenericBasics.Tr$B@@0 T@U) (|c#0@@2| T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@0 GenericBasics.Tr$B@@0) $h@@1) ($IsAlloc refType |c#0@@2| (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@0 GenericBasics.Tr$B@@0) $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1757|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@0 GenericBasics.Tr$B@@0) $h@@1))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@0 GenericBasics.Tr$B@@0) $h@@1))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@7 T@U) ($o@@1 T@U) ) (! (= ($Is refType $o@@1 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@7))  (or (= $o@@1 null) (= (dtype $o@@1) (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@7))))
+ :qid |unknown.0:0|
+ :skolemid |1761|
  :pattern ( ($Is refType $o@@1 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@7)))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@8 T@U) (bx@@1 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsAllocBox bx@@1 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@8) $h@@2) ($IsGoodHeap $h@@2)) ($IsAllocBox bx@@1 (Tclass.GenericBasics.Tr? GenericBasics.Cl$Q@@8 TInt) $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1905|
  :pattern ( ($IsAllocBox bx@@1 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@8) $h@@2))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@9 T@U) ($o@@2 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@2 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@9) $heap) ($IsAlloc refType $o@@2 (Tclass.GenericBasics.Tr? GenericBasics.Cl$Q@@9 TInt) $heap))
+ :qid |unknown.0:0|
+ :skolemid |1907|
  :pattern ( ($IsAlloc refType $o@@2 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@9) $heap))
 )))
 (assert (forall ((GenericBasics.Tr$A@@1 T@U) (GenericBasics.Tr$B@@1 T@U) ($o@@3 T@U) ($h@@3 T@U) ) (! (= ($IsAlloc refType $o@@3 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@1 GenericBasics.Tr$B@@1) $h@@3)  (or (= $o@@3 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |1704|
  :pattern ( ($IsAlloc refType $o@@3 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@1 GenericBasics.Tr$B@@1) $h@@3))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |1249|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 TInt) (and (= ($Box intType ($Unbox intType bx@@2)) bx@@2) ($Is intType ($Unbox intType bx@@2) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |1159|
  :pattern ( ($IsBox bx@@2 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@2) ($Is T@@2 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |1170|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@2))
 )))
 (assert (forall ((GenericBasics.Tr$A@@2 T@U) (GenericBasics.Tr$B@@2 T@U) ) (! (= (Tclass.GenericBasics.Tr_0 (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@2 GenericBasics.Tr$B@@2)) GenericBasics.Tr$A@@2)
+ :qid |unknown.0:0|
+ :skolemid |1690|
  :pattern ( (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@2 GenericBasics.Tr$B@@2))
 )))
 (assert (forall ((GenericBasics.Tr$A@@3 T@U) (GenericBasics.Tr$B@@3 T@U) ) (! (= (Tclass.GenericBasics.Tr_1 (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@3 GenericBasics.Tr$B@@3)) GenericBasics.Tr$B@@3)
+ :qid |unknown.0:0|
+ :skolemid |1691|
  :pattern ( (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@3 GenericBasics.Tr$B@@3))
 )))
 (assert (forall ((GenericBasics.Tr$A@@4 T@U) (GenericBasics.Tr$B@@4 T@U) ) (! (= (Tclass.GenericBasics.Tr?_0 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@4 GenericBasics.Tr$B@@4)) GenericBasics.Tr$A@@4)
+ :qid |unknown.0:0|
+ :skolemid |1698|
  :pattern ( (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@4 GenericBasics.Tr$B@@4))
 )))
 (assert (forall ((GenericBasics.Tr$A@@5 T@U) (GenericBasics.Tr$B@@5 T@U) ) (! (= (Tclass.GenericBasics.Tr?_1 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@5 GenericBasics.Tr$B@@5)) GenericBasics.Tr$B@@5)
+ :qid |unknown.0:0|
+ :skolemid |1699|
  :pattern ( (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@5 GenericBasics.Tr$B@@5))
 )))
 (assert (forall ((GenericBasics.Tr$A@@6 T@U) (GenericBasics.Tr$B@@6 T@U) ($o@@4 T@U) ) (! (= ($Is refType $o@@4 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@6 GenericBasics.Tr$B@@6))  (or (= $o@@4 null) (implements$GenericBasics.Tr (dtype $o@@4) GenericBasics.Tr$A@@6 GenericBasics.Tr$B@@6)))
+ :qid |unknown.0:0|
+ :skolemid |1703|
  :pattern ( ($Is refType $o@@4 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@6 GenericBasics.Tr$B@@6)))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@10 T@U) ) (! (= (Tclass.GenericBasics.Cl_0 (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@10)) GenericBasics.Cl$Q@@10)
+ :qid |unknown.0:0|
+ :skolemid |1680|
  :pattern ( (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@10))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@11 T@U) ) (! (= (Tclass.GenericBasics.Cl?_0 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@11)) GenericBasics.Cl$Q@@11)
+ :qid |unknown.0:0|
+ :skolemid |1759|
  :pattern ( (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@11))
 )))
 (assert (forall ((x@@3 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1157|
  :pattern ( ($Box T@@3 x@@3))
 )))
 (assert (forall ((GenericBasics.Tr$A@@7 T@U) (GenericBasics.Tr$B@@7 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@7 GenericBasics.Tr$B@@7)) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@7 GenericBasics.Tr$B@@7))))
+ :qid |unknown.0:0|
+ :skolemid |1692|
  :pattern ( ($IsBox bx@@3 (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@7 GenericBasics.Tr$B@@7)))
 )))
 (assert (forall ((GenericBasics.Tr$A@@8 T@U) (GenericBasics.Tr$B@@8 T@U) (bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@8 GenericBasics.Tr$B@@8)) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@8 GenericBasics.Tr$B@@8))))
+ :qid |unknown.0:0|
+ :skolemid |1700|
  :pattern ( ($IsBox bx@@4 (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@8 GenericBasics.Tr$B@@8)))
 )))
 (assert (forall ((GenericBasics.Tr$A@@9 T@U) (GenericBasics.Tr$B@@9 T@U) ) (!  (and (= (Tag (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@9 GenericBasics.Tr$B@@9)) Tagclass.GenericBasics.Tr) (= (TagFamily (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@9 GenericBasics.Tr$B@@9)) tytagFamily$Tr))
+ :qid |unknown.0:0|
+ :skolemid |1689|
  :pattern ( (Tclass.GenericBasics.Tr GenericBasics.Tr$A@@9 GenericBasics.Tr$B@@9))
 )))
 (assert (forall ((GenericBasics.Tr$A@@10 T@U) (GenericBasics.Tr$B@@10 T@U) ) (!  (and (= (Tag (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@10 GenericBasics.Tr$B@@10)) Tagclass.GenericBasics.Tr?) (= (TagFamily (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@10 GenericBasics.Tr$B@@10)) tytagFamily$Tr))
+ :qid |unknown.0:0|
+ :skolemid |1697|
  :pattern ( (Tclass.GenericBasics.Tr? GenericBasics.Tr$A@@10 GenericBasics.Tr$B@@10))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@12 T@U) (bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@12)) (and (= ($Box refType ($Unbox refType bx@@5)) bx@@5) ($Is refType ($Unbox refType bx@@5) (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@12))))
+ :qid |unknown.0:0|
+ :skolemid |1681|
  :pattern ( ($IsBox bx@@5 (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@12)))
 )))
 (assert (forall ((GenericBasics.Cl$Q@@13 T@U) (bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@13)) (and (= ($Box refType ($Unbox refType bx@@6)) bx@@6) ($Is refType ($Unbox refType bx@@6) (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@13))))
+ :qid |unknown.0:0|
+ :skolemid |1760|
  :pattern ( ($IsBox bx@@6 (Tclass.GenericBasics.Cl? GenericBasics.Cl$Q@@13)))
 )))
 (assert (forall ((h@@3 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@3)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |1193|
  :pattern ( ($IsAlloc intType v@@2 TInt h@@3))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |1172|
  :pattern ( ($Is intType v@@3 TInt))
 )))
 (push 1)
@@ -229,6 +320,7 @@
 (declare-fun this () T@U)
 (declare-fun |x#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id OverrideCheck$$GenericBasics.Cl.MValue0)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -244,7 +336,16 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (=> (= GenericBasics.Tr$A@@11 GenericBasics.Cl$Q@@14) (=> (and (= GenericBasics.Tr$B@@11 TInt) (= GenericBasics.Tr.MValue0$X GenericBasics.Cl.MValue0$XX)) (and (=> (= (ControlFlow 0 2) (- 0 4)) true) (and (=> (= (ControlFlow 0 2) (- 0 3)) (forall (($o@@5 T@U) ($f T@U) ) true)) (=> (forall (($o@@6 T@U) ($f@@0 T@U) ) true) (=> (= (ControlFlow 0 2) (- 0 1)) (forall (($o@@7 T@U) ($f@@1 T@U) ) true)))))))))
+ (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (=> (= GenericBasics.Tr$A@@11 GenericBasics.Cl$Q@@14) (=> (and (= GenericBasics.Tr$B@@11 TInt) (= GenericBasics.Tr.MValue0$X GenericBasics.Cl.MValue0$XX)) (and (=> (= (ControlFlow 0 2) (- 0 4)) true) (and (=> (= (ControlFlow 0 2) (- 0 3)) (forall (($o@@5 T@U) ($f T@U) ) (! true
+ :qid |TraitCompiledfy.232:12|
+ :skolemid |1817|
+))) (=> (forall (($o@@6 T@U) ($f@@0 T@U) ) (! true
+ :qid |TraitCompiledfy.232:12|
+ :skolemid |1817|
+)) (=> (= (ControlFlow 0 2) (- 0 1)) (forall (($o@@7 T@U) ($f@@1 T@U) ) (! true
+ :qid |TraitCompiledfy.232:12|
+ :skolemid |1818|
+))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (or (not (= this null)) (not true)) (and ($Is refType this (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@14)) ($IsAlloc refType this (Tclass.GenericBasics.Cl GenericBasics.Cl$Q@@14) $Heap)))) (and (and ($IsBox |x#0| GenericBasics.Cl.MValue0$XX) ($IsAllocBox |x#0| GenericBasics.Cl.MValue0$XX $Heap)) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 5) 2)))) anon0_correct)))
 PreconditionGeneratedEntry_correct)))
 ))

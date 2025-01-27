@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:31:28
+; Started: 2025-01-26 23:03:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -477,21 +477,21 @@
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (= (Tree__contents%limited s@$ t@0@00) (Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-8705|)))
+  :qid |quant-u-8651|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (Tree__contents%stateless t@0@00)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-8706|)))
+  :qid |quant-u-8652|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) (=>
     (and (Tree__contents%precondition s@$ t@0@00) (not (= t@0@00 $Ref.null)))
     (> (Seq_length result@1@00) 0)))
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-8707|)))
+  :qid |quant-u-8653|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) true)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-8708|)))
+  :qid |quant-u-8654|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= t@0@00 $Ref.null)))
@@ -1473,7 +1473,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents%stateless t@0@00) (Tree__state%trigger s@$ t@0@00))
-  :qid |quant-u-8709|)))
+  :qid |quant-u-8655|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__contents%precondition s@$ t@0@00)
@@ -1496,7 +1496,7 @@
           ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-8710|)))
+  :qid |quant-u-8656|)))
 ; ---------- Tree__state ----------
 (declare-const diz@5@00 $Ref)
 (push) ; 1

@@ -87,16 +87,22 @@
 (declare-fun DeclType (T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TORDINAL TagInt TagORDINAL alloc allocName Tagclass._module.C? Tagclass._module.C class._module.C? tytagFamily$C field$data)
@@ -106,28 +112,47 @@
 (assert (= (Tag TORDINAL) TagORDINAL))
 (assert (= (DeclName alloc) allocName))
 (assert  (and (and (and (and (and (and (and (= (Ctor refType) 3) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 ))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
-(assert (forall (($ly T@U) ($h0 T@U) ($h1 T@U) (|_k#0| T@U) (|c#0| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (or (|_module.__default.R_h#canCall| $h0 |_k#0| |c#0|) ($Is refType |c#0| Tclass._module.C?))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o T@U) ($f T@U) )  (=> (and (or (not (= $o null)) (not true)) (= $o |c#0|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o) $f)))) (= (_module.__default.R_h $ly $h0 |_k#0| |c#0|) (_module.__default.R_h $ly $h1 |_k#0| |c#0|))))
+(assert (forall (($ly T@U) ($h0 T@U) ($h1 T@U) (|_k#0| T@U) (|c#0| T@U) ) (!  (=> (and (and (and ($IsGoodHeap $h0) ($IsGoodHeap $h1)) (or (|_module.__default.R_h#canCall| $h0 |_k#0| |c#0|) ($Is refType |c#0| Tclass._module.C?))) (and ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1))) (=> (forall (($o T@U) ($f T@U) ) (!  (=> (and (or (not (= $o null)) (not true)) (= $o |c#0|)) (= (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h0 $o) $f) (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h1 $o) $f)))
+ :qid |unknown.0:0|
+ :skolemid |585|
+)) (= (_module.__default.R_h $ly $h0 |_k#0| |c#0|) (_module.__default.R_h $ly $h1 |_k#0| |c#0|))))
+ :qid |unknown.0:0|
+ :skolemid |586|
  :pattern ( ($IsHeapAnchor $h0) ($HeapSucc $h0 $h1) (_module.__default.R_h $ly $h1 |_k#0| |c#0|))
 )))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m@@1 Int) (n Int) ) (!  (=> (and (and (<= 0 m@@1) (<= 0 n)) (<= (+ m@@1 n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m@@1)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m@@1 n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m@@1)) (|ORD#FromNat| n)))
 )))
 (assert (forall (($o@@0 T@U) ) (! (= ($Is refType $o@@0 Tclass._module.C?)  (or (= $o@@0 null) (= (dtype $o@@0) Tclass._module.C?)))
+ :qid |unknown.0:0|
+ :skolemid |727|
  :pattern ( ($Is refType $o@@0 Tclass._module.C?))
 )))
 (assert (forall ((|c#0@@0| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0@@0| Tclass._module.C $h) ($IsAlloc refType |c#0@@0| Tclass._module.C? $h))
+ :qid |unknown.0:0|
+ :skolemid |734|
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.C $h))
  :pattern ( ($IsAlloc refType |c#0@@0| Tclass._module.C? $h))
 )))
@@ -135,100 +160,163 @@
 (assert (= (FieldOfDecl class._module.C? field$data) _module.C.data))
 (assert  (not ($IsGhostField _module.C.data)))
 (assert (forall (($o@@1 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@1 Tclass._module.C? $h@@0)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |728|
  :pattern ( ($IsAlloc refType $o@@1 Tclass._module.C? $h@@0))
 )))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o@@1 T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o@@1) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o@@1) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall (($h@@1 T@U) ($o@@2 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@1) (and (or (not (= $o@@2 null)) (not true)) (= (dtype $o@@2) Tclass._module.C?))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@2) alloc)))) ($IsAlloc intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@2) _module.C.data)) TInt $h@@1))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |730|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@2) _module.C.data)))
 )))
 (assert (forall ((h@@0 T@U) (k@@0 T@U) (v T@U) (t T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@0 k@@0) (=> ($IsAlloc T@@1 v t h@@0) ($IsAlloc T@@1 v t k@@0)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@0 k@@0) ($IsAlloc T@@1 v t h@@0))
 )))
 (assert (forall ((o@@2 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@2))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@2 p@@0)) (|ORD#IsNat| o@@2)) (= (|ORD#Offset| (|ORD#Minus| o@@2 p@@0)) (- (|ORD#Offset| o@@2) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@2 p@@0))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@2 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@3 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@3 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@4 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@4 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| T@U) ($o@@3 T@U) ($f@@0 T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f@@0))  (=> (and (or (not (= $o@@3 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@3) |l#2|)))) (= $o@@3 |l#3|)))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |736|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#1| |l#0| |l#1| |l#2| |l#3|) $o@@3 $f@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((o@@3 T@U) (p@@1 T@U) ) (!  (and (or (= o@@3 (|ORD#Plus| o@@3 p@@1)) (|ORD#Less| o@@3 (|ORD#Plus| o@@3 p@@1))) (or (= p@@1 (|ORD#Plus| o@@3 p@@1)) (|ORD#Less| p@@1 (|ORD#Plus| o@@3 p@@1))))
+ :qid |DafnyPreludebpl.443:15|
+ :skolemid |93|
  :pattern ( (|ORD#Plus| o@@3 p@@1))
 )))
 (assert (forall ((|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| Tclass._module.C)  (and ($Is refType |c#0@@1| Tclass._module.C?) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |733|
  :pattern ( ($Is refType |c#0@@1| Tclass._module.C))
  :pattern ( ($Is refType |c#0@@1| Tclass._module.C?))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) ($Heap T@U) (|_k#0@@0| T@U) (|c#0@@2| T@U) ) (!  (=> (or (|_module.__default.R_h#canCall| $Heap |_k#0@@0| |c#0@@2|) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap) ($Is refType |c#0@@2| Tclass._module.C?)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (|_module.__default.R_h#canCall| $Heap (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |c#0@@2|)) (=> (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.__default.R_h $ly@@0 $Heap (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |c#0@@2|)) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@0|) (|_module.__default.R_h#canCall| $Heap |_k'#0| |c#0@@2|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |590|
  :pattern ( (_module.__default.R_h $ly@@0 $Heap |_k'#0| |c#0@@2|))
 ))))) (= (_module.__default.R_h ($LS $ly@@0) $Heap |_k#0@@0| |c#0@@2|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (_module.__default.R_h $ly@@0 $Heap (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |c#0@@2|)) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@0|) (_module.__default.R_h $ly@@0 $Heap |_k'#0@@0| |c#0@@2|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |589|
  :pattern ( (_module.__default.R_h $ly@@0 $Heap |_k'#0@@0| |c#0@@2|))
 )))))))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |591|
  :pattern ( (_module.__default.R_h ($LS $ly@@0) $Heap |_k#0@@0| |c#0@@2|) ($IsGoodHeap $Heap))
 ))))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (or (or (|ORD#Less| o@@4 p@@2) (= o@@4 p@@2)) (|ORD#Less| p@@2 o@@4))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@4 p@@2) (|ORD#Less| p@@2 o@@4))
 )))
 (assert (forall ((o@@5 T@U) (p@@3 T@U) ) (!  (and (=> (= o@@5 (|ORD#FromNat| 0)) (= (|ORD#Plus| o@@5 p@@3) p@@3)) (=> (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Plus| o@@5 p@@3) o@@5)))
+ :qid |DafnyPreludebpl.446:15|
+ :skolemid |94|
  :pattern ( (|ORD#Plus| o@@5 p@@3))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall (($ly@@1 T@U) ($Heap@@0 T@U) (|_k#0@@1| T@U) (|c#0@@3| T@U) ) (! (= (_module.__default.R_h ($LS $ly@@1) $Heap@@0 |_k#0@@1| |c#0@@3|) (_module.__default.R_h $ly@@1 $Heap@@0 |_k#0@@1| |c#0@@3|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |583|
  :pattern ( (_module.__default.R_h ($LS $ly@@1) $Heap@@0 |_k#0@@1| |c#0@@3|))
 )))
 (assert (forall ((o@@6 T@U) ) (! (<= 0 (|ORD#Offset| o@@6))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@6))
 )))
 (assert (forall ((x@@5 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@5))
 )))
 (assert (forall ((o@@7 T@U) (p@@4 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@7 p@@4) (or (not (= o@@7 p@@4)) (not true))) (=> (and (|ORD#IsNat| o@@7) (not (|ORD#IsNat| p@@4))) (|ORD#Less| o@@7 p@@4))) (=> (and (|ORD#IsNat| o@@7) (|ORD#IsNat| p@@4)) (= (|ORD#Less| o@@7 p@@4) (< (|ORD#Offset| o@@7) (|ORD#Offset| p@@4))))) (=> (and (|ORD#Less| o@@7 p@@4) (|ORD#IsNat| p@@4)) (|ORD#IsNat| o@@7)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@7 p@@4))
 )))
 (assert (forall (($h@@2 T@U) ($o@@4 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (or (not (= $o@@4 null)) (not true)) (= (dtype $o@@4) Tclass._module.C?))) ($Is intType ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) _module.C.data)) TInt))
+ :qid |DafnyPreludebpl.593:12|
+ :skolemid |729|
  :pattern ( ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@4) _module.C.data)))
 )))
 (assert (forall ((o@@8 T@U) (m@@5 Int) (n@@1 Int) ) (!  (=> (and (<= 0 m@@5) (<= 0 n@@1)) (= (|ORD#Plus| (|ORD#Plus| o@@8 (|ORD#FromNat| m@@5)) (|ORD#FromNat| n@@1)) (|ORD#Plus| o@@8 (|ORD#FromNat| (+ m@@5 n@@1)))))
+ :qid |DafnyPreludebpl.461:15|
+ :skolemid |97|
  :pattern ( (|ORD#Plus| (|ORD#Plus| o@@8 (|ORD#FromNat| m@@5)) (|ORD#FromNat| n@@1)))
 )))
 (assert (forall ((o@@9 T@U) (m@@6 Int) (n@@2 Int) ) (!  (=> (and (and (<= 0 m@@6) (<= 0 n@@2)) (<= n@@2 (+ (|ORD#Offset| o@@9) m@@6))) (and (=> (<= 0 (- m@@6 n@@2)) (= (|ORD#Minus| (|ORD#Plus| o@@9 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)) (|ORD#Plus| o@@9 (|ORD#FromNat| (- m@@6 n@@2))))) (=> (<= (- m@@6 n@@2) 0) (= (|ORD#Minus| (|ORD#Plus| o@@9 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)) (|ORD#Minus| o@@9 (|ORD#FromNat| (- n@@2 m@@6)))))))
+ :qid |DafnyPreludebpl.471:15|
+ :skolemid |99|
  :pattern ( (|ORD#Minus| (|ORD#Plus| o@@9 (|ORD#FromNat| m@@6)) (|ORD#FromNat| n@@2)))
 )))
 (assert (forall ((o@@10 T@U) (m@@7 Int) (n@@3 Int) ) (!  (=> (and (and (<= 0 m@@7) (<= 0 n@@3)) (<= n@@3 (+ (|ORD#Offset| o@@10) m@@7))) (and (=> (<= 0 (- m@@7 n@@3)) (= (|ORD#Plus| (|ORD#Minus| o@@10 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)) (|ORD#Minus| o@@10 (|ORD#FromNat| (- m@@7 n@@3))))) (=> (<= (- m@@7 n@@3) 0) (= (|ORD#Plus| (|ORD#Minus| o@@10 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)) (|ORD#Plus| o@@10 (|ORD#FromNat| (- n@@3 m@@7)))))))
+ :qid |DafnyPreludebpl.477:15|
+ :skolemid |100|
  :pattern ( (|ORD#Plus| (|ORD#Minus| o@@10 (|ORD#FromNat| m@@7)) (|ORD#FromNat| n@@3)))
 )))
 (assert (forall ((o@@11 T@U) ) (!  (=> (|ORD#IsNat| o@@11) (= o@@11 (|ORD#FromNat| (|ORD#Offset| o@@11))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@11))
  :pattern ( (|ORD#IsNat| o@@11))
 )))
 (assert (forall ((h@@1 T@U) (r@@0 T@U) (f T@U) (x@@6 T@U) ) (!  (=> ($IsGoodHeap (MapType0Store refType (MapType0Type FieldType BoxType) h@@1 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@1 r@@0) f x@@6))) ($HeapSucc h@@1 (MapType0Store refType (MapType0Type FieldType BoxType) h@@1 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@1 r@@0) f x@@6))))
+ :qid |DafnyPreludebpl.603:15|
+ :skolemid |116|
  :pattern ( (MapType0Store refType (MapType0Type FieldType BoxType) h@@1 r@@0 (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h@@1 r@@0) f x@@6)))
 )))
 (assert (= (Tag Tclass._module.C?) Tagclass._module.C?))
@@ -236,30 +324,48 @@
 (assert (= (Tag Tclass._module.C) Tagclass._module.C))
 (assert (= (TagFamily Tclass._module.C) tytagFamily$C))
 (assert (forall ((o@@12 T@U) (p@@5 T@U) ) (!  (=> (and (|ORD#IsNat| p@@5) (<= (|ORD#Offset| p@@5) (|ORD#Offset| o@@12))) (or (and (= p@@5 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@12 p@@5) o@@12)) (and (or (not (= p@@5 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@12 p@@5) o@@12))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@12 p@@5))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@2 T@U) ($Heap@@1 T@U) (|c#0@@4| T@U) (|_k#0@@2| T@U) ) (!  (=> (and (and ($IsGoodHeap $Heap@@1) ($Is refType |c#0@@4| Tclass._module.C?)) (= |_k#0@@2| (|ORD#FromNat| 0))) (_module.__default.R_h $ly@@2 $Heap@@1 |_k#0@@2| |c#0@@4|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |581|
  :pattern ( (_module.__default.R_h $ly@@2 $Heap@@1 |_k#0@@2| |c#0@@4|))
 ))))
 (assert (forall ((o@@13 T@U) (p@@6 T@U) ) (!  (and (=> (|ORD#IsNat| (|ORD#Plus| o@@13 p@@6)) (and (|ORD#IsNat| o@@13) (|ORD#IsNat| p@@6))) (=> (|ORD#IsNat| p@@6) (and (= (|ORD#IsNat| (|ORD#Plus| o@@13 p@@6)) (|ORD#IsNat| o@@13)) (= (|ORD#Offset| (|ORD#Plus| o@@13 p@@6)) (+ (|ORD#Offset| o@@13) (|ORD#Offset| p@@6))))))
+ :qid |DafnyPreludebpl.438:15|
+ :skolemid |92|
  :pattern ( (|ORD#Plus| o@@13 p@@6))
 )))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@3 T@T) ) (! (= ($Box T@@3 (Lit T@@3 x@@8)) (Lit BoxType ($Box T@@3 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@3 (Lit T@@3 x@@8)))
 )))
 (assert (forall ((h@@2 T@U) (v@@0 T@U) ) (! ($IsAlloc intType v@@0 TInt h@@2)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@0 TInt h@@2))
 )))
 (assert (forall ((h@@3 T@U) (v@@1 T@U) ) (! ($IsAlloc BoxType v@@1 TORDINAL h@@3)
+ :qid |DafnyPreludebpl.293:14|
+ :skolemid |65|
  :pattern ( ($IsAlloc BoxType v@@1 TORDINAL h@@3))
 )))
 (assert (forall ((v@@2 T@U) ) (! ($Is intType v@@2 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@2 TInt))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is BoxType v@@3 TORDINAL)
+ :qid |DafnyPreludebpl.232:14|
+ :skolemid |44|
  :pattern ( ($Is BoxType v@@3 TORDINAL))
 )))
 (push 1)
@@ -283,6 +389,7 @@
 (declare-fun |$rhs#3_0@0| () Int)
 (declare-fun $Heap@0 () T@U)
 (declare-fun $Heap@1 () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.TestPrefixPredicatesR)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -300,25 +407,41 @@
 (assert (not
  (=> (= (ControlFlow 0 0) 28) (let ((anon9_Else_correct  (=> (and (and (and (and (not (U_2_bool (Lit boolType (bool_2_U true)))) (not (U_2_bool (Lit boolType (bool_2_U true))))) (not (U_2_bool (Lit boolType (bool_2_U true))))) (not (U_2_bool (Lit boolType (bool_2_U true))))) (= (ControlFlow 0 26) (- 0 25))) false)))
 (let ((anon9_Then_correct  (and (=> (= (ControlFlow 0 20) (- 0 24)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (and (=> (= (ControlFlow 0 20) (- 0 23)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data)) (and (=> (= (ControlFlow 0 20) (- 0 22)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (=> (= |$rhs#0_0@0| (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data))) 1)) (=> (and (= $Heap@6 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5| (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data ($Box intType (int_2_U |$rhs#0_0@0|))))) ($IsGoodHeap $Heap@6)) (=> (and (and ($IsAlloc BoxType |k#0| TORDINAL $Heap@6) ($IsAlloc refType |c#0@@5| Tclass._module.C? $Heap@6)) (and (|_module.__default.R_h#canCall| $Heap@6 |k#0| |c#0@@5|) (|_module.__default.R_h#canCall| $Heap@6 |k#0| |c#0@@5|))) (and (=> (= (ControlFlow 0 20) (- 0 21)) (=> (|_module.__default.R_h#canCall| $Heap@6 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@6 |k#0| |c#0@@5|) (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@6 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) |c#0@@5|))))) (=> (= (ControlFlow 0 20) (- 0 19)) (=> (|_module.__default.R_h#canCall| $Heap@6 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@6 |k#0| |c#0@@5|) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#0_0| T@U) ) (!  (=> (|ORD#Less| |_k'#0_0| |k#0|) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@6 |_k'#0_0| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |696|
  :pattern ( (_module.__default.R_h ($LS ($LS $LZ)) $Heap@6 |_k'#0_0| |c#0@@5|))
 ))))))))))))))))))
 (let ((anon8_Then_correct  (and (=> (= (ControlFlow 0 14) (- 0 18)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (and (=> (= (ControlFlow 0 14) (- 0 17)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data)) (and (=> (= (ControlFlow 0 14) (- 0 16)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (=> (and (and (and (and (= |$rhs#1_0@0| (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data))) 1)) (= $Heap@4 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5| (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data ($Box intType (int_2_U |$rhs#1_0@0|)))))) (and ($IsGoodHeap $Heap@4) (= |_k##1_0@0| (|ORD#Plus| |k#0| (|ORD#FromNat| 7))))) (and (and ($IsGoodHeap $Heap@5) ($IsHeapAnchor $Heap@5)) (|_module.__default.R_h#canCall| $Heap@5 |_k##1_0@0| |c#0@@5|))) (and (and (and (|_module.__default.R_h#canCall| $Heap@5 |_k##1_0@0| |c#0@@5|) (and (_module.__default.R_h ($LS $LZ) $Heap@5 |_k##1_0@0| |c#0@@5|) (and (=> (< 0 (|ORD#Offset| |_k##1_0@0|)) (_module.__default.R_h ($LS $LZ) $Heap@5 (|ORD#Minus| |_k##1_0@0| (|ORD#FromNat| 1)) |c#0@@5|)) (=> (= (LitInt 0) (|ORD#Offset| |_k##1_0@0|)) (forall ((|_k'#0@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@1| |_k##1_0@0|) (_module.__default.R_h ($LS $LZ) $Heap@5 |_k'#0@@1| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |594|
  :pattern ( (_module.__default.R_h ($LS $LZ) $Heap@5 |_k'#0@@1| |c#0@@5|))
 )))))) (= $Heap@4 $Heap@5)) (and (and ($IsAlloc BoxType |k#0| TORDINAL $Heap@5) ($IsAlloc refType |c#0@@5| Tclass._module.C? $Heap@5)) (and (|_module.__default.R_h#canCall| $Heap@5 |k#0| |c#0@@5|) (|_module.__default.R_h#canCall| $Heap@5 |k#0| |c#0@@5|))))) (and (=> (= (ControlFlow 0 14) (- 0 15)) (=> (|_module.__default.R_h#canCall| $Heap@5 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@5 |k#0| |c#0@@5|) (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@5 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) |c#0@@5|))))) (=> (= (ControlFlow 0 14) (- 0 13)) (=> (|_module.__default.R_h#canCall| $Heap@5 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@5 |k#0| |c#0@@5|) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#1_0| T@U) ) (!  (=> (|ORD#Less| |_k'#1_0| |k#0|) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@5 |_k'#1_0| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |700|
  :pattern ( (_module.__default.R_h ($LS ($LS $LZ)) $Heap@5 |_k'#1_0| |c#0@@5|))
 ))))))))))))))))
 (let ((anon7_Then_correct  (and (=> (= (ControlFlow 0 8) (- 0 12)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (and (=> (= (ControlFlow 0 8) (- 0 11)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data)) (and (=> (= (ControlFlow 0 8) (- 0 10)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (=> (and (and (and (and (= |$rhs#2_0@0| (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data))) 1)) (= $Heap@2 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5| (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data ($Box intType (int_2_U |$rhs#2_0@0|)))))) (and ($IsGoodHeap $Heap@2) (= |_k##2_0@0| (|ORD#Plus| |k#0| (|ORD#FromNat| 7))))) (and (and ($IsGoodHeap $Heap@3) ($IsHeapAnchor $Heap@3)) (|_module.__default.R_h#canCall| $Heap@3 |_k##2_0@0| |c#0@@5|))) (and (and (and (|_module.__default.R_h#canCall| $Heap@3 |_k##2_0@0| |c#0@@5|) (and (_module.__default.R_h ($LS $LZ) $Heap@3 |_k##2_0@0| |c#0@@5|) (and (=> (< 0 (|ORD#Offset| |_k##2_0@0|)) (_module.__default.R_h ($LS $LZ) $Heap@3 (|ORD#Minus| |_k##2_0@0| (|ORD#FromNat| 1)) |c#0@@5|)) (=> (= (LitInt 0) (|ORD#Offset| |_k##2_0@0|)) (forall ((|_k'#0@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@2| |_k##2_0@0|) (_module.__default.R_h ($LS $LZ) $Heap@3 |_k'#0@@2| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |594|
  :pattern ( (_module.__default.R_h ($LS $LZ) $Heap@3 |_k'#0@@2| |c#0@@5|))
 )))))) (and (= $Heap@2 $Heap@3) (= |##_k#2_0@0| (|ORD#Plus| |k#0| (|ORD#FromNat| 7))))) (and (and ($IsAlloc BoxType |##_k#2_0@0| TORDINAL $Heap@3) ($IsAlloc refType |c#0@@5| Tclass._module.C? $Heap@3)) (and (|_module.__default.R_h#canCall| $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|) (|_module.__default.R_h#canCall| $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|))))) (and (=> (= (ControlFlow 0 8) (- 0 9)) (=> (|_module.__default.R_h#canCall| $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|) (=> (< 0 (|ORD#Offset| (|ORD#Plus| |k#0| (|ORD#FromNat| 7)))) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@3 (|ORD#Minus| (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) (|ORD#FromNat| 1)) |c#0@@5|))))) (=> (= (ControlFlow 0 8) (- 0 7)) (=> (|_module.__default.R_h#canCall| $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@3 (|ORD#Plus| |k#0| (|ORD#FromNat| 7)) |c#0@@5|) (=> (= (LitInt 0) (|ORD#Offset| (|ORD#Plus| |k#0| (|ORD#FromNat| 7)))) (forall ((|_k'#2_0| T@U) ) (!  (=> (|ORD#Less| |_k'#2_0| (|ORD#Plus| |k#0| (|ORD#FromNat| 7))) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@3 |_k'#2_0| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |704|
  :pattern ( (_module.__default.R_h ($LS ($LS $LZ)) $Heap@3 |_k'#2_0| |c#0@@5|))
 ))))))))))))))))
 (let ((anon6_Then_correct  (and (=> (= (ControlFlow 0 2) (- 0 6)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (and (=> (= (ControlFlow 0 2) (- 0 5)) (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data))) (=> (U_2_bool (MapType1Select refType FieldType boolType $_ModifiesFrame@0 |c#0@@5| _module.C.data)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (or (not (= |c#0@@5| null)) (not true))) (=> (or (not (= |c#0@@5| null)) (not true)) (=> (= |$rhs#3_0@0| (+ (U_2_int ($Unbox intType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data))) 1)) (=> (and (= $Heap@0 (MapType0Store refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5| (MapType0Store FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |c#0@@5|) _module.C.data ($Box intType (int_2_U |$rhs#3_0@0|))))) ($IsGoodHeap $Heap@0)) (=> (and (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|)) (=> (and (and (and (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|) (and (_module.__default.R_h ($LS $LZ) $Heap@1 |k#0| |c#0@@5|) (and (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.R_h ($LS $LZ) $Heap@1 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) |c#0@@5|)) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#0@@3| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@3| |k#0|) (_module.__default.R_h ($LS $LZ) $Heap@1 |_k'#0@@3| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |594|
  :pattern ( (_module.__default.R_h ($LS $LZ) $Heap@1 |_k'#0@@3| |c#0@@5|))
 )))))) (= $Heap@0 $Heap@1)) (and (and ($IsAlloc BoxType |k#0| TORDINAL $Heap@1) ($IsAlloc refType |c#0@@5| Tclass._module.C? $Heap@1)) (and (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|) (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|)))) (and (=> (= (ControlFlow 0 2) (- 0 3)) (=> (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@1 |k#0| |c#0@@5|) (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@1 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) |c#0@@5|))))) (=> (= (ControlFlow 0 2) (- 0 1)) (=> (|_module.__default.R_h#canCall| $Heap@1 |k#0| |c#0@@5|) (or (_module.__default.R_h ($LS $LZ) $Heap@1 |k#0| |c#0@@5|) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#3_0| T@U) ) (!  (=> (|ORD#Less| |_k'#3_0| |k#0|) (_module.__default.R_h ($LS ($LS $LZ)) $Heap@1 |_k'#3_0| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |708|
  :pattern ( (_module.__default.R_h ($LS ($LS $LZ)) $Heap@1 |_k'#3_0| |c#0@@5|))
 )))))))))))))))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#1| null $Heap@@2 alloc |c#0@@5|)) (and (and (and (and (=> (= (ControlFlow 0 27) 2) anon6_Then_correct) (=> (= (ControlFlow 0 27) 8) anon7_Then_correct)) (=> (= (ControlFlow 0 27) 14) anon8_Then_correct)) (=> (= (ControlFlow 0 27) 20) anon9_Then_correct)) (=> (= (ControlFlow 0 27) 26) anon9_Else_correct)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@2) ($IsHeapAnchor $Heap@@2)) (=> (and (and (and ($Is refType |c#0@@5| Tclass._module.C?) ($IsAlloc refType |c#0@@5| Tclass._module.C? $Heap@@2)) (and (= 3 $FunctionContextHeight) (or (not (= |c#0@@5| null)) (not true)))) (and (and (|_module.__default.R_h#canCall| $Heap@@2 |k#0| |c#0@@5|) (and (_module.__default.R_h ($LS $LZ) $Heap@@2 |k#0| |c#0@@5|) (and (=> (< 0 (|ORD#Offset| |k#0|)) (_module.__default.R_h ($LS $LZ) $Heap@@2 (|ORD#Minus| |k#0| (|ORD#FromNat| 1)) |c#0@@5|)) (=> (= (LitInt 0) (|ORD#Offset| |k#0|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |k#0|) (_module.__default.R_h ($LS $LZ) $Heap@@2 |_k'#1| |c#0@@5|))
+ :qid |ExtremeReadsdfy.23:20|
+ :skolemid |694|
  :pattern ( (_module.__default.R_h ($LS $LZ) $Heap@@2 |_k'#1| |c#0@@5|))
 )))))) (= (ControlFlow 0 28) 27))) anon0_correct))))
 PreconditionGeneratedEntry_correct))))))))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:37:42
+; Started: 2025-01-26 23:09:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -914,11 +914,11 @@
     (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00)
     (Ref__multidim_index_2 s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
   :pattern ((Ref__multidim_index_2 s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15300|)))
+  :qid |quant-u-15273|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (Ref__multidim_index_2%stateless N0@0@00 N1@1@00 i0@2@00 i1@3@00)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15301|)))
+  :qid |quant-u-15274|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) (=>
     (Ref__multidim_index_2%precondition s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00)
@@ -929,27 +929,27 @@
       (= (mod result@4@00 N1@1@00) i1@3@00)
       (< (mod result@4@00 N1@1@00) N0@0@00))))
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15302|)))
+  :qid |quant-u-15275|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15303|)))
+  :qid |quant-u-15276|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15304|)))
+  :qid |quant-u-15277|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15305|)))
+  :qid |quant-u-15278|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15306|)))
+  :qid |quant-u-15279|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-15307|)))
+  :qid |quant-u-15280|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Ref__zero ----------
@@ -1427,7 +1427,7 @@
       (= (inv@16@01 (Seq_index matrix@11@01 j1@15@01)) j1@15@01)
       (img@17@01 (Seq_index matrix@11@01 j1@15@01))))
   :pattern ((Seq_index matrix@11@01 j1@15@01))
-  :qid |quant-u-15309|)))
+  :qid |quant-u-15282|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1622,7 +1622,7 @@
       (pTaken@24@01 r))
     $Perm.No)
   
-  :qid |quant-u-15311|))))
+  :qid |quant-u-15284|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1634,7 +1634,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@24@01 r) $Perm.No)
   
-  :qid |quant-u-15312|))))
+  :qid |quant-u-15285|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1647,7 +1647,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r __flatten_3@23@01) (= (- $Perm.Write (pTaken@24@01 r)) $Perm.No))
   
-  :qid |quant-u-15313|))))
+  :qid |quant-u-15286|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1659,7 +1659,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r __flatten_3@23@01) (= (- $Perm.Write (pTaken@24@01 r)) $Perm.No))
   
-  :qid |quant-u-15313|))))
+  :qid |quant-u-15286|))))
 (check-sat)
 ; unknown
 (pop) ; 3

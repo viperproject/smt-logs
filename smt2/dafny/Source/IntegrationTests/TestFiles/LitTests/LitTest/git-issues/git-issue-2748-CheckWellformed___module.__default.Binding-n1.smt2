@@ -68,87 +68,134 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun |_module.__default.BindingGuardTestExpr#canCall| () Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._System.nat tytagFamily$nat)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@0| Int) ) (!  (=> (or (|_module.__default.f#canCall| |x#0@@0|) (< 0 $FunctionContextHeight)) (= (_module.__default.f |x#0@@0|) (- 10 (Mul |x#0@@0| |x#0@@0|))))
+ :qid |gitissue2748dfy.4:12|
+ :skolemid |481|
  :pattern ( (_module.__default.f |x#0@@0|))
 ))))
 (assert (forall ((|x#0@@1| T@U) ) (! (= ($Is intType |x#0@@1| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@1|)))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is intType |x#0@@1| Tclass._System.nat))
 )))
 (assert  (=> |$let#0$canCall| (and (and (<= (LitInt 0) |$let#0_i|) (< |$let#0_i| 10)) (or (= (_module.__default.f |$let#0_i|) (_module.__default.f (+ |$let#0_i| 1))) (= (_module.__default.f |$let#0_i|) (_module.__default.f (+ |$let#0_i| 2)))))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((|x#0@@2| Int) ) (!  (=> (or (|_module.__default.f#canCall| (LitInt |x#0@@2|)) (< 0 $FunctionContextHeight)) (= (_module.__default.f (LitInt |x#0@@2|)) (LitInt (- 10 (Mul (LitInt |x#0@@2|) (LitInt |x#0@@2|))))))
+ :qid |gitissue2748dfy.4:12|
  :weight 3
+ :skolemid |482|
  :pattern ( (_module.__default.f (LitInt |x#0@@2|)))
 ))))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 3)) (= (Ctor FieldType) 4)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |500|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((x@@6 Int) (y Int) ) (! (= (Mul x@@6 y) (* x@@6 y))
+ :qid |DafnyPreludebpl.1647:14|
+ :skolemid |338|
  :pattern ( (Mul x@@6 y))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap T@U) ) (!  (=> (or |_module.__default.BindingGuardTestExpr#canCall| (and (< 1 $FunctionContextHeight) ($IsGoodHeap $Heap))) (= _module.__default.BindingGuardTestExpr (LitInt 2)))
+ :qid |gitissue2748dfy.15:10|
+ :skolemid |490|
  :pattern ( _module.__default.BindingGuardTestExpr ($IsGoodHeap $Heap))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@0 T@U) ) (!  (=> (or |_module.__default.BindingGuardTestExpr#canCall| (and (< 1 $FunctionContextHeight) ($IsGoodHeap $Heap@@0))) (= _module.__default.BindingGuardTestExpr (LitInt 2)))
+ :qid |gitissue2748dfy.15:10|
  :weight 3
+ :skolemid |491|
  :pattern ( _module.__default.BindingGuardTestExpr ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((x@@7 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@7))) (Lit BoxType ($Box intType (int_2_U x@@7))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@7))))
 )))
 (assert (forall ((x@@8 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@8)) (Lit BoxType ($Box T@@2 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@8)))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -164,6 +211,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.__default.BindingGuardTestExpr)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -180,16 +228,26 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 23) (let ((anon16_correct  (=> (and (and (forall ((|i#0_0| Int) (|_t#0#0_0| Int) (|_t#1#0_0| Int) ) (!  (=> (and (= |_t#1#0_0| (+ |i#0_0| 2)) (= |_t#0#0_0| (+ |i#0_0| 1))) (=> (<= (LitInt 0) |i#0_0|) (=> (< |i#0_0| 10) (and (and (|_module.__default.f#canCall| |i#0_0|) (|_module.__default.f#canCall| |_t#0#0_0|)) (=> (or (not (= (_module.__default.f |i#0_0|) (_module.__default.f |_t#0#0_0|))) (not true)) (and (|_module.__default.f#canCall| |i#0_0|) (|_module.__default.f#canCall| |_t#1#0_0|)))))))
+ :qid |gitissue2748dfy.18:17|
+ :skolemid |498|
  :pattern ( (_module.__default.f |_t#1#0_0|) (_module.__default.f |_t#0#0_0|) (_module.__default.f |i#0_0|))
 )) (=> (exists ((|i#0_0@@0| Int) (|_t#0#0_0@@0| Int) (|_t#1#0_0@@0| Int) ) (!  (and (and (= |_t#1#0_0@@0| (+ |i#0_0@@0| 2)) (= |_t#0#0_0@@0| (+ |i#0_0@@0| 1))) (and (and (<= (LitInt 0) |i#0_0@@0|) (< |i#0_0@@0| 10)) (or (= (_module.__default.f |i#0_0@@0|) (_module.__default.f |_t#0#0_0@@0|)) (= (_module.__default.f |i#0_0@@0|) (_module.__default.f |_t#1#0_0@@0|)))))
+ :qid |gitissue2748dfy.18:17|
+ :skolemid |499|
  :pattern ( (_module.__default.f |_t#1#0_0@@0|) (_module.__default.f |_t#0#0_0@@0|) (_module.__default.f |i#0_0@@0|))
 )) |$let#0$canCall|)) (and (= |x#0_0@0| (ite (exists ((|i#0_0@@1| Int) (|_t#0#0_0@@1| Int) (|_t#1#0_0@@1| Int) ) (!  (and (and (= |_t#1#0_0@@1| (+ |i#0_0@@1| 2)) (= |_t#0#0_0@@1| (+ |i#0_0@@1| 1))) (and (and (<= (LitInt 0) |i#0_0@@1|) (< |i#0_0@@1| 10)) (or (= (_module.__default.f |i#0_0@@1|) (_module.__default.f |_t#0#0_0@@1|)) (= (_module.__default.f |i#0_0@@1|) (_module.__default.f |_t#1#0_0@@1|)))))
+ :qid |gitissue2748dfy.18:17|
+ :skolemid |492|
  :pattern ( (_module.__default.f |_t#1#0_0@@1|) (_module.__default.f |_t#0#0_0@@1|) (_module.__default.f |i#0_0@@1|))
 )) (LitInt 1) 0)) (= (ControlFlow 0 5) (- 0 4)))) (U_2_bool (Lit boolType (bool_2_U true))))))
 (let ((anon27_Else_correct  (=> (and (not (exists ((|i#0_0@@2| Int) (|_t#0#0_0@@2| Int) (|_t#1#0_0@@2| Int) ) (!  (and (and (= |_t#1#0_0@@2| (+ |i#0_0@@2| 2)) (= |_t#0#0_0@@2| (+ |i#0_0@@2| 1))) (and (and (<= (LitInt 0) |i#0_0@@2|) (< |i#0_0@@2| 10)) (or (= (_module.__default.f |i#0_0@@2|) (_module.__default.f |_t#0#0_0@@2|)) (= (_module.__default.f |i#0_0@@2|) (_module.__default.f |_t#1#0_0@@2|)))))
+ :qid |gitissue2748dfy.18:17|
+ :skolemid |497|
  :pattern ( (_module.__default.f |_t#1#0_0@@2|) (_module.__default.f |_t#0#0_0@@2|) (_module.__default.f |i#0_0@@2|))
 ))) (= (ControlFlow 0 7) 5)) anon16_correct)))
 (let ((anon27_Then_correct  (=> (exists ((|i#0_0@@3| Int) (|_t#0#0_0@@3| Int) (|_t#1#0_0@@3| Int) ) (!  (and (and (= |_t#1#0_0@@3| (+ |i#0_0@@3| 2)) (= |_t#0#0_0@@3| (+ |i#0_0@@3| 1))) (and (and (<= (LitInt 0) |i#0_0@@3|) (< |i#0_0@@3| 10)) (or (= (_module.__default.f |i#0_0@@3|) (_module.__default.f |_t#0#0_0@@3|)) (= (_module.__default.f |i#0_0@@3|) (_module.__default.f |_t#1#0_0@@3|)))))
+ :qid |gitissue2748dfy.18:17|
+ :skolemid |497|
  :pattern ( (_module.__default.f |_t#1#0_0@@3|) (_module.__default.f |_t#0#0_0@@3|) (_module.__default.f |i#0_0@@3|))
 )) (=> (and (and (and (<= (LitInt 0) |i#0_3@0|) (< |i#0_3@0| 10)) (or (= (_module.__default.f |i#0_3@0|) (_module.__default.f (+ |i#0_3@0| 1))) (= (_module.__default.f |i#0_3@0|) (_module.__default.f (+ |i#0_3@0| 2))))) (and |$let#0$canCall| (= (ControlFlow 0 6) 5))) anon16_correct))))
 (let ((anon26_Else_correct  (=> (= (_module.__default.f |i#0_2@0|) (_module.__default.f |_t#0#0_1@0|)) (and (=> (= (ControlFlow 0 11) 6) anon27_Then_correct) (=> (= (ControlFlow 0 11) 7) anon27_Else_correct)))))

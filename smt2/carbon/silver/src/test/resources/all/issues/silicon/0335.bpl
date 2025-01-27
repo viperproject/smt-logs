@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:24
+// Date:         2025-01-26 23:14:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0335.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0335-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -422,14 +422,14 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -440,8 +440,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
   var PreCallMask: MaskType;
   var arg_root: Ref;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -464,8 +464,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -481,8 +481,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
       UnfoldingMask := PostMask;
       assume tree#trigger(UnfoldingHeap, tree_1(root));
       assume UnfoldingHeap[null, tree_1(root)] == CombineFrames(FrameFragment(UnfoldingHeap[root, val]), CombineFrames(FrameFragment(UnfoldingHeap[root, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[root, left_2] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[root, right_1]), FrameFragment((if UnfoldingHeap[root, right_1] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, right_1])] else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tree(root) (0335.vpr@32.13--32.86) [56924]"}
@@ -524,8 +524,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
       Unfolding1Mask := oldMask;
       assume tree#trigger(Unfolding1Heap, tree_1(root));
       assume Unfolding1Heap[null, tree_1(root)] == CombineFrames(FrameFragment(Unfolding1Heap[root, val]), CombineFrames(FrameFragment(Unfolding1Heap[root, left_2]), CombineFrames(FrameFragment((if Unfolding1Heap[root, left_2] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(Unfolding1Heap[root, right_1]), FrameFragment((if Unfolding1Heap[root, right_1] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[root, right_1])] else EmptyFrame))))));
-      ExhaleWellDef0Heap := Unfolding1Heap;
       ExhaleWellDef0Mask := Unfolding1Mask;
+      ExhaleWellDef0Heap := Unfolding1Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access tree(root) (0335.vpr@32.13--32.86) [56926]"}
@@ -591,8 +591,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
       UnfoldingMask := PostMask;
       assume tree#trigger(UnfoldingHeap, tree_1(root));
       assume UnfoldingHeap[null, tree_1(root)] == CombineFrames(FrameFragment(UnfoldingHeap[root, val]), CombineFrames(FrameFragment(UnfoldingHeap[root, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[root, left_2] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[root, right_1]), FrameFragment((if UnfoldingHeap[root, right_1] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, right_1])] else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, tree_1(root):=UnfoldingMask[null, tree_1(root)] - perm];
       perm := FullPerm;
@@ -633,8 +633,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
   // -- Translating statement: unfold acc(tree(root), write) -- 0335.vpr@34.5--34.22
     assume tree#trigger(Heap, tree_1(root));
     assume Heap[null, tree_1(root)] == CombineFrames(FrameFragment(Heap[root, val]), CombineFrames(FrameFragment(Heap[root, left_2]), CombineFrames(FrameFragment((if Heap[root, left_2] != null then Heap[null, tree_1(Heap[root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[root, right_1]), FrameFragment((if Heap[root, right_1] != null then Heap[null, tree_1(Heap[root, right_1])] else EmptyFrame))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding tree(root) might fail. There might be insufficient permission to access tree(root) (0335.vpr@34.5--34.22) [56930]"}
@@ -681,8 +681,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
   // -- Translating statement: unfold acc(array(a), write) -- 0335.vpr@36.5--36.20
     assume array#trigger(Heap, array_1(a_2));
     assume Heap[null, array_1(a_2)] == FrameFragment(array#condqp1(Heap, a_2));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding array(a) might fail. There might be insufficient permission to access array(a) (0335.vpr@36.5--36.20) [56938]"}
@@ -733,8 +733,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(array(a), write) -- 0335.vpr@37.5--37.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -818,8 +818,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
         arg_root := Heap[root, right_1];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method _treeToArray might not hold. There might be insufficient permission to access tree(root.right) (0335.vpr@40.9--40.39) [56947]"}
@@ -847,8 +847,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_root));
             assume UnfoldingHeap[null, tree_1(arg_root)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_root, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_root, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_root, left_2] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[arg_root, right_1]), FrameFragment((if UnfoldingHeap[arg_root, right_1] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_root, right_1])] else EmptyFrame))))));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, tree_1(arg_root):=UnfoldingMask[null, tree_1(arg_root)] - perm];
             perm := FullPerm;
@@ -910,8 +910,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
             UnfoldingMask := Mask;
             assume tree#trigger(UnfoldingHeap, tree_1(arg_root));
             assume UnfoldingHeap[null, tree_1(arg_root)] == CombineFrames(FrameFragment(UnfoldingHeap[arg_root, val]), CombineFrames(FrameFragment(UnfoldingHeap[arg_root, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[arg_root, left_2] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[arg_root, right_1]), FrameFragment((if UnfoldingHeap[arg_root, right_1] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[arg_root, right_1])] else EmptyFrame))))));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access tree(root.right) (0335.vpr@32.13--32.86) [56949]"}
@@ -951,8 +951,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
             Unfolding1Mask := PreCallMask;
             assume tree#trigger(Unfolding1Heap, tree_1(arg_root));
             assume Unfolding1Heap[null, tree_1(arg_root)] == CombineFrames(FrameFragment(Unfolding1Heap[arg_root, val]), CombineFrames(FrameFragment(Unfolding1Heap[arg_root, left_2]), CombineFrames(FrameFragment((if Unfolding1Heap[arg_root, left_2] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[arg_root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(Unfolding1Heap[arg_root, right_1]), FrameFragment((if Unfolding1Heap[arg_root, right_1] != null then Unfolding1Heap[null, tree_1(Unfolding1Heap[arg_root, right_1])] else EmptyFrame))))));
-            ExhaleWellDef0Heap := Unfolding1Heap;
             ExhaleWellDef0Mask := Unfolding1Mask;
+            ExhaleWellDef0Heap := Unfolding1Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access tree(root.right) (0335.vpr@32.13--32.86) [56950]"}
@@ -1015,8 +1015,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(tree(root), write) -- 0335.vpr@43.5--43.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding tree(root) might fail. There might be insufficient permission to access root.val (0335.vpr@43.5--43.20) [56953]"}
@@ -1091,8 +1091,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of _treeToArray might not hold. There might be insufficient permission to access tree(root) (0335.vpr@31.13--31.23) [56963]"}
@@ -1105,8 +1105,8 @@ procedure _treeToArray(root: Ref, a_2: ArrayDomainType, i: int) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume tree#trigger(UnfoldingHeap, tree_1(root));
       assume UnfoldingHeap[null, tree_1(root)] == CombineFrames(FrameFragment(UnfoldingHeap[root, val]), CombineFrames(FrameFragment(UnfoldingHeap[root, left_2]), CombineFrames(FrameFragment((if UnfoldingHeap[root, left_2] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, left_2])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[root, right_1]), FrameFragment((if UnfoldingHeap[root, right_1] != null then UnfoldingHeap[null, tree_1(UnfoldingHeap[root, right_1])] else EmptyFrame))))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of _treeToArray might not hold. There might be insufficient permission to access tree(root) (0335.vpr@32.13--32.86) [56964]"}

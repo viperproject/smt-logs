@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:26
+// Date:         2025-01-26 23:15:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/axiom_call_func3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -419,8 +419,8 @@ procedure heapDep2#definedness(r_1: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -442,8 +442,8 @@ procedure heapDep2#definedness(r_1: Ref) returns (Result: int)
     // -- Check definedness of heapDep(r) + heapDepUnint(r) + 10
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.5--23.15) [93514]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -456,8 +456,8 @@ procedure heapDep2#definedness(r_1: Ref) returns (Result: int)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access r.f (axiom_call_func3.vpr@23.18--23.33) [93515]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -544,15 +544,15 @@ procedure heapDepUnint#definedness(r_1: Ref) returns (Result: int)
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -565,8 +565,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -601,8 +601,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert dfunc2(x.f) == 31 -- axiom_call_func3.vpr@53.3--53.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of dfunc2(x.f) == 31
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@53.10--53.27) [93519]"}
@@ -612,14 +612,14 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert heapDep2(x) == 15 + 20 + 20 -- axiom_call_func3.vpr@54.3--54.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of heapDep2(x) == 15 + 20 + 20
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function heapDep2 might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@54.10--54.21) [93521]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -635,8 +635,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert dfunc(x.f + 1) == 27 -- axiom_call_func3.vpr@56.3--56.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of dfunc(x.f + 1) == 27
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (axiom_call_func3.vpr@56.10--56.30) [93523]"}
@@ -646,8 +646,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert interp(34) == 35 -- axiom_call_func3.vpr@57.3--57.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of interp(34) == 35
       if (*) {
@@ -659,14 +659,14 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert heapDep(y) + dfunc2(x.f + 5) == 41 -- axiom_call_func3.vpr@58.3--58.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of heapDep(y) + dfunc2(x.f + 5) == 41
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function heapDep might not hold. There might be insufficient permission to access y.f (axiom_call_func3.vpr@58.10--58.20) [93526]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
@@ -684,14 +684,14 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert heapDepUnint(x) == 24 -- axiom_call_func3.vpr@61.3--61.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of heapDepUnint(x) == 24
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function heapDepUnint might not hold. There might be insufficient permission to access x.f (axiom_call_func3.vpr@61.10--61.25) [93529]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];

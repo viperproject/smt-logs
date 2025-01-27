@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:34:23
+; Started: 2025-01-26 23:06:31
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -921,11 +921,11 @@
     (extension_len_rec%limited s@$ hdrs@0@00 index@1@00)
     (extension_len_rec s@$ hdrs@0@00 index@1@00))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-11096|)))
+  :qid |quant-u-11043|)))
 (assert (forall ((s@$ $Snap) (hdrs@0@00 $Ref) (index@1@00 Int)) (!
   (extension_len_rec%stateless hdrs@0@00 index@1@00)
   :pattern ((extension_len_rec%limited s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-11097|)))
+  :qid |quant-u-11044|)))
 (assert (forall ((s@$ $Snap) (hdrs@0@00 $Ref) (index@1@00 Int)) (!
   (and
     (forall ((lambda180_26$e@3@00 $Ref)) (!
@@ -949,7 +949,7 @@
         lambda180_26$e@3@00))
       :pattern ((inv@4@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
       :pattern ((img@5@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
-      :qid |quant-u-11099|))
+      :qid |quant-u-11046|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1043,7 +1043,7 @@
               ($SortWrappers.$PSF<ExtensionHeader_State>To$Snap (sm@10@00 s@$ hdrs@0@00 index@1@00))
               ($Snap.combine $Snap.unit $Snap.unit))) hdrs@0@00 (+ index@1@00 1)))))))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-11102|)))
+  :qid |quant-u-11049|)))
 (assert (forall ((s@$ $Snap) (hdrs@0@00 $Ref) (index@1@00 Int)) (!
   (=>
     (extension_len_rec%precondition s@$ hdrs@0@00 index@1@00)
@@ -1058,6 +1058,6 @@
           ($SortWrappers.$PSF<ExtensionHeader_State>To$Snap (sm@10@00 s@$ hdrs@0@00 index@1@00))
           ($Snap.combine $Snap.unit $Snap.unit))) hdrs@0@00 (+ index@1@00 1)))))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-11103|)))
+  :qid |quant-u-11050|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

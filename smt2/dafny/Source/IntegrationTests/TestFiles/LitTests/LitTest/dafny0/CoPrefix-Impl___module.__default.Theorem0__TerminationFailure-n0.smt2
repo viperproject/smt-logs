@@ -95,26 +95,36 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._module.Stream Tagclass._module.Natural |##_module.Stream.Nil| |##_module.Stream.Cons| |##_module.Natural.Zero| |##_module.Natural.Succ| tytagFamily$Stream tytagFamily$Natural)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |1300|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |1308|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (DatatypeCtorId |#_module.Stream.Nil|) |##_module.Stream.Nil|))
@@ -125,54 +135,92 @@
  (=> (U_2_bool (Lit boolType (bool_2_U (_module.Stream.Cons_q (Lit DatatypeTypeType |b#0|))))) (=> (<= |h#9| (LitInt (_module.Stream.head (Lit DatatypeTypeType |b#0|)))) (|_module.__default.atmost_h#canCall| (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) |t#9| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |b#0|)))))))))) (=> (=> (< 0 (|ORD#Offset| |_k#0|)) (ite (_module.Stream.Nil_q (Lit DatatypeTypeType |a#0|)) true (let ((|t#10| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |a#0|)))))
 (let ((|h#10| (LitInt (_module.Stream.head (Lit DatatypeTypeType |a#0|)))))
  (and (and (_module.Stream.Cons_q (Lit DatatypeTypeType |b#0|)) (<= |h#10| (LitInt (_module.Stream.head (Lit DatatypeTypeType |b#0|))))) (_module.__default.atmost_h ($LS $ly) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) |t#10| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |b#0|))))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#2| T@U) ) (!  (=> (|ORD#Less| |_k'#2| |_k#0|) (|_module.__default.atmost_h#canCall| |_k'#2| |a#0| |b#0|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1831|
  :pattern ( (_module.__default.atmost_h ($LS $ly) |_k'#2| |a#0| |b#0|))
 ))))) (= (_module.__default.atmost_h ($LS $ly) (Lit BoxType |_k#0|) (Lit DatatypeTypeType |a#0|) (Lit DatatypeTypeType |b#0|))  (and (=> (< 0 (|ORD#Offset| |_k#0|)) (ite (_module.Stream.Nil_q (Lit DatatypeTypeType |a#0|)) true (let ((|t#8| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |a#0|)))))
 (let ((|h#8| (LitInt (_module.Stream.head (Lit DatatypeTypeType |a#0|)))))
  (and (and (_module.Stream.Cons_q (Lit DatatypeTypeType |b#0|)) (<= |h#8| (LitInt (_module.Stream.head (Lit DatatypeTypeType |b#0|))))) (_module.__default.atmost_h ($LS $ly) (|ORD#Minus| |_k#0| (|ORD#FromNat| 1)) |t#8| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType |b#0|))))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0|)) (forall ((|_k'#2@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#2@@0| |_k#0|) (_module.__default.atmost_h ($LS $ly) |_k'#2@@0| |a#0| |b#0|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1830|
  :pattern ( (_module.__default.atmost_h ($LS $ly) |_k'#2@@0| |a#0| |b#0|))
 )))))))
+ :qid |CoPrefixdfy.25:20|
  :weight 3
+ :skolemid |1832|
  :pattern ( (_module.__default.atmost_h ($LS $ly) (Lit BoxType |_k#0|) (Lit DatatypeTypeType |a#0|) (Lit DatatypeTypeType |b#0|)))
 ))))
 (assert ($Is DatatypeTypeType |#_module.Stream.Nil| Tclass._module.Stream))
 (assert ($Is DatatypeTypeType |#_module.Natural.Zero| Tclass._module.Natural))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |1227|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1225|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@0 T@U) ) (!  (=> (or |_module.__default.zeros#canCall| (< 1 $FunctionContextHeight)) (and |_module.__default.zeros#canCall| (= (_module.__default.zeros ($LS $ly@@0)) (Lit DatatypeTypeType (|#_module.Stream.Cons| (LitInt 0) (Lit DatatypeTypeType (_module.__default.zeros $ly@@0)))))))
+ :qid |CoPrefixdfy.15:16|
+ :skolemid |1802|
  :pattern ( (_module.__default.zeros ($LS $ly@@0)))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@1 T@U) ) (!  (=> (or |_module.__default.ones#canCall| (< 1 $FunctionContextHeight)) (and |_module.__default.ones#canCall| (= (_module.__default.ones ($LS $ly@@1)) (Lit DatatypeTypeType (|#_module.Stream.Cons| (LitInt 1) (Lit DatatypeTypeType (_module.__default.ones $ly@@1)))))))
+ :qid |CoPrefixdfy.20:16|
+ :skolemid |1808|
  :pattern ( (_module.__default.ones ($LS $ly@@1)))
 ))))
 (assert (forall ((d T@U) ) (! (= (_module.Stream.Nil_q d) (= (DatatypeCtorId d) |##_module.Stream.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1945|
  :pattern ( (_module.Stream.Nil_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.Stream.Cons_q d@@0) (= (DatatypeCtorId d@@0) |##_module.Stream.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |1948|
  :pattern ( (_module.Stream.Cons_q d@@0))
 )))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.Natural.Zero_q d@@1) (= (DatatypeCtorId d@@1) |##_module.Natural.Zero|))
+ :qid |unknown.0:0|
+ :skolemid |1970|
  :pattern ( (_module.Natural.Zero_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.Natural.Succ_q d@@2) (= (DatatypeCtorId d@@2) |##_module.Natural.Succ|))
+ :qid |unknown.0:0|
+ :skolemid |1973|
  :pattern ( (_module.Natural.Succ_q d@@2))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1236|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@3 T@U) ) (!  (=> (_module.Stream.Cons_q d@@3) (exists ((|a#4#0#0| Int) (|a#4#1#0| T@U) ) (= d@@3 (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|))))
+(assert (forall ((d@@3 T@U) ) (!  (=> (_module.Stream.Cons_q d@@3) (exists ((|a#4#0#0| Int) (|a#4#1#0| T@U) ) (! (= d@@3 (|#_module.Stream.Cons| |a#4#0#0| |a#4#1#0|))
+ :qid |CoPrefixdfy.6:32|
+ :skolemid |1949|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1950|
  :pattern ( (_module.Stream.Cons_q d@@3))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> (_module.Stream.Nil_q d@@4) (= d@@4 |#_module.Stream.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |1946|
  :pattern ( (_module.Stream.Nil_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (!  (=> (_module.Natural.Zero_q d@@5) (= d@@5 |#_module.Natural.Zero|))
+ :qid |unknown.0:0|
+ :skolemid |1971|
  :pattern ( (_module.Natural.Zero_q d@@5))
 )))
-(assert (forall ((d@@6 T@U) ) (!  (=> (_module.Natural.Succ_q d@@6) (exists ((|a#13#0#0| T@U) ) (= d@@6 (|#_module.Natural.Succ| |a#13#0#0|))))
+(assert (forall ((d@@6 T@U) ) (!  (=> (_module.Natural.Succ_q d@@6) (exists ((|a#13#0#0| T@U) ) (! (= d@@6 (|#_module.Natural.Succ| |a#13#0#0|))
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1974|
+)))
+ :qid |unknown.0:0|
+ :skolemid |1975|
  :pattern ( (_module.Natural.Succ_q d@@6))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@2 T@U) (|_k#0@@0| T@U) (|a#0@@0| T@U) (|b#0@@0| T@U) ) (!  (=> (or (|_module.__default.atmost_h#canCall| |_k#0@@0| |a#0@@0| |b#0@@0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |a#0@@0| Tclass._module.Stream) ($Is DatatypeTypeType |b#0@@0| Tclass._module.Stream)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (=> (not (_module.Stream.Nil_q |a#0@@0|)) (let ((|t#3| (_module.Stream.tail |a#0@@0|)))
@@ -180,108 +228,175 @@
  (=> (_module.Stream.Cons_q |b#0@@0|) (=> (<= |h#3| (_module.Stream.head |b#0@@0|)) (|_module.__default.atmost_h#canCall| (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |t#3| (_module.Stream.tail |b#0@@0|)))))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (ite (_module.Stream.Nil_q |a#0@@0|) true (let ((|t#4| (_module.Stream.tail |a#0@@0|)))
 (let ((|h#4| (_module.Stream.head |a#0@@0|)))
  (and (and (_module.Stream.Cons_q |b#0@@0|) (<= |h#4| (_module.Stream.head |b#0@@0|))) (_module.__default.atmost_h $ly@@2 (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |t#4| (_module.Stream.tail |b#0@@0|))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#0| T@U) ) (!  (=> (|ORD#Less| |_k'#0| |_k#0@@0|) (|_module.__default.atmost_h#canCall| |_k'#0| |a#0@@0| |b#0@@0|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1825|
  :pattern ( (_module.__default.atmost_h $ly@@2 |_k'#0| |a#0@@0| |b#0@@0|))
 ))))) (= (_module.__default.atmost_h ($LS $ly@@2) |_k#0@@0| |a#0@@0| |b#0@@0|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@0|)) (ite (_module.Stream.Nil_q |a#0@@0|) true (let ((|t#2| (_module.Stream.tail |a#0@@0|)))
 (let ((|h#2| (_module.Stream.head |a#0@@0|)))
  (and (and (_module.Stream.Cons_q |b#0@@0|) (<= |h#2| (_module.Stream.head |b#0@@0|))) (_module.__default.atmost_h $ly@@2 (|ORD#Minus| |_k#0@@0| (|ORD#FromNat| 1)) |t#2| (_module.Stream.tail |b#0@@0|))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@0|)) (forall ((|_k'#0@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@0| |_k#0@@0|) (_module.__default.atmost_h $ly@@2 |_k'#0@@0| |a#0@@0| |b#0@@0|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1824|
  :pattern ( (_module.__default.atmost_h $ly@@2 |_k'#0@@0| |a#0@@0| |b#0@@0|))
 )))))))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1826|
  :pattern ( (_module.__default.atmost_h ($LS $ly@@2) |_k#0@@0| |a#0@@0| |b#0@@0|))
 ))))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |1305|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |1296|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((|a#14#0#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Natural.Succ| |a#14#0#0|) Tclass._module.Natural) ($Is DatatypeTypeType |a#14#0#0| Tclass._module.Natural))
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1976|
  :pattern ( ($Is DatatypeTypeType (|#_module.Natural.Succ| |a#14#0#0|) Tclass._module.Natural))
 )))
 (assert (forall ((d@@7 T@U) ) (!  (=> (|$IsA#_module.Natural| d@@7) (or (_module.Natural.Zero_q d@@7) (_module.Natural.Succ_q d@@7)))
+ :qid |unknown.0:0|
+ :skolemid |1982|
  :pattern ( (|$IsA#_module.Natural| d@@7))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |1299|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert (forall ((d@@8 T@U) ) (!  (=> ($Is DatatypeTypeType d@@8 Tclass._module.Stream) (or (_module.Stream.Nil_q d@@8) (_module.Stream.Cons_q d@@8)))
+ :qid |unknown.0:0|
+ :skolemid |1958|
  :pattern ( (_module.Stream.Cons_q d@@8) ($Is DatatypeTypeType d@@8 Tclass._module.Stream))
  :pattern ( (_module.Stream.Nil_q d@@8) ($Is DatatypeTypeType d@@8 Tclass._module.Stream))
 )))
 (assert (forall ((d@@9 T@U) ) (!  (=> ($Is DatatypeTypeType d@@9 Tclass._module.Natural) (or (_module.Natural.Zero_q d@@9) (_module.Natural.Succ_q d@@9)))
+ :qid |unknown.0:0|
+ :skolemid |1983|
  :pattern ( (_module.Natural.Succ_q d@@9) ($Is DatatypeTypeType d@@9 Tclass._module.Natural))
  :pattern ( (_module.Natural.Zero_q d@@9) ($Is DatatypeTypeType d@@9 Tclass._module.Natural))
 )))
 (assert (forall (($ly@@3 T@U) (|_k#0@@1| T@U) (|a#0@@1| T@U) (|b#0@@1| T@U) ) (! (= (_module.__default.atmost_h ($LS $ly@@3) |_k#0@@1| |a#0@@1| |b#0@@1|) (_module.__default.atmost_h $ly@@3 |_k#0@@1| |a#0@@1| |b#0@@1|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1820|
  :pattern ( (_module.__default.atmost_h ($LS $ly@@3) |_k#0@@1| |a#0@@1| |b#0@@1|))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |1295|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((|a#3#0#0| Int) (|a#3#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|)) |##_module.Stream.Cons|)
+ :qid |CoPrefixdfy.6:32|
+ :skolemid |1947|
  :pattern ( (|#_module.Stream.Cons| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#6#0#0| Int) (|a#6#1#0| T@U) ) (! (= (_module.Stream.head (|#_module.Stream.Cons| |a#6#0#0| |a#6#1#0|)) |a#6#0#0|)
+ :qid |CoPrefixdfy.6:32|
+ :skolemid |1954|
  :pattern ( (|#_module.Stream.Cons| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((|a#7#0#0| Int) (|a#7#1#0| T@U) ) (! (= (_module.Stream.tail (|#_module.Stream.Cons| |a#7#0#0| |a#7#1#0|)) |a#7#1#0|)
+ :qid |CoPrefixdfy.6:32|
+ :skolemid |1955|
  :pattern ( (|#_module.Stream.Cons| |a#7#0#0| |a#7#1#0|))
 )))
 (assert (forall ((|a#12#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.Natural.Succ| |a#12#0#0|)) |##_module.Natural.Succ|)
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1972|
  :pattern ( (|#_module.Natural.Succ| |a#12#0#0|))
 )))
 (assert (forall ((|a#16#0#0| T@U) ) (! (= (_module.Natural._h0 (|#_module.Natural.Succ| |a#16#0#0|)) |a#16#0#0|)
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1979|
  :pattern ( (|#_module.Natural.Succ| |a#16#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@1 T@T) ) (! (= ($Unbox T@@1 ($Box T@@1 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1235|
  :pattern ( ($Box T@@1 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |1298|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert (forall ((|a#17#0#0| T@U) ) (! (< (DtRank |a#17#0#0|) (DtRank (|#_module.Natural.Succ| |a#17#0#0|)))
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1980|
  :pattern ( (|#_module.Natural.Succ| |a#17#0#0|))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2061|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@4 T@U) ) (!  (=> (or |_module.__default.zeros#canCall| (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (_module.__default.zeros $ly@@4) Tclass._module.Stream))
+ :qid |CoPrefixdfy.15:16|
+ :skolemid |1800|
  :pattern ( (_module.__default.zeros $ly@@4))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($ly@@5 T@U) ) (!  (=> (or |_module.__default.ones#canCall| (< 1 $FunctionContextHeight)) ($Is DatatypeTypeType (_module.__default.ones $ly@@5) Tclass._module.Stream))
+ :qid |CoPrefixdfy.20:16|
+ :skolemid |1806|
  :pattern ( (_module.__default.ones $ly@@5))
 ))))
 (assert (forall ((d@@10 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (_module.Stream.Cons_q d@@10) ($IsAlloc DatatypeTypeType d@@10 Tclass._module.Stream $h))) ($IsAlloc intType (int_2_U (_module.Stream.head d@@10)) TInt $h))
+ :qid |unknown.0:0|
+ :skolemid |1952|
  :pattern ( ($IsAlloc intType (int_2_U (_module.Stream.head d@@10)) TInt $h))
 )))
 (assert (forall (($ly@@6 T@U) ) (! (= (_module.__default.zeros ($LS $ly@@6)) (_module.__default.zeros $ly@@6))
+ :qid |CoPrefixdfy.15:16|
+ :skolemid |1798|
  :pattern ( (_module.__default.zeros ($LS $ly@@6)))
 )))
 (assert (forall (($ly@@7 T@U) ) (! (= (_module.__default.ones ($LS $ly@@7)) (_module.__default.ones $ly@@7))
+ :qid |CoPrefixdfy.20:16|
+ :skolemid |1804|
  :pattern ( (_module.__default.ones ($LS $ly@@7)))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |1297|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
 (assert (forall ((d@@11 T@U) ($h@@0 T@U) ) (!  (=> (and ($IsGoodHeap $h@@0) ($Is DatatypeTypeType d@@11 Tclass._module.Stream)) ($IsAlloc DatatypeTypeType d@@11 Tclass._module.Stream $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |1956|
  :pattern ( ($IsAlloc DatatypeTypeType d@@11 Tclass._module.Stream $h@@0))
 )))
 (assert (forall ((d@@12 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) ($Is DatatypeTypeType d@@12 Tclass._module.Natural)) ($IsAlloc DatatypeTypeType d@@12 Tclass._module.Natural $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |1981|
  :pattern ( ($IsAlloc DatatypeTypeType d@@12 Tclass._module.Natural $h@@1))
 )))
 (assert (= (Tag Tclass._module.Stream) Tagclass._module.Stream))
@@ -289,31 +404,49 @@
 (assert (= (Tag Tclass._module.Natural) Tagclass._module.Natural))
 (assert (= (TagFamily Tclass._module.Natural) tytagFamily$Natural))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@8 T@U) (|a#0@@2| T@U) (|b#0@@2| T@U) (|_k#0@@2| T@U) ) (!  (=> (and (and ($Is DatatypeTypeType |a#0@@2| Tclass._module.Stream) ($Is DatatypeTypeType |b#0@@2| Tclass._module.Stream)) (= |_k#0@@2| (|ORD#FromNat| 0))) (_module.__default.atmost_h $ly@@8 |_k#0@@2| |a#0@@2| |b#0@@2|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1818|
  :pattern ( (_module.__default.atmost_h $ly@@8 |_k#0@@2| |a#0@@2| |b#0@@2|))
 ))))
 (assert (= |#_module.Natural.Zero| (Lit DatatypeTypeType |#_module.Natural.Zero|)))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |1306|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert (forall ((d@@13 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.Stream.Cons_q d@@13) ($IsAlloc DatatypeTypeType d@@13 Tclass._module.Stream $h@@2))) ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@13) Tclass._module.Stream $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |1953|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Stream.tail d@@13) Tclass._module.Stream $h@@2))
 )))
 (assert (forall ((d@@14 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.Natural.Succ_q d@@14) ($IsAlloc DatatypeTypeType d@@14 Tclass._module.Natural $h@@3))) ($IsAlloc DatatypeTypeType (_module.Natural._h0 d@@14) Tclass._module.Natural $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |1977|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.Natural._h0 d@@14) Tclass._module.Natural $h@@3))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |1228|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#15#0#0| T@U) ) (! (= (|#_module.Natural.Succ| (Lit DatatypeTypeType |a#15#0#0|)) (Lit DatatypeTypeType (|#_module.Natural.Succ| |a#15#0#0|)))
+ :qid |CoPrefixdfy.52:32|
+ :skolemid |1978|
  :pattern ( (|#_module.Natural.Succ| (Lit DatatypeTypeType |a#15#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@2 T@T) ) (! (= ($Box T@@2 (Lit T@@2 x@@7)) (Lit BoxType ($Box T@@2 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1226|
  :pattern ( ($Box T@@2 (Lit T@@2 x@@7)))
 )))
 (assert (forall ((|a#5#0#0| Int) (|a#5#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0| |a#5#1#0|) Tclass._module.Stream)  (and ($Is intType (int_2_U |a#5#0#0|) TInt) ($Is DatatypeTypeType |a#5#1#0| Tclass._module.Stream)))
+ :qid |CoPrefixdfy.6:32|
+ :skolemid |1951|
  :pattern ( ($Is DatatypeTypeType (|#_module.Stream.Cons| |a#5#0#0| |a#5#1#0|) Tclass._module.Stream))
 )))
 (assert (forall ((h T@U) (v T@U) ) (! ($IsAlloc intType v TInt h)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |1271|
  :pattern ( ($IsAlloc intType v TInt h))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($ly@@9 T@U) (|_k#0@@3| T@U) (|a#0@@3| T@U) (|b#0@@3| T@U) ) (!  (=> (or (|_module.__default.atmost_h#canCall| (Lit BoxType |_k#0@@3|) |a#0@@3| |b#0@@3|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |a#0@@3| Tclass._module.Stream) ($Is DatatypeTypeType |b#0@@3| Tclass._module.Stream)))) (and (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (=> (not (_module.Stream.Nil_q |a#0@@3|)) (let ((|t#6| (_module.Stream.tail |a#0@@3|)))
@@ -321,16 +454,24 @@
  (=> (_module.Stream.Cons_q |b#0@@3|) (=> (<= |h#6| (_module.Stream.head |b#0@@3|)) (|_module.__default.atmost_h#canCall| (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) |t#6| (_module.Stream.tail |b#0@@3|)))))))) (=> (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (ite (_module.Stream.Nil_q |a#0@@3|) true (let ((|t#7| (_module.Stream.tail |a#0@@3|)))
 (let ((|h#7| (_module.Stream.head |a#0@@3|)))
  (and (and (_module.Stream.Cons_q |b#0@@3|) (<= |h#7| (_module.Stream.head |b#0@@3|))) (_module.__default.atmost_h ($LS $ly@@9) (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) |t#7| (_module.Stream.tail |b#0@@3|))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#1| T@U) ) (!  (=> (|ORD#Less| |_k'#1| |_k#0@@3|) (|_module.__default.atmost_h#canCall| |_k'#1| |a#0@@3| |b#0@@3|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1828|
  :pattern ( (_module.__default.atmost_h ($LS $ly@@9) |_k'#1| |a#0@@3| |b#0@@3|))
 ))))) (= (_module.__default.atmost_h ($LS $ly@@9) (Lit BoxType |_k#0@@3|) |a#0@@3| |b#0@@3|)  (and (=> (< 0 (|ORD#Offset| |_k#0@@3|)) (ite (_module.Stream.Nil_q |a#0@@3|) true (let ((|t#5| (_module.Stream.tail |a#0@@3|)))
 (let ((|h#5| (_module.Stream.head |a#0@@3|)))
  (and (and (_module.Stream.Cons_q |b#0@@3|) (<= |h#5| (_module.Stream.head |b#0@@3|))) (_module.__default.atmost_h ($LS $ly@@9) (|ORD#Minus| |_k#0@@3| (|ORD#FromNat| 1)) |t#5| (_module.Stream.tail |b#0@@3|))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@3|)) (forall ((|_k'#1@@0| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@0| |_k#0@@3|) (_module.__default.atmost_h ($LS $ly@@9) |_k'#1@@0| |a#0@@3| |b#0@@3|))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1827|
  :pattern ( (_module.__default.atmost_h ($LS $ly@@9) |_k'#1@@0| |a#0@@3| |b#0@@3|))
 )))))))
+ :qid |CoPrefixdfy.25:20|
  :weight 3
+ :skolemid |1829|
  :pattern ( (_module.__default.atmost_h ($LS $ly@@9) (Lit BoxType |_k#0@@3|) |a#0@@3| |b#0@@3|))
 ))))
 (assert (forall ((v@@0 T@U) ) (! ($Is intType v@@0 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |1250|
  :pattern ( ($Is intType v@@0 TInt))
 )))
 (push 1)
@@ -351,6 +492,7 @@
 (declare-fun $Heap@0 () T@U)
 (declare-fun $_ModifiesFrame@0 () T@U)
 (declare-fun null () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.Theorem0__TerminationFailure__ExplicitDecreases_h)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -372,26 +514,37 @@
 (<= |h#4@@1| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.ones ($LS ($LS $LZ)))))))))))) (and (=> (= (ControlFlow 0 2) (- 0 3)) (=> (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (or (_module.__default.atmost_h ($LS $LZ) |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Stream.Nil_q (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))) (let ((|t#4@@0| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.zeros ($LS ($LS $LZ))))))))
 (_module.__default.atmost_h ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) |t#4@@0| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.ones ($LS ($LS $LZ))))))))))))) (=> (=> (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (or (_module.__default.atmost_h ($LS $LZ) |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (=> (not (U_2_bool (Lit boolType (bool_2_U (_module.Stream.Nil_q (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))) (let ((|t#4@@1| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.zeros ($LS ($LS $LZ))))))))
 (_module.__default.atmost_h ($LS ($LS $LZ)) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) |t#4@@1| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.ones ($LS ($LS $LZ)))))))))))) (=> (= (ControlFlow 0 2) (- 0 1)) (=> (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (or (_module.__default.atmost_h ($LS $LZ) |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#1@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#1@@1| |_k#0@@4|) (_module.__default.atmost_h ($LS ($LS $LZ)) |_k'#1@@1| (Lit DatatypeTypeType (_module.__default.zeros ($LS ($LS $LZ)))) (Lit DatatypeTypeType (_module.__default.ones ($LS ($LS $LZ))))))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1848|
  :pattern ( (_module.__default.atmost_h ($LS ($LS $LZ)) |_k'#1@@1| (_module.__default.zeros ($LS ($LS $LZ))) (_module.__default.ones ($LS ($LS $LZ)))))
 ))))))))))))))))
 (let ((anon5_correct  (and (=> (= (ControlFlow 0 9) (- 0 12)) (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1)))) (=> (|ORD#IsNat| (Lit BoxType (|ORD#FromNat| 1))) (and (=> (= (ControlFlow 0 9) (- 0 11)) (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|))) (=> (<= (|ORD#Offset| (Lit BoxType (|ORD#FromNat| 1))) (|ORD#Offset| |_k#0@@4|)) (=> (= |_k##2@0| (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1))) (and (=> (= (ControlFlow 0 9) (- 0 10)) (or (|ORD#Less| |_k##2@0| |_k#0@@4|) (and (= |_k##2@0| |_k#0@@4|) (< (DtRank |y#1|) (DtRank |y#1|))))) (=> (or (|ORD#Less| |_k##2@0| |_k#0@@4|) (and (= |_k##2@0| |_k#0@@4|) (< (DtRank |y#1|) (DtRank |y#1|)))) (=> (and ($IsGoodHeap $Heap@4) ($IsHeapAnchor $Heap@4)) (=> (and (and (and |_module.__default.zeros#canCall| |_module.__default.ones#canCall|) (|_module.__default.atmost_h#canCall| |_k##2@0| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))) (and (and (|_module.__default.atmost_h#canCall| |_k##2@0| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (_module.__default.atmost_h ($LS $LZ) |_k##2@0| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (=> (< 0 (|ORD#Offset| |_k##2@0|)) (ite (_module.Stream.Nil_q (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))) true (let ((|t#3@@0| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
 (let ((|h#3@@0| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
  (and (and (_module.Stream.Cons_q (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (<= |h#3@@0| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))) (_module.__default.atmost_h ($LS $LZ) (|ORD#Minus| |_k##2@0| (|ORD#FromNat| 1)) |t#3@@0| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k##2@0|)) (forall ((|_k'#0@@1| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@1| |_k##2@0|) (_module.__default.atmost_h ($LS $LZ) |_k'#0@@1| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1847|
  :pattern ( (_module.__default.atmost_h ($LS $LZ) |_k'#0@@1| (_module.__default.zeros ($LS $LZ)) (_module.__default.ones ($LS $LZ))))
 )))))) (and (= $Heap@3 $Heap@4) (= (ControlFlow 0 9) 2)))) GeneratedUnifiedExit_correct)))))))))))
 (let ((anon9_Then_correct  (=> (= |y#1| (|#_module.Natural.Succ| |_mcc#0#0@0|)) (=> (and ($Is DatatypeTypeType |_mcc#0#0@0| Tclass._module.Natural) ($IsAlloc DatatypeTypeType |_mcc#0#0@0| Tclass._module.Natural $Heap)) (=> (and (and (and ($Is DatatypeTypeType |x#0@0| Tclass._module.Natural) ($IsAlloc DatatypeTypeType |x#0@0| Tclass._module.Natural $Heap)) (= |let#0_0_0#0#0| |_mcc#0#0@0|)) (and ($Is DatatypeTypeType |let#0_0_0#0#0| Tclass._module.Natural) (= |x#0@0| |let#0_0_0#0#0|))) (and (=> (= (ControlFlow 0 15) (- 0 16)) (or (|ORD#Less| |_k#0@@4| |_k#0@@4|) (and (= |_k#0@@4| |_k#0@@4|) (< (DtRank |x#0@0|) (DtRank |y#1|))))) (=> (or (|ORD#Less| |_k#0@@4| |_k#0@@4|) (and (= |_k#0@@4| |_k#0@@4|) (< (DtRank |x#0@0|) (DtRank |y#1|)))) (=> (and ($IsGoodHeap $Heap@2) ($IsHeapAnchor $Heap@2)) (=> (and (and |_module.__default.zeros#canCall| |_module.__default.ones#canCall|) (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))) (=> (and (and (and (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (_module.__default.atmost_h ($LS $LZ) |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (ite (_module.Stream.Nil_q (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))) true (let ((|t#3@@1| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
 (let ((|h#3@@1| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
  (and (and (_module.Stream.Cons_q (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (<= |h#3@@1| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))) (_module.__default.atmost_h ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) |t#3@@1| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#0@@2| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@2| |_k#0@@4|) (_module.__default.atmost_h ($LS $LZ) |_k'#0@@2| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1847|
  :pattern ( (_module.__default.atmost_h ($LS $LZ) |_k'#0@@2| (_module.__default.zeros ($LS $LZ)) (_module.__default.ones ($LS $LZ))))
 )))))) (= $Heap $Heap@2)) (and (= $Heap@3 $Heap@2) (= (ControlFlow 0 15) 9))) anon5_correct))))))))))
 (let ((anon8_Else_correct  (=> (or (not (= |y#1| |#_module.Natural.Zero|)) (not true)) (and (=> (= (ControlFlow 0 17) 15) anon9_Then_correct) (=> (= (ControlFlow 0 17) 8) anon9_Else_correct)))))
 (let ((anon8_Then_correct  (=> (= |y#1| |#_module.Natural.Zero|) (and (=> (= (ControlFlow 0 13) (- 0 14)) (or (|ORD#Less| |_k#0@@4| |_k#0@@4|) (and (= |_k#0@@4| |_k#0@@4|) (< (DtRank |y#1|) (DtRank |y#1|))))) (=> (or (|ORD#Less| |_k#0@@4| |_k#0@@4|) (and (= |_k#0@@4| |_k#0@@4|) (< (DtRank |y#1|) (DtRank |y#1|)))) (=> (and ($IsGoodHeap $Heap@1) ($IsHeapAnchor $Heap@1)) (=> (and (and |_module.__default.zeros#canCall| |_module.__default.ones#canCall|) (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))) (=> (and (and (and (|_module.__default.atmost_h#canCall| |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (_module.__default.atmost_h ($LS $LZ) |_k#0@@4| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (and (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (ite (_module.Stream.Nil_q (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))) true (let ((|t#3@@2| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
 (let ((|h#3@@2| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ)))))))
  (and (and (_module.Stream.Cons_q (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))) (<= |h#3@@2| (LitInt (_module.Stream.head (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))) (_module.__default.atmost_h ($LS $LZ) (|ORD#Minus| |_k#0@@4| (|ORD#FromNat| 1)) |t#3@@2| (Lit DatatypeTypeType (_module.Stream.tail (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ))))))))))) (=> (= (LitInt 0) (|ORD#Offset| |_k#0@@4|)) (forall ((|_k'#0@@3| T@U) ) (!  (=> (|ORD#Less| |_k'#0@@3| |_k#0@@4|) (_module.__default.atmost_h ($LS $LZ) |_k'#0@@3| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))))
+ :qid |CoPrefixdfy.25:20|
+ :skolemid |1847|
  :pattern ( (_module.__default.atmost_h ($LS $LZ) |_k'#0@@3| (_module.__default.zeros ($LS $LZ)) (_module.__default.ones ($LS $LZ))))
 )))))) (= $Heap $Heap@1)) (and (= $Heap@3 $Heap@1) (= (ControlFlow 0 13) 9))) anon5_correct))))))))
 (let ((anon7_Then_correct  (=> (< 0 (|ORD#Offset| |_k#0@@4|)) (and (=> (= (ControlFlow 0 18) 13) anon8_Then_correct) (=> (= (ControlFlow 0 18) 17) anon8_Else_correct)))))
-(let ((anon7_Else_correct  (=> (<= (|ORD#Offset| |_k#0@@4|) 0) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (= $Heap $Heap@0)) (and (forall ((|_k'#2@@1| T@U) (|y#2| T@U) )  (=> (and ($Is DatatypeTypeType |y#2| Tclass._module.Natural) (|ORD#Less| |_k'#2@@1| |_k#0@@4|)) (_module.__default.atmost_h ($LS $LZ) |_k'#2@@1| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))))) (= (ControlFlow 0 7) 2))) GeneratedUnifiedExit_correct))))
+(let ((anon7_Else_correct  (=> (<= (|ORD#Offset| |_k#0@@4|) 0) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (= $Heap $Heap@0)) (and (forall ((|_k'#2@@1| T@U) (|y#2| T@U) ) (!  (=> (and ($Is DatatypeTypeType |y#2| Tclass._module.Natural) (|ORD#Less| |_k'#2@@1| |_k#0@@4|)) (_module.__default.atmost_h ($LS $LZ) |_k'#2@@1| (Lit DatatypeTypeType (_module.__default.zeros ($LS $LZ))) (Lit DatatypeTypeType (_module.__default.ones ($LS $LZ)))))
+ :qid |CoPrefixdfy.54:35|
+ :skolemid |1854|
+)) (= (ControlFlow 0 7) 2))) GeneratedUnifiedExit_correct))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 19) 18) anon7_Then_correct) (=> (= (ControlFlow 0 19) 7) anon7_Else_correct)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and (and ($Is DatatypeTypeType |y#1| Tclass._module.Natural) ($IsAlloc DatatypeTypeType |y#1| Tclass._module.Natural $Heap)) (|$IsA#_module.Natural| |y#1|)) (and (= 3 $FunctionContextHeight) (= (ControlFlow 0 20) 19))) anon0_correct))))
 PreconditionGeneratedEntry_correct)))))))))))

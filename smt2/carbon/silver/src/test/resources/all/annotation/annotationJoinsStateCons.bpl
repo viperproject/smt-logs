@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:43:28
+// Date:         2025-01-26 23:15:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationJoinsStateCons.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationJoinsStateCons-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,11 +188,11 @@ axiom !IsWandField(f_7);
 procedure testMin1(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -206,8 +206,8 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@14.5--14.25
     perm := 1 / 2;
@@ -230,8 +230,8 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@17.5--17.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@17.12--17.20) [96680]"}
@@ -252,11 +252,11 @@ procedure testMin1(r_1: Ref, b_24: bool) returns ()
 procedure testMin2(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -270,8 +270,8 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@23.5--23.25
     perm := 1 / 2;
@@ -294,8 +294,8 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@26.5--26.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@26.12--26.20) [96684]"}
@@ -316,11 +316,11 @@ procedure testMin2(r_1: Ref, b_24: bool) returns ()
 procedure testMin3(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -334,8 +334,8 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@31.5--31.25
     perm := 1 / 2;
@@ -358,8 +358,8 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@33.5--33.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@33.12--33.20) [96688]"}
@@ -380,11 +380,11 @@ procedure testMin3(r_1: Ref, b_24: bool) returns ()
 procedure testMin4(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -398,8 +398,8 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(r.f, 1 / 2) -- annotationJoinsStateCons.vpr@39.5--39.25
     perm := 1 / 2;
@@ -422,8 +422,8 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@41.5--41.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@41.12--41.20) [96692]"}
@@ -444,11 +444,11 @@ procedure testMin4(r_1: Ref, b_24: bool) returns ()
 procedure testJoin1(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -462,8 +462,8 @@ procedure testJoin1(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- annotationJoinsStateCons.vpr@48.5--52.6
     if (b_24) {
@@ -488,8 +488,8 @@ procedure testJoin1(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@54.5--54.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@54.12--54.20) [96696]"}
@@ -510,11 +510,11 @@ procedure testJoin1(r_1: Ref, b_24: bool) returns ()
 procedure testJoin2(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -528,8 +528,8 @@ procedure testJoin2(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- annotationJoinsStateCons.vpr@61.5--65.6
     if (b_24) {
@@ -554,8 +554,8 @@ procedure testJoin2(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@67.5--67.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@67.12--67.20) [96700]"}
@@ -576,11 +576,11 @@ procedure testJoin2(r_1: Ref, b_24: bool) returns ()
 procedure testJoin3(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -594,8 +594,8 @@ procedure testJoin3(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- annotationJoinsStateCons.vpr@73.5--77.6
     if (b_24) {
@@ -620,8 +620,8 @@ procedure testJoin3(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@78.5--78.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@78.12--78.20) [96704]"}
@@ -642,11 +642,11 @@ procedure testJoin3(r_1: Ref, b_24: bool) returns ()
 procedure testJoin4(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -660,8 +660,8 @@ procedure testJoin4(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- annotationJoinsStateCons.vpr@85.5--89.6
     if (b_24) {
@@ -686,8 +686,8 @@ procedure testJoin4(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@90.5--90.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@90.12--90.20) [96708]"}
@@ -708,11 +708,11 @@ procedure testJoin4(r_1: Ref, b_24: bool) returns ()
 procedure testJoin5(r_1: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -726,8 +726,8 @@ procedure testJoin5(r_1: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- annotationJoinsStateCons.vpr@97.5--101.6
     if (b_24) {
@@ -752,8 +752,8 @@ procedure testJoin5(r_1: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- annotationJoinsStateCons.vpr@102.5--102.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (annotationJoinsStateCons.vpr@102.12--102.20) [96712]"}

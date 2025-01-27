@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-26 21:32:56
+; Started: 2025-01-26 23:05:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -863,7 +863,7 @@
   (and (= (inv@4@01 n@3@01) n@3@01) (img@5@01 n@3@01))
   :pattern ((inv@4@01 n@3@01))
   :pattern ((img@5@01 n@3@01))
-  :qid |quant-u-9432|)))
+  :qid |quant-u-9378|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@5@01 r) (= (inv@4@01 r) r))
   :pattern ((inv@4@01 r))
@@ -881,13 +881,13 @@
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@6@01 $t@2@01))
-  :qid |quant-u-9433|)))
+  :qid |quant-u-9379|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@6@01 $t@2@01))
-  :qid |quant-u-9434|)))
+  :qid |quant-u-9380|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@5@01 r) (= (inv@4@01 r) r))
   :pattern ((inv@4@01 r))
@@ -896,7 +896,7 @@
   (and (= (inv@4@01 n@3@01) n@3@01) (img@5@01 n@3@01))
   :pattern ((inv@4@01 n@3@01))
   :pattern ((img@5@01 n@3@01))
-  :qid |quant-u-9432|)))
+  :qid |quant-u-9378|)))
 ; [exec]
 ; exhale (forall n$0: Ref ::acc(n$0.val, write)) --* true
 (pop) ; 3
@@ -932,7 +932,7 @@
   (and (= (inv@11@01 n@10@01) n@10@01) (img@12@01 n@10@01))
   :pattern ((inv@11@01 n@10@01))
   :pattern ((img@12@01 n@10@01))
-  :qid |quant-u-9436|)))
+  :qid |quant-u-9382|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@12@01 r) (= (inv@11@01 r) r))
   :pattern ((inv@11@01 r))
@@ -950,13 +950,13 @@
 (assert (forall (($t@9@01 $Snap)) (!
   (= (MWSF_apply mwsf@13@01 $t@9@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@13@01 $t@9@01))
-  :qid |quant-u-9437|)))
+  :qid |quant-u-9383|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@9@01 $Snap)) (!
   (= (MWSF_apply mwsf@13@01 $t@9@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@13@01 $t@9@01))
-  :qid |quant-u-9438|)))
+  :qid |quant-u-9384|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@12@01 r) (= (inv@11@01 r) r))
   :pattern ((inv@11@01 r))
@@ -965,7 +965,7 @@
   (and (= (inv@11@01 n@10@01) n@10@01) (img@12@01 n@10@01))
   :pattern ((inv@11@01 n@10@01))
   :pattern ((img@12@01 n@10@01))
-  :qid |quant-u-9436|)))
+  :qid |quant-u-9382|)))
 ; [exec]
 ; exhale (forall n: Ref ::acc(n.val, write)) --* true
 (pop) ; 3
@@ -1021,13 +1021,13 @@
 (assert (forall (($t@16@01 $Snap)) (!
   (= (MWSF_apply mwsf@18@01 $t@16@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@18@01 $t@16@01))
-  :qid |quant-u-9439|)))
+  :qid |quant-u-9385|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@16@01 $Snap)) (!
   (= (MWSF_apply mwsf@18@01 $t@16@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@18@01 $t@16@01))
-  :qid |quant-u-9440|)))
+  :qid |quant-u-9386|)))
 ; [exec]
 ; exhale (forall b2: Bool :: { (b2 in xs) } (b2 in xs) ==> true) --* true
 (pop) ; 3
@@ -1122,13 +1122,13 @@
 (assert (forall (($t@19@01 $Snap)) (!
   (= (MWSF_apply mwsf@24@01 $t@19@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@24@01 $t@19@01))
-  :qid |quant-u-9441|)))
+  :qid |quant-u-9387|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@19@01 $Snap)) (!
   (= (MWSF_apply mwsf@24@01 $t@19@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@24@01 $t@19@01))
-  :qid |quant-u-9442|)))
+  :qid |quant-u-9388|)))
 ; [exec]
 ; exhale (forall a: Int, b: Int ::
 ;     { f2(a, b) }
@@ -1226,13 +1226,13 @@
 (assert (forall (($t@25@01 $Snap)) (!
   (= (MWSF_apply mwsf@30@01 $t@25@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@30@01 $t@25@01))
-  :qid |quant-u-9443|)))
+  :qid |quant-u-9389|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@25@01 $Snap)) (!
   (= (MWSF_apply mwsf@30@01 $t@25@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@30@01 $t@25@01))
-  :qid |quant-u-9444|)))
+  :qid |quant-u-9390|)))
 ; [exec]
 ; exhale (forall x: Int, y: Int ::
 ;     { f2(y, x) }
@@ -1327,13 +1327,13 @@
 (assert (forall (($t@31@01 $Snap)) (!
   (= (MWSF_apply mwsf@34@01 $t@31@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@34@01 $t@31@01))
-  :qid |quant-u-9445|)))
+  :qid |quant-u-9391|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@31@01 $Snap)) (!
   (= (MWSF_apply mwsf@34@01 $t@31@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@34@01 $t@31@01))
-  :qid |quant-u-9446|)))
+  :qid |quant-u-9392|)))
 ; [exec]
 ; exhale (forall x: Int ::(forall y: Int :: { f2(x, y) } f2(x, y))) --* true
 (check-sat)
@@ -1425,13 +1425,13 @@
 (assert (forall (($t@35@01 $Snap)) (!
   (= (MWSF_apply mwsf@38@01 $t@35@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@38@01 $t@35@01))
-  :qid |quant-u-9447|)))
+  :qid |quant-u-9393|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@35@01 $Snap)) (!
   (= (MWSF_apply mwsf@38@01 $t@35@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@38@01 $t@35@01))
-  :qid |quant-u-9448|)))
+  :qid |quant-u-9394|)))
 ; [exec]
 ; exhale (forall y: Ref, x: Int :: { g2(x, y) } g2(x, y)) --* true
 (check-sat)

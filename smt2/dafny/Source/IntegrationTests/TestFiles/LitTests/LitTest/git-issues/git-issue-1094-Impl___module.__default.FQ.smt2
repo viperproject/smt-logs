@@ -85,202 +85,331 @@
 (declare-fun |lambda#0| (T@U T@U T@U Bool) T@U)
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt alloc Tagclass._module.FResult |##_module.FResult.Success| |##_module.FResult.Failure| tytagFamily$FResult)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((a T@U) (b T@U) ) (!  (=> (and (_module.FResult.Success_q a) (_module.FResult.Success_q b)) (= (|_module.FResult#Equal| a b) (= (_module.FResult.x a) (_module.FResult.x b))))
+ :qid |unknown.0:0|
+ :skolemid |597|
  :pattern ( (|_module.FResult#Equal| a b) (_module.FResult.Success_q a))
  :pattern ( (|_module.FResult#Equal| a b) (_module.FResult.Success_q b))
 )))
 (assert (forall ((a@@0 T@U) (b@@0 T@U) ) (!  (=> (and (_module.FResult.Failure_q a@@0) (_module.FResult.Failure_q b@@0)) (= (|_module.FResult#Equal| a@@0 b@@0) (= (_module.FResult.code a@@0) (_module.FResult.code b@@0))))
+ :qid |unknown.0:0|
+ :skolemid |598|
  :pattern ( (|_module.FResult#Equal| a@@0 b@@0) (_module.FResult.Failure_q a@@0))
  :pattern ( (|_module.FResult#Equal| a@@0 b@@0) (_module.FResult.Failure_q b@@0))
 )))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (_module.FResult$X T@U) (this T@U) ) (!  (=> (and (or (|_module.FResult.Extract#canCall| _module.FResult$X this) (and (< 0 $FunctionContextHeight) (and ($IsAlloc DatatypeTypeType this (Tclass._module.FResult _module.FResult$X) $Heap) (_module.FResult.Success_q this)))) ($IsGoodHeap $Heap)) ($IsAllocBox (_module.FResult.Extract _module.FResult$X this) _module.FResult$X $Heap))
+ :qid |gitissue1094dfy.123:12|
+ :skolemid |610|
  :pattern ( ($IsAllocBox (_module.FResult.Extract _module.FResult$X this) _module.FResult$X $Heap))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.FResult$X@@0 T@U) (this@@0 T@U) ) (!  (=> (or (|_module.FResult.IsFailure#canCall| _module.FResult$X@@0 (Lit DatatypeTypeType this@@0)) (and (< 0 $FunctionContextHeight) ($Is DatatypeTypeType this@@0 (Tclass._module.FResult _module.FResult$X@@0)))) (= (_module.FResult.IsFailure _module.FResult$X@@0 (Lit DatatypeTypeType this@@0)) (U_2_bool (Lit boolType (bool_2_U (_module.FResult.Failure_q (Lit DatatypeTypeType this@@0)))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |603|
  :pattern ( (_module.FResult.IsFailure _module.FResult$X@@0 (Lit DatatypeTypeType this@@0)))
 ))))
 (assert (forall ((a@@1 T@U) (b@@1 T@U) ) (! (= (|_module.FResult#Equal| a@@1 b@@1) (= a@@1 b@@1))
+ :qid |unknown.0:0|
+ :skolemid |599|
  :pattern ( (|_module.FResult#Equal| a@@1 b@@1))
 )))
 (assert  (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (= (Ctor refType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (= (Ctor refType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |118|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |119|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.FResult$X@@1 T@U) (this@@1 T@U) ) (!  (=> (or (|_module.FResult.Extract#canCall| _module.FResult$X@@1 this@@1) (and (< 0 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@1 (Tclass._module.FResult _module.FResult$X@@1)) (_module.FResult.Success_q this@@1)))) ($IsBox (_module.FResult.Extract _module.FResult$X@@1 this@@1) _module.FResult$X@@1))
+ :qid |unknown.0:0|
+ :skolemid |609|
  :pattern ( (_module.FResult.Extract _module.FResult$X@@1 this@@1))
 ))))
 (assert (forall ((d T@U) ) (! (= (_module.FResult.Success_q d) (= (DatatypeCtorId d) |##_module.FResult.Success|))
+ :qid |unknown.0:0|
+ :skolemid |576|
  :pattern ( (_module.FResult.Success_q d))
 )))
 (assert (forall ((d@@0 T@U) ) (! (= (_module.FResult.Failure_q d@@0) (= (DatatypeCtorId d@@0) |##_module.FResult.Failure|))
+ :qid |unknown.0:0|
+ :skolemid |586|
  :pattern ( (_module.FResult.Failure_q d@@0))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@0 T@U) (_module.FResult$X@@2 T@U) (_module.FResult.PropagateFailure$U T@U) (this@@2 T@U) ) (!  (=> (and (or (|_module.FResult.PropagateFailure#canCall| _module.FResult$X@@2 _module.FResult.PropagateFailure$U this@@2) (and (< 1 $FunctionContextHeight) (and ($IsAlloc DatatypeTypeType this@@2 (Tclass._module.FResult _module.FResult$X@@2) $Heap@@0) (_module.FResult.Failure_q this@@2)))) ($IsGoodHeap $Heap@@0)) ($IsAlloc DatatypeTypeType (_module.FResult.PropagateFailure _module.FResult$X@@2 _module.FResult.PropagateFailure$U this@@2) (Tclass._module.FResult _module.FResult.PropagateFailure$U) $Heap@@0))
+ :qid |gitissue1094dfy.118:12|
+ :skolemid |605|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.FResult.PropagateFailure _module.FResult$X@@2 _module.FResult.PropagateFailure$U this@@2) (Tclass._module.FResult _module.FResult.PropagateFailure$U) $Heap@@0))
 ))))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
-(assert (forall ((d@@1 T@U) ) (!  (=> (_module.FResult.Success_q d@@1) (exists ((|a#1#0#0| T@U) ) (= d@@1 (|#_module.FResult.Success| |a#1#0#0|))))
+(assert (forall ((d@@1 T@U) ) (!  (=> (_module.FResult.Success_q d@@1) (exists ((|a#1#0#0| T@U) ) (! (= d@@1 (|#_module.FResult.Success| |a#1#0#0|))
+ :qid |gitissue1094dfy.114:31|
+ :skolemid |577|
+)))
+ :qid |unknown.0:0|
+ :skolemid |578|
  :pattern ( (_module.FResult.Success_q d@@1))
 )))
-(assert (forall ((d@@2 T@U) ) (!  (=> (_module.FResult.Failure_q d@@2) (exists ((|a#7#0#0| Int) ) (= d@@2 (|#_module.FResult.Failure| |a#7#0#0|))))
+(assert (forall ((d@@2 T@U) ) (!  (=> (_module.FResult.Failure_q d@@2) (exists ((|a#7#0#0| Int) ) (! (= d@@2 (|#_module.FResult.Failure| |a#7#0#0|))
+ :qid |gitissue1094dfy.114:47|
+ :skolemid |587|
+)))
+ :qid |unknown.0:0|
+ :skolemid |588|
  :pattern ( (_module.FResult.Failure_q d@@2))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h@@0) ($IsAlloc T@@1 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx t@@0 h@@1) ($IsAllocBox bx t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |111|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@2 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@2 v@@0 t@@1 h@@2) ($IsAlloc T@@2 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |110|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@2 v@@0 t@@1 h@@2))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.FResult$X@@3 T@U) (_module.FResult.PropagateFailure$U@@0 T@U) (this@@3 T@U) ) (!  (=> (or (|_module.FResult.PropagateFailure#canCall| _module.FResult$X@@3 _module.FResult.PropagateFailure$U@@0 this@@3) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@3 (Tclass._module.FResult _module.FResult$X@@3)) (_module.FResult.Failure_q this@@3)))) (= (_module.FResult.PropagateFailure _module.FResult$X@@3 _module.FResult.PropagateFailure$U@@0 this@@3) (|#_module.FResult.Failure| (_module.FResult.code this@@3))))
+ :qid |unknown.0:0|
+ :skolemid |607|
  :pattern ( (_module.FResult.PropagateFailure _module.FResult$X@@3 _module.FResult.PropagateFailure$U@@0 this@@3))
 ))))
 (assert (forall ((_module.FResult$X@@4 T@U) ) (!  (and (= (Tag (Tclass._module.FResult _module.FResult$X@@4)) Tagclass._module.FResult) (= (TagFamily (Tclass._module.FResult _module.FResult$X@@4)) tytagFamily$FResult))
+ :qid |unknown.0:0|
+ :skolemid |489|
  :pattern ( (Tclass._module.FResult _module.FResult$X@@4))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.FResult$X@@5 T@U) (this@@4 T@U) ) (!  (=> (or (|_module.FResult.Extract#canCall| _module.FResult$X@@5 (Lit DatatypeTypeType this@@4)) (and (< 0 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@4 (Tclass._module.FResult _module.FResult$X@@5)) (U_2_bool (Lit boolType (bool_2_U (_module.FResult.Success_q (Lit DatatypeTypeType this@@4)))))))) (= (_module.FResult.Extract _module.FResult$X@@5 (Lit DatatypeTypeType this@@4)) (Lit BoxType (_module.FResult.x (Lit DatatypeTypeType this@@4)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |613|
  :pattern ( (_module.FResult.Extract _module.FResult$X@@5 (Lit DatatypeTypeType this@@4)))
 ))))
 (assert (forall ((d@@3 T@U) ($h T@U) ) (!  (=> (and ($IsGoodHeap $h) (and (_module.FResult.Failure_q d@@3) (exists ((_module.FResult$X@@6 T@U) ) (! ($IsAlloc DatatypeTypeType d@@3 (Tclass._module.FResult _module.FResult$X@@6) $h)
+ :qid |unknown.0:0|
+ :skolemid |591|
  :pattern ( ($IsAlloc DatatypeTypeType d@@3 (Tclass._module.FResult _module.FResult$X@@6) $h))
 )))) ($IsAlloc intType (int_2_U (_module.FResult.code d@@3)) TInt $h))
+ :qid |unknown.0:0|
+ :skolemid |592|
  :pattern ( ($IsAlloc intType (int_2_U (_module.FResult.code d@@3)) TInt $h))
 )))
 (assert (forall ((_module.FResult$X@@7 T@U) (|a#2#0#0| T@U) ($h@@0 T@U) ) (!  (=> ($IsGoodHeap $h@@0) (= ($IsAlloc DatatypeTypeType (|#_module.FResult.Success| |a#2#0#0|) (Tclass._module.FResult _module.FResult$X@@7) $h@@0) ($IsAllocBox |a#2#0#0| _module.FResult$X@@7 $h@@0)))
+ :qid |unknown.0:0|
+ :skolemid |580|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.FResult.Success| |a#2#0#0|) (Tclass._module.FResult _module.FResult$X@@7) $h@@0))
 )))
 (assert (forall ((_module.FResult$X@@8 T@U) (|a#8#0#0| Int) ($h@@1 T@U) ) (!  (=> ($IsGoodHeap $h@@1) (= ($IsAlloc DatatypeTypeType (|#_module.FResult.Failure| |a#8#0#0|) (Tclass._module.FResult _module.FResult$X@@8) $h@@1) ($IsAlloc intType (int_2_U |a#8#0#0|) TInt $h@@1)))
+ :qid |unknown.0:0|
+ :skolemid |590|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.FResult.Failure| |a#8#0#0|) (Tclass._module.FResult _module.FResult$X@@8) $h@@1))
 )))
 (assert (forall ((d@@4 T@U) ) (!  (=> (|$IsA#_module.FResult| d@@4) (or (_module.FResult.Success_q d@@4) (_module.FResult.Failure_q d@@4)))
+ :qid |unknown.0:0|
+ :skolemid |595|
  :pattern ( (|$IsA#_module.FResult| d@@4))
 )))
 (assert (forall ((_module.FResult$X@@9 T@U) (d@@5 T@U) ) (!  (=> ($Is DatatypeTypeType d@@5 (Tclass._module.FResult _module.FResult$X@@9)) (or (_module.FResult.Success_q d@@5) (_module.FResult.Failure_q d@@5)))
+ :qid |unknown.0:0|
+ :skolemid |596|
  :pattern ( (_module.FResult.Failure_q d@@5) ($Is DatatypeTypeType d@@5 (Tclass._module.FResult _module.FResult$X@@9)))
  :pattern ( (_module.FResult.Success_q d@@5) ($Is DatatypeTypeType d@@5 (Tclass._module.FResult _module.FResult$X@@9)))
 )))
 (assert (forall ((a@@2 T@U) (b@@2 T@U) (c T@U) ) (!  (=> (or (not (= a@@2 c)) (not true)) (=> (and ($HeapSucc a@@2 b@@2) ($HeapSucc b@@2 c)) ($HeapSucc a@@2 c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |117|
  :pattern ( ($HeapSucc a@@2 b@@2) ($HeapSucc b@@2 c))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 TInt) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@0 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@3 T@T) ) (! (= ($IsBox ($Box T@@3 v@@1) t@@2) ($Is T@@3 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@3 v@@1) t@@2))
 )))
 (assert (forall ((_module.FResult$X@@10 T@U) ) (! (= (Tclass._module.FResult_0 (Tclass._module.FResult _module.FResult$X@@10)) _module.FResult$X@@10)
+ :qid |unknown.0:0|
+ :skolemid |490|
  :pattern ( (Tclass._module.FResult _module.FResult$X@@10))
 )))
 (assert (forall ((|a#0#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.FResult.Success| |a#0#0#0|)) |##_module.FResult.Success|)
+ :qid |gitissue1094dfy.114:31|
+ :skolemid |575|
  :pattern ( (|#_module.FResult.Success| |a#0#0#0|))
 )))
 (assert (forall ((|a#4#0#0| T@U) ) (! (= (_module.FResult.x (|#_module.FResult.Success| |a#4#0#0|)) |a#4#0#0|)
+ :qid |gitissue1094dfy.114:31|
+ :skolemid |583|
  :pattern ( (|#_module.FResult.Success| |a#4#0#0|))
 )))
 (assert (forall ((|a#6#0#0| Int) ) (! (= (DatatypeCtorId (|#_module.FResult.Failure| |a#6#0#0|)) |##_module.FResult.Failure|)
+ :qid |gitissue1094dfy.114:47|
+ :skolemid |585|
  :pattern ( (|#_module.FResult.Failure| |a#6#0#0|))
 )))
 (assert (forall ((|a#10#0#0| Int) ) (! (= (_module.FResult.code (|#_module.FResult.Failure| |a#10#0#0|)) |a#10#0#0|)
+ :qid |gitissue1094dfy.114:47|
+ :skolemid |594|
  :pattern ( (|#_module.FResult.Failure| |a#10#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@4 T@T) ) (! (= ($Unbox T@@4 ($Box T@@4 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@4 x@@5))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.FResult$X@@11 T@U) (_module.FResult.PropagateFailure$U@@1 T@U) (this@@5 T@U) ) (!  (=> (or (|_module.FResult.PropagateFailure#canCall| _module.FResult$X@@11 _module.FResult.PropagateFailure$U@@1 this@@5) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@5 (Tclass._module.FResult _module.FResult$X@@11)) (_module.FResult.Failure_q this@@5)))) ($Is DatatypeTypeType (_module.FResult.PropagateFailure _module.FResult$X@@11 _module.FResult.PropagateFailure$U@@1 this@@5) (Tclass._module.FResult _module.FResult.PropagateFailure$U@@1)))
+ :qid |unknown.0:0|
+ :skolemid |604|
  :pattern ( (_module.FResult.PropagateFailure _module.FResult$X@@11 _module.FResult.PropagateFailure$U@@1 this@@5))
 ))))
 (assert (forall ((_module.FResult$X@@12 T@U) (|a#2#0#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.FResult.Success| |a#2#0#0@@0|) (Tclass._module.FResult _module.FResult$X@@12)) ($IsBox |a#2#0#0@@0| _module.FResult$X@@12))
+ :qid |unknown.0:0|
+ :skolemid |579|
  :pattern ( ($Is DatatypeTypeType (|#_module.FResult.Success| |a#2#0#0@@0|) (Tclass._module.FResult _module.FResult$X@@12)))
 )))
 (assert (forall ((_module.FResult$X@@13 T@U) (|a#8#0#0@@0| Int) ) (! (= ($Is DatatypeTypeType (|#_module.FResult.Failure| |a#8#0#0@@0|) (Tclass._module.FResult _module.FResult$X@@13)) ($Is intType (int_2_U |a#8#0#0@@0|) TInt))
+ :qid |unknown.0:0|
+ :skolemid |589|
  :pattern ( ($Is DatatypeTypeType (|#_module.FResult.Failure| |a#8#0#0@@0|) (Tclass._module.FResult _module.FResult$X@@13)))
 )))
 (assert (forall ((|a#5#0#0| T@U) ) (! (< (BoxRank |a#5#0#0|) (DtRank (|#_module.FResult.Success| |a#5#0#0|)))
+ :qid |gitissue1094dfy.114:31|
+ :skolemid |584|
  :pattern ( (|#_module.FResult.Success| |a#5#0#0|))
 )))
 (assert (forall ((d@@6 T@U) (_module.FResult$X@@14 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.FResult.Success_q d@@6) ($IsAlloc DatatypeTypeType d@@6 (Tclass._module.FResult _module.FResult$X@@14) $h@@2))) ($IsAllocBox (_module.FResult.x d@@6) _module.FResult$X@@14 $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |581|
  :pattern ( ($IsAllocBox (_module.FResult.x d@@6) _module.FResult$X@@14 $h@@2))
 )))
 (assert  (and (forall ((t0@@0 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 t2 (MapType1Store t0@@0 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |653|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((d@@7 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@7)) (DtRank d@@7))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@7)))
 )))
 (assert (forall ((_module.FResult$X@@15 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass._module.FResult _module.FResult$X@@15)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@1)) bx@@1) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@1) (Tclass._module.FResult _module.FResult$X@@15))))
+ :qid |unknown.0:0|
+ :skolemid |491|
  :pattern ( ($IsBox bx@@1 (Tclass._module.FResult _module.FResult$X@@15)))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.FResult$X@@16 T@U) (this@@6 T@U) ) (!  (=> (or (|_module.FResult.IsFailure#canCall| _module.FResult$X@@16 this@@6) (and (< 0 $FunctionContextHeight) ($Is DatatypeTypeType this@@6 (Tclass._module.FResult _module.FResult$X@@16)))) (= (_module.FResult.IsFailure _module.FResult$X@@16 this@@6) (_module.FResult.Failure_q this@@6)))
+ :qid |unknown.0:0|
+ :skolemid |602|
  :pattern ( (_module.FResult.IsFailure _module.FResult$X@@16 this@@6))
 ))))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#3#0#0| T@U) ) (! (= (|#_module.FResult.Success| (Lit BoxType |a#3#0#0|)) (Lit DatatypeTypeType (|#_module.FResult.Success| |a#3#0#0|)))
+ :qid |gitissue1094dfy.114:31|
+ :skolemid |582|
  :pattern ( (|#_module.FResult.Success| (Lit BoxType |a#3#0#0|)))
 )))
 (assert (forall ((|a#9#0#0| Int) ) (! (= (|#_module.FResult.Failure| (LitInt |a#9#0#0|)) (Lit DatatypeTypeType (|#_module.FResult.Failure| |a#9#0#0|)))
+ :qid |gitissue1094dfy.114:47|
+ :skolemid |593|
  :pattern ( (|#_module.FResult.Failure| (LitInt |a#9#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@5 T@T) ) (! (= ($Box T@@5 (Lit T@@5 x@@7)) (Lit BoxType ($Box T@@5 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@5 (Lit T@@5 x@@7)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.FResult$X@@17 T@U) (_module.FResult.PropagateFailure$U@@2 T@U) (this@@7 T@U) ) (!  (=> (or (|_module.FResult.PropagateFailure#canCall| _module.FResult$X@@17 _module.FResult.PropagateFailure$U@@2 (Lit DatatypeTypeType this@@7)) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@7 (Tclass._module.FResult _module.FResult$X@@17)) (U_2_bool (Lit boolType (bool_2_U (_module.FResult.Failure_q (Lit DatatypeTypeType this@@7)))))))) (= (_module.FResult.PropagateFailure _module.FResult$X@@17 _module.FResult.PropagateFailure$U@@2 (Lit DatatypeTypeType this@@7)) (Lit DatatypeTypeType (|#_module.FResult.Failure| (LitInt (_module.FResult.code (Lit DatatypeTypeType this@@7)))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |608|
  :pattern ( (_module.FResult.PropagateFailure _module.FResult$X@@17 _module.FResult.PropagateFailure$U@@2 (Lit DatatypeTypeType this@@7)))
 ))))
 (assert (forall ((h@@3 T@U) (v@@2 T@U) ) (! ($IsAlloc intType v@@2 TInt h@@3)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@2 TInt h@@3))
 )))
 (assert (forall ((v@@3 T@U) ) (! ($Is intType v@@3 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@3 TInt))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.FResult$X@@18 T@U) (this@@8 T@U) ) (!  (=> (or (|_module.FResult.Extract#canCall| _module.FResult$X@@18 this@@8) (and (< 0 $FunctionContextHeight) (and ($Is DatatypeTypeType this@@8 (Tclass._module.FResult _module.FResult$X@@18)) (_module.FResult.Success_q this@@8)))) (= (_module.FResult.Extract _module.FResult$X@@18 this@@8) (_module.FResult.x this@@8)))
+ :qid |unknown.0:0|
+ :skolemid |612|
  :pattern ( (_module.FResult.Extract _module.FResult$X@@18 this@@8))
 ))))
 (push 1)
@@ -298,6 +427,7 @@
 (declare-fun |call1formal@result#0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun |valueOrError0#0| () T@U)
+(set-info :boogie-vc-id Impl$$_module.__default.FQ)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -317,6 +447,8 @@
 (let ((anon5_Else_correct  (=> (and (not (_module.FResult.IsFailure TInt |call1formal@result#0@0|)) ($IsAllocBox ($Box DatatypeTypeType |call1formal@result#0@0|) (Tclass._module.FResult TInt) $Heap@0)) (and (=> (= (ControlFlow 0 5) (- 0 6)) (_module.FResult.Success_q |call1formal@result#0@0|)) (=> (and (_module.FResult.Success_q |call1formal@result#0@0|) (|_module.FResult.Extract#canCall| TInt |call1formal@result#0@0|)) (=> (and (and (|_module.FResult.Extract#canCall| TInt |call1formal@result#0@0|) (= |x#0@0| (U_2_int ($Unbox intType (_module.FResult.Extract TInt |call1formal@result#0@0|))))) (and (= |r#0@1| |r#0|) (= (ControlFlow 0 5) 2))) GeneratedUnifiedExit_correct))))))
 (let ((anon5_Then_correct  (=> (and (_module.FResult.IsFailure TInt |call1formal@result#0@0|) ($IsAllocBox ($Box DatatypeTypeType |call1formal@result#0@0|) (Tclass._module.FResult TInt) $Heap@0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (_module.FResult.Failure_q |call1formal@result#0@0|)) (=> (and (_module.FResult.Failure_q |call1formal@result#0@0|) (|_module.FResult.PropagateFailure#canCall| TInt TInt |call1formal@result#0@0|)) (=> (and (and (|_module.FResult.PropagateFailure#canCall| TInt TInt |call1formal@result#0@0|) (= |r#0@0| (_module.FResult.PropagateFailure TInt TInt |call1formal@result#0@0|))) (and (= |r#0@1| |r#0@0|) (= (ControlFlow 0 3) 2))) GeneratedUnifiedExit_correct))))))
 (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@1 alloc false)) (=> (and ($Is DatatypeTypeType |valueOrError0#0@0| (Tclass._module.FResult TInt)) ($IsAlloc DatatypeTypeType |valueOrError0#0@0| (Tclass._module.FResult TInt) $Heap@@1)) (=> (and (and ($Is DatatypeTypeType |call1formal@result#0| (Tclass._module.FResult TInt)) ($IsAlloc DatatypeTypeType |call1formal@result#0| (Tclass._module.FResult TInt) $Heap@@1)) (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0))) (=> (and (and (and (and ($Is DatatypeTypeType |call1formal@result#0@0| (Tclass._module.FResult TInt)) ($IsAlloc DatatypeTypeType |call1formal@result#0@0| (Tclass._module.FResult TInt) $Heap@0)) (|$IsA#_module.FResult| |call1formal@result#0@0|)) (and (|_module.FResult#Equal| |call1formal@result#0@0| (|#_module.FResult.Failure| (LitInt 5))) (forall (($o@@0 T@U) ) (!  (=> (and (or (not (= $o@@0 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@0) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 $o@@0)))
+ :qid |gitissue1094dfy.108:8|
+ :skolemid |524|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@0))
 )))) (and (and ($HeapSucc $Heap@@1 $Heap@0) ($IsAllocBox ($Box DatatypeTypeType |call1formal@result#0@0|) (Tclass._module.FResult TInt) $Heap@0)) (and (|_module.FResult.IsFailure#canCall| TInt |call1formal@result#0@0|) (|_module.FResult.IsFailure#canCall| TInt |call1formal@result#0@0|)))) (and (=> (= (ControlFlow 0 7) 3) anon5_Then_correct) (=> (= (ControlFlow 0 7) 5) anon5_Else_correct))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap@@1) ($IsHeapAnchor $Heap@@1)) (and ($Is DatatypeTypeType |r#0| (Tclass._module.FResult TInt)) ($IsAlloc DatatypeTypeType |r#0| (Tclass._module.FResult TInt) $Heap@@1))) (=> (and (and (and ($Is DatatypeTypeType |valueOrError0#0| (Tclass._module.FResult TInt)) ($IsAlloc DatatypeTypeType |valueOrError0#0| (Tclass._module.FResult TInt) $Heap@@1)) true) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 8) 7))) anon0_correct))))

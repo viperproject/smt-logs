@@ -102,16 +102,22 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSet alloc allocName Tagclass._module.Map? Tagclass._module.Node? Tagclass._module.Node Tagclass._module.Map class._module.Node? tytagFamily$Map tytagFamily$Node field$Spine field$next)
@@ -119,33 +125,53 @@
 (assert (= (FDim alloc) 0))
 (assert (= (DeclName alloc) allocName))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (forall ((a@@2 T@U) (b T@U) (y@@0 T@U) ) (!  (=> (|Set#IsMember| b y@@0) (not (|Set#IsMember| (|Set#Difference| a@@2 b) y@@0)))
+ :qid |DafnyPreludebpl.757:15|
+ :skolemid |144|
  :pattern ( (|Set#Difference| a@@2 b) (|Set#IsMember| b y@@0))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (forall ((a@@3 T@U) (b@@0 T@U) (o@@1 T@U) ) (! (= (|Set#IsMember| (|Set#Difference| a@@3 b@@0) o@@1)  (and (|Set#IsMember| a@@3 o@@1) (not (|Set#IsMember| b@@0 o@@1))))
+ :qid |DafnyPreludebpl.752:15|
+ :skolemid |143|
  :pattern ( (|Set#IsMember| (|Set#Difference| a@@3 b@@0) o@@1))
 )))
 (assert  (and (and (and (and (and (and (and (and (= (Ctor SetType) 3) (= (Ctor refType) 4)) (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 ))) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 5)) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.Map$Key T@U) (_module.Map$Value T@U) ($ly T@U) ($Heap T@U) (|spine#0| T@U) (|n#0| T@U) ) (!  (=> (or (|_module.Map.SpineValid#canCall| _module.Map$Key _module.Map$Value $Heap |spine#0| |n#0|) (and (< 1 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap) ($Is SetType |spine#0| (TSet (Tclass._module.Node _module.Map$Key _module.Map$Value)))) ($Is refType |n#0| (Tclass._module.Node? _module.Map$Key _module.Map$Value))))) (and (=> (not (and (= |n#0| null) (|Set#Equal| |spine#0| |Set#Empty|))) (=> (or (not (= |n#0| null)) (not true)) (=> (|Set#IsMember| |spine#0| ($Box refType |n#0|)) (=> (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.Spine)) (|Set#Difference| |spine#0| (|Set#UnionOne| |Set#Empty| ($Box refType |n#0|)))) (|_module.Map.SpineValid#canCall| _module.Map$Key _module.Map$Value $Heap ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.Spine)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.next))))))) (= (_module.Map.SpineValid _module.Map$Key _module.Map$Value ($LS $ly) $Heap |spine#0| |n#0|)  (or (and (= |n#0| null) (|Set#Equal| |spine#0| |Set#Empty|)) (and (and (and (or (not (= |n#0| null)) (not true)) (|Set#IsMember| |spine#0| ($Box refType |n#0|))) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.Spine)) (|Set#Difference| |spine#0| (|Set#UnionOne| |Set#Empty| ($Box refType |n#0|))))) (_module.Map.SpineValid _module.Map$Key _module.Map$Value $ly $Heap ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.Spine)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap |n#0|) _module.Node.next))))))))
+ :qid |unknown.0:0|
+ :skolemid |608|
  :pattern ( (_module.Map.SpineValid _module.Map$Key _module.Map$Value ($LS $ly) $Heap |spine#0| |n#0|) ($IsGoodHeap $Heap))
 ))))
 (assert (= (FDim _module.Node.Spine) 0))
@@ -155,157 +181,256 @@
 (assert (= (FieldOfDecl class._module.Node? field$next) _module.Node.next))
 (assert  (not ($IsGhostField _module.Node.next)))
 (assert (forall ((a@@4 T@U) (b@@1 T@U) ) (! (= (|Set#Subset| a@@4 b@@1) (forall ((o@@2 T@U) ) (!  (=> (|Set#IsMember| a@@4 o@@2) (|Set#IsMember| b@@1 o@@2))
+ :qid |DafnyPreludebpl.774:19|
+ :skolemid |146|
  :pattern ( (|Set#IsMember| a@@4 o@@2))
  :pattern ( (|Set#IsMember| b@@1 o@@2))
 )))
+ :qid |DafnyPreludebpl.771:15|
+ :skolemid |147|
  :pattern ( (|Set#Subset| a@@4 b@@1))
 )))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@5)) x@@5)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T x@@5))
 )))
 (assert (forall ((_module.Map$Key@@0 T@U) (_module.Map$Value@@0 T@U) ($ly@@0 T@U) ($Heap@@0 T@U) (|spine#0@@0| T@U) (|n#0@@0| T@U) ) (! (= (_module.Map.SpineValid _module.Map$Key@@0 _module.Map$Value@@0 ($LS $ly@@0) $Heap@@0 |spine#0@@0| |n#0@@0|) (_module.Map.SpineValid _module.Map$Key@@0 _module.Map$Value@@0 $ly@@0 $Heap@@0 |spine#0@@0| |n#0@@0|))
+ :qid |unknown.0:0|
+ :skolemid |602|
  :pattern ( (_module.Map.SpineValid _module.Map$Key@@0 _module.Map$Value@@0 ($LS $ly@@0) $Heap@@0 |spine#0@@0| |n#0@@0|))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.Map$Key@@1 T@U) (_module.Map$Value@@1 T@U) ($Heap@@1 T@U) (|spine#0@@1| T@U) (|n#0@@1| T@U) ) (!  (=> (or (|_module.Map.SpineValid__One#canCall| _module.Map$Key@@1 _module.Map$Value@@1 $Heap@@1 |spine#0@@1| |n#0@@1|) (and (< 1 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@1) ($Is SetType |spine#0@@1| (TSet (Tclass._module.Node _module.Map$Key@@1 _module.Map$Value@@1)))) ($Is refType |n#0@@1| (Tclass._module.Node? _module.Map$Key@@1 _module.Map$Value@@1))))) (= (_module.Map.SpineValid__One _module.Map$Key@@1 _module.Map$Value@@1 $Heap@@1 |spine#0@@1| |n#0@@1|)  (or (and (= |n#0@@1| null) (|Set#Equal| |spine#0@@1| |Set#Empty|)) (and (and (or (not (= |n#0@@1| null)) (not true)) (|Set#IsMember| |spine#0@@1| ($Box refType |n#0@@1|))) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@1 |n#0@@1|) _module.Node.Spine)) (|Set#Difference| |spine#0@@1| (|Set#UnionOne| |Set#Empty| ($Box refType |n#0@@1|))))))))
+ :qid |unknown.0:0|
+ :skolemid |614|
  :pattern ( (_module.Map.SpineValid__One _module.Map$Key@@1 _module.Map$Value@@1 $Heap@@1 |spine#0@@1| |n#0@@1|) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((v T@U) (t0@@0 T@U) ) (! (= ($Is SetType v (TSet t0@@0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0@@0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0@@0)))
 )))
 (assert (forall ((_module.Map$Key@@2 T@U) (_module.Map$Value@@2 T@U) (|c#0| T@U) ) (! (= ($Is refType |c#0| (Tclass._module.Map _module.Map$Key@@2 _module.Map$Value@@2))  (and ($Is refType |c#0| (Tclass._module.Map? _module.Map$Key@@2 _module.Map$Value@@2)) (or (not (= |c#0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |977|
  :pattern ( ($Is refType |c#0| (Tclass._module.Map _module.Map$Key@@2 _module.Map$Value@@2)))
  :pattern ( ($Is refType |c#0| (Tclass._module.Map? _module.Map$Key@@2 _module.Map$Value@@2)))
 )))
 (assert (forall ((_module.Node$Key T@U) (_module.Node$Value T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass._module.Node _module.Node$Key _module.Node$Value))  (and ($Is refType |c#0@@0| (Tclass._module.Node? _module.Node$Key _module.Node$Value)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |992|
  :pattern ( ($Is refType |c#0@@0| (Tclass._module.Node _module.Node$Key _module.Node$Value)))
  :pattern ( ($Is refType |c#0@@0| (Tclass._module.Node? _module.Node$Key _module.Node$Value)))
 )))
 (assert ($IsGhostField alloc))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v@@0) t h) ($IsAlloc T@@0 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@0 v@@0) t h))
 )))
 (assert (forall ((_module.Map$Key@@3 T@U) (_module.Map$Value@@3 T@U) ($o T@U) ) (! (= ($Is refType $o (Tclass._module.Map? _module.Map$Key@@3 _module.Map$Value@@3))  (or (= $o null) (= (dtype $o) (Tclass._module.Map? _module.Map$Key@@3 _module.Map$Value@@3))))
+ :qid |unknown.0:0|
+ :skolemid |532|
  :pattern ( ($Is refType $o (Tclass._module.Map? _module.Map$Key@@3 _module.Map$Value@@3)))
 )))
 (assert (forall ((_module.Node$Key@@0 T@U) (_module.Node$Value@@0 T@U) ($o@@0 T@U) ) (! (= ($Is refType $o@@0 (Tclass._module.Node? _module.Node$Key@@0 _module.Node$Value@@0))  (or (= $o@@0 null) (= (dtype $o@@0) (Tclass._module.Node? _module.Node$Key@@0 _module.Node$Value@@0))))
+ :qid |unknown.0:0|
+ :skolemid |979|
  :pattern ( ($Is refType $o@@0 (Tclass._module.Node? _module.Node$Key@@0 _module.Node$Value@@0)))
 )))
 (assert (forall ((_module.Map$Key@@4 T@U) (_module.Map$Value@@4 T@U) (|c#0@@1| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0@@1| (Tclass._module.Map _module.Map$Key@@4 _module.Map$Value@@4) $h) ($IsAlloc refType |c#0@@1| (Tclass._module.Map? _module.Map$Key@@4 _module.Map$Value@@4) $h))
+ :qid |unknown.0:0|
+ :skolemid |978|
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass._module.Map _module.Map$Key@@4 _module.Map$Value@@4) $h))
  :pattern ( ($IsAlloc refType |c#0@@1| (Tclass._module.Map? _module.Map$Key@@4 _module.Map$Value@@4) $h))
 )))
 (assert (forall ((_module.Node$Key@@1 T@U) (_module.Node$Value@@1 T@U) (|c#0@@2| T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass._module.Node _module.Node$Key@@1 _module.Node$Value@@1) $h@@0) ($IsAlloc refType |c#0@@2| (Tclass._module.Node? _module.Node$Key@@1 _module.Node$Value@@1) $h@@0))
+ :qid |unknown.0:0|
+ :skolemid |993|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass._module.Node _module.Node$Key@@1 _module.Node$Value@@1) $h@@0))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass._module.Node? _module.Node$Key@@1 _module.Node$Value@@1) $h@@0))
 )))
 (assert (forall ((_module.Map$Key@@5 T@U) (_module.Map$Value@@5 T@U) ($o@@1 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@1 (Tclass._module.Map? _module.Map$Key@@5 _module.Map$Value@@5) $h@@1)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |533|
  :pattern ( ($IsAlloc refType $o@@1 (Tclass._module.Map? _module.Map$Key@@5 _module.Map$Value@@5) $h@@1))
 )))
 (assert (forall ((_module.Node$Key@@2 T@U) (_module.Node$Value@@2 T@U) ($o@@2 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@2 (Tclass._module.Node? _module.Node$Key@@2 _module.Node$Value@@2) $h@@2)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |980|
  :pattern ( ($IsAlloc refType $o@@2 (Tclass._module.Node? _module.Node$Key@@2 _module.Node$Value@@2) $h@@2))
 )))
 (assert (forall ((a@@5 T@U) (b@@2 T@U) ) (!  (=> (|Set#Equal| a@@5 b@@2) (= a@@5 b@@2))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |150|
  :pattern ( (|Set#Equal| a@@5 b@@2))
 )))
 (assert (forall ((cl T@U) (nm T@U) ) (!  (and (= (DeclType (FieldOfDecl cl nm)) cl) (= (DeclName (FieldOfDecl cl nm)) nm))
+ :qid |DafnyPreludebpl.534:15|
+ :skolemid |107|
  :pattern ( (FieldOfDecl cl nm))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@1 T@T) ) (! (= ($IsBox ($Box T@@1 v@@1) t@@0) ($Is T@@1 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@1 v@@1) t@@0))
 )))
 (assert (forall ((v@@2 T@U) (t0@@1 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@0) ($IsAllocBox bx@@0 t0@@1 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@0))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@1) h@@0))
 )))
 (assert (forall ((_module.Map$Key@@6 T@U) (_module.Map$Value@@6 T@U) ) (! (= (Tclass._module.Map?_0 (Tclass._module.Map? _module.Map$Key@@6 _module.Map$Value@@6)) _module.Map$Key@@6)
+ :qid |unknown.0:0|
+ :skolemid |529|
  :pattern ( (Tclass._module.Map? _module.Map$Key@@6 _module.Map$Value@@6))
 )))
 (assert (forall ((_module.Map$Key@@7 T@U) (_module.Map$Value@@7 T@U) ) (! (= (Tclass._module.Map?_1 (Tclass._module.Map? _module.Map$Key@@7 _module.Map$Value@@7)) _module.Map$Value@@7)
+ :qid |unknown.0:0|
+ :skolemid |530|
  :pattern ( (Tclass._module.Map? _module.Map$Key@@7 _module.Map$Value@@7))
 )))
 (assert (forall ((_module.Node$Key@@3 T@U) (_module.Node$Value@@3 T@U) ) (! (= (Tclass._module.Node?_0 (Tclass._module.Node? _module.Node$Key@@3 _module.Node$Value@@3)) _module.Node$Key@@3)
+ :qid |unknown.0:0|
+ :skolemid |539|
  :pattern ( (Tclass._module.Node? _module.Node$Key@@3 _module.Node$Value@@3))
 )))
 (assert (forall ((_module.Node$Key@@4 T@U) (_module.Node$Value@@4 T@U) ) (! (= (Tclass._module.Node?_1 (Tclass._module.Node? _module.Node$Key@@4 _module.Node$Value@@4)) _module.Node$Value@@4)
+ :qid |unknown.0:0|
+ :skolemid |540|
  :pattern ( (Tclass._module.Node? _module.Node$Key@@4 _module.Node$Value@@4))
 )))
 (assert (forall ((_module.Node$Key@@5 T@U) (_module.Node$Value@@5 T@U) ) (! (= (Tclass._module.Node_0 (Tclass._module.Node _module.Node$Key@@5 _module.Node$Value@@5)) _module.Node$Key@@5)
+ :qid |unknown.0:0|
+ :skolemid |545|
  :pattern ( (Tclass._module.Node _module.Node$Key@@5 _module.Node$Value@@5))
 )))
 (assert (forall ((_module.Node$Key@@6 T@U) (_module.Node$Value@@6 T@U) ) (! (= (Tclass._module.Node_1 (Tclass._module.Node _module.Node$Key@@6 _module.Node$Value@@6)) _module.Node$Value@@6)
+ :qid |unknown.0:0|
+ :skolemid |546|
  :pattern ( (Tclass._module.Node _module.Node$Key@@6 _module.Node$Value@@6))
 )))
 (assert (forall ((_module.Map$Key@@8 T@U) (_module.Map$Value@@8 T@U) ) (! (= (Tclass._module.Map_0 (Tclass._module.Map _module.Map$Key@@8 _module.Map$Value@@8)) _module.Map$Key@@8)
+ :qid |unknown.0:0|
+ :skolemid |552|
  :pattern ( (Tclass._module.Map _module.Map$Key@@8 _module.Map$Value@@8))
 )))
 (assert (forall ((_module.Map$Key@@9 T@U) (_module.Map$Value@@9 T@U) ) (! (= (Tclass._module.Map_1 (Tclass._module.Map _module.Map$Key@@9 _module.Map$Value@@9)) _module.Map$Value@@9)
+ :qid |unknown.0:0|
+ :skolemid |553|
  :pattern ( (Tclass._module.Map _module.Map$Key@@9 _module.Map$Value@@9))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((x@@6 T@U) (T@@2 T@T) ) (! (= ($Unbox T@@2 ($Box T@@2 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@2 x@@6))
 )))
 (assert (forall ((_module.Node$Key@@7 T@U) (_module.Node$Value@@7 T@U) ($h@@3 T@U) ($o@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (or (not (= $o@@3 null)) (not true)) (= (dtype $o@@3) (Tclass._module.Node? _module.Node$Key@@7 _module.Node$Value@@7)))) ($Is refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) _module.Node.next)) (Tclass._module.Node? _module.Node$Key@@7 _module.Node$Value@@7)))
+ :qid |unknown.0:0|
+ :skolemid |985|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@3 $o@@3) _module.Node.next)) (Tclass._module.Node? _module.Node$Key@@7 _module.Node$Value@@7))
 )))
 (assert (forall ((_module.Map$Key@@10 T@U) (_module.Map$Value@@10 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass._module.Map? _module.Map$Key@@10 _module.Map$Value@@10)) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) (Tclass._module.Map? _module.Map$Key@@10 _module.Map$Value@@10))))
+ :qid |unknown.0:0|
+ :skolemid |531|
  :pattern ( ($IsBox bx@@1 (Tclass._module.Map? _module.Map$Key@@10 _module.Map$Value@@10)))
 )))
 (assert (forall ((_module.Node$Key@@8 T@U) (_module.Node$Value@@8 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass._module.Node? _module.Node$Key@@8 _module.Node$Value@@8)) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) (Tclass._module.Node? _module.Node$Key@@8 _module.Node$Value@@8))))
+ :qid |unknown.0:0|
+ :skolemid |541|
  :pattern ( ($IsBox bx@@2 (Tclass._module.Node? _module.Node$Key@@8 _module.Node$Value@@8)))
 )))
 (assert (forall ((_module.Node$Key@@9 T@U) (_module.Node$Value@@9 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass._module.Node _module.Node$Key@@9 _module.Node$Value@@9)) (and (= ($Box refType ($Unbox refType bx@@3)) bx@@3) ($Is refType ($Unbox refType bx@@3) (Tclass._module.Node _module.Node$Key@@9 _module.Node$Value@@9))))
+ :qid |unknown.0:0|
+ :skolemid |547|
  :pattern ( ($IsBox bx@@3 (Tclass._module.Node _module.Node$Key@@9 _module.Node$Value@@9)))
 )))
 (assert (forall ((_module.Map$Key@@11 T@U) (_module.Map$Value@@11 T@U) (bx@@4 T@U) ) (!  (=> ($IsBox bx@@4 (Tclass._module.Map _module.Map$Key@@11 _module.Map$Value@@11)) (and (= ($Box refType ($Unbox refType bx@@4)) bx@@4) ($Is refType ($Unbox refType bx@@4) (Tclass._module.Map _module.Map$Key@@11 _module.Map$Value@@11))))
+ :qid |unknown.0:0|
+ :skolemid |554|
  :pattern ( ($IsBox bx@@4 (Tclass._module.Map _module.Map$Key@@11 _module.Map$Value@@11)))
 )))
 (assert  (and (forall ((t0@@2 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 t2 (MapType1Store t0@@2 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@4 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#3| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))  (=> (and (or (not (= $o@@4 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@4) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |1015|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#3| |l#0| |l#1| |l#2| |l#3|) $o@@4 $f))
 )))
 (assert (forall ((_module.Map$Key@@12 T@U) (_module.Map$Value@@12 T@U) ) (!  (and (= (Tag (Tclass._module.Map? _module.Map$Key@@12 _module.Map$Value@@12)) Tagclass._module.Map?) (= (TagFamily (Tclass._module.Map? _module.Map$Key@@12 _module.Map$Value@@12)) tytagFamily$Map))
+ :qid |unknown.0:0|
+ :skolemid |528|
  :pattern ( (Tclass._module.Map? _module.Map$Key@@12 _module.Map$Value@@12))
 )))
 (assert (forall ((_module.Node$Key@@10 T@U) (_module.Node$Value@@10 T@U) ) (!  (and (= (Tag (Tclass._module.Node? _module.Node$Key@@10 _module.Node$Value@@10)) Tagclass._module.Node?) (= (TagFamily (Tclass._module.Node? _module.Node$Key@@10 _module.Node$Value@@10)) tytagFamily$Node))
+ :qid |unknown.0:0|
+ :skolemid |538|
  :pattern ( (Tclass._module.Node? _module.Node$Key@@10 _module.Node$Value@@10))
 )))
 (assert (forall ((_module.Node$Key@@11 T@U) (_module.Node$Value@@11 T@U) ) (!  (and (= (Tag (Tclass._module.Node _module.Node$Key@@11 _module.Node$Value@@11)) Tagclass._module.Node) (= (TagFamily (Tclass._module.Node _module.Node$Key@@11 _module.Node$Value@@11)) tytagFamily$Node))
+ :qid |unknown.0:0|
+ :skolemid |544|
  :pattern ( (Tclass._module.Node _module.Node$Key@@11 _module.Node$Value@@11))
 )))
 (assert (forall ((_module.Map$Key@@13 T@U) (_module.Map$Value@@13 T@U) ) (!  (and (= (Tag (Tclass._module.Map _module.Map$Key@@13 _module.Map$Value@@13)) Tagclass._module.Map) (= (TagFamily (Tclass._module.Map _module.Map$Key@@13 _module.Map$Value@@13)) tytagFamily$Map))
+ :qid |unknown.0:0|
+ :skolemid |551|
  :pattern ( (Tclass._module.Map _module.Map$Key@@13 _module.Map$Value@@13))
 )))
 (assert (forall ((_module.Node$Key@@12 T@U) (_module.Node$Value@@12 T@U) ($h@@4 T@U) ($o@@5 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@4) (and (or (not (= $o@@5 null)) (not true)) (= (dtype $o@@5) (Tclass._module.Node? _module.Node$Key@@12 _module.Node$Value@@12)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@5) alloc)))) ($IsAlloc refType ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@5) _module.Node.next)) (Tclass._module.Node? _module.Node$Key@@12 _module.Node$Value@@12) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |986|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@4 $o@@5) _module.Node.next)) (Tclass._module.Node? _module.Node$Key@@12 _module.Node$Value@@12))
 )))
 (assert (forall ((bx@@5 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@5 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@5)) bx@@5) ($Is SetType ($Unbox SetType bx@@5) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@5 (TSet t@@3)))
 )))
 (assert (forall ((_module.Node$Key@@13 T@U) (_module.Node$Value@@13 T@U) ($h@@5 T@U) ($o@@6 T@U) ) (!  (=> (and ($IsGoodHeap $h@@5) (and (or (not (= $o@@6 null)) (not true)) (= (dtype $o@@6) (Tclass._module.Node? _module.Node$Key@@13 _module.Node$Value@@13)))) ($Is SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@6) _module.Node.Spine)) (TSet (Tclass._module.Node _module.Node$Key@@13 _module.Node$Value@@13))))
+ :qid |unknown.0:0|
+ :skolemid |987|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@5 $o@@6) _module.Node.Spine)) (Tclass._module.Node? _module.Node$Key@@13 _module.Node$Value@@13))
 )))
 (assert (forall ((_module.Node$Key@@14 T@U) (_module.Node$Value@@14 T@U) ($h@@6 T@U) ($o@@7 T@U) ) (!  (=> (and (and ($IsGoodHeap $h@@6) (and (or (not (= $o@@7 null)) (not true)) (= (dtype $o@@7) (Tclass._module.Node? _module.Node$Key@@14 _module.Node$Value@@14)))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) alloc)))) ($IsAlloc SetType ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) _module.Node.Spine)) (TSet (Tclass._module.Node _module.Node$Key@@14 _module.Node$Value@@14)) $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |988|
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@6 $o@@7) _module.Node.Spine)) (Tclass._module.Node? _module.Node$Key@@14 _module.Node$Value@@14))
 )))
 (assert (forall ((a@@6 T@U) (b@@3 T@U) ) (! (= (|Set#Equal| a@@6 b@@3) (forall ((o@@3 T@U) ) (! (= (|Set#IsMember| a@@6 o@@3) (|Set#IsMember| b@@3 o@@3))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |148|
  :pattern ( (|Set#IsMember| a@@6 o@@3))
  :pattern ( (|Set#IsMember| b@@3 o@@3))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |149|
  :pattern ( (|Set#Equal| a@@6 b@@3))
 )))
 (push 1)
@@ -320,6 +445,7 @@
 (declare-fun |spine#0@@2| () T@U)
 (declare-fun |p#0| () T@U)
 (declare-fun this () T@U)
+(set-info :boogie-vc-id Impl$$_module.Map.SpineValidCombine)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -336,14 +462,20 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#3| null $Heap@@2 alloc false)) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (= $Heap@@2 $Heap@0)) (and (and (forall ((|$ih#spine0#0| T@U) (|$ih#p0#0| T@U) ) (!  (=> (and (and (and ($Is SetType |$ih#spine0#0| (TSet (Tclass._module.Node _module.Map$Key@@14 _module.Map$Value@@14))) ($Is refType |$ih#p0#0| (Tclass._module.Node? _module.Map$Key@@14 _module.Map$Value@@14))) (and (_module.Map.SpineValid__One _module.Map$Key@@14 _module.Map$Value@@14 $Heap@@2 |$ih#spine0#0| |$ih#p0#0|) (forall ((|n#2| T@U) ) (!  (=> ($Is refType |n#2| (Tclass._module.Node _module.Map$Key@@14 _module.Map$Value@@14)) (=> (|Set#IsMember| |$ih#spine0#0| ($Box refType |n#2|)) (_module.Map.SpineValid__One _module.Map$Key@@14 _module.Map$Value@@14 $Heap@@2 ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#2|) _module.Node.Spine)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#2|) _module.Node.next)))))
+ :qid |b4dfy.51:21|
+ :skolemid |629|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#2|) _module.Node.next)))
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#2|) _module.Node.Spine)))
  :pattern ( (|Set#IsMember| |$ih#spine0#0| ($Box refType |n#2|)))
 )))) (or (and (|Set#Subset| |$ih#spine0#0| |spine#0@@2|) (not (|Set#Subset| |spine#0@@2| |$ih#spine0#0|))) (and (|Set#Equal| |$ih#spine0#0| |spine#0@@2|) (and (= |$ih#p0#0| null) (or (not (= |p#0| null)) (not true)))))) (_module.Map.SpineValid _module.Map$Key@@14 _module.Map$Value@@14 ($LS $LZ) $Heap@0 |$ih#spine0#0| |$ih#p0#0|))
+ :qid |b4dfy.49:27|
+ :skolemid |630|
  :pattern ( (_module.Map.SpineValid _module.Map$Key@@14 _module.Map$Value@@14 ($LS $LZ) $Heap@0 |$ih#spine0#0| |$ih#p0#0|))
  :pattern ( (_module.Map.SpineValid__One _module.Map$Key@@14 _module.Map$Value@@14 $Heap@0 |$ih#spine0#0| |$ih#p0#0|))
 )) (= (ControlFlow 0 2) (- 0 1))) (|_module.Map.SpineValid#canCall| _module.Map$Key@@14 _module.Map$Value@@14 $Heap@0 |spine#0@@2| |p#0|))) (or (_module.Map.SpineValid _module.Map$Key@@14 _module.Map$Value@@14 ($LS $LZ) $Heap@0 |spine#0@@2| |p#0|) (or (and (= |p#0| null) (|Set#Equal| |spine#0@@2| |Set#Empty|)) (and (and (and (or (not (= |p#0| null)) (not true)) (|Set#IsMember| |spine#0@@2| ($Box refType |p#0|))) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |p#0|) _module.Node.Spine)) (|Set#Difference| |spine#0@@2| (|Set#UnionOne| |Set#Empty| ($Box refType |p#0|))))) (_module.Map.SpineValid _module.Map$Key@@14 _module.Map$Value@@14 ($LS ($LS $LZ)) $Heap@0 ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |p#0|) _module.Node.Spine)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 |p#0|) _module.Node.next))))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap@@2) ($IsHeapAnchor $Heap@@2)) (=> (and (and (or (not (= this null)) (not true)) (and ($Is refType this (Tclass._module.Map _module.Map$Key@@14 _module.Map$Value@@14)) ($IsAlloc refType this (Tclass._module.Map _module.Map$Key@@14 _module.Map$Value@@14) $Heap@@2))) (and ($Is SetType |spine#0@@2| (TSet (Tclass._module.Node _module.Map$Key@@14 _module.Map$Value@@14))) ($IsAlloc SetType |spine#0@@2| (TSet (Tclass._module.Node _module.Map$Key@@14 _module.Map$Value@@14)) $Heap@@2))) (=> (and (and (and ($Is refType |p#0| (Tclass._module.Node? _module.Map$Key@@14 _module.Map$Value@@14)) ($IsAlloc refType |p#0| (Tclass._module.Node? _module.Map$Key@@14 _module.Map$Value@@14) $Heap@@2)) (= 2 $FunctionContextHeight)) (and (and (|_module.Map.SpineValid__One#canCall| _module.Map$Key@@14 _module.Map$Value@@14 $Heap@@2 |spine#0@@2| |p#0|) (and (_module.Map.SpineValid__One _module.Map$Key@@14 _module.Map$Value@@14 $Heap@@2 |spine#0@@2| |p#0|) (or (and (= |p#0| null) (|Set#Equal| |spine#0@@2| |Set#Empty|)) (and (and (or (not (= |p#0| null)) (not true)) (|Set#IsMember| |spine#0@@2| ($Box refType |p#0|))) (|Set#Equal| ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |p#0|) _module.Node.Spine)) (|Set#Difference| |spine#0@@2| (|Set#UnionOne| |Set#Empty| ($Box refType |p#0|)))))))) (and (forall ((|n#1| T@U) ) (!  (=> ($Is refType |n#1| (Tclass._module.Node _module.Map$Key@@14 _module.Map$Value@@14)) (=> (|Set#IsMember| |spine#0@@2| ($Box refType |n#1|)) (_module.Map.SpineValid__One _module.Map$Key@@14 _module.Map$Value@@14 $Heap@@2 ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#1|) _module.Node.Spine)) ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#1|) _module.Node.next)))))
+ :qid |b4dfy.51:21|
+ :skolemid |628|
  :pattern ( ($Unbox refType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#1|) _module.Node.next)))
  :pattern ( ($Unbox SetType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@@2 |n#1|) _module.Node.Spine)))
  :pattern ( (|Set#IsMember| |spine#0@@2| ($Box refType |n#1|)))

@@ -100,265 +100,434 @@
 (declare-fun MapType1Store (T@T T@T T@T T@U T@U T@U T@U) T@U)
 (declare-fun implements$TypeDescriptorTests.UberTrait (T@U T@U T@U T@U) Bool)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSeq alloc Tagclass.TypeDescriptorTests.UberTrait Tagclass.TypeDescriptorTests.UberTrait? Tagclass.TypeDescriptorTests.Trait? Tagclass.TypeDescriptorTests.Trait Tagclass.TypeDescriptorTests.Composition? Tagclass.TypeDescriptorTests.Composition tytagFamily$UberTrait tytagFamily$Trait tytagFamily$Composition)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((TypeDescriptorTests.UberTrait$X T@U) (TypeDescriptorTests.UberTrait$Y T@U) (TypeDescriptorTests.UberTrait$Z T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait_0 (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X TypeDescriptorTests.UberTrait$Y TypeDescriptorTests.UberTrait$Z)) TypeDescriptorTests.UberTrait$X)
+ :qid |unknown.0:0|
+ :skolemid |3824|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X TypeDescriptorTests.UberTrait$Y TypeDescriptorTests.UberTrait$Z))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@0 T@U) (TypeDescriptorTests.UberTrait$Y@@0 T@U) (TypeDescriptorTests.UberTrait$Z@@0 T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait_1 (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@0 TypeDescriptorTests.UberTrait$Y@@0 TypeDescriptorTests.UberTrait$Z@@0)) TypeDescriptorTests.UberTrait$Y@@0)
+ :qid |unknown.0:0|
+ :skolemid |3825|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@0 TypeDescriptorTests.UberTrait$Y@@0 TypeDescriptorTests.UberTrait$Z@@0))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@1 T@U) (TypeDescriptorTests.UberTrait$Y@@1 T@U) (TypeDescriptorTests.UberTrait$Z@@1 T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait_2 (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@1 TypeDescriptorTests.UberTrait$Y@@1 TypeDescriptorTests.UberTrait$Z@@1)) TypeDescriptorTests.UberTrait$Z@@1)
+ :qid |unknown.0:0|
+ :skolemid |3826|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@1 TypeDescriptorTests.UberTrait$Y@@1 TypeDescriptorTests.UberTrait$Z@@1))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@2 T@U) (TypeDescriptorTests.UberTrait$Y@@2 T@U) (TypeDescriptorTests.UberTrait$Z@@2 T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait?_0 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@2 TypeDescriptorTests.UberTrait$Y@@2 TypeDescriptorTests.UberTrait$Z@@2)) TypeDescriptorTests.UberTrait$X@@2)
+ :qid |unknown.0:0|
+ :skolemid |3832|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@2 TypeDescriptorTests.UberTrait$Y@@2 TypeDescriptorTests.UberTrait$Z@@2))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@3 T@U) (TypeDescriptorTests.UberTrait$Y@@3 T@U) (TypeDescriptorTests.UberTrait$Z@@3 T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait?_1 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@3 TypeDescriptorTests.UberTrait$Y@@3 TypeDescriptorTests.UberTrait$Z@@3)) TypeDescriptorTests.UberTrait$Y@@3)
+ :qid |unknown.0:0|
+ :skolemid |3833|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@3 TypeDescriptorTests.UberTrait$Y@@3 TypeDescriptorTests.UberTrait$Z@@3))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@4 T@U) (TypeDescriptorTests.UberTrait$Y@@4 T@U) (TypeDescriptorTests.UberTrait$Z@@4 T@U) ) (! (= (Tclass.TypeDescriptorTests.UberTrait?_2 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@4 TypeDescriptorTests.UberTrait$Y@@4 TypeDescriptorTests.UberTrait$Z@@4)) TypeDescriptorTests.UberTrait$Z@@4)
+ :qid |unknown.0:0|
+ :skolemid |3834|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@4 TypeDescriptorTests.UberTrait$Y@@4 TypeDescriptorTests.UberTrait$Z@@4))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx T@U) (TypeDescriptorTests.Composition$Tx T@U) (TypeDescriptorTests.Composition$RRx T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition?_0 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx TypeDescriptorTests.Composition$Tx TypeDescriptorTests.Composition$RRx)) TypeDescriptorTests.Composition$Sx)
+ :qid |unknown.0:0|
+ :skolemid |3891|
  :pattern ( (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx TypeDescriptorTests.Composition$Tx TypeDescriptorTests.Composition$RRx))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@0 T@U) (TypeDescriptorTests.Composition$Tx@@0 T@U) (TypeDescriptorTests.Composition$RRx@@0 T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition?_1 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@0 TypeDescriptorTests.Composition$Tx@@0 TypeDescriptorTests.Composition$RRx@@0)) TypeDescriptorTests.Composition$Tx@@0)
+ :qid |unknown.0:0|
+ :skolemid |3892|
  :pattern ( (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@0 TypeDescriptorTests.Composition$Tx@@0 TypeDescriptorTests.Composition$RRx@@0))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@1 T@U) (TypeDescriptorTests.Composition$Tx@@1 T@U) (TypeDescriptorTests.Composition$RRx@@1 T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition?_2 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@1 TypeDescriptorTests.Composition$Tx@@1 TypeDescriptorTests.Composition$RRx@@1)) TypeDescriptorTests.Composition$RRx@@1)
+ :qid |unknown.0:0|
+ :skolemid |3893|
  :pattern ( (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@1 TypeDescriptorTests.Composition$Tx@@1 TypeDescriptorTests.Composition$RRx@@1))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@2 T@U) (TypeDescriptorTests.Composition$Tx@@2 T@U) (TypeDescriptorTests.Composition$RRx@@2 T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition_0 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@2 TypeDescriptorTests.Composition$Tx@@2 TypeDescriptorTests.Composition$RRx@@2)) TypeDescriptorTests.Composition$Sx@@2)
+ :qid |unknown.0:0|
+ :skolemid |3901|
  :pattern ( (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@2 TypeDescriptorTests.Composition$Tx@@2 TypeDescriptorTests.Composition$RRx@@2))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@3 T@U) (TypeDescriptorTests.Composition$Tx@@3 T@U) (TypeDescriptorTests.Composition$RRx@@3 T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition_1 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@3 TypeDescriptorTests.Composition$Tx@@3 TypeDescriptorTests.Composition$RRx@@3)) TypeDescriptorTests.Composition$Tx@@3)
+ :qid |unknown.0:0|
+ :skolemid |3902|
  :pattern ( (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@3 TypeDescriptorTests.Composition$Tx@@3 TypeDescriptorTests.Composition$RRx@@3))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@4 T@U) (TypeDescriptorTests.Composition$Tx@@4 T@U) (TypeDescriptorTests.Composition$RRx@@4 T@U) ) (! (= (Tclass.TypeDescriptorTests.Composition_2 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@4 TypeDescriptorTests.Composition$Tx@@4 TypeDescriptorTests.Composition$RRx@@4)) TypeDescriptorTests.Composition$RRx@@4)
+ :qid |unknown.0:0|
+ :skolemid |3903|
  :pattern ( (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@4 TypeDescriptorTests.Composition$Tx@@4 TypeDescriptorTests.Composition$RRx@@4))
 )))
 (assert (= (|Seq#Length| |Seq#Empty|) 0))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@5 T@U) (TypeDescriptorTests.UberTrait$Y@@5 T@U) (TypeDescriptorTests.UberTrait$Z@@5 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@5 TypeDescriptorTests.UberTrait$Y@@5 TypeDescriptorTests.UberTrait$Z@@5)) Tagclass.TypeDescriptorTests.UberTrait) (= (TagFamily (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@5 TypeDescriptorTests.UberTrait$Y@@5 TypeDescriptorTests.UberTrait$Z@@5)) tytagFamily$UberTrait))
+ :qid |unknown.0:0|
+ :skolemid |3823|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@5 TypeDescriptorTests.UberTrait$Y@@5 TypeDescriptorTests.UberTrait$Z@@5))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@6 T@U) (TypeDescriptorTests.UberTrait$Y@@6 T@U) (TypeDescriptorTests.UberTrait$Z@@6 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@6 TypeDescriptorTests.UberTrait$Y@@6 TypeDescriptorTests.UberTrait$Z@@6)) Tagclass.TypeDescriptorTests.UberTrait?) (= (TagFamily (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@6 TypeDescriptorTests.UberTrait$Y@@6 TypeDescriptorTests.UberTrait$Z@@6)) tytagFamily$UberTrait))
+ :qid |unknown.0:0|
+ :skolemid |3831|
  :pattern ( (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@6 TypeDescriptorTests.UberTrait$Y@@6 TypeDescriptorTests.UberTrait$Z@@6))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@5 T@U) (TypeDescriptorTests.Composition$Tx@@5 T@U) (TypeDescriptorTests.Composition$RRx@@5 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@5 TypeDescriptorTests.Composition$Tx@@5 TypeDescriptorTests.Composition$RRx@@5)) Tagclass.TypeDescriptorTests.Composition?) (= (TagFamily (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@5 TypeDescriptorTests.Composition$Tx@@5 TypeDescriptorTests.Composition$RRx@@5)) tytagFamily$Composition))
+ :qid |unknown.0:0|
+ :skolemid |3890|
  :pattern ( (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@5 TypeDescriptorTests.Composition$Tx@@5 TypeDescriptorTests.Composition$RRx@@5))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@6 T@U) (TypeDescriptorTests.Composition$Tx@@6 T@U) (TypeDescriptorTests.Composition$RRx@@6 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@6 TypeDescriptorTests.Composition$Tx@@6 TypeDescriptorTests.Composition$RRx@@6)) Tagclass.TypeDescriptorTests.Composition) (= (TagFamily (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@6 TypeDescriptorTests.Composition$Tx@@6 TypeDescriptorTests.Composition$RRx@@6)) tytagFamily$Composition))
+ :qid |unknown.0:0|
+ :skolemid |3900|
  :pattern ( (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@6 TypeDescriptorTests.Composition$Tx@@6 TypeDescriptorTests.Composition$RRx@@6))
 )))
 (assert (= (Ctor refType) 3))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@7 T@U) (TypeDescriptorTests.UberTrait$Y@@7 T@U) (TypeDescriptorTests.UberTrait$Z@@7 T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@7 TypeDescriptorTests.UberTrait$Y@@7 TypeDescriptorTests.UberTrait$Z@@7)) (and (= ($Box refType ($Unbox refType bx)) bx) ($Is refType ($Unbox refType bx) (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@7 TypeDescriptorTests.UberTrait$Y@@7 TypeDescriptorTests.UberTrait$Z@@7))))
+ :qid |unknown.0:0|
+ :skolemid |3827|
  :pattern ( ($IsBox bx (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@7 TypeDescriptorTests.UberTrait$Y@@7 TypeDescriptorTests.UberTrait$Z@@7)))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@8 T@U) (TypeDescriptorTests.UberTrait$Y@@8 T@U) (TypeDescriptorTests.UberTrait$Z@@8 T@U) (bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@8 TypeDescriptorTests.UberTrait$Y@@8 TypeDescriptorTests.UberTrait$Z@@8)) (and (= ($Box refType ($Unbox refType bx@@0)) bx@@0) ($Is refType ($Unbox refType bx@@0) (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@8 TypeDescriptorTests.UberTrait$Y@@8 TypeDescriptorTests.UberTrait$Z@@8))))
+ :qid |unknown.0:0|
+ :skolemid |3835|
  :pattern ( ($IsBox bx@@0 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@8 TypeDescriptorTests.UberTrait$Y@@8 TypeDescriptorTests.UberTrait$Z@@8)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@7 T@U) (TypeDescriptorTests.Composition$Tx@@7 T@U) (TypeDescriptorTests.Composition$RRx@@7 T@U) (bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@7 TypeDescriptorTests.Composition$Tx@@7 TypeDescriptorTests.Composition$RRx@@7)) (and (= ($Box refType ($Unbox refType bx@@1)) bx@@1) ($Is refType ($Unbox refType bx@@1) (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@7 TypeDescriptorTests.Composition$Tx@@7 TypeDescriptorTests.Composition$RRx@@7))))
+ :qid |unknown.0:0|
+ :skolemid |3894|
  :pattern ( ($IsBox bx@@1 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@7 TypeDescriptorTests.Composition$Tx@@7 TypeDescriptorTests.Composition$RRx@@7)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@8 T@U) (TypeDescriptorTests.Composition$Tx@@8 T@U) (TypeDescriptorTests.Composition$RRx@@8 T@U) (bx@@2 T@U) ) (!  (=> ($IsBox bx@@2 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@8 TypeDescriptorTests.Composition$Tx@@8 TypeDescriptorTests.Composition$RRx@@8)) (and (= ($Box refType ($Unbox refType bx@@2)) bx@@2) ($Is refType ($Unbox refType bx@@2) (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@8 TypeDescriptorTests.Composition$Tx@@8 TypeDescriptorTests.Composition$RRx@@8))))
+ :qid |unknown.0:0|
+ :skolemid |3904|
  :pattern ( ($IsBox bx@@2 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@8 TypeDescriptorTests.Composition$Tx@@8 TypeDescriptorTests.Composition$RRx@@8)))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@9 T@U) (TypeDescriptorTests.UberTrait$Y@@9 T@U) (TypeDescriptorTests.UberTrait$Z@@9 T@U) (|c#0| T@U) ) (! (= ($Is refType |c#0| (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@9 TypeDescriptorTests.UberTrait$Y@@9 TypeDescriptorTests.UberTrait$Z@@9))  (and ($Is refType |c#0| (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@9 TypeDescriptorTests.UberTrait$Y@@9 TypeDescriptorTests.UberTrait$Z@@9)) (or (not (= |c#0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3872|
  :pattern ( ($Is refType |c#0| (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@9 TypeDescriptorTests.UberTrait$Y@@9 TypeDescriptorTests.UberTrait$Z@@9)))
  :pattern ( ($Is refType |c#0| (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@9 TypeDescriptorTests.UberTrait$Y@@9 TypeDescriptorTests.UberTrait$Z@@9)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@9 T@U) (TypeDescriptorTests.Composition$Tx@@9 T@U) (TypeDescriptorTests.Composition$RRx@@9 T@U) (|c#0@@0| T@U) ) (! (= ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@9 TypeDescriptorTests.Composition$Tx@@9 TypeDescriptorTests.Composition$RRx@@9))  (and ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@9 TypeDescriptorTests.Composition$Tx@@9 TypeDescriptorTests.Composition$RRx@@9)) (or (not (= |c#0@@0| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3907|
  :pattern ( ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@9 TypeDescriptorTests.Composition$Tx@@9 TypeDescriptorTests.Composition$RRx@@9)))
  :pattern ( ($Is refType |c#0@@0| (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@9 TypeDescriptorTests.Composition$Tx@@9 TypeDescriptorTests.Composition$RRx@@9)))
 )))
 (assert  (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (val T@U) (m T@U) (x0 T@U) ) (! (= (MapType0Select t0 t1 (MapType0Store t0 t1 m x0 val) x0) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (forall ((u0 T@T) (u1 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (y0 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 (MapType0Store u0 u1 m@@0 x0@@0 val@@0) y0) (MapType0Select u0 u1 m@@0 y0)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
-))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType0Type arg0@@2 arg1)) 6))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor FieldType) 4)) (= (Ctor BoxType) 5)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType0Type arg0@@2 arg1)) 6)
+ :qid |ctor:MapType0Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType0TypeInv0 (MapType0Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType0TypeInv0|
  :pattern ( (MapType0Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType0TypeInv1 (MapType0Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType0TypeInv1|
  :pattern ( (MapType0Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((h T@U) (k T@U) ) (!  (=> ($HeapSucc h k) (forall ((o T@U) ) (!  (=> (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) h o) alloc))) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))))
+ :qid |DafnyPreludebpl.609:30|
+ :skolemid |3393|
  :pattern ( (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) k o) alloc))
 )))
+ :qid |DafnyPreludebpl.608:15|
+ :skolemid |3394|
  :pattern ( ($HeapSucc h k))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T T@U) (TypeDescriptorTests.Trait$R T@U) ($o T@U) ) (!  (=> ($Is refType $o (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T TypeDescriptorTests.Trait$R)) ($Is refType $o (Tclass.TypeDescriptorTests.UberTrait? TInt (TSeq TypeDescriptorTests.Trait$T) (TSeq TypeDescriptorTests.Trait$R))))
+ :qid |unknown.0:0|
+ :skolemid |4003|
  :pattern ( ($Is refType $o (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T TypeDescriptorTests.Trait$R)))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@0 T@U) (TypeDescriptorTests.Trait$R@@0 T@U) (bx@@3 T@U) ) (!  (=> ($IsBox bx@@3 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@0 TypeDescriptorTests.Trait$R@@0)) ($IsBox bx@@3 (Tclass.TypeDescriptorTests.UberTrait? TInt (TSeq TypeDescriptorTests.Trait$T@@0) (TSeq TypeDescriptorTests.Trait$R@@0))))
+ :qid |unknown.0:0|
+ :skolemid |4001|
  :pattern ( ($IsBox bx@@3 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@0 TypeDescriptorTests.Trait$R@@0)))
 )))
 (assert (forall ((x@@2 T@U) (T T@T) ) (! (= ($Box T ($Unbox T x@@2)) x@@2)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |3301|
  :pattern ( ($Unbox T x@@2))
 )))
-(assert (forall ((TypeDescriptorTests.Composition$Sx@@10 T@U) (TypeDescriptorTests.Composition$Tx@@10 T@U) (TypeDescriptorTests.Composition$RRx@@10 T@U) ) (implements$TypeDescriptorTests.Trait (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@10 TypeDescriptorTests.Composition$Tx@@10 TypeDescriptorTests.Composition$RRx@@10) TypeDescriptorTests.Composition$Sx@@10 TypeDescriptorTests.Composition$RRx@@10)))
-(assert (forall ((TypeDescriptorTests.Composition$Sx@@11 T@U) (TypeDescriptorTests.Composition$Tx@@11 T@U) (TypeDescriptorTests.Composition$RRx@@11 T@U) ) (implements$TypeDescriptorTests.Trait (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@11 TypeDescriptorTests.Composition$Tx@@11 TypeDescriptorTests.Composition$RRx@@11) TypeDescriptorTests.Composition$Sx@@11 TypeDescriptorTests.Composition$RRx@@11)))
+(assert (forall ((TypeDescriptorTests.Composition$Sx@@10 T@U) (TypeDescriptorTests.Composition$Tx@@10 T@U) (TypeDescriptorTests.Composition$RRx@@10 T@U) ) (! (implements$TypeDescriptorTests.Trait (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@10 TypeDescriptorTests.Composition$Tx@@10 TypeDescriptorTests.Composition$RRx@@10) TypeDescriptorTests.Composition$Sx@@10 TypeDescriptorTests.Composition$RRx@@10)
+ :qid |unknown.0:0|
+ :skolemid |3897|
+)))
+(assert (forall ((TypeDescriptorTests.Composition$Sx@@11 T@U) (TypeDescriptorTests.Composition$Tx@@11 T@U) (TypeDescriptorTests.Composition$RRx@@11 T@U) ) (! (implements$TypeDescriptorTests.Trait (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@11 TypeDescriptorTests.Composition$Tx@@11 TypeDescriptorTests.Composition$RRx@@11) TypeDescriptorTests.Composition$Sx@@11 TypeDescriptorTests.Composition$RRx@@11)
+ :qid |unknown.0:0|
+ :skolemid |3898|
+)))
 (assert (forall ((TypeDescriptorTests.Trait$T@@1 T@U) (TypeDescriptorTests.Trait$R@@1 T@U) ($o@@0 T@U) ($heap T@U) ) (!  (=> ($IsAlloc refType $o@@0 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@1 TypeDescriptorTests.Trait$R@@1) $heap) ($IsAlloc refType $o@@0 (Tclass.TypeDescriptorTests.UberTrait? TInt (TSeq TypeDescriptorTests.Trait$T@@1) (TSeq TypeDescriptorTests.Trait$R@@1)) $heap))
+ :qid |unknown.0:0|
+ :skolemid |4004|
  :pattern ( ($IsAlloc refType $o@@0 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@1 TypeDescriptorTests.Trait$R@@1) $heap))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@2 T@U) (TypeDescriptorTests.Trait$R@@2 T@U) (|c#0@@1| T@U) ) (! (= ($Is refType |c#0@@1| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@2 TypeDescriptorTests.Trait$R@@2))  (and ($Is refType |c#0@@1| (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@2 TypeDescriptorTests.Trait$R@@2)) (or (not (= |c#0@@1| null)) (not true))))
+ :qid |unknown.0:0|
+ :skolemid |3888|
  :pattern ( ($Is refType |c#0@@1| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@2 TypeDescriptorTests.Trait$R@@2)))
  :pattern ( ($Is refType |c#0@@1| (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@2 TypeDescriptorTests.Trait$R@@2)))
 )))
 (assert (forall ((v T@U) (t T@U) (h@@0 T@U) (T@@0 T@T) ) (! (= ($IsAllocBox ($Box T@@0 v) t h@@0) ($IsAlloc T@@0 v t h@@0))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |3314|
  :pattern ( ($IsAllocBox ($Box T@@0 v) t h@@0))
 )))
 (assert (forall ((h@@1 T@U) (k@@0 T@U) (bx@@4 T@U) (t@@0 T@U) ) (!  (=> ($HeapSucc h@@1 k@@0) (=> ($IsAllocBox bx@@4 t@@0 h@@1) ($IsAllocBox bx@@4 t@@0 k@@0)))
+ :qid |DafnyPreludebpl.557:15|
+ :skolemid |3386|
  :pattern ( ($HeapSucc h@@1 k@@0) ($IsAllocBox bx@@4 t@@0 h@@1))
 )))
 (assert (forall ((h@@2 T@U) (k@@1 T@U) (v@@0 T@U) (t@@1 T@U) (T@@1 T@T) ) (!  (=> ($HeapSucc h@@2 k@@1) (=> ($IsAlloc T@@1 v@@0 t@@1 h@@2) ($IsAlloc T@@1 v@@0 t@@1 k@@1)))
+ :qid |DafnyPreludebpl.554:18|
+ :skolemid |3385|
  :pattern ( ($HeapSucc h@@2 k@@1) ($IsAlloc T@@1 v@@0 t@@1 h@@2))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@3 T@U) (TypeDescriptorTests.Trait$R@@3 T@U) (|c#0@@2| T@U) ($h T@U) ) (! (= ($IsAlloc refType |c#0@@2| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@3 TypeDescriptorTests.Trait$R@@3) $h) ($IsAlloc refType |c#0@@2| (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@3 TypeDescriptorTests.Trait$R@@3) $h))
+ :qid |unknown.0:0|
+ :skolemid |3889|
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@3 TypeDescriptorTests.Trait$R@@3) $h))
  :pattern ( ($IsAlloc refType |c#0@@2| (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@3 TypeDescriptorTests.Trait$R@@3) $h))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@10 T@U) (TypeDescriptorTests.UberTrait$Y@@10 T@U) (TypeDescriptorTests.UberTrait$Z@@10 T@U) ($o@@1 T@U) ($h@@0 T@U) ) (! (= ($IsAlloc refType $o@@1 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@10 TypeDescriptorTests.UberTrait$Y@@10 TypeDescriptorTests.UberTrait$Z@@10) $h@@0)  (or (= $o@@1 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@0 $o@@1) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3863|
  :pattern ( ($IsAlloc refType $o@@1 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@10 TypeDescriptorTests.UberTrait$Y@@10 TypeDescriptorTests.UberTrait$Z@@10) $h@@0))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@12 T@U) (TypeDescriptorTests.Composition$Tx@@12 T@U) (TypeDescriptorTests.Composition$RRx@@12 T@U) ($o@@2 T@U) ($h@@1 T@U) ) (! (= ($IsAlloc refType $o@@2 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@12 TypeDescriptorTests.Composition$Tx@@12 TypeDescriptorTests.Composition$RRx@@12) $h@@1)  (or (= $o@@2 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@1 $o@@2) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3896|
  :pattern ( ($IsAlloc refType $o@@2 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@12 TypeDescriptorTests.Composition$Tx@@12 TypeDescriptorTests.Composition$RRx@@12) $h@@1))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@13 T@U) (TypeDescriptorTests.Composition$Tx@@13 T@U) (TypeDescriptorTests.Composition$RRx@@13 T@U) ($o@@3 T@U) ) (!  (=> ($Is refType $o@@3 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@13 TypeDescriptorTests.Composition$Tx@@13 TypeDescriptorTests.Composition$RRx@@13)) ($Is refType $o@@3 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@13 TypeDescriptorTests.Composition$RRx@@13)))
+ :qid |unknown.0:0|
+ :skolemid |4007|
  :pattern ( ($Is refType $o@@3 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@13 TypeDescriptorTests.Composition$Tx@@13 TypeDescriptorTests.Composition$RRx@@13)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@14 T@U) (TypeDescriptorTests.Composition$Tx@@14 T@U) (TypeDescriptorTests.Composition$RRx@@14 T@U) (bx@@5 T@U) ) (!  (=> ($IsBox bx@@5 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@14 TypeDescriptorTests.Composition$Tx@@14 TypeDescriptorTests.Composition$RRx@@14)) ($IsBox bx@@5 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@14 TypeDescriptorTests.Composition$RRx@@14)))
+ :qid |unknown.0:0|
+ :skolemid |4005|
  :pattern ( ($IsBox bx@@5 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@14 TypeDescriptorTests.Composition$Tx@@14 TypeDescriptorTests.Composition$RRx@@14)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@15 T@U) (TypeDescriptorTests.Composition$Tx@@15 T@U) (TypeDescriptorTests.Composition$RRx@@15 T@U) ($o@@4 T@U) ) (!  (=> ($Is refType $o@@4 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@15 TypeDescriptorTests.Composition$Tx@@15 TypeDescriptorTests.Composition$RRx@@15)) ($Is refType $o@@4 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@15 TypeDescriptorTests.Composition$RRx@@15)))
+ :qid |unknown.0:0|
+ :skolemid |4011|
  :pattern ( ($Is refType $o@@4 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@15 TypeDescriptorTests.Composition$Tx@@15 TypeDescriptorTests.Composition$RRx@@15)))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@16 T@U) (TypeDescriptorTests.Composition$Tx@@16 T@U) (TypeDescriptorTests.Composition$RRx@@16 T@U) (bx@@6 T@U) ) (!  (=> ($IsBox bx@@6 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@16 TypeDescriptorTests.Composition$Tx@@16 TypeDescriptorTests.Composition$RRx@@16)) ($IsBox bx@@6 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@16 TypeDescriptorTests.Composition$RRx@@16)))
+ :qid |unknown.0:0|
+ :skolemid |4009|
  :pattern ( ($IsBox bx@@6 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@16 TypeDescriptorTests.Composition$Tx@@16 TypeDescriptorTests.Composition$RRx@@16)))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@4 T@U) (TypeDescriptorTests.Trait$R@@4 T@U) ($o@@5 T@U) ($h@@2 T@U) ) (! (= ($IsAlloc refType $o@@5 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@4 TypeDescriptorTests.Trait$R@@4) $h@@2)  (or (= $o@@5 null) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $h@@2 $o@@5) alloc)))))
+ :qid |unknown.0:0|
+ :skolemid |3879|
  :pattern ( ($IsAlloc refType $o@@5 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@4 TypeDescriptorTests.Trait$R@@4) $h@@2))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@17 T@U) (TypeDescriptorTests.Composition$Tx@@17 T@U) (TypeDescriptorTests.Composition$RRx@@17 T@U) (bx@@7 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsAllocBox bx@@7 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@17 TypeDescriptorTests.Composition$Tx@@17 TypeDescriptorTests.Composition$RRx@@17) $h@@3) ($IsGoodHeap $h@@3)) ($IsAllocBox bx@@7 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@17 TypeDescriptorTests.Composition$RRx@@17) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |4006|
  :pattern ( ($IsAllocBox bx@@7 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@17 TypeDescriptorTests.Composition$Tx@@17 TypeDescriptorTests.Composition$RRx@@17) $h@@3))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@18 T@U) (TypeDescriptorTests.Composition$Tx@@18 T@U) (TypeDescriptorTests.Composition$RRx@@18 T@U) (bx@@8 T@U) ($h@@4 T@U) ) (!  (=> (and ($IsAllocBox bx@@8 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@18 TypeDescriptorTests.Composition$Tx@@18 TypeDescriptorTests.Composition$RRx@@18) $h@@4) ($IsGoodHeap $h@@4)) ($IsAllocBox bx@@8 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@18 TypeDescriptorTests.Composition$RRx@@18) $h@@4))
+ :qid |unknown.0:0|
+ :skolemid |4010|
  :pattern ( ($IsAllocBox bx@@8 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@18 TypeDescriptorTests.Composition$Tx@@18 TypeDescriptorTests.Composition$RRx@@18) $h@@4))
 )))
 (assert (forall ((a T@U) (b T@U) (c T@U) ) (!  (=> (or (not (= a c)) (not true)) (=> (and ($HeapSucc a b) ($HeapSucc b c)) ($HeapSucc a c)))
+ :qid |DafnyPreludebpl.606:15|
+ :skolemid |3392|
  :pattern ( ($HeapSucc a b) ($HeapSucc b c))
 )))
 (assert (forall ((bx@@9 T@U) ) (!  (=> ($IsBox bx@@9 TInt) (and (= ($Box intType ($Unbox intType bx@@9)) bx@@9) ($Is intType ($Unbox intType bx@@9) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |3302|
  :pattern ( ($IsBox bx@@9 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@2 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@2) ($Is T@@2 v@@1 t@@2))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |3313|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@2))
 )))
 (assert (forall ((s T@U) ) (! (<= 0 (|Seq#Length| s))
+ :qid |DafnyPreludebpl.1124:15|
+ :skolemid |3496|
  :pattern ( (|Seq#Length| s))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@5 T@U) (TypeDescriptorTests.Trait$R@@5 T@U) ) (! (= (Tclass.TypeDescriptorTests.Trait?_0 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@5 TypeDescriptorTests.Trait$R@@5)) TypeDescriptorTests.Trait$T@@5)
+ :qid |unknown.0:0|
+ :skolemid |3875|
  :pattern ( (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@5 TypeDescriptorTests.Trait$R@@5))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@6 T@U) (TypeDescriptorTests.Trait$R@@6 T@U) ) (! (= (Tclass.TypeDescriptorTests.Trait?_1 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@6 TypeDescriptorTests.Trait$R@@6)) TypeDescriptorTests.Trait$R@@6)
+ :qid |unknown.0:0|
+ :skolemid |3876|
  :pattern ( (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@6 TypeDescriptorTests.Trait$R@@6))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@7 T@U) (TypeDescriptorTests.Trait$R@@7 T@U) ) (! (= (Tclass.TypeDescriptorTests.Trait_0 (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@7 TypeDescriptorTests.Trait$R@@7)) TypeDescriptorTests.Trait$T@@7)
+ :qid |unknown.0:0|
+ :skolemid |3881|
  :pattern ( (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@7 TypeDescriptorTests.Trait$R@@7))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@8 T@U) (TypeDescriptorTests.Trait$R@@8 T@U) ) (! (= (Tclass.TypeDescriptorTests.Trait_1 (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@8 TypeDescriptorTests.Trait$R@@8)) TypeDescriptorTests.Trait$R@@8)
+ :qid |unknown.0:0|
+ :skolemid |3882|
  :pattern ( (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@8 TypeDescriptorTests.Trait$R@@8))
 )))
 (assert (= (Ctor SeqType) 7))
 (assert (forall ((v@@2 T@U) (t0@@0 T@U) (h@@3 T@U) ) (! (= ($IsAlloc SeqType v@@2 (TSeq t0@@0) h@@3) (forall ((i Int) ) (!  (=> (and (<= 0 i) (< i (|Seq#Length| v@@2))) ($IsAllocBox (|Seq#Index| v@@2 i) t0@@0 h@@3))
+ :qid |DafnyPreludebpl.311:11|
+ :skolemid |3348|
  :pattern ( (|Seq#Index| v@@2 i))
 )))
+ :qid |DafnyPreludebpl.309:15|
+ :skolemid |3349|
  :pattern ( ($IsAlloc SeqType v@@2 (TSeq t0@@0) h@@3))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@9 T@U) (TypeDescriptorTests.Trait$R@@9 T@U) ($o@@6 T@U) ) (! (= ($Is refType $o@@6 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@9 TypeDescriptorTests.Trait$R@@9))  (or (= $o@@6 null) (implements$TypeDescriptorTests.Trait (dtype $o@@6) TypeDescriptorTests.Trait$T@@9 TypeDescriptorTests.Trait$R@@9)))
+ :qid |unknown.0:0|
+ :skolemid |3878|
  :pattern ( ($Is refType $o@@6 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@9 TypeDescriptorTests.Trait$R@@9)))
 )))
 (assert (forall ((t@@3 T@U) ) (! (= (Inv0_TSeq (TSeq t@@3)) t@@3)
+ :qid |DafnyPreludebpl.53:15|
+ :skolemid |3282|
  :pattern ( (TSeq t@@3))
 )))
 (assert (forall ((t@@4 T@U) ) (! (= (Tag (TSeq t@@4)) TagSeq)
+ :qid |DafnyPreludebpl.54:15|
+ :skolemid |3283|
  :pattern ( (TSeq t@@4))
 )))
 (assert (forall ((x@@3 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@3)) x@@3)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |3300|
  :pattern ( ($Box T@@3 x@@3))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@10 T@U) (TypeDescriptorTests.Trait$R@@10 T@U) (bx@@10 T@U) ) (!  (=> ($IsBox bx@@10 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@10 TypeDescriptorTests.Trait$R@@10)) (and (= ($Box refType ($Unbox refType bx@@10)) bx@@10) ($Is refType ($Unbox refType bx@@10) (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@10 TypeDescriptorTests.Trait$R@@10))))
+ :qid |unknown.0:0|
+ :skolemid |3877|
  :pattern ( ($IsBox bx@@10 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@10 TypeDescriptorTests.Trait$R@@10)))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@11 T@U) (TypeDescriptorTests.Trait$R@@11 T@U) (bx@@11 T@U) ) (!  (=> ($IsBox bx@@11 (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@11 TypeDescriptorTests.Trait$R@@11)) (and (= ($Box refType ($Unbox refType bx@@11)) bx@@11) ($Is refType ($Unbox refType bx@@11) (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@11 TypeDescriptorTests.Trait$R@@11))))
+ :qid |unknown.0:0|
+ :skolemid |3883|
  :pattern ( ($IsBox bx@@11 (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@11 TypeDescriptorTests.Trait$R@@11)))
 )))
 (assert  (and (forall ((t0@@1 T@T) (t1@@0 T@T) (t2 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1 T@U) ) (! (= (MapType1Select t0@@1 t1@@0 t2 (MapType1Store t0@@1 t1@@0 t2 m@@1 x0@@1 x1 val@@1) x0@@1 x1) val@@1)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 )) (and (forall ((u0@@0 T@T) (u1@@0 T@T) (u2 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) (x1@@0 T@U) (y0@@0 T@U) (y1 T@U) ) (!  (or (= x0@@2 y0@@0) (= (MapType1Select u0@@0 u1@@0 u2 (MapType1Store u0@@0 u1@@0 u2 m@@2 x0@@2 x1@@0 val@@2) y0@@0 y1) (MapType1Select u0@@0 u1@@0 u2 m@@2 y0@@0 y1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
 )) (forall ((u0@@1 T@T) (u1@@1 T@T) (u2@@0 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (x1@@1 T@U) (y0@@1 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType1Select u0@@1 u1@@1 u2@@0 (MapType1Store u0@@1 u1@@1 u2@@0 m@@3 x0@@3 x1@@1 val@@3) y0@@1 y1@@0) (MapType1Select u0@@1 u1@@1 u2@@0 m@@3 y0@@1 y1@@0)))
+ :qid |mapAx1:MapType1Select:1|
  :weight 0
 )))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o@@7 T@U) ($f T@U) ) (! (= (U_2_bool (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))  (=> (and (or (not (= $o@@7 |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) |l#1| $o@@7) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |8395|
  :pattern ( (MapType1Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o@@7 $f))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@19 T@U) (TypeDescriptorTests.Composition$Tx@@19 T@U) (TypeDescriptorTests.Composition$RRx@@19 T@U) ($o@@8 T@U) ) (! (= ($Is refType $o@@8 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@19 TypeDescriptorTests.Composition$Tx@@19 TypeDescriptorTests.Composition$RRx@@19))  (or (= $o@@8 null) (= (dtype $o@@8) (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@19 TypeDescriptorTests.Composition$Tx@@19 TypeDescriptorTests.Composition$RRx@@19))))
+ :qid |unknown.0:0|
+ :skolemid |3895|
  :pattern ( ($Is refType $o@@8 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@19 TypeDescriptorTests.Composition$Tx@@19 TypeDescriptorTests.Composition$RRx@@19)))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@11 T@U) (TypeDescriptorTests.UberTrait$Y@@11 T@U) (TypeDescriptorTests.UberTrait$Z@@11 T@U) (|c#0@@3| T@U) ($h@@5 T@U) ) (! (= ($IsAlloc refType |c#0@@3| (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@11 TypeDescriptorTests.UberTrait$Y@@11 TypeDescriptorTests.UberTrait$Z@@11) $h@@5) ($IsAlloc refType |c#0@@3| (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@11 TypeDescriptorTests.UberTrait$Y@@11 TypeDescriptorTests.UberTrait$Z@@11) $h@@5))
+ :qid |unknown.0:0|
+ :skolemid |3873|
  :pattern ( ($IsAlloc refType |c#0@@3| (Tclass.TypeDescriptorTests.UberTrait TypeDescriptorTests.UberTrait$X@@11 TypeDescriptorTests.UberTrait$Y@@11 TypeDescriptorTests.UberTrait$Z@@11) $h@@5))
  :pattern ( ($IsAlloc refType |c#0@@3| (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@11 TypeDescriptorTests.UberTrait$Y@@11 TypeDescriptorTests.UberTrait$Z@@11) $h@@5))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@20 T@U) (TypeDescriptorTests.Composition$Tx@@20 T@U) (TypeDescriptorTests.Composition$RRx@@20 T@U) (|c#0@@4| T@U) ($h@@6 T@U) ) (! (= ($IsAlloc refType |c#0@@4| (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@20 TypeDescriptorTests.Composition$Tx@@20 TypeDescriptorTests.Composition$RRx@@20) $h@@6) ($IsAlloc refType |c#0@@4| (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@20 TypeDescriptorTests.Composition$Tx@@20 TypeDescriptorTests.Composition$RRx@@20) $h@@6))
+ :qid |unknown.0:0|
+ :skolemid |3908|
  :pattern ( ($IsAlloc refType |c#0@@4| (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Composition$Sx@@20 TypeDescriptorTests.Composition$Tx@@20 TypeDescriptorTests.Composition$RRx@@20) $h@@6))
  :pattern ( ($IsAlloc refType |c#0@@4| (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@20 TypeDescriptorTests.Composition$Tx@@20 TypeDescriptorTests.Composition$RRx@@20) $h@@6))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@12 T@U) (TypeDescriptorTests.Trait$R@@12 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@12 TypeDescriptorTests.Trait$R@@12)) Tagclass.TypeDescriptorTests.Trait?) (= (TagFamily (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@12 TypeDescriptorTests.Trait$R@@12)) tytagFamily$Trait))
+ :qid |unknown.0:0|
+ :skolemid |3874|
  :pattern ( (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@12 TypeDescriptorTests.Trait$R@@12))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@13 T@U) (TypeDescriptorTests.Trait$R@@13 T@U) ) (!  (and (= (Tag (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@13 TypeDescriptorTests.Trait$R@@13)) Tagclass.TypeDescriptorTests.Trait) (= (TagFamily (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@13 TypeDescriptorTests.Trait$R@@13)) tytagFamily$Trait))
+ :qid |unknown.0:0|
+ :skolemid |3880|
  :pattern ( (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@13 TypeDescriptorTests.Trait$R@@13))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@21 T@U) (TypeDescriptorTests.Composition$Tx@@21 T@U) (TypeDescriptorTests.Composition$RRx@@21 T@U) ($o@@9 T@U) ($heap@@0 T@U) ) (!  (=> ($IsAlloc refType $o@@9 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@21 TypeDescriptorTests.Composition$Tx@@21 TypeDescriptorTests.Composition$RRx@@21) $heap@@0) ($IsAlloc refType $o@@9 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@21 TypeDescriptorTests.Composition$RRx@@21) $heap@@0))
+ :qid |unknown.0:0|
+ :skolemid |4008|
  :pattern ( ($IsAlloc refType $o@@9 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@21 TypeDescriptorTests.Composition$Tx@@21 TypeDescriptorTests.Composition$RRx@@21) $heap@@0))
 )))
 (assert (forall ((TypeDescriptorTests.Composition$Sx@@22 T@U) (TypeDescriptorTests.Composition$Tx@@22 T@U) (TypeDescriptorTests.Composition$RRx@@22 T@U) ($o@@10 T@U) ($heap@@1 T@U) ) (!  (=> ($IsAlloc refType $o@@10 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@22 TypeDescriptorTests.Composition$Tx@@22 TypeDescriptorTests.Composition$RRx@@22) $heap@@1) ($IsAlloc refType $o@@10 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Composition$Sx@@22 TypeDescriptorTests.Composition$RRx@@22) $heap@@1))
+ :qid |unknown.0:0|
+ :skolemid |4012|
  :pattern ( ($IsAlloc refType $o@@10 (Tclass.TypeDescriptorTests.Composition? TypeDescriptorTests.Composition$Sx@@22 TypeDescriptorTests.Composition$Tx@@22 TypeDescriptorTests.Composition$RRx@@22) $heap@@1))
 )))
 (assert (forall ((bx@@12 T@U) (t@@5 T@U) ) (!  (=> ($IsBox bx@@12 (TSeq t@@5)) (and (= ($Box SeqType ($Unbox SeqType bx@@12)) bx@@12) ($Is SeqType ($Unbox SeqType bx@@12) (TSeq t@@5))))
+ :qid |DafnyPreludebpl.204:15|
+ :skolemid |3310|
  :pattern ( ($IsBox bx@@12 (TSeq t@@5)))
 )))
 (assert (forall ((TypeDescriptorTests.UberTrait$X@@12 T@U) (TypeDescriptorTests.UberTrait$Y@@12 T@U) (TypeDescriptorTests.UberTrait$Z@@12 T@U) ($o@@11 T@U) ) (! (= ($Is refType $o@@11 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@12 TypeDescriptorTests.UberTrait$Y@@12 TypeDescriptorTests.UberTrait$Z@@12))  (or (= $o@@11 null) (implements$TypeDescriptorTests.UberTrait (dtype $o@@11) TypeDescriptorTests.UberTrait$X@@12 TypeDescriptorTests.UberTrait$Y@@12 TypeDescriptorTests.UberTrait$Z@@12)))
+ :qid |unknown.0:0|
+ :skolemid |3862|
  :pattern ( ($Is refType $o@@11 (Tclass.TypeDescriptorTests.UberTrait? TypeDescriptorTests.UberTrait$X@@12 TypeDescriptorTests.UberTrait$Y@@12 TypeDescriptorTests.UberTrait$Z@@12)))
 )))
 (assert (forall ((TypeDescriptorTests.Trait$T@@14 T@U) (TypeDescriptorTests.Trait$R@@14 T@U) (bx@@13 T@U) ($h@@7 T@U) ) (!  (=> (and ($IsAllocBox bx@@13 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@14 TypeDescriptorTests.Trait$R@@14) $h@@7) ($IsGoodHeap $h@@7)) ($IsAllocBox bx@@13 (Tclass.TypeDescriptorTests.UberTrait? TInt (TSeq TypeDescriptorTests.Trait$T@@14) (TSeq TypeDescriptorTests.Trait$R@@14)) $h@@7))
+ :qid |unknown.0:0|
+ :skolemid |4002|
  :pattern ( ($IsAllocBox bx@@13 (Tclass.TypeDescriptorTests.Trait? TypeDescriptorTests.Trait$T@@14 TypeDescriptorTests.Trait$R@@14) $h@@7))
 )))
 (assert (forall ((s@@0 T@U) ) (!  (=> (= (|Seq#Length| s@@0) 0) (= s@@0 |Seq#Empty|))
+ :qid |DafnyPreludebpl.1131:15|
+ :skolemid |3497|
  :pattern ( (|Seq#Length| s@@0))
 )))
 (assert (forall ((h@@4 T@U) (v@@3 T@U) ) (! ($IsAlloc intType v@@3 TInt h@@4)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |3336|
  :pattern ( ($IsAlloc intType v@@3 TInt h@@4))
 )))
 (assert (forall ((v@@4 T@U) (t0@@2 T@U) ) (! (= ($Is SeqType v@@4 (TSeq t0@@2)) (forall ((i@@0 Int) ) (!  (=> (and (<= 0 i@@0) (< i@@0 (|Seq#Length| v@@4))) ($IsBox (|Seq#Index| v@@4 i@@0) t0@@2))
+ :qid |DafnyPreludebpl.254:11|
+ :skolemid |3328|
  :pattern ( (|Seq#Index| v@@4 i@@0))
 )))
+ :qid |DafnyPreludebpl.252:15|
+ :skolemid |3329|
  :pattern ( ($Is SeqType v@@4 (TSeq t0@@2)))
 )))
 (assert (forall ((v@@5 T@U) ) (! ($Is intType v@@5 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |3315|
  :pattern ( ($Is intType v@@5 TInt))
 )))
 (push 1)
@@ -380,6 +549,7 @@
 (declare-fun |defass#res#0| () Bool)
 (declare-fun |res#0| () T@U)
 (declare-fun $FunctionContextHeight () Int)
+(set-info :boogie-vc-id Impl$$TypeDescriptorTests.Trait.Compose)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -396,6 +566,8 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (=> (and (or (not (= call6formal@this null)) (not true)) (and ($Is refType call6formal@this (Tclass.TypeDescriptorTests.Composition call0formal@TypeDescriptorTests.Composition$Sx call1formal@TypeDescriptorTests.Composition$Tx call2formal@TypeDescriptorTests.Composition$RRx)) ($IsAlloc refType call6formal@this (Tclass.TypeDescriptorTests.Composition call0formal@TypeDescriptorTests.Composition$Sx call1formal@TypeDescriptorTests.Composition$Tx call2formal@TypeDescriptorTests.Composition$RRx) $Heap))) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (or (not (= call6formal@this@0 null)) (not true)) (and ($Is refType call6formal@this@0 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$T@@15 TypeDescriptorTests.Trait$R@@15)) ($IsAlloc refType call6formal@this@0 (Tclass.TypeDescriptorTests.Composition TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$T@@15 TypeDescriptorTests.Trait$R@@15) $Heap@0)))) (and (and (not (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap call6formal@this@0) alloc)))) (forall (($o@@12 T@U) ) (!  (=> (and (or (not (= $o@@12 null)) (not true)) (U_2_bool ($Unbox boolType (MapType0Select FieldType BoxType (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@12) alloc)))) (= (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@12) (MapType0Select refType (MapType0Type FieldType BoxType) $Heap $o@@12)))
+ :qid |TraitCompiledfy.509:5|
+ :skolemid |3905|
  :pattern ( (MapType0Select refType (MapType0Type FieldType BoxType) $Heap@0 $o@@12))
 ))) (and ($HeapSucc $Heap $Heap@0) (= (ControlFlow 0 2) (- 0 1))))) true)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (or (not (= this null)) (not true)) (and ($Is refType this (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@15 TypeDescriptorTests.Trait$R@@15)) ($IsAlloc refType this (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait$T@@15 TypeDescriptorTests.Trait$R@@15) $Heap)))) (=> (and (and (and ($Is refType |f#0| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$T@@15)) ($IsAlloc refType |f#0| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$T@@15) $Heap)) (=> |defass#res#0| (and ($Is refType |res#0| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$R@@15)) ($IsAlloc refType |res#0| (Tclass.TypeDescriptorTests.Trait TypeDescriptorTests.Trait.Compose$S TypeDescriptorTests.Trait$R@@15) $Heap)))) (and (= 2 $FunctionContextHeight) (= (ControlFlow 0 3) 2))) anon0_correct))))

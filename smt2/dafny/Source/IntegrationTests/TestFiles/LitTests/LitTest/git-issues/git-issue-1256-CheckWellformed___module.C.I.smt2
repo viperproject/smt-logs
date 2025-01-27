@@ -76,142 +76,225 @@
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (declare-fun TagFamily (T@U) T@U)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TInt TagInt TagSet alloc Tagclass._System.nat tytagFamily$nat)
 )
 (assert (= (Tag TInt) TagInt))
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |129|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (= (Ctor SetType) 3))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (_module.C$X T@U) (_module.C.S$Y T@U) (|y#0| T@U) ) (!  (=> (and (or (|_module.C.S#canCall| _module.C$X _module.C.S$Y |y#0|) (and (< 0 $FunctionContextHeight) (and ($IsBox |y#0| _module.C.S$Y) ($IsAllocBox |y#0| _module.C.S$Y $Heap)))) ($IsGoodHeap $Heap)) ($IsAlloc SetType (_module.C.S _module.C$X _module.C.S$Y |y#0|) (TSet _module.C.S$Y) $Heap))
+ :qid |gitissue1256dfy.53:25|
+ :skolemid |683|
  :pattern ( ($IsAlloc SetType (_module.C.S _module.C$X _module.C.S$Y |y#0|) (TSet _module.C.S$Y) $Heap))
 ))))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |130|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((|x#0| T@U) ($h T@U) ) (! ($IsAlloc intType |x#0| Tclass._System.nat $h)
+ :qid |unknown.0:0|
+ :skolemid |345|
  :pattern ( ($IsAlloc intType |x#0| Tclass._System.nat $h))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |128|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |125|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.C$X@@0 T@U) ($Heap@@0 T@U) (|x#0@@0| T@U) ) (!  (=> (or (|_module.C.I#canCall| _module.C$X@@0 (Lit BoxType |x#0@@0|)) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@0) ($IsBox |x#0@@0| _module.C$X@@0)))) (and (and (|$let#46$canCall| _module.C$X@@0 (Lit BoxType |x#0@@0|)) (|_module.C.S#canCall| _module.C$X@@0 _module.C$X@@0 (Lit BoxType |x#0@@0|))) (= (_module.C.I _module.C$X@@0 (Lit BoxType |x#0@@0|)) (let ((|n#1| (|$let#46_n| _module.C$X@@0 (Lit BoxType |x#0@@0|))))
 (ite (|Set#IsMember| (Lit SetType (_module.C.S _module.C$X@@0 _module.C$X@@0 (Lit BoxType |x#0@@0|))) (Lit BoxType |x#0@@0|)) |n#1| (+ |n#1| 1))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |691|
  :pattern ( (_module.C.I _module.C$X@@0 (Lit BoxType |x#0@@0|)) ($IsGoodHeap $Heap@@0))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.C$X@@1 T@U) (_module.C.S$Y@@0 T@U) (|y#0@@0| T@U) ) (!  (=> (or (|_module.C.S#canCall| _module.C$X@@1 _module.C.S$Y@@0 (Lit BoxType |y#0@@0|)) (and (< 0 $FunctionContextHeight) ($IsBox |y#0@@0| _module.C.S$Y@@0))) (= (_module.C.S _module.C$X@@1 _module.C.S$Y@@0 (Lit BoxType |y#0@@0|)) (Lit SetType (|Set#UnionOne| |Set#Empty| (Lit BoxType |y#0@@0|)))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |686|
  :pattern ( (_module.C.S _module.C$X@@1 _module.C.S$Y@@0 (Lit BoxType |y#0@@0|)))
 ))))
 (assert (forall ((_module.C$X@@2 T@U) (x@@5 T@U) ) (!  (=> (|$let#46$canCall| _module.C$X@@2 x@@5) (and (<= (LitInt 0) (|$let#46_n| _module.C$X@@2 x@@5)) (and ($IsBox x@@5 _module.C$X@@2) (|Set#IsMember| (_module.C.S _module.C$X@@2 _module.C$X@@2 x@@5) x@@5))))
+ :qid |gitissue1256dfy.57:5|
+ :skolemid |689|
  :pattern ( (|$let#46_n| _module.C$X@@2 x@@5))
 )))
 (assert (forall ((x@@6 Int) ) (! (= (LitInt x@@6) x@@6)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@6))
 )))
 (assert (forall ((x@@7 T@U) (T T@T) ) (! (= (Lit T x@@7) x@@7)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@7))
 )))
 (assert (forall ((x@@8 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@8)) x@@8)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@8))
 )))
 (assert (forall ((v T@U) (t0 T@U) ) (! (= ($Is SetType v (TSet t0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |46|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |47|
  :pattern ( ($Is SetType v (TSet t0)))
 )))
 (assert (forall ((|x#0@@1| T@U) ) (! (= ($Is intType |x#0@@1| Tclass._System.nat) (<= (LitInt 0) (U_2_int |x#0@@1|)))
+ :qid |unknown.0:0|
+ :skolemid |344|
  :pattern ( ($Is intType |x#0@@1| Tclass._System.nat))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert (forall ((bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 Tclass._System.nat) (and (= ($Box intType ($Unbox intType bx@@0)) bx@@0) ($Is intType ($Unbox intType bx@@0) Tclass._System.nat)))
+ :qid |unknown.0:0|
+ :skolemid |343|
  :pattern ( ($IsBox bx@@0 Tclass._System.nat))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.C$X@@3 T@U) (_module.C.S$Y@@1 T@U) (|y#0@@1| T@U) ) (!  (=> (or (|_module.C.S#canCall| _module.C$X@@3 _module.C.S$Y@@1 |y#0@@1|) (and (< 0 $FunctionContextHeight) ($IsBox |y#0@@1| _module.C.S$Y@@1))) ($Is SetType (_module.C.S _module.C$X@@3 _module.C.S$Y@@1 |y#0@@1|) (TSet _module.C.S$Y@@1)))
+ :qid |unknown.0:0|
+ :skolemid |682|
  :pattern ( (_module.C.S _module.C$X@@3 _module.C.S$Y@@1 |y#0@@1|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.C$X@@4 T@U) ($Heap@@1 T@U) (|x#0@@2| T@U) ) (!  (=> (or (|_module.C.I#canCall| _module.C$X@@4 |x#0@@2|) (and (< 1 $FunctionContextHeight) (and ($IsGoodHeap $Heap@@1) ($IsBox |x#0@@2| _module.C$X@@4)))) (and (and (|$let#46$canCall| _module.C$X@@4 |x#0@@2|) (|_module.C.S#canCall| _module.C$X@@4 _module.C$X@@4 |x#0@@2|)) (= (_module.C.I _module.C$X@@4 |x#0@@2|) (let ((|n#0| (|$let#46_n| _module.C$X@@4 |x#0@@2|)))
 (ite (|Set#IsMember| (_module.C.S _module.C$X@@4 _module.C$X@@4 |x#0@@2|) |x#0@@2|) |n#0| (+ |n#0| 1))))))
+ :qid |unknown.0:0|
+ :skolemid |690|
  :pattern ( (_module.C.I _module.C$X@@4 |x#0@@2|) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((bx@@1 T@U) ) (!  (=> ($IsBox bx@@1 TInt) (and (= ($Box intType ($Unbox intType bx@@1)) bx@@1) ($Is intType ($Unbox intType bx@@1) TInt)))
+ :qid |DafnyPreludebpl.176:15|
+ :skolemid |27|
  :pattern ( ($IsBox bx@@1 TInt))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((v@@2 T@U) (t0@@0 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@0) h@@0) (forall ((bx@@2 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@2) ($IsAllocBox bx@@2 t0@@0 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |67|
  :pattern ( (|Set#IsMember| v@@2 bx@@2))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |68|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@0) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |2|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((x@@9 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@9)) x@@9)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@9))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0@@1 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@1 t1 t2 (MapType0Store t0@@1 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@2 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 (MapType1Store t0@@2 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |724|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx@@3 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@3 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@3)) bx@@3) ($Is SetType ($Unbox SetType bx@@3) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |32|
  :pattern ( ($IsBox bx@@3 (TSet t@@3)))
 )))
 (assert (= (Tag Tclass._System.nat) Tagclass._System.nat))
 (assert (= (TagFamily Tclass._System.nat) tytagFamily$nat))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((_module.C$X@@5 T@U) (_module.C.S$Y@@2 T@U) (|y#0@@2| T@U) ) (!  (=> (or (|_module.C.S#canCall| _module.C$X@@5 _module.C.S$Y@@2 |y#0@@2|) (and (< 0 $FunctionContextHeight) ($IsBox |y#0@@2| _module.C.S$Y@@2))) (= (_module.C.S _module.C$X@@5 _module.C.S$Y@@2 |y#0@@2|) (|Set#UnionOne| |Set#Empty| |y#0@@2|)))
+ :qid |unknown.0:0|
+ :skolemid |685|
  :pattern ( (_module.C.S _module.C$X@@5 _module.C.S$Y@@2 |y#0@@2|))
 ))))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module.C$X@@6 T@U) (|x#0@@3| T@U) ) (!  (=> (or (|_module.C.I#canCall| _module.C$X@@6 |x#0@@3|) (and (< 1 $FunctionContextHeight) ($IsBox |x#0@@3| _module.C$X@@6))) (<= (LitInt 0) (_module.C.I _module.C$X@@6 |x#0@@3|)))
+ :qid |unknown.0:0|
+ :skolemid |687|
  :pattern ( (_module.C.I _module.C$X@@6 |x#0@@3|))
 ))))
 (assert (forall ((x@@10 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@10))) (Lit BoxType ($Box intType (int_2_U x@@10))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@10))))
 )))
 (assert (forall ((x@@11 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@11)) (Lit BoxType ($Box T@@4 x@@11)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@11)))
 )))
 (assert (forall ((h@@1 T@U) (v@@3 T@U) ) (! ($IsAlloc intType v@@3 TInt h@@1)
+ :qid |DafnyPreludebpl.289:14|
+ :skolemid |61|
  :pattern ( ($IsAlloc intType v@@3 TInt h@@1))
 )))
 (assert (forall ((v@@4 T@U) ) (! ($Is intType v@@4 TInt)
+ :qid |DafnyPreludebpl.228:14|
+ :skolemid |40|
  :pattern ( ($Is intType v@@4 TInt))
 )))
 (push 1)
@@ -224,6 +307,7 @@
 (declare-fun $_ReadsFrame@0 () T@U)
 (declare-fun null () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$_module.C.I)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -242,7 +326,13 @@
  (=> (= (ControlFlow 0 0) 17) (let ((anon12_correct  (=> (and (|$let#46$canCall| _module.C$X@@7 |x#0@@4|) (= (ControlFlow 0 4) (- 0 3))) ($Is intType (int_2_U (ite (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|) |n#2@0| (+ |n#2@0| 1))) Tclass._System.nat))))
 (let ((anon19_Else_correct  (=> (and (not (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)) (= (ControlFlow 0 6) 4)) anon12_correct)))
 (let ((anon19_Then_correct  (=> (and (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|) (= (ControlFlow 0 5) 4)) anon12_correct)))
-(let ((anon9_correct  (and (=> (= (ControlFlow 0 7) (- 0 8)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (exists ((|n#3| Int) )  (and (<= (LitInt 0) |n#3|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|))))))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (exists ((|n#3@@0| Int) )  (and (<= (LitInt 0) |n#3@@0|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))))) (=> (and (and (<= (LitInt 0) |n#2@0|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|))) (and ($IsAllocBox |x#0@@4| _module.C$X@@7 $Heap@@2) (|_module.C.S#canCall| _module.C$X@@7 _module.C$X@@7 |x#0@@4|))) (and (=> (= (ControlFlow 0 7) 5) anon19_Then_correct) (=> (= (ControlFlow 0 7) 6) anon19_Else_correct)))))))
+(let ((anon9_correct  (and (=> (= (ControlFlow 0 7) (- 0 8)) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (exists ((|n#3| Int) ) (!  (and (<= (LitInt 0) |n#3|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))
+ :qid |gitissue1256dfy.57:9|
+ :skolemid |693|
+))))) (=> (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (or (and ($Is intType (int_2_U (LitInt 0)) TInt) (and (<= (LitInt 0) (LitInt 0)) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))) (exists ((|n#3@@0| Int) ) (!  (and (<= (LitInt 0) |n#3@@0|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|)))
+ :qid |gitissue1256dfy.57:9|
+ :skolemid |693|
+)))) (=> (and (and (<= (LitInt 0) |n#2@0|) (and ($IsBox |x#0@@4| _module.C$X@@7) (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |x#0@@4|))) (and ($IsAllocBox |x#0@@4| _module.C$X@@7 $Heap@@2) (|_module.C.S#canCall| _module.C$X@@7 _module.C$X@@7 |x#0@@4|))) (and (=> (= (ControlFlow 0 7) 5) anon19_Then_correct) (=> (= (ControlFlow 0 7) 6) anon19_Else_correct)))))))
 (let ((anon18_Else_correct  (=> (and (not (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |z#0@0|)) (= (ControlFlow 0 12) 7)) anon9_correct)))
 (let ((anon18_Then_correct  (=> (and (|Set#IsMember| (_module.C.S _module.C$X@@7 _module.C$X@@7 |x#0@@4|) |z#0@0|) (= (ControlFlow 0 11) 7)) anon9_correct)))
 (let ((anon17_Then_correct  (=> (and (and ($IsBox |z#0@0| _module.C$X@@7) ($IsAllocBox |z#0@0| _module.C$X@@7 $Heap@@2)) (and ($IsAllocBox |x#0@@4| _module.C$X@@7 $Heap@@2) (|_module.C.S#canCall| _module.C$X@@7 _module.C$X@@7 |x#0@@4|))) (and (=> (= (ControlFlow 0 13) 11) anon18_Then_correct) (=> (= (ControlFlow 0 13) 12) anon18_Else_correct)))))

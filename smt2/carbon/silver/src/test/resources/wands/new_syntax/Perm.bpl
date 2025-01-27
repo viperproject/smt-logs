@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:45:09
+// Date:         2025-01-26 23:17:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/Perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,19 +293,19 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -335,8 +335,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.b, 1 / 2) --* true {
   //   assert perm(x.a) == perm(x.b)
@@ -360,15 +360,15 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- Perm.vpr@9.13--9.35
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@11.9--11.38
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -389,8 +389,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: assert acc(x.a, 1 / 2) -- Perm.vpr@13.5--13.25
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 1 / 2;
     assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (Perm.vpr@13.12--13.25) [223403]"}
       perm >= NoPerm;
@@ -409,8 +409,8 @@ procedure test0(x: Ref) returns ()
 procedure test1_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_5: bool;
@@ -418,11 +418,11 @@ procedure test1_1(x: Ref) returns ()
   var Used_3Mask: MaskType;
   var b_4: bool;
   var perm: Perm;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_6: bool;
@@ -432,8 +432,8 @@ procedure test1_1(x: Ref) returns ()
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_7: bool;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var boolCur_2: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -446,8 +446,8 @@ procedure test1_1(x: Ref) returns ()
   var b_11: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs8Heap: HeapType;
   var Labellhs8Mask: MaskType;
+  var Labellhs8Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var neededTransfer: Perm;
@@ -470,8 +470,8 @@ procedure test1_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.a, 1 / 2) && acc(x.b, 1 / 2) --*
   // acc(x.a, 1 / 2) && acc(x.b, write) --* true {
@@ -509,15 +509,15 @@ procedure test1_1(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- Perm.vpr@17.13--17.84
       lhs4:
-      Labellhs4Heap := Ops_3Heap;
       Labellhs4Mask := Ops_3Mask;
+      Labellhs4Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_5) {
       
       // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@18.9--18.38
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_6 := b_6 && state(Used_4Heap, Used_4Mask);
@@ -558,15 +558,15 @@ procedure test1_1(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- Perm.vpr@19.17--19.51
           lhs6:
-          Labellhs6Heap := Ops_5Heap;
           Labellhs6Mask := Ops_5Mask;
+          Labellhs6Heap := Ops_5Heap;
           b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
         boolCur_2 := true;
         if (b_8 && b_5) {
           
           // -- Translating statement: assert perm(x.a) == perm(x.b) -- Perm.vpr@21.13--21.42
-            ExhaleWellDef0Heap := Ops_5Heap;
             ExhaleWellDef0Mask := Ops_5Mask;
+            ExhaleWellDef0Heap := Ops_5Heap;
             havoc Used_6Heap;
             Used_6Mask := ZeroMask;
             b_9 := b_9 && state(Used_6Heap, Used_6Mask);
@@ -613,8 +613,8 @@ procedure test1_1(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs8 -- Perm.vpr@17.49--17.83
                   lhs8:
-                  Labellhs8Heap := WandDefLHSHeap;
                   Labellhs8Mask := WandDefLHSMask;
+                  Labellhs8Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-26 21:42:48
+// Date:         2025-01-26 23:14:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0567.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0567-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,12 +233,12 @@ procedure id#definedness(i: int) returns (Result: int)
 procedure test01(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -266,8 +266,8 @@ procedure test01(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -297,8 +297,8 @@ procedure test01(i: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test01 might not hold. Assertion id(0) == 0 might not hold. (0567.vpr@8.12--8.36) [72723]"}
       id(Heap, 0) == 0;
     assert {:msg "  Postcondition of test01 might not hold. Assertion id(1) == 1 might not hold. (0567.vpr@8.12--8.36) [72724]"}
@@ -314,13 +314,13 @@ procedure test01(i: int) returns ()
 procedure test02(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var y_20: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var y_6: int;
   var y_8_1: int;
   
@@ -350,8 +350,8 @@ procedure test02(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -398,8 +398,8 @@ procedure test02(i: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (*) {
       assert {:msg "  Postcondition of test02 might not hold. Assertion id(y) == y might not hold. (0567.vpr@15.12--15.61) [72726]"}
         id(Heap, y_6) == y_6;
@@ -431,10 +431,10 @@ procedure test02(i: int) returns ()
 procedure test03(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var y_3_2: int;
   
   // -- Initializing the state
@@ -446,8 +446,8 @@ procedure test03(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Int :: { id(y) } id(y) == i) -- 0567.vpr@21.3--21.45
     assume state(Heap, Mask);
@@ -468,8 +468,8 @@ procedure test03(i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall y: Int :: { id(y) } id(y) == y && y == i) -- 0567.vpr@22.3--22.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall y: Int :: { id(y) } id(y) == y && y == i)
       if (*) {

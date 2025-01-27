@@ -68,125 +68,200 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct TagSet alloc)
 )
 (assert (forall ((a T@U) (x@@2 T@U) ) (! (|Set#IsMember| (|Set#UnionOne| a x@@2) x@@2)
+ :qid |DafnyPreludebpl.686:15|
+ :skolemid |1742|
  :pattern ( (|Set#UnionOne| a x@@2))
 )))
 (assert (forall ((a@@0 T@U) (x@@3 T@U) (y T@U) ) (!  (=> (|Set#IsMember| a@@0 y) (|Set#IsMember| (|Set#UnionOne| a@@0 x@@3) y))
+ :qid |DafnyPreludebpl.690:15|
+ :skolemid |1743|
  :pattern ( (|Set#UnionOne| a@@0 x@@3) (|Set#IsMember| a@@0 y))
 )))
 (assert (forall ((a@@1 T@U) (x@@4 T@U) (o T@U) ) (! (= (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o)  (or (= o x@@4) (|Set#IsMember| a@@1 o)))
+ :qid |DafnyPreludebpl.682:15|
+ :skolemid |1741|
  :pattern ( (|Set#IsMember| (|Set#UnionOne| a@@1 x@@4) o))
 )))
 (assert (forall ((AnotherTest._default.PickFromSingleton$U T@U) (s T@U) ) (!  (=> (|$let#0$canCall| AnotherTest._default.PickFromSingleton$U s) (|Set#IsMember| s (|$let#0_x| AnotherTest._default.PickFromSingleton$U s)))
+ :qid |DeterministicPickdfy.42:5|
+ :skolemid |2146|
  :pattern ( (|$let#0_x| AnotherTest._default.PickFromSingleton$U s))
 )))
 (assert (forall ((o@@0 T@U) ) (!  (not (|Set#IsMember| |Set#Empty| o@@0))
+ :qid |DafnyPreludebpl.670:15|
+ :skolemid |1738|
  :pattern ( (|Set#IsMember| |Set#Empty| o@@0))
 )))
 (assert (= (Ctor SetType) 3))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall (($Heap T@U) (AnotherTest._default.PickFromSingleton$U@@0 T@U) (|s#0| T@U) ) (!  (=> (and (or (|AnotherTest.__default.PickFromSingleton#canCall| AnotherTest._default.PickFromSingleton$U@@0 |s#0|) (and (< 0 $FunctionContextHeight) (and (and ($Is SetType |s#0| (TSet AnotherTest._default.PickFromSingleton$U@@0)) ($IsAlloc SetType |s#0| (TSet AnotherTest._default.PickFromSingleton$U@@0) $Heap)) (exists ((|y#0| T@U) ) (!  (and ($IsBox |y#0| AnotherTest._default.PickFromSingleton$U@@0) (and (|Set#IsMember| |s#0| |y#0|) (|Set#Equal| |s#0| (|Set#UnionOne| |Set#Empty| |y#0|))))
+ :qid |DeterministicPickdfy.40:21|
+ :skolemid |2141|
  :pattern ( (|Set#UnionOne| |Set#Empty| |y#0|))
  :pattern ( (|Set#IsMember| |s#0| |y#0|))
 ))))) ($IsGoodHeap $Heap)) ($IsAllocBox (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@0 |s#0|) AnotherTest._default.PickFromSingleton$U@@0 $Heap))
+ :qid |DeterministicPickdfy.39:12|
+ :skolemid |2143|
  :pattern ( ($IsAllocBox (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@0 |s#0|) AnotherTest._default.PickFromSingleton$U@@0 $Heap))
 ))))
 (assert (forall ((x@@5 T@U) (T T@T) ) (! (= (Lit T x@@5) x@@5)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |1628|
  :pattern ( (Lit T x@@5))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((AnotherTest._default.PickFromSingleton$U@@1 T@U) ($Heap@@0 T@U) (|s#0@@0| T@U) ) (!  (=> (or (|AnotherTest.__default.PickFromSingleton#canCall| AnotherTest._default.PickFromSingleton$U@@1 (Lit SetType |s#0@@0|)) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@0) ($Is SetType |s#0@@0| (TSet AnotherTest._default.PickFromSingleton$U@@1))) (exists ((|y#2| T@U) ) (!  (and ($IsBox |y#2| AnotherTest._default.PickFromSingleton$U@@1) (and (|Set#IsMember| (Lit SetType |s#0@@0|) |y#2|) (|Set#Equal| |s#0@@0| (|Set#UnionOne| |Set#Empty| |y#2|))))
+ :qid |DeterministicPickdfy.40:21|
+ :skolemid |2148|
  :pattern ( (|Set#UnionOne| |Set#Empty| |y#2|))
  :pattern ( (|Set#IsMember| |s#0@@0| |y#2|))
 ))))) (and (|$let#0$canCall| AnotherTest._default.PickFromSingleton$U@@1 (Lit SetType |s#0@@0|)) (= (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@1 (Lit SetType |s#0@@0|)) (let ((|x#1| (|$let#0_x| AnotherTest._default.PickFromSingleton$U@@1 (Lit SetType |s#0@@0|))))
 |x#1|))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |2149|
  :pattern ( (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@1 (Lit SetType |s#0@@0|)) ($IsGoodHeap $Heap@@0))
 ))))
 (assert (forall ((x@@6 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@6)) x@@6)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |1639|
  :pattern ( ($Unbox T@@0 x@@6))
 )))
 (assert (forall ((v T@U) (t0 T@U) ) (! (= ($Is SetType v (TSet t0)) (forall ((bx T@U) ) (!  (=> (|Set#IsMember| v bx) ($IsBox bx t0))
+ :qid |DafnyPreludebpl.240:11|
+ :skolemid |1659|
  :pattern ( (|Set#IsMember| v bx))
 )))
+ :qid |DafnyPreludebpl.238:15|
+ :skolemid |1660|
  :pattern ( ($Is SetType v (TSet t0)))
 )))
 (assert (forall ((v@@0 T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v@@0) t h) ($IsAlloc T@@1 v@@0 t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |1652|
  :pattern ( ($IsAllocBox ($Box T@@1 v@@0) t h))
 )))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((AnotherTest._default.PickFromSingleton$U@@2 T@U) (|s#0@@1| T@U) ) (!  (=> (or (|AnotherTest.__default.PickFromSingleton#canCall| AnotherTest._default.PickFromSingleton$U@@2 |s#0@@1|) (and (< 0 $FunctionContextHeight) (and ($Is SetType |s#0@@1| (TSet AnotherTest._default.PickFromSingleton$U@@2)) (exists ((|y#0@@0| T@U) ) (!  (and ($IsBox |y#0@@0| AnotherTest._default.PickFromSingleton$U@@2) (and (|Set#IsMember| |s#0@@1| |y#0@@0|) (|Set#Equal| |s#0@@1| (|Set#UnionOne| |Set#Empty| |y#0@@0|))))
+ :qid |DeterministicPickdfy.40:21|
+ :skolemid |2141|
  :pattern ( (|Set#UnionOne| |Set#Empty| |y#0@@0|))
  :pattern ( (|Set#IsMember| |s#0@@1| |y#0@@0|))
 ))))) ($IsBox (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@2 |s#0@@1|) AnotherTest._default.PickFromSingleton$U@@2))
+ :qid |unknown.0:0|
+ :skolemid |2142|
  :pattern ( (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@2 |s#0@@1|))
 ))))
 (assert  (=> (<= 0 $FunctionContextHeight) (forall ((AnotherTest._default.PickFromSingleton$U@@3 T@U) ($Heap@@1 T@U) (|s#0@@2| T@U) ) (!  (=> (or (|AnotherTest.__default.PickFromSingleton#canCall| AnotherTest._default.PickFromSingleton$U@@3 |s#0@@2|) (and (< 0 $FunctionContextHeight) (and (and ($IsGoodHeap $Heap@@1) ($Is SetType |s#0@@2| (TSet AnotherTest._default.PickFromSingleton$U@@3))) (exists ((|y#1| T@U) ) (!  (and ($IsBox |y#1| AnotherTest._default.PickFromSingleton$U@@3) (and (|Set#IsMember| |s#0@@2| |y#1|) (|Set#Equal| |s#0@@2| (|Set#UnionOne| |Set#Empty| |y#1|))))
+ :qid |DeterministicPickdfy.40:21|
+ :skolemid |2144|
  :pattern ( (|Set#UnionOne| |Set#Empty| |y#1|))
  :pattern ( (|Set#IsMember| |s#0@@2| |y#1|))
 ))))) (and (|$let#0$canCall| AnotherTest._default.PickFromSingleton$U@@3 |s#0@@2|) (= (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@3 |s#0@@2|) (let ((|x#0| (|$let#0_x| AnotherTest._default.PickFromSingleton$U@@3 |s#0@@2|)))
 |x#0|))))
+ :qid |unknown.0:0|
+ :skolemid |2147|
  :pattern ( (AnotherTest.__default.PickFromSingleton AnotherTest._default.PickFromSingleton$U@@3 |s#0@@2|) ($IsGoodHeap $Heap@@1))
 ))))
 (assert (forall ((a@@2 T@U) (b T@U) ) (!  (=> (|Set#Equal| a@@2 b) (= a@@2 b))
+ :qid |DafnyPreludebpl.787:15|
+ :skolemid |1763|
  :pattern ( (|Set#Equal| a@@2 b))
 )))
 (assert (forall ((v@@1 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@1) t@@0) ($Is T@@2 v@@1 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |1651|
  :pattern ( ($IsBox ($Box T@@2 v@@1) t@@0))
 )))
 (assert (forall ((v@@2 T@U) (t0@@0 T@U) (h@@0 T@U) ) (! (= ($IsAlloc SetType v@@2 (TSet t0@@0) h@@0) (forall ((bx@@0 T@U) ) (!  (=> (|Set#IsMember| v@@2 bx@@0) ($IsAllocBox bx@@0 t0@@0 h@@0))
+ :qid |DafnyPreludebpl.299:11|
+ :skolemid |1680|
  :pattern ( (|Set#IsMember| v@@2 bx@@0))
 )))
+ :qid |DafnyPreludebpl.297:15|
+ :skolemid |1681|
  :pattern ( ($IsAlloc SetType v@@2 (TSet t0@@0) h@@0))
 )))
 (assert (forall ((t@@1 T@U) ) (! (= (Inv0_TSet (TSet t@@1)) t@@1)
+ :qid |DafnyPreludebpl.41:15|
+ :skolemid |1614|
  :pattern ( (TSet t@@1))
 )))
 (assert (forall ((t@@2 T@U) ) (! (= (Tag (TSet t@@2)) TagSet)
+ :qid |DafnyPreludebpl.42:15|
+ :skolemid |1615|
  :pattern ( (TSet t@@2))
 )))
 (assert (forall ((x@@7 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@7)) x@@7)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |1638|
  :pattern ( ($Box T@@3 x@@7))
 )))
 (assert  (and (and (and (and (and (and (and (and (and (forall ((t0@@1 T@T) (t1 T@T) (t2 T@T) (val T@U) (m T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0@@1 t1 t2 (MapType0Store t0@@1 t1 t2 m x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@0 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@0 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@0 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@1 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@1 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@1 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 4)) (= (Ctor FieldType) 5)) (forall ((t0@@2 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@2 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@2 t1@@0 (MapType1Store t0@@2 t1@@0 m@@2 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@3 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@3 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@3 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (= (Ctor BoxType) 6)) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |2159|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert (forall ((bx@@1 T@U) (t@@3 T@U) ) (!  (=> ($IsBox bx@@1 (TSet t@@3)) (and (= ($Box SetType ($Unbox SetType bx@@1)) bx@@1) ($Is SetType ($Unbox SetType bx@@1) (TSet t@@3))))
+ :qid |DafnyPreludebpl.195:15|
+ :skolemid |1645|
  :pattern ( ($IsBox bx@@1 (TSet t@@3)))
 )))
 (assert (forall ((a@@3 T@U) (b@@0 T@U) ) (! (= (|Set#Equal| a@@3 b@@0) (forall ((o@@1 T@U) ) (! (= (|Set#IsMember| a@@3 o@@1) (|Set#IsMember| b@@0 o@@1))
+ :qid |DafnyPreludebpl.783:19|
+ :skolemid |1761|
  :pattern ( (|Set#IsMember| a@@3 o@@1))
  :pattern ( (|Set#IsMember| b@@0 o@@1))
 )))
+ :qid |DafnyPreludebpl.780:15|
+ :skolemid |1762|
  :pattern ( (|Set#Equal| a@@3 b@@0))
 )))
 (assert (forall ((x@@8 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@8)) (Lit BoxType ($Box T@@4 x@@8)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |1629|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@8)))
 )))
 (push 1)
@@ -200,6 +275,7 @@
 (declare-fun null () T@U)
 (declare-fun |y#3@0| () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
+(set-info :boogie-vc-id CheckWellformed$$AnotherTest.__default.PickFromSingleton)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -215,7 +291,13 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 8) (let ((anon5_correct  (and (=> (= (ControlFlow 0 3) (- 0 4)) (exists ((|x#3| T@U) )  (and ($IsBox |x#3| AnotherTest._default.PickFromSingleton$U@@4) (|Set#IsMember| |s#0@@3| |x#3|)))) (=> (exists ((|x#3@@0| T@U) )  (and ($IsBox |x#3@@0| AnotherTest._default.PickFromSingleton$U@@4) (|Set#IsMember| |s#0@@3| |x#3@@0|))) (=> (and (and (and ($IsBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2)) (|Set#IsMember| |s#0@@3| |x#2@0|)) (and (and ($IsBox |x#4@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#4@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2)) (and (|Set#IsMember| |s#0@@3| |x#4@0|) (= (ControlFlow 0 3) (- 0 2))))) (= |x#2@0| |x#4@0|))))))
+ (=> (= (ControlFlow 0 0) 8) (let ((anon5_correct  (and (=> (= (ControlFlow 0 3) (- 0 4)) (exists ((|x#3| T@U) ) (!  (and ($IsBox |x#3| AnotherTest._default.PickFromSingleton$U@@4) (|Set#IsMember| |s#0@@3| |x#3|))
+ :qid |DeterministicPickdfy.42:9|
+ :skolemid |2150|
+))) (=> (exists ((|x#3@@0| T@U) ) (!  (and ($IsBox |x#3@@0| AnotherTest._default.PickFromSingleton$U@@4) (|Set#IsMember| |s#0@@3| |x#3@@0|))
+ :qid |DeterministicPickdfy.42:9|
+ :skolemid |2150|
+)) (=> (and (and (and ($IsBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2)) (|Set#IsMember| |s#0@@3| |x#2@0|)) (and (and ($IsBox |x#4@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#4@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2)) (and (|Set#IsMember| |s#0@@3| |x#4@0|) (= (ControlFlow 0 3) (- 0 2))))) (= |x#2@0| |x#4@0|))))))
 (let ((anon8_Else_correct  (=> (and (not (and ($IsBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2))) (= (ControlFlow 0 6) 3)) anon5_correct)))
 (let ((anon8_Then_correct  (=> (and (and ($IsBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4) ($IsAllocBox |x#2@0| AnotherTest._default.PickFromSingleton$U@@4 $Heap@@2)) (= (ControlFlow 0 5) 3)) anon5_correct)))
 (let ((anon7_Then_correct true))

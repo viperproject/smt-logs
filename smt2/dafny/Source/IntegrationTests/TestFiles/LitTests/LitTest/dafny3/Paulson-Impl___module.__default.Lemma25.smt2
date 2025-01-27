@@ -101,189 +101,309 @@
 (declare-fun MapType1TypeInv0 (T@T) T@T)
 (declare-fun MapType1TypeInv1 (T@T) T@T)
 (assert  (and (and (and (and (and (and (and (and (= (Ctor boolType) 0) (= (Ctor intType) 1)) (= (Ctor realType) 2)) (forall ((arg0 Bool) ) (! (= (U_2_bool (bool_2_U arg0)) arg0)
+ :qid |typeInv:U_2_bool|
  :pattern ( (bool_2_U arg0))
 ))) (forall ((x T@U) ) (! (= (bool_2_U (U_2_bool x)) x)
+ :qid |cast:U_2_bool|
  :pattern ( (U_2_bool x))
 ))) (forall ((arg0@@0 Int) ) (! (= (U_2_int (int_2_U arg0@@0)) arg0@@0)
+ :qid |typeInv:U_2_int|
  :pattern ( (int_2_U arg0@@0))
 ))) (forall ((x@@0 T@U) ) (! (= (int_2_U (U_2_int x@@0)) x@@0)
+ :qid |cast:U_2_int|
  :pattern ( (U_2_int x@@0))
 ))) (forall ((arg0@@1 Real) ) (! (= (U_2_real (real_2_U arg0@@1)) arg0@@1)
+ :qid |typeInv:U_2_real|
  :pattern ( (real_2_U arg0@@1))
 ))) (forall ((x@@1 T@U) ) (! (= (real_2_U (U_2_real x@@1)) x@@1)
+ :qid |cast:U_2_real|
  :pattern ( (U_2_real x@@1))
 ))))
 (assert (distinct alloc Tagclass._module.FunctionHandle Tagclass._module.LList |##_module.LList.Nil| |##_module.LList.Cons| |##_module.FunctionHandle.FH| tytagFamily$FunctionHandle tytagFamily$LList)
 )
 (assert (forall ((|_module.LList$T#l| T@U) (|_module.LList$T#r| T@U) (k T@U) (ly T@U) (d0 T@U) (d1 T@U) ) (!  (=> (or (not (= k (|ORD#FromNat| 0))) (not true)) (= (|$PrefixEq#_module.LList| |_module.LList$T#l| |_module.LList$T#r| k ($LS ly) d0 d1) (|$PrefixEq#_module.LList| |_module.LList$T#l| |_module.LList$T#r| k ly d0 d1)))
+ :qid |unknown.0:0|
+ :skolemid |690|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l| |_module.LList$T#r| k ($LS ly) d0 d1))
 )))
 (assert (forall ((o T@U) (p T@U) (r T@U) ) (!  (=> (and (|ORD#Less| o p) (|ORD#Less| p r)) (|ORD#Less| o r))
+ :qid |DafnyPreludebpl.427:15|
+ :skolemid |90|
  :pattern ( (|ORD#Less| o p) (|ORD#Less| p r))
  :pattern ( (|ORD#Less| o p) (|ORD#Less| o r))
 )))
 (assert (forall ((d T@U) ) (!  (=> (|$IsA#_module.FunctionHandle| d) (_module.FunctionHandle.FH_q d))
+ :qid |unknown.0:0|
+ :skolemid |707|
  :pattern ( (|$IsA#_module.FunctionHandle| d))
 )))
 (assert (forall ((o@@0 T@U) (m Int) (n Int) ) (!  (=> (and (and (<= 0 m) (<= 0 n)) (<= (+ m n) (|ORD#Offset| o@@0))) (= (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)) (|ORD#Minus| o@@0 (|ORD#FromNat| (+ m n)))))
+ :qid |DafnyPreludebpl.466:15|
+ :skolemid |98|
  :pattern ( (|ORD#Minus| (|ORD#Minus| o@@0 (|ORD#FromNat| m)) (|ORD#FromNat| n)))
 )))
 (assert (= (DatatypeCtorId |#_module.LList.Nil|) |##_module.LList.Nil|))
 (assert (= (Ctor DatatypeTypeType) 3))
 (assert (forall ((_module.FunctionHandle$T T@U) (d@@0 T@U) ) (!  (=> ($Is DatatypeTypeType d@@0 (Tclass._module.FunctionHandle _module.FunctionHandle$T)) (_module.FunctionHandle.FH_q d@@0))
+ :qid |unknown.0:0|
+ :skolemid |708|
  :pattern ( (_module.FunctionHandle.FH_q d@@0) ($Is DatatypeTypeType d@@0 (Tclass._module.FunctionHandle _module.FunctionHandle$T)))
 )))
 (assert (forall ((|_module.LList$T#l@@0| T@U) (|_module.LList$T#r@@0| T@U) (k@@0 T@U) (ly@@0 T@U) (d0@@0 T@U) (d1@@0 T@U) ) (!  (=> (= d0@@0 d1@@0) (|$PrefixEq#_module.LList| |_module.LList$T#l@@0| |_module.LList$T#r@@0| k@@0 ($LS ly@@0) d0@@0 d1@@0))
+ :qid |unknown.0:0|
+ :skolemid |696|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l@@0| |_module.LList$T#r@@0| k@@0 ($LS ly@@0) d0@@0 d1@@0))
 )))
 (assert (forall ((_module.LList$T T@U) ($h T@U) ) (!  (=> ($IsGoodHeap $h) ($IsAlloc DatatypeTypeType |#_module.LList.Nil| (Tclass._module.LList _module.LList$T) $h))
+ :qid |unknown.0:0|
+ :skolemid |673|
  :pattern ( ($IsAlloc DatatypeTypeType |#_module.LList.Nil| (Tclass._module.LList _module.LList$T) $h))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Iter$A T@U) ($ly T@U) (|n#0| Int) (|f#0| T@U) (|arg#0| T@U) ) (!  (=> (or (|_module.__default.Iter#canCall| _module._default.Iter$A |n#0| |f#0| |arg#0|) (and (< 2 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0|) ($Is DatatypeTypeType |f#0| (Tclass._module.FunctionHandle _module._default.Iter$A))) ($IsBox |arg#0| _module._default.Iter$A)))) ($IsBox (_module.__default.Iter _module._default.Iter$A $ly |n#0| |f#0| |arg#0|) _module._default.Iter$A))
+ :qid |unknown.0:0|
+ :skolemid |629|
  :pattern ( (_module.__default.Iter _module._default.Iter$A $ly |n#0| |f#0| |arg#0|))
 ))))
 (assert (forall ((|_module.LList$T#l@@1| T@U) (|_module.LList$T#r@@1| T@U) (ly@@1 T@U) (d0@@1 T@U) (d1@@1 T@U) ) (! (= (|$Eq#_module.LList| |_module.LList$T#l@@1| |_module.LList$T#r@@1| ($LS ly@@1) d0@@1 d1@@1) (= d0@@1 d1@@1))
+ :qid |unknown.0:0|
+ :skolemid |688|
  :pattern ( (|$Eq#_module.LList| |_module.LList$T#l@@1| |_module.LList$T#r@@1| ($LS ly@@1) d0@@1 d1@@1))
 )))
 (assert (forall ((_module.LList$T@@0 T@U) ) (! ($Is DatatypeTypeType |#_module.LList.Nil| (Tclass._module.LList _module.LList$T@@0))
+ :qid |unknown.0:0|
+ :skolemid |672|
  :pattern ( ($Is DatatypeTypeType |#_module.LList.Nil| (Tclass._module.LList _module.LList$T@@0)))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((_module._default.LmapIter$_T0 T@U) ($ly@@0 T@U) (|n#0@@0| Int) (|f#0@@0| T@U) (|arg#0@@0| T@U) ) (!  (=> (or (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0 (LitInt |n#0@@0|) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|)) (and (< 3 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@0|) ($Is DatatypeTypeType |f#0@@0| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0))) ($Is DatatypeTypeType |arg#0@@0| (Tclass._module.LList _module._default.LmapIter$_T0))))) (and (=> (or (not (= (LitInt |n#0@@0|) (LitInt 0))) (not true)) (and (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0 (LitInt (- |n#0@@0| 1)) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|)) (|_module.__default.Lmap#canCall| _module._default.LmapIter$_T0 (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType (_module.__default.LmapIter _module._default.LmapIter$_T0 ($LS $ly@@0) (LitInt (- |n#0@@0| 1)) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|)))))) (= (_module.__default.LmapIter _module._default.LmapIter$_T0 ($LS $ly@@0) (LitInt |n#0@@0|) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|)) (ite (= (LitInt |n#0@@0|) (LitInt 0)) |arg#0@@0| (_module.__default.Lmap _module._default.LmapIter$_T0 ($LS $LZ) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType (_module.__default.LmapIter _module._default.LmapIter$_T0 ($LS $ly@@0) (LitInt (- |n#0@@0| 1)) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |644|
  :pattern ( (_module.__default.LmapIter _module._default.LmapIter$_T0 ($LS $ly@@0) (LitInt |n#0@@0|) (Lit DatatypeTypeType |f#0@@0|) (Lit DatatypeTypeType |arg#0@@0|)))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Iter$A@@0 T@U) ($ly@@1 T@U) (|n#0@@1| Int) (|f#0@@1| T@U) (|arg#0@@1| T@U) ) (!  (=> (or (|_module.__default.Iter#canCall| _module._default.Iter$A@@0 (LitInt |n#0@@1|) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|) (and (< 2 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@1|) ($Is DatatypeTypeType |f#0@@1| (Tclass._module.FunctionHandle _module._default.Iter$A@@0))) ($IsBox |arg#0@@1| _module._default.Iter$A@@0)))) (and (=> (or (not (= (LitInt |n#0@@1|) (LitInt 0))) (not true)) (and (|_module.__default.Iter#canCall| _module._default.Iter$A@@0 (LitInt (- |n#0@@1| 1)) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|) (|_module.__default.Apply#canCall| _module._default.Iter$A@@0 (Lit DatatypeTypeType |f#0@@1|) (_module.__default.Iter _module._default.Iter$A@@0 ($LS $ly@@1) (LitInt (- |n#0@@1| 1)) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|)))) (= (_module.__default.Iter _module._default.Iter$A@@0 ($LS $ly@@1) (LitInt |n#0@@1|) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|) (ite (= (LitInt |n#0@@1|) (LitInt 0)) |arg#0@@1| (_module.__default.Apply _module._default.Iter$A@@0 (Lit DatatypeTypeType |f#0@@1|) (_module.__default.Iter _module._default.Iter$A@@0 ($LS $ly@@1) (LitInt (- |n#0@@1| 1)) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |633|
  :pattern ( (_module.__default.Iter _module._default.Iter$A@@0 ($LS $ly@@1) (LitInt |n#0@@1|) (Lit DatatypeTypeType |f#0@@1|) |arg#0@@1|))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall (($Heap T@U) (_module._default.LmapIter$_T0@@0 T@U) ($ly@@2 T@U) (|n#0@@2| Int) (|f#0@@2| T@U) (|arg#0@@2| T@U) ) (!  (=> (and (or (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@0 |n#0@@2| |f#0@@2| |arg#0@@2|) (and (< 3 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@2|) (and ($Is DatatypeTypeType |f#0@@2| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0@@0)) ($IsAlloc DatatypeTypeType |f#0@@2| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0@@0) $Heap))) (and ($Is DatatypeTypeType |arg#0@@2| (Tclass._module.LList _module._default.LmapIter$_T0@@0)) ($IsAlloc DatatypeTypeType |arg#0@@2| (Tclass._module.LList _module._default.LmapIter$_T0@@0) $Heap))))) ($IsGoodHeap $Heap)) ($IsAlloc DatatypeTypeType (_module.__default.LmapIter _module._default.LmapIter$_T0@@0 $ly@@2 |n#0@@2| |f#0@@2| |arg#0@@2|) (Tclass._module.LList _module._default.LmapIter$_T0@@0) $Heap))
+ :qid |Paulsondfy.108:16|
+ :skolemid |640|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.__default.LmapIter _module._default.LmapIter$_T0@@0 $ly@@2 |n#0@@2| |f#0@@2| |arg#0@@2|) (Tclass._module.LList _module._default.LmapIter$_T0@@0) $Heap))
 ))))
 (assert (forall ((x@@2 Int) ) (! (= (LitInt x@@2) x@@2)
+ :qid |DafnyPreludebpl.108:29|
+ :skolemid |17|
  :pattern ( (LitInt x@@2))
 )))
 (assert (forall ((x@@3 T@U) (T T@T) ) (! (= (Lit T x@@3) x@@3)
+ :qid |DafnyPreludebpl.102:29|
+ :skolemid |15|
  :pattern ( (Lit T x@@3))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((_module._default.LmapIter$_T0@@1 T@U) ($ly@@3 T@U) (|n#0@@3| Int) (|f#0@@3| T@U) (|arg#0@@3| T@U) ) (!  (=> (or (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@1 |n#0@@3| |f#0@@3| |arg#0@@3|) (and (< 3 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@3|) ($Is DatatypeTypeType |f#0@@3| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0@@1))) ($Is DatatypeTypeType |arg#0@@3| (Tclass._module.LList _module._default.LmapIter$_T0@@1))))) (and (=> (or (not (= |n#0@@3| (LitInt 0))) (not true)) (and (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@1 (- |n#0@@3| 1) |f#0@@3| |arg#0@@3|) (|_module.__default.Lmap#canCall| _module._default.LmapIter$_T0@@1 |f#0@@3| (_module.__default.LmapIter _module._default.LmapIter$_T0@@1 $ly@@3 (- |n#0@@3| 1) |f#0@@3| |arg#0@@3|)))) (= (_module.__default.LmapIter _module._default.LmapIter$_T0@@1 ($LS $ly@@3) |n#0@@3| |f#0@@3| |arg#0@@3|) (ite (= |n#0@@3| (LitInt 0)) |arg#0@@3| (_module.__default.Lmap _module._default.LmapIter$_T0@@1 ($LS $LZ) |f#0@@3| (_module.__default.LmapIter _module._default.LmapIter$_T0@@1 $ly@@3 (- |n#0@@3| 1) |f#0@@3| |arg#0@@3|))))))
+ :qid |unknown.0:0|
+ :skolemid |642|
  :pattern ( (_module.__default.LmapIter _module._default.LmapIter$_T0@@1 ($LS $ly@@3) |n#0@@3| |f#0@@3| |arg#0@@3|))
 ))))
 (assert (forall ((_module.LList$T@@1 T@U) (|a#5#0#0| T@U) (|a#5#1#0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.LList.Cons| |a#5#0#0| |a#5#1#0|) (Tclass._module.LList _module.LList$T@@1))  (and ($IsBox |a#5#0#0| _module.LList$T@@1) ($Is DatatypeTypeType |a#5#1#0| (Tclass._module.LList _module.LList$T@@1))))
+ :qid |unknown.0:0|
+ :skolemid |678|
  :pattern ( ($Is DatatypeTypeType (|#_module.LList.Cons| |a#5#0#0| |a#5#1#0|) (Tclass._module.LList _module.LList$T@@1)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@0 T@U) (_module._default.Iter$A@@1 T@U) ($ly@@4 T@U) (|n#0@@4| Int) (|f#0@@4| T@U) (|arg#0@@4| T@U) ) (!  (=> (and (or (|_module.__default.Iter#canCall| _module._default.Iter$A@@1 |n#0@@4| |f#0@@4| |arg#0@@4|) (and (< 2 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@4|) (and ($Is DatatypeTypeType |f#0@@4| (Tclass._module.FunctionHandle _module._default.Iter$A@@1)) ($IsAlloc DatatypeTypeType |f#0@@4| (Tclass._module.FunctionHandle _module._default.Iter$A@@1) $Heap@@0))) (and ($IsBox |arg#0@@4| _module._default.Iter$A@@1) ($IsAllocBox |arg#0@@4| _module._default.Iter$A@@1 $Heap@@0))))) ($IsGoodHeap $Heap@@0)) ($IsAllocBox (_module.__default.Iter _module._default.Iter$A@@1 $ly@@4 |n#0@@4| |f#0@@4| |arg#0@@4|) _module._default.Iter$A@@1 $Heap@@0))
+ :qid |Paulsondfy.103:16|
+ :skolemid |630|
  :pattern ( ($IsAllocBox (_module.__default.Iter _module._default.Iter$A@@1 $ly@@4 |n#0@@4| |f#0@@4| |arg#0@@4|) _module._default.Iter$A@@1 $Heap@@0))
 ))))
 (assert (forall ((d@@1 T@U) ) (! (= (_module.LList.Nil_q d@@1) (= (DatatypeCtorId d@@1) |##_module.LList.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |670|
  :pattern ( (_module.LList.Nil_q d@@1))
 )))
 (assert (forall ((d@@2 T@U) ) (! (= (_module.LList.Cons_q d@@2) (= (DatatypeCtorId d@@2) |##_module.LList.Cons|))
+ :qid |unknown.0:0|
+ :skolemid |675|
  :pattern ( (_module.LList.Cons_q d@@2))
 )))
 (assert (forall ((d@@3 T@U) ) (! (= (_module.FunctionHandle.FH_q d@@3) (= (DatatypeCtorId d@@3) |##_module.FunctionHandle.FH|))
+ :qid |unknown.0:0|
+ :skolemid |698|
  :pattern ( (_module.FunctionHandle.FH_q d@@3))
 )))
 (assert (forall ((x@@4 T@U) (T@@0 T@T) ) (! (= ($Box T@@0 ($Unbox T@@0 x@@4)) x@@4)
+ :qid |DafnyPreludebpl.168:18|
+ :skolemid |26|
  :pattern ( ($Unbox T@@0 x@@4))
 )))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((_module._default.LmapIter$_T0@@2 T@U) ($ly@@5 T@U) (|n#0@@5| Int) (|f#0@@5| T@U) (|arg#0@@5| T@U) ) (!  (=> (or (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@2 |n#0@@5| |f#0@@5| |arg#0@@5|) (and (< 3 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@5|) ($Is DatatypeTypeType |f#0@@5| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0@@2))) ($Is DatatypeTypeType |arg#0@@5| (Tclass._module.LList _module._default.LmapIter$_T0@@2))))) ($Is DatatypeTypeType (_module.__default.LmapIter _module._default.LmapIter$_T0@@2 $ly@@5 |n#0@@5| |f#0@@5| |arg#0@@5|) (Tclass._module.LList _module._default.LmapIter$_T0@@2)))
+ :qid |unknown.0:0|
+ :skolemid |639|
  :pattern ( (_module.__default.LmapIter _module._default.LmapIter$_T0@@2 $ly@@5 |n#0@@5| |f#0@@5| |arg#0@@5|))
 ))))
-(assert (forall ((d@@4 T@U) ) (!  (=> (_module.LList.Cons_q d@@4) (exists ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (= d@@4 (|#_module.LList.Cons| |a#4#0#0| |a#4#1#0|))))
+(assert (forall ((d@@4 T@U) ) (!  (=> (_module.LList.Cons_q d@@4) (exists ((|a#4#0#0| T@U) (|a#4#1#0| T@U) ) (! (= d@@4 (|#_module.LList.Cons| |a#4#0#0| |a#4#1#0|))
+ :qid |Paulsondfy.8:34|
+ :skolemid |676|
+)))
+ :qid |unknown.0:0|
+ :skolemid |677|
  :pattern ( (_module.LList.Cons_q d@@4))
 )))
 (assert (forall ((d@@5 T@U) ) (!  (=> (_module.LList.Nil_q d@@5) (= d@@5 |#_module.LList.Nil|))
+ :qid |unknown.0:0|
+ :skolemid |671|
  :pattern ( (_module.LList.Nil_q d@@5))
 )))
 (assert (forall ((|_module.LList$T#l@@2| T@U) (|_module.LList$T#r@@2| T@U) (k@@1 T@U) (ly@@2 T@U) (d0@@2 T@U) (d1@@2 T@U) ) (!  (=> (and ($Is DatatypeTypeType d0@@2 (Tclass._module.LList |_module.LList$T#l@@2|)) ($Is DatatypeTypeType d1@@2 (Tclass._module.LList |_module.LList$T#r@@2|))) (= (|$PrefixEq#_module.LList| |_module.LList$T#l@@2| |_module.LList$T#r@@2| k@@1 ($LS ly@@2) d0@@2 d1@@2)  (and (=> (< 0 (|ORD#Offset| k@@1)) (or (and (_module.LList.Nil_q d0@@2) (_module.LList.Nil_q d1@@2)) (and (and (_module.LList.Cons_q d0@@2) (_module.LList.Cons_q d1@@2)) (=> (and (_module.LList.Cons_q d0@@2) (_module.LList.Cons_q d1@@2)) (and (= (_module.LList.head d0@@2) (_module.LList.head d1@@2)) (|$PrefixEq#_module.LList| |_module.LList$T#l@@2| |_module.LList$T#r@@2| (|ORD#Minus| k@@1 (|ORD#FromNat| 1)) ly@@2 (_module.LList.tail d0@@2) (_module.LList.tail d1@@2))))))) (=> (and (or (not (= k@@1 (|ORD#FromNat| 0))) (not true)) (= (|ORD#Offset| k@@1) 0)) (|$Eq#_module.LList| |_module.LList$T#l@@2| |_module.LList$T#r@@2| ly@@2 d0@@2 d1@@2)))))
+ :qid |unknown.0:0|
+ :skolemid |689|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l@@2| |_module.LList$T#r@@2| k@@1 ($LS ly@@2) d0@@2 d1@@2))
 )))
-(assert (forall ((d@@6 T@U) ) (!  (=> (_module.FunctionHandle.FH_q d@@6) (exists ((|a#9#0#0| T@U) ) (= d@@6 (|#_module.FunctionHandle.FH| |a#9#0#0|))))
+(assert (forall ((d@@6 T@U) ) (!  (=> (_module.FunctionHandle.FH_q d@@6) (exists ((|a#9#0#0| T@U) ) (! (= d@@6 (|#_module.FunctionHandle.FH| |a#9#0#0|))
+ :qid |Paulsondfy.11:33|
+ :skolemid |699|
+)))
+ :qid |unknown.0:0|
+ :skolemid |700|
  :pattern ( (_module.FunctionHandle.FH_q d@@6))
 )))
 (assert (forall ((v T@U) (t T@U) (h T@U) (T@@1 T@T) ) (! (= ($IsAllocBox ($Box T@@1 v) t h) ($IsAlloc T@@1 v t h))
+ :qid |DafnyPreludebpl.217:18|
+ :skolemid |39|
  :pattern ( ($IsAllocBox ($Box T@@1 v) t h))
 )))
 (assert (forall ((_module.FunctionHandle$T@@0 T@U) ) (!  (and (= (Tag (Tclass._module.FunctionHandle _module.FunctionHandle$T@@0)) Tagclass._module.FunctionHandle) (= (TagFamily (Tclass._module.FunctionHandle _module.FunctionHandle$T@@0)) tytagFamily$FunctionHandle))
+ :qid |unknown.0:0|
+ :skolemid |581|
  :pattern ( (Tclass._module.FunctionHandle _module.FunctionHandle$T@@0))
 )))
 (assert (forall ((_module.LList$T@@2 T@U) ) (!  (and (= (Tag (Tclass._module.LList _module.LList$T@@2)) Tagclass._module.LList) (= (TagFamily (Tclass._module.LList _module.LList$T@@2)) tytagFamily$LList))
+ :qid |unknown.0:0|
+ :skolemid |592|
  :pattern ( (Tclass._module.LList _module.LList$T@@2))
 )))
 (assert (forall ((o@@1 T@U) (p@@0 T@U) ) (!  (=> (and (|ORD#IsNat| p@@0) (<= (|ORD#Offset| p@@0) (|ORD#Offset| o@@1))) (and (= (|ORD#IsNat| (|ORD#Minus| o@@1 p@@0)) (|ORD#IsNat| o@@1)) (= (|ORD#Offset| (|ORD#Minus| o@@1 p@@0)) (- (|ORD#Offset| o@@1) (|ORD#Offset| p@@0)))))
+ :qid |DafnyPreludebpl.451:15|
+ :skolemid |95|
  :pattern ( (|ORD#Minus| o@@1 p@@0))
 )))
 (assert (forall ((n@@0 Int) ) (!  (=> (<= 0 n@@0) (and (|ORD#IsNat| (|ORD#FromNat| n@@0)) (= (|ORD#Offset| (|ORD#FromNat| n@@0)) n@@0)))
+ :qid |DafnyPreludebpl.412:15|
+ :skolemid |86|
  :pattern ( (|ORD#FromNat| n@@0))
 )))
 (assert (forall ((_module.FunctionHandle$T@@1 T@U) (|a#10#0#0| T@U) ($h@@0 T@U) ) (!  (=> ($IsGoodHeap $h@@0) (= ($IsAlloc DatatypeTypeType (|#_module.FunctionHandle.FH| |a#10#0#0|) (Tclass._module.FunctionHandle _module.FunctionHandle$T@@1) $h@@0) ($IsAllocBox |a#10#0#0| _module.FunctionHandle$T@@1 $h@@0)))
+ :qid |unknown.0:0|
+ :skolemid |702|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.FunctionHandle.FH| |a#10#0#0|) (Tclass._module.FunctionHandle _module.FunctionHandle$T@@1) $h@@0))
 )))
 (assert (forall ((|_module.LList$T#l@@3| T@U) (|_module.LList$T#r@@3| T@U) (ly@@3 T@U) (d0@@3 T@U) (d1@@3 T@U) ) (!  (=> (and ($Is DatatypeTypeType d0@@3 (Tclass._module.LList |_module.LList$T#l@@3|)) ($Is DatatypeTypeType d1@@3 (Tclass._module.LList |_module.LList$T#r@@3|))) (= (|$Eq#_module.LList| |_module.LList$T#l@@3| |_module.LList$T#r@@3| ($LS ly@@3) d0@@3 d1@@3)  (or (and (_module.LList.Nil_q d0@@3) (_module.LList.Nil_q d1@@3)) (and (and (_module.LList.Cons_q d0@@3) (_module.LList.Cons_q d1@@3)) (=> (and (_module.LList.Cons_q d0@@3) (_module.LList.Cons_q d1@@3)) (and (= (_module.LList.head d0@@3) (_module.LList.head d1@@3)) (|$Eq#_module.LList| |_module.LList$T#l@@3| |_module.LList$T#r@@3| ly@@3 (_module.LList.tail d0@@3) (_module.LList.tail d1@@3))))))))
+ :qid |unknown.0:0|
+ :skolemid |686|
  :pattern ( (|$Eq#_module.LList| |_module.LList$T#l@@3| |_module.LList$T#r@@3| ($LS ly@@3) d0@@3 d1@@3))
 )))
 (assert (forall ((d@@7 T@U) ) (!  (=> (|$IsA#_module.LList| d@@7) (or (_module.LList.Nil_q d@@7) (_module.LList.Cons_q d@@7)))
+ :qid |unknown.0:0|
+ :skolemid |684|
  :pattern ( (|$IsA#_module.LList| d@@7))
 )))
 (assert (forall ((o@@2 T@U) (p@@1 T@U) ) (!  (or (or (|ORD#Less| o@@2 p@@1) (= o@@2 p@@1)) (|ORD#Less| p@@1 o@@2))
+ :qid |DafnyPreludebpl.424:15|
+ :skolemid |89|
  :pattern ( (|ORD#Less| o@@2 p@@1) (|ORD#Less| p@@1 o@@2))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall ((_module._default.Apply$T T@U) (|f#0@@6| T@U) (|argument#0| T@U) ) (!  (=> (or (|_module.__default.Apply#canCall| _module._default.Apply$T |f#0@@6| |argument#0|) (and (< 1 $FunctionContextHeight) (and ($Is DatatypeTypeType |f#0@@6| (Tclass._module.FunctionHandle _module._default.Apply$T)) ($IsBox |argument#0| _module._default.Apply$T)))) ($IsBox (_module.__default.Apply _module._default.Apply$T |f#0@@6| |argument#0|) _module._default.Apply$T))
+ :qid |unknown.0:0|
+ :skolemid |584|
  :pattern ( (_module.__default.Apply _module._default.Apply$T |f#0@@6| |argument#0|))
 ))))
 (assert (forall ((_module.LList$T@@3 T@U) (d@@8 T@U) ) (!  (=> ($Is DatatypeTypeType d@@8 (Tclass._module.LList _module.LList$T@@3)) (or (_module.LList.Nil_q d@@8) (_module.LList.Cons_q d@@8)))
+ :qid |unknown.0:0|
+ :skolemid |685|
  :pattern ( (_module.LList.Cons_q d@@8) ($Is DatatypeTypeType d@@8 (Tclass._module.LList _module.LList$T@@3)))
  :pattern ( (_module.LList.Nil_q d@@8) ($Is DatatypeTypeType d@@8 (Tclass._module.LList _module.LList$T@@3)))
 )))
 (assert  (=> (<= 1 $FunctionContextHeight) (forall (($Heap@@1 T@U) (_module._default.Apply$T@@0 T@U) (|f#0@@7| T@U) (|argument#0@@0| T@U) ) (!  (=> (and (or (|_module.__default.Apply#canCall| _module._default.Apply$T@@0 |f#0@@7| |argument#0@@0|) (and (< 1 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |f#0@@7| (Tclass._module.FunctionHandle _module._default.Apply$T@@0)) ($IsAlloc DatatypeTypeType |f#0@@7| (Tclass._module.FunctionHandle _module._default.Apply$T@@0) $Heap@@1)) (and ($IsBox |argument#0@@0| _module._default.Apply$T@@0) ($IsAllocBox |argument#0@@0| _module._default.Apply$T@@0 $Heap@@1))))) ($IsGoodHeap $Heap@@1)) ($IsAllocBox (_module.__default.Apply _module._default.Apply$T@@0 |f#0@@7| |argument#0@@0|) _module._default.Apply$T@@0 $Heap@@1))
+ :qid |Paulsondfy.12:16|
+ :skolemid |585|
  :pattern ( ($IsAllocBox (_module.__default.Apply _module._default.Apply$T@@0 |f#0@@7| |argument#0@@0|) _module._default.Apply$T@@0 $Heap@@1))
 ))))
 (assert (forall ((v@@0 T@U) (t@@0 T@U) (T@@2 T@T) ) (! (= ($IsBox ($Box T@@2 v@@0) t@@0) ($Is T@@2 v@@0 t@@0))
+ :qid |DafnyPreludebpl.214:18|
+ :skolemid |38|
  :pattern ( ($IsBox ($Box T@@2 v@@0) t@@0))
 )))
 (assert (forall ((o@@3 T@U) ) (! (<= 0 (|ORD#Offset| o@@3))
+ :qid |DafnyPreludebpl.406:15|
+ :skolemid |85|
  :pattern ( (|ORD#Offset| o@@3))
 )))
 (assert (forall ((|a#3#0#0| T@U) (|a#3#1#0| T@U) ) (! (= (DatatypeCtorId (|#_module.LList.Cons| |a#3#0#0| |a#3#1#0|)) |##_module.LList.Cons|)
+ :qid |Paulsondfy.8:34|
+ :skolemid |674|
  :pattern ( (|#_module.LList.Cons| |a#3#0#0| |a#3#1#0|))
 )))
 (assert (forall ((|a#6#0#0| T@U) (|a#6#1#0| T@U) ) (! (= (_module.LList.head (|#_module.LList.Cons| |a#6#0#0| |a#6#1#0|)) |a#6#0#0|)
+ :qid |Paulsondfy.8:34|
+ :skolemid |682|
  :pattern ( (|#_module.LList.Cons| |a#6#0#0| |a#6#1#0|))
 )))
 (assert (forall ((|a#7#0#0| T@U) (|a#7#1#0| T@U) ) (! (= (_module.LList.tail (|#_module.LList.Cons| |a#7#0#0| |a#7#1#0|)) |a#7#1#0|)
+ :qid |Paulsondfy.8:34|
+ :skolemid |683|
  :pattern ( (|#_module.LList.Cons| |a#7#0#0| |a#7#1#0|))
 )))
 (assert (= (Ctor BoxType) 4))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Iter$A@@2 T@U) ($ly@@6 T@U) (|n#0@@6| Int) (|f#0@@8| T@U) (|arg#0@@6| T@U) ) (!  (=> (or (|_module.__default.Iter#canCall| _module._default.Iter$A@@2 (LitInt |n#0@@6|) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|)) (and (< 2 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@6|) ($Is DatatypeTypeType |f#0@@8| (Tclass._module.FunctionHandle _module._default.Iter$A@@2))) ($IsBox |arg#0@@6| _module._default.Iter$A@@2)))) (and (=> (or (not (= (LitInt |n#0@@6|) (LitInt 0))) (not true)) (and (|_module.__default.Iter#canCall| _module._default.Iter$A@@2 (LitInt (- |n#0@@6| 1)) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|)) (|_module.__default.Apply#canCall| _module._default.Iter$A@@2 (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType (_module.__default.Iter _module._default.Iter$A@@2 ($LS $ly@@6) (LitInt (- |n#0@@6| 1)) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|)))))) (= (_module.__default.Iter _module._default.Iter$A@@2 ($LS $ly@@6) (LitInt |n#0@@6|) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|)) (ite (= (LitInt |n#0@@6|) (LitInt 0)) |arg#0@@6| (_module.__default.Apply _module._default.Iter$A@@2 (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType (_module.__default.Iter _module._default.Iter$A@@2 ($LS $ly@@6) (LitInt (- |n#0@@6| 1)) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|))))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |634|
  :pattern ( (_module.__default.Iter _module._default.Iter$A@@2 ($LS $ly@@6) (LitInt |n#0@@6|) (Lit DatatypeTypeType |f#0@@8|) (Lit BoxType |arg#0@@6|)))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Lmap$_T0 T@U) ($ly@@7 T@U) (|f#0@@9| T@U) (|a#0| T@U) ) (!  (=> (or (|_module.__default.Lmap#canCall| _module._default.Lmap$_T0 |f#0@@9| |a#0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |f#0@@9| (Tclass._module.FunctionHandle _module._default.Lmap$_T0)) ($Is DatatypeTypeType |a#0| (Tclass._module.LList _module._default.Lmap$_T0))))) ($Is DatatypeTypeType (_module.__default.Lmap _module._default.Lmap$_T0 $ly@@7 |f#0@@9| |a#0|) (Tclass._module.LList _module._default.Lmap$_T0)))
+ :qid |unknown.0:0|
+ :skolemid |595|
  :pattern ( (_module.__default.Lmap _module._default.Lmap$_T0 $ly@@7 |f#0@@9| |a#0|))
 ))))
 (assert  (=> (<= 3 $FunctionContextHeight) (forall ((_module._default.LmapIter$_T0@@3 T@U) ($ly@@8 T@U) (|n#0@@7| Int) (|f#0@@10| T@U) (|arg#0@@7| T@U) ) (!  (=> (or (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@3 (LitInt |n#0@@7|) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|) (and (< 3 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@7|) ($Is DatatypeTypeType |f#0@@10| (Tclass._module.FunctionHandle _module._default.LmapIter$_T0@@3))) ($Is DatatypeTypeType |arg#0@@7| (Tclass._module.LList _module._default.LmapIter$_T0@@3))))) (and (=> (or (not (= (LitInt |n#0@@7|) (LitInt 0))) (not true)) (and (|_module.__default.LmapIter#canCall| _module._default.LmapIter$_T0@@3 (LitInt (- |n#0@@7| 1)) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|) (|_module.__default.Lmap#canCall| _module._default.LmapIter$_T0@@3 (Lit DatatypeTypeType |f#0@@10|) (_module.__default.LmapIter _module._default.LmapIter$_T0@@3 ($LS $ly@@8) (LitInt (- |n#0@@7| 1)) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|)))) (= (_module.__default.LmapIter _module._default.LmapIter$_T0@@3 ($LS $ly@@8) (LitInt |n#0@@7|) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|) (ite (= (LitInt |n#0@@7|) (LitInt 0)) |arg#0@@7| (_module.__default.Lmap _module._default.LmapIter$_T0@@3 ($LS $LZ) (Lit DatatypeTypeType |f#0@@10|) (_module.__default.LmapIter _module._default.LmapIter$_T0@@3 ($LS $ly@@8) (LitInt (- |n#0@@7| 1)) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|))))))
+ :qid |unknown.0:0|
  :weight 3
+ :skolemid |643|
  :pattern ( (_module.__default.LmapIter _module._default.LmapIter$_T0@@3 ($LS $ly@@8) (LitInt |n#0@@7|) (Lit DatatypeTypeType |f#0@@10|) |arg#0@@7|))
 ))))
 (assert (forall ((_module.FunctionHandle$T@@2 T@U) ) (! (= (Tclass._module.FunctionHandle_0 (Tclass._module.FunctionHandle _module.FunctionHandle$T@@2)) _module.FunctionHandle$T@@2)
+ :qid |unknown.0:0|
+ :skolemid |582|
  :pattern ( (Tclass._module.FunctionHandle _module.FunctionHandle$T@@2))
 )))
 (assert (forall ((_module.LList$T@@4 T@U) ) (! (= (Tclass._module.LList_0 (Tclass._module.LList _module.LList$T@@4)) _module.LList$T@@4)
+ :qid |unknown.0:0|
+ :skolemid |593|
  :pattern ( (Tclass._module.LList _module.LList$T@@4))
 )))
 (assert (forall ((|a#8#0#0| T@U) ) (! (= (DatatypeCtorId (|#_module.FunctionHandle.FH| |a#8#0#0|)) |##_module.FunctionHandle.FH|)
+ :qid |Paulsondfy.11:33|
+ :skolemid |697|
  :pattern ( (|#_module.FunctionHandle.FH| |a#8#0#0|))
 )))
 (assert (forall ((|a#12#0#0| T@U) ) (! (= (_module.FunctionHandle._h0 (|#_module.FunctionHandle.FH| |a#12#0#0|)) |a#12#0#0|)
+ :qid |Paulsondfy.11:33|
+ :skolemid |705|
  :pattern ( (|#_module.FunctionHandle.FH| |a#12#0#0|))
 )))
 (assert (forall ((x@@5 T@U) (T@@3 T@T) ) (! (= ($Unbox T@@3 ($Box T@@3 x@@5)) x@@5)
+ :qid |DafnyPreludebpl.167:18|
+ :skolemid |25|
  :pattern ( ($Box T@@3 x@@5))
 )))
 (assert (forall ((o@@4 T@U) (p@@2 T@U) ) (!  (and (and (and (=> (|ORD#Less| o@@4 p@@2) (or (not (= o@@4 p@@2)) (not true))) (=> (and (|ORD#IsNat| o@@4) (not (|ORD#IsNat| p@@2))) (|ORD#Less| o@@4 p@@2))) (=> (and (|ORD#IsNat| o@@4) (|ORD#IsNat| p@@2)) (= (|ORD#Less| o@@4 p@@2) (< (|ORD#Offset| o@@4) (|ORD#Offset| p@@2))))) (=> (and (|ORD#Less| o@@4 p@@2) (|ORD#IsNat| p@@2)) (|ORD#IsNat| o@@4)))
+ :qid |DafnyPreludebpl.418:15|
+ :skolemid |88|
  :pattern ( (|ORD#Less| o@@4 p@@2))
 )))
 (assert (forall ((_module.FunctionHandle$T@@3 T@U) (|a#10#0#0@@0| T@U) ) (! (= ($Is DatatypeTypeType (|#_module.FunctionHandle.FH| |a#10#0#0@@0|) (Tclass._module.FunctionHandle _module.FunctionHandle$T@@3)) ($IsBox |a#10#0#0@@0| _module.FunctionHandle$T@@3))
+ :qid |unknown.0:0|
+ :skolemid |701|
  :pattern ( ($Is DatatypeTypeType (|#_module.FunctionHandle.FH| |a#10#0#0@@0|) (Tclass._module.FunctionHandle _module.FunctionHandle$T@@3)))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Lmap$_T0@@0 T@U) ($ly@@9 T@U) (|f#0@@11| T@U) (|a#0@@0| T@U) ) (!  (=> (or (|_module.__default.Lmap#canCall| _module._default.Lmap$_T0@@0 |f#0@@11| |a#0@@0|) (and (< 2 $FunctionContextHeight) (and ($Is DatatypeTypeType |f#0@@11| (Tclass._module.FunctionHandle _module._default.Lmap$_T0@@0)) ($Is DatatypeTypeType |a#0@@0| (Tclass._module.LList _module._default.Lmap$_T0@@0))))) (and (=> (not (_module.LList.Nil_q |a#0@@0|)) (let ((|xs#1| (_module.LList.tail |a#0@@0|)))
@@ -291,95 +411,156 @@
  (and (|_module.__default.Apply#canCall| _module._default.Lmap$_T0@@0 |f#0@@11| |x#1|) (|_module.__default.Lmap#canCall| _module._default.Lmap$_T0@@0 |f#0@@11| |xs#1|))))) (= (_module.__default.Lmap _module._default.Lmap$_T0@@0 ($LS $ly@@9) |f#0@@11| |a#0@@0|) (ite (_module.LList.Nil_q |a#0@@0|) |#_module.LList.Nil| (let ((|xs#0| (_module.LList.tail |a#0@@0|)))
 (let ((|x#0| (_module.LList.head |a#0@@0|)))
 (|#_module.LList.Cons| (_module.__default.Apply _module._default.Lmap$_T0@@0 |f#0@@11| |x#0|) (_module.__default.Lmap _module._default.Lmap$_T0@@0 $ly@@9 |f#0@@11| |xs#0|))))))))
+ :qid |unknown.0:0|
+ :skolemid |598|
  :pattern ( (_module.__default.Lmap _module._default.Lmap$_T0@@0 ($LS $ly@@9) |f#0@@11| |a#0@@0|))
 ))))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall ((_module._default.Iter$A@@3 T@U) ($ly@@10 T@U) (|n#0@@8| Int) (|f#0@@12| T@U) (|arg#0@@8| T@U) ) (!  (=> (or (|_module.__default.Iter#canCall| _module._default.Iter$A@@3 |n#0@@8| |f#0@@12| |arg#0@@8|) (and (< 2 $FunctionContextHeight) (and (and (<= (LitInt 0) |n#0@@8|) ($Is DatatypeTypeType |f#0@@12| (Tclass._module.FunctionHandle _module._default.Iter$A@@3))) ($IsBox |arg#0@@8| _module._default.Iter$A@@3)))) (and (=> (or (not (= |n#0@@8| (LitInt 0))) (not true)) (and (|_module.__default.Iter#canCall| _module._default.Iter$A@@3 (- |n#0@@8| 1) |f#0@@12| |arg#0@@8|) (|_module.__default.Apply#canCall| _module._default.Iter$A@@3 |f#0@@12| (_module.__default.Iter _module._default.Iter$A@@3 $ly@@10 (- |n#0@@8| 1) |f#0@@12| |arg#0@@8|)))) (= (_module.__default.Iter _module._default.Iter$A@@3 ($LS $ly@@10) |n#0@@8| |f#0@@12| |arg#0@@8|) (ite (= |n#0@@8| (LitInt 0)) |arg#0@@8| (_module.__default.Apply _module._default.Iter$A@@3 |f#0@@12| (_module.__default.Iter _module._default.Iter$A@@3 $ly@@10 (- |n#0@@8| 1) |f#0@@12| |arg#0@@8|))))))
+ :qid |unknown.0:0|
+ :skolemid |632|
  :pattern ( (_module.__default.Iter _module._default.Iter$A@@3 ($LS $ly@@10) |n#0@@8| |f#0@@12| |arg#0@@8|))
 ))))
 (assert (forall ((|_module.LList$T#l@@4| T@U) (|_module.LList$T#r@@4| T@U) (ly@@4 T@U) (d0@@4 T@U) (d1@@4 T@U) ) (! (= (|$Eq#_module.LList| |_module.LList$T#l@@4| |_module.LList$T#r@@4| ($LS ly@@4) d0@@4 d1@@4) (forall ((k@@2 T@U) ) (! (|$PrefixEq#_module.LList| |_module.LList$T#l@@4| |_module.LList$T#r@@4| k@@2 ($LS ly@@4) d0@@4 d1@@4)
+ :qid |unknown.0:0|
+ :skolemid |691|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l@@4| |_module.LList$T#r@@4| k@@2 ($LS ly@@4) d0@@4 d1@@4))
 )))
+ :qid |unknown.0:0|
+ :skolemid |692|
  :pattern ( (|$Eq#_module.LList| |_module.LList$T#l@@4| |_module.LList$T#r@@4| ($LS ly@@4) d0@@4 d1@@4))
 )))
 (assert (forall ((|a#13#0#0| T@U) ) (! (< (BoxRank |a#13#0#0|) (DtRank (|#_module.FunctionHandle.FH| |a#13#0#0|)))
+ :qid |Paulsondfy.11:33|
+ :skolemid |706|
  :pattern ( (|#_module.FunctionHandle.FH| |a#13#0#0|))
 )))
 (assert (forall ((d@@9 T@U) (_module.LList$T@@5 T@U) ($h@@1 T@U) ) (!  (=> (and ($IsGoodHeap $h@@1) (and (_module.LList.Cons_q d@@9) ($IsAlloc DatatypeTypeType d@@9 (Tclass._module.LList _module.LList$T@@5) $h@@1))) ($IsAllocBox (_module.LList.head d@@9) _module.LList$T@@5 $h@@1))
+ :qid |unknown.0:0|
+ :skolemid |680|
  :pattern ( ($IsAllocBox (_module.LList.head d@@9) _module.LList$T@@5 $h@@1))
 )))
 (assert (forall ((d@@10 T@U) (_module.FunctionHandle$T@@4 T@U) ($h@@2 T@U) ) (!  (=> (and ($IsGoodHeap $h@@2) (and (_module.FunctionHandle.FH_q d@@10) ($IsAlloc DatatypeTypeType d@@10 (Tclass._module.FunctionHandle _module.FunctionHandle$T@@4) $h@@2))) ($IsAllocBox (_module.FunctionHandle._h0 d@@10) _module.FunctionHandle$T@@4 $h@@2))
+ :qid |unknown.0:0|
+ :skolemid |703|
  :pattern ( ($IsAllocBox (_module.FunctionHandle._h0 d@@10) _module.FunctionHandle$T@@4 $h@@2))
 )))
 (assert  (and (and (and (and (and (and (and (and (forall ((t0 T@T) (t1 T@T) (t2 T@T) (val T@U) (m@@0 T@U) (x0 T@U) (x1 T@U) ) (! (= (MapType0Select t0 t1 t2 (MapType0Store t0 t1 t2 m@@0 x0 x1 val) x0 x1) val)
+ :qid |mapAx0:MapType0Select|
  :weight 0
 )) (and (forall ((u0 T@T) (u1 T@T) (u2 T@T) (val@@0 T@U) (m@@1 T@U) (x0@@0 T@U) (x1@@0 T@U) (y0 T@U) (y1 T@U) ) (!  (or (= x0@@0 y0) (= (MapType0Select u0 u1 u2 (MapType0Store u0 u1 u2 m@@1 x0@@0 x1@@0 val@@0) y0 y1) (MapType0Select u0 u1 u2 m@@1 y0 y1)))
+ :qid |mapAx1:MapType0Select:0|
  :weight 0
 )) (forall ((u0@@0 T@T) (u1@@0 T@T) (u2@@0 T@T) (val@@1 T@U) (m@@2 T@U) (x0@@1 T@U) (x1@@1 T@U) (y0@@0 T@U) (y1@@0 T@U) ) (!  (or (= x1@@1 y1@@0) (= (MapType0Select u0@@0 u1@@0 u2@@0 (MapType0Store u0@@0 u1@@0 u2@@0 m@@2 x0@@1 x1@@1 val@@1) y0@@0 y1@@0) (MapType0Select u0@@0 u1@@0 u2@@0 m@@2 y0@@0 y1@@0)))
+ :qid |mapAx1:MapType0Select:1|
  :weight 0
 )))) (= (Ctor refType) 5)) (= (Ctor FieldType) 6)) (forall ((t0@@0 T@T) (t1@@0 T@T) (val@@2 T@U) (m@@3 T@U) (x0@@2 T@U) ) (! (= (MapType1Select t0@@0 t1@@0 (MapType1Store t0@@0 t1@@0 m@@3 x0@@2 val@@2) x0@@2) val@@2)
+ :qid |mapAx0:MapType1Select|
  :weight 0
 ))) (forall ((u0@@1 T@T) (u1@@1 T@T) (val@@3 T@U) (m@@4 T@U) (x0@@3 T@U) (y0@@1 T@U) ) (!  (or (= x0@@3 y0@@1) (= (MapType1Select u0@@1 u1@@1 (MapType1Store u0@@1 u1@@1 m@@4 x0@@3 val@@3) y0@@1) (MapType1Select u0@@1 u1@@1 m@@4 y0@@1)))
+ :qid |mapAx1:MapType1Select:0|
  :weight 0
-))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (= (Ctor (MapType1Type arg0@@2 arg1)) 7))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+))) (forall ((arg0@@2 T@T) (arg1 T@T) ) (! (= (Ctor (MapType1Type arg0@@2 arg1)) 7)
+ :qid |ctor:MapType1Type|
+))) (forall ((arg0@@3 T@T) (arg1@@0 T@T) ) (! (= (MapType1TypeInv0 (MapType1Type arg0@@3 arg1@@0)) arg0@@3)
+ :qid |typeInv:MapType1TypeInv0|
  :pattern ( (MapType1Type arg0@@3 arg1@@0))
 ))) (forall ((arg0@@4 T@T) (arg1@@1 T@T) ) (! (= (MapType1TypeInv1 (MapType1Type arg0@@4 arg1@@1)) arg1@@1)
+ :qid |typeInv:MapType1TypeInv1|
  :pattern ( (MapType1Type arg0@@4 arg1@@1))
 ))))
 (assert (forall ((|l#0| T@U) (|l#1| T@U) (|l#2| T@U) (|l#3| Bool) ($o T@U) ($f T@U) ) (! (= (U_2_bool (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))  (=> (and (or (not (= $o |l#0|)) (not true)) (U_2_bool ($Unbox boolType (MapType1Select FieldType BoxType (MapType1Select refType (MapType1Type FieldType BoxType) |l#1| $o) |l#2|)))) |l#3|))
+ :qid |DafnyPreludebpl.156:1|
+ :skolemid |711|
  :pattern ( (MapType0Select refType FieldType boolType (|lambda#0| |l#0| |l#1| |l#2| |l#3|) $o $f))
 )))
 (assert  (=> (<= 2 $FunctionContextHeight) (forall (($Heap@@2 T@U) (_module._default.Lmap$_T0@@1 T@U) ($ly@@11 T@U) (|f#0@@13| T@U) (|a#0@@1| T@U) ) (!  (=> (and (or (|_module.__default.Lmap#canCall| _module._default.Lmap$_T0@@1 |f#0@@13| |a#0@@1|) (and (< 2 $FunctionContextHeight) (and (and ($Is DatatypeTypeType |f#0@@13| (Tclass._module.FunctionHandle _module._default.Lmap$_T0@@1)) ($IsAlloc DatatypeTypeType |f#0@@13| (Tclass._module.FunctionHandle _module._default.Lmap$_T0@@1) $Heap@@2)) (and ($Is DatatypeTypeType |a#0@@1| (Tclass._module.LList _module._default.Lmap$_T0@@1)) ($IsAlloc DatatypeTypeType |a#0@@1| (Tclass._module.LList _module._default.Lmap$_T0@@1) $Heap@@2))))) ($IsGoodHeap $Heap@@2)) ($IsAlloc DatatypeTypeType (_module.__default.Lmap _module._default.Lmap$_T0@@1 $ly@@11 |f#0@@13| |a#0@@1|) (Tclass._module.LList _module._default.Lmap$_T0@@1) $Heap@@2))
+ :qid |Paulsondfy.19:16|
+ :skolemid |596|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.__default.Lmap _module._default.Lmap$_T0@@1 $ly@@11 |f#0@@13| |a#0@@1|) (Tclass._module.LList _module._default.Lmap$_T0@@1) $Heap@@2))
 ))))
 (assert (forall ((d@@11 T@U) ) (! (= (BoxRank ($Box DatatypeTypeType d@@11)) (DtRank d@@11))
+ :qid |DafnyPreludebpl.391:15|
+ :skolemid |84|
  :pattern ( (BoxRank ($Box DatatypeTypeType d@@11)))
 )))
 (assert (forall ((_module._default.Lmap$_T0@@2 T@U) ($ly@@12 T@U) (|f#0@@14| T@U) (|a#0@@2| T@U) ) (! (= (_module.__default.Lmap _module._default.Lmap$_T0@@2 ($LS $ly@@12) |f#0@@14| |a#0@@2|) (_module.__default.Lmap _module._default.Lmap$_T0@@2 $ly@@12 |f#0@@14| |a#0@@2|))
+ :qid |unknown.0:0|
+ :skolemid |590|
  :pattern ( (_module.__default.Lmap _module._default.Lmap$_T0@@2 ($LS $ly@@12) |f#0@@14| |a#0@@2|))
 )))
 (assert (forall ((_module.FunctionHandle$T@@5 T@U) (bx T@U) ) (!  (=> ($IsBox bx (Tclass._module.FunctionHandle _module.FunctionHandle$T@@5)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx)) bx) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx) (Tclass._module.FunctionHandle _module.FunctionHandle$T@@5))))
+ :qid |unknown.0:0|
+ :skolemid |583|
  :pattern ( ($IsBox bx (Tclass._module.FunctionHandle _module.FunctionHandle$T@@5)))
 )))
 (assert (forall ((_module.LList$T@@6 T@U) (bx@@0 T@U) ) (!  (=> ($IsBox bx@@0 (Tclass._module.LList _module.LList$T@@6)) (and (= ($Box DatatypeTypeType ($Unbox DatatypeTypeType bx@@0)) bx@@0) ($Is DatatypeTypeType ($Unbox DatatypeTypeType bx@@0) (Tclass._module.LList _module.LList$T@@6))))
+ :qid |unknown.0:0|
+ :skolemid |594|
  :pattern ( ($IsBox bx@@0 (Tclass._module.LList _module.LList$T@@6)))
 )))
 (assert (forall ((o@@5 T@U) ) (!  (=> (|ORD#IsNat| o@@5) (= o@@5 (|ORD#FromNat| (|ORD#Offset| o@@5))))
+ :qid |DafnyPreludebpl.414:15|
+ :skolemid |87|
  :pattern ( (|ORD#Offset| o@@5))
  :pattern ( (|ORD#IsNat| o@@5))
 )))
 (assert (forall ((d@@12 T@U) (_module.LList$T@@7 T@U) ($h@@3 T@U) ) (!  (=> (and ($IsGoodHeap $h@@3) (and (_module.LList.Cons_q d@@12) ($IsAlloc DatatypeTypeType d@@12 (Tclass._module.LList _module.LList$T@@7) $h@@3))) ($IsAlloc DatatypeTypeType (_module.LList.tail d@@12) (Tclass._module.LList _module.LList$T@@7) $h@@3))
+ :qid |unknown.0:0|
+ :skolemid |681|
  :pattern ( ($IsAlloc DatatypeTypeType (_module.LList.tail d@@12) (Tclass._module.LList _module.LList$T@@7) $h@@3))
 )))
 (assert (forall ((o@@6 T@U) (p@@3 T@U) ) (!  (=> (and (|ORD#IsNat| p@@3) (<= (|ORD#Offset| p@@3) (|ORD#Offset| o@@6))) (or (and (= p@@3 (|ORD#FromNat| 0)) (= (|ORD#Minus| o@@6 p@@3) o@@6)) (and (or (not (= p@@3 (|ORD#FromNat| 0))) (not true)) (|ORD#Less| (|ORD#Minus| o@@6 p@@3) o@@6))))
+ :qid |DafnyPreludebpl.455:15|
+ :skolemid |96|
  :pattern ( (|ORD#Minus| o@@6 p@@3))
 )))
 (assert (forall ((|_module.LList$T#l@@5| T@U) (|_module.LList$T#r@@5| T@U) (k@@3 T@U) (ly@@5 T@U) (d0@@5 T@U) (d1@@5 T@U) (m@@5 T@U) ) (!  (=> (and (|ORD#Less| k@@3 m@@5) (|$PrefixEq#_module.LList| |_module.LList$T#l@@5| |_module.LList$T#r@@5| m@@5 ($LS ly@@5) d0@@5 d1@@5)) (|$PrefixEq#_module.LList| |_module.LList$T#l@@5| |_module.LList$T#r@@5| k@@3 ($LS ly@@5) d0@@5 d1@@5))
+ :qid |unknown.0:0|
+ :skolemid |695|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l@@5| |_module.LList$T#r@@5| k@@3 ($LS ly@@5) d0@@5 d1@@5) (|$PrefixEq#_module.LList| |_module.LList$T#l@@5| |_module.LList$T#r@@5| m@@5 ($LS ly@@5) d0@@5 d1@@5))
 )))
 (assert (forall ((|_module.LList$T#l@@6| T@U) (|_module.LList$T#r@@6| T@U) (ly@@6 T@U) (d0@@6 T@U) (d1@@6 T@U) ) (! (= (|$Eq#_module.LList| |_module.LList$T#l@@6| |_module.LList$T#r@@6| ($LS ly@@6) d0@@6 d1@@6) (|$Eq#_module.LList| |_module.LList$T#l@@6| |_module.LList$T#r@@6| ly@@6 d0@@6 d1@@6))
+ :qid |unknown.0:0|
+ :skolemid |687|
  :pattern ( (|$Eq#_module.LList| |_module.LList$T#l@@6| |_module.LList$T#r@@6| ($LS ly@@6) d0@@6 d1@@6))
 )))
 (assert (forall ((_module._default.Iter$A@@4 T@U) ($ly@@13 T@U) (|n#0@@9| Int) (|f#0@@15| T@U) (|arg#0@@9| T@U) ) (! (= (_module.__default.Iter _module._default.Iter$A@@4 ($LS $ly@@13) |n#0@@9| |f#0@@15| |arg#0@@9|) (_module.__default.Iter _module._default.Iter$A@@4 $ly@@13 |n#0@@9| |f#0@@15| |arg#0@@9|))
+ :qid |unknown.0:0|
+ :skolemid |627|
  :pattern ( (_module.__default.Iter _module._default.Iter$A@@4 ($LS $ly@@13) |n#0@@9| |f#0@@15| |arg#0@@9|))
 )))
 (assert (forall ((_module._default.LmapIter$_T0@@4 T@U) ($ly@@14 T@U) (|n#0@@10| Int) (|f#0@@16| T@U) (|arg#0@@10| T@U) ) (! (= (_module.__default.LmapIter _module._default.LmapIter$_T0@@4 ($LS $ly@@14) |n#0@@10| |f#0@@16| |arg#0@@10|) (_module.__default.LmapIter _module._default.LmapIter$_T0@@4 $ly@@14 |n#0@@10| |f#0@@16| |arg#0@@10|))
+ :qid |unknown.0:0|
+ :skolemid |637|
  :pattern ( (_module.__default.LmapIter _module._default.LmapIter$_T0@@4 ($LS $ly@@14) |n#0@@10| |f#0@@16| |arg#0@@10|))
 )))
 (assert (forall ((x@@6 Int) ) (! (= ($Box intType (int_2_U (LitInt x@@6))) (Lit BoxType ($Box intType (int_2_U x@@6))))
+ :qid |DafnyPreludebpl.109:15|
+ :skolemid |18|
  :pattern ( ($Box intType (int_2_U (LitInt x@@6))))
 )))
 (assert (forall ((|a#11#0#0| T@U) ) (! (= (|#_module.FunctionHandle.FH| (Lit BoxType |a#11#0#0|)) (Lit DatatypeTypeType (|#_module.FunctionHandle.FH| |a#11#0#0|)))
+ :qid |Paulsondfy.11:33|
+ :skolemid |704|
  :pattern ( (|#_module.FunctionHandle.FH| (Lit BoxType |a#11#0#0|)))
 )))
 (assert (forall ((x@@7 T@U) (T@@4 T@T) ) (! (= ($Box T@@4 (Lit T@@4 x@@7)) (Lit BoxType ($Box T@@4 x@@7)))
+ :qid |DafnyPreludebpl.103:18|
+ :skolemid |16|
  :pattern ( ($Box T@@4 (Lit T@@4 x@@7)))
 )))
 (assert (forall ((|_module.LList$T#l@@7| T@U) (|_module.LList$T#r@@7| T@U) (ly@@7 T@U) (d0@@7 T@U) (d1@@7 T@U) ) (!  (=> (forall ((k@@4 Int) ) (!  (=> (<= 0 k@@4) (|$PrefixEq#_module.LList| |_module.LList$T#l@@7| |_module.LList$T#r@@7| (|ORD#FromNat| k@@4) ($LS ly@@7) d0@@7 d1@@7))
+ :qid |unknown.0:0|
+ :skolemid |693|
  :pattern ( (|$PrefixEq#_module.LList| |_module.LList$T#l@@7| |_module.LList$T#r@@7| (|ORD#FromNat| k@@4) ($LS ly@@7) d0@@7 d1@@7))
 )) (|$Eq#_module.LList| |_module.LList$T#l@@7| |_module.LList$T#r@@7| ($LS ly@@7) d0@@7 d1@@7))
+ :qid |unknown.0:0|
+ :skolemid |694|
  :pattern ( (|$Eq#_module.LList| |_module.LList$T#l@@7| |_module.LList$T#r@@7| ($LS ly@@7) d0@@7 d1@@7))
 )))
 (assert (forall ((_module.LList$T@@8 T@U) (|a#5#0#0@@0| T@U) (|a#5#1#0@@0| T@U) ($h@@4 T@U) ) (!  (=> ($IsGoodHeap $h@@4) (= ($IsAlloc DatatypeTypeType (|#_module.LList.Cons| |a#5#0#0@@0| |a#5#1#0@@0|) (Tclass._module.LList _module.LList$T@@8) $h@@4)  (and ($IsAllocBox |a#5#0#0@@0| _module.LList$T@@8 $h@@4) ($IsAlloc DatatypeTypeType |a#5#1#0@@0| (Tclass._module.LList _module.LList$T@@8) $h@@4))))
+ :qid |unknown.0:0|
+ :skolemid |679|
  :pattern ( ($IsAlloc DatatypeTypeType (|#_module.LList.Cons| |a#5#0#0@@0| |a#5#1#0@@0|) (Tclass._module.LList _module.LList$T@@8) $h@@4))
 )))
 (push 1)
@@ -394,6 +575,7 @@
 (declare-fun _module._default.Lemma25$A () T@U)
 (declare-fun |b#0| () T@U)
 (declare-fun |n#0@@11| () Int)
+(set-info :boogie-vc-id Impl$$_module.__default.Lemma25)
 (set-option :timeout 10000)
 (set-option :rlimit 0)
 (set-option :auto_config false)
@@ -410,6 +592,8 @@
 (set-option :smt.arith.solver 2)
 (assert (not
  (=> (= (ControlFlow 0 0) 3) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap@@3 alloc false)) (=> (and (|$IsA#_module.FunctionHandle| |f#0@@17|) (|$IsA#_module.LList| |M#0|)) (=> (and (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (= $Heap@@3 $Heap@0)) (and (forall ((|$ih#n0#0| Int) (|$ih#f0#0| T@U) (|$ih#M0#0| T@U) ) (!  (=> (and (and (and (and (<= (LitInt 0) |$ih#n0#0|) ($Is DatatypeTypeType |$ih#f0#0| (Tclass._module.FunctionHandle _module._default.Lemma25$A))) ($Is DatatypeTypeType |$ih#M0#0| (Tclass._module.LList _module._default.Lemma25$A))) (U_2_bool (Lit boolType (bool_2_U true)))) (or (and (<= 0 |$ih#n0#0|) (< |$ih#n0#0| |n#0@@11|)) (and (= |$ih#n0#0| |n#0@@11|) (< (DtRank |$ih#f0#0|) (DtRank |f#0@@17|))))) (|$Eq#_module.LList| _module._default.Lemma25$A _module._default.Lemma25$A ($LS ($LS $LZ)) (_module.__default.LmapIter _module._default.Lemma25$A ($LS $LZ) |$ih#n0#0| |$ih#f0#0| (|#_module.LList.Cons| |b#0| |$ih#M0#0|)) (|#_module.LList.Cons| (_module.__default.Iter _module._default.Lemma25$A ($LS $LZ) |$ih#n0#0| |$ih#f0#0| |b#0|) (_module.__default.LmapIter _module._default.Lemma25$A ($LS $LZ) |$ih#n0#0| |$ih#f0#0| |$ih#M0#0|))))
+ :qid |Paulsondfy.113:18|
+ :skolemid |647|
  :pattern ( (_module.__default.Iter _module._default.Lemma25$A ($LS $LZ) |$ih#n0#0| |$ih#f0#0| |b#0|) (|#_module.LList.Cons| |b#0| |$ih#M0#0|))
 )) (= (ControlFlow 0 2) (- 0 1)))) (|$Eq#_module.LList| _module._default.Lemma25$A _module._default.Lemma25$A ($LS ($LS $LZ)) (_module.__default.LmapIter _module._default.Lemma25$A ($LS ($LS $LZ)) |n#0@@11| |f#0@@17| (|#_module.LList.Cons| |b#0| |M#0|)) (|#_module.LList.Cons| (_module.__default.Iter _module._default.Lemma25$A ($LS ($LS $LZ)) |n#0@@11| |f#0@@17| |b#0|) (_module.__default.LmapIter _module._default.Lemma25$A ($LS ($LS $LZ)) |n#0@@11| |f#0@@17| |M#0|))))))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap@@3) ($IsHeapAnchor $Heap@@3)) (<= (LitInt 0) |n#0@@11|)) (=> (and (and (and (and ($Is DatatypeTypeType |f#0@@17| (Tclass._module.FunctionHandle _module._default.Lemma25$A)) ($IsAlloc DatatypeTypeType |f#0@@17| (Tclass._module.FunctionHandle _module._default.Lemma25$A) $Heap@@3)) (|$IsA#_module.FunctionHandle| |f#0@@17|)) (and ($IsBox |b#0| _module._default.Lemma25$A) ($IsAllocBox |b#0| _module._default.Lemma25$A $Heap@@3))) (and (and (and ($Is DatatypeTypeType |M#0| (Tclass._module.LList _module._default.Lemma25$A)) ($IsAlloc DatatypeTypeType |M#0| (Tclass._module.LList _module._default.Lemma25$A) $Heap@@3)) (|$IsA#_module.LList| |M#0|)) (and (= 4 $FunctionContextHeight) (= (ControlFlow 0 3) 2)))) anon0_correct))))
